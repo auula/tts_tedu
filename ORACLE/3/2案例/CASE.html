@@ -1,0 +1,301 @@
+
+<!-- saved from url=(0090)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17864025767"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA ORACLE DAY03</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#case1">Oracle基础查询综合示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#case2">Oracle分组查询综合示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#case3">Oracle关联查询综合示例</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 Oracle基础查询综合示例</h2>
+      <h3>1.1 问题</h3>
+      <p>编写SQL语句，查询职员表（emp表），逐一完成如下功能：</p>
+      <p>1）查询emp表中的入职日期列(hiredate)，并按照时间的先后顺序列出；</p>
+      <p>2）查询工资大于1600的员工姓名和工资；</p>
+      <p>3）查询员工号为7369的员工的姓名和部门编码；</p>
+      <p>4）查询工资不在4000到5000之间的员工的姓名和工资；</p>
+      <p>5）查询那些尚未分配部门的员工的姓名；</p>
+      <p>6）已知员工的每月收入为：薪资＋绩效*0.8，如果绩效为null，则表示绩效为 0。查询员工的姓名以及月收入（列名为money），并按照月收入升序排列。查询效果如图－1所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图－1</p>
+      </div>
+      <h3>1.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一:查询入职日期列</p>
+      <p>emp表中，有hiredate列表示入职日期，查询该列，并使用order by子句进行升序排列。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>selecthiredate from emp order by hiredate<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">selecthiredate from emp order by hiredate;
+</pre></div></div>
+      <p class="number">步骤二：查询工资大于1600的员工姓名和工资</p>
+      <p>emp表中，ename列表示员工姓名，sal列表示工资，查询这两列，并使用where子句对工资进行判断。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select ename<span class="sh_symbol">,</span> sal from emp where sal <span class="sh_symbol">&gt;</span> <span class="sh_number">1600</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select ename, sal from emp where sal &gt; 1600;
+</pre></div></div>
+      <p class="number">步骤三：查询员工号为7369的员工的姓名和部门编码</p>
+      <p>emp表中，empno列表示员工编号，ename列表示员工姓名，deptno列表示部门编码，查询ename和deptno列，并使用where子句对员工编号进行判断。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select ename<span class="sh_symbol">,</span> deptno from emp where empno <span class="sh_symbol">=</span> <span class="sh_number">7369</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select ename, deptno from emp where empno = 7369;
+</pre></div></div>
+      <p class="number">步骤四：查询工资不在4000到5000之间的员工的姓名和工资</p>
+      <p>需要使用notbetween…and…子句对工资进行范围的判断。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select ename<span class="sh_symbol">,</span>  sal from emp where  sal not between <span class="sh_number">4000</span> and <span class="sh_number">5000</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select ename,  sal from emp where  sal not between 4000 and 5000;
+</pre></div></div>
+      <p class="number">步骤五：查询那些尚未分配部门的员工的姓名</p>
+      <p>如果某条数据的deptno列为null，则表示该员工没有分配部门。因此，需要使用is null 判断 deptno 列是否为空。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select ename from emp where deptno is <span class="sh_keyword">null</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select ename from emp where deptno is null;
+</pre></div></div>
+      <p class="number">步骤六：查询员工的月收入</p>
+      <p>emp 表中，comm 列表示绩效，该列可能为 null。因此，首先需要使用 nvl 函数对comm 列进行转换：如果comm 列为 null，则转换为数值 0；然后，使用计算表达式 sal + nvl(comm,0) * 0.8计算月收入。</p>
+      <p>计算完月收入后，使用 order by 子句进行排序。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select ename<span class="sh_symbol">,</span> sal <span class="sh_symbol">+</span> <span class="sh_function">nvl</span><span class="sh_symbol">(</span>comm<span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_symbol">*</span> <span class="sh_number">0.8</span> money from emp order by money<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select ename, sal + nvl(comm,0) * 0.8 money from emp order by money;
+</pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 Oracle分组查询综合示例</h2>
+      <h3>2.1 问题</h3>
+      <p>1）查询各职位的员工工资的最大值，最小值，平均值以及总和，查询结果如图－2所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图－2</p>
+      </div>
+      <p>2）查询各职位的员工人数，查询结果如图－3所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图－3</p>
+      </div>
+      <p>3）查询员工的最高工资和最低工资的差距，并显示列名为DIFFERENCE，查询结果如图－4所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图－4</p>
+      </div>
+      <p>4）查询各个管理者属下员工的最低工资，其中最低工资不能低于800，且没有管理者的员工不计算在内。查询结果如图－5所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+        <p>图－5</p>
+      </div>
+      <p>5）查询各个部门中工资大于1500的员工人数，查询结果如图－6所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image006.png">
+        <p>图－6</p>
+      </div>
+      <p>6）查询各部门的平均绩效，如果绩效为null，则按数值0进行统计，查询结果如图－7所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image007.png">
+        <p>图－7</p>
+      </div>
+      <h3>2.2 方案</h3>
+      <p>聚合函数用于对数据进行统计，用于统计全表的数据，也可以将表的全部数据划分为几组数据，每组数据统计出一个结果。因为是多行数据参与运算返回一行结果，也称作分组函数、多行函数、集合函数。</p>
+      <p>常见的聚合函数有：</p>
+      <ul class="list">
+        <li>MAX：用来取得列或表达式的最大值
+</li>
+        <li>MIN：用来取得列或表达式的最小值
+</li>
+        <li>AVG：用来统计列或表达式的平均值
+</li>
+        <li>SUM：用来统计列或表达式的和值
+</li>
+        <li>COUNT：用来计算表中的记录条数
+</li>
+      </ul>
+      <p class="emphasiz">注意：聚合函数忽略NULL值。</p>
+      <p>使用聚合函数进行数据统计时，往往结合GOURP BY 子句使用。GOURP BY 子句实现按什么分组。</p>
+      <p>HAVING子句用来对分组后的结果进一步限制，比如按部门分组后，得到每个部门的最高薪水，可以继续限制输出结果。需要注意的是，HAVING 子句必须跟在GROUP BY后面，不能单独存在。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一:查询各职位的员工工资的最大值，最小值，平均值以及总和</p>
+      <p>emp 表中，有sal列表示工资，job 列表示职位。因此，需要对 job 列进行分组，统计 sal 列的最大值、最小值、平均值以及总和即可。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select job<span class="sh_symbol">,</span> <span class="sh_function">max</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">),</span> <span class="sh_function">min</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">),</span> <span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">),</span> <span class="sh_function">sum</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span></li><li>from emp</li><li>group by job<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select job, max(sal), min(sal), avg(sal), sum(sal)
+from emp
+group by job;
+</pre></div></div>
+      <p class="number">步骤二：查询各职位的员工人数</p>
+      <p>emp 表中，job 列表示职位。因此，需要对 job 列进行分组，统计各组中记录的条数即可。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select job<span class="sh_symbol">,</span> <span class="sh_function">count</span><span class="sh_symbol">(*)</span></li><li>from emp</li><li>group by job<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select job, count(*)
+from emp
+group by job;
+</pre></div></div>
+      <p class="number">步骤三：查询员工的最高工资和最低工资的差距，并显示列名为DIFFERENCE</p>
+      <p>实现此案例，需要分别使用 MAX 和 MIN 函数查询员工的最高工资和最低工资，并求差值。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_function">max</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)-</span><span class="sh_function">min</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> <span class="sh_string">"DIFFERENCE"</span>from emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select max(sal)-min(sal) "DIFFERENCE"from emp;
+</pre></div></div>
+      <p class="number">步骤四：查询各个管理者属下员工的最低工资，其中最低工资不能低于800，且没有管理者的员工不计算在内</p>
+      <p>emp 表中，有 mgr 列表示员工的管理者，因此，首先需要对 mgr 列进行分组，并统计每组中 sal 列的最小值。</p>
+      <p>这样，会统计出每个管理者下属员工的最低工资，为了达到案例的要求，还需要判断 mgr 列不为空，以及最低工资不低于 800。</p>
+      <p>SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select mgr<span class="sh_symbol">,</span> <span class="sh_function">min</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span>from emp</li><li>where mgr is not <span class="sh_keyword">null</span></li><li>group by mgr</li><li>having <span class="sh_function">min</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> <span class="sh_symbol">&gt;=</span> <span class="sh_number">800</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select mgr, min(sal)from emp
+where mgr is not null
+group by mgr
+having min(sal) &gt;= 800;
+</pre></div></div>
+      <p class="number">步骤五：查询各个部门中工资大于1500的员工人数</p>
+      <p>emp 表中，有 deptno 列表示员工的所属部门，因此，需要对 deptno 列进行分组，并统计各组中记录的条数。</p>
+      <p>为了只统计工资大于 1500 的记录数，需要使用where子句进行过滤。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select deptno <span class="sh_symbol">,</span> <span class="sh_function">count</span><span class="sh_symbol">(*)</span> from emp where  sal <span class="sh_symbol">&gt;</span> <span class="sh_number">1500</span> group by deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select deptno , count(*) from emp where  sal &gt; 1500 group by deptno;
+</pre></div></div>
+      <p class="number">步骤六：查询各部门的平均绩效，如果绩效为null，则按数值0进行统计</p>
+      <p>emp表中，有 deptno 列表示员工的所属部门，comm 列表示绩效。因此，首先需要对 deptno 列进行分组，并统计 comm 列的平均值。</p>
+      <p>但是，因为 comm 列可能为 null，而聚合函数会忽略 null值。因此，需要使用 NVL 函数对 null 值进行处理。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT deptno<span class="sh_symbol">,</span> <span class="sh_function">AVG</span><span class="sh_symbol">(</span><span class="sh_function">NVL</span><span class="sh_symbol">(</span>comm<span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">))</span>  avg_comm FROM emp group by deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno, AVG(NVL(comm,0))  avg_comm FROM emp group by deptno;
+</pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 Oracle关联查询综合示例</h2>
+      <h3>3.1 问题</h3>
+      <p>1）查询员工的姓名及其所在部门的名字和城市，如图－8所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image008.png">
+        <p>图－8</p>
+      </div>
+      <p>2）查询员工的姓名和他的管理者的姓名，查询结果如图－9所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image009.png">
+        <p>图－9</p>
+      </div>
+      <p>3）查询员工的编号、姓名、部门编码、部门名称以及部门所在城市。要求：把没有部门的员工也查出来，查询结果如图－10所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image010.png">
+        <p>图－10</p>
+      </div>
+      <p>4）查询员工的信息及其所在部门的信息。要求：把没有员工的部门也查出来，查询结果如图－11所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image011.png">
+        <p>图－11</p>
+      </div>
+      <p>5）查询员工的信息及其所在部门的信息。要求：只查询没有员工的部门，查询结果如图－12所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image012.png">
+        <p>图－12</p>
+      </div>
+      <p>6）查询并显示SALES部门的职位，查询结果如图－13所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image013.png">
+        <p>图－13</p>
+      </div>
+      <p>7）查询所有部门的名称、所在地、员工数量以及平均工资，查询结果如图－14所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image014.png">
+        <p>图－14</p>
+      </div>
+      <p>8）执行下面两条查询语句，并比较查询结果。</p>
+      <p>SELECT e1.ename, e2.ename FROM emp e1, emp e2WHERE e1.mgr = e2.empno</p>
+      <p>SELECT e1.ename, e2.enameFROM emp e1, emp e2WHERE e1.empno = e2.mgr</p>
+      <h3>3.2 方案</h3>
+      <p>查询两个或两个以上数据表或视图的查询叫做连接查询。连接查询分为：</p>
+      <ul class="list">
+        <li>内连接：返回所有满足连接条件的记录
+</li>
+        <li>外连接：不仅返回满足连接条件的记录，还将返回不满足连接条件的记录。分为左外连接和右外连接；
+</li>
+        <li>全外连接：左外连接和右外连接查询结果的总和；
+</li>
+        <li>自连接：数据的来源是一个表，即关联关系来自于单表中的多个列。
+</li>
+      </ul>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一:查询员工的姓名及其所在部门的名字和城市</p>
+      <p>emp表中，有deptno列表示员工所在部门的编码；dept表中，也有deptno列表示部门编码，因此，可以通过此列对两个表进行关联查询。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select ename <span class="sh_symbol">,</span> dname <span class="sh_symbol">,</span> loc</li><li>from emp  e join dept  d</li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select ename , dname , loc
+from emp  e join dept  d
+on e.deptno = d.deptno ;
+</pre></div></div>
+      <p class="number">步骤二：查询员工的姓名和他的管理者的姓名</p>
+      <p>emp表中，有mgr列记载员工的管理者，而管理者同时也在emp表中。因此，需要使用自连接进行查询。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select t1<span class="sh_symbol">.</span>ename <span class="sh_symbol">,</span> t2<span class="sh_symbol">.</span>ename mgr_name</li><li>from emp  t1 join emp  t2   </li><li>on t1<span class="sh_symbol">.</span>mgr <span class="sh_symbol">=</span> t2<span class="sh_symbol">.</span>empno <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select t1.ename , t2.ename mgr_name
+from emp  t1 join emp  t2   
+on t1.mgr = t2.empno ;
+</pre></div></div>
+      <p class="number">步骤三：查询员工的编号、姓名、部门编码、部门名称以及部门所在城市（把没有部门的员工也查出来）</p>
+      <p>emp表中，有deptno列表示员工所在部门的编码；dept表中，也有deptno列表示部门编码，因此，可以通过此列对两个表进行关联查询。因为要求把没有部门的员工也查出来，则需要将emp表中的所有数据都列出来，需要使用emp表左外连接dept表。</p>
+      <p>SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select e<span class="sh_symbol">.</span>empno <span class="sh_symbol">,</span> ename <span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>deptno <span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname <span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>loc</li><li>from emp  e left outer join dept  d </li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select e.empno , ename , d.deptno , d.dname , d.loc
+from emp  e left outer join dept  d 
+on e.deptno = d.deptno ;
+</pre></div></div>
+      <p class="number">步骤四：查询员工的信息及其所在部门的信息（把没有员工的部门也查出来）</p>
+      <p>要求把没有员工的部门也查出来，则需要将dept表中的所有数据都列出来，需要使用dept表左外连接emp表，或者使用emp表右外连接dept表。</p>
+      <p>SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select e<span class="sh_symbol">.</span>empno <span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>ename <span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>deptno <span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname <span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>loc</li><li>from dept  d left outer join emp  e </li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select e.empno , e.ename , d.deptno , d.dname , d.loc
+from dept  d left outer join emp  e 
+on e.deptno = d.deptno;
+</pre></div></div>
+      <p class="number">步骤五：查询员工的信息及其所在部门的信息（只查询没有员工的部门）</p>
+      <p>实现此案例，只需要在上一个案例的基础上，添加过滤条件：员工编号为null。</p>
+      <p>SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select e<span class="sh_symbol">.</span>empno <span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>ename <span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>deptno <span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname <span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>loc</li><li>from dept  d left outer join emp  e </li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno</li><li>where e<span class="sh_symbol">.</span>empno is <span class="sh_keyword">null</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select e.empno , e.ename , d.deptno , d.dname , d.loc
+from dept  d left outer join emp  e 
+on e.deptno = d.deptno
+where e.empno is null ;
+</pre></div></div>
+      <p class="number">步骤六：查询并显示SALES部门的职位</p>
+      <p>emp表中，有job列表示职位，deptno列表示部门编号，而部门名称（如 SALES）信息存储在dept表中。因此，需要通过 deptno列对两个表进行关联查询，并根据部门的名称进行过滤。</p>
+      <p>SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select distinct e<span class="sh_symbol">.</span>job from emp e<span class="sh_symbol">,</span> dept d </li><li>where e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno and d<span class="sh_symbol">.</span>dname <span class="sh_symbol">=</span> <span class="sh_string">'SALES'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select distinct e.job from emp e, dept d 
+where e.deptno = d.deptno and d.dname = 'SALES';
+</pre></div></div>
+      <p class="number">步骤七：查询所有部门的名称、所在地、员工数量以及平均工资</p>
+      <p>首先，统计emp表各部门的员工数量以及平均工资：需要对 deptno 列进行分组，并统计sal列的平均值和记录数；</p>
+      <p>其次，将上一步中的查询结果作为中间表，与dept表，进行关联查询，查询部门的名称、所在地以及上一步中的统计结果。</p>
+      <p>SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>loc<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>EMP_COUNT<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>SAL_AVG</li><li>from dept d</li><li><span class="sh_function">join</span><span class="sh_symbol">(</span></li><li>select deptno<span class="sh_symbol">,</span> <span class="sh_function">count</span><span class="sh_symbol">(*)</span> as <span class="sh_string">"EMP_COUNT"</span><span class="sh_symbol">,</span> <span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> as <span class="sh_string">"SAL_AVG"</span> from emp</li><li>&nbsp;&nbsp;&nbsp;&nbsp;group by deptno </li><li>        <span class="sh_symbol">)</span> e</li><li>on d<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> e<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select d.dname, d.loc, e.EMP_COUNT, e.SAL_AVG
+from dept d
+join(
+select deptno, count(*) as "EMP_COUNT", avg(sal) as "SAL_AVG" from emp
+	group by deptno 
+        ) e
+on d.deptno = e.deptno;
+</pre></div></div>
+      <p class="number">步骤八：执行下面两条查询语句，并比较查询结果</p>
+      <p>分析第一条查询语句：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT e1<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e2<span class="sh_symbol">.</span>ename FROM emp e1<span class="sh_symbol">,</span> emp e2WHERE e1<span class="sh_symbol">.</span>mgr <span class="sh_symbol">=</span> e2<span class="sh_symbol">.</span>empno</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e1.ename, e2.ename FROM emp e1, emp e2WHERE e1.mgr = e2.empno
+</pre></div></div>
+      <p>此语句中：查询e1表中的员工姓名，以及e1中员工的管理员的姓名。查询的过程如图－15所示（以MGR列中的数据7902和7698为例）：</p>
+      <div class="image">
+        <img src="./CASE_files/image015.png">
+        <p>图－15</p>
+      </div>
+      <p>由图－15可以看出，SMITH的管理者为FORD，而ALLEN和WARD拥有相同的管理者：BLAKE。</p>
+      <p>因此，第一条语句的作用在于：查询每名员工的姓名及其管理者的姓名，查询结果如图－16所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image016.png">
+        <p>图－16</p>
+      </div>
+      <p>继续分析第二条查询语句：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT e1<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e2<span class="sh_symbol">.</span>ename FROM emp e1<span class="sh_symbol">,</span> emp e2WHERE e1<span class="sh_symbol">.</span>empno <span class="sh_symbol">=</span> e2<span class="sh_symbol">.</span>mgr</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e1.ename, e2.ename FROM emp e1, emp e2WHERE e1.empno = e2.mgr
+</pre></div></div>
+      <p>此语句中：查询e1表中的员工姓名，以及e1中员工的下属的姓名。查询的过程如图－17所示（以empno值为7566的数据为例）：</p>
+      <div class="image">
+        <img src="./CASE_files/image017.png">
+        <p>图－17</p>
+      </div>
+      <p>由图－17可以看出，JONES有两名下属：SCOTT和FORD。</p>
+      <p>因此，第二条语句的作用在于：查询每个管理者姓名及其下属员工的姓名，查询结果如图－18所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image018.png">
+        <p>图－18</p>
+      </div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

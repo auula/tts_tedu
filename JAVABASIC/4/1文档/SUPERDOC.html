@@ -1,0 +1,316 @@
+
+<!-- saved from url=(0099)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="7648989361"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#Key01">循环结构(while、do…while、for)</a>
+        </li>
+      </ol>
+      <h1>1. 循环结构(while、do…while、for)</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 什么是循环结构</h2>
+      <p>在日常生活中，会有很多需要反复执行的事情，比如：每一年的4个季节，每一周的7天，每日的3餐，打印机每份文档打印50份，一圈跑道400米跑3圈，都是在反复执行的。</p>
+      <p>再看软件系统中的需求：</p>
+      <p>问题1：输出100行语句，每行语句都一样，即:</p>
+      <ul class="list">
+        <li>行动是成功的阶梯，行动越多，登得越高! 
+</li>
+        <li>行动是成功的阶梯，行动越多，登得越高! 
+</li>
+        <li>行动是成功的阶梯，行动越多，登得越高! 
+</li>
+      </ul>
+      <p>…</p>
+      <p>问题2：输出100行语句，每行语句都类似，即:</p>
+      <ul class="list">
+        <li>第1,行动是成功的阶梯，行动越多，登得越高! 
+</li>
+        <li>第2,行动是成功的阶梯，行动越多，登得越高!
+</li>
+        <li>第3,行动是成功的阶梯，行动越多，登得越高!
+</li>
+        <li>…
+</li>
+        <li>第100,行动是成功的阶梯，行动越多，登得越高!
+</li>
+      </ul>
+      <p>问题3：计算1到50乘以8.88的结果</p>
+      <ul class="list">
+        <li>1× 8.88 ＝8.88
+</li>
+        <li>2 × 8.88 ＝17.76
+</li>
+        <li>3 × 8.88 ＝26.64
+</li>
+        <li>4 × 8.88 ＝35.52
+</li>
+        <li>…
+</li>
+        <li>50 × 8.88 ＝444
+</li>
+      </ul>
+      <p>诸如此类问题都是在反复执行的，在软件系统中可以通过循环这种语法结构来解决。循环是程序设计语言中反复执行某些代码的一种计算机处理过程， 是一组相同或相似语句被有规律的重复性执行。</p>
+      <p>对于循环来说，需要考虑两个要素，其一要素为循环体， 也就是被反复执行的相同或相似的语句，其二要素为循环的条件，也就是循环得以继续执行下去的条件，常常以循环次数的方式体现。</p>
+      <p>常用的循环结构有：while、do-while、for。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. while语句</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. while语句的执行逻辑</h3>
+      <p>while语句是循环的一种常见语法结构，语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_keyword">while</span><span class="sh_symbol">(</span> <span class="sh_type">boolean</span>表达式 <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;语句块；</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    while( boolean表达式 ) {		语句块；
+}
+</pre></div></div>
+      <p>while语句的执行过程为，首先计算boolean表达式的值，而后进行判断，若值为true则执行语句块，语句块执行完后再次判断boolean表达式的值，如果为true则继续执行语句块，如此循环往复，直到boolean表达式的值为false时退出while循环而执行while之后的语句。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. while语句的流程图</h3>
+      <p>while语句的流程图如图 - 11所示，需要注意的是，一般情况下，循环操作中会存在使得循环条件不满足的可能性，否则该循环将成为“死循环”。“死循环”意味着会一直执行循环体操作，循环后面的语句永远不会被执行，“死循环”在软件系统中是需要避免的。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图 - 11</p>
+      </div>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. while语句用于处理循环逻辑</h3>
+      <p>while语句在实际应用中应用比较广泛，通过如下示例体会while语句的执行逻辑：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span>  age <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">while</span> <span class="sh_symbol">(</span>age<span class="sh_symbol">&lt;=</span><span class="sh_number">100</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“马上有钱”<span class="sh_symbol">);</span></li><li>age<span class="sh_symbol">++;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int  age = 1;
+while (age&lt;=100) {
+System.out.println(“马上有钱”);
+age++;
+}
+</pre></div></div>
+      <p>上面的语句执行过程如下，首先声明整型变量age并赋初始值为1，而后判断age是否小于等于100，条件为真，输出“马上有钱”并将age的值增1变为2，再次判断条件，此时age为2，依然小于100，再一次输出“马上有钱”并将age的值再增1变为3，以此类推，直到age等于101时，判断条件为false，循环结束。</p>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. 使用break语句跳出循环</h3>
+      <p>break用在循环体中用于退出循环结构。看如下示例代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span>   x <span class="sh_symbol">=</span>  <span class="sh_number">0</span><span class="sh_symbol">;</span> </li><li><span class="sh_keyword">while</span> <span class="sh_symbol">(</span> x <span class="sh_symbol">&lt;</span> <span class="sh_number">10</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span> <span class="sh_number">5</span> <span class="sh_symbol">==</span> x <span class="sh_symbol">)</span></li><li>    &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">break</span><span class="sh_symbol">;</span></li><li>    &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>x<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x <span class="sh_symbol">+</span> <span class="sh_symbol">+</span> <span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int   x =  0; 
+while ( x &lt; 10 ) {
+		if ( 5 == x )
+    	{
+			break;
+    	}
+		System.out.println(x);
+		x + + ;
+}
+</pre></div></div>
+      <p>分析上面的代码得出结论，输出结果为0 1 2 3 4，因为当x等于5时执行break语句直接退出循环结构了，即if语句块后面的输出x的值以及x++不再被执行。</p>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. do-while语句</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. do-while语句的执行逻辑</h3>
+      <p>do-while语句也是循环的一种常见语法结构，语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">do</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;语句块</li><li><span class="sh_cbracket">}</span> <span class="sh_keyword">while</span><span class="sh_symbol">(</span> <span class="sh_type">boolean</span>表达式 <span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">do {
+		语句块
+} while( boolean表达式 ) ;
+</pre></div></div>
+      <p>do-while语句的执行过程为，先执行语句块，再判断boolean表达式，如果为true则再次执行语句块，如此循环往复，直到boolean表达式的值为false时止。也就是说，do-while语句，无论boolean表达式是否为true，都先执行一次语句块。</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. do-while语句的流程图</h3>
+      <p>do-while语句的流程图如图 - 12所示，与while语句一样，do-while语句也要避免“死循环”的发生。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图- 12</p>
+      </div>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. do-while语句用于处理循环逻辑</h3>
+      <p>do-while语句在实际应用中应用比较广泛， 通过如下示例体会do-while语句的执行逻辑：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span>  pwd <span class="sh_symbol">;</span></li><li><span class="sh_keyword">do</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>“请输入密码”<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;pwd <span class="sh_symbol">=</span> scanner<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span> <span class="sh_keyword">while</span> <span class="sh_symbol">(</span> <span class="sh_number">123</span> <span class="sh_symbol">!=</span> pwd<span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int  pwd ;
+do{
+	System.out.print(“请输入密码”);
+	pwd = scanner.nextInt();
+} while ( 123 != pwd) ;
+</pre></div></div>
+      <p>上面的语句执行过程如下，首先声明整型变量pwd，在do语句中提示“请输入密码”,接收用户输入的数据赋给pwd， 而后判断123是否不等于pwd，若为true则执行do语句块，以此类推，直到123等于pwd时，循环结束。</p>
+      <a name="Key01_03_04">
+      </a>
+      <h3>1.3.4. while和do-while语句的区别</h3>
+      <p>while与do-while都是用于执行循环结构的语句，区别在于，while循环先判断再执行，而do-while循环先执行一次，再判断。那么，当初始情况不满足循环条件时，while循环就一次都不会执行，而do-while循环不管任何情况都至少会执行一次。</p>
+      <p>注意：while和do-while语句的不同仅仅体现在第一次就不满足条件的循环中；如果不是这样的情况，while与do-while可以互换。请看如下两段示例程序：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>示例<span class="sh_number">1</span>：<span class="sh_keyword">while</span>循环方式</li><li><span class="sh_type">int</span>  pwd <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">while</span> <span class="sh_symbol">(</span> <span class="sh_number">123</span> <span class="sh_symbol">!=</span> pwd<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>“密码：”<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pwd <span class="sh_symbol">=</span> scanner<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span></li><li>示例<span class="sh_number">2</span><span class="sh_symbol">:</span> <span class="sh_keyword">do</span><span class="sh_symbol">-</span><span class="sh_keyword">while</span>循环方式</li><li><span class="sh_type">int</span>&nbsp;&nbsp;&nbsp;&nbsp;pwd <span class="sh_symbol">;</span></li><li><span class="sh_keyword">do</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>“密码”<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pwd <span class="sh_symbol">=</span> scanner<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span> <span class="sh_keyword">while</span> <span class="sh_symbol">(</span> <span class="sh_number">123</span> <span class="sh_symbol">!=</span> pwd<span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">示例1：while循环方式
+int  pwd = 0;
+while ( 123 != pwd){
+		System.out.print(“密码：”);
+		pwd = scanner.nextInt();
+}
+示例2: do-while循环方式
+int	pwd ;
+do{
+		System.out.print(“密码”);
+		pwd = scanner.nextInt();
+} while ( 123 != pwd) ;
+
+</pre></div></div>
+      <p>分析示例1与示例2得出结论，运行结果完全一样。这是因为两段代码第一次的while条件都满足，此时while与do-whlie可以互换，所以结果完全一样。</p>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. for语句</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. 考虑如下循环问题的相同之处</h3>
+      <p>请考虑如下三个题目的相似之处：</p>
+      <ol class="list">
+        <li>计算从1加到100的值；
+</li>
+        <li>计算1+1/3+1/5+…+1/999；
+</li>
+        <li>找出从第1号学员到第500号学员中成绩大于90的学员。
+</li>
+      </ol>
+      <p>通过上面的问题可以看出，如上三个题目都是在有规律的重复执行某个操作，在程序中</p>
+      <p>考虑使用循环结构来解决。首先需要先找到前面介绍的循环变量，此循环变量在每一次的循环中有规律的发生变化，并且常常作为判断是否继续循环的条件。</p>
+      <p>首先，看第1个题目，设计循环变量i ，i的值为1,2,…,100，即：从1开始，每次增1。第二个题目，设计循环变量i , i的值为1,3,5,…,999，即：从1开始，每次增2。第三个题目，设计循环变量i , i的值为1,2,…,500，即：从1开始，每次增1。</p>
+      <p>通过上面的分析，可以看出，如上的循环都是固定次数的循环，这种情况，优先考虑使用for语句来实现。</p>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. for语句的执行逻辑</h3>
+      <p>for语句是循环中最最常用的一种方式。for循环用于将某个语句或语句块重复执行预定次数的情形。语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span> 表达式<span class="sh_number">1</span>；表达式<span class="sh_number">2</span>；表达式<span class="sh_number">3</span>  <span class="sh_symbol">)</span>  <span class="sh_cbracket">{</span></li><li>语句块（循环体）</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">for ( 表达式1；表达式2；表达式3  )  {
+语句块（循环体）
+}
+</pre></div></div>
+      <p>可以看出，for循环的三个表达式之间通过分号；进行分隔，其执行逻辑如下所示：</p>
+      <ol class="list">
+        <li>计算表达式1的值，通常为循环变量赋初值；
+</li>
+        <li>计算表达式2（表达式2为逻辑表达式）的值，即判断循环条件是否为真，若值为真则执行循环体一次(语句块)，否则跳出循环；
+</li>
+        <li>执行循环体；
+</li>
+        <li>计算表达式3的值，此处通常写更新循环变量的赋值表达式；
+</li>
+        <li>计算表达式2的值，若值为true则执行循环体，否则跳出循环；
+</li>
+        <li>如此循环往复，直到表达式2的值为false。
+</li>
+      </ol>
+      <a name="Key01_04_03">
+      </a>
+      <h3>1.4.3. for语句的流程图</h3>
+      <p>for语句流程图如图-1所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图- 1</p>
+      </div>
+      <p>简单示例如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">1</span> <span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;=</span> <span class="sh_number">10</span> <span class="sh_symbol">;</span> i <span class="sh_symbol">+</span> <span class="sh_symbol">+</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span> i <span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">for ( int i = 1 ; i &lt;= 10 ; i + + ) {
+		System.out.println( i );
+}
+</pre></div></div>
+      <p>如上程序的输出结果为：1 2 3 4 5 6 7 8 9 10</p>
+      <p>分析如上程序的执行过程：首先，初始化i的值为1，判断i是否小于等于10，结果为true，其次，输出i的值1，然后，执行i的自增1，再判断i是否小于等于10，结果为true，执行输出i的值2，以此类推……输出i的值10后，执行i的自增1，此为i为11，判断结果为false，程序终止。</p>
+      <a name="Key01_04_04">
+      </a>
+      <h3>1.4.4. for语句用于实现固定次数循环</h3>
+      <p>for语句常常用于解决固定次数循环的处理，比如说累加和，想求1+2+3+…+100的结果，次数固定执行100次，可以考虑使用for循环处理，参见如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span>  sum <span class="sh_symbol">=</span> <span class="sh_number">0</span> <span class="sh_symbol">;</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">1</span> <span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;=</span> <span class="sh_number">100</span> <span class="sh_symbol">;</span> i <span class="sh_symbol">+</span> <span class="sh_symbol">+</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>sum <span class="sh_symbol">+=</span> i <span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“<span class="sh_number">1</span>到<span class="sh_number">100</span>的和为：” <span class="sh_symbol">+</span> sum <span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int  sum = 0 ;
+for ( int i = 1 ; i &lt;= 100 ; i + + ) {
+sum += i ;
+}
+System.out.println(“1到100的和为：” + sum ) ; 
+</pre></div></div>
+      <p>分析上面代码的执行过程，首先，声明一个变量用于保存累加和，此变量命名为sum，赋初始值为0，而后，for循环从1开始，每次增1，执行100次，循环体中将i的值累加到sum变量中。注意：每次都是在sum的基础之上加上i，所以使用了sum += i。循环结束后，输出结果“1到100的和为：5050“。</p>
+      <p>了解了如上题目之后，问：想求10的阶乘，即1*2*3*…*10，可不可以使用for循环来解决，如果可以的话要如何解决呢？当然可以，try！！！</p>
+      <a name="Key01_04_05">
+      </a>
+      <h3>1.4.5. for语句三个表达式特殊用法</h3>
+      <p>首先回顾for语句的语法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span> 表达式<span class="sh_number">1</span>；表达式<span class="sh_number">2</span>；表达式<span class="sh_number">3</span>  <span class="sh_symbol">)</span>  <span class="sh_cbracket">{</span></li><li>语句块&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">for ( 表达式1；表达式2；表达式3  )  {
+语句块	}
+</pre></div></div>
+      <p>通过上面的代码可以看出，for语句实现循环时需要3个表达式并且使用分号；分隔，</p>
+      <p>在实际使用时，for语句可以有几种特殊的使用方法：</p>
+      <p>特殊方式1：表达式1位置内容为空，看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> sum <span class="sh_symbol">=</span> <span class="sh_number">0</span> <span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span>  <span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;=</span> <span class="sh_number">10</span> <span class="sh_symbol">;</span> i <span class="sh_symbol">+</span> <span class="sh_symbol">+</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sum <span class="sh_symbol">+=</span> i <span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“<span class="sh_number">1</span>到<span class="sh_number">10</span>的和为：” <span class="sh_symbol">+</span> sum <span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int sum = 0 ;
+int i = 1;
+for (  ; i &lt;= 10 ; i + + ) {
+		sum += i ;
+}
+System.out.println(“1到10的和为：” + sum ) ; 
+</pre></div></div>
+      <p>通过上面的代码可以看出，虽然省略了表达式1，但只是将它放在了for循环的外面进行声明，只是位置不同而已。在此需要注意一点，即使for语句中不写表达式1了，表达式2前面的分号；也不能省略。</p>
+      <p>特殊方式2：表达式3位置内容为空时，看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span>  sum <span class="sh_symbol">=</span> <span class="sh_number">0</span> <span class="sh_symbol">;</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">1</span> <span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;=</span> <span class="sh_number">10</span> <span class="sh_symbol">;</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>sum <span class="sh_symbol">+=</span> i <span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i <span class="sh_symbol">+</span> <span class="sh_symbol">+</span> <span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“<span class="sh_number">1</span>到<span class="sh_number">10</span>的和为：” <span class="sh_symbol">+</span> sum <span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int  sum = 0 ;
+for ( int i = 1 ; i &lt;= 10 ; ) {
+sum += i ;
+		i + + ;
+}
+System.out.println(“1到10的和为：” + sum ) ; 
+</pre></div></div>
+      <p>通过上面的代码可以看出，虽然省略了表达式3，但也只是将它放在了for循环体之中，只是位置不同而已。在此需要注意一点，即使for语句中不写表达式3了，表达式2后面的分号；也不能省略。</p>
+      <p>特殊方式3：表达式1,2,3位置内容均为空时，看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span>   <span class="sh_symbol">;</span>   <span class="sh_symbol">;</span>   <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“我要学习……”<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">for (   ;   ;   ) {
+System.out.println(“我要学习……”);
+}
+</pre></div></div>
+      <p>通过上面的代码可以看出，如上代码没有循环变量、没有条件控制，因此会造成死循环，而死循环在编写程序过程中是必须要避免的，可以在循环体中添加break跳出循环。</p>
+      <p>特殊方式4：表达式 1 和 3 位置内容的多样化</p>
+      <p>for语句中的三个表达式中表达式1和表达式3可以使用逗号表达式，逗号表达式就是通过”，”运算符隔开的多个表达式组成的表达式，从左向右进行计算。看如下示例：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span>  i <span class="sh_symbol">=</span><span class="sh_number">1</span> <span class="sh_symbol">,</span> j <span class="sh_symbol">=</span> <span class="sh_number">6</span>  <span class="sh_symbol">;</span>  i <span class="sh_symbol">&lt;=</span> <span class="sh_number">6</span>  <span class="sh_symbol">;</span>  i <span class="sh_symbol">+=</span><span class="sh_number">2</span> <span class="sh_symbol">,</span> j <span class="sh_symbol">-=</span><span class="sh_number">2</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“ i <span class="sh_symbol">,</span> j <span class="sh_symbol">=</span> “ <span class="sh_symbol">+</span> i <span class="sh_symbol">+</span> “<span class="sh_symbol">,</span>” <span class="sh_symbol">+</span> j <span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">for ( int  i =1 , j = 6  ;  i &lt;= 6  ;  i +=2 , j -=2 ) {
+System.out.println(“ i , j = “ + i + “,” + j );
+}
+</pre></div></div>
+      <p>上面的代码的执行逻辑如下：初始设置i为1，j为6，判断i是否小于等于6，为真执行循环体，而后执行i+=2，j-=2，即：i增2，j减2。再判断i是否小于等于6，为真继续执行循环体，以此类推，直到条件为false。本程序的输出结果为：</p>
+      <ol class="list">
+        <li>i , j = 1 , 6
+</li>
+        <li>i , j = 3 , 4
+</li>
+        <li>i , j = 5 , 2
+</li>
+      </ol>
+      <a name="Key01_04_06">
+      </a>
+      <h3>1.4.6. 循环中使用break语句</h3>
+      <p>循环中的break语句应用率很广，break可用于循环语句或switch语句中，其用于循环时，可使程序终止循环而执行循环后面的语句，常常与条件语句一起使用，看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> sum <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">1</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;=</span><span class="sh_number">100</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span>sum<span class="sh_symbol">&gt;=</span><span class="sh_number">4000</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span>   </li><li><span class="sh_keyword">break</span><span class="sh_symbol">;</span>   </li><li><span class="sh_cbracket">}</span></li><li>sum <span class="sh_symbol">+=</span> i<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>sum<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int sum = 0;
+for(int i=1; i&lt;=100; i++){
+if(sum&gt;=4000){   
+break;   
+}
+sum += i;
+}
+System.out.println(sum);
+</pre></div></div>
+      <p>上面的程序需要统计1到100的累加和，条件是当和大于等于4000时则终止计算，此案例通过在if语句中使用break实现了for语句的退出，本程序最终sum的值为：4005。</p>
+      <a name="Key01_04_07">
+      </a>
+      <h3>1.4.7. 循环中使用continue语句</h3>
+      <p>continue语句只能用于循环中，它的作用为跳过循环体中剩余语句而执行下一次循环，看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> sum <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">1</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;=</span><span class="sh_number">100</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span> i <span class="sh_symbol">%</span> <span class="sh_number">10</span> <span class="sh_symbol">==</span> <span class="sh_number">3</span> <span class="sh_symbol">)</span><span class="sh_cbracket">{</span>   </li><li><span class="sh_keyword">continue</span><span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li>sum <span class="sh_symbol">+=</span> i<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>sum<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int sum = 0;
+for(int i=1; i&lt;=100; i++){
+if( i % 10 == 3 ){   
+continue;
+}
+sum += i;
+}
+System.out.println(sum);
+</pre></div></div>
+      <p>上面的程序需要统计1到100的累加和，条件是跳过所有个位为3的，此案例通过在if语句中使用continue实现了跳过for语句中剩余的循环体语句，本程序最终sum的值为： 4570。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

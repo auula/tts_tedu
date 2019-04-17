@@ -1,0 +1,258 @@
+
+<!-- saved from url=(0099)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="9339218776"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA SPRINGMYBATIS02 UNIT03</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html#case1">Spring与Ajax应用案例</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 Spring与Ajax应用案例</h2>
+      <h3>1.1 问题</h3>
+      <p>在Spring中使用@ResponseBody注解标注业务方法，将业务方法的返回值做成json输出给页面。</p>
+      <h3>1.2 方案</h3>
+      <p>@ResponseBody注解使用步骤</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：导包</p>
+      <p>复制项目SpringUnit02，创建新项目SpringUnit03，然后在新项目中导入如下的包：</p>
+      <p>完成之后，项目包结构如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p class="number">步骤二：开启@ResponseBody注解</p>
+      <p>在applicationContext.xml中通过&lt;mvc:annotation-driven /&gt;开启@ResponseBody注解，由于在配置Spring MVC时已经增加了这段配置，因此这个步骤可以省略了。</p>
+      <p class="number">步骤三：使用@ResponseBody标注业务方法</p>
+      <p>创建业务控制器JsonController，用于演示@ResponseBody的多种用法，该注解可以将如下类型的数据做成json：</p>
+      <p>JsonController代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>controller<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>ArrayList<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>HashMap<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>List<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Map<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Controller<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>web<span class="sh_symbol">.</span>bind<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>RequestMapping<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>web<span class="sh_symbol">.</span>bind<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>ResponseBody<span class="sh_symbol">;</span></li><li>import com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>entity<span class="sh_symbol">.</span>Emp<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>@Controller</li><li>@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test"</span><span class="sh_symbol">)</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> JsonController <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test1.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@ResponseBody</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> boolean <span class="sh_function">test1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">true</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test2.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@ResponseBody</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> Map<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">,</span><span class="sh_predef_func">Object</span><span class="sh_symbol">&gt;</span> <span class="sh_function">test2</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Map<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">,</span><span class="sh_predef_func">Object</span><span class="sh_symbol">&gt;</span> map <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> HashMap<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">,</span> <span class="sh_predef_func">Object</span><span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map<span class="sh_symbol">.</span><span class="sh_function">put</span><span class="sh_symbol">(</span><span class="sh_string">"id"</span><span class="sh_symbol">,</span> <span class="sh_number">16</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map<span class="sh_symbol">.</span><span class="sh_function">put</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">,</span> <span class="sh_string">"刘备"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> map<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test3.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@ResponseBody</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> List<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> <span class="sh_function">test3</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"aaa"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"bbb"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"ccc"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> list<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test4.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@ResponseBody</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> Emp <span class="sh_function">test4</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp e <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setEmpno</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setEname</span><span class="sh_symbol">(</span><span class="sh_string">"刘苍松"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setJob</span><span class="sh_symbol">(</span><span class="sh_string">"老师"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setMgr</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setSal</span><span class="sh_symbol">(</span><span class="sh_number">10000.0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setDeptno</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> e<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test5.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@ResponseBody</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> List<span class="sh_symbol">&lt;</span>Emp<span class="sh_symbol">&gt;</span> <span class="sh_function">test5</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>Emp<span class="sh_symbol">&gt;</span> list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>Emp<span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp e1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setEmpno</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setEname</span><span class="sh_symbol">(</span><span class="sh_string">"aaa"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setJob</span><span class="sh_symbol">(</span><span class="sh_string">"aaa"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setMgr</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setSal</span><span class="sh_symbol">(</span><span class="sh_number">10000.0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setDeptno</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>e1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp e2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setEmpno</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setEname</span><span class="sh_symbol">(</span><span class="sh_string">"bbb"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setJob</span><span class="sh_symbol">(</span><span class="sh_string">"bbb"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setMgr</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setSal</span><span class="sh_symbol">(</span><span class="sh_number">20000.0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setDeptno</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>e2<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp e3 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setEmpno</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setEname</span><span class="sh_symbol">(</span><span class="sh_string">"ccc"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setJob</span><span class="sh_symbol">(</span><span class="sh_string">"ccc"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setMgr</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setSal</span><span class="sh_symbol">(</span><span class="sh_number">30000.0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setDeptno</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>e3<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> list<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.tarena.entity.Emp;
+
+@Controller
+@RequestMapping("/test")
+public class JsonController {
+
+	@RequestMapping("/test1.do")
+	@ResponseBody
+	public boolean test1() {
+		return true;
+	}
+	
+	@RequestMapping("/test2.do")
+	@ResponseBody
+	public Map&lt;String,Object&gt; test2() {
+		Map&lt;String,Object&gt; map = new HashMap&lt;String, Object&gt;();
+		map.put("id", 16);
+		map.put("name", "刘备");
+		return map;
+	}
+	
+	@RequestMapping("/test3.do")
+	@ResponseBody
+	public List&lt;String&gt; test3() {
+		List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+		list.add("aaa");
+		list.add("bbb");
+		list.add("ccc");
+		return list;
+	}
+	
+	@RequestMapping("/test4.do")
+	@ResponseBody
+	public Emp test4() {
+		Emp e = new Emp();
+		e.setEmpno(1);
+		e.setEname("刘苍松");
+		e.setJob("老师");
+		e.setMgr(1);
+		e.setSal(10000.0);
+		e.setDeptno(30);
+		return e;
+	}
+	
+	@RequestMapping("/test5.do")
+	@ResponseBody
+	public List&lt;Emp&gt; test5() {
+		List&lt;Emp&gt; list = new ArrayList&lt;Emp&gt;();
+		
+		Emp e1 = new Emp();
+		e1.setEmpno(1);
+		e1.setEname("aaa");
+		e1.setJob("aaa");
+		e1.setMgr(1);
+		e1.setSal(10000.0);
+		e1.setDeptno(30);
+		list.add(e1);
+		
+		Emp e2 = new Emp();
+		e2.setEmpno(1);
+		e2.setEname("bbb");
+		e2.setJob("bbb");
+		e2.setMgr(1);
+		e2.setSal(20000.0);
+		e2.setDeptno(30);
+		list.add(e2);
+		
+		Emp e3 = new Emp();
+		e3.setEmpno(1);
+		e3.setEname("ccc");
+		e3.setJob("ccc");
+		e3.setMgr(1);
+		e3.setSal(30000.0);
+		e3.setDeptno(30);
+		list.add(e3);
+		
+		return list;
+	}
+	
+}
+</pre></div></div>
+      <p class="number">步骤四：测试</p>
+      <p>部署项目并启动tomcat，打开浏览器，依次访问JsonController中的业务方法，效果如下图：</p>
+      <p>访问test1.do效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p>访问test2.do效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p>访问test3.do效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p>访问test4.do效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p>访问test5.do效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <h3>1.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <p>JsonController完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>controller<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>ArrayList<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>HashMap<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>List<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Map<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Controller<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>web<span class="sh_symbol">.</span>bind<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>RequestMapping<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>web<span class="sh_symbol">.</span>bind<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>ResponseBody<span class="sh_symbol">;</span></li><li>import com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>entity<span class="sh_symbol">.</span>Emp<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>@Controller</li><li>@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test"</span><span class="sh_symbol">)</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> JsonController <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test1.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@ResponseBody</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> boolean <span class="sh_function">test1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">true</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test2.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@ResponseBody</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> Map<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">,</span><span class="sh_predef_func">Object</span><span class="sh_symbol">&gt;</span> <span class="sh_function">test2</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Map<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">,</span><span class="sh_predef_func">Object</span><span class="sh_symbol">&gt;</span> map <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> HashMap<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">,</span> <span class="sh_predef_func">Object</span><span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map<span class="sh_symbol">.</span><span class="sh_function">put</span><span class="sh_symbol">(</span><span class="sh_string">"id"</span><span class="sh_symbol">,</span> <span class="sh_number">16</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map<span class="sh_symbol">.</span><span class="sh_function">put</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">,</span> <span class="sh_string">"刘备"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> map<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test3.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@ResponseBody</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> List<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> <span class="sh_function">test3</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"aaa"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"bbb"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"ccc"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> list<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test4.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@ResponseBody</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> Emp <span class="sh_function">test4</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp e <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setEmpno</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setEname</span><span class="sh_symbol">(</span><span class="sh_string">"刘苍松"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setJob</span><span class="sh_symbol">(</span><span class="sh_string">"老师"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setMgr</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setSal</span><span class="sh_symbol">(</span><span class="sh_number">10000.0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">setDeptno</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> e<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/test5.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@ResponseBody</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> List<span class="sh_symbol">&lt;</span>Emp<span class="sh_symbol">&gt;</span> <span class="sh_function">test5</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>Emp<span class="sh_symbol">&gt;</span> list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>Emp<span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp e1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setEmpno</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setEname</span><span class="sh_symbol">(</span><span class="sh_string">"aaa"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setJob</span><span class="sh_symbol">(</span><span class="sh_string">"aaa"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setMgr</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setSal</span><span class="sh_symbol">(</span><span class="sh_number">10000.0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e1<span class="sh_symbol">.</span><span class="sh_function">setDeptno</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>e1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp e2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setEmpno</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setEname</span><span class="sh_symbol">(</span><span class="sh_string">"bbb"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setJob</span><span class="sh_symbol">(</span><span class="sh_string">"bbb"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setMgr</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setSal</span><span class="sh_symbol">(</span><span class="sh_number">20000.0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e2<span class="sh_symbol">.</span><span class="sh_function">setDeptno</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>e2<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp e3 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setEmpno</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setEname</span><span class="sh_symbol">(</span><span class="sh_string">"ccc"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setJob</span><span class="sh_symbol">(</span><span class="sh_string">"ccc"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setMgr</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setSal</span><span class="sh_symbol">(</span><span class="sh_number">30000.0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e3<span class="sh_symbol">.</span><span class="sh_function">setDeptno</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>e3<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> list<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.controller;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.tarena.entity.Emp;
+
+@Controller
+@RequestMapping("/test")
+public class JsonController {
+
+	@RequestMapping("/test1.do")
+	@ResponseBody
+	public boolean test1() {
+		return true;
+	}
+	
+	@RequestMapping("/test2.do")
+	@ResponseBody
+	public Map&lt;String,Object&gt; test2() {
+		Map&lt;String,Object&gt; map = new HashMap&lt;String, Object&gt;();
+		map.put("id", 16);
+		map.put("name", "刘备");
+		return map;
+	}
+	
+	@RequestMapping("/test3.do")
+	@ResponseBody
+	public List&lt;String&gt; test3() {
+		List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+		list.add("aaa");
+		list.add("bbb");
+		list.add("ccc");
+		return list;
+	}
+	
+	@RequestMapping("/test4.do")
+	@ResponseBody
+	public Emp test4() {
+		Emp e = new Emp();
+		e.setEmpno(1);
+		e.setEname("刘苍松");
+		e.setJob("老师");
+		e.setMgr(1);
+		e.setSal(10000.0);
+		e.setDeptno(30);
+		return e;
+	}
+	
+	@RequestMapping("/test5.do")
+	@ResponseBody
+	public List&lt;Emp&gt; test5() {
+		List&lt;Emp&gt; list = new ArrayList&lt;Emp&gt;();
+		
+		Emp e1 = new Emp();
+		e1.setEmpno(1);
+		e1.setEname("aaa");
+		e1.setJob("aaa");
+		e1.setMgr(1);
+		e1.setSal(10000.0);
+		e1.setDeptno(30);
+		list.add(e1);
+		
+		Emp e2 = new Emp();
+		e2.setEmpno(1);
+		e2.setEname("bbb");
+		e2.setJob("bbb");
+		e2.setMgr(1);
+		e2.setSal(20000.0);
+		e2.setDeptno(30);
+		list.add(e2);
+		
+		Emp e3 = new Emp();
+		e3.setEmpno(1);
+		e3.setEname("ccc");
+		e3.setJob("ccc");
+		e3.setMgr(1);
+		e3.setSal(30000.0);
+		e3.setDeptno(30);
+		list.add(e3);
+		
+		return list;
+	}
+	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY03/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

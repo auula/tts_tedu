@@ -1,0 +1,599 @@
+
+<!-- saved from url=(0090)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="26637950894"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA JQUERY DAY01</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#case1">jQuery使用示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#case2">jQuery对象使用示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#case3">购物车</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 jQuery使用示例</h2>
+      <h3>1.1 问题</h3>
+      <p>1）页面上增加一个[+]按钮</p>
+      <p>2）点击该按钮时将页面内的段落字体放大</p>
+      <h3>1.2 方案</h3>
+      <p>jQuery使用步骤</p>
+      <ol class="list">
+        <li>引入jQuery的js文件 
+</li>
+        <li>使用选择器定位要操作的节点 
+</li>
+        <li>调用jQuery的方法进行操作 
+</li>
+      </ol>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建WEB项目jQuery，引入jquery的js文件，结构如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>在day01下创建demo1.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>jQuery使用示例<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">big</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> font_size <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span><span class="sh_string">"p"</span><span class="sh_symbol">).</span><span class="sh_function">css</span><span class="sh_symbol">(</span><span class="sh_string">"font-size"</span><span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">var</span> size <span class="sh_symbol">=</span> <span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>font_size<span class="sh_symbol">.</span><span class="sh_function">replace</span><span class="sh_symbol">(</span><span class="sh_string">"px"</span><span class="sh_symbol">,</span><span class="sh_string">""</span><span class="sh_symbol">));</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"p"</span><span class="sh_symbol">).</span><span class="sh_function">css</span><span class="sh_symbol">(</span><span class="sh_string">"font-size"</span><span class="sh_symbol">,</span> <span class="sh_symbol">(</span>size<span class="sh_number">+1</span><span class="sh_symbol">)</span> <span class="sh_symbol">+</span> <span class="sh_string">"px"</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"+"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"big();"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>使用jQuery的步骤<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">1</span><span class="sh_symbol">.</span>引入jQuery<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">2</span><span class="sh_symbol">.</span>使用jQuery选择器定位节点<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">3</span><span class="sh_symbol">.</span>调用jQuery方法操作节点<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;jQuery使用示例&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function big() {
+        var font_size = $("p").css("font-size");
+        var size = parseInt(font_size.replace("px",""));
+        $("p").css("font-size", (size+1) + "px");
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;input type="button" value="+" onclick="big();"/&gt;
+    &lt;h1&gt;使用jQuery的步骤&lt;/h1&gt;
+    &lt;p&gt;1.引入jQuery&lt;/p&gt;
+    &lt;p&gt;2.使用jQuery选择器定位节点&lt;/p&gt;
+    &lt;p&gt;3.调用jQuery方法操作节点&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>打开demo1.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <h3>1.4 完整代码</h3>
+      <p>demo1.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>jQuery使用示例<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">big</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> font_size <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span><span class="sh_string">"p"</span><span class="sh_symbol">).</span><span class="sh_function">css</span><span class="sh_symbol">(</span><span class="sh_string">"font-size"</span><span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">var</span> size <span class="sh_symbol">=</span> <span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>font_size<span class="sh_symbol">.</span><span class="sh_function">replace</span><span class="sh_symbol">(</span><span class="sh_string">"px"</span><span class="sh_symbol">,</span><span class="sh_string">""</span><span class="sh_symbol">));</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"p"</span><span class="sh_symbol">).</span><span class="sh_function">css</span><span class="sh_symbol">(</span><span class="sh_string">"font-size"</span><span class="sh_symbol">,</span> <span class="sh_symbol">(</span>size<span class="sh_number">+1</span><span class="sh_symbol">)</span> <span class="sh_symbol">+</span> <span class="sh_string">"px"</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"+"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"big();"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>使用jQuery的步骤<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">1</span><span class="sh_symbol">.</span>引入jQuery<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">2</span><span class="sh_symbol">.</span>使用jQuery选择器定位节点<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">3</span><span class="sh_symbol">.</span>调用jQuery方法操作节点<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;jQuery使用示例&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function big() {
+        var font_size = $("p").css("font-size");
+        var size = parseInt(font_size.replace("px",""));
+        $("p").css("font-size", (size+1) + "px");
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;input type="button" value="+" onclick="big();"/&gt;
+    &lt;h1&gt;使用jQuery的步骤&lt;/h1&gt;
+    &lt;p&gt;1.引入jQuery&lt;/p&gt;
+    &lt;p&gt;2.使用jQuery选择器定位节点&lt;/p&gt;
+    &lt;p&gt;3.调用jQuery方法操作节点&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 jQuery对象使用示例</h2>
+      <h3>2.1 问题</h3>
+      <p>1）获取jQuery对象，并输出对象中各元素的内容</p>
+      <p>2）单击图片时改变图片的宽高</p>
+      <h3>2.2 方案</h3>
+      <ol class="list">
+        <li>获取jQuery对象：$(“p”)
+</li>
+        <li>DOM对象转换为jQuery对象：$(obj)
+</li>
+      </ol>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo2.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>jQuery对象使用示例<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">f1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> ps <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span><span class="sh_string">"p"</span><span class="sh_symbol">);</span></li><li>        <span class="sh_comment">//alert(ps.length);</span></li><li>        <span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_keyword">var</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>ps<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">var</span> p <span class="sh_symbol">=</span> ps<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>i<span class="sh_symbol">);</span></li><li>          <span class="sh_function">alert</span><span class="sh_symbol">(</span>p<span class="sh_symbol">.</span>innerHTML<span class="sh_symbol">);</span></li><li>        <span class="sh_cbracket">}</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">f2</span><span class="sh_symbol">(</span>img<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span>img<span class="sh_symbol">).</span><span class="sh_function">width</span><span class="sh_symbol">(</span><span class="sh_string">"300px"</span><span class="sh_symbol">).</span><span class="sh_function">height</span><span class="sh_symbol">(</span><span class="sh_string">"300px"</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>jQuery对象<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">1</span><span class="sh_symbol">.</span>jQuery统一封装的对象<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">2</span><span class="sh_symbol">.</span>jQuery选择器选择的结果是jQuery对象<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">3</span><span class="sh_symbol">.</span>jQuery对象本质上是一个DOM对象数组<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"按钮一"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f1();"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/01.jpg"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f2(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/02.jpg"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f2(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/03.jpg"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f2(this);"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;jQuery对象使用示例&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function f1() {
+        var ps = $("p");
+        //alert(ps.length);
+        for(var i=0;i&lt;ps.length;i++) {
+          var p = ps.get(i);
+          alert(p.innerHTML);
+        }
+      }
+      function f2(img) {
+        $(img).width("300px").height("300px");
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;jQuery对象&lt;/h1&gt;
+    &lt;p&gt;1.jQuery统一封装的对象&lt;/p&gt;
+    &lt;p&gt;2.jQuery选择器选择的结果是jQuery对象&lt;/p&gt;
+    &lt;p&gt;3.jQuery对象本质上是一个DOM对象数组&lt;/p&gt;
+    &lt;input type="button" value="按钮一" onclick="f1();"/&gt;
+    &lt;p&gt;
+      &lt;img src="../images/01.jpg" onclick="f2(this);"/&gt;
+      &lt;img src="../images/02.jpg" onclick="f2(this);"/&gt;
+      &lt;img src="../images/03.jpg" onclick="f2(this);"/&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>打开demo2.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <h3>2.4 完整代码</h3>
+      <p>demo2.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>jQuery对象使用示例<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">f1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> ps <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span><span class="sh_string">"p"</span><span class="sh_symbol">);</span></li><li>        <span class="sh_comment">//alert(ps.length);</span></li><li>        <span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_keyword">var</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>ps<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">var</span> p <span class="sh_symbol">=</span> ps<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>i<span class="sh_symbol">);</span></li><li>          <span class="sh_function">alert</span><span class="sh_symbol">(</span>p<span class="sh_symbol">.</span>innerHTML<span class="sh_symbol">);</span></li><li>        <span class="sh_cbracket">}</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">f2</span><span class="sh_symbol">(</span>img<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span>img<span class="sh_symbol">).</span><span class="sh_function">width</span><span class="sh_symbol">(</span><span class="sh_string">"300px"</span><span class="sh_symbol">).</span><span class="sh_function">height</span><span class="sh_symbol">(</span><span class="sh_string">"300px"</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>jQuery对象<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">1</span><span class="sh_symbol">.</span>jQuery统一封装的对象<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">2</span><span class="sh_symbol">.</span>jQuery选择器选择的结果是jQuery对象<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">3</span><span class="sh_symbol">.</span>jQuery对象本质上是一个DOM对象数组<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"按钮一"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f1();"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/01.jpg"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f2(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/02.jpg"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f2(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/03.jpg"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f2(this);"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;jQuery对象使用示例&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function f1() {
+        var ps = $("p");
+        //alert(ps.length);
+        for(var i=0;i&lt;ps.length;i++) {
+          var p = ps.get(i);
+          alert(p.innerHTML);
+        }
+      }
+      function f2(img) {
+        $(img).width("300px").height("300px");
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;jQuery对象&lt;/h1&gt;
+    &lt;p&gt;1.jQuery统一封装的对象&lt;/p&gt;
+    &lt;p&gt;2.jQuery选择器选择的结果是jQuery对象&lt;/p&gt;
+    &lt;p&gt;3.jQuery对象本质上是一个DOM对象数组&lt;/p&gt;
+    &lt;input type="button" value="按钮一" onclick="f1();"/&gt;
+    &lt;p&gt;
+      &lt;img src="../images/01.jpg" onclick="f2(this);"/&gt;
+      &lt;img src="../images/02.jpg" onclick="f2(this);"/&gt;
+      &lt;img src="../images/03.jpg" onclick="f2(this);"/&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 购物车</h2>
+      <h3>3.1 问题</h3>
+      <p>1）修改购物数量后，计算金额</p>
+      <p>2）计算合计金额</p>
+      <h3>3.2 方案</h3>
+      <ol class="list">
+        <li>创建节点$(“节点内容”) 
+</li>
+        <li>插入节点
+</li>
+        <li>parent.append(obj)	做为最后一个子节点添加进来 
+</li>
+        <li>parent.prepend(obj)	做为第一个子节点添加进来 
+</li>
+        <li>brother.after(obj)	做为下一个兄弟节点添加进来 
+</li>
+        <li>brother.before(obj)	做为上一个兄弟节点添加进来 
+</li>
+        <li>删除节点
+</li>
+        <li>obj.remove()		删除节点 
+</li>
+        <li>obj.remove(selector)	只删除满足selector的节点 
+</li>
+        <li>obj.empty()		清空节点 
+</li>
+      </ol>
+      <h3>3.3 步骤</h3>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo3.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>购物车<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      h1 <span class="sh_cbracket">{</span></li><li>        text<span class="sh_symbol">-</span>align<span class="sh_symbol">:</span>center<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      table <span class="sh_cbracket">{</span></li><li>        margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>        width<span class="sh_symbol">:</span><span class="sh_number">60</span><span class="sh_symbol">%;</span></li><li>        border<span class="sh_symbol">:</span>2px solid #aaa<span class="sh_symbol">;</span></li><li>        border<span class="sh_symbol">-</span>collapse<span class="sh_symbol">:</span>collapse<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      table th<span class="sh_symbol">,</span> table td <span class="sh_cbracket">{</span></li><li>        border<span class="sh_symbol">:</span>2px solid #aaa<span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span>5px<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">add_shoppingcart</span><span class="sh_symbol">(</span>btn<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> tds <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">parent</span><span class="sh_symbol">().</span><span class="sh_function">siblings</span><span class="sh_symbol">();</span></li><li>        <span class="sh_keyword">var</span> name <span class="sh_symbol">=</span> tds<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">).</span><span class="sh_function">text</span><span class="sh_symbol">();</span></li><li>        <span class="sh_keyword">var</span> price <span class="sh_symbol">=</span> tds<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">).</span><span class="sh_function">text</span><span class="sh_symbol">();</span></li><li>        </li><li>        <span class="sh_keyword">var</span> new_tr <span class="sh_symbol">=</span> </li><li>          $<span class="sh_symbol">(</span><span class="sh_string">'&lt;tr&gt;'</span> <span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;td&gt;'</span><span class="sh_symbol">+</span>name<span class="sh_symbol">+</span><span class="sh_string">'&lt;/td&gt;'</span><span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;td&gt;'</span><span class="sh_symbol">+</span>price<span class="sh_symbol">+</span><span class="sh_string">'&lt;/td&gt;'</span><span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;td align="center"&gt;'</span><span class="sh_symbol">+</span></li><li>                <span class="sh_string">'&lt;input type="button" value="-" onclick="change(this, -1);"/&gt; '</span><span class="sh_symbol">+</span></li><li>                <span class="sh_string">'&lt;input type="text" size="3" readonly value="1"/&gt; '</span><span class="sh_symbol">+</span></li><li>                <span class="sh_string">'&lt;input type="button" value="+" onclick="change(this, 1);"/&gt; '</span><span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;/td&gt;'</span><span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;td&gt;'</span><span class="sh_symbol">+</span>price<span class="sh_symbol">+</span><span class="sh_string">'&lt;/td&gt;'</span><span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;td align="center"&gt;&lt;input type="button" value="x" onclick="del(this);"/&gt;&lt;/td&gt;'</span> <span class="sh_symbol">+</span></li><li>            <span class="sh_string">'&lt;/tr&gt;'</span><span class="sh_symbol">);</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"#goods"</span><span class="sh_symbol">).</span><span class="sh_function">append</span><span class="sh_symbol">(</span>new_tr<span class="sh_symbol">);</span></li><li>        <span class="sh_function">total</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>      </li><li>      <span class="sh_keyword">function</span> <span class="sh_function">del</span><span class="sh_symbol">(</span>btn<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">parent</span><span class="sh_symbol">().</span><span class="sh_function">parent</span><span class="sh_symbol">().</span><span class="sh_function">remove</span><span class="sh_symbol">();</span></li><li>        <span class="sh_function">total</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>      </li><li>      <span class="sh_keyword">function</span> <span class="sh_function">total</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> trs <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span><span class="sh_string">"#goods tr"</span><span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">var</span> sum <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>        <span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_keyword">var</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>trs<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>         <span class="sh_keyword">var</span> td <span class="sh_symbol">=</span> trs<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span>i<span class="sh_symbol">).</span><span class="sh_function">children</span><span class="sh_symbol">().</span><span class="sh_function">eq</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">);</span></li><li>         <span class="sh_keyword">var</span> m <span class="sh_symbol">=</span> td<span class="sh_symbol">.</span><span class="sh_function">text</span><span class="sh_symbol">();</span></li><li>         sum <span class="sh_symbol">+=</span> <span class="sh_predef_func">parseFloat</span><span class="sh_symbol">(</span>m<span class="sh_symbol">);</span></li><li>        <span class="sh_cbracket">}</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"#total"</span><span class="sh_symbol">).</span><span class="sh_function">text</span><span class="sh_symbol">(</span>sum<span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>      </li><li>      <span class="sh_keyword">function</span> <span class="sh_function">change</span><span class="sh_symbol">(</span>btn<span class="sh_symbol">,</span> n<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> t <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">next</span><span class="sh_symbol">().</span>length<span class="sh_symbol">==</span><span class="sh_number">0</span><span class="sh_symbol">?</span> $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">prev</span><span class="sh_symbol">()</span> <span class="sh_symbol">:</span> $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">next</span><span class="sh_symbol">();</span></li><li>        <span class="sh_keyword">var</span> amount <span class="sh_symbol">=</span> <span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>t<span class="sh_symbol">.</span><span class="sh_function">val</span><span class="sh_symbol">());</span></li><li>        <span class="sh_keyword">if</span><span class="sh_symbol">(</span>amount<span class="sh_symbol">&lt;=</span><span class="sh_number">1</span> <span class="sh_symbol">&amp;&amp;</span> n<span class="sh_symbol">&lt;</span><span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">return</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span></li><li>        </li><li>        t<span class="sh_symbol">.</span><span class="sh_function">val</span><span class="sh_symbol">(</span>amount<span class="sh_symbol">+</span>n<span class="sh_symbol">);</span></li><li>        amount <span class="sh_symbol">=</span> t<span class="sh_symbol">.</span><span class="sh_function">val</span><span class="sh_symbol">();</span></li><li>        </li><li>        <span class="sh_keyword">var</span> tds <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">parent</span><span class="sh_symbol">().</span><span class="sh_function">siblings</span><span class="sh_symbol">();</span></li><li>        <span class="sh_keyword">var</span> price <span class="sh_symbol">=</span> tds<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">).</span><span class="sh_function">text</span><span class="sh_symbol">();</span></li><li>        <span class="sh_keyword">var</span> m <span class="sh_symbol">=</span> price<span class="sh_symbol">*</span>amount<span class="sh_symbol">;</span></li><li>        tds<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">).</span><span class="sh_function">text</span><span class="sh_symbol">(</span>m<span class="sh_symbol">);</span></li><li>        </li><li>        <span class="sh_function">total</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>真划算<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>table<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>商品<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>单价<span class="sh_symbol">(</span>元<span class="sh_symbol">)&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>颜色<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>库存<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>好评率<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>操作<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span>   </li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>罗技M185鼠标<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">80</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>黑色<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">893</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">98</span><span class="sh_symbol">%&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"加入购物车"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"add_shoppingcart(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>微软X470键盘<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">150</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>黑色<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">9028</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">96</span><span class="sh_symbol">%&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"加入购物车"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"add_shoppingcart(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>洛克iphone6手机壳<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">60</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>透明<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">672</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">99</span><span class="sh_symbol">%&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"加入购物车"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"add_shoppingcart(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>蓝牙耳机<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">100</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>蓝色<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">8937</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">95</span><span class="sh_symbol">%&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"加入购物车"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"add_shoppingcart(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>金士顿U盘<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">70</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>红色<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">482</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">100</span><span class="sh_symbol">%&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"加入购物车"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"add_shoppingcart(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>table<span class="sh_symbol">&gt;</span></li><li>  </li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>购物车<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>table<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>thead<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>商品<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>单价<span class="sh_symbol">(</span>元<span class="sh_symbol">)&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>数量<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>金额<span class="sh_symbol">(</span>元<span class="sh_symbol">)&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>删除<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>thead<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>tbody id<span class="sh_symbol">=</span><span class="sh_string">"goods"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;!--</span> </li><li>        <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>罗技M185鼠标<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">80</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>            <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"-"</span><span class="sh_symbol">/&gt;</span></li><li>            <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> size<span class="sh_symbol">=</span><span class="sh_string">"3"</span> readonly value<span class="sh_symbol">=</span><span class="sh_string">"1"</span><span class="sh_symbol">/&gt;</span></li><li>            <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"+"</span><span class="sh_symbol">/&gt;</span></li><li>          <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">80</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"x"</span><span class="sh_regexp">/&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">--&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>tbody<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>tfoot<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td colspan<span class="sh_symbol">=</span><span class="sh_string">"3"</span> align<span class="sh_symbol">=</span><span class="sh_string">"right"</span><span class="sh_symbol">&gt;</span>总计<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td id<span class="sh_symbol">=</span><span class="sh_string">"total"</span><span class="sh_symbol">&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>tfoot<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>table<span class="sh_symbol">&gt;</span>    </li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;购物车&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;style type="text/css"&gt;
+      h1 {
+        text-align:center;
+      }
+      table {
+        margin:0 auto;
+        width:60%;
+        border:2px solid #aaa;
+        border-collapse:collapse;
+      }
+      table th, table td {
+        border:2px solid #aaa;
+        padding:5px;
+      }
+    &lt;/style&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function add_shoppingcart(btn) {
+        var tds = $(btn).parent().siblings();
+        var name = tds.eq(0).text();
+        var price = tds.eq(1).text();
+        
+        var new_tr = 
+          $('&lt;tr&gt;' +
+              '&lt;td&gt;'+name+'&lt;/td&gt;'+
+              '&lt;td&gt;'+price+'&lt;/td&gt;'+
+              '&lt;td align="center"&gt;'+
+                '&lt;input type="button" value="-" onclick="change(this, -1);"/&gt; '+
+                '&lt;input type="text" size="3" readonly value="1"/&gt; '+
+                '&lt;input type="button" value="+" onclick="change(this, 1);"/&gt; '+
+              '&lt;/td&gt;'+
+              '&lt;td&gt;'+price+'&lt;/td&gt;'+
+              '&lt;td align="center"&gt;&lt;input type="button" value="x" onclick="del(this);"/&gt;&lt;/td&gt;' +
+            '&lt;/tr&gt;');
+        $("#goods").append(new_tr);
+        total();
+      }
+      
+      function del(btn) {
+        $(btn).parent().parent().remove();
+        total();
+      }
+      
+      function total() {
+        var trs = $("#goods tr");
+        var sum = 0;
+        for(var i=0;i&lt;trs.length;i++) {
+         var td = trs.eq(i).children().eq(3);
+         var m = td.text();
+         sum += parseFloat(m);
+        }
+        $("#total").text(sum);
+      }
+      
+      function change(btn, n) {
+        var t = $(btn).next().length==0? $(btn).prev() : $(btn).next();
+        var amount = parseInt(t.val());
+        if(amount&lt;=1 &amp;&amp; n&lt;0) {
+          return;
+        }
+        
+        t.val(amount+n);
+        amount = t.val();
+        
+        var tds = $(btn).parent().siblings();
+        var price = tds.eq(1).text();
+        var m = price*amount;
+        tds.eq(2).text(m);
+        
+        total();
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;真划算&lt;/h1&gt;
+    &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;商品&lt;/th&gt;
+      &lt;th&gt;单价(元)&lt;/th&gt;
+      &lt;th&gt;颜色&lt;/th&gt;
+      &lt;th&gt;库存&lt;/th&gt;
+      &lt;th&gt;好评率&lt;/th&gt;
+      &lt;th&gt;操作&lt;/th&gt;
+    &lt;/tr&gt;   
+    &lt;tr&gt;
+      &lt;td&gt;罗技M185鼠标&lt;/td&gt;
+      &lt;td&gt;80&lt;/td&gt;
+      &lt;td&gt;黑色&lt;/td&gt;
+      &lt;td&gt;893&lt;/td&gt;
+      &lt;td&gt;98%&lt;/td&gt;
+      &lt;td align="center"&gt;
+        &lt;input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;微软X470键盘&lt;/td&gt;
+      &lt;td&gt;150&lt;/td&gt;
+      &lt;td&gt;黑色&lt;/td&gt;
+      &lt;td&gt;9028&lt;/td&gt;
+      &lt;td&gt;96%&lt;/td&gt;
+      &lt;td align="center"&gt;
+        &lt;input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;洛克iphone6手机壳&lt;/td&gt;
+      &lt;td&gt;60&lt;/td&gt;
+      &lt;td&gt;透明&lt;/td&gt;
+      &lt;td&gt;672&lt;/td&gt;
+      &lt;td&gt;99%&lt;/td&gt;
+      &lt;td align="center"&gt;
+        &lt;input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;蓝牙耳机&lt;/td&gt;
+      &lt;td&gt;100&lt;/td&gt;
+      &lt;td&gt;蓝色&lt;/td&gt;
+      &lt;td&gt;8937&lt;/td&gt;
+      &lt;td&gt;95%&lt;/td&gt;
+      &lt;td align="center"&gt;
+        &lt;input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;金士顿U盘&lt;/td&gt;
+      &lt;td&gt;70&lt;/td&gt;
+      &lt;td&gt;红色&lt;/td&gt;
+      &lt;td&gt;482&lt;/td&gt;
+      &lt;td&gt;100%&lt;/td&gt;
+      &lt;td align="center"&gt;
+        &lt;input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/table&gt;
+  
+    &lt;h1&gt;购物车&lt;/h1&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;商品&lt;/th&gt;
+          &lt;th&gt;单价(元)&lt;/th&gt;
+          &lt;th&gt;数量&lt;/th&gt;
+          &lt;th&gt;金额(元)&lt;/th&gt;
+          &lt;th&gt;删除&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody id="goods"&gt;
+        &lt;!-- 
+        &lt;tr&gt;
+          &lt;td&gt;罗技M185鼠标&lt;/td&gt;
+          &lt;td&gt;80&lt;/td&gt;
+          &lt;td align="center"&gt;
+            &lt;input type="button" value="-"/&gt;
+            &lt;input type="text" size="3" readonly value="1"/&gt;
+            &lt;input type="button" value="+"/&gt;
+          &lt;/td&gt;
+          &lt;td&gt;80&lt;/td&gt;
+          &lt;td align="center"&gt;&lt;input type="button" value="x"/&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        --&gt;
+      &lt;/tbody&gt;
+      &lt;tfoot&gt;
+        &lt;tr&gt;
+          &lt;td colspan="3" align="right"&gt;总计&lt;/td&gt;
+          &lt;td id="total"&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tfoot&gt;
+    &lt;/table&gt;    
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>打开demo3.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <h3>3.4 完整代码</h3>
+      <p>demo3.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>购物车<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      h1 <span class="sh_cbracket">{</span></li><li>        text<span class="sh_symbol">-</span>align<span class="sh_symbol">:</span>center<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      table <span class="sh_cbracket">{</span></li><li>        margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>        width<span class="sh_symbol">:</span><span class="sh_number">60</span><span class="sh_symbol">%;</span></li><li>        border<span class="sh_symbol">:</span>2px solid #aaa<span class="sh_symbol">;</span></li><li>        border<span class="sh_symbol">-</span>collapse<span class="sh_symbol">:</span>collapse<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      table th<span class="sh_symbol">,</span> table td <span class="sh_cbracket">{</span></li><li>        border<span class="sh_symbol">:</span>2px solid #aaa<span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span>5px<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">add_shoppingcart</span><span class="sh_symbol">(</span>btn<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> tds <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">parent</span><span class="sh_symbol">().</span><span class="sh_function">siblings</span><span class="sh_symbol">();</span></li><li>        <span class="sh_keyword">var</span> name <span class="sh_symbol">=</span> tds<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">).</span><span class="sh_function">text</span><span class="sh_symbol">();</span></li><li>        <span class="sh_keyword">var</span> price <span class="sh_symbol">=</span> tds<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">).</span><span class="sh_function">text</span><span class="sh_symbol">();</span></li><li>        </li><li>        <span class="sh_keyword">var</span> new_tr <span class="sh_symbol">=</span> </li><li>          $<span class="sh_symbol">(</span><span class="sh_string">'&lt;tr&gt;'</span> <span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;td&gt;'</span><span class="sh_symbol">+</span>name<span class="sh_symbol">+</span><span class="sh_string">'&lt;/td&gt;'</span><span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;td&gt;'</span><span class="sh_symbol">+</span>price<span class="sh_symbol">+</span><span class="sh_string">'&lt;/td&gt;'</span><span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;td align="center"&gt;'</span><span class="sh_symbol">+</span></li><li>                <span class="sh_string">'&lt;input type="button" value="-" onclick="change(this, -1);"/&gt; '</span><span class="sh_symbol">+</span></li><li>                <span class="sh_string">'&lt;input type="text" size="3" readonly value="1"/&gt; '</span><span class="sh_symbol">+</span></li><li>                <span class="sh_string">'&lt;input type="button" value="+" onclick="change(this, 1);"/&gt; '</span><span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;/td&gt;'</span><span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;td&gt;'</span><span class="sh_symbol">+</span>price<span class="sh_symbol">+</span><span class="sh_string">'&lt;/td&gt;'</span><span class="sh_symbol">+</span></li><li>              <span class="sh_string">'&lt;td align="center"&gt;&lt;input type="button" value="x" onclick="del(this);"/&gt;&lt;/td&gt;'</span> <span class="sh_symbol">+</span></li><li>            <span class="sh_string">'&lt;/tr&gt;'</span><span class="sh_symbol">);</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"#goods"</span><span class="sh_symbol">).</span><span class="sh_function">append</span><span class="sh_symbol">(</span>new_tr<span class="sh_symbol">);</span></li><li>        <span class="sh_function">total</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>      </li><li>      <span class="sh_keyword">function</span> <span class="sh_function">del</span><span class="sh_symbol">(</span>btn<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">parent</span><span class="sh_symbol">().</span><span class="sh_function">parent</span><span class="sh_symbol">().</span><span class="sh_function">remove</span><span class="sh_symbol">();</span></li><li>        <span class="sh_function">total</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>      </li><li>      <span class="sh_keyword">function</span> <span class="sh_function">total</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> trs <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span><span class="sh_string">"#goods tr"</span><span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">var</span> sum <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>        <span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_keyword">var</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>trs<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>         <span class="sh_keyword">var</span> td <span class="sh_symbol">=</span> trs<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span>i<span class="sh_symbol">).</span><span class="sh_function">children</span><span class="sh_symbol">().</span><span class="sh_function">eq</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">);</span></li><li>         <span class="sh_keyword">var</span> m <span class="sh_symbol">=</span> td<span class="sh_symbol">.</span><span class="sh_function">text</span><span class="sh_symbol">();</span></li><li>         sum <span class="sh_symbol">+=</span> <span class="sh_predef_func">parseFloat</span><span class="sh_symbol">(</span>m<span class="sh_symbol">);</span></li><li>        <span class="sh_cbracket">}</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"#total"</span><span class="sh_symbol">).</span><span class="sh_function">text</span><span class="sh_symbol">(</span>sum<span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>      </li><li>      <span class="sh_keyword">function</span> <span class="sh_function">change</span><span class="sh_symbol">(</span>btn<span class="sh_symbol">,</span> n<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> t <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">next</span><span class="sh_symbol">().</span>length<span class="sh_symbol">==</span><span class="sh_number">0</span><span class="sh_symbol">?</span> $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">prev</span><span class="sh_symbol">()</span> <span class="sh_symbol">:</span> $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">next</span><span class="sh_symbol">();</span></li><li>        <span class="sh_keyword">var</span> amount <span class="sh_symbol">=</span> <span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>t<span class="sh_symbol">.</span><span class="sh_function">val</span><span class="sh_symbol">());</span></li><li>        <span class="sh_keyword">if</span><span class="sh_symbol">(</span>amount<span class="sh_symbol">&lt;=</span><span class="sh_number">1</span> <span class="sh_symbol">&amp;&amp;</span> n<span class="sh_symbol">&lt;</span><span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">return</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span></li><li>        </li><li>        t<span class="sh_symbol">.</span><span class="sh_function">val</span><span class="sh_symbol">(</span>amount<span class="sh_symbol">+</span>n<span class="sh_symbol">);</span></li><li>        amount <span class="sh_symbol">=</span> t<span class="sh_symbol">.</span><span class="sh_function">val</span><span class="sh_symbol">();</span></li><li>        </li><li>        <span class="sh_keyword">var</span> tds <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span>btn<span class="sh_symbol">).</span><span class="sh_function">parent</span><span class="sh_symbol">().</span><span class="sh_function">siblings</span><span class="sh_symbol">();</span></li><li>        <span class="sh_keyword">var</span> price <span class="sh_symbol">=</span> tds<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">).</span><span class="sh_function">text</span><span class="sh_symbol">();</span></li><li>        <span class="sh_keyword">var</span> m <span class="sh_symbol">=</span> price<span class="sh_symbol">*</span>amount<span class="sh_symbol">;</span></li><li>        tds<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">).</span><span class="sh_function">text</span><span class="sh_symbol">(</span>m<span class="sh_symbol">);</span></li><li>        </li><li>        <span class="sh_function">total</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>真划算<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>table<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>商品<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>单价<span class="sh_symbol">(</span>元<span class="sh_symbol">)&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>颜色<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>库存<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>好评率<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>操作<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span>   </li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>罗技M185鼠标<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">80</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>黑色<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">893</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">98</span><span class="sh_symbol">%&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"加入购物车"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"add_shoppingcart(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>微软X470键盘<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">150</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>黑色<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">9028</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">96</span><span class="sh_symbol">%&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"加入购物车"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"add_shoppingcart(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>洛克iphone6手机壳<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">60</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>透明<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">672</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">99</span><span class="sh_symbol">%&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"加入购物车"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"add_shoppingcart(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>蓝牙耳机<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">100</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>蓝色<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">8937</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">95</span><span class="sh_symbol">%&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"加入购物车"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"add_shoppingcart(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>金士顿U盘<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">70</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>红色<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">482</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">100</span><span class="sh_symbol">%&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"加入购物车"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"add_shoppingcart(this);"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>table<span class="sh_symbol">&gt;</span></li><li>  </li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>购物车<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>table<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>thead<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>商品<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>单价<span class="sh_symbol">(</span>元<span class="sh_symbol">)&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>数量<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>金额<span class="sh_symbol">(</span>元<span class="sh_symbol">)&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>th<span class="sh_symbol">&gt;</span>删除<span class="sh_symbol">&lt;/</span>th<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>thead<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>tbody id<span class="sh_symbol">=</span><span class="sh_string">"goods"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;!--</span> </li><li>        <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>罗技M185鼠标<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">80</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;</span></li><li>            <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"-"</span><span class="sh_symbol">/&gt;</span></li><li>            <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> size<span class="sh_symbol">=</span><span class="sh_string">"3"</span> readonly value<span class="sh_symbol">=</span><span class="sh_string">"1"</span><span class="sh_symbol">/&gt;</span></li><li>            <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"+"</span><span class="sh_symbol">/&gt;</span></li><li>          <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span><span class="sh_number">80</span><span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td align<span class="sh_symbol">=</span><span class="sh_string">"center"</span><span class="sh_symbol">&gt;&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"x"</span><span class="sh_regexp">/&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">--&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>tbody<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>tfoot<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td colspan<span class="sh_symbol">=</span><span class="sh_string">"3"</span> align<span class="sh_symbol">=</span><span class="sh_string">"right"</span><span class="sh_symbol">&gt;</span>总计<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td id<span class="sh_symbol">=</span><span class="sh_string">"total"</span><span class="sh_symbol">&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>          <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>tfoot<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>table<span class="sh_symbol">&gt;</span>    </li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;购物车&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;style type="text/css"&gt;
+      h1 {
+        text-align:center;
+      }
+      table {
+        margin:0 auto;
+        width:60%;
+        border:2px solid #aaa;
+        border-collapse:collapse;
+      }
+      table th, table td {
+        border:2px solid #aaa;
+        padding:5px;
+      }
+    &lt;/style&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function add_shoppingcart(btn) {
+        var tds = $(btn).parent().siblings();
+        var name = tds.eq(0).text();
+        var price = tds.eq(1).text();
+        
+        var new_tr = 
+          $('&lt;tr&gt;' +
+              '&lt;td&gt;'+name+'&lt;/td&gt;'+
+              '&lt;td&gt;'+price+'&lt;/td&gt;'+
+              '&lt;td align="center"&gt;'+
+                '&lt;input type="button" value="-" onclick="change(this, -1);"/&gt; '+
+                '&lt;input type="text" size="3" readonly value="1"/&gt; '+
+                '&lt;input type="button" value="+" onclick="change(this, 1);"/&gt; '+
+              '&lt;/td&gt;'+
+              '&lt;td&gt;'+price+'&lt;/td&gt;'+
+              '&lt;td align="center"&gt;&lt;input type="button" value="x" onclick="del(this);"/&gt;&lt;/td&gt;' +
+            '&lt;/tr&gt;');
+        $("#goods").append(new_tr);
+        total();
+      }
+      
+      function del(btn) {
+        $(btn).parent().parent().remove();
+        total();
+      }
+      
+      function total() {
+        var trs = $("#goods tr");
+        var sum = 0;
+        for(var i=0;i&lt;trs.length;i++) {
+         var td = trs.eq(i).children().eq(3);
+         var m = td.text();
+         sum += parseFloat(m);
+        }
+        $("#total").text(sum);
+      }
+      
+      function change(btn, n) {
+        var t = $(btn).next().length==0? $(btn).prev() : $(btn).next();
+        var amount = parseInt(t.val());
+        if(amount&lt;=1 &amp;&amp; n&lt;0) {
+          return;
+        }
+        
+        t.val(amount+n);
+        amount = t.val();
+        
+        var tds = $(btn).parent().siblings();
+        var price = tds.eq(1).text();
+        var m = price*amount;
+        tds.eq(2).text(m);
+        
+        total();
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;真划算&lt;/h1&gt;
+    &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;商品&lt;/th&gt;
+      &lt;th&gt;单价(元)&lt;/th&gt;
+      &lt;th&gt;颜色&lt;/th&gt;
+      &lt;th&gt;库存&lt;/th&gt;
+      &lt;th&gt;好评率&lt;/th&gt;
+      &lt;th&gt;操作&lt;/th&gt;
+    &lt;/tr&gt;   
+    &lt;tr&gt;
+      &lt;td&gt;罗技M185鼠标&lt;/td&gt;
+      &lt;td&gt;80&lt;/td&gt;
+      &lt;td&gt;黑色&lt;/td&gt;
+      &lt;td&gt;893&lt;/td&gt;
+      &lt;td&gt;98%&lt;/td&gt;
+      &lt;td align="center"&gt;
+        &lt;input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;微软X470键盘&lt;/td&gt;
+      &lt;td&gt;150&lt;/td&gt;
+      &lt;td&gt;黑色&lt;/td&gt;
+      &lt;td&gt;9028&lt;/td&gt;
+      &lt;td&gt;96%&lt;/td&gt;
+      &lt;td align="center"&gt;
+        &lt;input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;洛克iphone6手机壳&lt;/td&gt;
+      &lt;td&gt;60&lt;/td&gt;
+      &lt;td&gt;透明&lt;/td&gt;
+      &lt;td&gt;672&lt;/td&gt;
+      &lt;td&gt;99%&lt;/td&gt;
+      &lt;td align="center"&gt;
+        &lt;input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;蓝牙耳机&lt;/td&gt;
+      &lt;td&gt;100&lt;/td&gt;
+      &lt;td&gt;蓝色&lt;/td&gt;
+      &lt;td&gt;8937&lt;/td&gt;
+      &lt;td&gt;95%&lt;/td&gt;
+      &lt;td align="center"&gt;
+        &lt;input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;金士顿U盘&lt;/td&gt;
+      &lt;td&gt;70&lt;/td&gt;
+      &lt;td&gt;红色&lt;/td&gt;
+      &lt;td&gt;482&lt;/td&gt;
+      &lt;td&gt;100%&lt;/td&gt;
+      &lt;td align="center"&gt;
+        &lt;input type="button" value="加入购物车" onclick="add_shoppingcart(this);"/&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;/table&gt;
+  
+    &lt;h1&gt;购物车&lt;/h1&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;商品&lt;/th&gt;
+          &lt;th&gt;单价(元)&lt;/th&gt;
+          &lt;th&gt;数量&lt;/th&gt;
+          &lt;th&gt;金额(元)&lt;/th&gt;
+          &lt;th&gt;删除&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody id="goods"&gt;
+        &lt;!-- 
+        &lt;tr&gt;
+          &lt;td&gt;罗技M185鼠标&lt;/td&gt;
+          &lt;td&gt;80&lt;/td&gt;
+          &lt;td align="center"&gt;
+            &lt;input type="button" value="-"/&gt;
+            &lt;input type="text" size="3" readonly value="1"/&gt;
+            &lt;input type="button" value="+"/&gt;
+          &lt;/td&gt;
+          &lt;td&gt;80&lt;/td&gt;
+          &lt;td align="center"&gt;&lt;input type="button" value="x"/&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        --&gt;
+      &lt;/tbody&gt;
+      &lt;tfoot&gt;
+        &lt;tr&gt;
+          &lt;td colspan="3" align="right"&gt;总计&lt;/td&gt;
+          &lt;td id="total"&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tfoot&gt;
+    &lt;/table&gt;    
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

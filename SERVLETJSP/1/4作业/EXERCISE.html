@@ -1,0 +1,71 @@
+
+<!-- saved from url=(0098)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="26757632230"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 简述什么是Servlet</h3> 
+   </div> 
+   <div> 
+    <h3>2 简述Web工程的目录结构</h3> 
+   </div> 
+   <div> 
+    <h3>3 简述什么是HTTP协议</h3> 
+   </div> 
+   <div> 
+    <h3>4 简述常用的请求头和响应头的键值对</h3> 
+   </div> 
+   <div> 
+    <h3>5 下列关于HTTP响应代码说法正确的是：（）</h3> 
+    <p>A．404错误是因为service方法运行时有错误。</p> 
+    <p>B．405错误有可能是访问时路径拼写有误。</p> 
+    <p>C．500错误有可能是web.xml文件中配置错误。</p> 
+    <p>D.工程没有部署一定会出现404错误。</p> 
+   </div> 
+   <div> 
+    <h3>6 阅读下面的代码，说明序号处代码的含义</h3> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> HelloServlet <span class="sh_keyword">extends</span> HttpServlet<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">HelloServlet</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"HelloServlet的构造器正在执行..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpServletResponse response<span class="sh_symbol">)</span><span class="sh_comment">//-------------1</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span>IOException<span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"service方法正在执行..."</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> rs <span class="sh_symbol">=</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"&lt;span style='color:red;font-size:30px;'&gt;"</span> <span class="sh_symbol">+</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"hello "</span> <span class="sh_symbol">+</span> name <span class="sh_symbol">+</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"&lt;/span&gt;"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=utf-8"</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span><span class="sh_comment">//------------------------2</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>rs<span class="sh_symbol">);</span><span class="sh_comment">//-----------------------------------------------3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class HelloServlet extends HttpServlet{
+	
+	public HelloServlet() {
+		System.out.println(
+				"HelloServlet的构造器正在执行...");
+	}
+
+
+	public void service(HttpServletRequest request,
+							HttpServletResponse response)//-------------1
+		throws ServletException,IOException{		
+		System.out.println("service方法正在执行...");	
+		String name = request.getParameter("name");
+		String rs = 
+			"&lt;span style='color:red;font-size:30px;'&gt;" +
+			"hello " + name + 
+			"&lt;/span&gt;";
+		response.setContentType("text/html;charset=utf-8");
+
+		PrintWriter out = response.getWriter();//------------------------2
+		out.println(rs);//-----------------------------------------------3		
+		out.close();
+	}
+}
+</pre></div></div> 
+   </div> 
+   <div> 
+    <h3>7 编写Servlet在网页上显示当前时间</h3> 
+    <p>本题的详细要求如下：</p> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

@@ -1,0 +1,280 @@
+
+<!-- saved from url=(0098)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="5694931952"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#Key01">状态管理-Session</a>
+        </li>
+      </ol>
+      <h1>1. 状态管理-Session</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. Session</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 什么是Session</h3>
+      <p>服务器为不同的客户端在内存中创建了用于保存数据的Session对象，并将用于标识该对象的唯一Id发回给与该对象对应的客户端。当浏览器再次发送请求时，SessionId也会被发送过来，服务器凭借这个唯一Id找到与之对应的Session对象。在服务器端维护的这些用于保存与不同客户端交互时的数据的对象叫做Session。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. Session工作原理</h3>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图– 1</p>
+      </div>
+      <p>如图-1 所示，浏览器第一次访问服务器时，服务器会为该客户端分配一块对象空间，并且使用不同的SID来进行标识，该标识SID会随着响应发回到客户端，且被保存在内存中。当同一个客户端再次发送请求时，标识也会被同时发送到服务器端，而服务器判断要使用哪一个Session对象内的数据时，就会根据客户端发来的这个SID来进行查找。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 如何获得Session</h3>
+      <p>获得session有两种情况，要么请求中没有SID，则需要创建；要么请求中包含一个SID，根据SID去找对应的对象，但也存在找到找不到的可能。但不管哪种情况都依赖于请求中的这个唯一标识，虽然对于编程人员来讲不需要去查看这个基本不会重复、编号很长的标识，但要想获取到与客户端关联的这个session对象一定要基于请求，所以在Request类型的API中包含获取到session对象的方法，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">HttpSession</span><span class="sh_normal"> </span>s <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">(</span><span class="sh_type">boolean</span> flag<span class="sh_symbol">);</span></li><li><span class="sh_usertype">HttpSession</span><span class="sh_normal"> </span>s <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">(</span> <span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">HttpSession s = request.getSession(boolean flag);
+HttpSession s = request.getSession( );
+</pre></div></div>
+      <p>使用第一种获取session对象的方法时，</p>
+      <p>flag = true：先从请求中找找看是否有SID，没有会创建新Session对象，有SID会查找与编号对应的对象，找到匹配的对象则返回，找不到SID对应的对象时则会创建新Session对象。所以，填写true就一定会得到一个Session对象。</p>
+      <p>flag= false：不存在SID以及按照SID找不到Session对象时都会返回null，只有根据SID找到对应的对象时会返回具体的Session对象。所以，填写false只会返回已经存在并且与SID匹配上了的Session对象。</p>
+      <p>request.getSession（）方法不填写参数时等同于填写true，提供该方法主要是为了书写代码时更方便，大多数情况下还是希望能够返回一个Session对象的。</p>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 如何使用Session绑定对象</h3>
+      <p>Session作为服务器端为各客户端保存交互数据的一种方式，采用name-value对的形式来区分每一组数据。向Session添加数据绑定的代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> session<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">,</span><span class="sh_usertype">Object</span><span class="sh_normal"> </span>obj<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void session.setAttribute(String name,Object obj);
+</pre></div></div>
+      <p>获取绑定数据或移除绑定数据的代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> session<span class="sh_symbol">.</span><span class="sh_function">getAttribute</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">);</span></li><li><span class="sh_type">void</span> session<span class="sh_symbol">.</span><span class="sh_function">removeAttribute</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void session.getAttribute(String name);
+void session.removeAttribute(String name);
+</pre></div></div>
+      <p>Session对象可以保存更复杂的对象类型数据了，不像Cookie只能保存字符串。</p>
+      <a name="Key01_01_05">
+      </a>
+      <h3>1.1.5. 如何删除Session对象</h3>
+      <p>如果客户端想删除SID对应的Session对象时，可以使用Session对象的如下方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span>  <span class="sh_function">invalidate</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void  invalidate()
+</pre></div></div>
+      <p>该方法会使得服务器端与该客户端对应的Session对象不再被Session容器管理，进入到垃圾回收的状态。对于这种立即删除Session对象的操作主要应用于不再需要身份识别的情况下，如登出操作。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. Session超时</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 什么是Session超时</h3>
+      <p>Session会以对象的形式占用服务器端的内存，过多的以及长期的消耗内存会降低服务器端的运行效率，所以Session对象存在于内存中时会有默认的时间限制，一旦Session对象存在的时间超过了这个缺省的时间限制则认为是Session超时，Session会失效，不能再继续访问。</p>
+      <p>Web服务器缺省的超时时间设置一般是30分钟。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 如何修改Session的缺省时间限制</h3>
+      <p>有两种方式可以修改Session的缺省时间限制，编程式和声明式。</p>
+      <p class="number">编程式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span>  setMaxInactiveInterval（<span class="sh_type">int</span> seconds）</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void  setMaxInactiveInterval（int seconds）
+</pre></div></div>
+      <p class="number">声明式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>session<span class="sh_symbol">-</span>config<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>session<span class="sh_symbol">-</span>timeout<span class="sh_symbol">&gt;</span><span class="sh_number">30</span><span class="sh_symbol">&lt;/</span>session<span class="sh_symbol">-</span>timeout<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>session<span class="sh_symbol">-</span>config<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;session-config&gt;
+		&lt;session-timeout&gt;30&lt;/session-timeout&gt;
+&lt;/session-config&gt;
+</pre></div></div>
+      <p>使用声明式来修改缺省时间，那么该应用创建的所有Session对象的生命周期都会应用这个规定的时间，单位为分钟。</p>
+      <p>使用编程式来修改缺省时间只会针对调用该方法的Session对象应用这一原则，不会影响到其他对象，所以更灵活。通常在需要特殊设置时使用这种方式。时间单位是秒，与声明式的时间单位不同。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. Session验证</h3>
+      <p>Session既然区分不同的客户端，所以可以利用Session来实现对访问资源的保护。如，可以将资源划分为登录后才能访问。Session多用于记录身份信息，在保护资源被访问前可以通过判断Session内的信息来决定是否允许。这是依靠Session实现的验证。</p>
+      <p>使用Session实现验证的步骤如下：</p>
+      <p>步骤一、为Session对象绑定数据，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">HttpSession</span><span class="sh_normal"> </span>s <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span></li><li>s<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span>“uname”，“Rose”<span class="sh_symbol">)</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">HttpSession s = request.getSession();
+s.setAttribute(“uname”，“Rose”)；
+</pre></div></div>
+      <p>步骤二、读取Session对象中的绑定值，读取成功代表验证成功，读取失败则跳转回登录页面。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">HttpSession</span><span class="sh_normal"> </span>s <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span></li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span>s<span class="sh_symbol">.</span><span class="sh_function">getAttribute</span><span class="sh_symbol">(</span>“uname”<span class="sh_symbol">)==</span><span class="sh_keyword">null</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span>“logIn<span class="sh_symbol">.</span>jsp”<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//… … </span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">HttpSession s = request.getSession();
+if(s.getAttribute(“uname”)==null){
+		response.sendRedirect(“logIn.jsp”);
+}else{
+		//… … 
+}
+</pre></div></div>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. Session优缺点</h3>
+      <p>Session对象的数据由于保存在服务器端，并不在网络中进行传输，所以安全一些，并且能够保存的数据类型更丰富，同时Session也能够保存更多的数据，Cookie只能保存大约4kb的字符串。</p>
+      <p>Session的安全性是以牺牲服务器资源为代价的，如果用户量过大，会严重影响服务器的性能。</p>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. 浏览器禁用Cookie的后果</h3>
+      <p>Session对象的查找依靠的是SID，而这个ID保存在客户端时是以Cookie的形式保存的。一旦浏览器禁用Cookie，那么SID无法保存，Session对象将不再能使用。</p>
+      <p>为了在禁用Cookie后依然能使用Session，那么将使用其他的存储方法来完成SID的保存。URL地址在网络传输过程中不仅仅能够起到标示地址的作用，还可以在其后携带一些较短的数据，SID就可以通过URL来实现保存，及URL重写。</p>
+      <a name="Key01_02_06">
+      </a>
+      <h3>1.2.6. 什么是URL重写</h3>
+      <p>浏览器在访问服务器的某个地址时，会使用一个改写过的地址，即在原有地址后追加SessionID，这种重新定义URL内容的方式叫做URL重写。</p>
+      <p>如：原有地址的写法为http://localhost:8080/test/some</p>
+      <p>重写后的地址写法为http://localhost:8080/test/some;jsessionid=4E113CB3</p>
+      <a name="Key01_02_07">
+      </a>
+      <h3>1.2.7. 如何实现URL重写</h3>
+      <p>生成链接地址和表单提交时，使用如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span><span class="sh_usertype">a</span><span class="sh_normal"> </span>href<span class="sh_symbol">=</span>”<span class="sh_symbol">&lt;%=</span>response<span class="sh_symbol">.</span><span class="sh_function">encodeURL</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>url<span class="sh_symbol">)&gt;</span>”<span class="sh_symbol">&gt;</span>链接地址<span class="sh_symbol">&lt;/</span>a<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;a href=”&lt;%=response.encodeURL(String url)&gt;”&gt;链接地址&lt;/a&gt;
+</pre></div></div>
+      <p>如果是重定向，使用如下代码代替response.sendRedirect()</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>response<span class="sh_symbol">.</span><span class="sh_function">encodeRedirectURL</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>url<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">response.encodeRedirectURL(String url);
+</pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 验证码</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 验证码的作用</h3>
+      <p>验证码技术可以防止对于应用恶意发送数据，因其不规律且不能由机器代劳，所以一定程度上避免了恶意程序对网站的攻击。</p>
+      <p>验证码本质上是一张图片，图片内容的准确解析不容易用程序来实现，所以能避免内容被快速读取。并且，图片的内容是使用程序随机生成后绘制得到。</p>
+      <p>注册、登录这样的功能一般都会配备验证码，一定程度上避免恶意代码的攻击。</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 验证码的绘制</h3>
+      <p>绘制验证码图片不仅仅需要随机生成要绘制的内容，同时要配合Java中与绘图有关的一套API来完成。绘制API将画板、画笔、颜料、字体等都解释为对象，绘制的过程就是这些对象互相配合完成的。主要涉及Graphics、Font等类型。</p>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 验证码图片的绘制步骤</h3>
+      <p>绘制图片的基本步骤如下：</p>
+      <ol class="list">
+        <li>常见内存画板对象
+</li>
+        <li>创建基于该画板的画笔
+</li>
+        <li>设定画笔的颜色
+</li>
+        <li>设定画板背景的颜色
+</li>
+        <li>使用画笔的绘制方法绘制随机内容
+</li>
+        <li>更改画笔颜色
+</li>
+        <li>绘制随机的两点一线的干扰线
+</li>
+        <li>绘制完成后将图片压缩并输出到客户端
+</li>
+      </ol>
+      <p>以上步骤对应的实现代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="hide sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">package</span> web<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>awt<span class="sh_symbol">.*;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>awt<span class="sh_symbol">.</span>image<span class="sh_symbol">.</span>BufferedImage<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>OutputStream<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.*;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">CheckcodeServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_type">int</span> width <span class="sh_symbol">=</span> <span class="sh_number">80</span><span class="sh_symbol">;</span> <span class="sh_comment">//图片的宽度</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_type">int</span> height <span class="sh_symbol">=</span> <span class="sh_number">30</span><span class="sh_symbol">;</span><span class="sh_comment">//图片的高度</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/*</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 绘图</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//step1,创建一个内存映像对象(画板)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">BufferedImage</span><span class="sh_normal"> </span>image <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedImage</span><span class="sh_symbol">(</span>width<span class="sh_symbol">,</span>height<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                          BufferedImage<span class="sh_symbol">.</span>TYPE_INT_RGB<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//step2,获得画笔</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Graphics</span><span class="sh_normal"> </span>g <span class="sh_symbol">=</span> image<span class="sh_symbol">.</span><span class="sh_function">getGraphics</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//step3,给笔上色</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Random</span><span class="sh_normal"> </span>r <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setColor</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Color</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">)));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//step4,给画板设置背景颜色</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">fillRect</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">,</span> width<span class="sh_symbol">,</span> height<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//step5,绘制一个随机的字符串</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>number <span class="sh_symbol">=</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">99999</span><span class="sh_symbol">)</span> <span class="sh_symbol">+</span> <span class="sh_string">""</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setColor</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Color</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//new Font(字体,风格,大小)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setFont</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Font</span><span class="sh_symbol">(</span><span class="sh_keyword">null</span><span class="sh_symbol">,</span>Font<span class="sh_symbol">.</span>ITALIC<span class="sh_symbol">,</span><span class="sh_number">24</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">drawString</span><span class="sh_symbol">(</span>number<span class="sh_symbol">,</span> <span class="sh_number">5</span><span class="sh_symbol">,</span> <span class="sh_number">25</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//step6,加一些干扰线</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i <span class="sh_symbol">&lt;</span> <span class="sh_number">8</span><span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setColor</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Color</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">)));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">drawLine</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span>width<span class="sh_symbol">),</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span>height<span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span>width<span class="sh_symbol">),</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span>height<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/*</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 压缩图片并输出到客户端(浏览器)</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"image/jpeg"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">OutputStream</span><span class="sh_normal"> </span>ops <span class="sh_symbol">=</span>response<span class="sh_symbol">.</span><span class="sh_function">getOutputStream</span><span class="sh_symbol">();</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;javax<span class="sh_symbol">.</span>imageio<span class="sh_symbol">.</span>ImageIO<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>image<span class="sh_symbol">,</span> <span class="sh_string">"jpeg"</span><span class="sh_symbol">,</span> ops<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ops<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Random;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class CheckcodeServlet extends HttpServlet {
+	private int width = 80; //图片的宽度
+	private int height = 30;//图片的高度
+	public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			               throws ServletException, IOException {
+		/*
+		 * 绘图
+		 */
+		//step1,创建一个内存映像对象(画板)
+		BufferedImage image = new BufferedImage(width,height,
+					                          BufferedImage.TYPE_INT_RGB);
+		//step2,获得画笔
+		Graphics g = image.getGraphics();
+		//step3,给笔上色
+		Random r = new Random();
+		g.setColor(new Color(r.nextInt(255), r.nextInt(255),r.nextInt(255)));
+		//step4,给画板设置背景颜色
+		g.fillRect(0, 0, width, height);
+		//step5,绘制一个随机的字符串
+		String number = r.nextInt(99999) + "";
+		g.setColor(new Color(0,0,0));
+		//new Font(字体,风格,大小)
+		g.setFont(new Font(null,Font.ITALIC,24));
+		g.drawString(number, 5, 25);
+		//step6,加一些干扰线
+		for(int i=0;i &lt; 8;i++){
+			g.setColor(new Color(r.nextInt(255),
+					r.nextInt(255),r.nextInt(255)));
+			g.drawLine(r.nextInt(width), 
+					r.nextInt(height), r.nextInt(width), 
+					r.nextInt(height));
+		}
+		/*
+		 * 压缩图片并输出到客户端(浏览器)
+		 */
+		response.setContentType("image/jpeg");
+		OutputStream ops =response.getOutputStream();		
+		javax.imageio.ImageIO.write(image, "jpeg", ops);
+		ops.close();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>配置web.xml文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="hide sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span><span class="sh_usertype">app</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"2.4"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee </span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>CheckcodeServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>CheckcodeServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>CheckcodeServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;/</span>checkcode<span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"&gt;
+&lt;servlet&gt;
+&lt;servlet-name&gt;CheckcodeServlet&lt;/servlet-name&gt;
+&lt;servlet-class&gt;web.CheckcodeServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;CheckcodeServlet&lt;/servlet-name&gt;
+&lt;url-pattern&gt;/checkcode&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+
+&lt;/web-app&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>HTML页面中添加如下代码加入该图片：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span><span class="sh_usertype">img</span><span class="sh_normal"> </span>src<span class="sh_symbol">=</span><span class="sh_string">"checkcode"</span><span class="sh_symbol">/&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;img src="checkcode"/&gt;
+</pre></div></div>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. 密码加密</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. 摘要加密</h3>
+      <p>摘要加密的特点：不适用密钥，使用摘要加密算法对明文进行加密之后会得到密文，无法反推出明文。唯一性：不同的明文有不同的密文。不可逆性：即使知道了摘要加密算法，也无法反推出明文。</p>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. 如何实现摘要加密</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="hide sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">MD5Util</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">test1</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> NoSuchAlgorithmException<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"I love you"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">MessageDigest</span><span class="sh_normal"> </span>md <span class="sh_symbol">=</span> MessageDigest<span class="sh_symbol">.</span><span class="sh_function">getInstance</span><span class="sh_symbol">(</span><span class="sh_string">"md5"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//依据指定的加密算法进行加密</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">byte</span><span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> md<span class="sh_symbol">.</span><span class="sh_function">digest</span><span class="sh_symbol">(</span>str<span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//因为字节数组不方便使用，所以，将其转换成一个字符串</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//BASE64Encoder的encode方法可以将任意的一个字节数组转换成一个字符串</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">BASE64Encoder</span><span class="sh_normal">  </span>base <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BASE64Encoder</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str2 <span class="sh_symbol">=</span> base<span class="sh_symbol">.</span><span class="sh_function">encode</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str2<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_usertype">String</span><span class="sh_normal"> </span><span class="sh_function">encrypt</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal">  </span>origStr<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">MessageDigest</span><span class="sh_normal"> </span>md <span class="sh_symbol">=</span> MessageDigest<span class="sh_symbol">.</span><span class="sh_function">getInstance</span><span class="sh_symbol">(</span><span class="sh_string">"md5"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">byte</span><span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> md<span class="sh_symbol">.</span><span class="sh_function">digest</span><span class="sh_symbol">(</span>str<span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">BASE64Encoder</span><span class="sh_normal">  </span>base <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BASE64Encoder</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> base<span class="sh_symbol">.</span><span class="sh_function">encode</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> str<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class MD5Util{
+	private static void test1() throws NoSuchAlgorithmException{
+		String str = "I love you";
+		MessageDigest md = MessageDigest.getInstance("md5");
+		//依据指定的加密算法进行加密
+		byte[] buf = md.digest(str.getBytes());
+		//因为字节数组不方便使用，所以，将其转换成一个字符串
+		//BASE64Encoder的encode方法可以将任意的一个字节数组转换成一个字符串
+		BASE64Encoder  base = new BASE64Encoder();
+		String str2 = base.encode(buf);
+		System.out.println(str2);
+}
+
+	public static String encrypt(String  origStr){
+		MessageDigest md = MessageDigest.getInstance("md5");
+		byte[] buf = md.digest(str.getBytes());
+		BASE64Encoder  base = new BASE64Encoder();
+		String str = base.encode(buf);
+		return str;
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/SUPERDOC/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

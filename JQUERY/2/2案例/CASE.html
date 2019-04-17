@@ -1,0 +1,498 @@
+
+<!-- saved from url=(0090)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="26676556676"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA JQUERY DAY02</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#case1">jQuery处理事件示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#case2">事件冒泡示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#case3">合成事件示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#case4">模拟操作示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#case5">jQuery动画示例</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 jQuery处理事件示例</h2>
+      <h3>1.1 问题</h3>
+      <p>1）动态的给按钮绑定单击事件</p>
+      <p>2）单击时输出鼠标点击的坐标</p>
+      <h3>1.2 方案</h3>
+      <p>绑定单击事件：$(选择器).click(function(e){});</p>
+      <p>获取事件源坐标：e.pageX，e.pageY</p>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo1.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>jQuery事件<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      $<span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">":button"</span><span class="sh_symbol">).</span><span class="sh_function">click</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>          <span class="sh_function">alert</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>          <span class="sh_function">alert</span><span class="sh_symbol">(</span>e<span class="sh_symbol">.</span>pageX <span class="sh_symbol">+</span> <span class="sh_string">" : "</span> <span class="sh_symbol">+</span> e<span class="sh_symbol">.</span>pageY<span class="sh_symbol">);</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"按钮一"</span><span class="sh_symbol">/&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;jQuery事件&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      $(function(){
+        $(":button").click(function(e){
+          alert(1);
+          alert(e.pageX + " : " + e.pageY);
+        });
+      });
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;input type="button" value="按钮一"/&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>打开demo1.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <h3>1.4 完整代码</h3>
+      <p>demo1.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>jQuery事件<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      $<span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">":button"</span><span class="sh_symbol">).</span><span class="sh_function">click</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>          <span class="sh_function">alert</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>          <span class="sh_function">alert</span><span class="sh_symbol">(</span>e<span class="sh_symbol">.</span>pageX <span class="sh_symbol">+</span> <span class="sh_string">" : "</span> <span class="sh_symbol">+</span> e<span class="sh_symbol">.</span>pageY<span class="sh_symbol">);</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"按钮一"</span><span class="sh_symbol">/&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;jQuery事件&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      $(function(){
+        $(":button").click(function(e){
+          alert(1);
+          alert(e.pageX + " : " + e.pageY);
+        });
+      });
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;input type="button" value="按钮一"/&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 事件冒泡示例</h2>
+      <h3>2.1 问题</h3>
+      <p>1）点击父、子元素时弹出提示信息</p>
+      <p>2）点击子元素时取消事件冒泡</p>
+      <h3>2.2 方案</h3>
+      <p>e.stopPropagation（）可以取消事件冒泡</p>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo2.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>事件冒泡<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      div <span class="sh_cbracket">{</span></li><li>        border<span class="sh_symbol">:</span>1px solid #ccc<span class="sh_symbol">;</span></li><li>        margin<span class="sh_symbol">:</span>10px<span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span>20px<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #d1 <span class="sh_cbracket">{</span></li><li>        width<span class="sh_symbol">:</span>300px<span class="sh_symbol">;</span></li><li>        height<span class="sh_symbol">:</span>300px<span class="sh_symbol">;</span></li><li>        background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span> red<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #d2 <span class="sh_cbracket">{</span></li><li>        width<span class="sh_symbol">:</span>200px<span class="sh_symbol">;</span></li><li>        height<span class="sh_symbol">:</span>200px<span class="sh_symbol">;</span></li><li>        background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span> blue<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #d3 <span class="sh_cbracket">{</span></li><li>        width<span class="sh_symbol">:</span>100px<span class="sh_symbol">;</span></li><li>        height<span class="sh_symbol">:</span>100px<span class="sh_symbol">;</span></li><li>        background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span> yellow<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      $<span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"div"</span><span class="sh_symbol">).</span><span class="sh_function">click</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>          <span class="sh_function">alert</span><span class="sh_symbol">(</span>$<span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">).</span><span class="sh_function">html</span><span class="sh_symbol">());</span></li><li>          e<span class="sh_symbol">.</span><span class="sh_function">stopPropagation</span><span class="sh_symbol">();</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>事件冒泡<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"d1"</span><span class="sh_symbol">&gt;</span></li><li>      d1</li><li>      <span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"d2"</span><span class="sh_symbol">&gt;</span></li><li>        d2</li><li>        <span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"d3"</span><span class="sh_symbol">&gt;</span></li><li>          d3</li><li>        <span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;事件冒泡&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;style type="text/css"&gt;
+      div {
+        border:1px solid #ccc;
+        margin:10px;
+        padding:20px;
+      }
+      #d1 {
+        width:300px;
+        height:300px;
+        background-color: red;
+      }
+      #d2 {
+        width:200px;
+        height:200px;
+        background-color: blue;
+      }
+      #d3 {
+        width:100px;
+        height:100px;
+        background-color: yellow;
+      }
+    &lt;/style&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      $(function(){
+        $("div").click(function(e){
+          alert($(this).html());
+          e.stopPropagation();
+        });
+      });
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;事件冒泡&lt;/h1&gt;
+    &lt;div id="d1"&gt;
+      d1
+      &lt;div id="d2"&gt;
+        d2
+        &lt;div id="d3"&gt;
+          d3
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>打开demo2.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <h3>2.4 完整代码</h3>
+      <p>demo2.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>事件冒泡<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      div <span class="sh_cbracket">{</span></li><li>        border<span class="sh_symbol">:</span>1px solid #ccc<span class="sh_symbol">;</span></li><li>        margin<span class="sh_symbol">:</span>10px<span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span>20px<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #d1 <span class="sh_cbracket">{</span></li><li>        width<span class="sh_symbol">:</span>300px<span class="sh_symbol">;</span></li><li>        height<span class="sh_symbol">:</span>300px<span class="sh_symbol">;</span></li><li>        background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span> red<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #d2 <span class="sh_cbracket">{</span></li><li>        width<span class="sh_symbol">:</span>200px<span class="sh_symbol">;</span></li><li>        height<span class="sh_symbol">:</span>200px<span class="sh_symbol">;</span></li><li>        background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span> blue<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #d3 <span class="sh_cbracket">{</span></li><li>        width<span class="sh_symbol">:</span>100px<span class="sh_symbol">;</span></li><li>        height<span class="sh_symbol">:</span>100px<span class="sh_symbol">;</span></li><li>        background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span> yellow<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      $<span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"div"</span><span class="sh_symbol">).</span><span class="sh_function">click</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">(</span>e<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>          <span class="sh_function">alert</span><span class="sh_symbol">(</span>$<span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">).</span><span class="sh_function">html</span><span class="sh_symbol">());</span></li><li>          e<span class="sh_symbol">.</span><span class="sh_function">stopPropagation</span><span class="sh_symbol">();</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>事件冒泡<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"d1"</span><span class="sh_symbol">&gt;</span></li><li>      d1</li><li>      <span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"d2"</span><span class="sh_symbol">&gt;</span></li><li>        d2</li><li>        <span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"d3"</span><span class="sh_symbol">&gt;</span></li><li>          d3</li><li>        <span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;事件冒泡&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;style type="text/css"&gt;
+      div {
+        border:1px solid #ccc;
+        margin:10px;
+        padding:20px;
+      }
+      #d1 {
+        width:300px;
+        height:300px;
+        background-color: red;
+      }
+      #d2 {
+        width:200px;
+        height:200px;
+        background-color: blue;
+      }
+      #d3 {
+        width:100px;
+        height:100px;
+        background-color: yellow;
+      }
+    &lt;/style&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      $(function(){
+        $("div").click(function(e){
+          alert($(this).html());
+          e.stopPropagation();
+        });
+      });
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;事件冒泡&lt;/h1&gt;
+    &lt;div id="d1"&gt;
+      d1
+      &lt;div id="d2"&gt;
+        d2
+        &lt;div id="d3"&gt;
+          d3
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 合成事件示例</h2>
+      <h3>3.1 问题</h3>
+      <p>1）增加一张图片</p>
+      <p>2）鼠标悬停在图片上时让图片变大</p>
+      <p>3）鼠标移出时让图片变回原始大小</p>
+      <h3>3.2 方案</h3>
+      <p>hover(mouseenter，mouseleave)	模拟光标悬停事件</p>
+      <h3>3.3 步骤</h3>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo3.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>合成事件<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      $<span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"img"</span><span class="sh_symbol">).</span><span class="sh_function">hover</span><span class="sh_symbol">(</span></li><li>          <span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>            $<span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">).</span><span class="sh_function">width</span><span class="sh_symbol">(</span><span class="sh_string">"300px"</span><span class="sh_symbol">).</span><span class="sh_function">height</span><span class="sh_symbol">(</span><span class="sh_string">"300px"</span><span class="sh_symbol">);</span></li><li>          <span class="sh_cbracket">}</span><span class="sh_symbol">,</span></li><li>          <span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>            $<span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">).</span><span class="sh_function">width</span><span class="sh_symbol">(</span><span class="sh_string">"218px"</span><span class="sh_symbol">).</span><span class="sh_function">height</span><span class="sh_symbol">(</span><span class="sh_string">"218px"</span><span class="sh_symbol">);</span></li><li>          <span class="sh_cbracket">}</span></li><li>        <span class="sh_symbol">);</span></li><li>        </li><li>        $<span class="sh_symbol">(</span><span class="sh_string">":button"</span><span class="sh_symbol">).</span><span class="sh_function">click</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>          $<span class="sh_symbol">(</span><span class="sh_string">"img"</span><span class="sh_symbol">).</span><span class="sh_function">toggle</span><span class="sh_symbol">();</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"切换"</span><span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/01.jpg"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;合成事件&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      $(function(){
+        $("img").hover(
+          function(){
+            $(this).width("300px").height("300px");
+          },
+          function(){
+            $(this).width("218px").height("218px");
+          }
+        );
+        
+        $(":button").click(function(){
+          $("img").toggle();
+        });
+      });
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;&lt;input type="button" value="切换"/&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src="../images/01.jpg" /&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>打开demo3.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <h3>3.4 完整代码</h3>
+      <p>demo3.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>合成事件<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      $<span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"img"</span><span class="sh_symbol">).</span><span class="sh_function">hover</span><span class="sh_symbol">(</span></li><li>          <span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>            $<span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">).</span><span class="sh_function">width</span><span class="sh_symbol">(</span><span class="sh_string">"300px"</span><span class="sh_symbol">).</span><span class="sh_function">height</span><span class="sh_symbol">(</span><span class="sh_string">"300px"</span><span class="sh_symbol">);</span></li><li>          <span class="sh_cbracket">}</span><span class="sh_symbol">,</span></li><li>          <span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>            $<span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">).</span><span class="sh_function">width</span><span class="sh_symbol">(</span><span class="sh_string">"218px"</span><span class="sh_symbol">).</span><span class="sh_function">height</span><span class="sh_symbol">(</span><span class="sh_string">"218px"</span><span class="sh_symbol">);</span></li><li>          <span class="sh_cbracket">}</span></li><li>        <span class="sh_symbol">);</span></li><li>        </li><li>        $<span class="sh_symbol">(</span><span class="sh_string">":button"</span><span class="sh_symbol">).</span><span class="sh_function">click</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>          $<span class="sh_symbol">(</span><span class="sh_string">"img"</span><span class="sh_symbol">).</span><span class="sh_function">toggle</span><span class="sh_symbol">();</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"切换"</span><span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/01.jpg"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;合成事件&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      $(function(){
+        $("img").hover(
+          function(){
+            $(this).width("300px").height("300px");
+          },
+          function(){
+            $(this).width("218px").height("218px");
+          }
+        );
+        
+        $(":button").click(function(){
+          $("img").toggle();
+        });
+      });
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;&lt;input type="button" value="切换"/&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src="../images/01.jpg" /&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 模拟操作示例</h2>
+      <h3>4.1 问题</h3>
+      <p>1）增加一组姓名和文本框</p>
+      <p>2）点击[自动打分]按钮时，逐个切入文本框，并随机打分</p>
+      <h3>4.2 方案</h3>
+      <p>模拟光标切入事件：$obj.trigger(“focus”);</p>
+      <h3>4.3 步骤</h3>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo4.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>模拟操作<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">auto_mark</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> texts <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span><span class="sh_string">":text"</span><span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">var</span> i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>        <span class="sh_keyword">var</span> timer <span class="sh_symbol">=</span> <span class="sh_function">setInterval</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">if</span><span class="sh_symbol">(</span>i <span class="sh_symbol">==</span> texts<span class="sh_symbol">.</span>length<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>            <span class="sh_function">clearInterval</span><span class="sh_symbol">(</span>timer<span class="sh_symbol">);</span></li><li>          <span class="sh_cbracket">}</span></li><li>          <span class="sh_keyword">var</span> score <span class="sh_symbol">=</span> <span class="sh_predef_var">Math</span><span class="sh_symbol">.</span><span class="sh_function">round</span><span class="sh_symbol">(</span><span class="sh_predef_var">Math</span><span class="sh_symbol">.</span><span class="sh_function">random</span><span class="sh_symbol">()*</span><span class="sh_number">100</span><span class="sh_symbol">);</span></li><li>          texts<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span>i<span class="sh_symbol">++).</span><span class="sh_function">trigger</span><span class="sh_symbol">(</span><span class="sh_string">"focus"</span><span class="sh_symbol">).</span><span class="sh_function">val</span><span class="sh_symbol">(</span>score<span class="sh_symbol">);</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"自动打分"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"auto_mark();"</span><span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>张三：<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>李四：<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>王五：<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>马六：<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>周七：<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;模拟操作&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function auto_mark() {
+        var texts = $(":text");
+        var i = 0;
+        var timer = setInterval(function(){
+          if(i == texts.length) {
+            clearInterval(timer);
+          }
+          var score = Math.round(Math.random()*100);
+          texts.eq(i++).trigger("focus").val(score);
+        }, 1000);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;&lt;input type="button" value="自动打分" onclick="auto_mark();"/&gt;&lt;/p&gt;
+    &lt;p&gt;张三：&lt;input type="text" /&gt;&lt;/p&gt;
+    &lt;p&gt;李四：&lt;input type="text" /&gt;&lt;/p&gt;
+    &lt;p&gt;王五：&lt;input type="text" /&gt;&lt;/p&gt;
+    &lt;p&gt;马六：&lt;input type="text" /&gt;&lt;/p&gt;
+    &lt;p&gt;周七：&lt;input type="text" /&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>打开demo4.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <h3>4.4 完整代码</h3>
+      <p>demo4.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>模拟操作<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">auto_mark</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> texts <span class="sh_symbol">=</span> $<span class="sh_symbol">(</span><span class="sh_string">":text"</span><span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">var</span> i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>        <span class="sh_keyword">var</span> timer <span class="sh_symbol">=</span> <span class="sh_function">setInterval</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">if</span><span class="sh_symbol">(</span>i <span class="sh_symbol">==</span> texts<span class="sh_symbol">.</span>length<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>            <span class="sh_function">clearInterval</span><span class="sh_symbol">(</span>timer<span class="sh_symbol">);</span></li><li>          <span class="sh_cbracket">}</span></li><li>          <span class="sh_keyword">var</span> score <span class="sh_symbol">=</span> <span class="sh_predef_var">Math</span><span class="sh_symbol">.</span><span class="sh_function">round</span><span class="sh_symbol">(</span><span class="sh_predef_var">Math</span><span class="sh_symbol">.</span><span class="sh_function">random</span><span class="sh_symbol">()*</span><span class="sh_number">100</span><span class="sh_symbol">);</span></li><li>          texts<span class="sh_symbol">.</span><span class="sh_function">eq</span><span class="sh_symbol">(</span>i<span class="sh_symbol">++).</span><span class="sh_function">trigger</span><span class="sh_symbol">(</span><span class="sh_string">"focus"</span><span class="sh_symbol">).</span><span class="sh_function">val</span><span class="sh_symbol">(</span>score<span class="sh_symbol">);</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"自动打分"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"auto_mark();"</span><span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>张三：<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>李四：<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>王五：<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>马六：<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>周七：<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> <span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;模拟操作&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function auto_mark() {
+        var texts = $(":text");
+        var i = 0;
+        var timer = setInterval(function(){
+          if(i == texts.length) {
+            clearInterval(timer);
+          }
+          var score = Math.round(Math.random()*100);
+          texts.eq(i++).trigger("focus").val(score);
+        }, 1000);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;&lt;input type="button" value="自动打分" onclick="auto_mark();"/&gt;&lt;/p&gt;
+    &lt;p&gt;张三：&lt;input type="text" /&gt;&lt;/p&gt;
+    &lt;p&gt;李四：&lt;input type="text" /&gt;&lt;/p&gt;
+    &lt;p&gt;王五：&lt;input type="text" /&gt;&lt;/p&gt;
+    &lt;p&gt;马六：&lt;input type="text" /&gt;&lt;/p&gt;
+    &lt;p&gt;周七：&lt;input type="text" /&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case5">
+      </a>
+      <h2>5 jQuery动画示例</h2>
+      <h3>5.1 问题</h3>
+      <p>1）增加一张图片</p>
+      <p>2）使用不同的方式实现该图片显示/隐藏的动画效果</p>
+      <p>3）自定义动画，使得改图片向右移动后再向下移动</p>
+      <h3>5.2 方案</h3>
+      <p>显示/隐藏动画效果</p>
+      <p>show() / hide()</p>
+      <p>slideDown() / slideUp()</p>
+      <p>fadeIn() /  fadeout()</p>
+      <p>自定义动画效果</p>
+      <p>animate（偏移位置，执行时间，回调函数）</p>
+      <h3>5.3 步骤</h3>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo5.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>jQuery动画<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      #msg <span class="sh_cbracket">{</span></li><li>        border<span class="sh_symbol">:</span>1px solid #ccc<span class="sh_symbol">;</span></li><li>        width<span class="sh_symbol">:</span>100px<span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span>10px<span class="sh_symbol">;</span></li><li>        text<span class="sh_symbol">-</span>align<span class="sh_symbol">:</span>center<span class="sh_symbol">;</span></li><li>        background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>#ddd<span class="sh_symbol">;</span></li><li>        display<span class="sh_symbol">:</span>none<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      img <span class="sh_cbracket">{</span></li><li>        position<span class="sh_symbol">:</span>relative<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">show</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"img"</span><span class="sh_symbol">).</span><span class="sh_function">show</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">hide</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"img"</span><span class="sh_symbol">).</span><span class="sh_function">hide</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">hint</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"div"</span><span class="sh_symbol">).</span><span class="sh_function">fadeIn</span><span class="sh_symbol">(</span><span class="sh_number">2000</span><span class="sh_symbol">).</span><span class="sh_function">fadeOut</span><span class="sh_symbol">(</span><span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">diy</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"img"</span><span class="sh_symbol">).</span><span class="sh_function">animate</span><span class="sh_symbol">(</span><span class="sh_cbracket">{</span><span class="sh_string">'left'</span><span class="sh_symbol">:</span><span class="sh_string">'500px'</span><span class="sh_cbracket">}</span><span class="sh_symbol">,</span><span class="sh_number">2000</span><span class="sh_symbol">).</span><span class="sh_function">animate</span><span class="sh_symbol">(</span><span class="sh_cbracket">{</span><span class="sh_string">'top'</span><span class="sh_symbol">:</span><span class="sh_string">'300px'</span><span class="sh_cbracket">}</span><span class="sh_symbol">,</span><span class="sh_number">2000</span><span class="sh_symbol">).</span><span class="sh_function">fadeOut</span><span class="sh_symbol">(</span><span class="sh_number">2000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"显示"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"show();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"隐藏"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"hide();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"提示"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"hint();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"自定义"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"diy();"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/01.jpg"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"msg"</span><span class="sh_symbol">&gt;</span>操作成功<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;jQuery动画&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;style type="text/css"&gt;
+      #msg {
+        border:1px solid #ccc;
+        width:100px;
+        padding:10px;
+        text-align:center;
+        background-color:#ddd;
+        display:none;
+      }
+      img {
+        position:relative;
+      }
+    &lt;/style&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function show() {
+        $("img").show();
+      }
+      function hide() {
+        $("img").hide();
+      }
+      function hint() {
+        $("div").fadeIn(2000).fadeOut(1000);
+      }
+      function diy() {
+        $("img").animate({'left':'500px'},2000).animate({'top':'300px'},2000).fadeOut(2000);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      &lt;input type="button" value="显示" onclick="show();"/&gt;
+      &lt;input type="button" value="隐藏" onclick="hide();"/&gt;
+      &lt;input type="button" value="提示" onclick="hint();"/&gt;
+      &lt;input type="button" value="自定义" onclick="diy();"/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;img src="../images/01.jpg"/&gt;
+    &lt;/p&gt;
+    &lt;div id="msg"&gt;操作成功&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>打开demo5.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <h3>5.4 完整代码</h3>
+      <p>demo5.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>jQuery动画<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      #msg <span class="sh_cbracket">{</span></li><li>        border<span class="sh_symbol">:</span>1px solid #ccc<span class="sh_symbol">;</span></li><li>        width<span class="sh_symbol">:</span>100px<span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span>10px<span class="sh_symbol">;</span></li><li>        text<span class="sh_symbol">-</span>align<span class="sh_symbol">:</span>center<span class="sh_symbol">;</span></li><li>        background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>#ddd<span class="sh_symbol">;</span></li><li>        display<span class="sh_symbol">:</span>none<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      img <span class="sh_cbracket">{</span></li><li>        position<span class="sh_symbol">:</span>relative<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"../js/jquery-1.11.1.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">show</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"img"</span><span class="sh_symbol">).</span><span class="sh_function">show</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">hide</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"img"</span><span class="sh_symbol">).</span><span class="sh_function">hide</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">hint</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"div"</span><span class="sh_symbol">).</span><span class="sh_function">fadeIn</span><span class="sh_symbol">(</span><span class="sh_number">2000</span><span class="sh_symbol">).</span><span class="sh_function">fadeOut</span><span class="sh_symbol">(</span><span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">diy</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        $<span class="sh_symbol">(</span><span class="sh_string">"img"</span><span class="sh_symbol">).</span><span class="sh_function">animate</span><span class="sh_symbol">(</span><span class="sh_cbracket">{</span><span class="sh_string">'left'</span><span class="sh_symbol">:</span><span class="sh_string">'500px'</span><span class="sh_cbracket">}</span><span class="sh_symbol">,</span><span class="sh_number">2000</span><span class="sh_symbol">).</span><span class="sh_function">animate</span><span class="sh_symbol">(</span><span class="sh_cbracket">{</span><span class="sh_string">'top'</span><span class="sh_symbol">:</span><span class="sh_string">'300px'</span><span class="sh_cbracket">}</span><span class="sh_symbol">,</span><span class="sh_number">2000</span><span class="sh_symbol">).</span><span class="sh_function">fadeOut</span><span class="sh_symbol">(</span><span class="sh_number">2000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"显示"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"show();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"隐藏"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"hide();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"提示"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"hint();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"自定义"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"diy();"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/01.jpg"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"msg"</span><span class="sh_symbol">&gt;</span>操作成功<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;jQuery动画&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;style type="text/css"&gt;
+      #msg {
+        border:1px solid #ccc;
+        width:100px;
+        padding:10px;
+        text-align:center;
+        background-color:#ddd;
+        display:none;
+      }
+      img {
+        position:relative;
+      }
+    &lt;/style&gt;
+    &lt;script type="text/javascript" src="../js/jquery-1.11.1.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function show() {
+        $("img").show();
+      }
+      function hide() {
+        $("img").hide();
+      }
+      function hint() {
+        $("div").fadeIn(2000).fadeOut(1000);
+      }
+      function diy() {
+        $("img").animate({'left':'500px'},2000).animate({'top':'300px'},2000).fadeOut(2000);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;
+      &lt;input type="button" value="显示" onclick="show();"/&gt;
+      &lt;input type="button" value="隐藏" onclick="hide();"/&gt;
+      &lt;input type="button" value="提示" onclick="hint();"/&gt;
+      &lt;input type="button" value="自定义" onclick="diy();"/&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;img src="../images/01.jpg"/&gt;
+    &lt;/p&gt;
+    &lt;div id="msg"&gt;操作成功&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JQUERY/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

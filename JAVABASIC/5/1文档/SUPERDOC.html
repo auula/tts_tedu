@@ -1,0 +1,312 @@
+
+<!-- saved from url=(0099)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="7713367323"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#Key01">循环问题</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#Key02">数组</a>
+        </li>
+      </ol>
+      <h1>1. 循环问题</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 循环问题</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 循环问题</h3>
+      <p>在实际应用中，当碰到需要多次重复的执行一个或多个任务的情况时，考虑使用循环来</p>
+      <p>解决，在前面所介绍的3种循环（while、do-while、for）中，一般情况下，for循环使用得最多，而对于for循环结构，一定要分析出需要解决业务的三个部分：</p>
+      <ol class="list">
+        <li>循环变量初始状态
+</li>
+        <li>循环条件
+</li>
+        <li>循环变量的改变
+</li>
+      </ol>
+      <p>分析好了上面的三个部分，for语句的结构也就定义好了，其它的问题只在于填写不同</p>
+      <p>的循环体来解决不同的业务问题而已。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 循环问题定义------“当”循环</h3>
+      <p>如果业务可以转换为“当……“这样的句式时，优先选择while语句来实现。看下面的需求：假设年存款利率为3%，本金为10000，问存款总额超过12000时，收益具体是多少？</p>
+      <p>分析这个需求，可以转化为下面的理解：“当“存款总额小于12000时，以3%的利率增长，那么条件就是total&lt;12000，这种”当“句式优先考虑使用while语句实现，简易代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;……</li><li><span class="sh_keyword">while</span><span class="sh_symbol">(</span> 条件 <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> </li><li>total <span class="sh_symbol">+=</span> <span class="sh_symbol">(</span> total <span class="sh_symbol">*</span> <span class="sh_number">0.03</span> <span class="sh_symbol">)</span> <span class="sh_symbol">;</span> </li><li><span class="sh_cbracket">}</span></li><li>……</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	……
+while( 条件 ) { 
+total += ( total * 0.03 ) ; 
+}
+……
+</pre></div></div>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 循环问题定义------“直到”循环</h3>
+      <p>如果业务可转换为”直到……”这样的句式时，优先选择do-while语句来实现。看下面的需求：在验证身份时必须提供密码并核对，密码不正确则继续输入密码。分析这个需求，可以转化为下面的理解：获取密码，”直到”输入的值为123456，那么条件就是! ”123456”.equals（inputPwd），这种“直到……“句式优先考虑使用do-while语句实现，简易代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>……</li><li><span class="sh_keyword">do</span> <span class="sh_cbracket">{</span> </li><li>……</li><li><span class="sh_cbracket">}</span> <span class="sh_keyword">while</span>（<span class="sh_symbol">!</span> ”<span class="sh_number">123456</span>”<span class="sh_symbol">.</span>equals（inputPwd））<span class="sh_symbol">;</span></li><li>……</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">……
+do { 
+……
+} while（! ”123456”.equals（inputPwd））;
+……
+</pre></div></div>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 循环问题定义------固定次数循环</h3>
+      <p>如果业务中可以获取到一个确切的循环次数时可以考虑使用for循环来实现，看下面的需求：求1-100的和、累加10次输入的数字的和、录入3名学员信息、存储5门课程成绩……，上面的需求都是可以明确确切的循环次数，故而优先用for循环。</p>
+      <a name="Key01_01_05">
+      </a>
+      <h3>1.1.5. 逐步细化方式解决循环嵌套的问题</h3>
+      <p>详见cookbook</p>
+      <a name="Key02">
+      </a>
+      <h1>2. 数组</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 什么是数组</h2>
+      <p>首先明确，数组是一个很重要的内容，非常重要。</p>
+      <p>前面介绍的if结构、循环，解决的都是算法问题。那什么是算法？所谓算法就是流程，像取钱怎么取？插卡，输入密码，输入要取钱的金额，确定。那这个过程，第一步怎么做，第二步怎么做，判断还是循环，这就是算法。</p>
+      <p>Pascal之父Nicklaus Wirth说过一句话并因此而得了图灵奖，这句很经典的话就是，程序即为：算法+数据结构，所谓数据结构，简单的说就是把数据按照特定的某种结构来保存，设计合理的数据结构是解决问题的前提条件。今天讲的数组，就是最基本的、用得最多的一种数据结构。试想下，存储一个学员的成绩，可以声明一个整型变量score来存储，声明20个学员的考试成绩呢？存储50个随机数呢？存储1万个帐号呢？声明太多的变量，显然很繁琐，并且不适合整体的操作。像这种情况，可以使用数组这种数据结构来解决。</p>
+      <p>数组为相同数据类型的元素组成的集合，数组元素按线性顺序排列，所谓线性顺序是指除第一个元素外，每一个元素都有唯一的前驱元素；除最后一个元素外，每一个元素都有唯一的后继元素（“一个跟一个”），可以通过元素所在位置的顺序号（下标）做标识访问每一个元素（下标从0开始，最大到元素个数-1），数组结构如下图 - 2所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图- 2</p>
+      </div>
+      <p>从上图中可以看出，a[0]即代表第1个元素，a[1]代表第二个元素，假设数组有5个元素，则最后一个元素即为a[5-1]。</p>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 数组的定义</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. 定义基本类型数组</h3>
+      <p>声明数组的语法为： 数据类型[]  数组名 = new  数据类型 [ 大小 ] ;示例代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_symbol">[]</span>   arr <span class="sh_symbol">=</span>  <span class="sh_keyword">new</span>  <span class="sh_type">int</span><span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">]</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int []   arr =  new  int[10] ;
+</pre></div></div>
+      <p>上面的示例代码中，int[]为数组类型，表示数组中的每一个元素为int类型；数组也是在内存中用于存储数据的，并且是存储一组数据，同样需要一个对它的引用，该引用即为arr，arr称为数组类型变量（引用）；new为特定的声明数组的关键字，后面会详细讲解，现在先记住。数组的声明必须要有元素个数，10即为数组中元素的个数，也称为数组长度。总结下来， 定义基本类型数组的要点包括：</p>
+      <ol class="list">
+        <li>确切的数据类型：用于开辟空间大小
+</li>
+        <li>整体的数组名字：用于对数据的引用
+</li>
+        <li>不能缺少的“ [  ] ”
+</li>
+      </ol>
+      <p>注意在定义数组时使用的new关键字， 正是因为new语句，才使得数组分配到了指定大小的空间（后面详细讲解）。</p>
+      <p>声明数组的时候，int[]  arr 与 int  arr [] 两种写法均可。常用方式为int[] arr。</p>
+      <p>声明数组时不规定数组长度（可以看到声明时仅指定了int[]，未指定长度）,new关键字分配空间时需指定分配的空间大小(new int[10])。</p>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. 数组的初始化</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. 初始化数组</h3>
+      <p>基本类型 （数据元素为基本类型）的数组创建后，默认为其数组元素设置了初始值，元素的初始值如下所示：byte、short、char、int、long为0； float和double为0.0； boolean为false。注意，此处强调的是基本类型数组的默认值，后期会介绍数据元素为非基本类型的，它的默认初始值与基本类型不同。</p>
+      <p>在程序中很多时候需要手动设置初始值，可以在数组声明的同时进行初始化，如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_symbol">]</span> arr <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span> <span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">23</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,-</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">21</span> <span class="sh_cbracket">}</span> <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int [ ] arr = { 10,23,30,-10,21 } ; 
+</pre></div></div>
+      <p>上面的代码中，元素的个数即为数组的长度。但是此种写法只能用于声明时的初始化，不能用于先声明后赋值的情况，例如，下面的代码会有编译错误：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_symbol">]</span> arr<span class="sh_symbol">;</span></li><li>arr <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span> <span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">23</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,-</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">21</span> <span class="sh_cbracket">}</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int [ ] arr;
+arr = { 10,23,30,-10,21 } ;
+</pre></div></div>
+      <p>对于已声明的数组，可以通过下面的方式对数组类型变量进行初始化：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span><span class="sh_symbol">[]</span> arr<span class="sh_symbol">;</span></li><li>arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span><span class="sh_symbol">[]</span><span class="sh_cbracket">{</span> <span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">23</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,-</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">21</span> <span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int[] arr;
+arr = new int[]{ 10,23,30,-10,21 };
+</pre></div></div>
+      <p>注意：new之后的[]中不可以写长度，而元素的个数就是数组的长度。</p>
+      <a name="Key02_04">
+      </a>
+      <h2>2.4. 数组的访问</h2>
+      <a name="Key02_04_01">
+      </a>
+      <h3>2.4.1. 获取数组的长度</h3>
+      <p>在程序中，调用数组的length属性可以获取数组的长度，如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span><span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span><span class="sh_symbol">[]</span><span class="sh_cbracket">{</span> <span class="sh_number">3</span><span class="sh_symbol">,</span><span class="sh_number">6</span><span class="sh_symbol">,</span><span class="sh_number">8</span><span class="sh_symbol">,</span><span class="sh_number">9</span> <span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> len <span class="sh_symbol">=</span> arr <span class="sh_symbol">.</span> length <span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“数组长度为<span class="sh_symbol">:</span>” <span class="sh_symbol">+</span> len<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int[] arr = new int[]{ 3,6,8,9 };
+int len = arr . length ;
+System.out.println(“数组长度为:” + len);
+</pre></div></div>
+      <p>上面的代码中，len即为数组的长度，输出结果为：“数组长度为:4”。</p>
+      <a name="Key02_04_02">
+      </a>
+      <h3>2.4.2. 通过下标访问数组元素</h3>
+      <p>若想访问数组中的元素，需要通过下标的方式，需要注意的是，数组的下标从0开始，最大到length-1，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span><span class="sh_symbol">[</span> <span class="sh_symbol">]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span><span class="sh_symbol">[]</span><span class="sh_cbracket">{</span> <span class="sh_number">4</span><span class="sh_symbol">,</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">6</span><span class="sh_symbol">,</span><span class="sh_number">8</span><span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span>  temp <span class="sh_symbol">=</span> arr <span class="sh_symbol">[</span> <span class="sh_number">2</span> <span class="sh_symbol">];</span>   <span class="sh_comment">//获取第3个元素，即为6</span></li><li><span class="sh_comment">//交换数组下标为2和3的两个相邻元素的值，交互后的结果为：4,5,8,6</span></li><li><span class="sh_type">int</span>  temp <span class="sh_symbol">=</span> arr <span class="sh_symbol">[</span> <span class="sh_number">2</span> <span class="sh_symbol">]</span> <span class="sh_symbol">;</span></li><li>arr <span class="sh_symbol">[</span> <span class="sh_number">2</span> <span class="sh_symbol">]</span> <span class="sh_symbol">=</span> arr <span class="sh_symbol">[</span> <span class="sh_number">3</span> <span class="sh_symbol">]</span> <span class="sh_symbol">;</span></li><li>arr <span class="sh_symbol">[</span> <span class="sh_number">3</span> <span class="sh_symbol">]</span> <span class="sh_symbol">=</span> temp <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int[ ] arr = new int[]{ 4,5,6,8};
+int  temp = arr [ 2 ];   //获取第3个元素，即为6
+//交换数组下标为2和3的两个相邻元素的值，交互后的结果为：4,5,8,6
+int  temp = arr [ 2 ] ;
+arr [ 2 ] = arr [ 3 ] ;
+arr [ 3 ] = temp ; 
+
+</pre></div></div>
+      <a name="Key02_04_03">
+      </a>
+      <h3>2.4.3. 遍历数组元素</h3>
+      <p>在实际的应用中，常常需要对数组整体进行操作，最常见的方式即为遍历数组元素，通常可选择for循环语句，循环变量作为访问数组元素的下标，即可访问数组中的每一个元素，下面的代码使用循环方式将数组的每一个元素赋值为100。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span><span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span><span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">0</span> <span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">.</span>length <span class="sh_symbol">;</span> i <span class="sh_symbol">++</span> <span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>    arr <span class="sh_symbol">[</span> i <span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_number">100</span><span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int[] arr = new int[10];
+for ( int i = 0 ; i &lt; arr.length ; i ++ ){
+    arr [ i ] = 100;
+}
+</pre></div></div>
+      <p>注意：循环的计数器的变化范围从0到数组长度– 1，可通过写成“小于长度”这样的条件来防止下标越界(超出范围)。</p>
+      <p>上面的代码为循环对数组元素赋值，下面两段代码为使用循环方式分别正序、逆序输出数组元素数据：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_symbol">]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_number">5</span> <span class="sh_symbol">]</span> <span class="sh_cbracket">{</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">40</span><span class="sh_symbol">,</span><span class="sh_number">50</span> <span class="sh_cbracket">}</span> <span class="sh_symbol">;</span>   <span class="sh_comment">//正序输出</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>    System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span> <span class="sh_symbol">(</span> arr<span class="sh_symbol">[</span> i <span class="sh_symbol">]</span> <span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_symbol">]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_number">5</span> <span class="sh_symbol">]</span> <span class="sh_cbracket">{</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">40</span><span class="sh_symbol">,</span><span class="sh_number">50</span> <span class="sh_cbracket">}</span> <span class="sh_symbol">;</span>    <span class="sh_comment">//逆序输出</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>arr<span class="sh_symbol">.</span>length <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span> <span class="sh_symbol">;</span> i <span class="sh_symbol">&gt;=</span> <span class="sh_number">0</span> <span class="sh_symbol">;</span> i <span class="sh_symbol">-</span> <span class="sh_symbol">-</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>     System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span> <span class="sh_symbol">(</span> arr<span class="sh_symbol">[</span> i <span class="sh_symbol">]</span> <span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int [ ] arr = new int [ 5 ] {10,20,30,40,50 } ;   //正序输出
+for ( int i=0; i&lt; arr.length; i++) {
+    System.out.println ( arr[ i ] ) ;
+}
+int [ ] arr = new int [ 5 ] {10,20,30,40,50 } ;    //逆序输出
+for ( int i = (arr.length -1) ; i &gt;= 0 ; i - - ) {
+     System.out.println ( arr[ i ] ) ;
+}
+</pre></div></div>
+      <a name="Key02_05">
+      </a>
+      <h2>2.5. 数组的复制</h2>
+      <a name="Key02_05_01">
+      </a>
+      <h3>2.5.1. System.arraycopy方法用于数组复制</h3>
+      <p>若想实现数组的复制，可以使用System.arraycopy( )方法，其结构如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">arraycopy</span><span class="sh_symbol">(</span><span class="sh_usertype">Object</span><span class="sh_normal">&nbsp;</span>src<span class="sh_symbol">,</span> <span class="sh_type">int</span>&nbsp;srcPos<span class="sh_symbol">,</span><span class="sh_usertype">Object</span><span class="sh_normal">&nbsp;</span>dest<span class="sh_symbol">,</span> <span class="sh_type">int</span>&nbsp;destPos<span class="sh_symbol">,</span> <span class="sh_type">int</span>&nbsp;length<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static void arraycopy(Object&nbsp;src, int&nbsp;srcPos,Object&nbsp;dest, int&nbsp;destPos, int&nbsp;length)
+</pre></div></div>
+      <p>如上代码的，每一个参数的意义见下列表：</p>
+      <ul class="list">
+        <li>src：源数组
+</li>
+        <li>srcPos：源数组中的起始位置 
+</li>
+        <li>dest：目标数组
+</li>
+        <li>destPos	: 目标数组中的起始位置
+</li>
+        <li>length：要复制的数组元素的数量
+</li>
+      </ul>
+      <p>通过下面的代码，可实现数组的复制：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span><span class="sh_symbol">[</span> <span class="sh_symbol">]</span> a <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span> <span class="sh_number">10</span> <span class="sh_symbol">,</span><span class="sh_number">20</span> <span class="sh_symbol">,</span><span class="sh_number">30</span> <span class="sh_symbol">,</span><span class="sh_number">40</span> <span class="sh_symbol">,</span><span class="sh_number">50</span> <span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span><span class="sh_symbol">[</span> <span class="sh_symbol">]</span> a1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span><span class="sh_symbol">[</span> <span class="sh_number">6</span> <span class="sh_symbol">]</span> <span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span><span class="sh_function">arraycopy</span><span class="sh_symbol">(</span> a <span class="sh_symbol">,</span> <span class="sh_number">1</span> <span class="sh_symbol">,</span> a1 <span class="sh_symbol">,</span> <span class="sh_number">0</span> <span class="sh_symbol">,</span> <span class="sh_number">4</span> <span class="sh_symbol">);</span>    结果：<span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">40</span><span class="sh_symbol">,</span><span class="sh_number">50</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int[ ] a = { 10 ,20 ,30 ,40 ,50 };
+int[ ] a1 = new int[ 6 ] ;
+System.arraycopy( a , 1 , a1 , 0 , 4 );    结果：20,30,40,50
+</pre></div></div>
+      <p>如上方法的意义可以理解为：将a数组的从下标1开始的4个元素复制到a1数组中，a1数组从下标0位置开始赋值。程序执行完后，a1的值为20,30,40,50,0,0。其交互效果如图 – 3所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图- 3</p>
+      </div>
+      <a name="Key02_05_02">
+      </a>
+      <h3>2.5.2. Arrays.copyOf方法用于数组复制</h3>
+      <p>使用java.util.Arrays类的copyOf方法可实现数组的复制，其结构如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>类型<span class="sh_symbol">[</span> <span class="sh_symbol">]</span>  newArray <span class="sh_symbol">=</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">copyOf</span> <span class="sh_symbol">(</span> 类型<span class="sh_symbol">[</span> <span class="sh_symbol">]</span>  original <span class="sh_symbol">,</span> <span class="sh_type">int</span>  newLength <span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">类型[ ]  newArray = Arrays.copyOf ( 类型[ ]  original , int  newLength )
+</pre></div></div>
+      <p>Arrays.copyOf（）方法示例代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_symbol">]</span>  a <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span> <span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">40</span><span class="sh_symbol">,</span><span class="sh_number">50</span> <span class="sh_cbracket">}</span> <span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_symbol">]</span>  a1 <span class="sh_symbol">=</span> Arrays <span class="sh_symbol">.</span> <span class="sh_function">copyOf</span> <span class="sh_symbol">(</span> a<span class="sh_symbol">,</span> <span class="sh_number">6</span> <span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int [ ]  a = { 10,20,30,40,50 } ;
+int [ ]  a1 = Arrays . copyOf ( a, 6 ); 
+</pre></div></div>
+      <p>上段代码执行后，a1的结果为：10 20 30 40 50 0，分析其执行过程为：声明一个整型数组，数组变量名称为a，赋初始值为10 20 30 40 50，声明整型数组a1，将a数组数据复制到a1数组，设置其为6个长度，因a数组只有5个元素，所以最后一位补0。故而输出结果为10 20 30 40 50 0。总结出Arrays.copyOf（）方法的特点如下列表所示：</p>
+      <ul class="list">
+        <li>生成的新数组是原始数组的副本；
+</li>
+        <li>newLength小于源数组，则进行截取；（自己通过代码演示效果）；
+</li>
+        <li>newLength大于源数组，则用0或 null进行填充；
+</li>
+      </ul>
+      <a name="Key02_05_03">
+      </a>
+      <h3>2.5.3. 数组的“扩容”</h3>
+      <p>Java语法规定，数组的长度在创建后是不可改变的，这点需要明确。而所谓的扩容实际上是指创建一个更大的新数组并将原有数组的内容复制到其中。可以通过Arrays.copyOf()方法，简便的实现数组的扩展，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_symbol">]</span>  a <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span> <span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_number">40</span><span class="sh_symbol">,</span><span class="sh_number">50</span> <span class="sh_cbracket">}</span> <span class="sh_symbol">;</span></li><li>a <span class="sh_symbol">=</span> Arrays <span class="sh_symbol">.</span> <span class="sh_function">copyOf</span> <span class="sh_symbol">(</span>  a<span class="sh_symbol">,</span> a<span class="sh_symbol">.</span>length<span class="sh_number">+1</span> <span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int [ ]  a = { 10,20,30,40,50 } ;
+a = Arrays . copyOf (  a, a.length+1 );
+</pre></div></div>
+      <p>上段代码执行后，输出a数组的数据为：10,20,30,40,50,0。此时a数组的长度为6，实现了所谓的“扩容”。</p>
+      <a name="Key02_06">
+      </a>
+      <h2>2.6. 数组排序</h2>
+      <a name="Key02_06_01">
+      </a>
+      <h3>2.6.1. 数组的排序</h3>
+      <p>对数组所施加的算法有很多，其中最常用的即为排序算法。所谓排序，是指将数组元素按照从小到大或从大到小的顺序重新排列，当数组元素数较多时， 排序算法的优劣至关重要，因为它将直接影响程序的执行效率，一般情况下，通过排序过程中数组元素的交换次数来衡量排序算法的优劣。</p>
+      <p>常用排序算法有：插入排序、冒泡排序、快速排序等。今天介绍的是冒泡排序。</p>
+      <a name="Key02_06_02">
+      </a>
+      <h3>2.6.2. 数组冒泡排序算法</h3>
+      <p>冒泡排序是一个非常经典的排序算法，它的排序原则为：比较相邻的元素，如果违反最后的顺序准则（从大到小或是从小到大），则交换。可以简化理解为：第一次找到所有元素中最大(或最小)的放在最后一个位置上，不再变动；第二次找到剩余所有元素中最大(或最小)的放在倒数第二个位置上，不再变动，以此类推，直到排序完成。在进行比较时既可以采用“下沉”的方式，也可以使用“上浮”的方式实现。</p>
+      <p>冒泡排序逻辑如下图– 1所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图- 1</p>
+      </div>
+      <p>下面对如上示例进行详细分析，需求：初始序列为89,50,84,57,61,20,86，升序排（小的在前，大的在后）；</p>
+      <p>第一轮第一次，89与50对比，交换位置，结果：50,89,84,57,61,20,86</p>
+      <p>第一轮第二次，89与84对比，交换位置，结果：50,84,89,57,61,20,86</p>
+      <p>第一轮第三次，89与57对比，交换位置，结果：50,84,57,89,61,20,86</p>
+      <p>第一轮第四次，89与61对比，交换位置，结果：50,84,57,61,89,20,86</p>
+      <p>第一轮第五次，89与20对比，交换位置，结果：50,84,57,61,20,89,86</p>
+      <p>第一轮第六次，89与86对比，交换位置，结果：50,84,57,61,20,86,89</p>
+      <p>将89冒出来了，现在序列为：50,84,57,61,20,86,89</p>
+      <p>第二轮第一次，50与84对比，位置不换</p>
+      <p>第二轮第二次，84与57对比，交换位置，结果：50,57,84,61,20,86,89</p>
+      <p>第二轮第三次，84与61对比，交换位置，结果：50,57,61,84,20,86,89</p>
+      <p>第二轮第四次，84与20对比，交换位置，结果：50,57,61,20,84,86,89</p>
+      <p>第二轮第五次，84与86对比，位置不换</p>
+      <p>将86冒出来了，现在序列为：50,57,61,20,84,86,89</p>
+      <p>第三轮第一次，50与57对比，位置不换</p>
+      <p>第三轮第二次，57与61对比，位置不换</p>
+      <p>第三轮第三次，61与20对比，交换位置，结果：50,57,20,61,84,86,89</p>
+      <p>第三轮第四次，61与84对比，位置不换</p>
+      <p>将84冒出来了，现在序列为：50,57,20,61,84,86,89</p>
+      <p>第四轮第一次，50与57对比，位置不换</p>
+      <p>第四轮第二次，57与20对比，交换位置，结果：50,20,57,61,84,86,89</p>
+      <p>第四轮第三次，57与61对比，位置不换</p>
+      <p>将61冒出来了，现在序列为：50,20,57,61,84,86,89</p>
+      <p>第五轮第一次，50与20对比，交换位置，结果：20,50,57,61,84,86,89</p>
+      <p>第五轮第二次，50与57对比，位置不换</p>
+      <p>将57冒出来了，现在序列为：20,50,57,61,84,86,89</p>
+      <p>第六轮第一次，20与50对比，位置不换</p>
+      <p>将50冒出来了，现在的序列为：20,50,57,61,84,86,89</p>
+      <p>通过上面的分析总结出如下几点，找出规律，通过程序即可完成冒泡算法的实现。</p>
+      <ul class="list">
+        <li>若数组元素数为7， 则排序过程需要经历6轮，因为有1个元素是不需要比较的。
+</li>
+        <li>若数组元素数为7，第1轮比较6次，第2轮比较5次，依次类推，第6轮只比较1次。
+</li>
+      </ul>
+      <p>通过如上的分析，写出冒泡排序算法如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span><span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span><span class="sh_number">89</span><span class="sh_symbol">,</span><span class="sh_number">50</span><span class="sh_symbol">,</span><span class="sh_number">84</span><span class="sh_symbol">,</span><span class="sh_number">57</span><span class="sh_symbol">,</span><span class="sh_number">61</span><span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_number">86</span><span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_number">-1</span><span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> j<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>j<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_number">-1</span><span class="sh_symbol">-</span>i<span class="sh_symbol">;</span>j<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">[</span>j<span class="sh_symbol">]&gt;</span>arr<span class="sh_symbol">[</span>j<span class="sh_number">+1</span><span class="sh_symbol">])</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> temp <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>j<span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>j<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>j<span class="sh_number">+1</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>j<span class="sh_number">+1</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> temp<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	int[] arr = {89,50,84,57,61,20,86};
+	for(int i=0;i&lt;arr.length-1;i++){
+		for(int j=0;j&lt;arr.length-1-i;j++){
+			if(arr[j]&gt;arr[j+1]){
+				int temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+}
+}
+</pre></div></div>
+      <a name="Key02_06_03">
+      </a>
+      <h3>2.6.3. Arrays.sort方法用于数组排序</h3>
+      <p>JDK提供的Arrays.sort（）方法封装了数组的排序算法，如下述代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span><span class="sh_symbol">[</span> <span class="sh_symbol">]</span> arr <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span> <span class="sh_number">49</span><span class="sh_symbol">,</span> <span class="sh_number">81</span><span class="sh_symbol">,</span> <span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">64</span><span class="sh_symbol">,</span> <span class="sh_number">77</span><span class="sh_symbol">,</span> <span class="sh_number">50</span><span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">,</span> <span class="sh_number">54</span><span class="sh_symbol">,</span> <span class="sh_number">77</span><span class="sh_symbol">,</span> <span class="sh_number">18</span> <span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>Arrays<span class="sh_symbol">.</span><span class="sh_function">sort</span><span class="sh_symbol">(</span> arr <span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li><li><span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int[ ] arr = { 49, 81, 1, 64, 77, 50, 0, 54, 77, 18 };
+Arrays.sort( arr ) ;
+for(int i=0; i&lt;arr.length; i++) {
+	System.out.println(arr[i] );
+}
+</pre></div></div>
+      <p>分析上面的代码，输出结果为：0  1  18  49  50  54  64  77  77  81。可以看到，借助于Arrays.sort()方法实现了升序排列。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

@@ -1,0 +1,423 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17506648061"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#Key01">SQL(基础查询)</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#Key02">SQL（关联查询）</a>
+        </li>
+      </ol>
+      <h1>1. SQL(基础查询)</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 基本查询语句</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. FROM子句</h3>
+      <p>SQL查询语句的语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">&lt;*,</span> column <span class="sh_symbol">[</span>alias<span class="sh_symbol">],</span> …<span class="sh_symbol">&gt;</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>table<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT &lt;*, column [alias], …&gt; FROM table;
+</pre></div></div>
+      <p>其中：SELECT用于指定要查询的列，FROM指定要从哪个表中查询。如果要查询所有列，可以在SELECT后面使用*号，如果只查询特定的列，可以直接在SELECT后面指定列名，列名之间用逗号隔开。例句如下，查询dept表中的所有记录：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">*</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>dept<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT * FROM dept;
+</pre></div></div>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 使用别名</h3>
+      <p>在SQL语句中可以通过使用列的别名改变标题的显示样式，或者表示计算结果的含义，使用语法是列的别名跟在列名后，中间可以加或不加一个“AS”关键字。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT empno <span class="sh_usertype">AS</span><span class="sh_normal"> </span>id <span class="sh_symbol">,</span>ename <span class="sh_string">"Name"</span><span class="sh_symbol">,</span> sal <span class="sh_symbol">*</span> <span class="sh_number">12</span> <span class="sh_string">"Annual Salary"</span>  <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT empno AS id ,ename "Name", sal * 12 "Annual Salary"  FROM emp;
+</pre></div></div>
+      <p>别名可以直接写，不必用双引号引起来。但是如果希望别名中区分大小写字符，或者别名中包含字符或空格，则必须用双引号引起来。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. WHERE子句</h3>
+      <p>在SELECT语句中，可以在WHERE子句中使用比较操作符限制查询结果，是可选的。</p>
+      <p>当查询条件中和数字比较，可以使用单引号引起，也可以不用，当和字符及日期类型的数据比较，则必须用单引号引起。例如查询部门10下的员工信息：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">*</span> FROM <span class="sh_usertype">empWHERE</span><span class="sh_normal"> </span>deptno <span class="sh_symbol">=</span> <span class="sh_number">10</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT * FROM empWHERE deptno = 10;
+</pre></div></div>
+      <p>查询职员表中职位是’SALESMAN’的职员：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> job FROM emp <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>job <span class="sh_symbol">=</span> <span class="sh_string">'SALESMAN'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, sal, job FROM emp WHERE job = 'SALESMAN';
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图-1 用where子句定义查询条件</p>
+      </div>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. SELECT子句</h3>
+      <p>如果只查询表的部分列，需要在SELECT后指定列名，例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> job <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT empno, ename, sal, job FROM emp;
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图-2查询指定的列</p>
+      </div>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 查询条件</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 使用&gt;, &lt;, &gt;=, &lt;=, !=, &lt;&gt;, =</h3>
+      <p>在WHERE子句中的查询条件，可以使用比较运算符来做查询。比如：查询职员表中薪水低于2000元的职员信息：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal FROM emp <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>sal<span class="sh_symbol">&lt;</span> <span class="sh_number">2000</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, sal FROM emp WHERE sal&lt; 2000;
+</pre></div></div>
+      <p>查询职员表中不属于部门10的员工信息（!=等价于&lt;&gt;）：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> job FROM emp <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>deptno <span class="sh_symbol">!=</span> <span class="sh_number">10</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT ename, sal, job FROM emp WHERE deptno != 10;
+</pre></div></div>
+      <p>查询职员表中在2002年1月1号以后入职的职员信息，比较日期类型数据：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>   <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> hiredate FROM emp</li><li>    <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>hiredate<span class="sh_symbol">&gt;</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'2002-1-1'</span><span class="sh_symbol">,</span><span class="sh_string">'YYYY-MM-DD'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">   SELECT ename, sal, hiredate FROM emp
+    WHERE hiredate&gt;to_date('2002-1-1','YYYY-MM-DD');
+</pre></div></div>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 使用AND，OR关键字</h3>
+      <p>在SQL操作中，如果希望返回的结果必须满足多个条件，应该使用AND逻辑操作符连接这些条件，如果希望返回的结果满足多个条件之一即可，应该使用OR逻辑操作符连接这些条件。例如：查询薪水大于1000并且职位是’CLERK’的职员信息：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> job FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>sal<span class="sh_symbol">&gt;</span> <span class="sh_number">1000</span> <span class="sh_usertype">AND</span><span class="sh_normal"> </span>job <span class="sh_symbol">=</span> <span class="sh_string">'CLERK'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, sal, job FROM emp
+WHERE sal&gt; 1000 AND job = 'CLERK';
+</pre></div></div>
+      <p>查询薪水大于1000或者职位是’CLERK’的职员信息：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> job FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>sal<span class="sh_symbol">&gt;</span> <span class="sh_number">1000</span> <span class="sh_usertype">OR</span><span class="sh_normal"> </span>job <span class="sh_symbol">=</span> <span class="sh_string">'CLERK'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, sal, job FROM emp
+WHERE sal&gt; 1000 OR job = 'CLERK';
+</pre></div></div>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 使用LIKE条件（模糊查询）</h3>
+      <p>当用户在执行查询时，不能完全确定某些信息的查询条件，或者只知道信息的一部分，可以借助LIKE来实现模糊查询。LIKE需要借助两个通配符：</p>
+      <ul class="list">
+        <li>%：表示0到多个字符
+</li>
+        <li>_：标识单个字符
+</li>
+      </ul>
+      <p>这两个通配符可以配合使用，构造灵活的匹配条件。例如查询职员姓名中第二个字符是‘A’的员工信息：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job FROM emp WHERE <span class="sh_usertype">ename</span><span class="sh_normal"> </span>LIKE <span class="sh_string">'_A%'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, job FROM emp WHERE ename LIKE '_A%';
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图-3 模糊查询的结果</p>
+      </div>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. 使用IN和NOT IN</h3>
+      <p>在WHERE子句中可以用比较操作符IN(list)来取出符合列表范围中的数据。其中的参数list表示值列表，当列或表达式匹配于列表中的任何一个值时，条件为TRUE，该条记录则被显示出来。</p>
+      <p>IN页可以理解为一个范围比较操作符，只不过这个范围是一个指定的值列表，NOT IN(list) 取出不符合此列表中的数据记录。例如查询职位是MANAGER或者CLERK的员工：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job FROM emp WHERE <span class="sh_usertype">job</span><span class="sh_normal"> </span><span class="sh_function">IN</span> <span class="sh_symbol">(</span><span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span> <span class="sh_string">'CLERK'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, job FROM emp WHERE job IN ('MANAGER', 'CLERK');
+</pre></div></div>
+      <p>查询不是部门10或20的员工：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job FROM emp WHERE deptno <span class="sh_usertype">NOT</span><span class="sh_normal"> </span><span class="sh_function">IN</span> <span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span> <span class="sh_number">20</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, job FROM emp WHERE deptno NOT IN (10, 20);
+</pre></div></div>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. BETWEEN…AND…</h3>
+      <p>BETWEEN…AND…操作符用来查询符合某个值域范围条件的数据，最常见的是使用在数字类型的数据范围上，但对字符类型和日期类型数据也同样适用。例如查询薪水在1500-3000之间的职员信息：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal FROM emp</li><li>    WHERE sal BETWEEN <span class="sh_number">1500</span> AND <span class="sh_number">3000</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT ename, sal FROM emp
+    WHERE sal BETWEEN 1500 AND 3000;
+</pre></div></div>
+      <a name="Key01_02_06">
+      </a>
+      <h3>1.2.6. 使用IS NULL和IS NOT NULL</h3>
+      <p>空值NULL是一个特殊的值，比较的时候不能使用”=”号，必须使用IS NULL，否则不能得到正确的结果。例如查询哪些职员的奖金数据为NULL：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> comm FROM emp</li><li>WHERE comm <span class="sh_usertype">IS</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, sal, comm FROM emp
+WHERE comm IS NULL;
+</pre></div></div>
+      <a name="Key01_02_07">
+      </a>
+      <h3>1.2.7. 使用ANY和ALL条件</h3>
+      <p>在比较运算符中，可以出现ALL和ANY，表示“全部”和“任一”，但是ALL和ANY不能单独使用，需要配合单行比较操作符&gt;、&gt;=、&lt;、&lt;=一起使用。其中：</p>
+      <ul class="list">
+        <li>&gt; ANY : 大于最小
+</li>
+        <li>&lt; ANY：小于最大
+</li>
+        <li>&gt; ALL：大于最大
+</li>
+        <li>&lt; ALL：小于最小
+</li>
+      </ul>
+      <p>例如，查询薪水比职位是“SALESMAN”的人高的员工信息，比任意一个SALESMAN高都行：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> deptno</li><li>FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>sal<span class="sh_symbol">&gt;</span> <span class="sh_function">ANY</span> <span class="sh_symbol">(</span></li><li>SELECT sal FROM emp <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>job <span class="sh_symbol">=</span> <span class="sh_string">'SALESMAN'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT empno, ename, job, sal, deptno
+FROM emp
+WHERE sal&gt; ANY (
+SELECT sal FROM emp WHERE job = 'SALESMAN');
+</pre></div></div>
+      <a name="Key01_02_08">
+      </a>
+      <h3>1.2.8. 查询条件中使用表达式和函数</h3>
+      <p>当查询需要对选出的字段进行进一步计算，可以在数字列上使用算术表达式(+、-、*、/)。表达式符合四则运算的默认优先级，如果要改变优先级可以使用括号。</p>
+      <p>算术运算主要是针对数字类型的数据，对日期类型的数据可以做加减操作，表示在一个日期值上加或减一个天数。</p>
+      <p>查询条件中使用字符串函数UPPER，将条件中的字符串变大写后再参与比较：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> job <span class="sh_usertype">FROMempWHERE</span><span class="sh_normal"> </span>ename <span class="sh_symbol">=</span> <span class="sh_function">UPPER</span><span class="sh_symbol">(</span><span class="sh_string">'rose'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, sal, job FROMempWHERE ename = UPPER('rose');
+</pre></div></div>
+      <p>查询条件中使用算数表达式，查询年薪大于10w元的员工记录：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> job FROM <span class="sh_usertype">empWHERE</span><span class="sh_normal"> </span>sal <span class="sh_symbol">*</span> <span class="sh_number">12</span> <span class="sh_symbol">&gt;</span><span class="sh_number">100000</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, sal, job FROM empWHERE sal * 12 &gt;100000;
+</pre></div></div>
+      <a name="Key01_02_09">
+      </a>
+      <h3>1.2.9. 使用DISTINCT过滤重复</h3>
+      <p>数据表中有可能存储相同数据的行，当执行查询操作时，默认情况会显示所有行，不管查询结果是否有重复的数据。当重复数据没有实际意义，经常会需要去掉重复值，使用DISTINCT实现。例如查询员工的部门编码，包含所有重复值：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT deptno <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno FROM emp;
+</pre></div></div>
+      <p>查询员工的部门编码，去掉重复值：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT DISTINCT deptno <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT DISTINCT deptno FROM emp;
+</pre></div></div>
+      <p>DISTINCT后面的列可以组合查询，下例查询每个部门的职位，去掉重复值。注意是deptno和job联合起来不重复：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_usertype">DISTINCT</span><span class="sh_normal"> </span>deptno<span class="sh_symbol">,</span> job <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT DISTINCT deptno, job FROM emp;
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图-4用distinct去掉重复的列</p>
+      </div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 排序</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 使用ORDER BY字句</h3>
+      <p>对查询出的数据按一定规则进行排序操作，使用ORDER BY子句。语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">&lt;*,</span> column <span class="sh_symbol">[</span>alias<span class="sh_symbol">],</span> …<span class="sh_symbol">&gt;</span></li><li>FROM table </li><li><span class="sh_symbol">[</span><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span><span class="sh_function">condition</span><span class="sh_symbol">(</span>s<span class="sh_symbol">)]</span> </li><li><span class="sh_symbol">[</span>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>column <span class="sh_symbol">[</span>ASC <span class="sh_symbol">|</span> DESC<span class="sh_symbol">]]</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT &lt;*, column [alias], …&gt;
+FROM table 
+[WHERE condition(s)] 
+[ORDER BY column [ASC | DESC]] ;
+</pre></div></div>
+      <p>注意，ORDER BY必须出现在SELECT中的最后一个子句。下例对职员表按薪水排序：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal</li><li>FROM emp</li><li>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>sal<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, sal
+FROM emp
+ORDER BY sal;
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图-5用ORDER BY将查询结果排序</p>
+      </div>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. ASC和DESC</h3>
+      <p>排序时默认按升序排列，即由小及大，ASC用来指定升序排序，DESC用来指定降序排序。</p>
+      <p>因为NULL值视作最大，则升序排列时，排在最后，降序排列时，排在最前。如果不写ASC或DESC，默认是ASC，升序排列。例如，按员工的经理升序排序：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> mgr FROM emp</li><li>    <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>deptno <span class="sh_symbol">=</span> <span class="sh_number">10</span> ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>mgr<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT empno, ename, mgr FROM emp
+    WHERE deptno = 10 ORDER BY mgr;
+</pre></div></div>
+      <p>降序排列，必须指明，按员工的薪水倒序排序：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> sal FROM emp</li><li>    ORDER BY <span class="sh_usertype">sal</span><span class="sh_normal"> </span>DESC<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT ename, sal FROM emp
+    ORDER BY sal DESC;
+</pre></div></div>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 多个列排序</h3>
+      <p>当以多列作为排序标准时，首先按照第一列进行排序，如果第一列数据相同，再以第二列排序，以此类推。多列排序时，不管正序还是倒序，每个列需要单独设置排序方式。</p>
+      <p>下例对职员表中的职员排序，先按照部门编码正序排列，再按照薪水降序排列：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> deptno<span class="sh_symbol">,</span> sal FROM emp</li><li>    ORDER BY <span class="sh_usertype">deptno</span><span class="sh_normal"> </span>ASC<span class="sh_symbol">,</span> <span class="sh_usertype">sal</span><span class="sh_normal"> </span>DESC<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT ename, deptno, sal FROM emp
+    ORDER BY deptno ASC, sal DESC;
+</pre></div></div>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. 聚合函数</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. 什么是聚合函数</h3>
+      <p>查询时需要做一些数据统计，比如：查询职员表中各部门职员的平均薪水，各部门的员工人数。当需要统计的数据并不能在职员表里直观列出，而是需要根据现有的数据计算得到结果，这种功能可以使用聚合函数来实现，即：将表的全部数据划分为几组数据，每组数据统计出一个结果。</p>
+      <p>因为是多行数据参与运算返回一行结果，也称作分组函数、多行函数、集合函数。用到的关键字：</p>
+      <ul class="list">
+        <li>GOURP BY 按什么分组
+</li>
+        <li>HAVING 进一步限制分组结果
+</li>
+      </ul>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. MAX和MIN</h3>
+      <p>用来取得列或表达式的最大、最小值，可以用来统计任何数据类型，包括数字、字符和日期。例如获取机构下的最高薪水和最低薪水，参数是数字：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">MAX</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> max_sal<span class="sh_symbol">,</span> <span class="sh_function">MIN</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> min_sal</li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT MAX(sal) max_sal, MIN(sal) min_sal
+FROM emp;
+</pre></div></div>
+      <p>计算最早和最晚的入职时间，参数是日期：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">MAX</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">)</span> max_hire<span class="sh_symbol">,</span> <span class="sh_function">MIN</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">)</span> min_hire</li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT MAX(hiredate) max_hire, MIN(hiredate) min_hire
+FROM emp;
+</pre></div></div>
+      <a name="Key01_04_03">
+      </a>
+      <h3>1.4.3. AVG和SUM</h3>
+      <p>AVG和SUM函数用来统计列或表达式的平均值和和值，这两个函数只能操作数字类型，并忽略NULL值。例如获得机构下全部职员的平均薪水和薪水总和：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">AVG</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> avg_sal<span class="sh_symbol">,</span> <span class="sh_function">SUM</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span>  sum_sal  <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT AVG(sal) avg_sal, SUM(sal)  sum_sal  FROM emp;
+</pre></div></div>
+      <a name="Key01_04_04">
+      </a>
+      <h3>1.4.4. COUNT</h3>
+      <p>COUNT函数用来计算表中的记录条数，同样忽略NULL值。例如获取职员表中一共有多少名职员记录：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">COUNT</span><span class="sh_symbol">(*)</span> total_num  <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT COUNT(*) total_num  FROM emp;
+</pre></div></div>
+      <p>获得职员表中有多少人是有职位的（忽略没有职位的员工记录）</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">COUNT</span><span class="sh_symbol">(</span>job<span class="sh_symbol">)</span> total_job  <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT COUNT(job) total_job  FROM emp;
+</pre></div></div>
+      <a name="Key01_04_05">
+      </a>
+      <h3>1.4.5. 聚合函数对空值的处理</h3>
+      <p>聚合函数忽略NULL值。即当emp表中的某列有NULL值，比如某新入职员工没有薪水，比较两条语句的结果：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">AVG</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span>  avg_sal <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">AVG</span><span class="sh_symbol">(</span><span class="sh_function">NVL</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">))</span> avg_sal <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT AVG(sal)  avg_sal FROM emp;
+SELECT AVG(NVL(sal,0)) avg_sal FROM emp;
+</pre></div></div>
+      <a name="Key01_05">
+      </a>
+      <h2>1.5. 分组</h2>
+      <a name="Key01_05_01">
+      </a>
+      <h3>1.5.1. GROUP BY子句</h3>
+      <p>上面的例子都是以整个表作为一组。如果希望得到每个部门的平均薪水，而不是整个机构的平均薪水，需要把整个数据表按部门划分成一个个小组，每个小组中包含一行或多行数据，在每个小组中再使用分组函数进行计算，每组返回一个结果。语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">&lt;*,</span> column <span class="sh_symbol">[</span>alias<span class="sh_symbol">],</span> …<span class="sh_symbol">&gt;</span></li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>table <span class="sh_symbol">[</span><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span><span class="sh_function">condition</span><span class="sh_symbol">(</span>s<span class="sh_symbol">)]</span> </li><li><span class="sh_symbol">[</span>GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>group_by_expression<span class="sh_symbol">]</span></li><li><span class="sh_symbol">[</span><span class="sh_usertype">HAVING</span><span class="sh_normal"> </span>group_condition<span class="sh_symbol">]</span></li><li><span class="sh_symbol">[</span>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>column <span class="sh_symbol">[</span>ASC <span class="sh_symbol">|</span> DESC<span class="sh_symbol">]]</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT &lt;*, column [alias], …&gt;
+FROM table [WHERE condition(s)] 
+[GROUP BY group_by_expression]
+[HAVING group_condition]
+[ORDER BY column [ASC | DESC]] ;
+</pre></div></div>
+      <p>其中划分的小组有多少，最终的结果集行数就有多少。</p>
+      <a name="Key01_05_02">
+      </a>
+      <h3>1.5.2. 分组查询</h3>
+      <div class="image">
+        <img src="./SUPERDOC_files/image006.png">
+        <p>图-6分组查询</p>
+      </div>
+      <a name="Key01_05_03">
+      </a>
+      <h3>1.5.3. HAVING字句</h3>
+      <p>HAVING子句用来对分组后的结果进一步限制，比如按部门分组后，得到每个部门的最高薪水，可以继续限制输出结果。必须跟在GROUP BY后面，不能单独存在。例如查询每个部门的最高薪水，只有最高薪水大于4000的记录才被输出显示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>deptno<span class="sh_symbol">,</span> <span class="sh_function">MAX</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> max_sal FROM emp</li><li>GROUP BY deptno <span class="sh_usertype">HAVING</span><span class="sh_normal"> </span><span class="sh_function">MAX</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> <span class="sh_symbol">&gt;</span><span class="sh_number">4000</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno, MAX(sal) max_sal FROM emp
+GROUP BY deptno HAVING MAX(sal) &gt;4000;
+</pre></div></div>
+      <a name="Key01_06">
+      </a>
+      <h2>1.6. 查询语句的执行顺序</h2>
+      <p>当一条查询语句中包含所有的子句，执行顺序依下列子句次序：</p>
+      <ol class="list">
+        <li>FROM 子句：执行顺序为从后往前、从右到左。数据量较少的表尽量放在后面。
+</li>
+        <li>WHERE子句：执行顺序为自下而上、从右到左。将能过滤掉最大数量记录的条件写在WHERE 子句的最右。
+</li>
+        <li>GROUP BY：执行顺序从左往右分组，最好在GROUP BY前使用WHERE将不需要的记录在GROUP BY之前过滤掉。
+</li>
+        <li>HAVING 子句：消耗资源。尽量避免使用，HAVING 会在检索出所有记录之后才对结果集进行过滤，需要排序等操作。
+</li>
+        <li>SELECT子句：少用*号，尽量取字段名称。ORACLE 在解析的过程中, 通过查询数据字典将*号依次转换成所有的列名, 消耗时间。
+</li>
+        <li>ORDER BY子句：执行顺序为从左到右排序，消耗资源。
+</li>
+      </ol>
+      <a name="Key02">
+      </a>
+      <h1>2. SQL（关联查询）</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 关联基础</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. 关联的概念</h3>
+      <p>实际应用中所需要的数据，经常会需要查询两个或两个以上的表。这种查询两个或两个以上数据表或视图的查询叫做连接查询，连接查询通常建立在存在相互关系的父子表之间。语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>table1<span class="sh_symbol">.</span>column<span class="sh_symbol">,</span> table2<span class="sh_symbol">.</span>column</li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>table1<span class="sh_symbol">,</span> table2</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>table1<span class="sh_symbol">.</span>column1 <span class="sh_symbol">=</span> table2<span class="sh_symbol">.</span>column2<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT table1.column, table2.column
+FROM table1, table2
+WHERE table1.column1 = table2.column2;
+</pre></div></div>
+      <p>或者：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>table1<span class="sh_symbol">.</span>column<span class="sh_symbol">,</span> table2<span class="sh_symbol">.</span>column</li><li>FROM table1JOIN table2</li><li><span class="sh_function">ON</span><span class="sh_symbol">(</span>table1<span class="sh_symbol">.</span>column1 <span class="sh_symbol">=</span> table2<span class="sh_symbol">.</span>column2<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT table1.column, table2.column
+FROM table1JOIN table2
+ON(table1.column1 = table2.column2);
+</pre></div></div>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. 笛卡尔积</h3>
+      <p>笛卡尔积指做关联操作的每个表的每一行都和其它表的每一行做组合，假设两个表的记录条数分别是X和Y，笛卡尔积将返回X * Y条记录。当两个表关联查询时，不写连接条件，得到的结果即是笛卡尔积。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">COUNT</span><span class="sh_symbol">(*)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span> <span class="sh_symbol">--</span><span class="sh_number">14</span>条记录</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">COUNT</span><span class="sh_symbol">(*)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>dept<span class="sh_symbol">;</span> <span class="sh_symbol">--</span><span class="sh_number">4</span>条记录</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>emp<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> dept<span class="sh_symbol">.</span><span class="sh_usertype">dnameFROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">,</span> dept<span class="sh_symbol">;--</span><span class="sh_number">56</span>条记录</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT COUNT(*) FROM emp; --14条记录
+SELECT COUNT(*) FROM dept; --4条记录
+SELECT emp.ename, dept.dnameFROM emp, dept;--56条记录
+</pre></div></div>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. 等值连接</h3>
+      <p>等值连接是连接查询中最常见的一种，通常是在有主外键关联关系的表间建立，并将连接条件设定为有关系的列，使用等号”=”连接相关的表。例如查询职员的姓名、职位以及所在部门的名字和所在城市，使用两个相关的列做等值操作：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>job<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>loc</li><li>FROM <span class="sh_usertype">emp</span><span class="sh_normal"> </span>e<span class="sh_symbol">,</span> dept d</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e.ename, e.job, d.dname, d.loc
+FROM emp e, dept d
+WHERE e.deptno = d.deptno;
+</pre></div></div>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 关联查询</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. 内连接</h3>
+      <p>内连接返回两个关联表中所有满足连接条件的记录。例如查询员工的名字和所在部门的名字：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname</li><li>FROM <span class="sh_usertype">emp</span><span class="sh_normal"> </span>e<span class="sh_symbol">,</span> dept d</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e.ename, d.dname
+FROM emp e, dept d
+WHERE e.deptno = d.deptno
+</pre></div></div>
+      <p>上面的语法也可以写为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname</li><li>FROM emp e JOIN dept d</li><li><span class="sh_function">ON</span><span class="sh_symbol">(</span>e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e.ename, d.dname
+FROM emp e JOIN dept d
+ON(e.deptno = d.deptno);
+</pre></div></div>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. 外连接</h3>
+      <p>内连接返回两个表中所有满足连接条件的数据记录，在有些情况下，需要返回那些不满足连接条件的记录，需要使用外连接，即不仅返回满足连接条件的记录，还将返回不满足连接条件的记录。比如把没有职员的部门和没有部门的职员查出来。外连接的语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>table1<span class="sh_symbol">.</span>column<span class="sh_symbol">,</span> table2<span class="sh_symbol">.</span>column</li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>table1 <span class="sh_symbol">[</span>LEFT <span class="sh_symbol">|</span> RIGHT <span class="sh_symbol">|</span> FULL<span class="sh_symbol">]</span> JOIN table2</li><li><span class="sh_usertype">ON</span><span class="sh_normal"> </span>table1<span class="sh_symbol">.</span>column1 <span class="sh_symbol">=</span> table2<span class="sh_symbol">.</span>column2<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT table1.column, table2.column
+FROM table1 [LEFT | RIGHT | FULL] JOIN table2
+ON table1.column1 = table2.column2;
+</pre></div></div>
+      <p>了解驱动表的概念。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image007.png">
+        <p>图-7左外连接</p>
+      </div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image008.png">
+        <p>图-8右外连接</p>
+      </div>
+      <p>外连接查询的例子,Emp表做驱动表:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname</li><li>FROM emp e LEFT OUTER JOIN dept d</li><li><span class="sh_usertype">ON</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e.ename, d.dname
+FROM emp e LEFT OUTER JOIN dept d
+ON e.deptno = d.deptno;
+</pre></div></div>
+      <p>Dept表做驱动表:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname</li><li>FROM emp e RIGHT OUTER JOIN dept d</li><li><span class="sh_usertype">ON</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e.ename, d.dname
+FROM emp e RIGHT OUTER JOIN dept d
+ON e.deptno = d.deptno;
+</pre></div></div>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. 全连接</h3>
+      <p>全外连接是指除了返回两个表中满足连接条件的记录，还会返回不满足连接条件的所有其它行。即是左外连接和右外连接查询结果的总和。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname</li><li>FROM emp e FULL OUTER JOIN dept d</li><li><span class="sh_usertype">ON</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e.ename, d.dname
+FROM emp e FULL OUTER JOIN dept d
+ON e.deptno = d.deptno;
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image009.png">
+        <p>图-9  全外连接</p>
+      </div>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. 自连接</h3>
+      <p>自连接是一种特殊的连接查询，数据的来源是一个表，即关联关系来自于单表中的多个列。表中的列参照同一个表中的其它列的情况称作自参照表。</p>
+      <p>自连接是通过将表用别名虚拟成两个表的方式实现，可以是等值或不等值连接。例如查出每个职员的经理名字，以及他们的职员编码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>worker<span class="sh_symbol">.</span>empnow_empno<span class="sh_symbol">,</span> worker<span class="sh_symbol">.</span>enamew_ename<span class="sh_symbol">,</span> manager<span class="sh_symbol">.</span>empnom_empno<span class="sh_symbol">,</span> manager<span class="sh_symbol">.</span>enamem_ename</li><li>FROM emp worker join emp manager</li><li><span class="sh_usertype">ON</span><span class="sh_normal"> </span>worker<span class="sh_symbol">.</span>mgr <span class="sh_symbol">=</span> manager<span class="sh_symbol">.</span>empno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT worker.empnow_empno, worker.enamew_ename, manager.empnom_empno, manager.enamem_ename
+FROM emp worker join emp manager
+ON worker.mgr = manager.empno;
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

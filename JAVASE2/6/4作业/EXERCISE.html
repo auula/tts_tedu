@@ -1,0 +1,65 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY06/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="17283985183"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 完成聊天室的私聊功能</h3> 
+    <p>完成聊天室私聊功能。私聊功能是指，客户端之间可以实现一对一的聊天。</p> 
+    <p>服务器端程序启动后，将等待客户端连接，界面效果如图－1所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image001.png"> 
+     <p>图－1</p> 
+    </div> 
+    <p>客户端程序运行时，需要用户先输入昵称。用户输入昵称之后，提示用户可以开始聊天。界面效果如图－2所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image002.png"> 
+     <p>图－2</p> 
+    </div> 
+    <p>另一个客户端运行起来后，也需要输入昵称，界面效果如图－3所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image003.png"> 
+     <p>图－3</p> 
+    </div> 
+    <p>此时，其他运行中的客户端会收到昵称为“jerry”的客户端上线的消息。比如，之前运行起来的客户端“mary”的界面效果如图－4所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image004.png"> 
+     <p>图－4</p> 
+    </div> 
+    <p>其他客户端可以通过输入类似“\jerry:你好”这样的字样和昵称为“jerry”的客户端私聊。比如，昵称为“mary”的客户端可以输入如图－5所示的信息：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image005.png"> 
+     <p>图－5</p> 
+    </div> 
+    <p>注意：如果需要进行私聊，必需使用“\昵称:信息”的格式发送消息。其中，“\昵称:”为固定格式，“昵称”表示要私聊的客户端的昵称；“信息”表示需要发送的消息。例如："\jerry:你好"，表示发送消息“你好”给昵称为“jerry”的客户端。</p> 
+    <p>昵称为“jerry”的客户端将接收到客户端“mary”发来的信息，界面效果如图－6所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image006.png"> 
+     <p>图－6</p> 
+    </div> 
+    <p>如果某客户端程序停止运行，其他客户端程序可以接收到消息并显示。例如，昵称为“jerry”的客户端停止运行，昵称为“mary”的客户端的界面效果如图－7所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image007.png"> 
+     <p>图－7</p> 
+    </div> 
+    <p>对于服务器端而言，只要有客户端连接，就会在界面输出提示信息。界面效果如图－8所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image008.png"> 
+     <p>图－8</p> 
+    </div> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

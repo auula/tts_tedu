@@ -1,0 +1,856 @@
+
+<!-- saved from url=(0088)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="9090393021"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA AJAX DAY01</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#case1">获得Ajax对象</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#case2">使用Ajax对象发送GET请求</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#case3">使用Ajax对象发送POST请求</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#case4">使用Ajax校验用户名</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#case5">POST请求时的乱码处理</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#case6">GET请求时的乱码处理</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#case7">使用Ajax实现级联的下拉列表</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 获得Ajax对象</h2>
+      <h3>1.1 问题</h3>
+      <p>如何获得XmlHttpRequest对象。</p>
+      <h3>1.2 方案</h3>
+      <p>区分浏览器，使用不同的获取方式。</p>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：新建ajax01.html页面</p>
+      <p>新建一个Web工程，在WebRoot下新建ajax01.html页面。在&lt;script&gt;标记内编写JavaScript代码实现获取Ajax对象。如图-1所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图 - 1</p>
+      </div>
+      <p class="number">步骤二：部署项目访问ajax01.html页面</p>
+      <p>访问页面如图-2所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图– 2</p>
+      </div>
+      <p>点击链接：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图 - 3</p>
+      </div>
+      <p>使用IE测试结果如图-4所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图– 4</p>
+      </div>
+      <p>注意：本次测试使用的是IE11，但IE的早期5.5，6.0版本创建的都是ActiveXObject类型的。从IE7开始支持创建XMLHttpRequest的方式来获取Ajax对象。</p>
+      <h3>1.4 完整代码</h3>
+      <p>ajax01.html文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>ajax01<span class="sh_symbol">.</span>html<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_symbol">&lt;</span>meta http<span class="sh_symbol">-</span>equiv<span class="sh_symbol">=</span><span class="sh_string">"Content-Type"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;  content<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/*获取Ajax对象*/</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">function</span> <span class="sh_function">getXhr</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> xhr <span class="sh_symbol">=</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//确保IE7,IE8，FireFox下可以运行</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>window<span class="sh_symbol">.</span>XMLHttpRequest<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">XMLHttpRequest</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//确保IE6可以运行，无视更古老的IE浏览器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ActiveXObject</span><span class="sh_symbol">(</span><span class="sh_string">"Microsoft.XMLHttp"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> xhr<span class="sh_symbol">;</span>    </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//更简易的写法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//xhr = window.XMLHttpRequest?</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHttp");&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>    </li><li><span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 获取XMLHttpRequest对象 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>a href<span class="sh_symbol">=</span><span class="sh_string">"javascript:;"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"alert(getXhr());"</span><span class="sh_symbol">&gt;</span></li><li>获取Ajax对象</li><li><span class="sh_symbol">&lt;/</span>a<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;ajax01.html&lt;/title&gt;	
+&lt;meta http-equiv="Content-Type" 
+	  content="text/html; charset=UTF-8"&gt;
+&lt;script type="text/javascript"&gt;
+	/*获取Ajax对象*/
+	function getXhr(){
+		var xhr = null;
+		//确保IE7,IE8，FireFox下可以运行
+		if(window.XMLHttpRequest){
+			xhr = new XMLHttpRequest();
+		}else{
+			//确保IE6可以运行，无视更古老的IE浏览器
+			xhr = new ActiveXObject("Microsoft.XMLHttp");
+		}
+		return xhr;    
+		//更简易的写法
+		//xhr = window.XMLHttpRequest?
+		//new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHttp");	
+	}    
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 获取XMLHttpRequest对象 --&gt;
+&lt;a href="javascript:;" onclick="alert(getXhr());"&gt;
+获取Ajax对象
+&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 使用Ajax对象发送GET请求</h2>
+      <h3>2.1 问题</h3>
+      <p>使用Ajax对象发送GET类型的请求，从服务器端获取一小段文本。</p>
+      <h3>2.2 方案</h3>
+      <p>遵循创建Ajax对象，创建请求，设置回调函数，发送请求的步骤来完成一次异步请求。</p>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：新建ajax02.html页面</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+        <p>图 - 5</p>
+      </div>
+      <p class="number">步骤二：添加getText()方法，并补充超链接对该方法的调用</p>
+      <div class="image">
+        <img src="./CASE_files/image006.png">
+        <p>图 - 6</p>
+      </div>
+      <p class="number">步骤三：编写ActionServlet类</p>
+      <div class="image">
+        <img src="./CASE_files/image007.png">
+        <p>图 - 7</p>
+      </div>
+      <p class="number">步骤四：部署、运行，查看结果</p>
+      <div class="image">
+        <img src="./CASE_files/image008.png">
+        <p>图– 8</p>
+      </div>
+      <p>点击链接：</p>
+      <div class="image">
+        <img src="./CASE_files/image009.png">
+        <p>图 - 9</p>
+      </div>
+      <h3>2.4 完整代码</h3>
+      <p>ajax02.html页面代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>ajax02<span class="sh_symbol">.</span>html<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_symbol">&lt;</span>meta http<span class="sh_symbol">-</span>equiv<span class="sh_symbol">=</span><span class="sh_string">"Content-Type"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;  content<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">function</span> <span class="sh_function">getXhr</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> xhr <span class="sh_symbol">=</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>window<span class="sh_symbol">.</span>XMLHttpRequest<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">XMLHttpRequest</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ActiveXObject</span><span class="sh_symbol">(</span><span class="sh_string">"Microsoft.XMLHttp"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> xhr<span class="sh_symbol">;</span>    &nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">function</span> <span class="sh_function">getText</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//1.获取Ajax对象</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> xhr <span class="sh_symbol">=</span> <span class="sh_function">getXhr</span><span class="sh_symbol">();</span>     </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//2.设置回调函数&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span>onreadystatechange<span class="sh_symbol">=</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>xhr<span class="sh_symbol">.</span>readyState<span class="sh_symbol">==</span><span class="sh_number">4</span> <span class="sh_symbol">&amp;&amp;</span> xhr<span class="sh_symbol">.</span>status<span class="sh_symbol">==</span><span class="sh_number">200</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> txt <span class="sh_symbol">=</span> xhr<span class="sh_symbol">.</span>responseText<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">alert</span><span class="sh_symbol">(</span>txt<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li><span class="sh_comment">//3.创建请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span><span class="sh_function">open</span><span class="sh_symbol">(</span><span class="sh_string">"get"</span><span class="sh_symbol">,</span><span class="sh_string">"get_text.do"</span><span class="sh_symbol">,</span><span class="sh_keyword">true</span><span class="sh_symbol">);</span>  </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//4.发送请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span><span class="sh_function">send</span><span class="sh_symbol">(</span><span class="sh_keyword">null</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>   </li><li><span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 获取服务器端一小段文本 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>a href<span class="sh_symbol">=</span><span class="sh_string">"javascript:;"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"getText()"</span><span class="sh_symbol">&gt;</span>获取文本<span class="sh_symbol">&lt;/</span>a<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;ajax02.html&lt;/title&gt;	
+&lt;meta http-equiv="Content-Type" 
+	  content="text/html; charset=UTF-8"&gt;
+&lt;script type="text/javascript"&gt;
+	function getXhr(){
+		var xhr = null;
+		if(window.XMLHttpRequest){
+			xhr = new XMLHttpRequest();
+		}else{
+			xhr = new ActiveXObject("Microsoft.XMLHttp");
+		}
+		return xhr;    	
+	}
+	function getText(){
+		//1.获取Ajax对象
+		var xhr = getXhr();     
+		//2.设置回调函数	
+		xhr.onreadystatechange=function(){    			
+			if(xhr.readyState==4 &amp;&amp; xhr.status==200){
+				var txt = xhr.responseText;
+				alert(txt);
+			}
+		};
+//3.创建请求
+		xhr.open("get","get_text.do",true);  
+		//4.发送请求
+		xhr.send(null);
+	}   
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 获取服务器端一小段文本 --&gt;
+&lt;a href="javascript:;" onclick="getText()"&gt;获取文本&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p>ActionServlet.java页面代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ActionServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取请求资源路径</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> path <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/get_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//get请求</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"来自星星的你"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ActionServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		//获取请求资源路径
+		String uri = request.getRequestURI();
+		String path = uri.substring(
+				uri.lastIndexOf("/"),
+				uri.lastIndexOf("."));
+#cold_bold		if(path.equals("/get_text")){//get请求
+#cold_bold			out.println("来自星星的你");
+#cold_bold		}
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <p>web.xml文件代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span>xml version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span>app version<span class="sh_symbol">=</span><span class="sh_string">"2.5"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee </span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>display<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;&lt;/</span>display<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;*.</span><span class="sh_keyword">do</span><span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"&gt;
+&lt;display-name&gt;&lt;/display-name&gt;
+&lt;servlet&gt;
+&lt;servlet-name&gt;ActionServlet&lt;/servlet-name&gt;
+&lt;servlet-class&gt;web.ActionServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;ActionServlet&lt;/servlet-name&gt;
+&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;	
+&lt;/web-app&gt;
+</pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 使用Ajax对象发送POST请求</h2>
+      <h3>3.1 问题</h3>
+      <p>使用Ajax对象发送POST类型的请求，并向服务器提交一小段文本，显示从服务器端返回的文本。</p>
+      <h3>3.2 方案</h3>
+      <p>遵循GET请求方式的4步基础上，多增加一个设定，设定请求头中的content-type属性的值为application/x-www-form-urlencoded</p>
+      <h3>3.3 步骤</h3>
+      <p class="number">步骤一：新建my.js文件</p>
+      <p>在WebRoot节点下，新增一个文件夹“js”。在该文件夹中新增一个文件，名为my.js。将获取XMLHttpRequest对象的方法拷贝到该文件中，便于更多页面重用该方法。</p>
+      <div class="image">
+        <img src="./CASE_files/image010.png">
+        <p>图 - 10</p>
+      </div>
+      <p class="number">步骤二：新建ajax03.html页面</p>
+      <div class="image">
+        <img src="./CASE_files/image011.png">
+        <p>图– 11</p>
+      </div>
+      <p class="number">步骤三：编写getText（）方法</p>
+      <div class="image">
+        <img src="./CASE_files/image012.png">
+        <p>图 - 12</p>
+      </div>
+      <p class="number">步骤四：修改ActionServlet</p>
+      <div class="image">
+        <img src="./CASE_files/image013.png">
+        <p>图 - 13</p>
+      </div>
+      <p class="number">步骤五：运行，查看结果</p>
+      <div class="image">
+        <img src="./CASE_files/image014.png">
+        <p>图– 14</p>
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image015.png">
+        <p>图 - 15</p>
+      </div>
+      <h3>3.4 完整代码</h3>
+      <p>ajax03.html文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>ajax03<span class="sh_symbol">.</span>html<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_symbol">&lt;</span>meta  http<span class="sh_symbol">-</span>equiv<span class="sh_symbol">=</span><span class="sh_string">"Content-Type"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;   content<span class="sh_symbol">=</span><span class="sh_string">"type=text/html;charset=UTF-8"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"js/my.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">function</span> <span class="sh_function">getText</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> xhr <span class="sh_symbol">=</span> <span class="sh_function">getXhr</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span>onreadystatechange<span class="sh_symbol">=</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>xhr<span class="sh_symbol">.</span>readyState<span class="sh_symbol">==</span><span class="sh_number">4</span> <span class="sh_symbol">&amp;&amp;</span> xhr<span class="sh_symbol">.</span>status<span class="sh_symbol">==</span><span class="sh_number">200</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">alert</span><span class="sh_symbol">(</span>xhr<span class="sh_symbol">.</span>responseText<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>xhr<span class="sh_symbol">.</span><span class="sh_function">open</span><span class="sh_symbol">(</span><span class="sh_string">"post"</span><span class="sh_symbol">,</span><span class="sh_string">"post_text.do"</span><span class="sh_symbol">,</span><span class="sh_keyword">true</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span><span class="sh_function">setRequestHeader</span><span class="sh_symbol">(</span><span class="sh_string">'content-type'</span><span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">'application/x-www-form-urlencoded'</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span><span class="sh_function">send</span><span class="sh_symbol">(</span><span class="sh_string">"uname=Dr."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 使用Ajax对象发送POST类型请求，并获取文本 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"getText()"</span> value<span class="sh_symbol">=</span><span class="sh_string">"POST请求"</span><span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;ajax03.html&lt;/title&gt;	
+&lt;meta  http-equiv="Content-Type" 
+	   content="type=text/html;charset=UTF-8"&gt;
+&lt;script type="text/javascript" src="js/my.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	function getText(){
+		var xhr = getXhr();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 &amp;&amp; xhr.status==200){
+				alert(xhr.responseText);
+			}
+		};
+xhr.open("post","post_text.do",true);
+		xhr.setRequestHeader('content-type',
+				'application/x-www-form-urlencoded');
+		xhr.send("uname=Dr.");
+	}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 使用Ajax对象发送POST类型请求，并获取文本 --&gt;
+&lt;input type="button" onclick="getText()" value="POST请求"/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p>ActionServlet.java文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ActionServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取请求资源路径</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> path <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/get_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//get请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"来自星星的你"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/post_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//post请求</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"又来了一次的"</span> <span class="sh_symbol">+</span> name<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ActionServlet extends HttpServlet {
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		//获取请求资源路径
+		String uri = request.getRequestURI();
+		String path = uri.substring(
+				uri.lastIndexOf("/"),
+				uri.lastIndexOf("."));
+		if(path.equals("/get_text")){//get请求
+			out.println("来自星星的你");
+#cold_bold		}else if(path.equals("/post_text")){//post请求
+#cold_bold			String name = request.getParameter("uname");
+#cold_bold			System.out.println(name);
+#cold_bold			out.println("又来了一次的" + name);
+#cold_bold		}		
+		out.close();
+	}
+}
+</pre></div></div>
+      <p>web.xml文件代码参考案例2。</p>
+      <p>my.js文件代码参考图-10。</p>
+      <a name="case4">
+      </a>
+      <h2>4 使用Ajax校验用户名</h2>
+      <h3>4.1 问题</h3>
+      <p>实现注册功能中，用户名是否可用的校验。</p>
+      <h3>4.2 方案</h3>
+      <p>填写完用户名后，通过点击后面的按钮进行验证。并显示服务器返回的说明信息。</p>
+      <h3>4.3 步骤</h3>
+      <p class="number">步骤一：新建regist.html文件</p>
+      <p>如图-16所示创建页面。</p>
+      <div class="image">
+        <img src="./CASE_files/image016.png">
+        <p>图 - 16</p>
+      </div>
+      <p class="number">步骤二：编写check_name（）方法</p>
+      <div class="image">
+        <img src="./CASE_files/image017.png">
+        <p>图– 17</p>
+      </div>
+      <p>document.getElementById(“name_msg”).innerHTML=“正在检查“；这行代码在服务器还没有返回信息之前，为用户提供良好的交互体验。</p>
+      <p class="number">步骤三：修改ActionServlet.java文件</p>
+      <div class="image">
+        <img src="./CASE_files/image018.png">
+        <p>图 - 18</p>
+      </div>
+      <p class="number">步骤四：运行，查看结果</p>
+      <p>输入不可用的用户名：</p>
+      <div class="image">
+        <img src="./CASE_files/image019.png">
+        <p>图– 19</p>
+      </div>
+      <p>提示结果如图-20：</p>
+      <div class="image">
+        <img src="./CASE_files/image020.png">
+        <p>图– 20</p>
+      </div>
+      <p>输入可用的用户名如图-21所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image021.png">
+        <p>图 - 21</p>
+      </div>
+      <p class="number">完整代码</p>
+      <p>regist.html文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>regist<span class="sh_symbol">.</span>html<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta http<span class="sh_symbol">-</span>equiv<span class="sh_symbol">=</span><span class="sh_string">"content-type"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;  content<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"js/my.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">function</span> <span class="sh_function">check_name</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span>       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> xhr <span class="sh_symbol">=</span> <span class="sh_function">getXhr</span><span class="sh_symbol">();</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span>onreadystatechange<span class="sh_symbol">=</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>xhr<span class="sh_symbol">.</span>readyState<span class="sh_symbol">==</span><span class="sh_number">4</span> <span class="sh_symbol">&amp;&amp;</span> xhr<span class="sh_symbol">.</span>status<span class="sh_symbol">==</span><span class="sh_number">200</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"name_msg"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> xhr<span class="sh_symbol">.</span>responseText<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span><span class="sh_function">setRequestHeader</span><span class="sh_symbol">(</span><span class="sh_string">'content-type'</span><span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">'application/x-www-form-urlencoded'</span><span class="sh_symbol">);</span></li><li>xhr<span class="sh_symbol">.</span><span class="sh_function">open</span><span class="sh_symbol">(</span><span class="sh_string">"post"</span><span class="sh_symbol">,</span><span class="sh_string">"check_name.do"</span><span class="sh_symbol">,</span><span class="sh_keyword">true</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"name_msg"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">.</span>innerHTML<span class="sh_symbol">=</span><span class="sh_string">"正在检查。。。"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> uname <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span><span class="sh_function">send</span><span class="sh_symbol">(</span><span class="sh_string">"uname="</span><span class="sh_symbol">+</span>uname<span class="sh_symbol">.</span>value<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>   </li><li><span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 验证注册信息中的用户名是否可用 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>form action<span class="sh_symbol">=</span><span class="sh_string">""</span> method<span class="sh_symbol">=</span><span class="sh_string">"post"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>fieldset<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>legend<span class="sh_symbol">&gt;</span>注册信息<span class="sh_symbol">&lt;/</span>legend<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名：<span class="sh_symbol">&lt;</span>input name<span class="sh_symbol">=</span><span class="sh_string">"uname"</span> id<span class="sh_symbol">=</span><span class="sh_string">"uname"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"检查一下吧"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   onclick<span class="sh_symbol">=</span><span class="sh_string">"check_name()"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>span id<span class="sh_symbol">=</span><span class="sh_string">"name_msg"</span> style<span class="sh_symbol">=</span><span class="sh_string">"color:red;"</span><span class="sh_symbol">&gt;&lt;/</span>span<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span><span class="sh_normal">br</span><span class="sh_symbol">/&gt;&lt;</span><span class="sh_normal">br</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"submit"</span> value<span class="sh_symbol">=</span><span class="sh_string">"注册"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>fieldset<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>form<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;regist.html&lt;/title&gt;
+&lt;meta http-equiv="content-type" 
+	  content="text/html; charset=UTF-8"&gt;
+&lt;script type="text/javascript" src="js/my.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	function check_name(){       		
+		var xhr = getXhr();    		
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 &amp;&amp; xhr.status==200){
+				document.getElementById("name_msg")
+						.innerHTML = xhr.responseText;
+			}
+		};
+		xhr.setRequestHeader('content-type',
+				'application/x-www-form-urlencoded');
+xhr.open("post","check_name.do",true);
+		document.getElementById("name_msg")
+						.innerHTML="正在检查。。。";
+		var uname = document.getElementById("uname");
+			xhr.send("uname="+uname.value);
+	}   
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 验证注册信息中的用户名是否可用 --&gt;
+&lt;form action="" method="post"&gt;
+	&lt;fieldset&gt;
+		&lt;legend&gt;注册信息&lt;/legend&gt;
+		用户名：&lt;input name="uname" id="uname"/&gt;
+		&lt;input type="button" value="检查一下吧" 
+			   onclick="check_name()"/&gt;
+		&lt;span id="name_msg" style="color:red;"&gt;&lt;/span&gt;
+		&lt;br/&gt;&lt;br/&gt;
+		&lt;input type="submit" value="注册"/&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p>ActionServlet.java文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ActionServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取请求资源路径</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> path <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/get_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//get请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"来自星星的你"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/post_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//post请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"又来了一次的"</span> <span class="sh_symbol">+</span> name<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/check_name"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//检查用户名</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//模拟网络延迟的操作</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">==</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">6000</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span>InterruptedException e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span><span class="sh_string">"Luffy"</span><span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>name<span class="sh_symbol">))</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"该用户名不可用"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"可以使用！"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ActionServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		//获取请求资源路径
+		String uri = request.getRequestURI();
+		String path = uri.substring(
+				uri.lastIndexOf("/"),
+				uri.lastIndexOf("."));
+		if(path.equals("/get_text")){//get请求
+			out.println("来自星星的你");
+		}else if(path.equals("/post_text")){//post请求
+			String name = request.getParameter("uname");
+			System.out.println(name);
+			out.println("又来了一次的" + name);
+#cold_bold		}else if(path.equals("/check_name")){//检查用户名
+#cold_bold			String name = request.getParameter("uname");
+#cold_bold			//模拟网络延迟的操作
+#cold_bold			if(1==1){
+#cold_bold				try {
+#cold_bold					Thread.sleep(6000);
+#cold_bold				} catch (InterruptedException e) {
+#cold_bold					e.printStackTrace();
+#cold_bold				}
+#cold_bold			}			
+#cold_bold			System.out.println(name);
+#cold_bold			if("Luffy".equals(name)){				
+#cold_bold				out.println("该用户名不可用");
+#cold_bold			}else{
+#cold_bold				out.println("可以使用！");
+#cold_bold			}
+#cold_bold		}
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <a name="case5">
+      </a>
+      <h2>5 POST请求时的乱码处理</h2>
+      <h3>5.1 问题</h3>
+      <p>在上例中，如果填写的用户名为中文信息时，就会出现如图-22所示的结果。在控制台中打印服务器端获取的数据为乱码。但火狐浏览器提交的中文可以被服务器端正确识别。原因是火狐会告诉服务器端以什么方式解码。而IE浏览器和Chrome浏览器提交的数据，到了服务器端都是以默认解码方式ISO-8859-1来解析的，而提交时浏览器依据meta标记指定的UTF-8的方式进行的编码，编码解码不一致就会导致乱码出现。如何解决？</p>
+      <div class="image">
+        <img src="./CASE_files/image022.png">
+        <p>图 - 22</p>
+      </div>
+      <h3>5.2 方案</h3>
+      <p>在获取表单提交的数据之前，设置服务器端的解码方式为UTF-8即可。</p>
+      <h3>5.3 步骤</h3>
+      <p class="number">步骤一：修改ActionServlet类</p>
+      <p>在service方法中增加一行代码即可：</p>
+      <div class="image">
+        <img src="./CASE_files/image023.png">
+        <p>图 - 23</p>
+      </div>
+      <p class="number">步骤二：重新运行regist.html页面</p>
+      <p>重新运行程序，分别使用Chrome、IE、FireFox浏览器来访问regist.html页面，测试中文情况，结果如图-24所示，可以正确得到表单以POST方式提交的中文字符了。</p>
+      <div class="image">
+        <img src="./CASE_files/image024.png">
+        <p>图 - 24</p>
+      </div>
+      <h3>5.4 完整代码</h3>
+      <p>regist.html文件代码同上一案例。</p>
+      <p>ActionServlet.java文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ActionServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取请求资源路径</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> path <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/get_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//get请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"来自星星的你"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/post_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//post请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"又来了一次的"</span> <span class="sh_symbol">+</span> name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/check_name"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//检查用户名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//模拟一个耗时的操作</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">==</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">6000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span>InterruptedException e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span><span class="sh_string">"Luffy"</span><span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>name<span class="sh_symbol">))</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"该用户名不可用"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"可以使用！"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ActionServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		response.setContentType("text/html;charset=UTF-8");
+#cold_bold		request.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		//获取请求资源路径
+		String uri = request.getRequestURI();
+		String path = uri.substring(
+				uri.lastIndexOf("/"),
+				uri.lastIndexOf("."));
+		if(path.equals("/get_text")){//get请求
+			out.println("来自星星的你");
+		}else if(path.equals("/post_text")){//post请求
+			String name = request.getParameter("uname");
+			System.out.println(name);
+			out.println("又来了一次的" + name);
+		}
+		else if(path.equals("/check_name")){//检查用户名
+			String name = request.getParameter("uname");
+			//模拟一个耗时的操作
+			if(1==1){
+				try {
+					Thread.sleep(6000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}			
+			System.out.println(name);
+			if("Luffy".equals(name)){				
+				out.println("该用户名不可用");
+			}else{
+				out.println("可以使用！");
+			}
+		}
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <a name="case6">
+      </a>
+      <h2>6 GET请求时的乱码处理</h2>
+      <h3>6.1 问题</h3>
+      <p>在regist.html页面中，如果将表单的提交方式更换为get，并且服务器端依然保留UTF-8的解码代码，运行程序时，依然会有如图-25所示的乱码问题。如何解决？</p>
+      <div class="image">
+        <img src="./CASE_files/image025.png">
+        <p>图 - 25</p>
+      </div>
+      <h3>6.2 方案</h3>
+      <p>产生乱码的原因是，以GET方式提交的数据存在于提交的消息头中URL中，HTTP协议对于URI的编码方式为UTF-8，但是URI后面的查询字符串的编码方式却是ISO-8859-1。到了服务器端，容器针对URI的解码方式是ISO-8859-1，依然解析不了中文，所以，会出现乱码。为了能够支持地址中查询字符串的中文格式，需要在浏览器端和服务器端同时进行支持UTF-8格式编码、解码的设置。</p>
+      <h3>6.3 步骤</h3>
+      <p class="number">步骤一：修改tomcat的默认解码设置</p>
+      <p>修改tomcat安装路径下conf/server.xml文件。找到Connector节点后，增加URIEncoding=“UTF-8“这个属性即可。如图-26所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image026.png">
+        <p>图 - 26</p>
+      </div>
+      <p class="number">步骤二：新建regist01.html页面</p>
+      <p>新建regist01.html文件，表单内容参考regist.html，Ajax的请求修改为GET方式，为了让URL整体都使用UTF-8的方式进行编码，需要使用JavaScript语言中的encodeURI（）方法，所以在open方法创建请求时，第二个URI参数要使用encodeURI方法进行编码。如图-27所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image027.png">
+        <p>图 - 27</p>
+      </div>
+      <p class="number">步骤三：ActionServlet保持不变</p>
+      <p class="number">步骤四：运行，查看结果</p>
+      <div class="image">
+        <img src="./CASE_files/image028.png">
+        <p>图 - 28</p>
+      </div>
+      <h3>6.4 完整代码</h3>
+      <p>regist01.html文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>regist01<span class="sh_symbol">.</span>html<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta http<span class="sh_symbol">-</span>equiv<span class="sh_symbol">=</span><span class="sh_string">"content-type"</span> content<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"js/my.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">function</span> <span class="sh_function">check_name</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> uname <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> uri <span class="sh_symbol">=</span> <span class="sh_string">"check_name.do?uname="</span><span class="sh_symbol">+</span>uname<span class="sh_symbol">.</span>value<span class="sh_symbol">;</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> xhr <span class="sh_symbol">=</span> <span class="sh_function">getXhr</span><span class="sh_symbol">();</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>xhr<span class="sh_symbol">.</span>onreadystatechange<span class="sh_symbol">=</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>xhr<span class="sh_symbol">.</span>readyState<span class="sh_symbol">==</span><span class="sh_number">4</span> <span class="sh_symbol">&amp;&amp;</span> xhr<span class="sh_symbol">.</span>status<span class="sh_symbol">==</span><span class="sh_number">200</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"name_msg"</span><span class="sh_symbol">).</span>innerHTML </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> xhr<span class="sh_symbol">.</span>responseText<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span><span class="sh_function">open</span><span class="sh_symbol">(</span><span class="sh_string">"get"</span><span class="sh_symbol">,</span><span class="sh_predef_func">encodeURI</span><span class="sh_symbol">(</span>uri<span class="sh_symbol">),</span><span class="sh_keyword">true</span><span class="sh_symbol">);</span>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"name_msg"</span><span class="sh_symbol">).</span>innerHTML<span class="sh_symbol">=</span><span class="sh_string">"正在检查。。。"</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span><span class="sh_function">send</span><span class="sh_symbol">(</span><span class="sh_keyword">null</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>   </li><li><span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> GET方式提交中文用户名进行验证 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>form action<span class="sh_symbol">=</span><span class="sh_string">""</span> method<span class="sh_symbol">=</span><span class="sh_string">"post"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>fieldset<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>legend<span class="sh_symbol">&gt;</span>注册信息<span class="sh_symbol">&lt;/</span>legend<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名：<span class="sh_symbol">&lt;</span>input name<span class="sh_symbol">=</span><span class="sh_string">"uname"</span> id<span class="sh_symbol">=</span><span class="sh_string">"uname"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"检查一下吧"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"check_name()"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>span id<span class="sh_symbol">=</span><span class="sh_string">"name_msg"</span> style<span class="sh_symbol">=</span><span class="sh_string">"color:red;"</span><span class="sh_symbol">&gt;&lt;/</span>span<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span><span class="sh_normal">br</span><span class="sh_symbol">/&gt;&lt;</span><span class="sh_normal">br</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"submit"</span> value<span class="sh_symbol">=</span><span class="sh_string">"注册"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>fieldset<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>form<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;regist01.html&lt;/title&gt;
+&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
+&lt;script type="text/javascript" src="js/my.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	function check_name(){    		
+		var uname = document.getElementById("uname");
+#cold_bold		var uri = "check_name.do?uname="+uname.value;    		
+		var xhr = getXhr();    		
+xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 &amp;&amp; xhr.status==200){    				
+				document.getElementById("name_msg").innerHTML 
+				= xhr.responseText;
+			}
+		};
+#cold_bold		xhr.open("get",encodeURI(uri),true);    				
+		document.getElementById("name_msg").innerHTML="正在检查。。。";
+#cold_bold			xhr.send(null);
+	}   
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- GET方式提交中文用户名进行验证 --&gt;
+&lt;form action="" method="post"&gt;
+	&lt;fieldset&gt;
+		&lt;legend&gt;注册信息&lt;/legend&gt;
+		用户名：&lt;input name="uname" id="uname"/&gt;
+		&lt;input type="button" value="检查一下吧" onclick="check_name()"/&gt;
+		&lt;span id="name_msg" style="color:red;"&gt;&lt;/span&gt;
+		&lt;br/&gt;&lt;br/&gt;
+		&lt;input type="submit" value="注册"/&gt;
+	&lt;/fieldset&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p>ActionServlet.java文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ActionServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取请求资源路径</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> path <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/get_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//get请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"来自星星的你"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/post_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//post请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"又来了一次的"</span> <span class="sh_symbol">+</span> name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/check_name"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//检查用户名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//模拟一个耗时的操作</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">==</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">6000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span>InterruptedException e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span><span class="sh_string">"Luffy"</span><span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>name<span class="sh_symbol">))</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"该用户名不可用"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"可以使用！"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ActionServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		//获取请求资源路径
+		String uri = request.getRequestURI();
+		String path = uri.substring(
+				uri.lastIndexOf("/"),
+				uri.lastIndexOf("."));
+		if(path.equals("/get_text")){//get请求
+			out.println("来自星星的你");
+		}else if(path.equals("/post_text")){//post请求
+			String name = request.getParameter("uname");
+			System.out.println(name);
+			out.println("又来了一次的" + name);
+		}else if(path.equals("/check_name")){//检查用户名
+			String name = request.getParameter("uname");
+			//模拟一个耗时的操作
+			if(1==1){
+				try {
+					Thread.sleep(6000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}			
+			System.out.println(name);
+			if("Luffy".equals(name)){				
+				out.println("该用户名不可用");
+			}else{
+				out.println("可以使用！");
+			}
+		}
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <a name="case7">
+      </a>
+      <h2>7 使用Ajax实现级联的下拉列表</h2>
+      <h3>7.1 问题</h3>
+      <p>实现市区的级联下拉列表。即，选择城市后，动态加载该城市包含的区域信息。</p>
+      <h3>7.2 方案</h3>
+      <p>下拉列表发生onchange事件时，将选中的城市对应的value发送给服务器端，服务器端收到这个城市拼音缩写后，进行比对，返回区域的组合信息。客户端收到信息后分别按照“；“和”，“进行分割，然后构建option对象，添加到区域对应的下拉列表中。</p>
+      <h3>7.3 步骤</h3>
+      <p class="number">步骤一：修改my.js文件</p>
+      <p>修改my.js文件，增加两个便于定位html页面中元素的方法，以及便于读取元素value属性的方法。如图– 29。</p>
+      <div class="image">
+        <img src="./CASE_files/image029.png">
+        <p>图 - 29</p>
+      </div>
+      <p class="number">步骤二：新建select.html文件</p>
+      <p>编写页面中的下拉列表。并且在onchange事件时，将选中项的value属性作为参数传给getCity方法。如图-30所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image030.png">
+        <p>图 - 30</p>
+      </div>
+      <p class="number">步骤三：编写Ajax代码</p>
+      <div class="image">
+        <img src="./CASE_files/image031.png">
+        <p>图 - 31</p>
+      </div>
+      <p class="number">步骤四：修改ActionServlet</p>
+      <p>添加对getCity.do的请求处理</p>
+      <div class="image">
+        <img src="./CASE_files/image032.png">
+        <p>图 - 32</p>
+      </div>
+      <p class="number">步骤五：访问，查看运行结果</p>
+      <div class="image">
+        <img src="./CASE_files/image033.png">
+        <p>图- 33</p>
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image034.png">
+        <p>图- 34</p>
+      </div>
+      <h3>7.4 完整代码</h3>
+      <p>js/my.js文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/*获取Ajax对象*/</span></li><li><span class="sh_keyword">function</span> <span class="sh_function">getXhr</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> xhr <span class="sh_symbol">=</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span></li><li>    <span class="sh_keyword">if</span><span class="sh_symbol">(</span>window<span class="sh_symbol">.</span>XMLHttpRequest<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xhr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">XMLHttpRequest</span><span class="sh_symbol">();</span></li><li>    <span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xhr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ActiveXObject</span><span class="sh_symbol">(</span><span class="sh_string">"Microsoft.XMLHttp"</span><span class="sh_symbol">);</span></li><li>    <span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> xhr<span class="sh_symbol">;</span>    &nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li><li class="bold_code">function $<span class="sh_symbol">(</span>id<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span>id<span class="sh_symbol">);</span></li><li class="bold_code"><span class="sh_cbracket">}</span></li><li class="bold_code"></li><li class="bold_code">function $<span class="sh_function">F</span><span class="sh_symbol">(</span>id<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> $<span class="sh_symbol">(</span>id<span class="sh_symbol">).</span>value<span class="sh_symbol">;</span></li><li class="bold_code"><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/*获取Ajax对象*/
+function getXhr(){
+	var xhr = null;
+    if(window.XMLHttpRequest){
+	xhr = new XMLHttpRequest();
+    }else{
+	xhr = new ActiveXObject("Microsoft.XMLHttp");
+    }
+	return xhr;    	
+}
+#cold_boldfunction $(id){
+#cold_bold	return document.getElementById(id);
+#cold_bold}
+#cold_bold
+#cold_boldfunction $F(id){
+#cold_bold	return $(id).value;
+#cold_bold}
+</pre></div></div>
+      <p>select.html文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>select<span class="sh_symbol">.</span>html<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta http<span class="sh_symbol">-</span>equiv<span class="sh_symbol">=</span><span class="sh_string">"content-type"</span> content<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"js/my.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">function</span> <span class="sh_function">getCity</span><span class="sh_symbol">(</span>v1<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> xhr <span class="sh_symbol">=</span> <span class="sh_function">getXhr</span><span class="sh_symbol">();</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span>onreadystatechange <span class="sh_symbol">=</span> <span class="sh_keyword">function</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>xhr<span class="sh_symbol">.</span>readyState <span class="sh_symbol">==</span> <span class="sh_number">4</span> <span class="sh_symbol">&amp;&amp;</span> xhr<span class="sh_symbol">.</span>status<span class="sh_symbol">==</span><span class="sh_number">200</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> txt <span class="sh_symbol">=</span> xhr<span class="sh_symbol">.</span>responseText<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//静安,ja;黄浦,hp;浦东新,pdx</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> strs <span class="sh_symbol">=</span> txt<span class="sh_symbol">.</span><span class="sh_function">split</span><span class="sh_symbol">(</span><span class="sh_string">';'</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//先清空s2</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<span class="sh_symbol">(</span><span class="sh_string">'s2'</span><span class="sh_symbol">).</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">''</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> strs<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> str1s <span class="sh_symbol">=</span> strs<span class="sh_symbol">[</span>i<span class="sh_symbol">].</span><span class="sh_function">split</span><span class="sh_symbol">(</span><span class="sh_string">','</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/*构造一个Option对象 */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">var</span> op <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Option</span><span class="sh_symbol">(</span>str1s<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">],</span> str1s<span class="sh_symbol">[</span><span class="sh_number">1</span><span class="sh_symbol">]);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/* options是select的一个属性,</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其值是一个数组。数组中的元素是Option对象。</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$<span class="sh_symbol">(</span><span class="sh_string">'s2'</span><span class="sh_symbol">).</span>options<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> op<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>xhr<span class="sh_symbol">.</span><span class="sh_function">open</span><span class="sh_symbol">(</span><span class="sh_string">'get'</span><span class="sh_symbol">,</span> <span class="sh_string">'getCity.do?name='</span> <span class="sh_symbol">+</span> v1<span class="sh_symbol">,</span> <span class="sh_keyword">true</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xhr<span class="sh_symbol">.</span><span class="sh_function">send</span><span class="sh_symbol">(</span><span class="sh_keyword">null</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> Ajax实现级联下拉列表 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>select id<span class="sh_symbol">=</span><span class="sh_string">"s1"</span> style<span class="sh_symbol">=</span><span class="sh_string">"width:120px;"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onchange<span class="sh_symbol">=</span><span class="sh_string">"getCity(this.value);"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>option value<span class="sh_symbol">=</span><span class="sh_string">"bj"</span><span class="sh_symbol">&gt;</span>北京<span class="sh_symbol">&lt;/</span>option<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>option value<span class="sh_symbol">=</span><span class="sh_string">"sh"</span><span class="sh_symbol">&gt;</span>上海<span class="sh_symbol">&lt;/</span>option<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>option value<span class="sh_symbol">=</span><span class="sh_string">"gz"</span><span class="sh_symbol">&gt;</span>广州<span class="sh_symbol">&lt;/</span>option<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>select<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>select id<span class="sh_symbol">=</span><span class="sh_string">"s2"</span> style<span class="sh_symbol">=</span><span class="sh_string">"width:120px;"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>select<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;select.html&lt;/title&gt;
+&lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;
+&lt;script type="text/javascript" src="js/my.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	function getCity(v1) {
+		var xhr = getXhr();		
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == 4 &amp;&amp; xhr.status==200) {
+				var txt = xhr.responseText;
+				//静安,ja;黄浦,hp;浦东新,pdx
+				var strs = txt.split(';');
+				//先清空s2
+				$('s2').innerHTML = '';
+				for (i = 0; i &lt; strs.length; i++) {
+					var str1s = strs[i].split(',');
+					/*构造一个Option对象 */
+					var op = new Option(str1s[0], str1s[1]);
+					/* options是select的一个属性,
+					其值是一个数组。数组中的元素是Option对象。
+					*/
+					$('s2').options[i] = op;
+				}
+			}
+		};
+xhr.open('get', 'getCity.do?name=' + v1, true);
+		xhr.send(null);
+	}
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;!-- Ajax实现级联下拉列表 --&gt;
+	&lt;select id="s1" style="width:120px;" 
+			onchange="getCity(this.value);"&gt;
+		&lt;option value="bj"&gt;北京&lt;/option&gt;
+		&lt;option value="sh"&gt;上海&lt;/option&gt;
+		&lt;option value="gz"&gt;广州&lt;/option&gt;
+	&lt;/select&gt;
+	&lt;select id="s2" style="width:120px;"&gt;
+	&lt;/select&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p>ActionServlet.java文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ActionServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取请求资源路径</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> path <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/get_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//get请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"来自星星的你"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/post_text"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//post请求</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"又来了一次的"</span> <span class="sh_symbol">+</span> name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/check_name"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//检查用户名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//模拟一个耗时的操作</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">==</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">6000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span>InterruptedException e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span><span class="sh_string">"Luffy"</span><span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>name<span class="sh_symbol">))</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"该用户名不可用"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"可以使用！"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>path<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/getCity"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span><span class="sh_comment">//城市列表联动</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span><span class="sh_string">"bj"</span><span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>name<span class="sh_symbol">))</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"朝阳,cy;东城,dc"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span><span class="sh_string">"sh"</span><span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>name<span class="sh_symbol">))</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"静安,ja;黄浦,hp;浦东新,pdx"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"白云,by;番禺,py"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ActionServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		//获取请求资源路径
+		String uri = request.getRequestURI();
+		String path = uri.substring(
+				uri.lastIndexOf("/"),
+				uri.lastIndexOf("."));
+		if(path.equals("/get_text")){//get请求
+			out.println("来自星星的你");
+		}else if(path.equals("/post_text")){//post请求
+			String name = request.getParameter("uname");
+			System.out.println(name);
+			out.println("又来了一次的" + name);
+		}
+		else if(path.equals("/check_name")){//检查用户名
+			String name = request.getParameter("uname");
+			//模拟一个耗时的操作
+			if(1==1){
+				try {
+					Thread.sleep(6000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}			
+			System.out.println(name);
+			if("Luffy".equals(name)){				
+				out.println("该用户名不可用");
+			}else{
+				out.println("可以使用！");
+			}
+#cold_bold		}else if(path.equals("/getCity")){//城市列表联动
+#cold_bold			String name = request.getParameter("name");
+#cold_bold			if("bj".equals(name)){
+#cold_bold				out.println("朝阳,cy;东城,dc");
+#cold_bold			}else if("sh".equals(name)){
+#cold_bold				out.println("静安,ja;黄浦,hp;浦东新,pdx");
+#cold_bold			}else{
+#cold_bold				out.println("白云,by;番禺,py");
+#cold_bold			}
+#cold_bold		}
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <p>web.xml文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/AJAX/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span>xml version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span>app version<span class="sh_symbol">=</span><span class="sh_string">"2.5"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee </span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>display<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;&lt;/</span>display<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;*.</span><span class="sh_keyword">do</span><span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"&gt;
+&lt;display-name&gt;&lt;/display-name&gt;
+&lt;servlet&gt;
+&lt;servlet-name&gt;ActionServlet&lt;/servlet-name&gt;
+&lt;servlet-class&gt;web.ActionServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;ActionServlet&lt;/servlet-name&gt;
+&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;	
+
+&lt;/web-app&gt;
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

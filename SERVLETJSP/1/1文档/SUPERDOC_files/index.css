@@ -1,0 +1,175 @@
+﻿div.source_style_superdoc
+{
+    font-family:"微软雅黑", Times New Roman;
+    font-size:14px;   
+    min-width:400px;
+    padding:10px 20px;
+     background-color:#231f20;
+    color:#afaaa3;
+    position:relative;
+}
+div.source_style_superdoc div.wordSection
+{
+    width:95%;
+    padding:5px;
+    margin:5px;
+}
+/* 一级标题 */
+div.source_style_superdoc h1
+{
+    text-align:left;    
+    font-size:24px;
+    color:#4a9024;
+}
+/* 二级标题 */
+div.source_style_superdoc h2
+{
+    margin:16.3px 0px 0px 0px;
+    text-indent:0;
+    font-weight:bold;
+    font-size:20px;
+    color:#ff9500 ;
+}
+/* 三级标题 */
+div.source_style_superdoc h3
+{
+    font-size:18px;
+	font-weight:bold;
+	margin:10px 0px 10px 0px;
+	text-indent:0px;
+	color:#ff9500 ;
+}
+/* 正文段落 */
+div.source_style_superdoc p
+{
+    margin:3px;
+    padding:2px;
+	text-indent:21.0pt;	
+	font-size:15px;	
+}
+/* 图片、图题 */
+div.source_style_superdoc div.image
+{
+    text-align:center;
+    padding:5px 0px 5px 0px;
+}
+div.source_style_superdoc div.image img
+{
+    max-width:900px;
+}
+div.source_style_superdoc div.image>p
+{
+    text-align:center;
+    margin:5px;
+    padding:3px;
+    font-size:12px;
+}
+
+/* 表格图片、表题 */
+div.source_style_superdoc div.table
+{
+    text-align:center;
+    padding:5px 0px 5px 0px;
+}
+div.source_style_superdoc div.table img
+{
+    max-width:900px;
+}
+div.source_style_superdoc div.table>p
+{
+    text-align:center;
+    margin:5px;
+    padding:3px;
+    font-size:12px;
+}
+
+/* 代码 */
+div.source_style_superdoc p.code,div.source_style_superdoc pre
+{    
+    font-size:14px;
+    margin-left:40px;
+}
+div.source_style_superdoc .code_level1
+{
+    text-indent:21.0pt;
+}
+div.source_style_superdoc .code_level2
+{
+    text-indent:42.0pt;
+}
+div.source_style_superdoc .code_level3
+{
+    text-indent:63.0pt;
+}
+div.source_style_superdoc .code_level4
+{
+    text-indent:84.0pt;
+}
+
+/* 无序列表 */
+div.source_style_superdoc ul.list,div.source_style_superdoc ol.list
+{
+    margin-left:30px;
+}
+div.source_style_superdoc ol.list
+{
+    padding-left:45px;
+}
+div.source_style_superdoc ul.list li
+{
+    padding-left:10px;
+}
+div.source_style_superdoc ol.list li
+{
+    padding-left:5px;
+}
+
+/* 强调文本 */
+div.source_style_superdoc p.emphasiz
+{
+    font-weight:bold;
+    font-style:italic;
+}
+
+/* 带编号的正文文本 */
+div.source_style_superdoc p.number
+{
+    font-weight:bold;
+    margin-top:8px;
+    margin-bottom:8px;
+    font-size:15px;
+}
+
+/* 目录 */
+div.source_style_superdoc #top_anchor
+{
+    position:absolute;
+}
+div.source_style_superdoc #link_top
+{     
+    position:fixed;
+    bottom:60px;
+    right:80px;
+    z-index:20;
+    font-weight:bold;
+    color:#df5c38;
+}
+div.source_style_superdoc ol.index
+{
+    padding:10px;
+    margin-left:40px;
+}
+div.source_style_superdoc ol.index li a
+{
+    color:#ff9500;
+    text-decoration:none;
+    border-bottom:1px dashed gray;
+    font-size:15px;
+}
+div.source_style_superdoc ol.index li a:hover
+{
+    color:#ea4903;    
+}
+
+div.source_style_superdoc .highlighter { border: 2px solid #ddd; padding:5px; background: #eee;}
+div.source_style_superdoc .command_help {display:none;}

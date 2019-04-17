@@ -1,0 +1,329 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17127485772"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#Key01">多线程基础</a>
+        </li>
+      </ol>
+      <h1>1. 多线程基础</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 进程和线程</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 什么是进程</h3>
+      <p>所谓进程（process）就是一块包含了某些资源的内存区域。操作系统利用进程把它的工作划分为一些功能单元。进程中所包含的一个或多个执行单元称为线程（thread）。进程还拥有一个私有的虚拟地址空间，该空间仅能被它所包含的线程访问。线程只能归属于一个进程并且它只能访问该进程所拥有的资源。当操作系统创建一个进程后，该进程会自动申请一个名为主线程或首要线程的线程。操作系统中有若干个线程在"同时"运行。通常，操作系统上运行的每一个应用程序都运行在一个进程中，例如:QQ,IE等等。</p>
+      <p>注:进程并不是真正意义上的同时运行，而是并发运行。后面我们会具体说明。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 什么是线程</h3>
+      <p>一个线程是进程的一个顺序执行流。同类的多个线程共享一块内存空间和一组系统资源，线程本身有一个供程序执行时的堆栈。线程在切换时负荷小，因此，线程也被称为轻负荷进程。一个进程中可以包含多个线程。</p>
+      <p>注:切换——线程并发时的一种现象，后面讲解并发时会具体说明。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 进程与线程的区别</h3>
+      <p>一个进程至少有一个线程。线程的划分尺度小于进程，使得多线程程序的并发性高。另外，进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率。</p>
+      <p>线程在执行过程中与进程的区别在于每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。</p>
+      <p>从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用来实现进程的调度和管理以及资源分配。</p>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 线程使用的场合</h3>
+      <p>线程通常用于在一个程序中需要同时完成多个任务的情况。我们可以将每个任务定义为一个线程，使他们得以一同工作。</p>
+      <p>例如我们在玩某个游戏时，这个游戏由操作系统运行，所以其运行在一个独立的进程中，而在游戏中我们会听到某些背景音乐，某个角色在移动，出现某些绚丽的动画效果等，这些在游戏中都是同时发生的，但实际上，播放音乐是在一个线程中独立完成的，移动某个角色，播放某些特效也都是在独立的线程中完成的。这些事情我们无法在单一线程中完成。</p>
+      <p>也可以用于在单一线程中可以完成，但是使用多线程可以更快的情况。比如下载文件。</p>
+      <p>比如迅雷，我们尝尝会开到它会打开很多个节点来同时下载一个文件。</p>
+      <a name="Key01_01_05">
+      </a>
+      <h3>1.1.5. 并发原理</h3>
+      <p>通过上面几节知识我们知道进程与线程都是并发运行的，那么什么是并发呢?</p>
+      <p>多个线程或进程”同时”运行只是我们感官上的一种表现。事实上进程和线程是并发运行的，OS的线程调度机制将时间划分为很多时间片段（时间片），尽可能均匀分配给正在运行的程序，获取CPU时间片的线程或进程得以被执行，其他则等待。而CPU则在这些进程或线程上来回切换运行。微观上所有进程和线程是走走停停的，宏观上都在运行，这种都运行的现象叫并发，但是不是绝对意义上的“同时发生。</p>
+      <p>注1:之所以这样做是因为CPU只有一个，同一时间只能做一件事情。但随着计算机的发展，出现了多核心CPU，例如两核心的CPU可以实现真正意义上的2线程同时运行，但因为CPU的时间片段分配给那个进程或线程是由线程调度决定，所以不一定两个线程是属于同一个进程的，无论如何我们只需要知道线程或进程是并发运行即可。</p>
+      <p>注2:OS—Operating System我们称为:操作系统</p>
+      <p>注3:线程调度机制是OS提供的一个用于并发处理的程序。java虚拟机自身也提供了线程调度机制，用于减轻OS切换线程带来的更多负担。</p>
+      <a name="Key01_01_06">
+      </a>
+      <h3>1.1.6. 线程状态</h3>
+      <p>对于程序而言，我们实际上关心的是线程而非进程。通过上面学习的只是，我们了解了什么是线程以及并发的相关知识。那么我们来看看线程在其生命周期中的各个状态:</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图- 1</p>
+      </div>
+      <p>New：当我们创建一个线程时，该线程并没有纳入线程调度，其处于一个new状态。</p>
+      <p>Runnable:当调用线程的start方法后，该线程纳入线程调度的控制，其处于一个可运行状态，等待分配时间片段以并发运行。</p>
+      <p>Running:当该线程被分配到了时间片段后其被CPU运行，这是该线程处于running状态。</p>
+      <p>Blocked:当线程在运行过程中可能会出现阻塞现象，比如等待用户输入信息等。但阻塞状态不是百分百出现的，具体要看代码中是否有相关需求。</p>
+      <p>Dead:当线程的任务全部运行完毕，或在运行过程中抛出了一个未捕获的异常，那么线程结束，等待GC回收</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 创建线程</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 使用Thread创建线并启动线程</h3>
+      <p>java.lang.Thread类是线程类，其每一个实例表示一个可以并发运行的线程。我们可以通过继承该类并重写run方法来定义一个具体的线程。其中重写run方法的目的是定义该线程要执行的逻辑。启动线程时调用线程的start()方法而非直接调用run()方法。start()方法会将当前线程纳入线程调度，使当前线程可以开始并发运行。当线程获取时间片段后会自动开始执行run方法中的逻辑。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">TestThread</span> <span class="sh_keyword">extends</span> Thread<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">run</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span><span class="sh_number">100</span><span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"我是线程"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public class TestThread extends Thread{
+		@Override
+		public void run() {
+			for(int i=0;i&lt;100;i++){
+				System.out.println("我是线程");
+			}
+		}
+	}
+</pre></div></div>
+      <p>创建和启动线程:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;…</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Thread</span><span class="sh_normal"> </span>thread <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">TestThread</span><span class="sh_symbol">();</span><span class="sh_comment">//实例化线程 </span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;thread<span class="sh_symbol">.</span><span class="sh_function">start</span><span class="sh_symbol">();</span><span class="sh_comment">//启动线程 </span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;…</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	…
+	Thread thread = new TestThread();//实例化线程 
+	thread.start();//启动线程 
+	…
+</pre></div></div>
+      <p>当调用完start()方法后，run方法会很快执行起来。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 使用Runnable创建并启动线程</h3>
+      <p>实现Runnable接口并重写run方法来定义线程体，然后在创建线程的时候将Runnable的实例传入并启动线程。</p>
+      <p>这样做的好处在于可以将线程与线程要执行的任务分离开减少耦合，同时java是单继承的，定义一个类实现Runnable接口这样的做法可以更好的去实现其他父类或接口。因为接口是多继承关系。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">TestRunnable</span> <span class="sh_keyword">implements</span> Runnable<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">run</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span><span class="sh_number">100</span><span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"我是线程"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public class TestRunnable implements Runnable{
+		@Override
+		public void run() {
+			for(int i=0;i&lt;100;i++){
+				System.out.println("我是线程");
+			}
+		}
+	}
+</pre></div></div>
+      <p>启动线程的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;…</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Runnable</span><span class="sh_normal"> </span>runnable <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">TestRunnable</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Thread</span><span class="sh_normal"> </span>thread <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Thread</span><span class="sh_symbol">(</span>runnable<span class="sh_symbol">);</span><span class="sh_comment">//实例化线程并传入线程体 </span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;thread<span class="sh_symbol">.</span><span class="sh_function">start</span><span class="sh_symbol">();</span><span class="sh_comment">//启动线程 </span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;…</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	…
+	Runnable runnable = new TestRunnable();
+	Thread thread = new Thread(runnable);//实例化线程并传入线程体 
+	thread.start();//启动线程 
+	…
+</pre></div></div>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 使用内部类创建线程</h3>
+      <p>通常我们可以通过匿名内部类的方式创建线程，使用该方式可以简化编写代码的复杂度，当一个线程仅需要一个实例时我们通常使用这种方式来创建。</p>
+      <p>例如：</p>
+      <p>继承Thread方式:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Thread</span><span class="sh_normal"> </span>thread  <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Thread</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//匿名类方式创建线程 </span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">run</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_comment">//线程体&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;thread<span class="sh_symbol">.</span><span class="sh_function">start</span><span class="sh_symbol">();</span><span class="sh_comment">//启动线程&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	Thread thread  = new Thread(){	//匿名类方式创建线程 
+		public void run(){
+		    //线程体	
+		}
+	};
+	thread.start();//启动线程	
+</pre></div></div>
+      <p>Runnable方式:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Runnable</span><span class="sh_normal"> </span>runnable  <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Runnable</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//匿名类方式创建线程 </span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">run</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Thread</span><span class="sh_normal"> </span>thread <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Thread</span><span class="sh_symbol">(</span>runnable<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;thread<span class="sh_symbol">.</span><span class="sh_function">start</span><span class="sh_symbol">();</span><span class="sh_comment">//启动线程 </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	Runnable runnable  = new Runnable(){	//匿名类方式创建线程 
+		public void run(){	
+		}
+	};
+	Thread thread = new Thread(runnable);
+	thread.start();//启动线程 
+</pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 线程操作API</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. Thread.currentThread方法</h3>
+      <p>Thread的静态方法currentThread方法可以用于获取运行当前代码片段的线程。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Thread</span><span class="sh_normal"> </span>current <span class="sh_symbol">=</span> Thread<span class="sh_symbol">.</span><span class="sh_function">currentThread</span><span class="sh_symbol">();</span>&nbsp;&nbsp;&nbsp;&nbsp;</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Thread current = Thread.currentThread();	
+</pre></div></div>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 获取线程信息</h3>
+      <p>Thread提供了 获取线程信息的相关方法:</p>
+      <ul class="list">
+        <li>long getId():返回该线程的标识符 
+</li>
+        <li>String getName():返回该线程的名称 
+</li>
+        <li>int getPriority():返回线程的优先级 
+</li>
+        <li>Thread.state getState():获取线程的状态 
+</li>
+        <li>boolean isAlive():测试线程是否处于活动状态 
+</li>
+        <li>boolean isDaemon():测试线程是否为守护线程 
+</li>
+        <li>boolean isInterrupted():测试线程是否已经中断
+</li>
+      </ul>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">TestThread</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Thread</span><span class="sh_normal"> </span>current <span class="sh_symbol">=</span> Thread<span class="sh_symbol">.</span><span class="sh_function">currentThread</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">long</span> id <span class="sh_symbol">=</span> current<span class="sh_symbol">.</span><span class="sh_function">getId</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>name <span class="sh_symbol">=</span> current<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> priority <span class="sh_symbol">=</span> current<span class="sh_symbol">.</span><span class="sh_function">getPriority</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_usertype">State</span><span class="sh_normal"> </span>state <span class="sh_symbol">=</span> current<span class="sh_symbol">.</span><span class="sh_function">getState</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">boolean</span> isAlive <span class="sh_symbol">=</span> current<span class="sh_symbol">.</span><span class="sh_function">isAlive</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">boolean</span> isDaemon <span class="sh_symbol">=</span> current<span class="sh_symbol">.</span><span class="sh_function">isDaemon</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">boolean</span> isInterrupt <span class="sh_symbol">=</span> current<span class="sh_symbol">.</span><span class="sh_function">isInterrupted</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"id:"</span><span class="sh_symbol">+</span>id<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"name:"</span><span class="sh_symbol">+</span>name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"priority:"</span><span class="sh_symbol">+</span>priority<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"state:"</span><span class="sh_symbol">+</span>state<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"isAlive:"</span><span class="sh_symbol">+</span>isAlive<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"isDaemon:"</span><span class="sh_symbol">+</span>isDaemon<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"isInterrupt:"</span><span class="sh_symbol">+</span>isInterrupt<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public class TestThread {
+		public static void main(String[] args) {
+			Thread current = Thread.currentThread();
+			long id = current.getId();
+			String name = current.getName();
+			int priority = current.getPriority();
+			Thread.State state = current.getState();
+			boolean isAlive = current.isAlive();
+			boolean isDaemon = current.isDaemon();
+			boolean isInterrupt = current.isInterrupted();
+			System.out.println("id:"+id);
+			System.out.println("name:"+name);
+			System.out.println("priority:"+priority);
+			System.out.println("state:"+state);
+			System.out.println("isAlive:"+isAlive);
+			System.out.println("isDaemon:"+isDaemon);
+			System.out.println("isInterrupt:"+isInterrupt);
+		}
+	} 
+</pre></div></div>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 线程优先级</h3>
+      <p>线程的切换是由线程调度控制的，我们无法通过代码来干涉，但是我们可以通过提高线程的优先级来最大程度的改善线程获取时间片的几率。</p>
+      <p>线程的优先级被划分为10级，值分别为1-10，其中1最低，10最高。线程提供了3个常量来表示最低，最高，以及默认优先级:</p>
+      <p>Thread.MIN_PRIORITY,</p>
+      <p>Thread.MAX_PRIORITY,</p>
+      <p>Thread.NORM_PRIORITY</p>
+      <p>设置优先级的方法为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">void</span> <span class="sh_function">setPriority</span><span class="sh_symbol">(</span><span class="sh_type">int</span> priority<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	void setPriority(int priority)
+</pre></div></div>
+      <a name="Key01_03_04">
+      </a>
+      <h3>1.3.4. 守护线程</h3>
+      <p>守护线程与普通线程在表现上没有什么区别，我们只需要通过Thread提供的方法来设定即可:</p>
+      <p>void setDaemon(boolean )</p>
+      <p>当参数为true时该线程为守护线程。</p>
+      <p>守护线程的特点是，当进程中只剩下守护线程时，所有守护线程强制终止。</p>
+      <p>GC就是运行在一个守护线程上的。</p>
+      <p>需要注意的是，设置线程为后台线程要在该线程启动前设置。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Thread</span><span class="sh_normal"> </span>daemonThread <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Thread</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;daemonThread<span class="sh_symbol">.</span><span class="sh_function">setDaemon</span><span class="sh_symbol">(</span><span class="sh_keyword">true</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;daemonThread<span class="sh_symbol">.</span><span class="sh_function">start</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	Thread daemonThread = new Thread();
+	daemonThread.setDaemon(true);
+	daemonThread.start();
+</pre></div></div>
+      <a name="Key01_03_05">
+      </a>
+      <h3>1.3.5. sleep方法</h3>
+      <p>Thread的静态方法sleep用于使当前线程进入阻塞状态:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_type">long</span> ms<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">		static void sleep(long ms)
+</pre></div></div>
+      <p>该方法会使当前线程进入阻塞状态指定毫秒，当指定毫秒阻塞后，当前线程会重新进入Runnable状态，等待分配时间片。</p>
+      <p>该方法声明抛出一个InterruptException。所以在使用该方法时需要捕获这个异常。</p>
+      <p>例如:电子钟程序</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimpleDateFormat sdf</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">SimpleDateFormat</span><span class="sh_symbol">(</span><span class="sh_string">"hh:mm:ss"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">(</span><span class="sh_keyword">true</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>sdf<span class="sh_symbol">.</span><span class="sh_function">format</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Date</span><span class="sh_symbol">()));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">1000</span><span class="sh_symbol">);</span><span class="sh_comment">//每输出一次时间后阻塞1秒钟</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span><span class="sh_usertype">InterruptedException</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public static void main(String[] args) {
+		SimpleDateFormat sdf
+			= new SimpleDateFormat("hh:mm:ss");
+		while(true){
+			System.out.println(sdf.format(new Date()));
+			try {
+				Thread.sleep(1000);//每输出一次时间后阻塞1秒钟
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+</pre></div></div>
+      <p>注:改程序可能会出现"跳秒"现象，因为阻塞一秒后线程并非是立刻回到running状态，而是出于runnable状态，等待获取时间片。那么这段等待时间就是"误差"。所以以上程序并非严格意义上的每隔一秒钟执行一次输出。</p>
+      <a name="Key01_03_06">
+      </a>
+      <h3>1.3.6. yield方法</h3>
+      <p>Thread的静态方法yield:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">yield</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	static void yield()
+</pre></div></div>
+      <p>该方法用于使当前线程主动让出当次CPU时间片回到Runnable状态，等待分配时间片。</p>
+      <a name="Key01_03_07">
+      </a>
+      <h3>1.3.7. join方法</h3>
+      <p>Thread的方法join:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">void</span> <span class="sh_function">join</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">		void join()
+</pre></div></div>
+      <p>该方法用于等待当前线程结束。此方法是一个阻塞方法。</p>
+      <p>该方法声明抛出InterruptException。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">final</span> <span class="sh_usertype">Thread</span><span class="sh_normal"> </span>t1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Thread</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">run</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//一些耗时的操作</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Thread</span><span class="sh_normal"> </span>t2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Thread</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">run</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t1<span class="sh_symbol">.</span><span class="sh_function">join</span><span class="sh_symbol">();</span><span class="sh_comment">//这里t2线程会开始阻塞，直到t1线程的run方法执行完毕</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span><span class="sh_usertype">InterruptedException</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//以下是当前线程的任务代码,只有t1线程运行完毕才会运行。</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public static void main(String[] args) {
+		final Thread t1 = new Thread(){
+			public void run(){
+				//一些耗时的操作
+			}
+		};
+		
+		Thread t2 = new Thread(){
+			public void run(){
+				try {
+					t1.join();//这里t2线程会开始阻塞，直到t1线程的run方法执行完毕
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				//以下是当前线程的任务代码,只有t1线程运行完毕才会运行。
+			}
+		};
+	}
+</pre></div></div>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. 线程同步</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. synchronized关键字</h3>
+      <p>多个线程并发读写同一个临界资源时候会发生"线程并发安全问题“</p>
+      <p>常见的临界资源:</p>
+      <ul class="list">
+        <li>多线程共享实例变量 
+</li>
+        <li>多线程共享静态公共变量 
+</li>
+      </ul>
+      <p>若想解决线程安全问题，需要将异步的操作变为同步操作。 何为同步？那么我们来对比看一下什么是同步什么异步。</p>
+      <p>所谓异步操作是指多线程并发的操作，相当于各干各的。</p>
+      <p>所谓同步操作是指有先后顺序的操作，相当于你干完我再干。</p>
+      <p>而java中有一个关键字名为:synchronized,该关键字是同步锁，用于将某段代码变为同步操作，从而解决线程并发安全问题。</p>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. 锁机制</h3>
+      <p>Java提供了一种内置的锁机制来支持原子性：</p>
+      <p>同步代码块(synchronized 关键字 )，同步代码块包含两部分：一个作为锁的对象的引用，一个作为由这个锁保护的代码块。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">synchronized</span> <span class="sh_symbol">(</span>同步监视器—锁对象引用<span class="sh_symbol">)</span><span class="sh_cbracket">{</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//代码块</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	synchronized (同步监视器—锁对象引用){ 
+		//代码块
+	} 
+</pre></div></div>
+      <p>若方法所有代码都需要同步也可以给方法直接加锁。</p>
+      <p>每个Java对象都可以用做一个实现同步的锁，线程进入同步代码块之前会自动获得锁，并且在退出同步代码块时释放锁，而且无论是通过正常路径退出锁还是通过抛异常退出都一样，获得内置锁的唯一途径就是进入由这个锁保护的同步代码块或方法。</p>
+      <a name="Key01_04_03">
+      </a>
+      <h3>1.4.3. 选择合适的锁对象</h3>
+      <p>使用synchroinzed需要对一个锁对象上锁以保证线程同步。</p>
+      <p>那么这个锁对象应当注意:多个需要同步的线程在访问该同步块时，看到的应该是同一个锁对象引用。否则达不到同步效果。 通常我们会使用this来作为锁对象。</p>
+      <a name="Key01_04_04">
+      </a>
+      <h3>1.4.4. 选择合适的锁范围</h3>
+      <p>在使用同步块时，应当尽量在允许的情况下减少同步范围，以提高并发的执行效率。</p>
+      <a name="Key01_04_05">
+      </a>
+      <h3>1.4.5. 静态方法锁</h3>
+      <p>当我们对一个静态方法加锁，如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">synchronized</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">xxx</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;…<span class="sh_symbol">.</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public synchronized static void xxx(){
+		….
+	}
+</pre></div></div>
+      <p>那么该方法锁的对象是类对象。每个类都有唯一的一个类对象。获取类对象的方式:类名.class。</p>
+      <p>静态方法与非静态方法同时声明了synchronized，他们之间是非互斥关系的。原因在于，静态方法锁的是类对象而非静态方法锁的是当前方法所属对象。</p>
+      <a name="Key01_04_06">
+      </a>
+      <h3>1.4.6. wait和notify</h3>
+      <p>多线程之间需要协调工作。</p>
+      <p>例如，浏览器的一个显示图片的    displayThread想要执行显示图片的任务，必须等待下载线程downloadThread将该图片下载完毕。如果图片还没有下载完，displayThread可以暂停，当downloadThread完成了任务后，再通知displayThread“图片准备完毕，可以显示了”，这时，displayThread继续执行。</p>
+      <p>以上逻辑简单的说就是：如果条件不满足，则等待。当条件满足时，等待该条件的线程将被唤醒。在Java中，这个机制的实现依赖于wait/notify。等待机制与锁机制是密切关联的。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

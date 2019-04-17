@@ -1,0 +1,307 @@
+
+<!-- saved from url=(0095)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="6649418863"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA Fundamental DAY01</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#case1">JDK及Eclipse目录结构操作</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#case2">JDK的安装及配置</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#case3">控制台版的JAVA HelloWorld</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#case4">使用Eclipse开发Java应用程序</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 JDK及Eclipse目录结构操作</h2>
+      <h3>1.1 问题</h3>
+      <p>为熟练掌握 Linux 下的目录操作，本案例需要完成如下操作：</p>
+      <ul class="list">
+        <li>在Linux系统下，浏览jdk的目录结构。
+</li>
+        <li>在Linux系统下，浏览eclipse的目录结构。
+</li>
+      </ul>
+      <h3>1.2 方案</h3>
+      <p>完成此案例，需要用到一些常用的 Linux命令。这些命令如下所示：</p>
+      <ul class="list">
+        <li>pwd ：显示当前工作路径。
+</li>
+        <li>cd：改变当前工作目录。 
+</li>
+        <li>ls：浏览目录结构。
+</li>
+      </ul>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：浏览 JDK 的目录结构</p>
+      <p>首先，打开终端，效果如图-1所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图- 1</p>
+      </div>
+      <p>然后，使用pwd命令查看当前所在目录位置。效果如图-2所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图- 2</p>
+      </div>
+      <p>由图－2可以看出，当前所在的目录为/home/soft01，此目录为用户主目录。因为 JDK目录在 /opt 目录下，因此，首先，需要使用 cd 命令进入opt目录，接着再次使用cd命令进入 opt 目录下的 jdk 目录。界面效果如图-3所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图- 3</p>
+      </div>
+      <p>进入 jdk 目录后，使用ls命令查看当前目录下的相关文件和目录，效果如图-4所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图- 4</p>
+      </div>
+      <p>图－4中，蓝色标识的为文件夹，黑色标识的为文件，绿色标识的为可执行文件，而红色标识的为压缩包。</p>
+      <p class="number">步骤二：浏览 eclipse 的目录结构</p>
+      <p>eclipse也在opt目录下，而我们目前在 /opt/jdk 目录下。因此，首先需要进入/opt目录，然后才能进入opt下的eclipse目录。</p>
+      <p>首先，使用命令 cd .. 返回到上一层目录，即 /opt 目录，效果如图-5所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+        <p>图- 5</p>
+      </div>
+      <p>然后，使用cd命令进入eclipse目录，效果图-6所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image006.png">
+        <p>图- 6</p>
+      </div>
+      <p>进入 eclipse 目录后，使用 ls 命令查看当前目录结构，效果如图-7所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image007.png">
+        <p>图- 7</p>
+      </div>
+      <h3>1.4 完整代码</h3>
+      <p>本案例中的代码均为命令代码，因此，没有完整代码呈现。</p>
+      <a name="case2">
+      </a>
+      <h2>2 JDK的安装及配置</h2>
+      <h3>2.1 问题</h3>
+      <p>安装JDK，并配置环境变量。</p>
+      <h3>2.2 方案</h3>
+      <p>请根据老师上课的讲解和本文档的步骤，完成 Java 开发环境的构建。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：下载并安装 JDK</p>
+      <p>学习Java语言要从Java SE平台开始。</p>
+      <p>Oracle官方提供了两种针对Java SE平台的产品——JRE和JDK，可以从官方网站免费下载（http://www.oracle.com/technetwork/java/index.html）。JRE（Java SE Runtime Environment）称之为Java SE运行时环境，提供了运行Java应用程序所必须的软件环境，包含有Java虚拟机（JVM）和丰富的类库（Libraries）。无论是开发Java应用还是仅仅运行一个已经开发好的Java应用都必须安装JRE。JDK（ Java Development Kit）称为Java开发工具包，是JRE的超集，或者说JDK包含了JRE。JDK中除了包含有JRE的所有内容之外还提供了编写Java程序所必须的编译器和调试工具等。对于编写Java开发的人士一般需要下载JDK，目前的主流版本为JDK 6。</p>
+      <p>Java官方提供了针对不同操作系统平台的JDK版本，如Windows、Linux、Solaris等，在下载JDK时，可以根据自己的需要来选择，如图-8所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image008.png">
+        <p>图- 8</p>
+      </div>
+      <p>以Windows版本的JDK为例，下载完成后需要进行安装。和安装其他Windows下的软件一样，根据安装界面的提示（如图-9所示）选择好安装目录，然后“下一步”、再“下一步”，直到完成整个安装过程。效果如图－9所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image009.png">
+        <p>图- 9</p>
+      </div>
+      <p>需要注意的是，在图-9的JDK安装功能列表中，Java DB是可以选择不安装的，这是一个JDK自带的纯Java语言实现的关系型数据库，通常的Java开发时用不到它的。另外，对于Windows版的JDK安装程序，除了安装一个已经包含有JRE的JDK之外，还要再安装一个独立的JRE（所谓“公共的JRE”）并在注册表中对其进行注册，其目的是对于一些需要用到JRE的应用程序可以通过注册信息自动的找到JRE。</p>
+      <p>“公共JRE”是一个可选项，可以选择不安装，毕竟JDK中已经包含有了一个完整的JRE（只不过没有在注册表中注册）；如果选择了该项，在安装完JDK之后，安装程序还要提示用户选择公共JRE的安装目录。</p>
+      <p>除了下载JDK之外，开发人员一般还要下载Java官方文档，这是学习和开发Java语言必备的资料。Java 官方文档的具体下载位置在http://www.oracle.com/technetwork/java/javase/downloads/index.html&nbsp;页面，如图-10所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image010.png">
+        <p>图- 10</p>
+      </div>
+      <p>文档下载解压后将以HTML格式呈现，使用浏览器打开文档首页（index.html），可以看到如图-11所示的“JDK全貌”，通过单击相关链接可以了解其细节。</p>
+      <div class="image">
+        <img src="./CASE_files/image011.png">
+        <p>图- 11</p>
+      </div>
+      <p>由图-11可以看出：JDK包含JRE和开发工具包（Tools &amp; Tool APIs）；而JRE包含有Java虚拟机（JVM）和各种类库（Libraries）。</p>
+      <p class="number">步骤二：配置环境变量</p>
+      <p>JDK安装完成后，在JDK安装路径下可以看到如下内容：</p>
+      <ul class="list">
+        <li>bin目录：用于存放JDK工具命令，比如用于编译Java程序的javac命令、用于启动JVM运行Java程序的java命令、用于生成文档的javadoc命令和用于打包的jar命令等等；
+</li>
+        <li>jre目录：用于存放JDK所包含的JRE，其中包含有JVM和核心类库；
+</li>
+        <li>lib目录：用于存放JDK工具命令所对应的工具包（Tool APIs）；
+</li>
+        <li>demo目录：用于存放一些示例程序；
+</li>
+        <li>src.zip文件：用于存放核心类库的Java源代码。
+</li>
+      </ul>
+      <p>其中，bin中的javac命令和java命令是我们很快要用到的命令。如果想用到这些命令，需要让操作系统可以找到这些命令文件所在的路径。在Windows操作系统中，可以通过配置Path环境变量来实现。Path环境变量是一串用分号（；）分隔开的目录，在通过控制台运行一个命令时，Windows会依次在Path环境变量中的每一个目录中查找该命令，如果找到就可以执行，否则就会有如图-12所示的错误提示：</p>
+      <div class="image">
+        <img src="./CASE_files/image012.png">
+        <p>图- 12</p>
+      </div>
+      <p>在Windows系统中通过“控制面板”→“系统”→“高级系统设置”打开如图-13所示的对话框：</p>
+      <div class="image">
+        <img src="./CASE_files/image013.png">
+        <p>图- 13</p>
+      </div>
+      <p>单击图－13中的“环境变量”按钮，并在弹出的对话框中双击系统变量Path，并对其进行编辑。在Path变量值的末尾追加JDK开发工具路径（“JDK安装路径\bin”），假设JDK的安装路径为：“D:\Program Files\Java\ jdk1.6.0_24”则需追加的Path路径为：“;D:\Program Files\Java\jdk1.6.0_24\bin”。注意，路径之间需要用分号隔开。效果如图-14所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image014.png">
+        <p>图- 14</p>
+      </div>
+      <p>环境变量设置完成后，通过“附件”→“命令提示符”（或者运行cmd命令）打开控制台，键入java或javac命令，看到输出正常的提示信息就表示环境变量配置成功了。效果如图-15所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image015.png">
+        <p>图- 15</p>
+      </div>
+      <p>需要注意的是，如果在安装JDK时选择安装了公共JRE，则不需要配置Path环境变量也可以运行java命令，这是由于公共JRE路径写入了注册表的缘故。</p>
+      <h3>2.4 完整代码</h3>
+      <p>本案例均为实际操作，因此没有完整代码呈现。</p>
+      <a name="case3">
+      </a>
+      <h2>3 控制台版的JAVA HelloWorld</h2>
+      <h3>3.1 问题</h3>
+      <p>使用vi编写HelloWorld.java程序，运行后，在控制台输出“Hello World”。</p>
+      <h3>3.2 方案</h3>
+      <p>请根据老师上课的讲解和本文档的步骤，慢慢体会Java的魅力。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：打开vi，进入编辑模式</p>
+      <p>首先，打开终端；然后，在终端内输入vi及文件名称HelloWorld.java后，就进入vi全屏幕编辑画面，终端界面如图-16所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image016.png">
+        <p>图- 16</p>
+      </div>
+      <p>vi编辑界面如图-17所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image017.png">
+        <p>图- 17</p>
+      </div>
+      <p class="number">步骤二：编写创建类的代码</p>
+      <p>首先，在vi编辑界面上，输入命令i，使vi进入插入模式；然后，键入创建类的代码，界面如图-18所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image018.png">
+        <p>图- 18</p>
+      </div>
+      <p>Java语言是纯粹的面向对象的语言，任何一段Java代码都需要从定义一个类开始。至于“类”的详细将在后续的课程内容中详解，这里可以暂做了解。public class 类名 { ... }&nbsp; 是定义类的语法，除了类名可以自己指定外，其他的public和class都是Java关键字（所谓Java关键字是指Java语言中预先定义的代表特定含义的字符），这里只要保证不要写错就可以了。</p>
+      <p>另外，在此需要注意，Java语言是严格大小写区分的，“H”和“h”是两个不同的字符，编写时需要注意。</p>
+      <p class="number">步骤三：定义 main 方法</p>
+      <p>接着，在 HelloWorld 类中，定义Java应用程序的入口方法main，代码如图-19所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image019.png">
+        <p>图- 19</p>
+      </div>
+      <p>这行代码的具体含义需要在后续课程内容中细述，这里只要记住两点：第一、如果一个类包含有这样一个方法，则该类就是一个可以被运行的类，而且该方法是程序的入口，也就是说程序从该方法的第一行代码开始逐行运行。第二、慢慢写，不要写错！</p>
+      <p class="number">步骤四：输出信息到控制台</p>
+      <p>在 main 方法中，添加代码，以输出“Hello World”到控制台界面显示，代码如图-20所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image020.png">
+        <p>图- 20</p>
+      </div>
+      <p class="number">步骤五：保存代码，退出vi</p>
+      <p>首先，当前vi在插入模式下，按一下Esc键转到命令行模式；然后，按一下：冒号键进入最后一行模式；最后，输入命令wq，存盘并退出vi，回到终端界面，如图-21所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image021.png">
+        <p>图- 21</p>
+      </div>
+      <p>此时，将HelloWorld.java文件保存在当前目录下，如图-22所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image022.png">
+        <p>图- 22</p>
+      </div>
+      <p class="number">步骤六：编译源文件</p>
+      <p>源文件编写完成后，需要进行编译，即转换为可以在JVM中运行的字节码文件。JDK工具中的javac命令（在JDK安装目录的bin子目录下）可以实现这样的工作。</p>
+      <p>在终端，接着键入如下命令：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>javac  HelloWorld<span class="sh_symbol">.</span>java</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">javac  HelloWorld.java
+</pre></div></div>
+      <p>命令运行成功后会在当前目录下生成HelloWorld.class文件。当然，对于初学者，可能会出现各种各样的错误。需要根据错误提示信息耐心的修改（大多数错误可能是由于字符书写错误造成的，比如大小写的问题）。</p>
+      <p class="number">步骤七：启动JVM，运行Java程序</p>
+      <p>编译成功之后，就可以使用java命令运行该字节码文件（更准确的说法是：启动JVM运行字节码文件）。</p>
+      <p>接着在终端，键入如下命令：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>java HelloWorld</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">java HelloWorld
+</pre></div></div>
+      <p>如果代码书写正确的，执行上述命令后，终端显示内容如图-23所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image023.png">
+        <p>图- 23</p>
+      </div>
+      <p>从图-23中可以看出，程序的输出结果为“Hello World”。</p>
+      <h3>3.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> HelloWorld <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"Hello World"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class HelloWorld {
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 使用Eclipse开发Java应用程序</h2>
+      <h3>4.1 问题</h3>
+      <p>在上一案例“控制台版的JAVA Hello World”中，我们使用最简单的编辑工具，编写源代码，并通过调用JDK工具命令体验了Java程序的编译、运行的全过程。理论上，我们可以使用这样的方式编写任何Java程序，但在真实的企业项目中，这种原始的开发方式势必会带来大量繁琐、重复、易错的操作，会极大的降低工作效益；同时也不利于项目的整体管理。在真实的场景中，开发人员总是会借助一些强大的“集成开发环境”进行代码的编写、调试、测试、提交、重构等操作，例如：Eclipse。</p>
+      <p>本案例要求使用开发工具Eclipse编写HelloWorld.java程序。在Eclipse的控制台中，该程序的输出结果如图-24所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image024.png">
+        <p>图- 24</p>
+      </div>
+      <h3>4.2 方案</h3>
+      <p>请根据老师上课的讲解和本文档的步骤， 慢慢体会Eclipse工具开发Java程序的便利。</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：开启开发工具Eclipse</p>
+      <p>eclipse启动后会弹出如下对话框，如图-25所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image025.png">
+        <p>图- 25</p>
+      </div>
+      <p>弹出的对话框“Workspace Launcher”用于选择“工作区”（Workspace）。所谓“工作区”是指Eclipse用于存储工程的路径。Eclipse通过“工程”（Project）来组织资料。程序员编写的源文件、编译生成类文件等以特定的目录结构存储在工程文件夹中。</p>
+      <p class="number">步骤二：创建Java工程</p>
+      <p>选择菜单操作“File ( New ( Java Project”用于创建一个适合编写Java基本应用程序的工程。在弹出的对话框中填写工程的名称（Project Name）然后单击“Finish”按钮。如图-26所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image026.png">
+        <p>图- 26</p>
+      </div>
+      <p>工程创建完成后，会在工作区目录（Eclipse启动时指定）生成一个与工程名称同名的文件夹。打开此文件夹，会看到如图-27所示的目录结构：</p>
+      <div class="image">
+        <img src="./CASE_files/image027.png">
+        <p>图- 27</p>
+      </div>
+      <p>其中：“src”文件夹用于存放用户编写的Java源文件；“bin”文件夹用于存放Eclipse自动编译生成的class文件。Eclipse具备自动编译的功能，当用户在编写Java源文件的同时，Eclipse会自动的调用系统的Java编译器编译该文件，并将编译好的class文件存放在bin目录中。另外，“.classpath”和“.project”两个文件以及“.settings”文件夹中的内容是Eclipse用来维护工程信息的，一般可以不去理会。</p>
+      <p class="number">步骤三：创建名为HelloWorld的类</p>
+      <p>工程创建完成以后，可以通过菜单操作“File ( New ( Class”创建Java源文件。在弹出的对话框中，填写要创建的Java类的类名（Name）和包名（Package），如图-28所示。（关于包的含义将在后续课程中详述。）</p>
+      <div class="image">
+        <img src="./CASE_files/image028.png">
+        <p>图- 28</p>
+      </div>
+      <p>填写完类名（本例中为“HelloWorld”）和包名（本例中为“day01”）后，单击“Finish”按钮。Eclipse即创建了一个名为HelloWorld.java的源文件。</p>
+      <p class="number">步骤四：定义类</p>
+      <p>在Eclipse编写HelloWorld程序，如图-29所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image029.png">
+        <p>图- 29</p>
+      </div>
+      <p>程序编写完成，确认无编译错误后，可以使用菜单操作“Run ( Run As ( Java Application”来运行该程序。运行的结果会在代码下方的Console视图中显示。这里需要指出的是：这个操作在本质上与先前通过命令行方式运行Java程序并没有什么不同，可以理解为是Eclipse调用JDK的java命令，用更加友好的图形化界面方式实现运行Java程序的操作而已。</p>
+      <h3>4.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day01<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> HelloWorld <span class="sh_cbracket">{</span><span class="sh_comment">// 类体开始</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// main方法是Java程序的入口方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span><span class="sh_comment">// 方法体开始</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"Hello World"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_comment">// 方法体结束</span></li><li><span class="sh_cbracket">}</span><span class="sh_comment">// 类体结束</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day01;
+
+public class HelloWorld {// 类体开始
+	// main方法是Java程序的入口方法
+	public static void main(String[] args) {// 方法体开始
+		System.out.println("Hello World");
+	}// 方法体结束
+}// 类体结束
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

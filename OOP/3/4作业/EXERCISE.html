@@ -1,0 +1,75 @@
+
+<!-- saved from url=(0091)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="9737518140"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 简述JVM垃圾回收机制</h3> 
+   </div> 
+   <div> 
+    <h3>2 Java程序是否会出现内存泄露</h3> 
+   </div> 
+   <div> 
+    <h3>3 JVM如何管理内存，分成几个部分？分别有什么用途？说出下面代码的内存实现原理：</h3> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Foo foo <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Foo</span><span class="sh_symbol">();</span></li><li>foo<span class="sh_symbol">.</span><span class="sh_function">f</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Foo foo = new Foo();
+foo.f();
+</pre></div></div> 
+   </div> 
+   <div> 
+    <h3>4 指出下面代码的编译错误，并说明原因</h3> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">//哺乳动物</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Mammals <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_comment">//鸟类</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Birds <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_comment">//蝙蝠</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Bat <span class="sh_keyword">extends</span> Mammals<span class="sh_symbol">,</span>Birds<span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">//哺乳动物
+public class Mammals {
+
+}
+//鸟类
+public class Birds {
+
+}
+//蝙蝠
+public class Bat extends Mammals,Birds{
+
+}
+</pre></div></div> 
+   </div> 
+   <div> 
+    <h3>5 说出下面代码的输出结果，并解释原因</h3> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Sub <span class="sh_keyword">extends</span> Base <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> color<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Sub</span><span class="sh_symbol">(</span>double size<span class="sh_symbol">,</span> <span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span> <span class="sh_predef_func">String</span> color<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">super</span><span class="sh_symbol">(</span>size<span class="sh_symbol">,</span> name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>color <span class="sh_symbol">=</span> color<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sub s <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Sub</span><span class="sh_symbol">(</span><span class="sh_number">5.6</span><span class="sh_symbol">,</span> <span class="sh_string">"测试对象"</span><span class="sh_symbol">,</span> <span class="sh_string">"红色"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>s<span class="sh_symbol">.</span>size <span class="sh_symbol">+</span> <span class="sh_string">"--"</span> <span class="sh_symbol">+</span> s<span class="sh_symbol">.</span>name <span class="sh_symbol">+</span> <span class="sh_string">"--"</span> <span class="sh_symbol">+</span> s<span class="sh_symbol">.</span>color<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">class</span> Base <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;double size<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Base</span><span class="sh_symbol">(</span>double size<span class="sh_symbol">,</span> <span class="sh_predef_func">String</span> name<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>size <span class="sh_symbol">=</span> size<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Sub extends Base {
+	String color;
+
+	public Sub(double size, String name, String color) {
+		super(size, name);
+		this.color = color;
+	}
+
+	public static void main(String[] args) {
+		Sub s = new Sub(5.6, "测试对象", "红色");
+		System.out.println(s.size + "--" + s.name + "--" + s.color);
+	}
+}
+
+class Base {
+	double size;
+	String name;
+
+	public Base(double size, String name) {
+		this.size = size;
+		this.name = name;
+	}
+}
+</pre></div></div> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

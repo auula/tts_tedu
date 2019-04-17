@@ -1,0 +1,226 @@
+
+<!-- saved from url=(0098)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="5589745420"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#Key01">JSP开发要点</a>
+        </li>
+      </ol>
+      <h1>1. JSP开发要点</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 转发</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 什么是转发</h3>
+      <p>在Web服务器端处理用户请求的时候，会有需要多个Web组件配合才能完成的情况。一个Web组件（Servlet/JSP）将未完成的处理通过容器转交给另外一个Web组件继续完成，这个转交的过程叫做转发。</p>
+      <p>常见情况是Servlet负责获取数据，然后将数据转交给JSP进行展现。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 如何实现转发</h3>
+      <p>实现转发过程可遵循以下三个步骤：</p>
+      <p class="number">步骤一、绑定数据到request对象</p>
+      <p>在转交的过程中一定会有数据的传递，并且涉及到的Web组件都是针对同一个请求，所以利用request来保存共同处理的数据不仅仅能让数据共享，也能够随着请求响应的结束而销毁，不会占用服务器更多的资源。使用如下代码可以实现数据的绑定:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>request<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">,</span><span class="sh_usertype">Object</span><span class="sh_normal"> </span>obj<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">request.setAttribute(String name,Object obj);
+</pre></div></div>
+      <p>setAttribute()方法实现数据绑定，与其对应的还有getAttribute（）方法获取绑定的数据，removeAttribute（）方法移除绑定的数据。</p>
+      <p class="number">步骤二、获得转发器</p>
+      <p>使用如下代码可以获取到转发器，用于说明转交的下一个组件的路径:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">RequestDispatcher</span><span class="sh_normal"> </span>rd <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestDispatcher</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>uri<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">RequestDispatcher rd = request.getRequestDispatcher(String uri);
+</pre></div></div>
+      <p class="number">步骤三、实现转发</p>
+      <p>使用转发器完成转发的动作，因下一个Web组件要针对同一个请求和响应继续完成后续的工作，所以在转发时要将本次的请求和响应对象作为参数传给下一个Web组件。实现代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>rd<span class="sh_symbol">.</span><span class="sh_function">forward</span><span class="sh_symbol">(</span>request<span class="sh_symbol">,</span>response<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">rd.forward(request,response);
+</pre></div></div>
+      <p>其中步骤二和步骤三可以合并为一行代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>request<span class="sh_symbol">.</span><span class="sh_function">getRequestDispatcher</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>uri<span class="sh_symbol">).</span><span class="sh_function">forward</span><span class="sh_symbol">(</span>request<span class="sh_symbol">,</span>response<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">request.getRequestDispatcher(String uri).forward(request,response);
+</pre></div></div>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 转发的原理</h3>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图 – 1</p>
+      </div>
+      <p>如图- 1所示，是客户端向服务器请求查看员工列表信息页面时服务器端的处理过程。</p>
+      <p>1.请求到达服务器(2.根据请求信息创建request和response对象(3.根据请求资源路径找到对应的Servlet执行处理(4.Servlet在处理过程中从数据库获取到结果信息(5.Servlet将结果信息绑定在request对象中(6.Servlet通知容器将request和response对象转交给list.jsp页面继续执行对请求的响应(7. list.jsp页面被调用并执行时从传递过来的request对象中获取绑定的数据生成结果页面(8.服务器将list.jsp页面的执行结果返回给客户端。</p>
+      <p>在整个的处理过程中，从ActionServlet到list.jsp的这个转换过程就是转发，也就是图示中的6这个步骤。控制这个过程的是服务器，同时ActionServlet和list.jsp共享了同一组请求和响应，两个Web组件共同协作完成了客户端的一次请求。对于客户端来讲，只发了一次请求，并且客户端浏览器也并不知道在服务器端是由两个组件配合提供的响应。</p>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 转发的特点</h3>
+      <p>转发过程发生在服务器端，客户端只发送了一个请求，虽然请求到达服务器的指定位置后被容器控制着传到了第二个组件继续完成工作，但浏览器并不知道这个过程，所以转发之后地址栏地址不会发生变化。</p>
+      <p>转发的目的地必须是同一个应用内部的某个地址，决不能跳出应用。毕竟这个转交过程由容器实现，容器只有访问本应用的权限，而不能控制请求到达应用以外的位置。</p>
+      <p>转发过程中涉及到的所有Web组件共享同一个request对象和response对象，数据的传递和共享就依赖request对象。</p>
+      <p class="emphasiz">注意：在forward之后的其他语句还是会继续执行完的，只要不报异常。</p>
+      <a name="Key01_01_05">
+      </a>
+      <h3>1.1.5. 转发和重定向的区别</h3>
+      <p>重定向：浏览器发送请求到容器访问A，A可以发送一个状态码302和一个Location消息头到浏览器，于是浏览器会立即向Location发新的请求。</p>
+      <p>转发：浏览器发送请求到容器访问A，A可以通知容器去调用B。转发所涉及的各个Web组件会共享同一个request和response对象；而重定向不行。</p>
+      <p>说明：当请求到达容器，容器会创建request对象和response对象。当响应发送完毕，容器会立即删除request对象和response对象。即，request对象和response对象的生存时间是一次请求与响应期间。</p>
+      <p>转发之后，浏览器地址栏的地址不变，重定向会变。转发的地址必须是同一个应用内部某个地址，而重定向没有这个限制。转发是一件事情未做完，调用另外一个组件继续做；而重定向是一件事情已经做完，再做另外一件事情。</p>
+      <p>转发和重定向的执行过程如图- 2所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图 - 2</p>
+      </div>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 异常处理</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 编程式异常处理</h3>
+      <p>在编写Web类型的应用时，如果程序运行发生了异常就会返回该异常的信息到客户端的浏览器上显示出来，这些信息往往暴露了服务器的一些重要结构，所以要避免异常信息输出到客户端。一般有两种方式来处理异常，编程式的异常处理和声明式的处理。</p>
+      <p>编程式的异常处理就是在程序中捕获到异常时，使用转发跳转到指定页面进行提示说明。</p>
+      <p>代码结构如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>action <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">),</span>uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>action<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/list"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 使用dao访问数据库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//交给jsp来完成</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">getRequestDispatcher</span><span class="sh_symbol">(</span><span class="sh_string">"list3.jsp"</span><span class="sh_symbol">).</span><span class="sh_function">forward</span><span class="sh_symbol">(</span>request<span class="sh_symbol">,</span> </li><li>response<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span><span class="sh_usertype">Exception</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//使用转发的方式来处理异常。</span></li><li>request<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"error_msg"</span><span class="sh_symbol">,</span><span class="sh_string">"系统繁忙，稍后重试"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    request<span class="sh_symbol">.</span><span class="sh_function">getRequestDispatcher</span><span class="sh_symbol">(</span><span class="sh_string">"error.jsp"</span><span class="sh_symbol">).</span><span class="sh_function">forward</span><span class="sh_symbol">(</span>request<span class="sh_symbol">,</span></li><li>                                                                     response<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			               throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String uri = request.getRequestURI();
+		String action = uri.substring(
+				uri.lastIndexOf("/"),uri.lastIndexOf("."));
+		if (action.equals("/list")) {
+			try {
+				// 使用dao访问数据库				
+				//交给jsp来完成
+				request.getRequestDispatcher("list3.jsp").forward(request, 
+response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				//使用转发的方式来处理异常。
+request.setAttribute("error_msg","系统繁忙，稍后重试");
+			    request.getRequestDispatcher("error.jsp").forward(request,
+                                                                     response);
+			}
+		}
+}
+</pre></div></div>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 容器中声明式处理</h3>
+      <p>声明式的处理主要依靠容器自己来完成，即产生异常时抛出给容器，但不能让容器将这些底层信息返回给客户端，所以需要在web.xml文件中添加配置说明，通知容器在捕获到异常时应该将什么样的页面返回给客户端。一旦使用声明式处理方式，则该项目下的任意一个文件错误或异常，都会跳到指定的错误处理页面。</p>
+      <p>具体的实现步骤如下：</p>
+      <p>步骤一、在代码中捕获到异常直接抛出（注意异常类型，必须是ServletException）</p>
+      <p>代码结构如下图所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>action <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">),</span>uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>action<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/list"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 使用dao访问数据库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//交给jsp来完成</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">getRequestDispatcher</span><span class="sh_symbol">(</span><span class="sh_string">"list3.jsp"</span><span class="sh_symbol">).</span><span class="sh_function">forward</span><span class="sh_symbol">(</span>request<span class="sh_symbol">,</span> </li><li>response<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span><span class="sh_usertype">Exception</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//将异常抛给容器来处理</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throw</span> <span class="sh_keyword">new</span> ServletException（e）；</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span><span class="sh_usertype">app</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"2.4"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee </span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span><span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;*.</span><span class="sh_keyword">do</span><span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;!--</span> 配置错误处理页面 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>error<span class="sh_symbol">-</span>page<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>exception<span class="sh_symbol">-</span>type<span class="sh_symbol">&gt;</span>javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">&lt;/</span>exception<span class="sh_symbol">-</span>type<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>location<span class="sh_symbol">&gt;/</span>error<span class="sh_symbol">.</span>jsp<span class="sh_symbol">&lt;/</span>location<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;/</span>error<span class="sh_symbol">-</span>page<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			               throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		String uri = request.getRequestURI();
+		String action = uri.substring(
+				uri.lastIndexOf("/"),uri.lastIndexOf("."));
+		if (action.equals("/list")) {
+			try {
+				// 使用dao访问数据库				
+				//交给jsp来完成
+				request.getRequestDispatcher("list3.jsp").forward(request, 
+response);
+			} catch (Exception e) {
+				e.printStackTrace();
+				//将异常抛给容器来处理
+				throw new ServletException（e）；
+			}
+		}
+}
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;ActionServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;web.ActionServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;ActionServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+  &lt;!-- 配置错误处理页面 --&gt;
+&lt;error-page&gt;
+		&lt;exception-type&gt;javax.servlet.ServletException&lt;/exception-type&gt;
+		&lt;location&gt;/error.jsp&lt;/location&gt;
+	  &lt;/error-page&gt;
+&lt;/web-app&gt;
+</pre></div></div>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 不同异常处理方式的应用场景</h3>
+      <p>程序级的异常最好选择编程式的处理方法，利用转发到达指定的错误处理页面。</p>
+      <p>系统级别的异常最好选择声明式的处理方法。</p>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 路径问题</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 什么是路径</h3>
+      <p>在JSP页面或Servlet中需要从一个组件到另一个组件的跳转，通常以链接、表单提交、重定向、转发的形式来完成，其中对目标位置的标识即路径。</p>
+      <ul class="list">
+        <li>链接地址&lt;a href=”url”&gt;链接文本&lt;/a&gt;
+</li>
+        <li>表单提交&lt;form action=”url”&gt;
+</li>
+        <li>重定向response.sendRedirect（url）；
+</li>
+        <li>转发request.getRequestDispatcher（url）；
+</li>
+      </ul>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 什么是相对路径</h3>
+      <p>相对路径指的是相对于当前位置，为了到达目标文件要经过的路径。书写格式上不以“/“开头，如果为了退至上一级目录可以”../“开头。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图 – 3</p>
+      </div>
+      <p>在图-3中，从index.jsp访问a2.jsp，使用相对路径，具体值为“a/a2.jsp“。</p>
+      <p>从a1.jsp访问index.jsp，使用相对路径，具体值为“../index.jsp“。</p>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 什么是绝对路径</h3>
+      <p>绝对路径指的是，不管当前文档所在的位置在应用的哪里，都会从一个固定的点出发，然后构建到达目标文件所需要经过的路径。通常绝对路径在书写格式上以“/”开头。这个固定的点可能是应用名，也可能是应用名之后。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图 -  4</p>
+      </div>
+      <p>在图-4中，从index.jsp访问a2.jsp，使用绝对路径，非转发的情况下具体值为“/appName/a/a2.jsp“。</p>
+      <p>从a1.jsp访问index.jsp，使用绝对路径，非转发的情况下具体值为“/appName/index.jsp“。</p>
+      <a name="Key01_03_04">
+      </a>
+      <h3>1.3.4. 路径的处理技巧</h3>
+      <p>对于以下四种常用的需要写路径的代码，在编写绝对路径时起始点是不同的，具体区别如下：</p>
+      <ul class="list">
+        <li>链接地址&lt;a href=”/appName”&gt;链接文本&lt;/a&gt;
+</li>
+        <li>表单提交&lt;form action=”/appName”&gt;
+</li>
+        <li>重定向response.sendRedirect（”/appName”）；
+</li>
+        <li>转发request.getRequestDispatcher（”/xxx”）；
+</li>
+      </ul>
+      <p>链接地址，表单提交，重定向由于都是浏览器发出的请求，为了到达指定的应用内的资源，所以斜杠后面从应用名开始写；转发位于服务器端，已经在具体的应用内部了，所以斜杠后面从应用名之后开始写。</p>
+      <p>由于Web应用的真实部署名称和测试时的名称未必一样，所以使用绝对路径时如果应用名写成定值则会带来变更的麻烦。为了获取当前应用的实际部署名称可以使用如下代码来动态获取。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>request<span class="sh_symbol">.</span><span class="sh_function">getContextPath</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String request.getContextPath();
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

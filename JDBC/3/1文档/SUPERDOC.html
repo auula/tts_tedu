@@ -1,0 +1,326 @@
+
+<!-- saved from url=(0092)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="19060804610"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#Key01">JDBC高级编程</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#Key02">DAO</a>
+        </li>
+      </ol>
+      <h1>1. JDBC高级编程</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. JDBC高级编程</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 事务简介</h3>
+      <p>事务（Transaction）：数据库中保证交易可靠的机制。JDBC支持数据库中的事务概念，并且在JDBC中，事务默认是自动提交的。</p>
+      <p>可能存在的问题：某些业务逻辑必须在一个事务中完成。如图-1所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图-1事务示意图</p>
+      </div>
+      <p>事务特性介绍：ACID</p>
+      <ul class="list">
+        <li>原子性（Atomicity）：事务必须是原子工作单元；对于其数据修改，要么全都执行，要么全都不执行
+</li>
+        <li>一致性（Consistency）：事务在完成时，必须使所有的数据都保持一致状态
+</li>
+        <li>隔离性（Isolation）：由并发事务所作的修改必须与任何其它并发事务所作的修改隔离
+</li>
+        <li>持久性（Durability）：事务完成之后，它对于系统的影响是永久性的
+</li>
+      </ul>
+      <p>事务是数据库的概念，JDBC支持事务，本质还是在数据库中实现的。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. JDBC事务API</h3>
+      <p>JDBC中和事务相关API：</p>
+      <ul class="list">
+        <li>Connection.getAutoCommit() :获得当前事务的提交方式，默认为true
+</li>
+        <li>Connection.setAutoCommit():设置事务的提交属性，参数是true：自动提交；false：不自动提交
+</li>
+        <li>Connection.commit():提交事务
+</li>
+        <li>Connection.rollback():回滚事务
+</li>
+      </ul>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. JDBC标准事务编程模式</h3>
+      <p>JDBC处理事务的通常模式：</p>
+      <ul class="list">
+        <li>先将事务的自动提交关闭；
+</li>
+        <li>执行事务中的若干SQL语句；
+</li>
+        <li>事务提交；SQL失败则回滚；
+</li>
+        <li>恢复JDBC的事务提交状态；释放资源。
+</li>
+      </ul>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">try</span><span class="sh_cbracket">{</span></li><li><span class="sh_comment">// 1.定义用于在事务中执行的SQL语句</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql1 <span class="sh_symbol">=</span> <span class="sh_string">"update account set amount = amount - "</span> <span class="sh_symbol">+</span> amount <span class="sh_symbol">+</span> <span class="sh_string">" where id = '"</span> <span class="sh_symbol">+</span> from <span class="sh_symbol">+</span> <span class="sh_string">"'"</span><span class="sh_symbol">;</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql2 <span class="sh_symbol">=</span> <span class="sh_string">"update account set amount = amount + "</span> <span class="sh_symbol">+</span> amount <span class="sh_symbol">+</span> <span class="sh_string">" where id = '"</span> <span class="sh_symbol">+</span> to <span class="sh_symbol">+</span> <span class="sh_string">"'"</span><span class="sh_symbol">;</span></li><li>autoCommit <span class="sh_symbol">=</span> con<span class="sh_symbol">.</span><span class="sh_function">getAutoCommit</span><span class="sh_symbol">();</span> <span class="sh_comment">// 2.获得自动提交状态</span></li><li>con<span class="sh_symbol">.</span><span class="sh_function">setAutoCommit</span><span class="sh_symbol">(</span><span class="sh_keyword">false</span><span class="sh_symbol">);</span> <span class="sh_comment">// 3.关闭自动提交</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">executeUpdate</span><span class="sh_symbol">(</span>sql1<span class="sh_symbol">);</span> <span class="sh_comment">// 4.执行SQL语句</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">executeUpdate</span><span class="sh_symbol">(</span>sql2<span class="sh_symbol">);</span></li><li>con<span class="sh_symbol">.</span><span class="sh_function">commit</span><span class="sh_symbol">();</span> <span class="sh_comment">// 5.提交</span></li><li>con<span class="sh_symbol">.</span><span class="sh_function">setAutoCommit</span><span class="sh_symbol">(</span>autoCommit<span class="sh_symbol">);</span> <span class="sh_comment">// 6.将自动提交功能恢复到原来的状态</span></li><li><span class="sh_comment">//其他语句;</span></li><li><span class="sh_cbracket">}</span><span class="sh_keyword">catch</span><span class="sh_symbol">(</span><span class="sh_usertype">SQLException</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;conn<span class="sh_symbol">.</span><span class="sh_function">rollback</span><span class="sh_symbol">();</span><span class="sh_comment">//异常时回滚</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">try{
+// 1.定义用于在事务中执行的SQL语句
+String sql1 = "update account set amount = amount - " + amount + " where id = '" + from + "'";
+String sql2 = "update account set amount = amount + " + amount + " where id = '" + to + "'";
+autoCommit = con.getAutoCommit(); // 2.获得自动提交状态
+con.setAutoCommit(false); // 3.关闭自动提交
+stmt.executeUpdate(sql1); // 4.执行SQL语句
+stmt.executeUpdate(sql2);
+con.commit(); // 5.提交
+con.setAutoCommit(autoCommit); // 6.将自动提交功能恢复到原来的状态
+//其他语句;
+}catch(SQLException e){
+	conn.rollback();//异常时回滚
+}
+</pre></div></div>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 批量更新</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 批量更新的优势</h3>
+      <p>批处理：发送到数据库作为一个单元执行的一组更新语句。批处理降低了应用程序和数据库之间的网络调用，相比单个SQL语句的处理，批处理更为有效。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 批量更新API</h3>
+      <ul class="list">
+        <li>addBatch(String sql) 
+</li>
+        <li>Statement类的方法, 可以将多条sql语句添加Statement对象的SQL语句列表中
+</li>
+        <li>addBatch()
+</li>
+        <li>PreparedStatement类的方法, 可以将多条预编译的sql语句添加到PreparedStatement对象的SQL语句列表中
+</li>
+        <li>executeBatch()
+</li>
+        <li>把Statement对象或PreparedStatement对象语句列表中的所有SQL语句发送给数据库进行处理
+</li>
+        <li>clearBatch()
+</li>
+        <li>清空当前SQL语句列表
+</li>
+      </ul>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 防止OutOfMemory</h3>
+      <p>如果PreparedStatement对象中的SQL列表包含过多的待处理SQL语句, 可能会产生OutOfMemory错误。所以需要及时处理SQL语句列表。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span>inti <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;</span> <span class="sh_number">1000</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>sql <span class="sh_symbol">=</span> “insert <span class="sh_usertype">into</span><span class="sh_normal"> </span><span class="sh_function">emp</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">)</span> <span class="sh_function">values</span><span class="sh_symbol">(</span>emp_seq<span class="sh_symbol">.</span>nextval<span class="sh_symbol">,</span> <span class="sh_string">'name" + i + "'")"</span><span class="sh_symbol">;</span></li><li><span class="sh_comment">//将SQL语句加入到Batch中</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">addBatch</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li><span class="sh_comment">//根据需要设置及时处理的条件</span></li><li><span class="sh_keyword">if</span> <span class="sh_symbol">(</span>i <span class="sh_symbol">%</span> <span class="sh_number">500</span> <span class="sh_symbol">==</span> <span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  </li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">executeBatch</span><span class="sh_symbol">();</span>  <span class="sh_comment">//及时处理</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">clearBatch</span><span class="sh_symbol">();</span>  <span class="sh_comment">//清空列表</span></li><li><span class="sh_cbracket">}</span>  </li><li><span class="sh_cbracket">}</span></li><li><span class="sh_comment">// 最后一次列表不足500条，处理</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">executeBatch</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">for (inti = 0; i&lt; 1000; i++) {
+sql = “insert into emp(empno, ename) values(emp_seq.nextval, 'name" + i + "'")";
+//将SQL语句加入到Batch中
+stmt.addBatch(sql);
+//根据需要设置及时处理的条件
+if (i % 500 == 0) {  
+stmt.executeBatch();  //及时处理
+stmt.clearBatch();  //清空列表
+}  
+}
+// 最后一次列表不足500条，处理
+stmt.executeBatch();
+</pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 返回自动主键</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 关联数据插入</h3>
+      <p>在主表/从表关联关系下，插入数据时需要保证数据完整性。关联数据插入时的流程：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图-2 关联数据插入流程</p>
+      </div>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 通过序列产生主键（Oracle）</h3>
+      <p>不同数据库的主键自增方式不同，在oracle中，建议主键通过序列获得。在SQL语句中，指定由哪个序列为表产生主键：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> </li><li>“insert <span class="sh_usertype">into</span><span class="sh_normal"> </span><span class="sh_function">dept</span> <span class="sh_symbol">(</span>deptno<span class="sh_symbol">,</span> dname<span class="sh_symbol">,</span> loc<span class="sh_symbol">)</span> <span class="sh_function">values</span><span class="sh_symbol">(</span>dept_seq<span class="sh_symbol">.</span>nextval<span class="sh_symbol">,?,?)</span>”；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String sql = 
+“insert into dept (deptno, dname, loc) values(dept_seq.nextval,?,?)”；
+</pre></div></div>
+      <p>如果仅仅是单表操作，不需要返回刚刚插入的主键值，但如果有关联关系的表操作，需要获得刚刚插入的主键值。</p>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. JDBC返回自动主键API</h3>
+      <p>方法一：先通过序列的nextval获取序列的下一个值，再作为参数插入到主表和从表。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">//1.获得主键的SQL语句</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> <span class="sh_string">"select dept_seq.nextval as id from dual"</span><span class="sh_symbol">;</span>   </li><li><span class="sh_comment">//执行上条SQL语句，通过ResultSet获得主键值，省略</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">//2.利用刚刚得到的主键值插入主表</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql1<span class="sh_symbol">=</span>“insert <span class="sh_usertype">into</span><span class="sh_normal"> </span><span class="sh_function">dept</span><span class="sh_symbol">(</span>deptno<span class="sh_symbol">,</span> dname<span class="sh_symbol">,</span> loc<span class="sh_symbol">)</span> <span class="sh_function">values</span><span class="sh_symbol">(?,?,?)</span><span class="sh_string">";  </span></li><li><span class="sh_string">//执行insert语句，省略</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_string">//3.利用刚刚得到的主键值，作为外键插入从表</span></li><li><span class="sh_string">String sql2 = “insert into emp(empno, ename, deptno)  values(?,?,?)”;</span></li><li><span class="sh_string">//执行insert语句，省略</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">//1.获得主键的SQL语句
+String sql = "select dept_seq.nextval as id from dual";   
+//执行上条SQL语句，通过ResultSet获得主键值，省略
+
+//2.利用刚刚得到的主键值插入主表
+String sql1=“insert into dept(deptno, dname, loc) values(?,?,?)";  
+//执行insert语句，省略
+
+//3.利用刚刚得到的主键值，作为外键插入从表
+String sql2 = “insert into emp(empno, ename, deptno)  values(?,?,?)”;
+//执行insert语句，省略
+</pre></div></div>
+      <p>这种方式操作简单，但需要额外多一次访问数据库，影响性能。</p>
+      <p>方法二（建议）：利用PreparedStatement的getGeneratedKeys方法获取自增类型的数据，性能良好，只要一次SQL交互。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">//1.插入主表SQL，使用序列作为主键</span></li><li>sql <span class="sh_symbol">=</span> <span class="sh_string">"insert into dept (deptno, dname, loc) values(dept_seq.nextval,?,?)"</span><span class="sh_symbol">;</span></li><li><span class="sh_comment">//2.定义stmt时，第二个参数是GeneratedKeys的主键的字段名列表，类型是字符串数组</span></li><li>stmt <span class="sh_symbol">=</span> con<span class="sh_symbol">.</span><span class="sh_function">prepareStatement</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">,</span> <span class="sh_keyword">new</span> String<span class="sh_symbol">[]</span> <span class="sh_cbracket">{</span> <span class="sh_string">"deptno"</span> <span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li><span class="sh_comment">//3.将占位符赋值</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">setString</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> “Research”<span class="sh_symbol">);</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">setString</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span> “beijing”<span class="sh_symbol">);</span></li><li><span class="sh_comment">//4.执行插入主表的insert语句</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">executeUpdate</span><span class="sh_symbol">();</span></li><li><span class="sh_comment">//5.获得主键值</span></li><li>rs <span class="sh_symbol">=</span> stmt<span class="sh_symbol">.</span><span class="sh_function">getGeneratedKeys</span><span class="sh_symbol">();</span></li><li>rs<span class="sh_symbol">.</span><span class="sh_function">next</span><span class="sh_symbol">();</span></li><li>intdeptno <span class="sh_symbol">=</span> rs<span class="sh_symbol">.</span><span class="sh_function">getInt</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li><span class="sh_comment">//6.将刚刚得到的主表主键值，作为外键插入到从表中。</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql2 <span class="sh_symbol">=</span> “insert <span class="sh_usertype">into</span><span class="sh_normal"> </span><span class="sh_function">emp</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> deptno<span class="sh_symbol">)</span>  <span class="sh_function">values</span><span class="sh_symbol">(?,?,?)</span>”<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">//1.插入主表SQL，使用序列作为主键
+sql = "insert into dept (deptno, dname, loc) values(dept_seq.nextval,?,?)";
+//2.定义stmt时，第二个参数是GeneratedKeys的主键的字段名列表，类型是字符串数组
+stmt = con.prepareStatement(sql, new String[] { "deptno" });
+//3.将占位符赋值
+stmt.setString(1, “Research”);
+stmt.setString(2, “beijing”);
+//4.执行插入主表的insert语句
+stmt.executeUpdate();
+//5.获得主键值
+rs = stmt.getGeneratedKeys();
+rs.next();
+intdeptno = rs.getInt(1);
+//6.将刚刚得到的主表主键值，作为外键插入到从表中。
+String sql2 = “insert into emp(empno, ename, deptno)  values(?,?,?)”;
+</pre></div></div>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. 分页查询</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. JDBC实现Oracle分页查询</h3>
+      <p>利用数据库的分页SQL语句，实现在Java程序中数据表的分页。在Oracle中使用rownum，以获得分页结果集：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> <span class="sh_string">"select * from (select  rownumrn, empno, ename, job,mgr, hiredate, sal, comm, deptno from (select * from emp order by empno) ) where rn between ? and ?"</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String sql = "select * from (select  rownumrn, empno, ename, job,mgr, hiredate, sal, comm, deptno from (select * from emp order by empno) ) where rn between ? and ?";
+</pre></div></div>
+      <p>两个占位符分别是结果集的起点和终点，计算后，替代SQL中的占位符：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> begin <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>page <span class="sh_symbol">-</span> <span class="sh_number">1</span><span class="sh_symbol">)</span> <span class="sh_symbol">*</span> pageSize <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> end <span class="sh_symbol">=</span> begin <span class="sh_symbol">+</span> pageSize <span class="sh_symbol">-</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	int begin = (page - 1) * pageSize + 1;
+	int end = begin + pageSize - 1;
+</pre></div></div>
+      <p>其中：</p>
+      <ul class="list">
+        <li>page:返回第几页
+</li>
+        <li>pageSize：每页多少条
+</li>
+      </ul>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>stmt <span class="sh_symbol">=</span> con<span class="sh_symbol">.</span><span class="sh_function">prepareStatement</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">setInt</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> begin<span class="sh_symbol">);</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">setInt</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span> end<span class="sh_symbol">);</span></li><li>rs <span class="sh_symbol">=</span> stmt<span class="sh_symbol">.</span><span class="sh_function">executeQuery</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">stmt = con.prepareStatement(sql);
+stmt.setInt(1, begin);
+stmt.setInt(2, end);
+rs = stmt.executeQuery();
+</pre></div></div>
+      <p>这种分页方式，每次只向数据库请求一页的数据量，内存压力小适合大数据量数据表。</p>
+      <p>另一种分页策略介绍：基于缓存的分页技术（也被称作假分页），一次性把数据全部取出来放在缓存中,根据用户要看的页数(page)和每页记录数(pageSize),计算把哪些数据输出显示，将可滚动结果集的指针移动到指定位置。</p>
+      <p>这种方式只访问数据库一次 , 第一次取数比较慢 , 以后每页都从缓存中取 , 比较快，比较适合小数据量 , 如果数据量大 , 对内存压力较大。</p>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. JDBC实现MySQL分页查询</h3>
+      <p>不同数据库获取部分结果集的SQL是有区别的，在MySQL中的实现方式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li> select <span class="sh_symbol">*</span> from t <span class="sh_usertype">limit</span><span class="sh_normal"> </span>begin，pageSize<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;"> select * from t limit begin，pageSize;
+</pre></div></div>
+      <p>其中：</p>
+      <ul class="list">
+        <li>begin: 从第几条开始显示
+</li>
+        <li>pageSize:每页多少条
+</li>
+      </ul>
+      <p>在Java程序中，MySQL和Oracle分页的方式，仅限于SQL语句不同。</p>
+      <a name="Key02">
+      </a>
+      <h1>2. DAO</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 什么是DAO</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. DAO封装对数据的访问</h3>
+      <p>DAO (Data Access Object)：数据访问对象，是建立在数据库和业务层之间，封装所有对数据库的访问。</p>
+      <p>目的：数据访问逻辑和业务逻辑分开。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图-3 DAO在多层结构中的位置</p>
+      </div>
+      <p>为了建立一个健壮的Java应用，需将所有对数据源的访问操作抽象封装在一个公共API中，需要：</p>
+      <ul class="list">
+        <li>建立一个接口，接口中定义了应用程序中将会用到的所有事务方法
+</li>
+        <li>建立接口的实现类，实现接口对应的所有方法，和数据库直接交互
+</li>
+      </ul>
+      <p>在应用程序中，当需要和数据源交互时则使用DAO接口，不涉及任何数据库的具体操作。DAO通常包括：</p>
+      <p>1. 一个DAO工厂类；</p>
+      <p>2. 一个DAO接口；</p>
+      <p>3. 一个实现DAO接口的具体类；</p>
+      <p>4. 数据传递对象（实体对象（Entity）或值对象（Value Object，简称VO））.</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. 实体对象</h3>
+      <p>DAO层需要定义对数据库中表的访问。</p>
+      <p>对象关系映射(ORM：Object/Relation Mapping)描述对象和数据表之间的映射，将Java程序中的对象对应到关系数据库的表中：</p>
+      <ul class="list">
+        <li>表和类对应
+</li>
+        <li>表中的字段和类的属性对应
+</li>
+        <li>记录和对象对应
+</li>
+      </ul>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 编写DAO</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. 查询方法</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_usertype">Account</span><span class="sh_normal"> </span><span class="sh_function">findById</span><span class="sh_symbol">(</span><span class="sh_usertype">Integer</span><span class="sh_normal"> </span>id<span class="sh_symbol">)</span> <span class="sh_keyword">throws</span> SQLException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Connection</span><span class="sh_normal"> </span>conn <span class="sh_symbol">=</span> <span class="sh_function">getConnection</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> SELECT_BY_ID<span class="sh_symbol">;</span> <span class="sh_comment">//预先定义好的SQL查询语句</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PreparedStatementps <span class="sh_symbol">=</span> conn<span class="sh_symbol">.</span><span class="sh_function">prepareStatement</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ps<span class="sh_symbol">.</span><span class="sh_function">setInt</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> id<span class="sh_symbol">);</span><span class="sh_comment">//传入参数</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ResultSetrs <span class="sh_symbol">=</span> ps<span class="sh_symbol">.</span><span class="sh_function">executeQuery</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Account</span><span class="sh_normal"> </span>account <span class="sh_symbol">=</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">(</span>rs<span class="sh_symbol">.</span><span class="sh_function">next</span><span class="sh_symbol">())</span><span class="sh_cbracket">{</span><span class="sh_comment">//处理结果集</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;account <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Account</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;account<span class="sh_symbol">.</span><span class="sh_function">setId</span><span class="sh_symbol">(</span>rs<span class="sh_symbol">.</span><span class="sh_function">getInt</span><span class="sh_symbol">(</span><span class="sh_string">"ACCOUNT_ID"</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//设置account对象所有的属性，略&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> account<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public Account findById(Integer id) throws SQLException {
+		Connection conn = getConnection();
+		String sql = SELECT_BY_ID; //预先定义好的SQL查询语句
+		PreparedStatementps = conn.prepareStatement(sql);
+		ps.setInt(1, id);//传入参数
+		ResultSetrs = ps.executeQuery();
+		Account account = null;
+		while(rs.next()){//处理结果集
+			account = new Account();
+			account.setId(rs.getInt("ACCOUNT_ID"));
+			//设置account对象所有的属性，略		}
+		return account;
+	}
+</pre></div></div>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. 更新方法</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">publicboolean</span><span class="sh_normal"> </span><span class="sh_function">update</span><span class="sh_symbol">(</span><span class="sh_usertype">Account</span><span class="sh_normal"> </span>account<span class="sh_symbol">)</span> <span class="sh_keyword">throws</span> SQLException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Connection</span><span class="sh_normal"> </span>conn <span class="sh_symbol">=</span> <span class="sh_function">getConnection</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> UPDATE_STATUS<span class="sh_symbol">;</span> <span class="sh_comment">//预先定义好的SQL语句</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PreparedStatementps <span class="sh_symbol">=</span> conn<span class="sh_symbol">.</span><span class="sh_function">prepareStatement</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ps<span class="sh_symbol">.</span><span class="sh_function">setInt</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span>account<span class="sh_symbol">.</span><span class="sh_function">getId</span><span class="sh_symbol">());</span><span class="sh_comment">//传入参数</span></li><li>ps<span class="sh_symbol">.</span><span class="sh_function">setString</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span> account<span class="sh_symbol">.</span><span class="sh_function">getStatus</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span>  flag<span class="sh_symbol">=</span> ps<span class="sh_symbol">.</span><span class="sh_function">executeUpdate</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_symbol">(</span>flag<span class="sh_symbol">&gt;</span><span class="sh_number">0</span> <span class="sh_symbol">?</span> <span class="sh_keyword">true</span> <span class="sh_symbol">:</span> <span class="sh_keyword">false</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	publicboolean update(Account account) throws SQLException {
+		Connection conn = getConnection();
+		String sql = UPDATE_STATUS; //预先定义好的SQL语句
+		PreparedStatementps = conn.prepareStatement(sql);
+		ps.setInt(1,account.getId());//传入参数
+ps.setString(2, account.getStatus());
+		int  flag= ps.executeUpdate();
+		return (flag&gt;0 ? true : false);
+	}
+</pre></div></div>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. 异常处理机制</h3>
+      <p>多层系统的异常处理原则：</p>
+      <ul class="list">
+        <li>谁抛出的异常，谁捕捉处理，因为只有异常抛出者，知道怎样捕捉处理异常；
+</li>
+        <li>尽量在当前层中捕捉处理抛出的异常，尽量不要抛出到上层接口；
+</li>
+        <li>尽量在每层中封装每层的异常类，这样可准确定位异常抛出的层；
+</li>
+        <li>如异常无法捕捉处理，则向上层接口抛出，直至抛给JVM，尽量避免；
+</li>
+      </ul>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

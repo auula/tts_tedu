@@ -1,0 +1,613 @@
+
+<!-- saved from url=(0092)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="26324240922"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA HTMLCSSJS DAY02</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#case1">CSS使用示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#case2">CSS规则特性</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#case3">管理员列表-1</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#case4">管理员列表-2</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 CSS使用示例</h2>
+      <h3>1.1 问题</h3>
+      <p>使用CSS设置HTML文档的样式。</p>
+      <h3>1.2 方案</h3>
+      <p>CSS使用有3种方式：</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建文件</p>
+      <p>创建文件夹day02和css，如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>在css下创建c1.css，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/*定义外部样式表*/</span></li><li>p <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>silver<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/*定义外部样式表*/
+p {
+	background-color:silver;
+}
+</pre></div></div>
+      <p>在day02下创建demo1.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!--</span> CSS使用示例 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>CSS使用示例<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>定义内部样式表 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      h2 <span class="sh_cbracket">{</span></li><li>color<span class="sh_symbol">:</span>red<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li><span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>引用外部样式表 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>link rel<span class="sh_symbol">=</span><span class="sh_string">"stylesheet"</span> type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span> href<span class="sh_symbol">=</span><span class="sh_string">"../css/c1.css"</span> <span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>内联方式 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>h1 style<span class="sh_symbol">=</span><span class="sh_string">"color:blue;"</span><span class="sh_symbol">&gt;</span>CSS的使用<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>内部样式表 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>h2<span class="sh_symbol">&gt;</span>CSS有<span class="sh_number">3</span>种用法<span class="sh_symbol">&lt;/</span>h2<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>外部样式表 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">1</span><span class="sh_symbol">.</span>内联方式。<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">2</span><span class="sh_symbol">.</span>内部样式表。<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">3</span><span class="sh_symbol">.</span>外部样式表。<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!-- CSS使用示例 --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;CSS使用示例&lt;/title&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;!--定义内部样式表 --&gt;
+&lt;style type="text/css"&gt;
+      h2 {
+color:red;
+      }
+&lt;/style&gt;
+&lt;!--引用外部样式表 --&gt;
+&lt;link rel="stylesheet" type="text/css" href="../css/c1.css" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!--内联方式 --&gt;
+&lt;h1 style="color:blue;"&gt;CSS的使用&lt;/h1&gt;
+&lt;!--内部样式表 --&gt;
+&lt;h2&gt;CSS有3种用法&lt;/h2&gt;
+&lt;!--外部样式表 --&gt;
+&lt;p&gt;1.内联方式。&lt;/p&gt;
+&lt;p&gt;2.内部样式表。&lt;/p&gt;
+&lt;p&gt;3.外部样式表。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>使用浏览器打开demo1.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <h3>1.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <p>c1.css完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/*定义外部样式表*/</span></li><li>p <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>silver<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/*定义外部样式表*/
+p {
+	background-color:silver;
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>demo1.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!--</span> CSS使用示例 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>CSS使用示例<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 定义内部样式表 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      h2 <span class="sh_cbracket">{</span></li><li>color<span class="sh_symbol">:</span>red<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li><span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 引用外部样式表 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>link rel<span class="sh_symbol">=</span><span class="sh_string">"stylesheet"</span> type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span> href<span class="sh_symbol">=</span><span class="sh_string">"../css/c1.css"</span> <span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 内联方式 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>h1 style<span class="sh_symbol">=</span><span class="sh_string">"color:blue;"</span><span class="sh_symbol">&gt;</span>CSS的使用<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 内部样式表 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>h2<span class="sh_symbol">&gt;</span>CSS有<span class="sh_number">3</span>种用法<span class="sh_symbol">&lt;/</span>h2<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 外部样式表 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">1</span><span class="sh_symbol">.</span>内联方式。<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">2</span><span class="sh_symbol">.</span>内部样式表。<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span><span class="sh_number">3</span><span class="sh_symbol">.</span>外部样式表。<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!-- CSS使用示例 --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;CSS使用示例&lt;/title&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;!-- 定义内部样式表 --&gt;
+&lt;style type="text/css"&gt;
+      h2 {
+color:red;
+      }
+&lt;/style&gt;
+&lt;!-- 引用外部样式表 --&gt;
+&lt;link rel="stylesheet" type="text/css" href="../css/c1.css" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 内联方式 --&gt;
+&lt;h1 style="color:blue;"&gt;CSS的使用&lt;/h1&gt;
+&lt;!-- 内部样式表 --&gt;
+&lt;h2&gt;CSS有3种用法&lt;/h2&gt;
+&lt;!-- 外部样式表 --&gt;
+&lt;p&gt;1.内联方式。&lt;/p&gt;
+&lt;p&gt;2.内部样式表。&lt;/p&gt;
+&lt;p&gt;3.外部样式表。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 CSS规则特性</h2>
+      <h3>2.1 问题</h3>
+      <p>创建HTML文档，验证CSS规则特性。</p>
+      <h3>2.2 方案</h3>
+      <p>CSS规则特性：</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建文件</p>
+      <p>在dau02下创建demo2.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!--</span> CSS规则特性 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>CSS规则特性<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_comment">/* 继承性 */</span></li><li>body <span class="sh_cbracket">{</span></li><li>        font<span class="sh_symbol">-</span>family<span class="sh_symbol">:</span> <span class="sh_string">'微软雅黑'</span><span class="sh_symbol">,</span><span class="sh_string">'文泉驿正黑'</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_comment">/* 层叠性 */</span></li><li>      h1 <span class="sh_cbracket">{</span></li><li>color<span class="sh_symbol">:</span>red<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      h1 <span class="sh_cbracket">{</span></li><li>background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>silver<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_comment">/* 优先级 */</span></li><li>p <span class="sh_cbracket">{</span></li><li>color<span class="sh_symbol">:</span>red<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>p <span class="sh_cbracket">{</span></li><li>color<span class="sh_symbol">:</span>blue<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li><span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>AAA<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>BBB<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!-- CSS规则特性 --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;CSS规则特性&lt;/title&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;style type="text/css"&gt;
+      /* 继承性 */
+body {
+        font-family: '微软雅黑','文泉驿正黑';
+      }
+      /* 层叠性 */
+      h1 {
+color:red;
+      }
+      h1 {
+background-color:silver;
+      }
+      /* 优先级 */
+p {
+color:red;
+      }
+p {
+color:blue;
+      }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;AAA&lt;/h1&gt;
+&lt;p&gt;BBB&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>使用浏览器打开demo2.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <h3>2.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <p>demo2.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!--</span> CSS规则特性 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>CSS规则特性<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_comment">/* 继承性 */</span></li><li>body <span class="sh_cbracket">{</span></li><li>        font<span class="sh_symbol">-</span>family<span class="sh_symbol">:</span> <span class="sh_string">'微软雅黑'</span><span class="sh_symbol">,</span><span class="sh_string">'文泉驿正黑'</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_comment">/* 层叠性 */</span></li><li>      h1 <span class="sh_cbracket">{</span></li><li>color<span class="sh_symbol">:</span>red<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      h1 <span class="sh_cbracket">{</span></li><li>background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>silver<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_comment">/* 优先级 */</span></li><li>p <span class="sh_cbracket">{</span></li><li>color<span class="sh_symbol">:</span>red<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>p <span class="sh_cbracket">{</span></li><li>color<span class="sh_symbol">:</span>blue<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li><span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>AAA<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>BBB<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!-- CSS规则特性 --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;CSS规则特性&lt;/title&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;style type="text/css"&gt;
+      /* 继承性 */
+body {
+        font-family: '微软雅黑','文泉驿正黑';
+      }
+      /* 层叠性 */
+      h1 {
+color:red;
+      }
+      h1 {
+background-color:silver;
+      }
+      /* 优先级 */
+p {
+color:red;
+      }
+p {
+color:blue;
+      }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;AAA&lt;/h1&gt;
+&lt;p&gt;BBB&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 管理员列表-1</h2>
+      <h3>3.1 问题</h3>
+      <p>定义管理员列表页面的整体布局。</p>
+      <h3>3.2 方案</h3>
+      <p>使用分区元素定义页面布局。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建文件</p>
+      <p>在day02下创建img文件夹，导入页面所需图片，如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p>在day02下创建admin_list.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>管理员列表<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_comment">/* 1.设置页面整体布局 */</span></li><li>body <span class="sh_cbracket">{</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>padding<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>div <span class="sh_cbracket">{</span></li><li>border<span class="sh_symbol">:</span>1px solid #<span class="sh_number">000</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #logo <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>960px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>61px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #nav <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span><span class="sh_number">100</span><span class="sh_symbol">%;</span></li><li>height<span class="sh_symbol">:</span>91px<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #main <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span><span class="sh_number">100</span><span class="sh_symbol">%;</span></li><li>height<span class="sh_symbol">:</span>410px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>padding<span class="sh_symbol">:</span>10px <span class="sh_number">0</span> <span class="sh_number">0</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #footer <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>960px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>50px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>content <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>950px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>390px<span class="sh_symbol">;</span></li><li>border<span class="sh_symbol">:</span>5px solid #8ac1db<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>operate <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>40px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>data <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>310px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>pages <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>40px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span>      </li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> logo区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"logo"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>导航区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"nav"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>主体区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"main"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>内容区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"content"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>操作区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"operate"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>数据区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"data"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>分页区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"pages"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>版权区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"footer"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;管理员列表&lt;/title&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;style type="text/css"&gt;
+      /* 1.设置页面整体布局 */
+body {
+margin:0;
+padding:0;
+      }
+div {
+border:1px solid #000;
+      }
+      #logo {
+width:960px;
+height:61px;
+margin:0 auto;
+      }
+      #nav {
+width:100%;
+height:91px;
+      }
+      #main {
+width:100%;
+height:410px;
+margin:0 auto;
+padding:10px 0 0 0;
+      }
+      #footer {
+width:960px;
+height:50px;
+margin:0 auto;
+      }
+      .content {
+width:950px;
+height:390px;
+border:5px solid #8ac1db;
+margin:0 auto;
+      }
+      .operate {
+width:910px;
+height:40px;
+margin:0 auto;
+      }
+      .data {
+width:910px;
+height:310px;
+margin:0 auto;
+      }
+      .pages {
+width:910px;
+height:40px;
+margin:0 auto;
+      }      
+
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- logo区 --&gt;
+&lt;div id="logo"&gt;&lt;/div&gt;
+&lt;!--导航区 --&gt;
+&lt;div id="nav"&gt;&lt;/div&gt;
+&lt;!--主体区 --&gt;
+&lt;div id="main"&gt;
+&lt;!--内容区 --&gt;
+&lt;div class="content"&gt;
+&lt;!--操作区 --&gt;
+&lt;div class="operate"&gt;&lt;/div&gt;
+&lt;!--数据区 --&gt;
+&lt;div class="data"&gt;&lt;/div&gt;
+&lt;!--分页区 --&gt;
+&lt;div class="pages"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--版权区 --&gt;
+&lt;div id="footer"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>使用浏览器打开admin_list.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <h3>3.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <p>admin_list.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>管理员列表<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_comment">/* 1.设置页面整体布局 */</span></li><li>body <span class="sh_cbracket">{</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>padding<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>div <span class="sh_cbracket">{</span></li><li>border<span class="sh_symbol">:</span>1px solid #<span class="sh_number">000</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #logo <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>960px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>61px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #nav <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span><span class="sh_number">100</span><span class="sh_symbol">%;</span></li><li>height<span class="sh_symbol">:</span>91px<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #main <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span><span class="sh_number">100</span><span class="sh_symbol">%;</span></li><li>height<span class="sh_symbol">:</span>410px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>padding<span class="sh_symbol">:</span>10px <span class="sh_number">0</span> <span class="sh_number">0</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #footer <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>960px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>50px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>content <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>950px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>390px<span class="sh_symbol">;</span></li><li>border<span class="sh_symbol">:</span>5px solid #8ac1db<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>operate <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>40px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>data <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>310px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>pages <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>40px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span>     </li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> logo区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"logo"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 导航区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"nav"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 主体区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"main"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 内容区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"content"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 操作区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"operate"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 数据区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"data"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 分页区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"pages"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 版权区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"footer"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;管理员列表&lt;/title&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;style type="text/css"&gt;
+      /* 1.设置页面整体布局 */
+body {
+margin:0;
+padding:0;
+      }
+div {
+border:1px solid #000;
+      }
+      #logo {
+width:960px;
+height:61px;
+margin:0 auto;
+      }
+      #nav {
+width:100%;
+height:91px;
+      }
+      #main {
+width:100%;
+height:410px;
+margin:0 auto;
+padding:10px 0 0 0;
+      }
+      #footer {
+width:960px;
+height:50px;
+margin:0 auto;
+      }
+      .content {
+width:950px;
+height:390px;
+border:5px solid #8ac1db;
+margin:0 auto;
+      }
+      .operate {
+width:910px;
+height:40px;
+margin:0 auto;
+      }
+      .data {
+width:910px;
+height:310px;
+margin:0 auto;
+      }
+      .pages {
+width:910px;
+height:40px;
+margin:0 auto;
+      }     
+
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- logo区 --&gt;
+&lt;div id="logo"&gt;&lt;/div&gt;
+&lt;!-- 导航区 --&gt;
+&lt;div id="nav"&gt;&lt;/div&gt;
+&lt;!-- 主体区 --&gt;
+&lt;div id="main"&gt;
+&lt;!-- 内容区 --&gt;
+&lt;div class="content"&gt;
+&lt;!-- 操作区 --&gt;
+&lt;div class="operate"&gt;&lt;/div&gt;
+&lt;!-- 数据区 --&gt;
+&lt;div class="data"&gt;&lt;/div&gt;
+&lt;!-- 分页区 --&gt;
+&lt;div class="pages"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- 版权区 --&gt;
+&lt;div id="footer"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 管理员列表-2</h2>
+      <h3>4.1 问题</h3>
+      <p>为管理员列表页面设置背景。</p>
+      <h3>4.2 方案</h3>
+      <p>使用background-color设置背景色；</p>
+      <p>使用background-image设置背景图片。</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：修改文件</p>
+      <p>修改admin_list.html，为页面设置背景，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>管理员列表<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_comment">/* 1.设置页面整体布局 */</span></li><li>body <span class="sh_cbracket">{</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>padding<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>div <span class="sh_cbracket">{</span></li><li>border<span class="sh_symbol">:</span>1px solid #<span class="sh_number">000</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #logo <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>960px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>61px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #nav <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span><span class="sh_number">100</span><span class="sh_symbol">%;</span></li><li>height<span class="sh_symbol">:</span>91px<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #main <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span><span class="sh_number">100</span><span class="sh_symbol">%;</span></li><li>height<span class="sh_symbol">:</span>410px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>padding<span class="sh_symbol">:</span>10px <span class="sh_number">0</span> <span class="sh_number">0</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #footer <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>960px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>50px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>content <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>950px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>390px<span class="sh_symbol">;</span></li><li>border<span class="sh_symbol">:</span>5px solid #8ac1db<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>operate <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>40px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>data <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>310px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>pages <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>40px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span>      </li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">      <span class="sh_comment">/* 2.设置页面背景 */</span></li><li class="bold_code">body <span class="sh_cbracket">{</span></li><li class="bold_code">background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>#0EA8D8<span class="sh_symbol">;</span></li><li class="bold_code">      <span class="sh_cbracket">}</span></li><li class="bold_code">      #logo <span class="sh_cbracket">{</span></li><li class="bold_code">background<span class="sh_symbol">-</span>image<span class="sh_symbol">:</span><span class="sh_function">url</span><span class="sh_symbol">(</span><span class="sh_string">'../img/top_bg.png'</span><span class="sh_symbol">);</span></li><li class="bold_code">      <span class="sh_cbracket">}</span></li><li class="bold_code">      #main <span class="sh_cbracket">{</span></li><li class="bold_code">background<span class="sh_symbol">:</span><span class="sh_function">url</span><span class="sh_symbol">(</span><span class="sh_string">'../img/content_bg.png'</span><span class="sh_symbol">)</span> repeat<span class="sh_symbol">-</span>x top<span class="sh_symbol">;</span></li><li class="bold_code">      <span class="sh_cbracket">}</span></li><li class="bold_code">      #nav <span class="sh_cbracket">{</span></li><li class="bold_code">background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>#0488BB<span class="sh_symbol">;</span></li><li class="bold_code">      <span class="sh_cbracket">}</span></li><li class="bold_code">      <span class="sh_symbol">.</span>content <span class="sh_cbracket">{</span></li><li class="bold_code">background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>#e8f3f8<span class="sh_symbol">;</span></li><li class="bold_code">      <span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> logo区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"logo"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>导航区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"nav"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>主体区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"main"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>内容区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"content"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>操作区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"operate"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>数据区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"data"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>分页区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"pages"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span>版权区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"footer"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;管理员列表&lt;/title&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;style type="text/css"&gt;
+      /* 1.设置页面整体布局 */
+body {
+margin:0;
+padding:0;
+      }
+div {
+border:1px solid #000;
+      }
+      #logo {
+width:960px;
+height:61px;
+margin:0 auto;
+      }
+      #nav {
+width:100%;
+height:91px;
+      }
+      #main {
+width:100%;
+height:410px;
+margin:0 auto;
+padding:10px 0 0 0;
+      }
+      #footer {
+width:960px;
+height:50px;
+margin:0 auto;
+      }
+      .content {
+width:950px;
+height:390px;
+border:5px solid #8ac1db;
+margin:0 auto;
+      }
+      .operate {
+width:910px;
+height:40px;
+margin:0 auto;
+      }
+      .data {
+width:910px;
+height:310px;
+margin:0 auto;
+      }
+      .pages {
+width:910px;
+height:40px;
+margin:0 auto;
+      }      
+
+#cold_bold      /* 2.设置页面背景 */
+#cold_boldbody {
+#cold_boldbackground-color:#0EA8D8;
+#cold_bold      }
+#cold_bold      #logo {
+#cold_boldbackground-image:url('../img/top_bg.png');
+#cold_bold      }
+#cold_bold      #main {
+#cold_boldbackground:url('../img/content_bg.png') repeat-x top;
+#cold_bold      }
+#cold_bold      #nav {
+#cold_boldbackground-color:#0488BB;
+#cold_bold      }
+#cold_bold      .content {
+#cold_boldbackground-color:#e8f3f8;
+#cold_bold      }
+
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- logo区 --&gt;
+&lt;div id="logo"&gt;&lt;/div&gt;
+&lt;!--导航区 --&gt;
+&lt;div id="nav"&gt;&lt;/div&gt;
+&lt;!--主体区 --&gt;
+&lt;div id="main"&gt;
+&lt;!--内容区 --&gt;
+&lt;div class="content"&gt;
+&lt;!--操作区 --&gt;
+&lt;div class="operate"&gt;&lt;/div&gt;
+&lt;!--数据区 --&gt;
+&lt;div class="data"&gt;&lt;/div&gt;
+&lt;!--分页区 --&gt;
+&lt;div class="pages"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!--版权区 --&gt;
+&lt;div id="footer"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>使用浏览器打开admin_list.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <h3>4.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <p>admin_list.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>管理员列表<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_comment">/* 1.设置页面整体布局 */</span></li><li>body <span class="sh_cbracket">{</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>padding<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>div <span class="sh_cbracket">{</span></li><li>border<span class="sh_symbol">:</span>1px solid #<span class="sh_number">000</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #logo <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>960px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>61px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #nav <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span><span class="sh_number">100</span><span class="sh_symbol">%;</span></li><li>height<span class="sh_symbol">:</span>91px<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #main <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span><span class="sh_number">100</span><span class="sh_symbol">%;</span></li><li>height<span class="sh_symbol">:</span>410px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>padding<span class="sh_symbol">:</span>10px <span class="sh_number">0</span> <span class="sh_number">0</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #footer <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>960px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>50px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>content <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>950px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>390px<span class="sh_symbol">;</span></li><li>border<span class="sh_symbol">:</span>5px solid #8ac1db<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>operate <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>40px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>data <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>310px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>pages <span class="sh_cbracket">{</span></li><li>width<span class="sh_symbol">:</span>910px<span class="sh_symbol">;</span></li><li>height<span class="sh_symbol">:</span>40px<span class="sh_symbol">;</span></li><li>margin<span class="sh_symbol">:</span><span class="sh_number">0</span> auto<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span>      </li><li><span style="display:none;">&nbsp;</span></li><li>      <span class="sh_comment">/* 2.设置页面背景 */</span></li><li>body <span class="sh_cbracket">{</span></li><li>background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>#0EA8D8<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #logo <span class="sh_cbracket">{</span></li><li>background<span class="sh_symbol">-</span>image<span class="sh_symbol">:</span><span class="sh_function">url</span><span class="sh_symbol">(</span><span class="sh_string">'../img/top_bg.png'</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #main <span class="sh_cbracket">{</span></li><li>background<span class="sh_symbol">:</span><span class="sh_function">url</span><span class="sh_symbol">(</span><span class="sh_string">'../img/content_bg.png'</span><span class="sh_symbol">)</span> repeat<span class="sh_symbol">-</span>x top<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      #nav <span class="sh_cbracket">{</span></li><li>background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>#0488BB<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>content <span class="sh_cbracket">{</span></li><li>background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span>#e8f3f8<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> logo区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"logo"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 导航区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"nav"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 主体区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"main"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 内容区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"content"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 操作区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"operate"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 数据区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"data"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 分页区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"pages"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;!--</span> 版权区 <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"footer"</span><span class="sh_symbol">&gt;&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;管理员列表&lt;/title&gt;
+&lt;meta charset="utf-8" /&gt;
+&lt;style type="text/css"&gt;
+      /* 1.设置页面整体布局 */
+body {
+margin:0;
+padding:0;
+      }
+div {
+border:1px solid #000;
+      }
+      #logo {
+width:960px;
+height:61px;
+margin:0 auto;
+      }
+      #nav {
+width:100%;
+height:91px;
+      }
+      #main {
+width:100%;
+height:410px;
+margin:0 auto;
+padding:10px 0 0 0;
+      }
+      #footer {
+width:960px;
+height:50px;
+margin:0 auto;
+      }
+      .content {
+width:950px;
+height:390px;
+border:5px solid #8ac1db;
+margin:0 auto;
+      }
+      .operate {
+width:910px;
+height:40px;
+margin:0 auto;
+      }
+      .data {
+width:910px;
+height:310px;
+margin:0 auto;
+      }
+      .pages {
+width:910px;
+height:40px;
+margin:0 auto;
+      }      
+
+      /* 2.设置页面背景 */
+body {
+background-color:#0EA8D8;
+      }
+      #logo {
+background-image:url('../img/top_bg.png');
+      }
+      #main {
+background:url('../img/content_bg.png') repeat-x top;
+      }
+      #nav {
+background-color:#0488BB;
+      }
+      .content {
+background-color:#e8f3f8;
+      }
+
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- logo区 --&gt;
+&lt;div id="logo"&gt;&lt;/div&gt;
+&lt;!-- 导航区 --&gt;
+&lt;div id="nav"&gt;&lt;/div&gt;
+&lt;!-- 主体区 --&gt;
+&lt;div id="main"&gt;
+&lt;!-- 内容区 --&gt;
+&lt;div class="content"&gt;
+&lt;!-- 操作区 --&gt;
+&lt;div class="operate"&gt;&lt;/div&gt;
+&lt;!-- 数据区 --&gt;
+&lt;div class="data"&gt;&lt;/div&gt;
+&lt;!-- 分页区 --&gt;
+&lt;div class="pages"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- 版权区 --&gt;
+&lt;div id="footer"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

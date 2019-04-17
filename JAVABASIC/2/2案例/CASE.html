@@ -1,0 +1,337 @@
+
+<!-- saved from url=(0095)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="6746509347"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA Fundamental DAY02</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#case1">变量使用常用错误汇总</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#case2">整数类型（int、long）使用常见问题汇总</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#case3">浮点类型（float、double）使用常见问题汇总</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#case4">对char类型变量的各种赋值方式汇总</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#case5">类型转换常见问题汇总</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#case6">年龄判断程序</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 变量使用常用错误汇总</h2>
+      <h3>1.1 问题</h3>
+      <p>在我们使用变量的过程中，会遇到一些问题，在此将这些问题进行汇总，在今后使用的过程中，避免出错。即使出现错误也可以很快的找到问题所在。</p>
+      <h3>1.2 方案</h3>
+      <p>变量在使用的过程中，常见问题总结为如下几点：</p>
+      <p>1） 使用未经声明的变量。</p>
+      <p>2） 使用不符合Java标识符命名规则的变量。</p>
+      <p>3） 使用未经初始化的变量。</p>
+      <p>4） 变量的赋值与变量的类型不匹配</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：使用未经声明的变量</p>
+      <p>Java语言语法规定，变量使用之前必须声明，否则会有编译错误。大多数时候我们都记得这个规范，但是还是会出现变量未声明就使用的情况，请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>    a <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> <span class="sh_comment">// 编译错误，变量没有声明</span></li><li>    int score <span class="sh_symbol">=</span> <span class="sh_number">0</span>；</li><li>    scord <span class="sh_symbol">=</span> <span class="sh_number">100</span>； <span class="sh_comment">// 编译错误 </span></li><li>    System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>score<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static void main(String[] args) {
+    a = 1; // 编译错误，变量没有声明
+    int score = 0；
+    scord = 100； // 编译错误 
+    System.out.println(score);
+}
+</pre></div></div>
+      <p>编译上述代码，会发现在代码“a=1；”处和代码“scord=100；”处出现编译错误。出现编译错误的原因是变量a和变量scord没有被声明。变量的声明包含两点：变量的类型和变量的名称。a变量没有被声明的原因是没有变量的类型。scord变量没有被声明的原因也是因为没有变量类型，但是查看代码scord=100；的上下行的代码会发现声明了score变量，分析这三行代码，scord=100行出现编译错误的原因是变量没有被声明，没有声明的原因是变量score拼写成了scord。</p>
+      <p class="number">步骤二：使用不符合Java标识符命名规则的变量</p>
+      <p>Java中的变量的命名必须符合Java标识符的规则：</p>
+      <p>1） 可以以字母、数字、“_”和“$”符组成；</p>
+      <p>2） 首字符不能以数字开头；</p>
+      <p>3） 中文可以作为变量名，但不提倡使用；</p>
+      <p>4） Java大小写敏感，命名变量时需要注意；</p>
+      <p>5） 不能使用Java保留字（一些Java语言规定好的，有特殊含义的字符），如：int、if、for、break等。</p>
+      <p>下面的代码体现了Java变量的命名规则：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    int 123go <span class="sh_symbol">=</span> <span class="sh_number">100</span>； <span class="sh_comment">// 编译错误，不能以数字开头。</span></li><li>    int 成绩 <span class="sh_symbol">=</span> <span class="sh_number">60</span>；<span class="sh_comment">// 编译没错，但不建议使用。</span></li><li>    int <span class="sh_keyword">break</span><span class="sh_symbol">=</span> <span class="sh_number">200</span>； <span class="sh_comment">// 编译错误，break是Java保留字。</span></li><li>    int score <span class="sh_symbol">=</span> <span class="sh_number">80</span><span class="sh_symbol">;</span></li><li>    System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Score<span class="sh_symbol">);</span> </li><li>    <span class="sh_comment">// 编译错误，Java大小写敏感，Score变量没有声明。</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    int 123go = 100； // 编译错误，不能以数字开头。
+    int 成绩 = 60；// 编译没错，但不建议使用。
+    int break= 200； // 编译错误，break是Java保留字。
+    int score = 80;
+    System.out.println(Score); 
+    // 编译错误，Java大小写敏感，Score变量没有声明。
+</pre></div></div>
+      <p>上述代码中，分别有如下错误：</p>
+      <p>1） 变量“123go”不符合Java的命名规范，原因是变量名不能以数字开头；</p>
+      <p>2） 变量“成绩“编译时是正确的，但是这种使用汉字进行命名的方式不建议使用；</p>
+      <p>3） 变量”break“处会出现编译错误，原因是break是Java的保留字，不能作为变量名；</p>
+      <p>4） 在输出变量”Score“处会出现编译错误，原因是变量名是大小写敏感的。int score=80；处声明的变量和下一行代码中输出的Score是两个变量，所以变量Score没有声明。Java语言语法规定，变量使用之前必须声明，否则会有编译错误。</p>
+      <p>另外，Java 变量名的定义应“见名知意”；同时，Java编程规范要求：变量的命名需采用“驼峰命名法”，即如果变量的名字由多个单词组成，除第一个单词外，其他单词的首字母大写，其余的字母小写，例如：salary、 empNo studentName 等。</p>
+      <p class="number">步骤三：使用未经初始化的变量</p>
+      <p>Java语言规定变量在使用之前必须初始化，即必须给该变量赋予特定的值。请看下列代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>    int a<span class="sh_symbol">,</span> b <span class="sh_symbol">=</span> <span class="sh_number">10</span><span class="sh_symbol">;</span> </li><li>    int c <span class="sh_symbol">=</span> a <span class="sh_symbol">+</span> b<span class="sh_symbol">;</span> <span class="sh_comment">// 编译错误，变量a没有初始化</span></li><li>    System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static void main(String[] args) {
+    int a, b = 10; 
+    int c = a + b; // 编译错误，变量a没有初始化
+    System.out.println(c);
+}
+</pre></div></div>
+      <p>在上述代码中，代码行int c = a + b;处会出现编译错误，因为此行代码使用到了变量a，但是该变量却没有被初始化。</p>
+      <p>另外，有些语句结构（如if、for等）需要条件满足时才会执行；Java编译器不认为在这些语句块中的赋值语句可以实现初始化操作。查看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    int sum<span class="sh_symbol">;</span></li><li>    int a <span class="sh_symbol">=</span> <span class="sh_number">20</span><span class="sh_symbol">;</span></li><li>    int b <span class="sh_symbol">=</span> <span class="sh_number">10</span><span class="sh_symbol">;</span></li><li>    <span class="sh_keyword">if</span><span class="sh_symbol">(</span>a<span class="sh_symbol">&gt;</span><span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        sum <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> <span class="sh_comment">// 当a大于0的时候，该语句才会执行。</span></li><li>        sum <span class="sh_symbol">=</span> a <span class="sh_symbol">+</span> b<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li>    System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>sum<span class="sh_symbol">);</span> <span class="sh_comment">// 编译错误，编译器认为sum没有初始化。</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    int sum;
+    int a = 20;
+    int b = 10;
+    if(a&gt;0) {
+        sum = 0; // 当a大于0的时候，该语句才会执行。
+        sum = a + b;
+    }
+    System.out.println(sum); // 编译错误，编译器认为sum没有初始化。
+</pre></div></div>
+      <p>上述代码中，语句System.out.println(sum);处会出现编译错误，Java编译器不认为放在if语句块中的sum=0；可以实现初始化操作。</p>
+      <p class="number">步骤四：变量的赋值与变量的类型不匹配</p>
+      <p>变量在声明时指定了类型，Java编译器会检测对该变量的操作是否与其类型匹配，如果对变量的赋值或者操作与其类型不匹配，会产生编译错误。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>    int salary<span class="sh_symbol">;</span></li><li>    salary <span class="sh_symbol">=</span> <span class="sh_number">15000.50</span><span class="sh_symbol">;</span>  <span class="sh_comment">// 编译错误,整型变量不可以赋予浮点值（小数）。</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static void main(String[] args) {
+    int salary;
+    salary = 15000.50;  // 编译错误,整型变量不可以赋予浮点值（小数）。
+}
+</pre></div></div>
+      <p>上述代码中，变量salary声明时的类型为int，后续赋值为15000.50，而15000.50是浮点类型，因此导致编译错误。整数类型变量不可以赋予浮点类型的值。</p>
+      <h3>1.4 完整代码</h3>
+      <p>本案例是总结性的知识，没有完整的代码。</p>
+      <a name="case2">
+      </a>
+      <h2>2 整数类型（int、long）使用常见问题汇总</h2>
+      <h3>2.1 问题</h3>
+      <p>在我们使用整数类型的过程中，会遇到一些问题，在此将这些问题进行汇总，在今后使用的过程中，避免出错。即使出现错误也可以很快的找到问题所在。</p>
+      <h3>2.2 方案</h3>
+      <p>整数类型在使用的过程中，常见的问题有以下几点：</p>
+      <p>1） 整数直接量超出了整数的范围。</p>
+      <p>2） 关于整数的除法：两个整数相除，会舍弃小数的部分，结果也是整数。</p>
+      <p>3） 整数运算的溢出：两个整数进行运算时，其结果可能会超过整数的范围而溢出。</p>
+      <p>4） 表示long直接量，需要以 L 或 l 结尾。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：整数直接量超出了整数的范围</p>
+      <p>int是最常用的整数类型。一个int类型的变量占用4个字节（32位），最大表示范围为：-2^31 ~ 2^31-1，即 -2147483648 ~2147483647。</p>
+      <p>整数直接量(literal)， 即直接写出的整数。整数的直接量的类型默认为int类型，如果直接写出的整数超过了int的表达范围，将会出现编译错误。请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>int d <span class="sh_symbol">=</span> <span class="sh_number">10000000000</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int d = 10000000000;
+</pre></div></div>
+      <p>以上代码中，10000000000不属于int类型的直接量，因为Java认为所有直接写出的整数都是int类型，而这个数值超过了int的表达范围。</p>
+      <p class="number">步骤二：关于整数的除法</p>
+      <p>在Java中，两个整数相除，会舍弃小数的部分，结果也是整数。请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>int c <span class="sh_symbol">=</span> <span class="sh_number">5</span><span class="sh_symbol">/</span><span class="sh_number">3</span><span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span> <span class="sh_comment">// c的值为1</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int c = 5/3;
+System.out.println(c); // c的值为1
+</pre></div></div>
+      <p>在上述代码中，运行后，c的值为1。说明两个整数相除，舍弃了小数部分，只保留了整数部分。</p>
+      <p class="number">步骤三：整数运算的溢出</p>
+      <p>两个整数进行运算时，其结果可能会超过整数的范围而溢出，请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>int a <span class="sh_symbol">=</span> <span class="sh_number">2147483647</span><span class="sh_symbol">;</span></li><li>int b <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">2147483648</span><span class="sh_symbol">;</span></li><li>a <span class="sh_symbol">=</span> a <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>b <span class="sh_symbol">=</span> b <span class="sh_symbol">-</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"a="</span> <span class="sh_symbol">+</span> a<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"b="</span> <span class="sh_symbol">+</span> b<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int a = 2147483647;
+int b = -2147483648;
+a = a + 1;
+b = b - 1;
+System.out.println("a=" + a);
+System.out.println("b=" + b);
+</pre></div></div>
+      <p>上述代码运行后的输出结果为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>a<span class="sh_symbol">=-</span><span class="sh_number">2147483648</span></li><li>b<span class="sh_symbol">=</span><span class="sh_number">2147483647</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">a=-2147483648
+b=2147483647
+</pre></div></div>
+      <p>变量a最初的值为2147483647，是int类型的最大值，加1以后出现了溢出现象，a的值变成了int类型的最小值。而b变量最初赋的值为-2147483648，是int类型的最小值，减1以后出现了溢出现象，b的值变成了int类型的最大值。这显然不符合加法和减法的规则，所以，在今后使用的时候要注意类似的问题。</p>
+      <p class="number">步骤四：表示long直接量，需要以 L 或 l 结尾</p>
+      <p>在表示整数时，如果int类型的范围不够，可以使用long型，一个long型的变量占用8个字节（64位），最大表示范围为：-2^63 ~ 2^63-1，即 -9223372036854775808 ~ 9223372036854775807。当一个直接量超过int类型的最大值时，那要用long类型来表示，如果要表示long直接量，需要以 L 或 l 结尾。请看下列代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>long a <span class="sh_symbol">=</span> <span class="sh_number">10000000000</span><span class="sh_symbol">;</span> <span class="sh_comment">// 会有编译错误</span></li><li>long b <span class="sh_symbol">=</span> <span class="sh_number">10000000000L</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">long a = 10000000000; // 会有编译错误
+long b = 10000000000L;
+</pre></div></div>
+      <p>上述代码中，10000000000超过了int类型的最大值，把它直接赋值给long类型会出现编译错误。需要像变量b那样在10000000000后边加L。</p>
+      <h3>2.4 完整代码</h3>
+      <p>本案例是总结性的知识，没有完整的代码。</p>
+      <a name="case3">
+      </a>
+      <h2>3 浮点类型（float、double）使用常见问题汇总</h2>
+      <h3>3.1 问题</h3>
+      <p>在我们使用浮点类型的过程中，会遇到一些问题，在此将这些问题进行汇总，在今后使用的过程中，避免出错。即使出现错误也可以很快的找到问题所在。</p>
+      <h3>3.2 方案</h3>
+      <p>浮点类型在使用的过程中，常见的问题有以下几点：</p>
+      <p>1） 浮点数的直接量为double类型。</p>
+      <p>2） 浮点数存在舍入误差问题。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：浮点数的直接量为double类型</p>
+      <p>浮点数，就是小数，包括： float和double。默认的浮点直接量为double型，如果需要表示float类型的直接量，需要加“f”或“F”后缀。请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    float f1 <span class="sh_symbol">=</span> <span class="sh_number">3.14</span> ；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    float f1 = 3.14 ；
+</pre></div></div>
+      <p>以上代码，会出现编译错误。3.14是double类型的直接量，如果表示float类型的直接量应该写成3.14f。</p>
+      <p class="number">步骤二：浮点数存在舍入误差问题</p>
+      <p>由于浮点数内部用二进制的方式来表示十进制，会存在舍入误差。二进制系统中无法精确的表示1/10，就好像十进制系统中无法精确的表示1/3一样。对于一些要求精确运算的场合会导致代码的缺陷。请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>double money <span class="sh_symbol">=</span> <span class="sh_number">3.0</span><span class="sh_symbol">;</span></li><li>double price <span class="sh_symbol">=</span> <span class="sh_number">2.9</span><span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>money <span class="sh_symbol">-</span> price<span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">double money = 3.0;
+double price = 2.9;
+System.out.println(money - price); 
+</pre></div></div>
+      <p>上述代码的输出结果为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_number">0.10000000000000009</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">0.10000000000000009
+</pre></div></div>
+      <p>查看上述结果，并没有如我们想象的为0.1。如果需要精确的运算可以考虑放弃使用double或float而采用BigDecimal 类来实现。关于这一点，将在后续的章节中介绍。</p>
+      <h3>3.4 完整代码</h3>
+      <p>本案例是总结性的知识，没有完整的代码。</p>
+      <a name="case4">
+      </a>
+      <h2>4 对char类型变量的各种赋值方式汇总</h2>
+      <h3>4.1 问题</h3>
+      <p>在我们使用char类型的过程中，会遇到一些问题，在此将这些问题进行汇总，使今后使用的过程中，不出错。即使出现错误也可以很快的找到问题所在。</p>
+      <h3>4.2 方案</h3>
+      <p>char类型在使用的过程中，常见的问题有以下几点：</p>
+      <p>1） 字符类型存储中文。</p>
+      <p>2） char类型的值可以作为整数类型直接使用。</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：字符类型存储中文</p>
+      <p>char类型是否可以存储中文？答案是肯定的。字符类型事实上是一个16位无符号整数，这个值是对应字符的编码, Java字符类型采用Unicode字符集编码。Unicode是世界通用的定长字符集，所有的字符都是16位字符直接量。对于中文，可以采用诸如： ‘中’ 的形式，也可以采用其对应的16进制的表示形式，例如： ‘\u4e2d’。</p>
+      <p class="number">步骤二：整数类型和char类型的关系</p>
+      <p>char类型的值可以直接作为整数类型的值来使用，字符类型事实上是一个16位无符号整数，即全部是正数，表示范围是0～65535。请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;char zhong<span class="sh_symbol">=</span><span class="sh_string">'疯'</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int zhongValue<span class="sh_symbol">=</span>zhong<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>zhongValue<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">		char zhong='疯';
+		int zhongValue=zhong;
+		System.out.println(zhongValue);
+</pre></div></div>
+      <p>上述代码的输出结果为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_number">30127</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">30127
+</pre></div></div>
+      <p>上述输出结果为0～65535范围的。</p>
+      <p>另外，如果把0~65535范围内的一个int整数赋给char类型变量，系统会自动把这个int类型整数当成char类型来处理。请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>char c<span class="sh_symbol">=</span><span class="sh_number">97</span><span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">char c=97;
+System.out.println(c);
+</pre></div></div>
+      <p>上述代码的输出结果为a。这说明系统自动把整数类型97当成char类型来处理，处理的结果为a，即，97为字母a的unicode码。</p>
+      <h3>4.4 完整代码</h3>
+      <p>本案例是总结性的知识，没有完整的代码。</p>
+      <a name="case5">
+      </a>
+      <h2>5 类型转换常见问题汇总</h2>
+      <h3>5.1 问题</h3>
+      <p>在我们数据类型转换的过程中，会遇到一些问题，在此将这些问题进行汇总，使今后使用的过程中，不出错。即使出现错误也可以很快的找到问题所在。</p>
+      <h3>5.2 方案</h3>
+      <p>数据类型转换在使用的过程中，常见的问题有以下几点：</p>
+      <p>1） 强制转换时的精度丧失和溢出。</p>
+      <p>2） 数值运算时的自动转换。</p>
+      <p>3） byte、char、short转换为int的问题。</p>
+      <h3>5.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：强制转换时的精度丧失和溢出</p>
+      <p>基本类型之间的相互转换，需要注意的是，强制转换时可能会造成精度的丧失和溢出，请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>long l <span class="sh_symbol">=</span> <span class="sh_number">1024L</span> <span class="sh_symbol">*</span> <span class="sh_number">1024</span> <span class="sh_symbol">*</span> <span class="sh_number">1024</span> <span class="sh_symbol">*</span> <span class="sh_number">4</span><span class="sh_symbol">;</span></li><li>int j <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>int<span class="sh_symbol">)</span> l<span class="sh_symbol">;</span> <span class="sh_comment">// 会产生溢出</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>j<span class="sh_symbol">);</span> <span class="sh_comment">// 结果为：0</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">long l = 1024L * 1024 * 1024 * 4;
+int j = (int) l; // 会产生溢出
+System.out.println(j); // 结果为：0
+</pre></div></div>
+      <p>上述代码输出的结果为0，是因为在将long类型变量l转换为int类型变量j的时候产生了溢出。</p>
+      <p>另外，请看如下精度丧失的例子：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>double pi <span class="sh_symbol">=</span> <span class="sh_number">3.141592653589793</span><span class="sh_symbol">;</span></li><li>float f <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>float<span class="sh_symbol">)</span> pi<span class="sh_symbol">;</span> <span class="sh_comment">// 会造出精度的损失</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>f<span class="sh_symbol">);</span> <span class="sh_comment">// 结果为：3.1415927</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">double pi = 3.141592653589793;
+float f = (float) pi; // 会造出精度的损失
+System.out.println(f); // 结果为：3.1415927
+</pre></div></div>
+      <p>上述代码的输出结果为3.1415927，值保留了7位小数，这是因为将double类型的变量pi转换为float类型的变量f时造成了精度的损失。</p>
+      <p class="number">步骤二：数值运算时的自动转换</p>
+      <p>多种基本类型参与的表达式运算中，运算结果会自动的向较大的类型进行转化。请看如下示例：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>long distance <span class="sh_symbol">=</span> <span class="sh_number">10000</span> <span class="sh_symbol">*</span> <span class="sh_number">365</span> <span class="sh_symbol">*</span> <span class="sh_number">24</span> <span class="sh_symbol">*</span> <span class="sh_number">60</span> <span class="sh_symbol">*</span> <span class="sh_number">60</span> <span class="sh_symbol">*</span> <span class="sh_number">299792458L</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">long distance = 10000 * 365 * 24 * 60 * 60 * 299792458L;
+</pre></div></div>
+      <p>上述代码中，有int类型数据和long类型数据，由于有long型的直接量299792458L参与，整个表达式的结果为long。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>double change <span class="sh_symbol">=</span> <span class="sh_number">800</span> <span class="sh_symbol">-</span> <span class="sh_number">599.0</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">double change = 800 - 599.0;
+</pre></div></div>
+      <p>上述代码中，由于有double型的直接量599.0参与，整个表达式的结果为 double。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>double persent1 <span class="sh_symbol">=</span> <span class="sh_number">80</span><span class="sh_normal"> </span><span class="sh_symbol">/</span> <span class="sh_number">100</span><span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">double persent1 = 80 / 100; 
+</pre></div></div>
+      <p>上述代码中，结果为0.0。右边都是int型数据，语法运算后的结果也为int类型，结果为0，再赋值给double型，将0转化为 0.0。请对比下面的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>double persent2 <span class="sh_symbol">=</span> <span class="sh_number">80.0</span><span class="sh_normal"> </span><span class="sh_symbol">/</span> <span class="sh_number">100</span><span class="sh_symbol">;</span>  </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">double persent2 = 80.0 / 100;  
+</pre></div></div>
+      <p>上述代码中，结果为0.8，右边表达式有double型直接量参与，运算结果为double型。</p>
+      <p class="number">步骤三：byte、char、short转换为int的问题</p>
+      <p>byte、char、short 三种类型实际存储的数据都是整数，在实际使用中遵循如下规则：</p>
+      <p>1） int直接量可以直接赋值给byte、char和short，只要不超过其表示范围。</p>
+      <p>2） byte、char、short三种类型参与运算时，先一律转换成int类型再进行运算。请看如下示例代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte b1<span class="sh_symbol">=</span><span class="sh_number">28</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte b2<span class="sh_symbol">=</span><span class="sh_number">20</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte b3<span class="sh_symbol">=</span>b1<span class="sh_symbol">+</span>b2<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">		byte b1=28;
+		byte b2=20;
+		byte b3=b1+b2;
+</pre></div></div>
+      <p>上述代码在第三行会出现编译错误，原因是b1+b2的结果为int类型。改变上述代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte b1<span class="sh_symbol">=</span><span class="sh_number">28</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte b2<span class="sh_symbol">=</span><span class="sh_number">20</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int b3<span class="sh_symbol">=</span>b1<span class="sh_symbol">+</span>b2<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">		byte b1=28;
+		byte b2=20;
+		int b3=b1+b2;
+</pre></div></div>
+      <p>查看上述代码，会发现不会再出现编译错误。char类型、short类型和byte类型是相似的。</p>
+      <h3>5.4 完整代码</h3>
+      <p>本案例是总结性的知识，没有完整的代码。</p>
+      <a name="case6">
+      </a>
+      <h2>6 年龄判断程序</h2>
+      <h3>6.1 问题</h3>
+      <p>本案例需要使用交互的方式判断年龄的范围：用户从控制台输入一个年龄，由程序判断该年龄是否在18～50之间。程序交互过程如图－1所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图- 1</p>
+      </div>
+      <h3>6.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：定义类及 main方法</p>
+      <p>首先定义一个名为 Age的类，并在类中添加Java应用程序的主方法main，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Age <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Age {
+	public static void main(String[] args) {
+		
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：读取控制台输入</p>
+      <p>在main方法中，实例化Scanner类，并调用Scanner类的nextInt() 方法接收用户从控制台输入的年龄，使用完毕后将scanner对象关闭，以释放资源。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li class="bold_code">import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Scanner<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Age <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scanner scanner <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Scanner</span><span class="sh_symbol">(</span>System<span class="sh_symbol">.</span><span class="sh_keyword">in</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"请输入年龄："</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int age <span class="sh_symbol">=</span> scanner<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanner<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">#cold_boldimport java.util.Scanner;
+
+public class Age {
+	public static void main(String[] args) {
+#cold_bold		Scanner scanner = new Scanner(System.in);
+#cold_bold		System.out.println("请输入年龄：");
+#cold_bold		int age = scanner.nextInt();
+#cold_bold		scanner.close();
+	}
+}
+</pre></div></div>
+      <p>在此需要注意导入Scanner类所在的包。</p>
+      <p class="number">步骤三：判断年龄所在的范围</p>
+      <p>接收到年龄后，判断年龄是否在18～50之间。如果输出结果为true，则说明年龄在18～50之间，否则，年龄不在18～50之间，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Scanner<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Age <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scanner scanner <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Scanner</span><span class="sh_symbol">(</span>System<span class="sh_symbol">.</span><span class="sh_keyword">in</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"请输入年龄："</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int age <span class="sh_symbol">=</span> scanner<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>age <span class="sh_symbol">&gt;=</span> <span class="sh_number">18</span> <span class="sh_symbol">&amp;&amp;</span> age <span class="sh_symbol">&lt;=</span> <span class="sh_number">50</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.util.Scanner;
+
+public class Age {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("请输入年龄：");
+		int age = scanner.nextInt();
+#cold_bold		System.out.println(age &gt;= 18 &amp;&amp; age &lt;= 50);
+	}
+}
+</pre></div></div>
+      <p>在上述代码中，使用了“&amp;&amp;”逻辑运算符来连接两个条件。年龄在18～50之间，即，年龄大于等于18且年龄小于等于50，因此需要使用“&amp;&amp;”运算符。</p>
+      <h3>6.3 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Scanner<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Age <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scanner scanner <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Scanner</span><span class="sh_symbol">(</span>System<span class="sh_symbol">.</span><span class="sh_keyword">in</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"请输入年龄："</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int age <span class="sh_symbol">=</span> scanner<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scanner<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>age <span class="sh_symbol">&gt;=</span> <span class="sh_number">18</span> <span class="sh_symbol">&amp;&amp;</span> age <span class="sh_symbol">&lt;=</span> <span class="sh_number">50</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.util.Scanner;
+
+public class Age {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("请输入年龄：");
+		int age = scanner.nextInt();
+		scanner.close();
+		System.out.println(age &gt;= 18 &amp;&amp; age &lt;= 50);
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+</body></html>

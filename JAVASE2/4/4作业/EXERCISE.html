@@ -1,0 +1,143 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="17159846515"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 线程和进程的区别</h3> 
+   </div> 
+   <div> 
+    <h3>2 简述线程的状态及其转换</h3> 
+   </div> 
+   <div> 
+    <h3>3 简述线程的两种创建方式以及它们的区别</h3> 
+   </div> 
+   <div> 
+    <h3>4 下列关于线程API说法正确的是</h3> 
+    <p>A．Thread类的静态方法currentThread方法可以用于获取运行当前代码片段的线程。</p> 
+    <p>B．Thread类的getName方法返回该线程的名称。</p> 
+    <p>C．Thread类的getId方法返回该线程的标识符。</p> 
+    <p>D．Thread类的getPriority方法获取线程的状态</p> 
+   </div> 
+   <div> 
+    <h3>5 编写计时线程，每隔5秒钟输出当前的日期-时间，主线程结束后计时完毕</h3> 
+   </div> 
+   <div> 
+    <h3>6 下列关于sleep和yield说法正确的是</h3> 
+    <p>A.sleep方法是用于阻塞线程，直到被中断为止，yield方法是用于获取CPU时间片段。</p> 
+    <p>B.sleep方法用于让出CPU时间片段，yield方法用于使线程阻塞指定毫秒数。</p> 
+    <p>C.sleep方法用于使线程阻塞指定毫秒数，yield方法用于让出CPU时间片段。</p> 
+    <p>D.sleep方法用于获取CPU时间片段，yield用于阻塞线程，直到被中断为止。</p> 
+   </div> 
+   <div> 
+    <h3>7 已知类Foo代码如下，下列锁机制不合适的是</h3> 
+    <p>Foo类代码如下所示：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span> Foo <span class="sh_cbracket">{</span></li><li>&nbsp; <span class="sh_keyword">private</span> List list1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ArrayList</span><span class="sh_symbol">();</span></li><li>&nbsp; <span class="sh_keyword">private</span> List list2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ArrayList</span><span class="sh_symbol">();</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">add_1</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">remove</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp; list1<span class="sh_symbol">.</span><span class="sh_function">remove</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">add_2</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp; list2<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Foo {
+&nbsp; private List list1 = new ArrayList();
+&nbsp; private List list2 = new ArrayList();
+&nbsp; public void add_1(Object obj) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1.add(obj);
+&nbsp; }
+&nbsp; public void remove(Object obj) {
+&nbsp;&nbsp;&nbsp; list1.remove(obj);
+&nbsp; }
+&nbsp; public void add_2(Object obj){
+&nbsp;&nbsp;&nbsp; list2.add(obj);
+&nbsp; }
+}
+</pre></div></div> 
+    <p>下列锁机制不合适的是（）。</p> 
+    <p>A．</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span> Foo <span class="sh_cbracket">{</span></li><li>&nbsp; <span class="sh_keyword">private</span> List list1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ArrayList</span><span class="sh_symbol">();</span></li><li>&nbsp; <span class="sh_keyword">private</span> List list2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ArrayList</span><span class="sh_symbol">();</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">add_1</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp; <span class="sh_keyword">synchronized</span><span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">remove</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">synchronized</span><span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1<span class="sh_symbol">.</span><span class="sh_function">remove</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">add_2</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">synchronized</span><span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list2<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Foo {
+&nbsp; private List list1 = new ArrayList();
+&nbsp; private List list2 = new ArrayList();
+&nbsp; public void add_1(Object obj) {
+&nbsp;&nbsp;&nbsp; synchronized(this) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1.add(obj);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp; }
+&nbsp; public void remove(Object obj) {
+&nbsp;&nbsp;&nbsp;&nbsp; synchronized(this) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1.remove(obj);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp; }
+&nbsp; public void add_2(Object obj){
+&nbsp;&nbsp;&nbsp;&nbsp; synchronized(this) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list2.add(obj);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp; }
+}
+</pre></div></div> 
+    <p>B.</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span> Foo <span class="sh_cbracket">{</span></li><li>&nbsp; <span class="sh_keyword">private</span> List list1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ArrayList</span><span class="sh_symbol">();</span></li><li>&nbsp; <span class="sh_keyword">private</span> List list2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ArrayList</span><span class="sh_symbol">();</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">add_1</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp; <span class="sh_keyword">synchronized</span><span class="sh_symbol">(</span>list1<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">remove</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">synchronized</span><span class="sh_symbol">(</span>list1<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1<span class="sh_symbol">.</span><span class="sh_function">remove</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">add_2</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">synchronized</span><span class="sh_symbol">(</span>list2<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list2<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Foo {
+&nbsp; private List list1 = new ArrayList();
+&nbsp; private List list2 = new ArrayList();
+&nbsp; public void add_1(Object obj) {
+&nbsp;&nbsp;&nbsp; synchronized(list1) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1.add(obj);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp; }
+&nbsp; public void remove(Object obj) {
+&nbsp;&nbsp;&nbsp;&nbsp; synchronized(list1) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1.remove(obj);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp; }
+&nbsp; public void add_2(Object obj){
+&nbsp;&nbsp;&nbsp;&nbsp; synchronized(list2) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list2.add(obj);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp; }
+}
+</pre></div></div> 
+    <p>C．</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span> Foo <span class="sh_cbracket">{</span></li><li>&nbsp; <span class="sh_keyword">private</span> List list1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ArrayList</span><span class="sh_symbol">();</span></li><li>&nbsp; <span class="sh_keyword">private</span> List list2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ArrayList</span><span class="sh_symbol">();</span></li><li>&nbsp; <span class="sh_keyword">public</span> <span class="sh_keyword">synchronized</span> void <span class="sh_function">add_1</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_keyword">public</span> <span class="sh_keyword">synchronized</span>&nbsp; void <span class="sh_function">remove</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp; list1<span class="sh_symbol">.</span><span class="sh_function">remove</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_keyword">public</span> <span class="sh_keyword">synchronized</span> void <span class="sh_function">add_2</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp; list2<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Foo {
+&nbsp; private List list1 = new ArrayList();
+&nbsp; private List list2 = new ArrayList();
+&nbsp; public synchronized void add_1(Object obj) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1.add(obj);
+&nbsp; }
+&nbsp; public synchronized&nbsp; void remove(Object obj) {
+&nbsp;&nbsp;&nbsp; list1.remove(obj);
+&nbsp; }
+&nbsp; public synchronized void add_2(Object obj){
+&nbsp;&nbsp;&nbsp; list2.add(obj);
+&nbsp; }
+}
+</pre></div></div> 
+    <p>D．</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span> Foo <span class="sh_cbracket">{</span></li><li>&nbsp; <span class="sh_keyword">private</span> List list1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ArrayList</span><span class="sh_symbol">();</span></li><li>&nbsp; <span class="sh_keyword">private</span> List list2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ArrayList</span><span class="sh_symbol">();</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">add_1</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp; <span class="sh_keyword">synchronized</span><span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">remove</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">synchronized</span><span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1<span class="sh_symbol">.</span><span class="sh_function">remove</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_keyword">public</span> void <span class="sh_function">add_2</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">synchronized</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list2<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>obj<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp; <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Foo {
+&nbsp; private List list1 = new ArrayList();
+&nbsp; private List list2 = new ArrayList();
+&nbsp; public void add_1(Object obj) {
+&nbsp;&nbsp;&nbsp; synchronized(this) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1.add(obj);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp; }
+&nbsp; public void remove(Object obj) {
+&nbsp;&nbsp;&nbsp;&nbsp; synchronized(this) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list1.remove(obj);
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp; }
+&nbsp; public void add_2(Object obj){
+&nbsp;&nbsp;&nbsp;&nbsp; synchronized(obj) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; list2.add(obj);
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp; }
+}
+</pre></div></div> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

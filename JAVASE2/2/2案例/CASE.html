@@ -1,0 +1,994 @@
+
+<!-- saved from url=(0092)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17008209122"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA SE02 Unit02</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#case1">测试构建FOS对象写文件（采用覆盖写和追加写两种模式）</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#case2">测试构建FIS对象并读取文件数据</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#case3">实现文件复制</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#case4">实现基于缓存区的文件复制</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#case5">实现存储Emp的序列化和反序列化</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#case6">按照指定编码将文本写入文件</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#case7">读出指定编码的文本文件</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 测试构建FOS对象写文件（采用覆盖写和追加写两种模式）</h2>
+      <h3>1.1 问题</h3>
+      <p>使用FileOutputStream类的对象向文件写入数据，详细要求如下：</p>
+      <p>1）使用覆盖写的方式，向文件fos.dat写入字符串“helloworld”。</p>
+      <p>2） 在步骤一的基础上，使用追加写的方式，向文件fos.dat写入字符串“helloworld”。</p>
+      <h3>1.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：新建TestFileOutputStream类，添加测试方法testFos方法</p>
+      <p>首先新建类TestFileOutputStream，然后在该类中添加测试方法testFos，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件字节输出流</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFileOutputStream <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试覆盖写方式</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFos</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件字节输出流
+ */
+public class TestFileOutputStream {
+	/**
+	 * 测试覆盖写方式
+	 */
+	@Test
+	public void testFos()throws Exception{
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：实现覆盖写</p>
+      <p>首先，创建文件字节输出流FileOutputStream的对象；然后，使用该类的write(byte[])方法将字符串“helloworld”写出；最后，将fos流关闭，以释放资源，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件字节输出流</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFileOutputStream <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试覆盖写方式</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFos</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建文件字节输出流</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//FileOutputStream fos = new FileOutputStream(new File("fos.dat"));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li><li class="bold_code"></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//写出一组字节</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_string">"helloworld"</span><span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">());</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件字节输出流
+ */
+public class TestFileOutputStream {
+	/**
+	 * 测试覆盖写方式
+	 */
+	@Test
+	public void testFos()throws Exception{
+#cold_bold		//创建文件字节输出流
+#cold_bold		//FileOutputStream fos = new FileOutputStream(new File("fos.dat"));
+#cold_bold		FileOutputStream fos = new FileOutputStream("fos.dat");
+#cold_bold
+#cold_bold		//写出一组字节
+#cold_bold		fos.write("helloworld".getBytes());
+#cold_bold		fos.close();
+	}
+	}
+</pre></div></div>
+      <p>上述代码中，使用下列两种方式来构造实现覆盖写的FileOutputStream对象，其中一种方式是以File对象的方式构造，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>FileOutputStream fos<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">));</span>&nbsp;&nbsp;&nbsp;&nbsp;</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream fos= new FileOutputStream(new File("fos.dat"));	
+</pre></div></div>
+      <p>另一种方式是使用字符串的方式构造，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>FileOutputStream fos<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream fos= new FileOutputStream("fos.dat");
+</pre></div></div>
+      <p>运行testFos方法，在当前工程下生成了文件fos.dat，该文件的内容为“helloworld“；再次运行testFos方法，并查看文件内容，该文件的内容仍然为“helloworld”。</p>
+      <p class="number">步骤三：添加测试方法testFosByAppend</p>
+      <p>在TestFileOutputStream类中添加测试方法testFosByAppend，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件字节输出流</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFileOutputStream <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试覆盖写方式</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFos</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（代码略）</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试追加写的方式</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFosByAppend</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件字节输出流
+ */
+public class TestFileOutputStream {
+	/**
+	 * 测试覆盖写方式
+	 */
+	@Test
+	public void testFos()throws Exception{
+		//...（代码略）
+	}
+	
+	/**
+	 * 测试追加写的方式
+	 */
+#cold_bold	@Test
+#cold_bold	public void testFosByAppend()throws Exception{
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤四：实现追加写</p>
+      <p>追加写和覆盖写类似，唯一的区别是在构造FileOutputStream类的对象时，构造参数发生变化，使用如下方式构造：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>FileOutputStream fos<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">,</span><span class="sh_keyword">true</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream fos= new FileOutputStream("fos.dat",true);
+</pre></div></div>
+      <p>可以看出在构造具备追加写的FileOutputStream对象时，多了一个参数，该参数值为true，表示以追加的方式向文件fos.dat写入数据。</p>
+      <p>代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件字节输出流</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFileOutputStream <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试覆盖写方式</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFos</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（代码略）</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试追加写的方式</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFosByAppend</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建文件字节输出流</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//FileOutputStream fos = new FileOutputStream(new File("fos.dat"),true );</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">,</span><span class="sh_keyword">true</span><span class="sh_symbol">);</span></li><li class="bold_code"></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//写出一组字节</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_string">"helloworld"</span><span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">());</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件字节输出流
+ */
+public class TestFileOutputStream {
+	/**
+	 * 测试覆盖写方式
+	 */
+	@Test
+	public void testFos()throws Exception{
+		//...（代码略）
+	}
+	
+	/**
+	 * 测试追加写的方式
+	 */
+	@Test
+	public void testFosByAppend()throws Exception{
+#cold_bold		//创建文件字节输出流
+#cold_bold		//FileOutputStream fos = new FileOutputStream(new File("fos.dat"),true );
+#cold_bold		FileOutputStream fos = new FileOutputStream("fos.dat",true);
+#cold_bold
+#cold_bold		//写出一组字节
+#cold_bold		fos.write("helloworld".getBytes());
+#cold_bold		fos.close();
+	}
+}
+</pre></div></div>
+      <p>运行testFosByAppend方法，在当前工程下fos.dat文件的内容更新为“helloworld helloworld“，说明实现了向文件fos.dat追加写入数据。</p>
+      <h3>1.3 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件字节输出流</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFileOutputStream <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试覆盖写方式</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFos</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建文件字节输出流</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//FileOutputStream fos = new FileOutputStream(new File("fos.dat"));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//写出一组字节</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_string">"helloworld"</span><span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试追加写的方式</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFosByAppend</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建文件字节输出流</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//FileOutputStream fos = </span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">),</span><span class="sh_keyword">true</span> <span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">,</span><span class="sh_keyword">true</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//写出一组字节</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_string">"helloworld"</span><span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件字节输出流
+ */
+public class TestFileOutputStream {
+	/**
+	 * 测试覆盖写方式
+	 */
+	@Test
+	public void testFos()throws Exception{
+		//创建文件字节输出流
+		//FileOutputStream fos = new FileOutputStream(new File("fos.dat"));
+		FileOutputStream fos = new FileOutputStream("fos.dat");
+
+		//写出一组字节
+		fos.write("helloworld".getBytes());
+		fos.close();
+	}
+	
+	/**
+	 * 测试追加写的方式
+	 */
+	@Test
+	public void testFosByAppend()throws Exception{
+		//创建文件字节输出流
+		//FileOutputStream fos = 
+						new FileOutputStream(new File("fos.dat"),true );
+		FileOutputStream fos = new FileOutputStream("fos.dat",true);
+
+		//写出一组字节
+		fos.write("helloworld".getBytes());
+		fos.close();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 测试构建FIS对象并读取文件数据</h2>
+      <h3>2.1 问题</h3>
+      <p>使用FileInputStream类的对象从文件fos.dat中读取字符串“helloworld”。</p>
+      <h3>2.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：新建TestFileInputStream类，添加测试方法testFis方法</p>
+      <p>首先新建类TestFileInputStream，然后在该类中添加测试方法testFis，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件输入流</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFileInputStream <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; *  测试文件输入流的创建以及读取数据</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFis</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件输入流
+ */
+public class TestFileInputStream {
+	/**
+	 *  测试文件输入流的创建以及读取数据
+	 */
+	@Test
+	public void testFis()throws Exception{
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：使用TestFileInputStream实现取出字符串“helloworld”</p>
+      <p>首先，创建文件字节输出流FileInputStream的对象；然后，使用该类的read方法将字符串“helloworld”读取出来，该方法返回-1时表示读取到了文件末尾；最后，将fis流关闭，以释放资源，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件输入流</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFileInputStream <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; *  测试文件输入流的创建以及读取数据</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFis</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//根据给定的File对象创建文件输入流</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//FileInputStream fis = new FileInputStream(new File("fos.dat"));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//根据给定的文件路径创建文件输入流</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li><li class="bold_code"></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">(</span> <span class="sh_symbol">(</span>d <span class="sh_symbol">=</span> fis<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">((</span>char<span class="sh_symbol">)</span>d <span class="sh_symbol">+</span> <span class="sh_string">" "</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fis<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件输入流
+ */
+public class TestFileInputStream {
+	/**
+	 *  测试文件输入流的创建以及读取数据
+	 */
+	@Test
+	public void testFis()throws Exception{
+#cold_bold		//根据给定的File对象创建文件输入流
+#cold_bold		//FileInputStream fis = new FileInputStream(new File("fos.dat"));
+#cold_bold		//根据给定的文件路径创建文件输入流
+#cold_bold		FileInputStream fis = new FileInputStream("fos.dat");
+#cold_bold
+#cold_bold		int d = -1;
+#cold_bold		while( (d = fis.read()) != -1){
+#cold_bold			System.out.print((char)d + " ");
+#cold_bold		}
+#cold_bold		fis.close();
+	}
+}
+</pre></div></div>
+      <p>上述代码中，使用下列两种方式来构造FileInputStream对象，其中一种方式是以File对象的方式构造，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>FileInputStream fos<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span> <span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">));</span>&nbsp;&nbsp;&nbsp;&nbsp;</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileInputStream fos= new FileInputStream (new File("fos.dat"));	
+</pre></div></div>
+      <p>另一种方式是使用字符串的方式构造，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>FileInputStream fos<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span> <span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileInputStream fos= new FileInputStream ("fos.dat");
+</pre></div></div>
+      <p>运行testFis方法，控制台输出结果如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>h e l l o w o r l d</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">h e l l o w o r l d
+</pre></div></div>
+      <p>从输出结果可以看出，已经将字符串“helloworld”读取出来。</p>
+      <h3>2.3 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件输入流</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFileInputStream <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; *  测试文件输入流的创建以及读取数据</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFis</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//根据给定的File对象创建文件输入流</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//FileInputStream fis = new FileInputStream(new File("fos.dat"));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//根据给定的文件路径创建文件输入流</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">(</span> <span class="sh_symbol">(</span>d <span class="sh_symbol">=</span> fis<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">((</span>char<span class="sh_symbol">)</span>d <span class="sh_symbol">+</span> <span class="sh_string">" "</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fis<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件输入流
+ */
+public class TestFileInputStream {
+	/**
+	 *  测试文件输入流的创建以及读取数据
+	 */
+	@Test
+	public void testFis()throws Exception{
+		//根据给定的File对象创建文件输入流
+		//FileInputStream fis = new FileInputStream(new File("fos.dat"));
+		//根据给定的文件路径创建文件输入流
+		FileInputStream fis = new FileInputStream("fos.dat");
+
+		int d = -1;
+		while( (d = fis.read()) != -1){
+			System.out.print((char)d + " ");
+		}
+		fis.close();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 实现文件复制</h2>
+      <h3>3.1 问题</h3>
+      <p>使用FileOutputStream类和FileInputStream类实现文件复制，详细要求如下：</p>
+      <p>1） 使用FileOutputStream类的write(int)方法和FileInputStream类的read方法复制fos.dat文件为fos_copy1.dat文件。</p>
+      <p>2） 使用FileOutputStream类的write(byte[])和FileInputStream类的read（byte[]）方法复制fos.dat文件为fos_copy2.dat文件。</p>
+      <h3>3.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：新建TestCopy类，添加测试方法testCopyFile1方法</p>
+      <p>首先新建类TestCopy，然后在该类中添加测试方法testCopyFile1，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件复制</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestCopy <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试使用字节形式复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopyFile1</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件复制
+ */
+public class TestCopy {
+	/**
+	 * 测试使用字节形式复制文件
+	 */
+	@Test
+	public void testCopyFile1()throws Exception{
+	}	
+}
+</pre></div></div>
+      <p class="number">步骤二：实现文件复制</p>
+      <p>首先，创建文件字节输入流FileInputStream类的对象和文件字节输出流FileOutputStream类的对象；然后，使用循环。在循环中，使用FileInputStream类的read方法从文件fos.dat中读取数据；使用FileOutputStream类的write方法将读取到的数据写入fos_copy1.dat文件中，直到read方法返回-1，则退出循环；最后，将流关闭，以释放资源，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件复制</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestCopy <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试使用字节形式复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopyFile1</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos_copy1.dat"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">((</span>d <span class="sh_symbol">=</span> fis<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>d<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"复制完毕"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fis<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件复制
+ */
+public class TestCopy {
+	/**
+	 * 测试使用字节形式复制文件
+	 */
+	@Test
+	public void testCopyFile1()throws Exception{
+#cold_bold		FileInputStream fis = new FileInputStream("fos.dat");
+#cold_bold		FileOutputStream fos = new FileOutputStream("fos_copy1.dat");
+#cold_bold		
+#cold_bold		int d = -1;		
+#cold_bold		while((d = fis.read()) != -1){
+#cold_bold			fos.write(d);
+#cold_bold		}
+#cold_bold		System.out.println("复制完毕");
+#cold_bold		fis.close();
+#cold_bold		fos.close();
+	}
+</pre></div></div>
+      <p>运行testCopyFile1方法，在当前工程下生成了文件fos_copy1.dat，该文件的内容与文件fos.dat的内容相同。</p>
+      <p class="number">步骤三：添加测试方法testCopyFile2</p>
+      <p>在TestCopy类中添加测试方法testCopyFile2，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件复制</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestCopy <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试使用字节形式复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopyFile1</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（代码略）</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试使用字节数组形式复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopyFile2</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件复制
+ */
+public class TestCopy {
+	/**
+	 * 测试使用字节形式复制文件
+	 */
+	@Test
+	public void testCopyFile1()throws Exception{
+		//...（代码略）
+	}
+	
+	/**
+	 * 测试使用字节数组形式复制文件
+	 */
+#cold_bold	@Test
+#cold_bold	public void testCopyFile2()throws Exception{
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤四：再次实现文件复制</p>
+      <p>首先，创建文件字节输入流FileInputStream类的对象和文件字节输出流</p>
+      <p>FileOutputStream类的对象；然后，使用循环。在循环中，使用FileInputStream类的read（byte[]）方法从文件fos.dat中读取数据；使用FileOutputStream类的write(byte[])方法将读取到的数据写入fos_copy2.dat文件中，直到read(byte[])方法返回-1，则退出循环；最后，将流关闭，以释放资源，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件复制</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestCopy <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试使用字节形式复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopyFile1</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（代码略）</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试使用字节数组形式复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopyFile2</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos_copy2.dat"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int len <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte<span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> byte<span class="sh_symbol">[</span><span class="sh_number">32</span><span class="sh_symbol">];</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">((</span>len <span class="sh_symbol">=</span> fis<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">))</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">,</span>len<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"复制完毕"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fis<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件复制
+ */
+public class TestCopy {
+	/**
+	 * 测试使用字节形式复制文件
+	 */
+	@Test
+	public void testCopyFile1()throws Exception{
+		//...（代码略）
+	}
+	
+	/**
+	 * 测试使用字节数组形式复制文件
+	 */
+	@Test
+	public void testCopyFile2()throws Exception{
+#cold_bold		FileInputStream fis = new FileInputStream("fos.dat");
+#cold_bold		FileOutputStream fos = new FileOutputStream("fos_copy2.dat");
+#cold_bold		
+#cold_bold		int len = -1;
+#cold_bold		byte[] buf = new byte[32];
+#cold_bold		while((len = fis.read(buf)) != -1){
+#cold_bold			fos.write(buf,0,len);
+#cold_bold		}
+#cold_bold		System.out.println("复制完毕");
+#cold_bold		fis.close();
+#cold_bold		fos.close();
+	}
+}
+</pre></div></div>
+      <p>运行testCopyFile2方法，在当前工程下生成了文件fos_copy2.dat，该文件的内容与文件fos.dat的内容相同。</p>
+      <h3>3.3 完整代码</h3>
+      <p>本案例中，类TestCopy的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试文件复制</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestCopy <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试使用字节形式复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopyFile1</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos_copy1.dat"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">((</span>d <span class="sh_symbol">=</span> fis<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>d<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"复制完毕"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fis<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试使用字节数组形式复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopyFile2</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos_copy2.dat"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int len <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte<span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> byte<span class="sh_symbol">[</span><span class="sh_number">32</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">((</span>len <span class="sh_symbol">=</span> fis<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">))</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">,</span>len<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"复制完毕"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fis<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试文件复制
+ */
+public class TestCopy {
+	/**
+	 * 测试使用字节形式复制文件
+	 */
+	@Test
+	public void testCopyFile1()throws Exception{
+		FileInputStream fis = new FileInputStream("fos.dat");
+		FileOutputStream fos = new FileOutputStream("fos_copy1.dat");
+		
+		int d = -1;
+		while((d = fis.read()) != -1){
+			fos.write(d);
+		}
+		System.out.println("复制完毕");
+		fis.close();
+		fos.close();
+	}
+	
+	/**
+	 * 测试使用字节数组形式复制文件
+	 */
+	@Test
+	public void testCopyFile2()throws Exception{
+		FileInputStream fis = new FileInputStream("fos.dat");
+		FileOutputStream fos = new FileOutputStream("fos_copy2.dat");
+		
+		int len = -1;
+		byte[] buf = new byte[32];
+		while((len = fis.read(buf)) != -1){
+			fos.write(buf,0,len);
+		}
+		System.out.println("复制完毕");
+		fis.close();
+		fos.close();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 实现基于缓存区的文件复制</h2>
+      <h3>4.1 问题</h3>
+      <p>使用BufferedOutputStream类和BufferedInputStream类实现文件复制，即复制fos.dat文件为fos_copy3.dat文件。</p>
+      <h3>4.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：新建TestBisAndBos类，添加测试方法testCopy方法</p>
+      <p>首先新建类TestBisAndBos，然后在该类中添加测试方法testCopy，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>BufferedInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>BufferedOutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试基于缓冲流的复制文件</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestBisAndBos <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试基于缓冲流的复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopy</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试基于缓冲流的复制文件
+ */
+public class TestBisAndBos {
+	/**
+	 * 测试基于缓冲流的复制文件
+	 */
+	@Test
+	public void testCopy()throws Exception{
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：实现文件复制</p>
+      <p>使用BufferedInputStream和BufferedOutputStream实现文件复制的详细过程如下：</p>
+      <p>1）首先，创建文件字节输入流FileInputStream类的对象，接着使用该文件输入流对象作为参数构造缓冲字节输入流BufferedInputStream类的对象；</p>
+      <p>2）然后，创建文件字节输出流FileOutputStream类的对象，接着使用该文件输出流对象作为参数构造缓冲字节输出流BufferedOutputStream类的对象；</p>
+      <p>3）构建循环。在循环中，使用BufferedInputStream类的read方法从文件fos.dat中读取数据；使用BufferedOutputStream类的write方法将读取到的数据写入fos_copy3.dat文件中，直到read方法返回-1，则退出循环。</p>
+      <p>4）将流关闭，以释放资源。</p>
+      <p>代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>BufferedInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>BufferedOutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试基于缓冲流的复制文件</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestBisAndBos <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试基于缓冲流的复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopy</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建缓冲字节输入流</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufferedInputStream bis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedInputStream</span><span class="sh_symbol">(</span>fis<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建缓冲字节输出流</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos_copy3.dat"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufferedOutputStream bos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedOutputStream</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">((</span>d <span class="sh_symbol">=</span> bis<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>d<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"复制完毕"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bis<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试基于缓冲流的复制文件
+ */
+public class TestBisAndBos {
+	/**
+	 * 测试基于缓冲流的复制文件
+	 */
+	@Test
+	public void testCopy()throws Exception{
+#cold_bold		//创建缓冲字节输入流
+#cold_bold		FileInputStream fis = new FileInputStream("fos.dat");
+#cold_bold		BufferedInputStream bis = new BufferedInputStream(fis);
+#cold_bold		
+#cold_bold		//创建缓冲字节输出流
+#cold_bold		FileOutputStream fos = new FileOutputStream("fos_copy3.dat");
+#cold_bold		BufferedOutputStream bos = new BufferedOutputStream(fos);
+#cold_bold		
+#cold_bold		int d = -1;
+#cold_bold		while((d = bis.read()) != -1){
+#cold_bold			bos.write(d);
+#cold_bold		}
+#cold_bold		
+#cold_bold		System.out.println("复制完毕");
+#cold_bold		bis.close();
+#cold_bold		bos.close();
+	}
+}
+</pre></div></div>
+      <p>运行testCopy方法，在当前工程下生成了文件fos_copy3.dat，该文件的内容与文件fos.dat的内容相同。</p>
+      <h3>4.3 完整代码</h3>
+      <p>本案例中，类TestBisAndBos的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>BufferedInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>BufferedOutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试基于缓冲流的复制文件</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestBisAndBos <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试基于缓冲流的复制文件</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testCopy</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建缓冲字节输入流</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos.dat"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufferedInputStream bis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedInputStream</span><span class="sh_symbol">(</span>fis<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建缓冲字节输出流</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"fos_copy3.dat"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufferedOutputStream bos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedOutputStream</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">((</span>d <span class="sh_symbol">=</span> bis<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>d<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"复制完毕"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bis<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.junit.Test;
+
+/**
+ * 测试基于缓冲流的复制文件
+ */
+public class TestBisAndBos {
+	/**
+	 * 测试基于缓冲流的复制文件
+	 */
+	@Test
+	public void testCopy()throws Exception{
+		//创建缓冲字节输入流
+		FileInputStream fis = new FileInputStream("fos.dat");
+		BufferedInputStream bis = new BufferedInputStream(fis);
+		
+		//创建缓冲字节输出流
+		FileOutputStream fos = new FileOutputStream("fos_copy3.dat");
+		BufferedOutputStream bos = new BufferedOutputStream(fos);
+		
+		int d = -1;
+		while((d = bis.read()) != -1){
+			bos.write(d);
+		}
+		
+		System.out.println("复制完毕");
+		bis.close();
+		bos.close();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case5">
+      </a>
+      <h2>5 实现存储Emp的序列化和反序列化</h2>
+      <h3>5.1 问题</h3>
+      <p>实现存储Emp的序列化和反序列化，详细要求如下：</p>
+      <p>1） 使用属性name、age、gender、salary为["张三",15,"男",4000]构造Emp类的对象。</p>
+      <p>2） 将第一步创建的Emp对象，序列化到文件emp.obj中。</p>
+      <p>3） 将第二步序列化到emp.obj中的Emp对象，反序列化出来并输出到控制台。</p>
+      <h3>5.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建Emp类</p>
+      <p>创建Emp类，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>Serializable<span class="sh_symbol">;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 实现序列化接口后该类可以被序列化</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Emp <span class="sh_keyword">implements</span> Serializable<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 版本号</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_keyword">static</span> <span class="sh_keyword">final</span> long serialVersionUID <span class="sh_symbol">=</span> <span class="sh_number">1L</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_predef_func">String</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> int age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_predef_func">String</span> gender<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> double salary<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Emp</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">,</span> int age<span class="sh_symbol">,</span> <span class="sh_predef_func">String</span> gender<span class="sh_symbol">,</span> double salary<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>age <span class="sh_symbol">=</span> age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>gender <span class="sh_symbol">=</span> gender<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>salary <span class="sh_symbol">=</span> salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">getName</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setName</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> name<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> int <span class="sh_function">getAge</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setAge</span><span class="sh_symbol">(</span>int age<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>age <span class="sh_symbol">=</span> age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">getGender</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> gender<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setGender</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> gender<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>gender <span class="sh_symbol">=</span> gender<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> double <span class="sh_function">getSalary</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">setSalary</span><span class="sh_symbol">(</span>double salary<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>salary <span class="sh_symbol">=</span> salary<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">toString</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_string">"Emp [name="</span> <span class="sh_symbol">+</span> name <span class="sh_symbol">+</span> <span class="sh_string">", age="</span> <span class="sh_symbol">+</span> age <span class="sh_symbol">+</span> <span class="sh_string">", gender="</span> <span class="sh_symbol">+</span> gender</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">+</span> <span class="sh_string">", salary="</span> <span class="sh_symbol">+</span> salary <span class="sh_symbol">+</span> <span class="sh_string">"]"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> int <span class="sh_function">hashCode</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">final</span> int prime <span class="sh_symbol">=</span> <span class="sh_number">31</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int result <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result <span class="sh_symbol">=</span> prime <span class="sh_symbol">*</span> result <span class="sh_symbol">+</span> <span class="sh_symbol">((</span>name <span class="sh_symbol">==</span> <span class="sh_keyword">null</span><span class="sh_symbol">)</span> <span class="sh_symbol">?</span> <span class="sh_number">0</span> <span class="sh_symbol">:</span> name<span class="sh_symbol">.</span><span class="sh_function">hashCode</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> result<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.Serializable;
+/**
+ * 实现序列化接口后该类可以被序列化
+ */
+public class Emp implements Serializable{
+	/**
+	 * 版本号
+	 */
+	private static final long serialVersionUID = 1L;
+	private String name;
+	private int age;
+	private String gender;
+	private double salary;
+
+	public Emp(String name, int age, String gender, double salary) {
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.salary = salary;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	@Override
+	public String toString() {
+		return "Emp [name=" + name + ", age=" + age + ", gender=" + gender
+				+ ", salary=" + salary + "]";
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+}
+</pre></div></div>
+      <p>特别需要注意的是，该类实现了Serializable接口。实现该接口不需要重写任何方法，其只是作为可序列化的标志。</p>
+      <p class="number">步骤二：新建测试方法</p>
+      <p>创建TestOisAndOos类，并在类中新建测试方法testOOS，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 实现对象的序列化与反序列化</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestOisAndOos <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用OOS实现对象的序列化</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOOS</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import org.junit.Test;
+
+/**
+ * 实现对象的序列化与反序列化
+ */
+public class TestOisAndOos {
+	/**
+	 * 使用OOS实现对象的序列化
+	 */
+	@Test
+	public void testOOS()throws Exception{
+	}
+}
+</pre></div></div>
+      <p class="number">步骤三：序列化Emp对象到文件中</p>
+      <p>将Emp对象序列化到文件emp.obj中的详细过程如下：</p>
+      <p>1） 使用属性name、age、gender、salary为["张三",15,"男",4000]构造Emp类的对象；</p>
+      <p>2）创建文件字节输出流FileOutputStream类的对象，接着使用该文件字节输出流对象作为参数构造对象字节输出流ObjectOutputStream类的对象；</p>
+      <p>3） 使用ObjectOutputStream类的writeObject方法将Emp对象写入到文件emp.obj中；</p>
+      <p>4）关闭oos对象流，以释放资源。</p>
+      <p>代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>ObjectInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>ObjectOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 实现对象的序列化与反序列化</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestOisAndOos <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用OOS实现对象的序列化</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOOS</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"emp.obj"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ObjectOutputStream oos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ObjectOutputStream</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp emp <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">(</span><span class="sh_string">"张三"</span><span class="sh_symbol">,</span><span class="sh_number">15</span><span class="sh_symbol">,</span><span class="sh_string">"男"</span><span class="sh_symbol">,</span><span class="sh_number">4000</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oos<span class="sh_symbol">.</span><span class="sh_function">writeObject</span><span class="sh_symbol">(</span>emp<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"序列化完毕"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import org.junit.Test;
+
+/**
+ * 实现对象的序列化与反序列化
+ */
+public class TestOisAndOos {
+	/**
+	 * 使用OOS实现对象的序列化
+	 */
+	@Test
+	public void testOOS()throws Exception{
+#cold_bold		FileOutputStream fos = new FileOutputStream("emp.obj");
+#cold_bold		ObjectOutputStream oos = new ObjectOutputStream(fos);
+#cold_bold		
+#cold_bold		Emp emp = new Emp("张三",15,"男",4000);
+#cold_bold		oos.writeObject(emp);
+#cold_bold		System.out.println("序列化完毕");
+#cold_bold		oos.close();		
+	}
+}
+</pre></div></div>
+      <p>运行testOOS方法，在当前工程下生成了文件emp.obj，该文件的内容是二进制输入，无法读懂其中的内容。</p>
+      <p class="number">步骤四：新建测试方法testOIS</p>
+      <p>在TestOisAndOos类中，新建测试方法TestOIS，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>ObjectInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>ObjectOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 实现对象的序列化与反序列化</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestOisAndOos <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用OOS实现对象的序列化</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOOS</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（代码略）</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用OIS实现对象的反序列化</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOIS</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import org.junit.Test;
+
+/**
+ * 实现对象的序列化与反序列化
+ */
+public class TestOisAndOos {
+	/**
+	 * 使用OOS实现对象的序列化
+	 */
+	@Test
+	public void testOOS()throws Exception{
+		//...（代码略）
+	}
+	/**
+	 * 使用OIS实现对象的反序列化
+	 */
+	@Test
+	public void testOIS()throws Exception{
+
+	}
+}
+</pre></div></div>
+      <p class="number">步骤五：实现对Emp对象的反序列化</p>
+      <p>将Emp对象从文件emp.obj反序列化读取出来的详细过程如下：</p>
+      <p>1）创建文件字节输入流FileInputStream类的对象，接着使用该文件字节输入流对象作为参数构造对象字节输入流ObjectInputStream类的对象；</p>
+      <p>2） 使用ObjectInputStream类的readObject方法将Emp对象从emp.obj文件中读取出来；</p>
+      <p>3）关闭ois对象流，以释放资源。</p>
+      <p>代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>ObjectInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>ObjectOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 实现对象的序列化与反序列化</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestOisAndOos <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用OOS实现对象的序列化</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOOS</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（代码略）</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用OIS实现对象的反序列化</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOIS</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"emp.obj"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ObjectInputStream ois <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ObjectInputStream</span><span class="sh_symbol">(</span>fis<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp emp <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>Emp<span class="sh_symbol">)</span>ois<span class="sh_symbol">.</span><span class="sh_function">readObject</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"反序列化完毕"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>emp<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ois<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import org.junit.Test;
+
+/**
+ * 实现对象的序列化与反序列化
+ */
+public class TestOisAndOos {
+	/**
+	 * 使用OOS实现对象的序列化
+	 */
+	@Test
+	public void testOOS()throws Exception{
+		//...（代码略）
+	}
+	/**
+	 * 使用OIS实现对象的反序列化
+	 */
+	@Test
+	public void testOIS()throws Exception{
+#cold_bold		FileInputStream fis = new FileInputStream("emp.obj");
+#cold_bold		ObjectInputStream ois = new ObjectInputStream(fis);
+#cold_bold		
+#cold_bold		Emp emp = (Emp)ois.readObject();
+#cold_bold		System.out.println("反序列化完毕");
+#cold_bold		System.out.println(emp);
+#cold_bold		ois.close();		
+	}
+}
+</pre></div></div>
+      <p>运行testOIS方法，控制台输出结果如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>反序列化完毕</li><li>Emp <span class="sh_symbol">[</span>name<span class="sh_symbol">=</span>张三<span class="sh_symbol">,</span> age<span class="sh_symbol">=</span><span class="sh_number">15</span><span class="sh_symbol">,</span> gender<span class="sh_symbol">=</span>男<span class="sh_symbol">,</span> salary<span class="sh_symbol">=</span><span class="sh_number">4000.0</span><span class="sh_symbol">]</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">反序列化完毕
+Emp [name=张三, age=15, gender=男, salary=4000.0]
+</pre></div></div>
+      <p>从输出结果可以看出，已经将Emp对象反序列化出来了。</p>
+      <h3>5.3 完整代码</h3>
+      <p>本案例中，类TestOisAndOos的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>ObjectInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>ObjectOutputStream<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 实现对象的序列化与反序列化</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestOisAndOos <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用OOS实现对象的序列化</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOOS</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"emp.obj"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ObjectOutputStream oos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ObjectOutputStream</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp emp <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">(</span><span class="sh_string">"张三"</span><span class="sh_symbol">,</span><span class="sh_number">15</span><span class="sh_symbol">,</span><span class="sh_string">"男"</span><span class="sh_symbol">,</span><span class="sh_number">4000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oos<span class="sh_symbol">.</span><span class="sh_function">writeObject</span><span class="sh_symbol">(</span>emp<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"序列化完毕"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用OIS实现对象的反序列化</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOIS</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"emp.obj"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ObjectInputStream ois <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ObjectInputStream</span><span class="sh_symbol">(</span>fis<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emp emp <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>Emp<span class="sh_symbol">)</span>ois<span class="sh_symbol">.</span><span class="sh_function">readObject</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"反序列化完毕"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>emp<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ois<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import org.junit.Test;
+
+/**
+ * 实现对象的序列化与反序列化
+ */
+public class TestOisAndOos {
+	/**
+	 * 使用OOS实现对象的序列化
+	 */
+	@Test
+	public void testOOS()throws Exception{
+		FileOutputStream fos = new FileOutputStream("emp.obj");
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		
+		Emp emp = new Emp("张三",15,"男",4000);
+		oos.writeObject(emp);
+		System.out.println("序列化完毕");
+		oos.close();
+	}
+	/**
+	 * 使用OIS实现对象的反序列化
+	 */
+	@Test
+	public void testOIS()throws Exception{
+		FileInputStream fis = new FileInputStream("emp.obj");
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		
+		Emp emp = (Emp)ois.readObject();
+		System.out.println("反序列化完毕");
+		System.out.println(emp);
+		ois.close();		
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case6">
+      </a>
+      <h2>6 按照指定编码将文本写入文件</h2>
+      <h3>6.1 问题</h3>
+      <p>使用特定的编码，输出字符，并生成文本文件。文本文件的内容如图－1所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图－1</p>
+      </div>
+      <h3>6.2 方案</h3>
+      <p>首先需要创建文件字节输出流FileOutputStream类的对象，用于输出文件，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"osw.txt"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream fos = new FileOutputStream("osw.txt");
+</pre></div></div>
+      <p>然后，使用所创建的文件字节输出流对象 fos，作为参数，创建字符输出流OutputStreamWriter对象。需要注意的是，使用OutputStreamWriter时，最好指定字符集编码。如果不指定编码，则将使用平台默认的字符编码。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>OutputStreamWriter osw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">OutputStreamWriter</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">,</span><span class="sh_string">"GBK"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">OutputStreamWriter osw = new OutputStreamWriter(fos,"GBK");
+</pre></div></div>
+      <p>随后，调用 OutputStreamWriter的 write 方法，将字符串以指定的编码写入文件。</p>
+      <h3>6.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：新建TestOSW类，添加测试方法testOSW方法</p>
+      <p>首先，新建名为TestOSW 的类，并在类中添加单元测试方法 testOSW。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>OutputStreamWriter<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试字符输出流</span></li><li><span class="sh_comment"> *</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestOSW <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 按照指定编码将字符串写出</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOSW</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import org.junit.Test;
+
+/**
+ * 测试字符输出流
+ *
+ */
+public class TestOSW {
+	/**
+	 * 按照指定编码将字符串写出
+	 * @throws Exception
+	 */
+	@Test
+	public void testOSW()throws Exception{
+
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：按照指定编码将文本写入文件</p>
+      <p>为了按照指定编码将文本写入文件，首先需要创建FileOutputStream类的对象用于输出文件；然后，创建 OutputStreamWriter类的对象，并指定文件和编码，最后，调用该对象的 write 方法向文件中写入文本。注意：使用完毕后，关闭OutputStreamWriter对象。</p>
+      <p>代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>OutputStreamWriter<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试字符输出流</span></li><li><span class="sh_comment"> *</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestOSW <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 按照指定编码将字符串写出</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOSW</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"osw.txt"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//根据指定编码写出字符串，编码名称忽略大小写</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OutputStreamWriter osw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">OutputStreamWriter</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">,</span><span class="sh_string">"GBK"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;osw<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_string">"Mr范"</span><span class="sh_symbol">);</span> </li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;osw<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import org.junit.Test;
+
+/**
+ * 测试字符输出流
+ *
+ */
+public class TestOSW {
+	/**
+	 * 按照指定编码将字符串写出
+	 * @throws Exception
+	 */
+	@Test
+	public void testOSW()throws Exception{
+#cold_bold		FileOutputStream fos = new FileOutputStream("osw.txt");
+#cold_bold		//根据指定编码写出字符串，编码名称忽略大小写
+#cold_bold		OutputStreamWriter osw = new OutputStreamWriter(fos,"GBK");
+#cold_bold		
+#cold_bold		osw.write("Mr范"); 
+#cold_bold		osw.close();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤三：测试</p>
+      <p>运行testOSW方法，将在当前工程下生成一个名为 osw.txt 的文件，打开该文件，文件中的内容为"Mr范"。此文件为 4 字节，其中，一个中文字符为 2 个字节。</p>
+      <h3>6.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileOutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>OutputStreamWriter<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试字符输出流</span></li><li><span class="sh_comment"> *</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestOSW <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 按照指定编码将字符串写出</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testOSW</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"osw.txt"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//根据指定编码写出字符串，编码名称忽略大小写</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OutputStreamWriter osw <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">OutputStreamWriter</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">,</span><span class="sh_string">"GBK"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;osw<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_string">"Mr范"</span><span class="sh_symbol">);</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;osw<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import org.junit.Test;
+
+/**
+ * 测试字符输出流
+ *
+ */
+public class TestOSW {
+	/**
+	 * 按照指定编码将字符串写出
+	 * @throws Exception
+	 */
+	@Test
+	public void testOSW()throws Exception{
+		FileOutputStream fos = new FileOutputStream("osw.txt");
+		//根据指定编码写出字符串，编码名称忽略大小写
+		OutputStreamWriter osw = new OutputStreamWriter(fos,"GBK");
+		
+		osw.write("Mr范"); 
+		osw.close();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case7">
+      </a>
+      <h2>7 读出指定编码的文本文件</h2>
+      <h3>7.1 问题</h3>
+      <p>使用特定的编码，读取上一个案例中所创建的文本文件中的内容，并打印显示，效果如图－2所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图－2</p>
+      </div>
+      <h3>7.2 方案</h3>
+      <p>首先需要创建文件字节输入流FileInputStream类的对象，用于读入文件，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"osw.txt"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileInputStream fis = new FileInputStream("osw.txt");
+</pre></div></div>
+      <p>然后，使用所创建的文件字节输入流对象 fis，作为参数，创建字符输入流InputStreamReader类的对象，以读取字符。需要注意的是，使用InputStreamReader时，最好指定字符集编码。如果不指定编码，则将使用平台默认的字符编码。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>InputStreamReader isr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">InputStreamReader</span><span class="sh_symbol">(</span>fis<span class="sh_symbol">,</span><span class="sh_string">"GBK"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">InputStreamReader isr = new InputStreamReader(fis,"GBK");
+</pre></div></div>
+      <p>随后，调用 InputStreamReader的 read 方法读取字符。需要注意的是，read 方法可以读取输入流中的下一个字符，并返回int值。如果因已到达流末尾而没有可读取的内容，则返回值-1 。因此，需要构建 while 循环来逐一读取文件中的每个字符，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>int chs <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">while</span><span class="sh_symbol">((</span>chs <span class="sh_symbol">=</span> isr<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int chs = -1;
+while((chs = isr.read()) != -1){		
+	}
+</pre></div></div>
+      <p>正因为InputStreamReader 的 read 方法返回的是 int 数值，需要将其转换为字符后再输出，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">((</span>char<span class="sh_symbol">)</span>chs<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">System.out.println((char)chs);
+</pre></div></div>
+      <h3>7.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：新建TestISR类，添加测试方法testISR方法</p>
+      <p>首先，新建名为TestISR 的类，并在类中添加单元测试方法 testISR。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>InputStreamReader<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试字符输入流</span></li><li><span class="sh_comment"> *</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestISR <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 按照指定编码读取字符串</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testISR</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import org.junit.Test;
+
+/**
+ * 测试字符输入流
+ *
+ */
+public class TestISR {
+	/**
+	 * 按照指定编码读取字符串
+	 * @throws Exception
+	 */
+	@Test
+	public void testISR()throws Exception{
+
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：按照指定编码读取文件</p>
+      <p>为了按照指定编码读取文件，首先创建FileInputStream类的对象用于读取文件；然后，创建 InputStreamReader类的对象，并指定文件和编码，最后，循环调用该对象的 read 方法逐一读取文件中的字符并打印显示。注意：使用完毕后，需要关闭InputStreamReader对象。</p>
+      <p>代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>InputStreamReader<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试字符输入流</span></li><li><span class="sh_comment"> *</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestISR <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 按照指定编码读取字符串</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testISR</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"osw.txt"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//根据指定编码读取字符串，编码名称忽略大小写</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InputStreamReader isr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">InputStreamReader</span><span class="sh_symbol">(</span>fis<span class="sh_symbol">,</span><span class="sh_string">"GBK"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int chs <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">((</span>chs <span class="sh_symbol">=</span> isr<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">((</span>char<span class="sh_symbol">)</span>chs<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isr<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import org.junit.Test;
+
+/**
+ * 测试字符输入流
+ *
+ */
+public class TestISR {
+	/**
+	 * 按照指定编码读取字符串
+	 * @throws Exception
+	 */
+	@Test
+	public void testISR()throws Exception{
+#cold_bold		FileInputStream fis = new FileInputStream("osw.txt");
+#cold_bold		//根据指定编码读取字符串，编码名称忽略大小写
+#cold_bold		InputStreamReader isr = new InputStreamReader(fis,"GBK");
+#cold_bold		int chs = -1;
+#cold_bold		while((chs = isr.read()) != -1){
+#cold_bold			System.out.println((char)chs);
+#cold_bold		}
+#cold_bold		isr.close();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤三：测试</p>
+      <p>运行testISR方法，将打印显示"Mr范"。</p>
+      <h3>7.4 完整代码</h3>
+      <p>本案例中，类testISR的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileInputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>InputStreamReader<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试字符输入流</span></li><li><span class="sh_comment"> *</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestISR <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 按照指定编码读取字符串</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testISR</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"osw.txt"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//根据指定编码读取字符串，编码名称忽略大小写</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;InputStreamReader isr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">InputStreamReader</span><span class="sh_symbol">(</span>fis<span class="sh_symbol">,</span><span class="sh_string">"GBK"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int chs <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">((</span>chs <span class="sh_symbol">=</span> isr<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">((</span>char<span class="sh_symbol">)</span>chs<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;isr<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import org.junit.Test;
+
+/**
+ * 测试字符输入流
+ *
+ */
+public class TestISR {
+	/**
+	 * 按照指定编码读取字符串
+	 * @throws Exception
+	 */
+	@Test
+	public void testISR()throws Exception{
+		FileInputStream fis = new FileInputStream("osw.txt");
+		//根据指定编码读取字符串，编码名称忽略大小写
+		InputStreamReader isr = new InputStreamReader(fis,"GBK");
+		int chs = -1;
+		while((chs = isr.read()) != -1){
+			System.out.println((char)chs);
+		}
+		isr.close();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

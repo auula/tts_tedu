@@ -1,0 +1,140 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="17929273727"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 Oracle子查询精选面试题</h3> 
+    <p>有职员表emp，表结构表－1所示：</p> 
+    <div class="table"> 
+     <p>表－1 职员表emp 信息</p> 
+     <img src="./EXERCISE_files/table001.png"> 
+    </div> 
+    <p>职员表emp的示例数据如图-1所示。</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image001.png"> 
+     <p>图-1</p> 
+    </div> 
+    <p>有部门表dept，表结构如表－2所示：</p> 
+    <div class="table"> 
+     <p>表－2 部门表 dept 信息</p> 
+     <img src="./EXERCISE_files/table002.png"> 
+    </div> 
+    <p>部门表dept的示例数据如图-2所示。</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image002.png"> 
+     <p>图-2</p> 
+    </div> 
+    <p>请根据上述表结构和示例数据，完成如下查询。</p> 
+    <p>1. SALES部门有哪些职位？</p> 
+    <p>2. 哪些人不是别人的经理？</p> 
+    <p>3. 谁的薪水比FORD高？如果有多个同名，比任何一个叫FORD的人高就行。</p> 
+    <p>4.谁和FORD同部门？列出除了FORD之外的员工名字。</p> 
+    <p>5. 哪个部门的人数比部门20的人数多？</p> 
+    <p>6. 列出员工名字和职位 , 查询员工所在的部门平均薪水大于2000元的员工信息。</p> 
+   </div> 
+   <div> 
+    <h3>2 简述where子句中为什么不能写rownum&gt;…</h3> 
+   </div> 
+   <div> 
+    <h3>3 Oracle分页查询面试题</h3> 
+    <p>news表的表结构如图-3所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image003.png"> 
+     <p>图-3</p> 
+    </div> 
+    <p>写SQL语句，按新闻时间倒序排列，即最新的排在最前面，每页输出5条，查询出第二页。</p> 
+   </div> 
+   <div> 
+    <h3>4 下列关于decode函数，说法正确的是</h3> 
+    <p>A. decode函数用来实现IF-ELSE的逻辑功能</p> 
+    <p>B. decode函数建议设置默认值，如果未能与任一搜索条件匹配则函数返回默认值</p> 
+    <p>C. decode函数只能处理字符串数据</p> 
+    <p>D. decode函数的功能可以用case语句替代实现</p> 
+   </div> 
+   <div> 
+    <h3>5 下面SQL语句的输出结果是</h3> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> </li><li><span class="sh_function">DECODE</span><span class="sh_symbol">(</span>job<span class="sh_symbol">,</span><span class="sh_string">'PRESIDENT'</span><span class="sh_symbol">,</span><span class="sh_string">'A'</span><span class="sh_symbol">,</span></li><li><span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span><span class="sh_string">'B'</span><span class="sh_symbol">,</span></li><li><span class="sh_string">'ANALYST'</span><span class="sh_symbol">,</span><span class="sh_string">'C'</span><span class="sh_symbol">,</span></li><li><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_string">'D'</span><span class="sh_symbol">,</span></li><li><span class="sh_string">'CLERK'</span><span class="sh_symbol">,</span><span class="sh_string">'E'</span></li><li><span class="sh_symbol">)</span> AS <span class="sh_string">"Grade"</span></li><li>FROM EMP<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, job, 
+DECODE(job,'PRESIDENT','A',
+'MANAGER','B',
+'ANALYST','C',
+'SALESMAN','D',
+'CLERK','E'
+) AS "Grade"
+FROM EMP;
+</pre></div></div> 
+   </div> 
+   <div> 
+    <h3>6 Oracle高级查询经典面试题</h3> 
+    <p>1.有学员表student，表结构如表－3所示：</p> 
+    <div class="table"> 
+     <p>表－3学员表student 信息</p> 
+     <img src="./EXERCISE_files/table003.png"> 
+    </div> 
+    <p>学员表student的示例数据如图-5所示。</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image005.png"> 
+     <p>图-5</p> 
+    </div> 
+    <p>2.在上题背景下，学生表中按照所在专业分组，同专业内按成绩倒序排序，成绩相同则按学号正序排序，并给予组内等级，用Rank_ID表示。</p> 
+    <p>3.有专业表class，表结构如表－4所示：</p> 
+    <div class="table"> 
+     <p>表－4 专业表class信息</p> 
+     <img src="./EXERCISE_files/table004.png"> 
+    </div> 
+    <p>专业表的示例数据如图-6所示。</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image006.png"> 
+     <p>图-6</p> 
+    </div> 
+    <p>学员表的class_id数据参照class表cid列的数据。关联学员表student和class表，按照class_id分组，每组内按照学生成绩倒序排序，相同成绩按照学号正序排列，列出学生所在的专业名字、学生姓名、成绩及等级drank。</p> 
+    <p>4. 创建mygroup，该表存储了每组员工的工资情况，创建表的SQL语句如下所示：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table <span class="sh_function">mygroup</span> <span class="sh_symbol">(</span></li><li>group_id <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li>job <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span> </li><li>name <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span> </li><li>salary <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table mygroup (
+group_id number(4),
+job varchar2(10), 
+name varchar2(10), 
+salary number(10,2)
+);
+</pre></div></div> 
+    <p>向mygroup表中插入测试数据，SQL语句如下所示：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_string">'Coding'</span><span class="sh_symbol">,</span>    <span class="sh_string">'Bruce'</span><span class="sh_symbol">,</span><span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_string">'Programmer'</span><span class="sh_symbol">,</span><span class="sh_string">'Clair'</span><span class="sh_symbol">,</span><span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_string">'Architect'</span><span class="sh_symbol">,</span> <span class="sh_string">'Gideon'</span><span class="sh_symbol">,</span><span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_string">'Director'</span><span class="sh_symbol">,</span>  <span class="sh_string">'Hill'</span><span class="sh_symbol">,</span><span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_string">'Coding'</span><span class="sh_symbol">,</span>    <span class="sh_string">'Jason'</span><span class="sh_symbol">,</span><span class="sh_number">2000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_string">'Programmer'</span><span class="sh_symbol">,</span><span class="sh_string">'Joey'</span><span class="sh_symbol">,</span><span class="sh_number">2000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_string">'Architect'</span><span class="sh_symbol">,</span> <span class="sh_string">'Martin'</span><span class="sh_symbol">,</span><span class="sh_number">2000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_string">'Director'</span><span class="sh_symbol">,</span>  <span class="sh_string">'Michael'</span><span class="sh_symbol">,</span><span class="sh_number">2000</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_string">'Coding'</span><span class="sh_symbol">,</span>    <span class="sh_string">'Rebecca'</span><span class="sh_symbol">,</span><span class="sh_number">3000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_string">'Programmer'</span><span class="sh_symbol">,</span><span class="sh_string">'Rex'</span><span class="sh_symbol">,</span><span class="sh_number">3000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_string">'Architect'</span><span class="sh_symbol">,</span> <span class="sh_string">'Richard'</span><span class="sh_symbol">,</span><span class="sh_number">3000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_string">'Director'</span><span class="sh_symbol">,</span>  <span class="sh_string">'Sabrina'</span><span class="sh_symbol">,</span><span class="sh_number">3000</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">40</span><span class="sh_symbol">,</span><span class="sh_string">'Coding'</span><span class="sh_symbol">,</span>    <span class="sh_string">'Samuel'</span><span class="sh_symbol">,</span><span class="sh_number">4000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">40</span><span class="sh_symbol">,</span><span class="sh_string">'Programmer'</span><span class="sh_symbol">,</span><span class="sh_string">'Susy'</span><span class="sh_symbol">,</span><span class="sh_number">4000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">40</span><span class="sh_symbol">,</span><span class="sh_string">'Architect'</span><span class="sh_symbol">,</span> <span class="sh_string">'Tina'</span><span class="sh_symbol">,</span><span class="sh_number">4000</span><span class="sh_symbol">);</span></li><li>insert into mygroup <span class="sh_function">values</span> <span class="sh_symbol">(</span><span class="sh_number">40</span><span class="sh_symbol">,</span><span class="sh_string">'Director'</span><span class="sh_symbol">,</span>  <span class="sh_string">'Wendy'</span><span class="sh_symbol">,</span><span class="sh_number">4000</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>commit<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">insert into mygroup values (10,'Coding',    'Bruce',1000);
+insert into mygroup values (10,'Programmer','Clair',1000);
+insert into mygroup values (10,'Architect', 'Gideon',1000);
+insert into mygroup values (10,'Director',  'Hill',1000);
+
+insert into mygroup values (20,'Coding',    'Jason',2000);
+insert into mygroup values (20,'Programmer','Joey',2000);
+insert into mygroup values (20,'Architect', 'Martin',2000);
+insert into mygroup values (20,'Director',  'Michael',2000);
+
+insert into mygroup values (30,'Coding',    'Rebecca',3000);
+insert into mygroup values (30,'Programmer','Rex',3000);
+insert into mygroup values (30,'Architect', 'Richard',3000);
+insert into mygroup values (30,'Director',  'Sabrina',3000);
+
+insert into mygroup values (40,'Coding',    'Samuel',4000);
+insert into mygroup values (40,'Programmer','Susy',4000);
+insert into mygroup values (40,'Architect', 'Tina',4000);
+insert into mygroup values (40,'Director',  'Wendy',4000);
+
+commit;
+</pre></div></div> 
+    <p>请统计各组工资的和以及工资总和，要求使用rollup函数完成。</p> 
+    <p>5.分别按（group_id,job）、（group_id）、（job）以及全表统计工资和，要求使用CUBE函数来完成。</p> 
+    <p>6.分别按（group_id）、（job）统计工资和，要求使用GROUPING SETS函数来完成。</p> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

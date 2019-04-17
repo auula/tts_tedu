@@ -1,0 +1,1033 @@
+
+<!-- saved from url=(0099)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="9424927713"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA SPRINGMYBATIS02 UNIT05</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#case1">Spring AOP前置通知案例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#case2">Spring AOP环绕通知案例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#case3">Spring AOP异常通知案例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#case4">Spring AOP注解使用案例</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 Spring AOP前置通知案例</h2>
+      <h3>1.1 问题</h3>
+      <p>使用Spring AOP前置通知，在访问Controller中每个方法前，记录用户的操作日志。</p>
+      <h3>1.2 方案</h3>
+      <p>Spring AOP使用步骤：</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建Controller</p>
+      <p>复制项目SpringUnit04，创建新项目SpringUnit05。</p>
+      <p>创建员工业务控制器EmpController，并实现员工查询，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>controller<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Controller<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>web<span class="sh_symbol">.</span>bind<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>RequestMapping<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>@Controller</li><li>@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/emp"</span><span class="sh_symbol">)</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> EmpController <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 查询员工</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/findEmp.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">find</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 模拟查询员工数据</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"查询员工数据，发送至列表页面."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_string">"emp/emp_list.jsp"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/emp")
+public class EmpController {
+
+	/**
+	 * 查询员工
+	 */
+	@RequestMapping("/findEmp.do")
+	public String find() {
+		// 模拟查询员工数据
+		System.out.println("查询员工数据，发送至列表页面.");
+		return "emp/emp_list.jsp";
+	}
+
+}
+</pre></div></div>
+      <p class="number">步骤二：创建方面组件</p>
+      <p>创建方面组件OperateLogger，并在该类中创建记录用户操作日志的方法，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>aspect<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>text<span class="sh_symbol">.</span>SimpleDateFormat<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span><span class="sh_predef_func">Date</span><span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>ProceedingJoinPoint<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>AfterThrowing<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Around<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Aspect<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Component<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> *&nbsp;&nbsp;&nbsp;&nbsp;用于记录日志的方面组件，演示Spring AOP的各种通知类型。</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> OperateLogger <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 前置通知、后置通知、最终通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">log1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;记录用户操作信息"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.aspect;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+/**
+ *	用于记录日志的方面组件，演示Spring AOP的各种通知类型。
+ */
+public class OperateLogger {
+
+	/**
+	 * 前置通知、后置通知、最终通知使用的方法
+	 */
+	public void log1() {
+		// 记录日志
+		System.out.println("--&gt;记录用户操作信息");
+	}
+
+}
+</pre></div></div>
+      <p class="number">步骤三：声明方面组件</p>
+      <p>在applicationContext.xml中，声明该方面组件，关键代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 声明方面组件 <span class="sh_symbol">--&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"com.tarena.aspect.OperateLogger"</span><span class="sh_symbol">/&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">#cold_bold	&lt;!-- 声明方面组件 --&gt;
+#cold_bold	&lt;bean id="operateLogger" class="com.tarena.aspect.OperateLogger"/&gt;
+</pre></div></div>
+      <p class="number">步骤四：将方面组件作用到目标组件上</p>
+      <p>在applicationContext.xml中，将声明的方面组件作用到com.tarena.controller包下所有类的所有方法上，关键代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 声明方面组件 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"com.tarena.aspect.OperateLogger"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置AOP <span class="sh_symbol">--&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>before method<span class="sh_symbol">=</span><span class="sh_string">"log1"</span> </li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	&lt;!-- 声明方面组件 --&gt;
+	&lt;bean id="operateLogger" class="com.tarena.aspect.OperateLogger"/&gt;
+	
+#cold_bold	&lt;!-- 配置AOP --&gt;
+#cold_bold	&lt;aop:config&gt;
+#cold_bold		&lt;aop:aspect ref="operateLogger"&gt;
+#cold_bold			&lt;aop:before method="log1" 
+#cold_bold				pointcut="within(com.tarena.controller..*)"/&gt;
+#cold_bold		&lt;/aop:aspect&gt;
+#cold_bold	&lt;/aop:config&gt; 
+</pre></div></div>
+      <p class="number">步骤五：测试</p>
+      <p>创建Junit测试类TestEmpController，并增加测试查询员工的方法，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>context<span class="sh_symbol">.</span>ApplicationContext<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>context<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ClassPathXmlApplicationContext<span class="sh_symbol">;</span></li><li>import com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>controller<span class="sh_symbol">.</span>EmpController<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestEmpController <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试查询员工</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">test1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicationContext ctx <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ClassPathXmlApplicationContext</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"applicationContext.xml"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EmpController ctl <span class="sh_symbol">=</span> ctx<span class="sh_symbol">.</span><span class="sh_function">getBean</span><span class="sh_symbol">(</span>EmpController<span class="sh_symbol">.</span><span class="sh_keyword">class</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctl<span class="sh_symbol">.</span><span class="sh_function">find</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.test;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.tarena.controller.EmpController;
+
+public class TestEmpController {
+	
+	/**
+	 * 测试查询员工
+	 */
+	@Test
+	public void test1() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext(
+				"applicationContext.xml");
+		EmpController ctl = ctx.getBean(EmpController.class);
+		ctl.find();
+	}
+
+}
+</pre></div></div>
+      <p>执行该测试方法，控制台输出效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>可见，在执行EmpController.find()方法之前，执行了方面组件的记录日志的方法，由于该方法采用AOP面向对象的思想实现的，因此不需要对Controller类做任何改动。</p>
+      <p class="number">步骤六：扩展</p>
+      <p>后置通知、最终通知的用法与前置通知完全一致，只需要在配置AOP时将aop:before改为aop: after-returning和aop:after。请自己尝试将前置通知类型改为后置通知、最终通知，并执行测试方法，观察控制台的输出情况。</p>
+      <h3>1.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <p>EmpController完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>controller<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Controller<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>web<span class="sh_symbol">.</span>bind<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>RequestMapping<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>@Controller</li><li>@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/emp"</span><span class="sh_symbol">)</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> EmpController <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 查询员工</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/findEmp.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">find</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 模拟查询员工数据</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"查询员工数据，发送至列表页面."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_string">"emp/emp_list.jsp"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/emp")
+public class EmpController {
+
+	/**
+	 * 查询员工
+	 */
+	@RequestMapping("/findEmp.do")
+	public String find() {
+		// 模拟查询员工数据
+		System.out.println("查询员工数据，发送至列表页面.");
+		
+		return "emp/emp_list.jsp";
+	}
+
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>OperateLogger完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>aspect<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>text<span class="sh_symbol">.</span>SimpleDateFormat<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span><span class="sh_predef_func">Date</span><span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>ProceedingJoinPoint<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>AfterThrowing<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Around<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Aspect<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Component<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> *&nbsp;&nbsp;&nbsp;&nbsp;用于记录日志的方面组件，演示Spring AOP的各种通知类型。</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> OperateLogger <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 前置通知、后置通知、最终通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">log1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;记录用户操作信息"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.aspect;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+/**
+ *	用于记录日志的方面组件，演示Spring AOP的各种通知类型。
+ */
+public class OperateLogger {
+
+	/**
+	 * 前置通知、后置通知、最终通知使用的方法
+	 */
+	public void log1() {
+		// 记录日志
+		System.out.println("--&gt;记录用户操作信息");
+	}
+	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>applicationContext.xml完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span>xml version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>beans xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/beans"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>context<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/context"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jdbc<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/jdbc"</span>  </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jee<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/jee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>tx<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/tx"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>aop<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/aop"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>mvc<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/mvc"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jpa<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/data/jpa"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置数据源 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"ds"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.apache.commons.dbcp.BasicDataSource"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destroy<span class="sh_symbol">-</span>method<span class="sh_symbol">=</span><span class="sh_string">"close"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"url"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"jdbc:oracle:thin:@localhost:1521:xe"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"driverClassName"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"oracle.jdbc.OracleDriver"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"username"</span> value<span class="sh_symbol">=</span><span class="sh_string">"lhh"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"password"</span> value<span class="sh_symbol">=</span><span class="sh_string">"123456"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置SqlSessionFactory <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"sqlSessionFactory"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.mybatis.spring.SqlSessionFactoryBean"</span><span class="sh_symbol">&gt;</span>  </li><li>      <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"dataSource"</span> ref<span class="sh_symbol">=</span><span class="sh_string">"ds"</span> <span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"mapperLocations"</span> </li><li>      &nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"classpath:com/tarena/entity/*.xml"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>    </li><li>    <span class="sh_symbol">&lt;!--</span> 配置MyBatis注解 <span class="sh_symbol">--&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>bean <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span><span class="sh_symbol">&gt;</span></li><li>       <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"basePackage"</span> value<span class="sh_symbol">=</span><span class="sh_string">"com.tarena.dao"</span> <span class="sh_symbol">/&gt;</span></li><li>       <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"annotationClass"</span> </li><li>           value<span class="sh_symbol">=</span><span class="sh_string">"com.tarena.annotation.MyBatisRepository"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 开启注解扫描 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>context<span class="sh_symbol">:</span>component<span class="sh_symbol">-</span>scan base<span class="sh_symbol">-</span>package<span class="sh_symbol">=</span><span class="sh_string">"com.tarena"</span> <span class="sh_symbol">/&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 支持@RequestMapping请求和Controller映射 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>mvc<span class="sh_symbol">:</span>annotation<span class="sh_symbol">-</span><span class="sh_normal">driven </span><span class="sh_symbol">/&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"prefix"</span> value<span class="sh_symbol">=</span><span class="sh_string">"/WEB-INF/"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"suffix"</span> value<span class="sh_symbol">=</span><span class="sh_string">".jsp"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 声明方面组件 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"com.tarena.aspect.OperateLogger"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置AOP <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>before method<span class="sh_symbol">=</span><span class="sh_string">"log1"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span> </li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;/</span>beans<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"&gt;
+	
+	&lt;!-- 配置数据源 --&gt;
+	&lt;bean id="ds" 
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close"&gt;
+		&lt;property name="url" 
+			value="jdbc:oracle:thin:@localhost:1521:xe"/&gt;
+		&lt;property name="driverClassName" 
+			value="oracle.jdbc.OracleDriver"/&gt;
+		&lt;property name="username" value="lhh"/&gt;
+		&lt;property name="password" value="123456"/&gt;
+	&lt;/bean&gt;
+	
+	&lt;!-- 配置SqlSessionFactory --&gt;
+	&lt;bean id="sqlSessionFactory" 
+		class="org.mybatis.spring.SqlSessionFactoryBean"&gt;  
+      &lt;property name="dataSource" ref="ds" /&gt;
+      &lt;property name="mapperLocations" 
+      	value="classpath:com/tarena/entity/*.xml"/&gt;
+    &lt;/bean&gt;
+    
+    &lt;!-- 配置MyBatis注解 --&gt;
+    &lt;bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt;
+       &lt;property name="basePackage" value="com.tarena.dao" /&gt;
+       &lt;property name="annotationClass" 
+           value="com.tarena.annotation.MyBatisRepository"/&gt;
+	&lt;/bean&gt;
+	
+	&lt;!-- 开启注解扫描 --&gt;
+	&lt;context:component-scan base-package="com.tarena" /&gt;
+
+	&lt;!-- 支持@RequestMapping请求和Controller映射 --&gt;
+	&lt;mvc:annotation-driven /&gt;
+
+	&lt;bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;
+		&lt;property name="prefix" value="/WEB-INF/"/&gt;
+		&lt;property name="suffix" value=".jsp"/&gt;
+	&lt;/bean&gt;	
+	
+	&lt;!-- 声明方面组件 --&gt;
+	&lt;bean id="operateLogger" class="com.tarena.aspect.OperateLogger"/&gt;
+	
+	&lt;!-- 配置AOP --&gt;
+	&lt;aop:config&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:before method="log1" 
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+	&lt;/aop:config&gt; 
+
+&lt;/beans&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>TestEmpController完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>context<span class="sh_symbol">.</span>ApplicationContext<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>context<span class="sh_symbol">.</span>support<span class="sh_symbol">.</span>ClassPathXmlApplicationContext<span class="sh_symbol">;</span></li><li>import com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>controller<span class="sh_symbol">.</span>EmpController<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestEmpController <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试查询员工</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">test1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicationContext ctx <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ClassPathXmlApplicationContext</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"applicationContext.xml"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EmpController ctl <span class="sh_symbol">=</span> ctx<span class="sh_symbol">.</span><span class="sh_function">getBean</span><span class="sh_symbol">(</span>EmpController<span class="sh_symbol">.</span><span class="sh_keyword">class</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctl<span class="sh_symbol">.</span><span class="sh_function">find</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.test;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import com.tarena.controller.EmpController;
+
+public class TestEmpController {
+	
+	/**
+	 * 测试查询员工
+	 */
+	@Test
+	public void test1() {
+		ApplicationContext ctx = new ClassPathXmlApplicationContext(
+				"applicationContext.xml");
+		EmpController ctl = ctx.getBean(EmpController.class);
+		ctl.find();
+	}
+
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 Spring AOP环绕通知案例</h2>
+      <h3>2.1 问题</h3>
+      <p>使用Spring AOP环绕通知，在访问Controller中每个方法前，记录用户的操作日志。</p>
+      <h3>2.2 方案</h3>
+      <p>Spring AOP使用步骤：</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建方面组件</p>
+      <p>复用方面组件OperateLogger，在该类中创建新的记录日志的方法log2，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>aspect<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>text<span class="sh_symbol">.</span>SimpleDateFormat<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span><span class="sh_predef_func">Date</span><span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>ProceedingJoinPoint<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>AfterThrowing<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Around<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Aspect<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Component<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> *&nbsp;&nbsp;&nbsp;&nbsp;用于记录日志的方面组件，演示Spring AOP的各种通知类型。</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> OperateLogger <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">//其他方法略</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 环绕通知使用的方法</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">Object</span> <span class="sh_function">log2</span><span class="sh_symbol">(</span>ProceedingJoinPoint p<span class="sh_symbol">)</span> <span class="sh_keyword">throws</span> Throwable <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 目标组件的类名</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> className <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">getTarget</span><span class="sh_symbol">().</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 调用的方法名</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> method <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">getSignature</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 当前系统时间</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> date <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">SimpleDateFormat</span><span class="sh_symbol">(</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"yyyy-MM-dd hh:mm:ss"</span><span class="sh_symbol">).</span><span class="sh_function">format</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_predef_func">Date</span><span class="sh_symbol">());</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 拼日志信息</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> msg <span class="sh_symbol">=</span> <span class="sh_string">"--&gt;用户在"</span> <span class="sh_symbol">+</span> date <span class="sh_symbol">+</span> <span class="sh_string">"，执行了"</span> </li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">+</span> className <span class="sh_symbol">+</span> <span class="sh_string">"."</span> <span class="sh_symbol">+</span> method <span class="sh_symbol">+</span> <span class="sh_string">"()"</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>msg<span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 执行目标组件的方法</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Object</span> obj <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">proceed</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 在调用目标组件业务方法后也可以做一些业务处理</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;调用目标组件业务方法后..."</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> obj<span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.aspect;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+/**
+ *	用于记录日志的方面组件，演示Spring AOP的各种通知类型。
+ */
+public class OperateLogger {
+
+//其他方法略
+
+#cold_bold	/**
+#cold_bold	 * 环绕通知使用的方法
+#cold_bold	 */
+#cold_bold	public Object log2(ProceedingJoinPoint p) throws Throwable {
+#cold_bold		// 目标组件的类名
+#cold_bold		String className = p.getTarget().getClass().getName();
+#cold_bold		// 调用的方法名
+#cold_bold		String method = p.getSignature().getName();
+#cold_bold		// 当前系统时间
+#cold_bold		String date = new SimpleDateFormat(
+#cold_bold				"yyyy-MM-dd hh:mm:ss").format(new Date());
+#cold_bold		// 拼日志信息
+#cold_bold		String msg = "--&gt;用户在" + date + "，执行了" 
+#cold_bold				+ className + "." + method + "()";
+#cold_bold		// 记录日志
+#cold_bold		System.out.println(msg);		
+#cold_bold		
+#cold_bold		// 执行目标组件的方法
+#cold_bold		Object obj = p.proceed();
+#cold_bold		
+#cold_bold		// 在调用目标组件业务方法后也可以做一些业务处理
+#cold_bold		System.out.println("--&gt;调用目标组件业务方法后...");
+#cold_bold		
+#cold_bold		return obj;
+#cold_bold	}
+	
+}
+</pre></div></div>
+      <p class="number">步骤二：声明方面组件</p>
+      <p>由于复用的方面组件已经声明，因此该步骤可以省略。</p>
+      <p class="number">步骤三：将方面组件作用到目标组件上</p>
+      <p>在applicationContext.xml中，声明方面组件的log2方法，关键代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 声明方面组件 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"com.tarena.aspect.OperateLogger"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置AOP <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>before method<span class="sh_symbol">=</span><span class="sh_string">"log1"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>around method<span class="sh_symbol">=</span><span class="sh_string">"log2"</span> </li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	&lt;!-- 声明方面组件 --&gt;
+	&lt;bean id="operateLogger" class="com.tarena.aspect.OperateLogger"/&gt;
+	
+	&lt;!-- 配置AOP --&gt;
+	&lt;aop:config&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:before method="log1" 
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+#cold_bold		&lt;aop:aspect ref="operateLogger"&gt;
+#cold_bold			&lt;aop:around method="log2" 
+#cold_bold				pointcut="within(com.tarena.controller..*)"/&gt;
+#cold_bold		&lt;/aop:aspect&gt;
+	&lt;/aop:config&gt;
+</pre></div></div>
+      <p class="number">步骤四：测试</p>
+      <p>执行测试方法TestEmpController.test1()，控制台输出效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <h3>2.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <p>OperateLogger完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>aspect<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>text<span class="sh_symbol">.</span>SimpleDateFormat<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span><span class="sh_predef_func">Date</span><span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>ProceedingJoinPoint<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>AfterThrowing<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Around<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Aspect<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Component<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> *&nbsp;&nbsp;&nbsp;&nbsp;用于记录日志的方面组件，演示Spring AOP的各种通知类型。</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> OperateLogger <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 前置通知、后置通知、最终通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">log1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;记录用户操作信息"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 环绕通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">Object</span> <span class="sh_function">log2</span><span class="sh_symbol">(</span>ProceedingJoinPoint p<span class="sh_symbol">)</span> <span class="sh_keyword">throws</span> Throwable <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 目标组件的类名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> className <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">getTarget</span><span class="sh_symbol">().</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 调用的方法名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> method <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">getSignature</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 当前系统时间</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> date <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">SimpleDateFormat</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"yyyy-MM-dd hh:mm:ss"</span><span class="sh_symbol">).</span><span class="sh_function">format</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_predef_func">Date</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 拼日志信息</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> msg <span class="sh_symbol">=</span> <span class="sh_string">"--&gt;用户在"</span> <span class="sh_symbol">+</span> date <span class="sh_symbol">+</span> <span class="sh_string">"，执行了"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">+</span> className <span class="sh_symbol">+</span> <span class="sh_string">"."</span> <span class="sh_symbol">+</span> method <span class="sh_symbol">+</span> <span class="sh_string">"()"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>msg<span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 执行目标组件的方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Object</span> obj <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">proceed</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 在调用目标组件业务方法后也可以做一些业务处理</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;调用目标组件业务方法后..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> obj<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.aspect;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+/**
+ *	用于记录日志的方面组件，演示Spring AOP的各种通知类型。
+ */
+public class OperateLogger {
+
+	/**
+	 * 前置通知、后置通知、最终通知使用的方法
+	 */
+	public void log1() {
+		// 记录日志
+		System.out.println("--&gt;记录用户操作信息");
+	}
+
+	/**
+	 * 环绕通知使用的方法
+	 */
+	public Object log2(ProceedingJoinPoint p) throws Throwable {
+		// 目标组件的类名
+		String className = p.getTarget().getClass().getName();
+		// 调用的方法名
+		String method = p.getSignature().getName();
+		// 当前系统时间
+		String date = new SimpleDateFormat(
+				"yyyy-MM-dd hh:mm:ss").format(new Date());
+		// 拼日志信息
+		String msg = "--&gt;用户在" + date + "，执行了" 
+				+ className + "." + method + "()";
+		// 记录日志
+		System.out.println(msg);		
+		
+		// 执行目标组件的方法
+		Object obj = p.proceed();
+		
+		// 在调用目标组件业务方法后也可以做一些业务处理
+		System.out.println("--&gt;调用目标组件业务方法后...");
+		
+		return obj;
+	}
+	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>applicationContext.xml完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span>xml version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>beans xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/beans"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>context<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/context"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jdbc<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/jdbc"</span>  </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jee<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/jee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>tx<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/tx"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>aop<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/aop"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>mvc<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/mvc"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jpa<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/data/jpa"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置数据源 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"ds"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.apache.commons.dbcp.BasicDataSource"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destroy<span class="sh_symbol">-</span>method<span class="sh_symbol">=</span><span class="sh_string">"close"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"url"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"jdbc:oracle:thin:@localhost:1521:xe"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"driverClassName"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"oracle.jdbc.OracleDriver"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"username"</span> value<span class="sh_symbol">=</span><span class="sh_string">"lhh"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"password"</span> value<span class="sh_symbol">=</span><span class="sh_string">"123456"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置SqlSessionFactory <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"sqlSessionFactory"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.mybatis.spring.SqlSessionFactoryBean"</span><span class="sh_symbol">&gt;</span>  </li><li>      <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"dataSource"</span> ref<span class="sh_symbol">=</span><span class="sh_string">"ds"</span> <span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"mapperLocations"</span> </li><li>      &nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"classpath:com/tarena/entity/*.xml"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>    </li><li>    <span class="sh_symbol">&lt;!--</span> 配置MyBatis注解 <span class="sh_symbol">--&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>bean <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span><span class="sh_symbol">&gt;</span></li><li>       <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"basePackage"</span> value<span class="sh_symbol">=</span><span class="sh_string">"com.tarena.dao"</span> <span class="sh_symbol">/&gt;</span></li><li>       <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"annotationClass"</span> </li><li>           value<span class="sh_symbol">=</span><span class="sh_string">"com.tarena.annotation.MyBatisRepository"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 开启注解扫描 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>context<span class="sh_symbol">:</span>component<span class="sh_symbol">-</span>scan base<span class="sh_symbol">-</span>package<span class="sh_symbol">=</span><span class="sh_string">"com.tarena"</span> <span class="sh_symbol">/&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 支持@RequestMapping请求和Controller映射 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>mvc<span class="sh_symbol">:</span>annotation<span class="sh_symbol">-</span><span class="sh_normal">driven </span><span class="sh_symbol">/&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"prefix"</span> value<span class="sh_symbol">=</span><span class="sh_string">"/WEB-INF/"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"suffix"</span> value<span class="sh_symbol">=</span><span class="sh_string">".jsp"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 声明方面组件 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"com.tarena.aspect.OperateLogger"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置AOP <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>before method<span class="sh_symbol">=</span><span class="sh_string">"log1"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>around method<span class="sh_symbol">=</span><span class="sh_string">"log2"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span> </li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;/</span>beans<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"&gt;
+	
+	&lt;!-- 配置数据源 --&gt;
+	&lt;bean id="ds" 
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close"&gt;
+		&lt;property name="url" 
+			value="jdbc:oracle:thin:@localhost:1521:xe"/&gt;
+		&lt;property name="driverClassName" 
+			value="oracle.jdbc.OracleDriver"/&gt;
+		&lt;property name="username" value="lhh"/&gt;
+		&lt;property name="password" value="123456"/&gt;
+	&lt;/bean&gt;
+	
+	&lt;!-- 配置SqlSessionFactory --&gt;
+	&lt;bean id="sqlSessionFactory" 
+		class="org.mybatis.spring.SqlSessionFactoryBean"&gt;  
+      &lt;property name="dataSource" ref="ds" /&gt;
+      &lt;property name="mapperLocations" 
+      	value="classpath:com/tarena/entity/*.xml"/&gt;
+    &lt;/bean&gt;
+    
+    &lt;!-- 配置MyBatis注解 --&gt;
+    &lt;bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt;
+       &lt;property name="basePackage" value="com.tarena.dao" /&gt;
+       &lt;property name="annotationClass" 
+           value="com.tarena.annotation.MyBatisRepository"/&gt;
+	&lt;/bean&gt;
+	
+	&lt;!-- 开启注解扫描 --&gt;
+	&lt;context:component-scan base-package="com.tarena" /&gt;
+
+	&lt;!-- 支持@RequestMapping请求和Controller映射 --&gt;
+	&lt;mvc:annotation-driven /&gt;
+
+	&lt;bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;
+		&lt;property name="prefix" value="/WEB-INF/"/&gt;
+		&lt;property name="suffix" value=".jsp"/&gt;
+	&lt;/bean&gt;	
+	
+	&lt;!-- 声明方面组件 --&gt;
+	&lt;bean id="operateLogger" class="com.tarena.aspect.OperateLogger"/&gt;
+	
+	&lt;!-- 配置AOP --&gt;
+	&lt;aop:config&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:before method="log1" 
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:around method="log2" 
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+	&lt;/aop:config&gt; 
+
+&lt;/beans&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 Spring AOP异常通知案例</h2>
+      <h3>3.1 问题</h3>
+      <p>使用Spring AOP异常通知，在每个Controller的方法发生异常时，记录异常日志。</p>
+      <h3>3.2 方案</h3>
+      <p>Spring AOP使用步骤：</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建方面组件</p>
+      <p>复用方面组件OperateLogger，在该类中创建新的记录日志的方法log3，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>aspect<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>text<span class="sh_symbol">.</span>SimpleDateFormat<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span><span class="sh_predef_func">Date</span><span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>ProceedingJoinPoint<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>AfterThrowing<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Around<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Aspect<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Component<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> *&nbsp;&nbsp;&nbsp;&nbsp;用于记录日志的方面组件，演示Spring AOP的各种通知类型。</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> OperateLogger <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">//其他方法略</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 异常通知使用的方法</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">log3</span><span class="sh_symbol">(</span>Exception e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StackTraceElement<span class="sh_symbol">[]</span> elems <span class="sh_symbol">=</span> e<span class="sh_symbol">.</span><span class="sh_function">getStackTrace</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将异常信息记录</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;"</span> <span class="sh_symbol">+</span> elems<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">].</span><span class="sh_function">toString</span><span class="sh_symbol">());</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.aspect;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+/**
+ *	用于记录日志的方面组件，演示Spring AOP的各种通知类型。
+ */
+public class OperateLogger {
+
+//其他方法略
+	
+#cold_bold	/**
+#cold_bold	 * 异常通知使用的方法
+#cold_bold	 */
+#cold_bold	public void log3(Exception e) {
+#cold_bold		StackTraceElement[] elems = e.getStackTrace();
+#cold_bold		// 将异常信息记录
+#cold_bold		System.out.println("--&gt;" + elems[0].toString());
+#cold_bold	}
+	
+}
+</pre></div></div>
+      <p class="number">步骤二：声明方面组件</p>
+      <p>由于复用的方面组件已经声明，因此该步骤可以省略。</p>
+      <p class="number">步骤三：将方面组件作用到目标组件上</p>
+      <p>在applicationContext.xml中，声明方面组件的log3方法，关键代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 声明方面组件 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"com.tarena.aspect.OperateLogger"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置AOP <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>before method<span class="sh_symbol">=</span><span class="sh_string">"log1"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>around method<span class="sh_symbol">=</span><span class="sh_string">"log2"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>after<span class="sh_symbol">-</span>throwing method<span class="sh_symbol">=</span><span class="sh_string">"log3"</span> throwing<span class="sh_symbol">=</span><span class="sh_string">"e"</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	&lt;!-- 声明方面组件 --&gt;
+	&lt;bean id="operateLogger" class="com.tarena.aspect.OperateLogger"/&gt;
+	
+	&lt;!-- 配置AOP --&gt;
+	&lt;aop:config&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:before method="log1" 
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:around method="log2" 
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+#cold_bold		&lt;aop:aspect ref="operateLogger"&gt;
+#cold_bold			&lt;aop:after-throwing method="log3" throwing="e"
+#cold_bold				pointcut="within(com.tarena.controller..*)"/&gt;
+#cold_bold		&lt;/aop:aspect&gt;
+	&lt;/aop:config&gt; 
+</pre></div></div>
+      <p class="number">步骤四：测试</p>
+      <p>为了便于测试，在EmpController.find()方法中制造一个异常，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>controller<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Controller<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>web<span class="sh_symbol">.</span>bind<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>RequestMapping<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>@Controller</li><li>@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/emp"</span><span class="sh_symbol">)</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> EmpController <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 查询员工</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/findEmp.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">find</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 模拟查询员工数据</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"查询员工数据，发送至列表页面."</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 制造一个异常，便于测试异常通知</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer<span class="sh_symbol">.</span><span class="sh_function">valueOf</span><span class="sh_symbol">(</span><span class="sh_string">"abc"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_string">"emp/emp_list.jsp"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/emp")
+public class EmpController {
+
+	/**
+	 * 查询员工
+	 */
+	@RequestMapping("/findEmp.do")
+	public String find() {
+		// 模拟查询员工数据
+		System.out.println("查询员工数据，发送至列表页面.");
+#cold_bold		// 制造一个异常，便于测试异常通知
+#cold_bold		Integer.valueOf("abc");
+		return "emp/emp_list.jsp";
+	}
+
+}
+</pre></div></div>
+      <p>执行测试方法TestEmpController.test1()，控制台输出效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <h3>3.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <p>OperateLogger完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>aspect<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>text<span class="sh_symbol">.</span>SimpleDateFormat<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span><span class="sh_predef_func">Date</span><span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>ProceedingJoinPoint<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>AfterThrowing<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Around<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Aspect<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Component<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> *&nbsp;&nbsp;&nbsp;&nbsp;用于记录日志的方面组件，演示Spring AOP的各种通知类型。</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> OperateLogger <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 前置通知、后置通知、最终通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">log1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;记录用户操作信息"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 环绕通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">Object</span> <span class="sh_function">log2</span><span class="sh_symbol">(</span>ProceedingJoinPoint p<span class="sh_symbol">)</span> <span class="sh_keyword">throws</span> Throwable <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 目标组件的类名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> className <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">getTarget</span><span class="sh_symbol">().</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 调用的方法名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> method <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">getSignature</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 当前系统时间</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> date <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">SimpleDateFormat</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"yyyy-MM-dd hh:mm:ss"</span><span class="sh_symbol">).</span><span class="sh_function">format</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_predef_func">Date</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 拼日志信息</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> msg <span class="sh_symbol">=</span> <span class="sh_string">"--&gt;用户在"</span> <span class="sh_symbol">+</span> date <span class="sh_symbol">+</span> <span class="sh_string">"，执行了"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">+</span> className <span class="sh_symbol">+</span> <span class="sh_string">"."</span> <span class="sh_symbol">+</span> method <span class="sh_symbol">+</span> <span class="sh_string">"()"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>msg<span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 执行目标组件的方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Object</span> obj <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">proceed</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 在调用目标组件业务方法后也可以做一些业务处理</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;调用目标组件业务方法后..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> obj<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 异常通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">log3</span><span class="sh_symbol">(</span>Exception e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StackTraceElement<span class="sh_symbol">[]</span> elems <span class="sh_symbol">=</span> e<span class="sh_symbol">.</span><span class="sh_function">getStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将异常信息记录</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;"</span> <span class="sh_symbol">+</span> elems<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">].</span><span class="sh_function">toString</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.aspect;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+/**
+ *	用于记录日志的方面组件，演示Spring AOP的各种通知类型。
+ */
+public class OperateLogger {
+
+	/**
+	 * 前置通知、后置通知、最终通知使用的方法
+	 */
+	public void log1() {
+		// 记录日志
+		System.out.println("--&gt;记录用户操作信息");
+	}
+
+	/**
+	 * 环绕通知使用的方法
+	 */
+	public Object log2(ProceedingJoinPoint p) throws Throwable {
+		// 目标组件的类名
+		String className = p.getTarget().getClass().getName();
+		// 调用的方法名
+		String method = p.getSignature().getName();
+		// 当前系统时间
+		String date = new SimpleDateFormat(
+				"yyyy-MM-dd hh:mm:ss").format(new Date());
+		// 拼日志信息
+		String msg = "--&gt;用户在" + date + "，执行了" 
+				+ className + "." + method + "()";
+		// 记录日志
+		System.out.println(msg);		
+		
+		// 执行目标组件的方法
+		Object obj = p.proceed();
+		
+		// 在调用目标组件业务方法后也可以做一些业务处理
+		System.out.println("--&gt;调用目标组件业务方法后...");
+		
+		return obj;
+	}
+	
+	/**
+	 * 异常通知使用的方法
+	 */
+	public void log3(Exception e) {
+		StackTraceElement[] elems = e.getStackTrace();
+		// 将异常信息记录
+		System.out.println("--&gt;" + elems[0].toString());
+	}
+	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>applicationContext.xml完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span>xml version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>beans xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/beans"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>context<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/context"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jdbc<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/jdbc"</span>  </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jee<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/jee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>tx<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/tx"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>aop<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/aop"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>mvc<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/mvc"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jpa<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/data/jpa"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置数据源 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"ds"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.apache.commons.dbcp.BasicDataSource"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destroy<span class="sh_symbol">-</span>method<span class="sh_symbol">=</span><span class="sh_string">"close"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"url"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"jdbc:oracle:thin:@localhost:1521:xe"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"driverClassName"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"oracle.jdbc.OracleDriver"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"username"</span> value<span class="sh_symbol">=</span><span class="sh_string">"lhh"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"password"</span> value<span class="sh_symbol">=</span><span class="sh_string">"123456"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置SqlSessionFactory <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"sqlSessionFactory"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.mybatis.spring.SqlSessionFactoryBean"</span><span class="sh_symbol">&gt;</span>  </li><li>      <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"dataSource"</span> ref<span class="sh_symbol">=</span><span class="sh_string">"ds"</span> <span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"mapperLocations"</span> </li><li>      &nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"classpath:com/tarena/entity/*.xml"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>    </li><li>    <span class="sh_symbol">&lt;!--</span> 配置MyBatis注解 <span class="sh_symbol">--&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>bean <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span><span class="sh_symbol">&gt;</span></li><li>       <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"basePackage"</span> value<span class="sh_symbol">=</span><span class="sh_string">"com.tarena.dao"</span> <span class="sh_symbol">/&gt;</span></li><li>       <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"annotationClass"</span> </li><li>           value<span class="sh_symbol">=</span><span class="sh_string">"com.tarena.annotation.MyBatisRepository"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 开启注解扫描 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>context<span class="sh_symbol">:</span>component<span class="sh_symbol">-</span>scan base<span class="sh_symbol">-</span>package<span class="sh_symbol">=</span><span class="sh_string">"com.tarena"</span> <span class="sh_symbol">/&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 支持@RequestMapping请求和Controller映射 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>mvc<span class="sh_symbol">:</span>annotation<span class="sh_symbol">-</span><span class="sh_normal">driven </span><span class="sh_symbol">/&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"prefix"</span> value<span class="sh_symbol">=</span><span class="sh_string">"/WEB-INF/"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"suffix"</span> value<span class="sh_symbol">=</span><span class="sh_string">".jsp"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 声明方面组件 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"com.tarena.aspect.OperateLogger"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置AOP <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>before method<span class="sh_symbol">=</span><span class="sh_string">"log1"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>around method<span class="sh_symbol">=</span><span class="sh_string">"log2"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>after<span class="sh_symbol">-</span>throwing method<span class="sh_symbol">=</span><span class="sh_string">"log3"</span> throwing<span class="sh_symbol">=</span><span class="sh_string">"e"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span> </li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;/</span>beans<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"&gt;
+	
+	&lt;!-- 配置数据源 --&gt;
+	&lt;bean id="ds" 
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close"&gt;
+		&lt;property name="url" 
+			value="jdbc:oracle:thin:@localhost:1521:xe"/&gt;
+		&lt;property name="driverClassName" 
+			value="oracle.jdbc.OracleDriver"/&gt;
+		&lt;property name="username" value="lhh"/&gt;
+		&lt;property name="password" value="123456"/&gt;
+	&lt;/bean&gt;
+	
+	&lt;!-- 配置SqlSessionFactory --&gt;
+	&lt;bean id="sqlSessionFactory" 
+		class="org.mybatis.spring.SqlSessionFactoryBean"&gt;  
+      &lt;property name="dataSource" ref="ds" /&gt;
+      &lt;property name="mapperLocations" 
+      	value="classpath:com/tarena/entity/*.xml"/&gt;
+    &lt;/bean&gt;
+    
+    &lt;!-- 配置MyBatis注解 --&gt;
+    &lt;bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt;
+       &lt;property name="basePackage" value="com.tarena.dao" /&gt;
+       &lt;property name="annotationClass" 
+           value="com.tarena.annotation.MyBatisRepository"/&gt;
+	&lt;/bean&gt;
+	
+	&lt;!-- 开启注解扫描 --&gt;
+	&lt;context:component-scan base-package="com.tarena" /&gt;
+
+	&lt;!-- 支持@RequestMapping请求和Controller映射 --&gt;
+	&lt;mvc:annotation-driven /&gt;
+
+	&lt;bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;
+		&lt;property name="prefix" value="/WEB-INF/"/&gt;
+		&lt;property name="suffix" value=".jsp"/&gt;
+	&lt;/bean&gt;	
+	
+	&lt;!-- 声明方面组件 --&gt;
+	&lt;bean id="operateLogger" class="com.tarena.aspect.OperateLogger"/&gt;
+	
+	&lt;!-- 配置AOP --&gt;
+	&lt;aop:config&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:before method="log1" 
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:around method="log2" 
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:after-throwing method="log3" throwing="e"
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+	&lt;/aop:config&gt; 
+
+&lt;/beans&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>EmpController完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>controller<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Controller<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>web<span class="sh_symbol">.</span>bind<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>RequestMapping<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>@Controller</li><li>@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/emp"</span><span class="sh_symbol">)</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> EmpController <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 查询员工</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">RequestMapping</span><span class="sh_symbol">(</span><span class="sh_string">"/findEmp.do"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">find</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 模拟查询员工数据</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"查询员工数据，发送至列表页面."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 制造一个异常，便于测试异常通知</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer<span class="sh_symbol">.</span><span class="sh_function">valueOf</span><span class="sh_symbol">(</span><span class="sh_string">"abc"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_string">"emp/emp_list.jsp"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/emp")
+public class EmpController {
+
+	/**
+	 * 查询员工
+	 */
+	@RequestMapping("/findEmp.do")
+	public String find() {
+		// 模拟查询员工数据
+		System.out.println("查询员工数据，发送至列表页面.");
+		// 制造一个异常，便于测试异常通知
+		Integer.valueOf("abc");
+		return "emp/emp_list.jsp";
+	}
+
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 Spring AOP注解使用案例</h2>
+      <h3>4.1 问题</h3>
+      <p>使用Spring AOP注解替代XML配置，重构上面的3个案例。</p>
+      <h3>4.2 方案</h3>
+      <p>Spring AOP相关注解及含义如下：</p>
+      <p>@Aspect：用于声明方面组件</p>
+      <p>@Before：用于声明前置通知</p>
+      <p>@AfterReturning：用于声明后置通知</p>
+      <p>@After：用于声明最终通知</p>
+      <p>@Around：用于声明环绕通知</p>
+      <p>@AfterThrowing：用于声明异常通知</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：开启AOP注解扫描</p>
+      <p>在applicationContext.xml中，去掉方面组件声明及作用的XML配置，并开启AOP注解扫描，关键代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 声明方面组件 <span class="sh_symbol">--&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> <span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"com.tarena.aspect.OperateLogger"</span><span class="sh_symbol">/&gt;</span> <span class="sh_symbol">--&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置AOP <span class="sh_symbol">--&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> <span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>before method<span class="sh_symbol">=</span><span class="sh_string">"log1"</span> </li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>around method<span class="sh_symbol">=</span><span class="sh_string">"log2"</span> </li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>after<span class="sh_symbol">-</span>throwing method<span class="sh_symbol">=</span><span class="sh_string">"log3"</span> throwing<span class="sh_symbol">=</span><span class="sh_string">"e"</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span> <span class="sh_symbol">--&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 开启AOP注解扫描 <span class="sh_symbol">--&gt;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspectj<span class="sh_symbol">-</span>autoproxy proxy<span class="sh_symbol">-</span>target<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"true"</span><span class="sh_symbol">/&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">#cold_bold	&lt;!-- 声明方面组件 --&gt;
+#cold_bold	&lt;!-- &lt;bean id="operateLogger" class="com.tarena.aspect.OperateLogger"/&gt; --&gt;
+#cold_bold	
+#cold_bold	&lt;!-- 配置AOP --&gt;
+#cold_bold	&lt;!-- &lt;aop:config&gt;
+#cold_bold		&lt;aop:aspect ref="operateLogger"&gt;
+#cold_bold			&lt;aop:before method="log1" 
+#cold_bold				pointcut="within(com.tarena.controller..*)"/&gt;
+#cold_bold		&lt;/aop:aspect&gt;
+#cold_bold		&lt;aop:aspect ref="operateLogger"&gt;
+#cold_bold			&lt;aop:around method="log2" 
+#cold_bold				pointcut="within(com.tarena.controller..*)"/&gt;
+#cold_bold		&lt;/aop:aspect&gt;
+#cold_bold		&lt;aop:aspect ref="operateLogger"&gt;
+#cold_bold			&lt;aop:after-throwing method="log3" throwing="e"
+#cold_bold				pointcut="within(com.tarena.controller..*)"/&gt;
+#cold_bold		&lt;/aop:aspect&gt;
+#cold_bold	&lt;/aop:config&gt; --&gt;
+#cold_bold	
+#cold_bold	&lt;!-- 开启AOP注解扫描 --&gt;
+#cold_bold	&lt;aop:aspectj-autoproxy proxy-target-class="true"/&gt;
+</pre></div></div>
+      <p class="number">步骤二：使用注解声明方面组件</p>
+      <p>在OperateLogger中，使用@Aspect注解声明方面组件，并分别用@Before、@Around、@AfterThrowing注解声明log1、log2、log3方法，将方面组件作用到目标组件上，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>aspect<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>text<span class="sh_symbol">.</span>SimpleDateFormat<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span><span class="sh_predef_func">Date</span><span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>ProceedingJoinPoint<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>AfterThrowing<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Around<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Aspect<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Component<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> *&nbsp;&nbsp;&nbsp;&nbsp;用于记录日志的方面组件，演示Spring AOP的各种通知类型。</span></li><li><span class="sh_comment"> */</span></li><li class="bold_code">@Component</li><li class="bold_code">@Aspect</li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> OperateLogger <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 前置通知、后置通知、最终通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">Before</span><span class="sh_symbol">(</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">log1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;记录用户操作信息"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 环绕通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">Around</span><span class="sh_symbol">(</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">Object</span> <span class="sh_function">log2</span><span class="sh_symbol">(</span>ProceedingJoinPoint p<span class="sh_symbol">)</span> <span class="sh_keyword">throws</span> Throwable <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 目标组件的类名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> className <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">getTarget</span><span class="sh_symbol">().</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 调用的方法名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> method <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">getSignature</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 当前系统时间</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> date <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">SimpleDateFormat</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"yyyy-MM-dd hh:mm:ss"</span><span class="sh_symbol">).</span><span class="sh_function">format</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_predef_func">Date</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 拼日志信息</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> msg <span class="sh_symbol">=</span> <span class="sh_string">"--&gt;用户在"</span> <span class="sh_symbol">+</span> date <span class="sh_symbol">+</span> <span class="sh_string">"，执行了"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">+</span> className <span class="sh_symbol">+</span> <span class="sh_string">"."</span> <span class="sh_symbol">+</span> method <span class="sh_symbol">+</span> <span class="sh_string">"()"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>msg<span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 执行目标组件的方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Object</span> obj <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">proceed</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 在调用目标组件业务方法后也可以做一些业务处理</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;调用目标组件业务方法后..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> obj<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 异常通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">AfterThrowing</span><span class="sh_symbol">(</span>pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">,</span>throwing<span class="sh_symbol">=</span><span class="sh_string">"e"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">log3</span><span class="sh_symbol">(</span>Exception e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StackTraceElement<span class="sh_symbol">[]</span> elems <span class="sh_symbol">=</span> e<span class="sh_symbol">.</span><span class="sh_function">getStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将异常信息记录</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;"</span> <span class="sh_symbol">+</span> elems<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">].</span><span class="sh_function">toString</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.aspect;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+/**
+ *	用于记录日志的方面组件，演示Spring AOP的各种通知类型。
+ */
+#cold_bold@Component
+#cold_bold@Aspect
+public class OperateLogger {
+
+	/**
+	 * 前置通知、后置通知、最终通知使用的方法
+	 */
+#cold_bold	@Before("within(com.tarena.controller..*)")
+	public void log1() {
+		// 记录日志
+		System.out.println("--&gt;记录用户操作信息");
+	}
+
+	/**
+	 * 环绕通知使用的方法
+	 */
+#cold_bold	@Around("within(com.tarena.controller..*)")
+	public Object log2(ProceedingJoinPoint p) throws Throwable {
+		// 目标组件的类名
+		String className = p.getTarget().getClass().getName();
+		// 调用的方法名
+		String method = p.getSignature().getName();
+		// 当前系统时间
+		String date = new SimpleDateFormat(
+				"yyyy-MM-dd hh:mm:ss").format(new Date());
+		// 拼日志信息
+		String msg = "--&gt;用户在" + date + "，执行了" 
+				+ className + "." + method + "()";
+		// 记录日志
+		System.out.println(msg);		
+		
+		// 执行目标组件的方法
+		Object obj = p.proceed();
+		
+		// 在调用目标组件业务方法后也可以做一些业务处理
+		System.out.println("--&gt;调用目标组件业务方法后...");
+		
+		return obj;
+	}
+	
+	/**
+	 * 异常通知使用的方法
+	 */
+#cold_bold	@AfterThrowing(pointcut="within(com.tarena.controller..*)",throwing="e")
+	public void log3(Exception e) {
+		StackTraceElement[] elems = e.getStackTrace();
+		// 将异常信息记录
+		System.out.println("--&gt;" + elems[0].toString());
+	}
+	
+}
+</pre></div></div>
+      <p class="number">步骤三：测试</p>
+      <p>执行测试方法TestEmpController.test1()，控制台输出效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <h3>4.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <p>applicationContext.xml完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span>xml version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>beans xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/beans"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>context<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/context"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jdbc<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/jdbc"</span>  </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jee<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/jee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>tx<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/tx"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>aop<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/aop"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>mvc<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/mvc"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>jpa<span class="sh_symbol">=</span><span class="sh_string">"http://www.springframework.org/schema/data/jpa"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置数据源 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"ds"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.apache.commons.dbcp.BasicDataSource"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destroy<span class="sh_symbol">-</span>method<span class="sh_symbol">=</span><span class="sh_string">"close"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"url"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"jdbc:oracle:thin:@localhost:1521:xe"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"driverClassName"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"oracle.jdbc.OracleDriver"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"username"</span> value<span class="sh_symbol">=</span><span class="sh_string">"lhh"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"password"</span> value<span class="sh_symbol">=</span><span class="sh_string">"123456"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置SqlSessionFactory <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"sqlSessionFactory"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.mybatis.spring.SqlSessionFactoryBean"</span><span class="sh_symbol">&gt;</span>  </li><li>      <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"dataSource"</span> ref<span class="sh_symbol">=</span><span class="sh_string">"ds"</span> <span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"mapperLocations"</span> </li><li>      &nbsp;&nbsp;&nbsp;&nbsp;value<span class="sh_symbol">=</span><span class="sh_string">"classpath:com/tarena/entity/*.xml"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>    </li><li>    <span class="sh_symbol">&lt;!--</span> 配置MyBatis注解 <span class="sh_symbol">--&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>bean <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span><span class="sh_symbol">&gt;</span></li><li>       <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"basePackage"</span> value<span class="sh_symbol">=</span><span class="sh_string">"com.tarena.dao"</span> <span class="sh_symbol">/&gt;</span></li><li>       <span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"annotationClass"</span> </li><li>           value<span class="sh_symbol">=</span><span class="sh_string">"com.tarena.annotation.MyBatisRepository"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 开启注解扫描 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>context<span class="sh_symbol">:</span>component<span class="sh_symbol">-</span>scan base<span class="sh_symbol">-</span>package<span class="sh_symbol">=</span><span class="sh_string">"com.tarena"</span> <span class="sh_symbol">/&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 支持@RequestMapping请求和Controller映射 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>mvc<span class="sh_symbol">:</span>annotation<span class="sh_symbol">-</span><span class="sh_normal">driven </span><span class="sh_symbol">/&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>bean <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"prefix"</span> value<span class="sh_symbol">=</span><span class="sh_string">"/WEB-INF/"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>property name<span class="sh_symbol">=</span><span class="sh_string">"suffix"</span> value<span class="sh_symbol">=</span><span class="sh_string">".jsp"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>bean<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 声明方面组件 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> <span class="sh_symbol">&lt;</span>bean id<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"com.tarena.aspect.OperateLogger"</span><span class="sh_symbol">/&gt;</span> <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 配置AOP <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> <span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>before method<span class="sh_symbol">=</span><span class="sh_string">"log1"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>around method<span class="sh_symbol">=</span><span class="sh_string">"log2"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspect ref<span class="sh_symbol">=</span><span class="sh_string">"operateLogger"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>after<span class="sh_symbol">-</span>throwing method<span class="sh_symbol">=</span><span class="sh_string">"log3"</span> throwing<span class="sh_symbol">=</span><span class="sh_string">"e"</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>aspect<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>aop<span class="sh_symbol">:</span>config<span class="sh_symbol">&gt;</span> <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 开启AOP注解扫描 <span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>aop<span class="sh_symbol">:</span>aspectj<span class="sh_symbol">-</span>autoproxy proxy<span class="sh_symbol">-</span>target<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"true"</span><span class="sh_symbol">/&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;/</span>beans<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:jee="http://www.springframework.org/schema/jee" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"&gt;
+	
+	&lt;!-- 配置数据源 --&gt;
+	&lt;bean id="ds" 
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close"&gt;
+		&lt;property name="url" 
+			value="jdbc:oracle:thin:@localhost:1521:xe"/&gt;
+		&lt;property name="driverClassName" 
+			value="oracle.jdbc.OracleDriver"/&gt;
+		&lt;property name="username" value="lhh"/&gt;
+		&lt;property name="password" value="123456"/&gt;
+	&lt;/bean&gt;
+	
+	&lt;!-- 配置SqlSessionFactory --&gt;
+	&lt;bean id="sqlSessionFactory" 
+		class="org.mybatis.spring.SqlSessionFactoryBean"&gt;  
+      &lt;property name="dataSource" ref="ds" /&gt;
+      &lt;property name="mapperLocations" 
+      	value="classpath:com/tarena/entity/*.xml"/&gt;
+    &lt;/bean&gt;
+    
+    &lt;!-- 配置MyBatis注解 --&gt;
+    &lt;bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt;
+       &lt;property name="basePackage" value="com.tarena.dao" /&gt;
+       &lt;property name="annotationClass" 
+           value="com.tarena.annotation.MyBatisRepository"/&gt;
+	&lt;/bean&gt;
+	
+	&lt;!-- 开启注解扫描 --&gt;
+	&lt;context:component-scan base-package="com.tarena" /&gt;
+
+	&lt;!-- 支持@RequestMapping请求和Controller映射 --&gt;
+	&lt;mvc:annotation-driven /&gt;
+
+	&lt;bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;
+		&lt;property name="prefix" value="/WEB-INF/"/&gt;
+		&lt;property name="suffix" value=".jsp"/&gt;
+	&lt;/bean&gt;	
+	
+	&lt;!-- 声明方面组件 --&gt;
+	&lt;!-- &lt;bean id="operateLogger" class="com.tarena.aspect.OperateLogger"/&gt; --&gt;
+	
+	&lt;!-- 配置AOP --&gt;
+	&lt;!-- &lt;aop:config&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:before method="log1" 
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:around method="log2" 
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+		&lt;aop:aspect ref="operateLogger"&gt;
+			&lt;aop:after-throwing method="log3" throwing="e"
+				pointcut="within(com.tarena.controller..*)"/&gt;
+		&lt;/aop:aspect&gt;
+	&lt;/aop:config&gt; --&gt;
+	
+	&lt;!-- 开启AOP注解扫描 --&gt;
+	&lt;aop:aspectj-autoproxy proxy-target-class="true"/&gt;
+
+&lt;/beans&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>OperateLogger完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package com<span class="sh_symbol">.</span>tarena<span class="sh_symbol">.</span>aspect<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>text<span class="sh_symbol">.</span>SimpleDateFormat<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span><span class="sh_predef_func">Date</span><span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>ProceedingJoinPoint<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>AfterThrowing<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Around<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Aspect<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>aspectj<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>annotation<span class="sh_symbol">.</span>Before<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>springframework<span class="sh_symbol">.</span>stereotype<span class="sh_symbol">.</span>Component<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> *&nbsp;&nbsp;&nbsp;&nbsp;用于记录日志的方面组件，演示Spring AOP的各种通知类型。</span></li><li><span class="sh_comment"> */</span></li><li>@Component</li><li>@Aspect</li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> OperateLogger <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 前置通知、后置通知、最终通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">Before</span><span class="sh_symbol">(</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">log1</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;记录用户操作信息"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 环绕通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">Around</span><span class="sh_symbol">(</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">Object</span> <span class="sh_function">log2</span><span class="sh_symbol">(</span>ProceedingJoinPoint p<span class="sh_symbol">)</span> <span class="sh_keyword">throws</span> Throwable <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 目标组件的类名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> className <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">getTarget</span><span class="sh_symbol">().</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 调用的方法名</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> method <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">getSignature</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 当前系统时间</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> date <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">SimpleDateFormat</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"yyyy-MM-dd hh:mm:ss"</span><span class="sh_symbol">).</span><span class="sh_function">format</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_predef_func">Date</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 拼日志信息</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> msg <span class="sh_symbol">=</span> <span class="sh_string">"--&gt;用户在"</span> <span class="sh_symbol">+</span> date <span class="sh_symbol">+</span> <span class="sh_string">"，执行了"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">+</span> className <span class="sh_symbol">+</span> <span class="sh_string">"."</span> <span class="sh_symbol">+</span> method <span class="sh_symbol">+</span> <span class="sh_string">"()"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 记录日志</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>msg<span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 执行目标组件的方法</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Object</span> obj <span class="sh_symbol">=</span> p<span class="sh_symbol">.</span><span class="sh_function">proceed</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 在调用目标组件业务方法后也可以做一些业务处理</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;调用目标组件业务方法后..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> obj<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 异常通知使用的方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@<span class="sh_function">AfterThrowing</span><span class="sh_symbol">(</span>pointcut<span class="sh_symbol">=</span><span class="sh_string">"within(com.tarena.controller..*)"</span><span class="sh_symbol">,</span>throwing<span class="sh_symbol">=</span><span class="sh_string">"e"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">log3</span><span class="sh_symbol">(</span>Exception e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;StackTraceElement<span class="sh_symbol">[]</span> elems <span class="sh_symbol">=</span> e<span class="sh_symbol">.</span><span class="sh_function">getStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将异常信息记录</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--&gt;"</span> <span class="sh_symbol">+</span> elems<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">].</span><span class="sh_function">toString</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package com.tarena.aspect;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+/**
+ *	用于记录日志的方面组件，演示Spring AOP的各种通知类型。
+ */
+@Component
+@Aspect
+public class OperateLogger {
+
+	/**
+	 * 前置通知、后置通知、最终通知使用的方法
+	 */
+	@Before("within(com.tarena.controller..*)")
+	public void log1() {
+		// 记录日志
+		System.out.println("--&gt;记录用户操作信息");
+	}
+
+	/**
+	 * 环绕通知使用的方法
+	 */
+	@Around("within(com.tarena.controller..*)")
+	public Object log2(ProceedingJoinPoint p) throws Throwable {
+		// 目标组件的类名
+		String className = p.getTarget().getClass().getName();
+		// 调用的方法名
+		String method = p.getSignature().getName();
+		// 当前系统时间
+		String date = new SimpleDateFormat(
+				"yyyy-MM-dd hh:mm:ss").format(new Date());
+		// 拼日志信息
+		String msg = "--&gt;用户在" + date + "，执行了" 
+				+ className + "." + method + "()";
+		// 记录日志
+		System.out.println(msg);		
+		
+		// 执行目标组件的方法
+		Object obj = p.proceed();
+		
+		// 在调用目标组件业务方法后也可以做一些业务处理
+		System.out.println("--&gt;调用目标组件业务方法后...");
+		
+		return obj;
+	}
+	
+	/**
+	 * 异常通知使用的方法
+	 */
+	@AfterThrowing(pointcut="within(com.tarena.controller..*)",throwing="e")
+	public void log3(Exception e) {
+		StackTraceElement[] elems = e.getStackTrace();
+		// 将异常信息记录
+		System.out.println("--&gt;" + elems[0].toString());
+	}
+	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SPRINGMYBATIS02/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

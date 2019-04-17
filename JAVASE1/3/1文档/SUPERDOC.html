@@ -1,0 +1,264 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="16672042225"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#Key01">日期操作</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#Key02">集合框架</a>
+        </li>
+      </ol>
+      <h1>1. 日期操作</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. Date及其常用API</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. JAVA 中的时间</h3>
+      <p>Java中的时间使用标准类库的Date类表示，是用距离一个固定时间点的毫秒数（可正可负，long类型）表达一个特定的时间点。</p>
+      <p>固定的时间点叫纪元（epoch），是UTC时间1970年 1月 1日  00:00:00。</p>
+      <p>UTC（Universal Time Coordinated世界调整时间）与GMT（Greenwich Mean Time格林威治时间）一样，是一种具有实际目的的科学标准时间。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. Date类简介</h3>
+      <p>java.util.Date 类封装日期及时间信息。</p>
+      <p>Date类的大多数用于进行时间分量计算的方法已经被Calendar取代。查看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">Date</span><span class="sh_normal"> </span>date <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Date</span><span class="sh_symbol">();</span>         </li><li>    <span class="sh_comment">// 系统当前的日期及时间信息</span></li><li>   System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>date<span class="sh_symbol">);</span>        </li><li>   <span class="sh_comment">// Sun Jan 06 11:52:55 CST 2013</span></li><li>   <span class="sh_type">long</span> time <span class="sh_symbol">=</span> date<span class="sh_symbol">.</span><span class="sh_function">getTime</span><span class="sh_symbol">();</span>   </li><li>    <span class="sh_comment">//1970年1月1日至今的毫秒数</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    Date date = new Date();         
+    // 系统当前的日期及时间信息
+   System.out.println(date);        
+   // Sun Jan 06 11:52:55 CST 2013
+   long time = date.getTime();   
+    //1970年1月1日至今的毫秒数
+</pre></div></div>
+      <p>因为Date的设计具有"千年虫"以及"时区"的问题，所以Date中的大部分方法已经不建议使用了，它们都被java.util.Calendar类所取代，该类我们稍后会讲解。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. setTime与getTime方法</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">setTime</span><span class="sh_symbol">(</span><span class="sh_type">long</span> time<span class="sh_symbol">):</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void setTime(long time):
+</pre></div></div>
+      <p>该方法用于为一个Date对象设置其需要表示的时间，该参数为一个long值，其含义是需要表示的这个时间点距离1970年1月1日 00:00:00之间的毫秒差。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">long</span> <span class="sh_function">getTime</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">long getTime()
+</pre></div></div>
+      <p>该方法用于获取一个Date对象所表示的时间点，该返回值为一个long值，表示该时间点距离1970年1月1日 00:00:00之间的毫秒差。</p>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. Date 重写 toString方法</h3>
+      <p>Date重写了toString()方法，用一个字符串来描述当前Date对象所表示的时间。</p>
+      <p>格式如下:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;Mon Feb <span class="sh_number">17</span> <span class="sh_number">15</span><span class="sh_symbol">:</span><span class="sh_number">36</span><span class="sh_symbol">:</span><span class="sh_number">55</span> CST <span class="sh_number">2014</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	Mon Feb 17 15:36:55 CST 2014
+</pre></div></div>
+      <p>由此我们可以看出，实际上Date的toString()方法返回的字符串虽然很清晰的描述了时间，但是对于非英语地区来讲，该字符串不够友好，我们更希望按照特定地区表示时间的方式。比如我们更习惯以下的风格:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_number">2014-02-17</span> <span class="sh_number">15</span><span class="sh_symbol">:</span><span class="sh_number">36</span><span class="sh_symbol">:</span><span class="sh_number">55</span> 星期一</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	2014-02-17 15:36:55 星期一
+</pre></div></div>
+      <p>那么有没有方式可以代替 Date的toString()方法来获取一个特定格式的字符串呢？答案是肯定的,java为我们提供了一个类，叫做SimpleDateFormat,该类就可以完成。下面我们来学习一下这个类。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. SimpleDateFormat</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. SimpleDateFormat简介</h3>
+      <p>SimpleDateFormat 是一个以与语言环境有关的方式来格式化和解析日期的具体类。它允许进行格式化（日期 -&gt; 文本）、解析（文本 -&gt; 日期）和规范化。</p>
+      <p>简单的说，SimpleDateFormat就是根据一个特定的日期格式在字符串与Date之间相互转换。那么这个特定的日期格式是怎样定义的呢？下面我们来学习一下如何定义日期格式字符串。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 日期模式匹配字符串</h3>
+      <p>日期模式的匹配字符串如表－1所示。</p>
+      <div class="table">
+        <p>表－1 日期模式匹配字符串</p>
+        <img src="./SUPERDOC_files/table001.png">
+      </div>
+      <p>例如: yyyy年MM月dd日--HH:mm:ss  可以匹配 2014年01月06日--13:22:41</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 将Date格式化为String</h3>
+      <p>将Date格式化为String，我们需要使用SimpleDateFormat提供的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span><span class="sh_function">format</span><span class="sh_symbol">(</span><span class="sh_usertype">Date</span><span class="sh_normal"> </span>d<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	String format(Date d)
+</pre></div></div>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Date</span><span class="sh_normal"> </span>now <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Date</span><span class="sh_symbol">();</span><span class="sh_comment">//默认实例化的Date表示当前系统时间</span></li><li><span class="sh_usertype">SimpleDateFormat</span><span class="sh_normal"> </span>sdf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">SimpleDateFormat</span><span class="sh_symbol">(</span><span class="sh_string">"yyyy-MM-dd HH:mm:ss"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> sdf<span class="sh_symbol">.</span><span class="sh_function">format</span><span class="sh_symbol">(</span>now<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span><span class="sh_comment">//2014-01-06 13:21:12</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Date now = new Date();//默认实例化的Date表示当前系统时间
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+String str = sdf.format(now);
+System.out.println(str);//2014-01-06 13:21:12
+</pre></div></div>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. 将String解析为Date</h3>
+      <p>将String格式化为Date，我们需要使用SimpleDateFormat提供的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Date</span><span class="sh_normal"> </span><span class="sh_function">parse</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>s<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	Date parse(String s)
+</pre></div></div>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"2008年08月08日 12:22:46"</span><span class="sh_symbol">;</span></li><li>SimpleDateFormat sdf </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">SimpleDateFormat</span><span class="sh_symbol">(</span><span class="sh_string">"yyyy年MM月dd日 HH:mm:ss"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">Date</span><span class="sh_normal"> </span>date <span class="sh_symbol">=</span> sdf<span class="sh_symbol">.</span><span class="sh_function">parse</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>date<span class="sh_symbol">);</span><span class="sh_comment">// Fri Aug 08 12:22:46 CST 2008</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String str = "2008年08月08日 12:22:46";
+SimpleDateFormat sdf 
+			= new SimpleDateFormat("yyyy年MM月dd日 HH:mm:ss");
+Date date = sdf.parse(str);
+System.out.println(date);// Fri Aug 08 12:22:46 CST 2008
+</pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. Calendar类</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. Calendar 简介</h3>
+      <p>java.util.Calendar 类用于封装日历信息，其主要作用在于其方法可以对时间分量进行运算。</p>
+      <p>Calendar是抽象类，其具体子类针对不同国家的日历系统，其中应用最广泛的是GregorianCalendar（格里高里历，即通用的阳历），对应世界上绝大多数国家/地区使用的标准日历系统。</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. getInstance()方法</h3>
+      <p>Calendar是抽象类，其提供了一个工厂方法:Calendar getInstance()。该方法可以根据当前系统所在地区获取一个适当的Calendar的子类实现。</p>
+      <p>在实际开发中，也推荐使用该方法来实例化Calendar的对象。</p>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 设置日期及时间分量</h3>
+      <p>Calendar提供了一种通用的设置时间的方式:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">void</span> <span class="sh_function">set</span><span class="sh_symbol">(</span><span class="sh_type">int</span> field<span class="sh_symbol">,</span><span class="sh_type">int</span> value<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	void set(int field,int value)
+</pre></div></div>
+      <p>该方法可以通过对不同的时间分量分别设置不同的值。Calendar对不同的时间分量提供了相应的常量，我们在使用set方法设置时，第一个参数就应当使用对应的常量作为时间分量。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Calendar</span><span class="sh_normal"> </span>calendar <span class="sh_symbol">=</span> Calendar<span class="sh_symbol">.</span><span class="sh_function">getInstance</span><span class="sh_symbol">();</span><span class="sh_comment">//创建出的Calendar表示当前系统时间</span></li><li><span class="sh_comment">//设置年为2008年</span></li><li>calendar<span class="sh_symbol">.</span><span class="sh_function">set</span><span class="sh_symbol">(</span>Calendar<span class="sh_symbol">.</span>YEAR<span class="sh_symbol">,</span><span class="sh_number">2008</span><span class="sh_symbol">);</span></li><li><span class="sh_comment">//设置月为5月</span></li><li>calendar<span class="sh_symbol">.</span><span class="sh_function">set</span><span class="sh_symbol">(</span>Calendar<span class="sh_symbol">.</span>Month<span class="sh_symbol">,</span><span class="sh_number">4</span><span class="sh_symbol">);</span><span class="sh_comment">//月份从0开始</span></li><li>calendar<span class="sh_symbol">.</span><span class="sh_function">set</span><span class="sh_symbol">(</span>Calendar<span class="sh_symbol">.</span>Month<span class="sh_symbol">,</span>Calendar<span class="sh_symbol">.</span>MAY<span class="sh_symbol">);</span><span class="sh_comment">//也可以使用常量来设置</span></li><li><span class="sh_comment">//设置日为30日</span></li><li>caneldar<span class="sh_symbol">.</span><span class="sh_function">set</span><span class="sh_symbol">(</span>Calendar<span class="sh_symbol">.</span>DAY_OF_MONTH<span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Calendar calendar = Calendar.getInstance();//创建出的Calendar表示当前系统时间
+//设置年为2008年
+calendar.set(Calendar.YEAR,2008);
+//设置月为5月
+calendar.set(Calendar.Month,4);//月份从0开始
+calendar.set(Calendar.Month,Calendar.MAY);//也可以使用常量来设置
+//设置日为30日
+caneldar.set(Calendar.DAY_OF_MONTH,30);
+</pre></div></div>
+      <a name="Key01_03_04">
+      </a>
+      <h3>1.3.4. 获取时间分量对应的值</h3>
+      <p>Calendar提供了一种通用的获取时间分量的方式:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> <span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_type">int</span> field<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	int get(int field)
+</pre></div></div>
+      <p>该方法可以通过对不同的时间分量获取相应的值。Calendar对不同的时间分量提供了相应的常量，我们在使用get方法获取时，参数就应当使用对应的常量作为时间分量。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Calendar</span><span class="sh_normal"> </span>calendar <span class="sh_symbol">=</span> Calendar<span class="sh_symbol">.</span><span class="sh_function">getInstance</span><span class="sh_symbol">();</span></li><li><span class="sh_type">int</span> year <span class="sh_symbol">=</span> calendar<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>Calendar<span class="sh_symbol">.</span>YEAR<span class="sh_symbol">);</span></li><li><span class="sh_type">int</span> month <span class="sh_symbol">=</span> calednar<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>Calendar<span class="sh_symbol">.</span>Month<span class="sh_symbol">);</span></li><li><span class="sh_type">int</span> date <span class="sh_symbol">=</span> calendar<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>Calendar<span class="sh_symbol">.</span>DAY_OF_MONTH<span class="sh_symbol">);</span></li><li><span class="sh_comment">//需要注意，月份要加1，因为月份是从0开始的</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>year<span class="sh_symbol">+</span><span class="sh_string">"-"</span><span class="sh_symbol">+(</span>month<span class="sh_number">+1</span><span class="sh_symbol">)+</span><span class="sh_string">"-"</span><span class="sh_symbol">+</span>date<span class="sh_symbol">);</span><span class="sh_comment">//2014-1-4</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Calendar calendar = Calendar.getInstance();
+int year = calendar.get(Calendar.YEAR);
+int month = calednar.get(Calendar.Month);
+int date = calendar.get(Calendar.DAY_OF_MONTH);
+//需要注意，月份要加1，因为月份是从0开始的
+System.out.println(year+"-"+(month+1)+"-"+date);//2014-1-4
+</pre></div></div>
+      <a name="Key01_03_05">
+      </a>
+      <h3>1.3.5. getActualMaximum方法</h3>
+      <p>int getActualMaximum(int field)方法用于获取给定时间分量所允许的最大值</p>
+      <p>例如:</p>
+      <p>获取当前系统时间中当月的最后一天(日所允许的最大值)</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Calendar</span><span class="sh_normal"> </span>calendar <span class="sh_symbol">=</span> Calendar<span class="sh_symbol">.</span><span class="sh_function">getInstance</span><span class="sh_symbol">();</span></li><li><span class="sh_type">int</span> max <span class="sh_symbol">=</span> calendar<span class="sh_symbol">.</span> <span class="sh_function">getActualMaximum</span><span class="sh_symbol">(</span>Calendar<span class="sh_symbol">.</span>DAY_OF_MONTH<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"当前月的最后一天为:"</span><span class="sh_symbol">+</span>max<span class="sh_symbol">+</span><span class="sh_string">"日"</span><span class="sh_symbol">);</span><span class="sh_comment">//当前月的最后一天为31日</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Calendar calendar = Calendar.getInstance();
+int max = calendar. getActualMaximum(Calendar.DAY_OF_MONTH);
+System.out.println("当前月的最后一天为:"+max+"日");//当前月的最后一天为31日
+</pre></div></div>
+      <a name="Key01_03_06">
+      </a>
+      <h3>1.3.6. add方法</h3>
+      <p>Calendar还允许我们使用统一的方式来对某个时间分量的值进行计算。我们需要使用方法 void add(int field,int amount)。该方法可以为某个时间分量的值加上给定的值，若想减去给定的值，那么传入的值需要是负数即可。并且计算后会自动进行相应的进位，例如若当前为月底，那么加一天后，为下个月的月初，而月就会进位。</p>
+      <p>例如:  当前系统时间为 2014-01-31日</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Calendar</span><span class="sh_normal"> </span>calendar <span class="sh_symbol">=</span> Calendar<span class="sh_symbol">.</span><span class="sh_function">getInstance</span><span class="sh_symbol">();</span></li><li><span class="sh_comment">//计算明天(在日的基础上加一天)&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li>calendar<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>Calendar<span class="sh_symbol">.</span>DAY_OF_YEAR<span class="sh_symbol">,</span><span class="sh_number">1</span><span class="sh_symbol">);</span><span class="sh_comment">//当前Calendar表示的为2014-02-01，月进位了</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Calendar calendar = Calendar.getInstance();
+//计算明天(在日的基础上加一天)	
+calendar.add(Calendar.DAY_OF_YEAR,1);//当前Calendar表示的为2014-02-01，月进位了
+</pre></div></div>
+      <a name="Key01_03_07">
+      </a>
+      <h3>1.3.7. setTime与getTime方法</h3>
+      <p>Calendar的void setTime(Date date),允许我们为Calendar设置Date对象所表示的时间。</p>
+      <p>Calendar的 Date getTime(),允许我们获取一个使用Date对象描述的Calendar所表示的时间。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Calendar</span><span class="sh_normal"> </span>calendar <span class="sh_symbol">=</span> Calendar<span class="sh_symbol">.</span><span class="sh_function">getInstance</span><span class="sh_symbol">();</span></li><li><span class="sh_usertype">Date</span><span class="sh_normal"> </span>date <span class="sh_symbol">=</span> calendar<span class="sh_symbol">.</span><span class="sh_function">getTime</span><span class="sh_symbol">();</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>date<span class="sh_symbol">);</span><span class="sh_comment">// Mon Feb 17 15:36:55 CST 2014</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Calendar calendar = Calendar.getInstance();
+Date date = calendar.getTime();
+System.out.println(date);// Mon Feb 17 15:36:55 CST 2014
+</pre></div></div>
+      <a name="Key02">
+      </a>
+      <h1>2. 集合框架</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. Collection</h2>
+      <p>java提供了一种可以存数一组数据的数据结构，其提供了丰富的方法，在实际开发中往往比数组使用的广泛。这种数据结构成为集合:Collection。</p>
+      <p>Collection是一个接口，其定义了集合的相关功能方法。</p>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. List和Set</h3>
+      <p>Collection派生出了两个子接口，一个是List另一个则是Set。</p>
+      <p>List:称为可重复集，顾名思义，该集合中是允许存放重复元素的，那么何为重复元素？重复元素指的并非是同一个元素，而是指equals方法比较为true的元素。</p>
+      <p>Set:称为不可重复集，所以，该集合中是不能将相同的元素存入集合两次，同List，这里相同指的也是两个元素的equals比较结果为true。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. 集合持有对象的引用</h3>
+      <p>集合中存储的都是引用类型的元素，那么引用类型变量实际上存储的是对象的“地址”，所以实际上集合只存储了元素对象在堆中的地址。而并不是将对象本身存入了集合中。</p>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. add()方法</h3>
+      <p>Collection定义了一个add方法用于向集合中添加新元素。 该方法定义为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_usertype">E</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean add(E e)
+</pre></div></div>
+      <p>该方法会将给定的元素添加进集合，若添加成功则返回true,否则返回false</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Collection&lt;String&gt;</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span> <span class="sh_comment">// []</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"a"</span><span class="sh_symbol">);</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">);</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"c"</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span> <span class="sh_comment">// [a, b, c]</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Collection&lt;String&gt; c = new ArrayList&lt;String&gt;();
+System.out.println(c); // []
+c.add("a");
+c.add("b");
+c.add("c");
+System.out.println(c); // [a, b, c]
+</pre></div></div>
+      <p>这里Collection后面的&lt;String&gt;是泛型，我们后面会讲解，这里不写也没有关系。</p>
+      <a name="Key02_01_04">
+      </a>
+      <h3>2.1.4. contains方法</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">contains</span><span class="sh_symbol">(</span><span class="sh_usertype">Object</span><span class="sh_normal"> </span>o<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean contains(Object o)
+</pre></div></div>
+      <p>该方法会用于判断给定的元素是否被包含在集合中。若包含则返回true,否则返回false。</p>
+      <p>这里需要注意的是，集合在判断元素是否被包含在集合中是使用元素的equals的比较结果。</p>
+      <p>(o==null&nbsp;?&nbsp;e==null&nbsp;:&nbsp;o.equals(e))  其中e是集合中的元素。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Collection&lt;Cell&gt;</span><span class="sh_normal"> </span>cells <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>Cell<span class="sh_symbol">&gt;();</span> </li><li>cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">));</span></li><li>cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">));</span></li><li>cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">));</span></li><li>cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">));</span>&nbsp;&nbsp;&nbsp;&nbsp; </li><li><span class="sh_usertype">Cell</span><span class="sh_normal"> </span>cell <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">);</span> </li><li><span class="sh_comment">// List集合contains方法和对象的equals方法相关</span></li><li><span class="sh_type">boolean</span> flag <span class="sh_symbol">=</span> cells<span class="sh_symbol">.</span><span class="sh_function">contains</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">);</span></li><li><span class="sh_comment">// 如果Cell不重写equals方法将为false</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>flag<span class="sh_symbol">);</span> <span class="sh_comment">// true </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Collection&lt;Cell&gt; cells = new ArrayList&lt;Cell&gt;(); 
+cells.add(new Cell(1, 2));
+cells.add(new Cell(1, 3));
+cells.add(new Cell(2, 2));
+cells.add(new Cell(2, 3));	 
+Cell cell = new Cell(1, 3); 
+// List集合contains方法和对象的equals方法相关
+boolean flag = cells.contains(cell);
+// 如果Cell不重写equals方法将为false
+System.out.println(flag); // true 
+</pre></div></div>
+      <a name="Key02_01_05">
+      </a>
+      <h3>2.1.5. size,clear,isEmpty方法</h3>
+      <p>size方法用于获取当前集合中的元素总数。该方法定义为:int size()</p>
+      <p>clear方法用于清空集合。该方法定义为:void clear()</p>
+      <p>isEmpty方法用于判断当前集合中是否不 包含元素。该方法定义为:boolean isEmpty()</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Collection&lt;String&gt;</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> HashSet<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c<span class="sh_symbol">.</span><span class="sh_function">isEmpty</span><span class="sh_symbol">());</span> <span class="sh_comment">// true </span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"java"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"cpp"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"php"</span><span class="sh_symbol">);</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"c#"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"objective-c"</span><span class="sh_symbol">);</span> </li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">// isEmpty:false, size: 5</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"isEmpty:"</span> <span class="sh_symbol">+</span> c<span class="sh_symbol">.</span><span class="sh_function">isEmpty</span><span class="sh_symbol">()</span> <span class="sh_symbol">+</span> <span class="sh_string">",size: "</span> <span class="sh_symbol">+</span> c<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">());</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c<span class="sh_symbol">.</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">// isEmpty:true, size: 0</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"isEmpty:"</span> <span class="sh_symbol">+</span> c<span class="sh_symbol">.</span><span class="sh_function">isEmpty</span><span class="sh_symbol">()</span> <span class="sh_symbol">+</span> <span class="sh_string">", size: "</span> <span class="sh_symbol">+</span> c<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">());</span>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Collection&lt;String&gt; c = new HashSet&lt;String&gt;();
+System.out.println(c.isEmpty()); // true 
+c.add("java");	
+c.add("cpp");	
+c.add("php");
+c.add("c#");	
+c.add("objective-c"); 
+
+// isEmpty:false, size: 5
+System.out.println("isEmpty:" + c.isEmpty() + ",size: " + c.size());		
+c.clear();
+
+// isEmpty:true, size: 0
+System.out.println("isEmpty:" + c.isEmpty() + ", size: " + c.size());	 	
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

@@ -1,0 +1,435 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="16744460148"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#Key01">集合框架</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#Key02">集合操作——线性表</a>
+        </li>
+      </ol>
+      <h1>1. 集合框架</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. Collection</h2>
+      <p>java提供了一种可以存数一组数据的数据结构，其提供了丰富的方法，在实际开发中往往比数组使用的广泛。这种数据结构成为集合:Collection。</p>
+      <p>Collection是一个接口，其定义了集合的相关功能方法。</p>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. addAll与containsAll方法</h3>
+      <p>集合也提供了批处理操作:</p>
+      <p>addAll方法用于将给定集合中的所有元素添加到当前集合中，其方法定义为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">addAll</span><span class="sh_symbol">(</span><span class="sh_usertype">Collection</span><span class="sh_normal"> </span>c<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean addAll(Collection c)
+</pre></div></div>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Collection&lt;String&gt;</span><span class="sh_normal"> </span>c1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"java"</span><span class="sh_symbol">);</span></li><li>c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"cpp"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"php"</span><span class="sh_symbol">);</span></li><li>c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"c#"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"objective-c"</span><span class="sh_symbol">);</span> </li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c1<span class="sh_symbol">);</span> <span class="sh_comment">// [java, cpp, php, c#, objective-c] </span></li><li><span class="sh_usertype">Collection&lt;String&gt;</span><span class="sh_normal"> </span>c2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> HashSet<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span> </li><li>c2<span class="sh_symbol">.</span><span class="sh_function">addAll</span><span class="sh_symbol">(</span>c1<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c2<span class="sh_symbol">);</span> <span class="sh_comment">// [cpp, php, c#, java, objective-c] </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Collection&lt;String&gt; c1 = new ArrayList&lt;String&gt;();
+c1.add("java");
+c1.add("cpp");		
+c1.add("php");
+c1.add("c#");		
+c1.add("objective-c"); 
+System.out.println(c1); // [java, cpp, php, c#, objective-c] 
+Collection&lt;String&gt; c2 = new HashSet&lt;String&gt;(); 
+c2.addAll(c1);
+System.out.println(c2); // [cpp, php, c#, java, objective-c] 
+</pre></div></div>
+      <p>containsAll方法用于判断当前集合是否包含给定集合中的所有元素，若包含则返回true。其方法定义为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">containsAll</span><span class="sh_symbol">(</span><span class="sh_usertype">Collection</span><span class="sh_normal"> </span>c<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean containsAll(Collection c)
+</pre></div></div>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Collection&lt;String&gt;</span><span class="sh_normal"> </span>c1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"java"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"cpp"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"php"</span><span class="sh_symbol">);</span></li><li>c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"c#"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"objective-c"</span><span class="sh_symbol">);</span> </li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c1<span class="sh_symbol">);</span> <span class="sh_comment">// [java, cpp, php, c#, objective-c] </span></li><li><span class="sh_usertype">Collection&lt;String&gt;</span><span class="sh_normal"> </span>c2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>c2<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"java"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c2<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"cpp"</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c1<span class="sh_symbol">.</span><span class="sh_function">containsAll</span><span class="sh_symbol">(</span>c2<span class="sh_symbol">));</span> <span class="sh_comment">// true </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Collection&lt;String&gt; c1 = new ArrayList&lt;String&gt;();
+c1.add("java");		
+c1.add("cpp");		
+c1.add("php");
+c1.add("c#");		
+c1.add("objective-c"); 
+System.out.println(c1); // [java, cpp, php, c#, objective-c] 
+Collection&lt;String&gt; c2 = new ArrayList&lt;String&gt;();
+c2.add("java");		
+c2.add("cpp");
+System.out.println(c1.containsAll(c2)); // true 
+</pre></div></div>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. Iterator 迭代器</h2>
+      <p>Collection提供了一个遍历集合的通用方式，迭代器(Iterator)。</p>
+      <p>获取迭代器的方式是使用Collection定义的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Iterator</span><span class="sh_normal"> </span><span class="sh_function">iterator</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Iterator iterator()
+</pre></div></div>
+      <p>迭代器Iterator是一个接口，集合在覆盖Collection的iterator()方法时提供了迭代器的实现。</p>
+      <p>Iterator提供了统一的遍历集合元素的方式。</p>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. hasNext与next方法</h3>
+      <p>迭代器用于遍历集合的两个主要方法:</p>
+      <ul class="list">
+        <li>boolean hasNext():判断集合是否还有元素可以遍历。 
+</li>
+        <li>E next():返回迭代的下一个元素 
+</li>
+      </ul>
+      <p>遍历集合应遵循“先问后取”的方式，也就是说，应当在确定hasNext()方法的返回值为true的情况下再通过next()方法取元素。</p>
+      <p>由此可以看出，使用迭代器遍历集合是通过boolean值驱动的，所以它更适合使用while循环来遍历。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Collection&lt;String&gt;</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> HashSet<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"java"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"cpp"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"php"</span><span class="sh_symbol">);</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"c#"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"objective-c"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">Iterator&lt;String&gt;</span><span class="sh_normal"> </span>it <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span><span class="sh_function">iterator</span><span class="sh_symbol">();</span></li><li><span class="sh_keyword">while</span> <span class="sh_symbol">(</span>it<span class="sh_symbol">.</span><span class="sh_function">hasNext</span><span class="sh_symbol">())</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> it<span class="sh_symbol">.</span><span class="sh_function">next</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Collection&lt;String&gt; c = new HashSet&lt;String&gt;();
+c.add("java");		
+c.add("cpp");		
+c.add("php");
+c.add("c#");		
+c.add("objective-c");
+Iterator&lt;String&gt; it = c.iterator();
+while (it.hasNext()) {
+	String str = it.next();
+	System.out.println(str);
+} 
+</pre></div></div>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. remove方法</h3>
+      <p>迭代器还提供了一个方法:void remove()。该方法用于删除迭代器当次从集合中获取的元素。若我们在迭代过程中想删除集合元素时，我们就需要通过该方法来进行。这里需要注意，在使用迭代器遍历集合时是不能通过集合自身提供的remove方法删除元素的，否则迭代器在迭代时会抛出异常。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Collection&lt;String&gt;</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> HashSet<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"java"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"cpp"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"php"</span><span class="sh_symbol">);</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"c#"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"objective-c"</span><span class="sh_symbol">);</span> </li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span> <span class="sh_comment">// [cpp, php, c#, java, objective-c] </span></li><li><span class="sh_usertype">Iterator&lt;String&gt;</span><span class="sh_normal"> </span>it <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span><span class="sh_function">iterator</span><span class="sh_symbol">();</span></li><li><span class="sh_keyword">while</span> <span class="sh_symbol">(</span>it<span class="sh_symbol">.</span><span class="sh_function">hasNext</span><span class="sh_symbol">())</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> it<span class="sh_symbol">.</span><span class="sh_function">next</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>str<span class="sh_symbol">.</span><span class="sh_function">indexOf</span><span class="sh_symbol">(</span><span class="sh_string">"c"</span><span class="sh_symbol">)</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it<span class="sh_symbol">.</span><span class="sh_function">remove</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span> </li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span> <span class="sh_comment">// [php, java]&nbsp;&nbsp;&nbsp;&nbsp;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Collection&lt;String&gt; c = new HashSet&lt;String&gt;();
+c.add("java");		
+c.add("cpp");		
+c.add("php");
+c.add("c#");		
+c.add("objective-c"); 
+System.out.println(c); // [cpp, php, c#, java, objective-c] 
+Iterator&lt;String&gt; it = c.iterator();
+while (it.hasNext()) {
+	String str = it.next();
+	if (str.indexOf("c") != -1) {
+		it.remove();
+	} 
+} 
+System.out.println(c); // [php, java]	
+</pre></div></div>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 增强for循环</h3>
+      <p>Java5.0之后推出了一个新的特性，增强for循环,也称为新循环。该循环不通用于传统循环的工作，其只用于便利集合或数组。 语法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">for</span><span class="sh_symbol">(</span>元素类型 e <span class="sh_symbol">:</span> 集合或数组<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;循环体 </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">for(元素类型 e : 集合或数组){
+	循环体 
+}
+</pre></div></div>
+      <p>新循环并非新的语法，而是在编译过程中，编译器会将新循环转换为迭代器模式。所以新循环本质上是迭代器。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Collection&lt;String&gt;</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> HashSet<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"java"</span><span class="sh_symbol">);</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"cpp"</span><span class="sh_symbol">);</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"php"</span><span class="sh_symbol">);</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"c#"</span><span class="sh_symbol">);</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"objective-c"</span><span class="sh_symbol">);</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">:</span> c<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>str<span class="sh_symbol">.</span><span class="sh_function">toUpperCase</span><span class="sh_symbol">()</span> <span class="sh_symbol">+</span> <span class="sh_string">" "</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> </li><li><span class="sh_comment">// CPP PHP C# JAVA OBJECTIVE-C</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Collection&lt;String&gt; c = new HashSet&lt;String&gt;();
+c.add("java");
+c.add("cpp");
+c.add("php");
+c.add("c#");
+c.add("objective-c");
+for (String str : c) {
+	System.out.print(str.toUpperCase() + " ");
+} 
+// CPP PHP C# JAVA OBJECTIVE-C
+</pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 泛型机制</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 泛型在集合中的应用</h3>
+      <p>泛型是Java SE 5.0引入的特性，泛型的本质是参数化类型。在类、接口和方法的定义过程中，所操作的数据类型被传入的参数指定。</p>
+      <p>Java泛型机制广泛的应用在集合框架中。所有的集合类型都带有泛型参数，这样在创建集合时可以指定放入集合中的对象类型。Java编译器可以据此进行类型检查，这样可以减少代码在运行时出现错误的可能性。</p>
+      <p>我们来举个例子，比如ArrayList，其在定义时是这样的:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">ArrayList</span><span class="sh_symbol">&lt;</span>E<span class="sh_symbol">&gt;</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;… … …&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">boolean</span> <span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_usertype">E</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>…<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_usertype">E</span><span class="sh_normal"> </span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_type">int</span> index<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>…<span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class ArrayList&lt;E&gt; {
+	… … …				
+	public boolean add(E e) {…};
+	public E get(int index) {…};
+} 
+</pre></div></div>
+      <p>由此我们可以看出，再声明ArrayList时，类名的右侧有一个&lt;E&gt;。"&lt;&gt;"表示泛型，而其中可以使用数字字母下划线(数字不能的第一个字符)来表示泛型的名字。(通常我们使用一个大写字母来表示，当然这个不是规定。)这时，在类中声明的方法的参数，返回值类型可以被定义为泛型。这样在创建对象时可以将类型作为参数传递，此时，类定义所有的E将被替换成传入的参数。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">ArrayList&lt;String&gt;</span><span class="sh_normal"> </span>list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span><span class="sh_comment">//泛型E在这里被指定为String类型</span></li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"One"</span><span class="sh_symbol">);</span><span class="sh_comment">//那么add方法的参数就被替换为String类型</span></li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span><span class="sh_comment">//这里就会出现编译错误，因为这里的参数应为String类型。</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();//泛型E在这里被指定为String类型
+list.add("One");//那么add方法的参数就被替换为String类型
+list.add(100);//这里就会出现编译错误，因为这里的参数应为String类型。
+</pre></div></div>
+      <a name="Key02">
+      </a>
+      <h1>2. 集合操作——线性表</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. List</h2>
+      <p>List接口是Collection的子接口，用于定义线性表数据结构；可以将List理解为存放对象的数组，只不过其元素个数可以动态的增加或减少。并且List是可重复集，这个我们在以前的章节已经描述。</p>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. ArrayList和LinkedList</h3>
+      <p>List接口的两个常见实现类为ArrayList和LinkedList，分别用动态数组和链表的方式实现了List接口。</p>
+      <p>可以认为ArrayList和LinkedList的方法在逻辑上完全一样，只是在性能上有一定的差别，ArrayList更适合于随机访问而LinkedList更适合于插入和删除；在性能要求不是特别苛刻的情形下可以忽略这个差别。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. get与set方法</h3>
+      <p>List除了继承Collection定义的方法外，还根据其线性表的数据结构定义了一系列方法，其中最常用的就是基于下标的get和set方法。</p>
+      <ul class="list">
+        <li>E get(int index):获取集合中指定下标对应的元素，下标从0开始。 
+</li>
+        <li>E set(int index, E elment):将给定的元素存入给定位置，并将原位置的元素返回。
+</li>
+      </ul>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">List&lt;String&gt;</span><span class="sh_normal"> </span>list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"java"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"cpp"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"php"</span><span class="sh_symbol">);</span></li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"c#"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"objective-c"</span><span class="sh_symbol">);</span></li><li><span class="sh_comment">// get方法遍历List</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span><span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> list<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">();</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>i<span class="sh_symbol">));</span></li><li><span class="sh_cbracket">}</span> </li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>value <span class="sh_symbol">=</span> list<span class="sh_symbol">.</span><span class="sh_function">set</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_string">"c++"</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>value<span class="sh_symbol">);</span> <span class="sh_comment">// cpp</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> <span class="sh_comment">// [java, c++, php, c#, objective-c] </span></li><li><span class="sh_comment">// 交换位置1和3上的元素</span></li><li>list<span class="sh_symbol">.</span><span class="sh_function">set</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> list<span class="sh_symbol">.</span><span class="sh_function">set</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">,</span> list<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">)));</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> </li><li><span class="sh_comment">// [java, c#, php, c++, objective-c]</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+list.add("java");		
+list.add("cpp");		
+list.add("php");
+list.add("c#");		
+list.add("objective-c");
+// get方法遍历List
+for (int i = 0; i &lt; list.size(); i++) {
+	System.out.println(list.get(i));
+} 
+String value = list.set(1, "c++");
+System.out.println(value); // cpp
+System.out.println(list); // [java, c++, php, c#, objective-c] 
+// 交换位置1和3上的元素
+list.set(1, list.set(3, list.get(1)));
+System.out.println(list); 
+// [java, c#, php, c++, objective-c]
+</pre></div></div>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. 插入和删除</h3>
+      <p>List根据下标的操作还支持插入与删除操作:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_type">int</span> index<span class="sh_symbol">,</span><span class="sh_usertype">E</span><span class="sh_normal"> </span>element<span class="sh_symbol">):</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void add(int index,E element):
+</pre></div></div>
+      <p>将给定的元素插入到指定位置，原位置及后续元素都顺序向后移动。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">E</span><span class="sh_normal"> </span><span class="sh_function">remove</span><span class="sh_symbol">(</span><span class="sh_type">int</span> index<span class="sh_symbol">):</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">E remove(int index):
+</pre></div></div>
+      <p>删除给定位置的元素，并将被删除的元素返回。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">List&lt;String&gt;</span><span class="sh_normal"> </span>list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"java"</span><span class="sh_symbol">);</span></li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"c#"</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> <span class="sh_comment">// [java, c#]</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_string">"cpp"</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> <span class="sh_comment">// [java, cpp, c#]</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</li><li>list<span class="sh_symbol">.</span><span class="sh_function">remove</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> <span class="sh_comment">// [java, cpp]</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+list.add("java");
+list.add("c#");
+System.out.println(list); // [java, c#]
+	 	
+list.add(1, "cpp");
+System.out.println(list); // [java, cpp, c#]
+	 	
+list.remove(2);
+System.out.println(list); // [java, cpp]
+</pre></div></div>
+      <a name="Key02_01_04">
+      </a>
+      <h3>2.1.4. subList方法</h3>
+      <p>List的subList方法用于获取子List。</p>
+      <p>需要注意的是，subList获取的List与原List占有相同的存储空间，对子List的操作会影响的原List。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">List&lt;E&gt;</span><span class="sh_normal"> </span><span class="sh_function">subList</span><span class="sh_symbol">(</span><span class="sh_type">int</span> fromIndex<span class="sh_symbol">,</span> <span class="sh_type">int</span> toIndex<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">List&lt;E&gt; subList(int fromIndex, int toIndex);
+</pre></div></div>
+      <p>fromIndex和toIndex是截取子List的首尾下标（前包括，后不包括) 。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">List&lt;Integer&gt;</span><span class="sh_normal"> </span>list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>Integer<span class="sh_symbol">&gt;();</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span><span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> <span class="sh_number">10</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>i<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> <span class="sh_comment">// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</span></li><li><span class="sh_usertype">List&lt;Integer&gt;</span><span class="sh_normal"> </span>subList <span class="sh_symbol">=</span> list<span class="sh_symbol">.</span><span class="sh_function">subList</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">,</span> <span class="sh_number">8</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>subList<span class="sh_symbol">);</span> <span class="sh_comment">// [3, 4, 5, 6, 7] </span></li><li><span class="sh_comment">// subList获得的List和源List占有相同的数据空间</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span><span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> subList<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">();</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;subList<span class="sh_symbol">.</span><span class="sh_function">set</span><span class="sh_symbol">(</span>i<span class="sh_symbol">,</span> subList<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>i<span class="sh_symbol">)</span> <span class="sh_symbol">*</span> <span class="sh_number">10</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>subList<span class="sh_symbol">);</span> <span class="sh_comment">// [30, 40, 50, 60, 70]</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> <span class="sh_comment">// [0, 1, 2, 30, 40, 50, 60, 70, 8, 9] </span></li><li><span class="sh_comment">// 可以用于删除连续元素list.subList(3, 8).clear();</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
+for (int i = 0; i &lt; 10; i++) {
+	list.add(i);
+}
+System.out.println(list); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+List&lt;Integer&gt; subList = list.subList(3, 8);
+System.out.println(subList); // [3, 4, 5, 6, 7] 
+// subList获得的List和源List占有相同的数据空间
+for (int i = 0; i &lt; subList.size(); i++) {
+	subList.set(i, subList.get(i) * 10);
+}
+System.out.println(subList); // [30, 40, 50, 60, 70]
+System.out.println(list); // [0, 1, 2, 30, 40, 50, 60, 70, 8, 9] 
+// 可以用于删除连续元素list.subList(3, 8).clear();
+System.out.println(list);
+</pre></div></div>
+      <a name="Key02_01_05">
+      </a>
+      <h3>2.1.5. List转换为数组</h3>
+      <p>List的toArray方法用于将集合转换为数组。但实际上该方法是在Collection中定义的，所以所有的集合都具备这个功能。</p>
+      <p>其有两个方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Object<span class="sh_symbol">[]</span> <span class="sh_function">toArray</span><span class="sh_symbol">()</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;</span>T<span class="sh_symbol">&gt;</span>T<span class="sh_symbol">[]</span> <span class="sh_function">toArray</span><span class="sh_symbol">(</span>T<span class="sh_symbol">[]</span> a<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Object[] toArray()
+
+&lt;T&gt;T[] toArray(T[] a)
+</pre></div></div>
+      <p>其中第二个方法是比较常用的，我们可以传入一个指定类型的数组，该数组的元素类型应与集合的元素类型一致。返回值则是转换后的数组，该数组会保存集合中所有的元素。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">List&lt;String&gt;</span><span class="sh_normal"> </span>list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"a"</span><span class="sh_symbol">);</span></li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">);</span></li><li>list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"c"</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">//通常我们传入的数组不需要给定长度</span></li><li>String<span class="sh_symbol">[]</span> strArr <span class="sh_symbol">=</span> list<span class="sh_symbol">.</span><span class="sh_function">toArray</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> String<span class="sh_symbol">[]</span> <span class="sh_cbracket">{}</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>strArr<span class="sh_symbol">));</span> <span class="sh_comment">// [a, b, c]</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+list.add("a");
+list.add("b");
+list.add("c");
+
+//通常我们传入的数组不需要给定长度
+String[] strArr = list.toArray(new String[] {});		System.out.println(Arrays.toString(strArr)); // [a, b, c]
+</pre></div></div>
+      <a name="Key02_01_06">
+      </a>
+      <h3>2.1.6. 数组转换为List</h3>
+      <p>Arrays类中提供了一个静态方法asList，使用该方法我们可以将一个数组转换为对应的List集合。</p>
+      <p>其方法定义为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">static</span> <span class="sh_symbol">&lt;</span>T<span class="sh_symbol">&gt;</span><span class="sh_usertype">List&lt;T&gt;</span><span class="sh_normal"> </span>asList<span class="sh_symbol">&lt;</span><span class="sh_usertype">T…</span><span class="sh_normal"> </span>a<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">static &lt;T&gt;List&lt;T&gt; asList&lt;T… a&gt;
+</pre></div></div>
+      <p>返回的List的集合元素类型由传入的数组的元素类型决定。</p>
+      <p>需要注意的是，返回的集合我们不能对其增删元素，否则会抛出异常。并且对集合的元素进行的修改会影响数组对应的元素。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>String<span class="sh_symbol">[]</span> strArr <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span> <span class="sh_string">"a"</span><span class="sh_symbol">,</span> <span class="sh_string">"b"</span><span class="sh_symbol">,</span> <span class="sh_string">"c"</span> <span class="sh_cbracket">}</span><span class="sh_symbol">;</span> </li><li><span class="sh_usertype">List&lt;String&gt;</span><span class="sh_normal"> </span>list <span class="sh_symbol">=</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">asList</span><span class="sh_symbol">(</span>strArr<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> <span class="sh_comment">// [a, b, c]</span></li><li><span class="sh_comment">// list.add("d"); // 会抛出UnsupportedOperationException </span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">// &nbsp;&nbsp;&nbsp;&nbsp;java.util.Arrays$ArrayList </span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">.</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">());</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_usertype">List&lt;String&gt;</span><span class="sh_normal"> </span>list1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>list1<span class="sh_symbol">.</span><span class="sh_function">addAll</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">asList</span><span class="sh_symbol">(</span>strArr<span class="sh_symbol">));</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String[] strArr = { "a", "b", "c" }; 
+List&lt;String&gt; list = Arrays.asList(strArr);
+System.out.println(list); // [a, b, c]
+// list.add("d"); // 会抛出UnsupportedOperationException 
+
+// 	java.util.Arrays$ArrayList 
+System.out.println(list.getClass().getName());		
+List&lt;String&gt; list1 = new ArrayList&lt;String&gt;();
+list1.addAll(Arrays.asList(strArr)); 
+</pre></div></div>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. List排序</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. Collections.sort方法实现排序</h3>
+      <p>Collections是集合的工具类，它提供了很多便于我们操作集合的方法，其中就有用于集合排序的sort方法。该方法的定义为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">sort</span><span class="sh_symbol">(</span><span class="sh_usertype">List&lt;T&gt;</span><span class="sh_normal"> </span>list<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void sort(List&lt;T&gt; list)
+</pre></div></div>
+      <p>其作用是对集合元素进行自然排序(按照元素的由小至大的顺序)</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">List&lt;Integer&gt;</span><span class="sh_normal"> </span>list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>Integer<span class="sh_symbol">&gt;();</span></li><li><span class="sh_usertype">Random</span><span class="sh_normal"> </span>r <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span><span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> <span class="sh_number">10</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">));</span></li><li><span class="sh_cbracket">}</span> </li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> <span class="sh_comment">// [85, 88, 47, 13, 54, 4, 34, 6, 78, 48]</span></li><li>Collections<span class="sh_symbol">.</span><span class="sh_function">sort</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> <span class="sh_comment">// [4, 6, 13, 34, 47, 48, 54, 78, 85, 88]</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
+Random r = new Random(1);
+for (int i = 0; i &lt; 10; i++) {
+	list.add(r.nextInt(100));
+} 
+System.out.println(list); // [85, 88, 47, 13, 54, 4, 34, 6, 78, 48]
+Collections.sort(list);
+System.out.println(list); // [4, 6, 13, 34, 47, 48, 54, 78, 85, 88]
+</pre></div></div>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. Comparable</h3>
+      <p>通过上一节我们知道了如何对集合元素进行自然排序，但是要想对元素进行自然排序那么就必须要有一个必要条件，就是元素的大小。集合中存入的都是引用类型，是以对象的形式存在于内存中，那么对象是如何进行的大小比较呢？实际上，若想对某个集合的元素进行自然排序，该集合的元素有一个要求，就是这些元素必须是Comparable的子类。</p>
+      <p>Comparable是一个接口，用于定义其子类是可以比较的。因为该接口有一个抽象方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> <span class="sh_function">compareTo</span><span class="sh_symbol">(</span><span class="sh_usertype">T</span><span class="sh_normal"> </span>t<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	int compareTo(T t)
+</pre></div></div>
+      <p>所有子类都需要重写该方法来定义对象间的比较规则。该方法要求返回一个整数，这个整数不关心具体的值，而是关注取值范围。</p>
+      <ul class="list">
+        <li>当返回值&gt;0时，表示当前对象比参数给定的对象大。
+</li>
+        <li>当返回值&lt;0时，表示当前对象比参数给定的对象小。
+</li>
+        <li>当返回值=0时，表示当前对象和参数给定的对象相等。
+</li>
+      </ul>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Class Cell <span class="sh_keyword">implements</span> Comparable<span class="sh_symbol">&lt;</span>Cell<span class="sh_symbol">&gt;</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> col<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_type">int</span> row<span class="sh_symbol">,</span><span class="sh_type">int</span> col<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>row <span class="sh_symbol">=</span> row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>col <span class="sh_symbol">=</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">int</span> <span class="sh_function">compareTo</span><span class="sh_symbol">(</span><span class="sh_usertype">Cell</span><span class="sh_normal"> </span>c<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//根据row比较大小</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">this</span><span class="sh_symbol">.</span>row <span class="sh_symbol">-</span> c<span class="sh_symbol">.</span>row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Class Cell implements Comparable&lt;Cell&gt;{
+	int row;
+	int col;
+
+	public Cell(int row,int col){
+		this.row = row;
+		this.col = col;
+	}
+			
+	public int compareTo(Cell c){
+		//根据row比较大小
+		return this.row - c.row;
+	}
+}
+</pre></div></div>
+      <p>那么Collections的sort在进行排序时就会根据集合中元素的compareTo方法的返回值来判断大小从而进行自然排序。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">// Cell实现了Comparable接口，CompareTo方法逻辑为按照row值的大小排序</span></li><li><span class="sh_usertype">List&lt;Cell&gt;</span><span class="sh_normal"> </span>cells <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>Cell<span class="sh_symbol">&gt;();</span></li><li>cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">));</span></li><li>cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span> <span class="sh_number">1</span><span class="sh_symbol">));</span></li><li>cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">));</span> </li><li>Collections<span class="sh_symbol">.</span><span class="sh_function">sort</span><span class="sh_symbol">(</span>cells<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cells<span class="sh_symbol">);</span> <span class="sh_comment">// [(2,3), (3,2), (5,1)]</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">// Cell实现了Comparable接口，CompareTo方法逻辑为按照row值的大小排序
+List&lt;Cell&gt; cells = new ArrayList&lt;Cell&gt;();
+cells.add(new Cell(2, 3));
+cells.add(new Cell(5, 1));
+cells.add(new Cell(3, 2)); 
+Collections.sort(cells);
+System.out.println(cells); // [(2,3), (3,2), (5,1)]
+</pre></div></div>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. comparator</h3>
+      <p>一旦Java类实现了Comparable，其比较逻辑就已经确定；如果希望在排序的操作中临时指定比较规则，可以采用Comparator接口回调的方式。</p>
+      <p>该接口要求实现类必须重写其定义的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> <span class="sh_function">compare</span><span class="sh_symbol">(</span><span class="sh_usertype">T</span><span class="sh_normal"> </span>o1<span class="sh_symbol">,</span><span class="sh_usertype">T</span><span class="sh_normal"> </span>o2<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	int compare(T o1,T o2)
+</pre></div></div>
+      <p>该方法的返回值要求，若o1&gt;o2则返回值应&gt;0,若o1&lt;o2则返回值应&lt;0，若o1==o2则返回值应为0</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">List&lt;Cell&gt;</span><span class="sh_normal"> </span>cells <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>Cell<span class="sh_symbol">&gt;();</span></li><li>cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">));</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span> <span class="sh_number">1</span><span class="sh_symbol">));</span></li><li>cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">));</span> </li><li><span class="sh_comment">// 按照col值的大小排序</span></li><li>Collections<span class="sh_symbol">.</span><span class="sh_function">sort</span><span class="sh_symbol">(</span>cells<span class="sh_symbol">,</span> <span class="sh_keyword">new</span> Comparator<span class="sh_symbol">&lt;</span>Cell<span class="sh_symbol">&gt;()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">int</span> <span class="sh_function">compare</span><span class="sh_symbol">(</span><span class="sh_usertype">Cell</span><span class="sh_normal"> </span>o1<span class="sh_symbol">,</span> <span class="sh_usertype">Cell</span><span class="sh_normal"> </span>o2<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> o1<span class="sh_symbol">.</span>col <span class="sh_symbol">-</span> o2<span class="sh_symbol">.</span>col<span class="sh_symbol">;</span><span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cells<span class="sh_symbol">);</span> <span class="sh_comment">// [(5,1), (3,2), (2,3)]</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">List&lt;Cell&gt; cells = new ArrayList&lt;Cell&gt;();
+cells.add(new Cell(2, 3));	
+cells.add(new Cell(5, 1));
+cells.add(new Cell(3, 2)); 
+// 按照col值的大小排序
+Collections.sort(cells, new Comparator&lt;Cell&gt;() {
+	@Override
+	public int compare(Cell o1, Cell o2) {
+		return o1.col - o2.col;}
+	});
+System.out.println(cells); // [(5,1), (3,2), (2,3)]
+</pre></div></div>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. 队列和栈</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. Queue</h3>
+      <p>队列（Queue）是常用的数据结构，可以将队列看成特殊的线性表，队列限制了对线性表的访问方式：只能从线性表的一端添加（offer）元素，从另一端取出（poll）元素。</p>
+      <p>队列遵循先进先出（FIFO First Input First Output ）的原则。</p>
+      <p>JDK中提供了Queue接口，同时使得LinkedList实现了该接口（选择LinkedList实现Queue的原因在于Queue经常要进行插入和删除的操作，而LinkedList在这方面效率较高）。</p>
+      <p>Queue提供了操作队列的相关方法,其主要方法如下:</p>
+      <ul class="list">
+        <li>boolean offer(E e):将元素追加到队列末尾,若添加成功则返回true。
+</li>
+        <li>E poll():从队首删除并返回该元素。
+</li>
+        <li>E peek():返回队首元素，但是不删除。
+</li>
+      </ul>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Queue&lt;String&gt;</span><span class="sh_normal"> </span>queue <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> LinkedList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>queue<span class="sh_symbol">.</span><span class="sh_function">offer</span><span class="sh_symbol">(</span><span class="sh_string">"a"</span><span class="sh_symbol">);</span></li><li>queue<span class="sh_symbol">.</span><span class="sh_function">offer</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">);</span></li><li>queue<span class="sh_symbol">.</span><span class="sh_function">offer</span><span class="sh_symbol">(</span><span class="sh_string">"c"</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>queue<span class="sh_symbol">);</span> <span class="sh_comment">// [a, b, c] </span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> queue<span class="sh_symbol">.</span><span class="sh_function">peek</span><span class="sh_symbol">();</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span> <span class="sh_comment">// a </span></li><li><span class="sh_keyword">while</span> <span class="sh_symbol">(</span>queue<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">()</span> <span class="sh_symbol">&gt;</span> <span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> queue<span class="sh_symbol">.</span><span class="sh_function">poll</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>str <span class="sh_symbol">+</span> <span class="sh_string">" "</span><span class="sh_symbol">);</span> <span class="sh_comment">// a b c</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Queue&lt;String&gt; queue = new LinkedList&lt;String&gt;();
+queue.offer("a");
+queue.offer("b");
+queue.offer("c");
+System.out.println(queue); // [a, b, c] 
+String str = queue.peek();
+System.out.println(str); // a 
+while (queue.size() &gt; 0) {
+	str = queue.poll();
+	System.out.print(str + " "); // a b c
+} 
+</pre></div></div>
+      <a name="Key02_03_02">
+      </a>
+      <h3>2.3.2. Deque</h3>
+      <p>Deque是Queue的子接口，定义了所谓“双端队列”即从队列的两端分别可以入队（offer）和出队（poll），LinkedList实现了该接口。</p>
+      <p>如果将Deque限制为只能从一端入队和出队，则可实现“栈”（Stack）的数据结构，对于栈而言，入栈称之为push，出栈称之为pop。</p>
+      <p>栈遵循先进后出（FILO First Input Last Output ）的原则。</p>
+      <p>Deque提供了操作栈的相关方法,其主要方法如下:</p>
+      <ul class="list">
+        <li>void push(E e):将给定元素"压入"栈中。存入的元素会在栈首。即:栈的第一个元素
+</li>
+        <li>E pop():将栈首元素删除并返回。
+</li>
+      </ul>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Deque&lt;String&gt;</span><span class="sh_normal"> </span>stack <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> LinkedList<span class="sh_symbol">&lt;</span>String<span class="sh_symbol">&gt;();</span></li><li>stack<span class="sh_symbol">.</span><span class="sh_function">push</span><span class="sh_symbol">(</span><span class="sh_string">"a"</span><span class="sh_symbol">);</span></li><li>stack<span class="sh_symbol">.</span><span class="sh_function">push</span><span class="sh_symbol">(</span><span class="sh_string">"b"</span><span class="sh_symbol">);</span></li><li>stack<span class="sh_symbol">.</span><span class="sh_function">push</span><span class="sh_symbol">(</span><span class="sh_string">"c"</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>stack<span class="sh_symbol">);</span> <span class="sh_comment">// [c, b, a] </span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> stack<span class="sh_symbol">.</span><span class="sh_function">peek</span><span class="sh_symbol">();</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span> <span class="sh_comment">// c </span></li><li><span class="sh_keyword">while</span> <span class="sh_symbol">(</span>stack<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">()</span> <span class="sh_symbol">&gt;</span> <span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> stack<span class="sh_symbol">.</span><span class="sh_function">pop</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>str <span class="sh_symbol">+</span> <span class="sh_string">" "</span><span class="sh_symbol">);</span> <span class="sh_comment">// c b a</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Deque&lt;String&gt; stack = new LinkedList&lt;String&gt;();
+stack.push("a");
+stack.push("b");
+stack.push("c");
+System.out.println(stack); // [c, b, a] 
+String str = stack.peek();
+System.out.println(str); // c 
+while (stack.size() &gt; 0) {
+	str = stack.pop();
+	System.out.print(str + " "); // c b a
+} 
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

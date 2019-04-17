@@ -1,0 +1,171 @@
+
+<!-- saved from url=(0099)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="6604559369"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/SUPERDOC/01/index.html#Key01">JAVA开发环境</a>
+        </li>
+      </ol>
+      <h1>1. JAVA开发环境</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 认识Linux操作系统</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. Linux的由来及发展</h3>
+      <p>Linux起源于1991年，1995年流行起来，大家可以看到旁边的这个人，它就叫Linux，是他在上大学时候写的一个操作系统，被开源出来，所谓的开源，就是指开放源代码，也就是，一步一步怎么做的，都可以看到。说它是一个类似Unix的操作系统，Unix也是一个操作系统，只是它是收费的，而Linux是免费的，当然，这也是它发展起来的原因之一。</p>
+      <p>目前， Linux是主流的服务器操作系统， 广泛应用于互联网、云计算、智能手机（Android）等领域。由于Java主要用于服务器端的开发，因此Java应用的部署环境有很多为Linux。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. Linux目录结构</h3>
+      <p>Windows操作系统的目录结构，是以盘符为单位，C盘、D盘、E盘等等，数据存储在各个盘符之下，而Linux操作系统最顶层只有一个根目录root，所有文件都存储在这一个根目录之下。</p>
+      <p>Windows操作系统若插入一个外部设备（U盘等），在系统中是多了一个盘符H，对H盘的操作就是对外部设备的操作。Linux操作系统是在根目录root下有一个名叫mnt的子目录，在这个目录下，会出现一个目录，假设为sdcard，称之为挂载点，对它的操作就是对外部设备的操作。</p>
+      <p>Windows操作系统某用户登录系统后，对所有文件都具有增删改查的权限，即：可以操作任意目录，假设将C盘下Windows目录删除，则会导致系统异常，安全性较差。Linux操作系统对权限要求比较严格，用户登录后并非对所有目录具有增删改查权限，默认的当前目录为根目录下的home目录下的soft01，称之为主目录，对这个目录具有最高权限，其余目录文件一般都是只读的，不能随意删除，这样就保证了安全性。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. pwd、cd、ls命令</h3>
+      <p>大多数用于服务器的Linux操作系统并不提供图形界面，而是通过命令行的方式进行操作，这一点和Windows不同。Linux提供了很多命令，其中经常用于操作目录的命令如下所示：</p>
+      <ol class="list">
+        <li>pwd：用于显示当前工作目录。
+</li>
+        <li>ls：用于查看当前工作目录内容。
+</li>
+        <li>cd：用于改变当前工作目录。
+</li>
+      </ol>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 相对路径和绝对路径</h3>
+      <p>路径的作用在于指明一个文件或目录在文件系统中的位置，有两种表示方式：相对路径和绝对路径。一般情况下，哪种方式能够更快速的定位，我们就选择哪种路径。</p>
+      <p>相对路径：文件或目录相对于当前工作目录的位置。例如：路径“soft01/workspace”表示当前目录下的soft01目录下的workspace；有两个较特殊的相对路径：“.”表示当前目录，“..”表示上一级目录。</p>
+      <p>绝对路径：文件或目录相对于根目录的位置，绝对路径都从“/”开始。例如：”/home/soft01”，表示根目录下的home目录下的soft01。</p>
+      <p>再举一个生活中的例子，如何去家乐福？以当前位置为基点，出教室门，下电梯到1楼，出大门右转直行约300米，右侧即到，此为相对路径。固定以龙泽为基点，龙泽坐地铁，大钟寺站下，出门直行约1000米，左侧即到，此为绝对路径。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. JAVA开发环境</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. Java编译运行过程</h3>
+      <p>程序员所编写的是以.java为后缀的文件，此文件操作系统不能正确识别，因此，首先要经过编译，生成所谓的字节码文件（.class），而字节码文件需要JVM来提供运行环境的支持。</p>
+      <p>JVM是一个软件，安装在操作系统中，是建立在操作系统之上的，为字节码文件提供运行环境，效果如图 – 1 所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图- 1</p>
+      </div>
+      <p>Java官方提供了针对不同平台的JVM软件，即：不同平台的JVM是不同的。但这些JVM遵循着相同的标准，即：只要是标准的.class文件，就可以在不同的JVM上运行，而且运行的效果相同。这样，就实现了所谓的“一次编程到处使用”。效果如图 – 2所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图- 2</p>
+      </div>
+      <p>Java程序遵循着先编译、后执行的原则。首先，通过javac命令将JAVA源程序（.java文件）编译为JAVA字节码（.class文件），而后，通过java命令启动JVM，由JVM来加载.class文件并运行.class文件。效果如图 – 3所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图- 3</p>
+      </div>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. JDK、JRE、JVM关系</h3>
+      <p>JDK（Java Development Kit）即为Java开发工具包，包含编写Java程序所必须的编译、运行等开发工具以及JRE。开发工具如：用于编译java程序的javac命令、用于启动JVM运行java程序的java命令、用于生成文档的javadoc命令以及用于打包的jar命令等等</p>
+      <p>JRE（Java Runtime Environment）即为Java运行环境，提供了运行Java应用程序所必须的软件环境，包含有Java虚拟机（JVM）和丰富的系统类库。系统类库即为java提前封装好的功能类，只需拿来直接使用即可，可以大大的提高开发效率。</p>
+      <p>JVM（Java Virtual Machines）即为Java虚拟机，提供了字节码文件（.class）的运行环境支持。</p>
+      <p>JDK、JRE、JVM关系如图 – 4 所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图- 4</p>
+      </div>
+      <p>从图示可以看出，JDK中包含了编译、运行等开发工具及JRE，而JRE中包含了Java系统类库及JVM，运行一个java程序所需要的最小环境即为JRE，而开发一个Java程序所需要的最小环境为JDK，因为JDK中还包含了很多用到的命令。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 安装JDK</h3>
+      <p>可以从官方地址下载并安装JDK：http://www.oracle.com/technetwork/java/javase/downloads/index.html，但下载安装时，需要注意操作系统（OS）版本与JDK版本之间的对应关系，如图 – 5&nbsp;所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图- 5</p>
+      </div>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. 配置环境变量</h3>
+      <p>JDK提供了很多命令，像编译（javac）、运行（java）等等，如果希望能使用这些命令，需要让操作系统可以找到这些命令文件所在的路径，可以通过配置PATH环境变量来实现。</p>
+      <p>PATH环境变量是一系列的目录，在执行命令时，操作系统会依次在PATH环境变量中的每一个目录中查找该命令，找到就执行，找不到则提示错误。</p>
+      <p>在Linux系统中，配置文件的路径为：/etc/profile，profile文件为系统的初始化脚本，在系统开机时会自动执行的脚本程序，可以使用cat命令查看配置文件的内容，命令如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>cat  <span class="sh_symbol">/</span>etc<span class="sh_symbol">/</span>profile</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">cat  /etc/profile
+</pre></div></div>
+      <p>可以看到里面已经存在很多配置了， 提前设定好的，不需要再修改了。Linux操作系统自行配置的简便方式如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">export</span><span class="sh_normal">  </span>JAVA_HOME<span class="sh_symbol">=/</span>opt<span class="sh_symbol">/</span>jdk</li><li><span class="sh_usertype">export</span><span class="sh_normal">  </span>CLASSPATH<span class="sh_symbol">=.</span></li><li><span class="sh_usertype">export</span><span class="sh_normal">  </span>PATH<span class="sh_symbol">=/</span>opt<span class="sh_symbol">/</span>jdk<span class="sh_symbol">/</span>bin<span class="sh_symbol">:</span>$PATH</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">export  JAVA_HOME=/opt/jdk
+export  CLASSPATH=.
+export  PATH=/opt/jdk/bin:$PATH
+</pre></div></div>
+      <p>说明：</p>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. 控制台版的JAVA HelloWorld</h3>
+      <p>【参见COOKBOOK】</p>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. Eclipse IDE</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. Eclipse简介</h3>
+      <p>前面学习的控制台版的“Java HelloWorld“程序中，我们使用了最简单的编辑工具编写源代码，但是在真实的企业项目中，这种原始的开发方式会带来大量繁琐、重复、易错的操作，极大的降低工作效益，也不利于项目整体管理，在真实的场景中，开发人员总是会借助一些强大的“集成开发环境”进行代码的编写、调试、测试、提交、重构等操作，例如：Eclipse。</p>
+      <p>Eclipse 是目前主流的IDE开发环境，所谓集成开发环境（IDE，Integrated Development Environment ）是专为程序员提供的应用软件，这些软件往往具备功能强大的图形界面。在IDE的辅助下，程序员可以更加高效的完成编译、调试、提交、重构等工作。作为一个合格的程序员应该对主流的IDE工具有较高的熟练度，但也要防止“过分依赖IDE”问题。</p>
+      <p>对于Java程序员有许多IDE环境可以选择， 但最主流的要数大名鼎鼎的Eclipse了。Eclipse是IBM斥资数千万美元打造的开源项目，如今几乎统治了IDE市场。除了开源之外，Eclipse成功的最大原因在于它是基于“插件”的特性。Eclipse本身是一个平台框架，提供标准的服务，众第三方厂商可以通过开发插件扩展Eclipse的功能，相较于其他功能相对固定的IDE，Eclipse具有高度的灵活性。</p>
+      <p>可以从Eclipse的官方网站（http://www.eclipse.org/downloads/）下载免费的Eclipse。在Eclipse下载页面中选择下载“Eclipse Classic”，这个版本可以理解为是没有特殊安装插件“标准版”Eclipse，其他的版本，根据不同的需要预置了特定插件。</p>
+      <p>Eclipse下载完成后，不需要特殊的安装，仅仅需要将下载的压缩包解压在某个文件夹中即可。由于Eclipse本身也是用Java语言编写的，它的运行需要有JRE环境，因此必须先安装JDK（或JRE）。</p>
+      <p>下面，简单介绍下Eclipse的使用步骤：</p>
+      <p class="number">1) 步骤一：开启开发工具Eclipse</p>
+      <p>eclipse启动后会弹出如下对话框，如图-27所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image006.png">
+        <p>图- 27</p>
+      </div>
+      <p>弹出的对话框“Workspace Launcher”用于选择“工作区”（Workspace）。所谓“工作区”是指Eclipse用于存储工程文件的路径。Eclipse通过“工程”（Project）来组织资料。程序员编写的源文件、编译生成类文件等以特定的目录结构存储在工程文件夹中。</p>
+      <p class="number">2) 步骤二：创建Java工程</p>
+      <p>选择菜单操作“File ( NEW ( Java Project”用于创建一个适合编写Java基本应用程序的工程。在弹出的对话框中填写工程的名称（Project Name）然后单击“Finish”按钮。如图-28所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image007.png">
+        <p>图- 28</p>
+      </div>
+      <p>工程创建完成后，会在工作区目录（Eclipse启动时指定）生成一个与工程名称同名的文件夹。打开此文件夹，会看到如图-29所示的目录结构：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image008.png">
+        <p>图- 29</p>
+      </div>
+      <p>其中：“src”文件夹用于存放用户编写的Java源文件；“bin”文件夹用于存放Eclipse自动编译生成的class文件。Eclipse具备自动编译的功能，当用户在编写Java源文件的同时，Eclipse会自动的调用系统的JRE编译该文件，并将编译好的class文件存放在bin目录中。另外，“.classpath”和“.project”两个文件以及“.settings”文件夹中的内容是Eclipse用来维护工程信息的，一般可以不去理会。</p>
+      <p class="number">3) 步骤三：创建名为HelloWorld的类</p>
+      <p>工程创建完成以后，可以通过菜单操作“File ( New ( Class”创建Java源文件。在弹出的对话框中，填写要创建的Java类的类名（Name）和包名（Package），如图-30所示。（关于包的含义将在后续课程中详述。）</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image009.png">
+        <p>图- 30</p>
+      </div>
+      <p>填写完类名（本例中为“HelloWorld”）和包名（本例中为“day01”）后，单击“Finish”按钮。Eclipse即创建了一个名为HelloWorld.java的源文件。</p>
+      <p class="number">4) 步骤四：定义类</p>
+      <p>在Eclipse编写HelloWorld程序，如图-31所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image010.png">
+        <p>图- 31</p>
+      </div>
+      <p>程序编写完成，确认无编译错误后，可以使用菜单操作“Run ( Run As ( Java Application”来运行该程序。运行的结果会在代码下方的Console视图中显示。这里需要指出的是：这个操作在本质上与先前通过命令行方式运行Java程序并没有什么不同，可以理解为是Eclipse调用JDK的java命令，用更加友好的图形化界面方式实现运行Java程序的操作而已。</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 使用Eclipse开发JAVA应用程序</h3>
+      <p>【参见COOKBOOK】</p>
+    </div>
+  
+</body></html>

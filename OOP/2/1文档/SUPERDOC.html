@@ -1,0 +1,292 @@
+
+<!-- saved from url=(0091)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="9650470263"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#Key01">对象和类（下）</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#Key02">数组</a>
+        </li>
+      </ol>
+      <h1>1. 对象和类（下）</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 方法的重载</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 方法的签名</h3>
+      <p>方法的签名包含如下两个方面：方法名和参数列表。</p>
+      <p>Java语法规定，一个类中不可以有两个方法签名完全相同的方法，即：一个类中不可以有两个方法的方法名和参数列表都完全相同，但是，如果一个类的两个方法只是方法名相同而参数列表不同，是可以的。下面看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Cashier</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">boolean</span> <span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_type">double</span> money<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> … <span class="sh_cbracket">}</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">boolean</span> <span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_type">double</span> money<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> …<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Cashier {
+    public boolean pay(double money) { … }
+    public boolean pay(double money) { …}
+}
+</pre></div></div>
+      <p>分析如上代码，结论会出现编译错误，因为在同一个类Cashier中的两个方法，签名相同，这在java语法中是不允许出现的。而下面的代码就是正确的：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Cashier</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">boolean</span> <span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_type">double</span> money<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> … <span class="sh_cbracket">}</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">boolean</span> <span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>cardId<span class="sh_symbol">,</span></li><li>                                     <span class="sh_usertype">String</span><span class="sh_normal"> </span>cardPwd<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> … <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Cashier {
+    public boolean pay(double money) { … }
+    public boolean pay(String cardId,
+                                     String cardPwd) { … }
+}
+</pre></div></div>
+      <p>可以看到上面的代码，在类Cashier中，虽然pay方法名相同，但是参数列表不同，这样是被允许的，可以正常编译通过。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 方法重载及其意义</h3>
+      <p>假想收款窗口的设计，可以采用两种方式：</p>
+      <ol class="list">
+        <li>开设三个窗口，分别用来接收现金，信用卡和支票的交付方式（分别在窗口上标明），用户根据需要选择窗口，并投入指定的物件，如图 – 8所示：
+</li>
+      </ol>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图- 8</p>
+      </div>
+      <ol class="list">
+        <li>开设一个窗口，标为“收款”，可以接收现金，信用卡和支票三种物件。该窗口可以按照输入的不同物件实施不同的操作。例如，如果输入的是现金则按现金支付，如果输入的是信用卡则按信用卡支付，以此类推，如图 – 9所示。
+</li>
+      </ol>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图- 9</p>
+      </div>
+      <p>通过对如上两种方式的分析，请问：哪种方式更好一些呢？常规情况下认为，相对于A的方式，B的设计可以降低用户的负担，用户去付款时不需要去找对应的窗口，只需要到收款窗口就可以了， 减少了用户使用时的错误，B的设计更加优雅一些。</p>
+      <p>按B的设计方式即为方法重载，在Java语言中，允许多个方法的名称相同，但参数列表不同，此种方式称为方法的重载(overload)。</p>
+      <p>下面的代码即为收款窗口的两种设计方式，可以看出B方式即为方法的重载方式。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">PayMoney</span> <span class="sh_cbracket">{</span>      <span class="sh_comment">//----------A方式</span></li><li>      …<span class="sh_function">payByCash</span><span class="sh_symbol">(</span><span class="sh_type">double</span> money<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li><li>      …<span class="sh_function">payByCard</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>cardId<span class="sh_symbol">,</span>StringcardPwd<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li><li>      …<span class="sh_function">payByCheck</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>compayName<span class="sh_symbol">,</span><span class="sh_type">double</span> money<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li><li> <span class="sh_cbracket">}</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">PayMoney</span> <span class="sh_cbracket">{</span>     <span class="sh_comment">//-----------B方式</span></li><li>      …<span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_type">double</span> money<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li><li>      …<span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>cardId<span class="sh_symbol">,</span>StringcardPwd<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li><li>      …<span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>compayName<span class="sh_symbol">,</span><span class="sh_type">double</span> money<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li><li> <span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class PayMoney {      //----------A方式
+      …payByCash(double money) {  }
+      …payByCard(String cardId,StringcardPwd) {  }
+      …payByCheck(String compayName,double money) {  }
+ }
+public class PayMoney {     //-----------B方式
+      …pay(double money) {  }
+      …pay(String cardId,StringcardPwd) {  }
+      …pay(String compayName,double money) {  }
+ }
+</pre></div></div>
+      <p>通过如上的代码可以看出，按照A的方式若想付款，需在三个方法之中进行选择，不同的方法即为不同的付款方式，而B的方式即为重载方式，若想付款，只需要找到pay方法，只不过，传递不同的参数即可。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 编译时根据签名绑定调用方法</h3>
+      <p>当调用重载的方法时，编译器会在编译时根据签名的不同来绑定调用不同的方法，可以把重载的方法看成是完全不同的方法，只不过，恰好方法名称相同而已。请看下面的两组代码：</p>
+      <p>重载方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>…<span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_type">double</span> money<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li><li>…<span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>cardId<span class="sh_symbol">,</span>StringcardPwd<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li><li>…<span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>compayName<span class="sh_symbol">,</span><span class="sh_type">double</span> money<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">…pay(double money) {  }
+…pay(String cardId,StringcardPwd) {  }
+…pay(String compayName,double money) {  }
+</pre></div></div>
+      <p>调用方法:（只管调用即可，由编译器来根据签名绑定不同的方法）</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">pay</span><span class="sh_symbol">(</span><span class="sh_number">8888.88</span><span class="sh_symbol">)</span>；</li><li><span class="sh_function">pay</span><span class="sh_symbol">(</span>“<span class="sh_number">12345678</span>”<span class="sh_symbol">,</span>”<span class="sh_number">666666</span>”<span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_function">pay</span><span class="sh_symbol">(</span> “tarena”<span class="sh_symbol">,</span> <span class="sh_number">8888.88</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">pay(8888.88)；
+pay(“12345678”,”666666”);	
+pay( “tarena”, 8888.88);
+</pre></div></div>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 构造方法</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 构造方法语法结构</h3>
+      <p>构造方法是在类中定义的方法， 但不同于其他的方法，构造方法的定义有如下两点规则：</p>
+      <ol class="list">
+        <li>构造方法的名称必须与类名相同。
+</li>
+        <li>构造方法没有返回值，但也不能写void。
+</li>
+      </ol>
+      <p>如下所示为构造方法的语法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>【访问修饰符】类名<span class="sh_symbol">(</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>     <span class="sh_comment">//构造方法体</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">【访问修饰符】类名( ) {
+     //构造方法体
+}
+</pre></div></div>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 通过构造方法初始化成员变量</h3>
+      <p>Java语言中的构造方法常常用于实现对对象成员变量的初始化，如下代码展示了构造方法的使用。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal">  </span><span class="sh_classname">Cell</span> <span class="sh_cbracket">{</span></li><li><span class="sh_type">int</span>  row ；</li><li><span class="sh_type">int</span>  col  <span class="sh_symbol">;</span> </li><li><span class="sh_keyword">public</span>  <span class="sh_function">Cell</span> <span class="sh_symbol">(</span><span class="sh_type">int</span> row1  <span class="sh_symbol">,</span> <span class="sh_type">int</span> col1<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row <span class="sh_symbol">=</span> row1<span class="sh_symbol">;</span>    </li><li>col <span class="sh_symbol">=</span> col1<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">class</span><span class="sh_normal">  </span><span class="sh_classname">TestCell</span> <span class="sh_cbracket">{</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal">   </span>args<span class="sh_symbol">[</span> <span class="sh_symbol">]</span> <span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li><span class="sh_usertype">Cell</span><span class="sh_normal">   </span>c1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span> <span class="sh_number">15</span> <span class="sh_symbol">,</span> <span class="sh_number">6</span> <span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_function">printCell</span><span class="sh_symbol">(</span>c1<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class  Cell {
+int  row ；
+int  col  ; 
+public  Cell (int row1  , int col1){
+		row = row1;    
+col = col1;
+    }
+}
+class  TestCell {
+public static void main(String   args[ ] ){
+Cell   c1 = new Cell( 15 , 6 );
+	    printCell(c1);
+}
+}
+</pre></div></div>
+      <p>可以看出，在创建对象时，构造方法写在new关键字之后，可以理解为：“new”创建了对象，而构造方法对该对象进行了初始化。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. this关键字的使用</h3>
+      <p>在上面的代码中，为该构造方法定义了两个参数，分别表示行和列。为了区分于Cell类的成员变量row和col，为两个参数分别取名为row1和col1，这显然不是一种好方法，因为，我们会希望依然使用变量row来表示行，col来表示列，而不是row1和col1。为了解决这个问题，需要使用到this关键字。</p>
+      <p>this关键字用在方法体中，用于指代调用该方法的当前对象，简单的说：哪个对象调用方法，this指的就是哪个对象。严格来讲，在方法中需要通过this关键字指明当前对象。请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span>  <span class="sh_type">void</span>  <span class="sh_function">drop</span> <span class="sh_symbol">(</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> </li><li><span class="sh_keyword">this</span><span class="sh_symbol">.</span>row <span class="sh_symbol">++;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public  void  drop ( ) { 
+this.row ++;	
+}
+</pre></div></div>
+      <p>上面的drop（）方法可以解释为：将调用该方法对象的成员变量的row加1。很多时候，为了方便起见，在没有歧义的情况下可以省略this，如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span>  <span class="sh_type">void</span>  <span class="sh_function">drop</span> <span class="sh_symbol">(</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> </li><li>row <span class="sh_symbol">++;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public  void  drop ( ) { 
+row ++;	
+}
+</pre></div></div>
+      <p>在构造方法中，用来初始化成员变量的参数一般和成员变量取相同的名字，这样会有利于代码的可读性，但此处就必须通过this关键字来区分成员变量和参数了，而不能省略this了，如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span>   <span class="sh_function">Cell</span> <span class="sh_symbol">(</span><span class="sh_type">int</span>  row <span class="sh_symbol">,</span> <span class="sh_type">int</span>  col <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span> <span class="sh_symbol">.</span> row <span class="sh_symbol">=</span> row <span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span> <span class="sh_symbol">.</span> col  <span class="sh_symbol">=</span> col <span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public   Cell (int  row , int  col ) {
+	this . row = row ;
+	this . col  = col ;
+}
+</pre></div></div>
+      <p>如上的代码中，this.row表示的为Cell类的成员变量，而row为参数变量。</p>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. 默认的构造方法</h3>
+      <p>JAVA语法规定，任何一个类都必须含有构造方法，假如源程序中没有定义，则编译器在编译时将为其添加一个无参的空构造方法（此方法称之为“默认的构造方法”）。</p>
+      <p>例如：先前所定义的Cell类源文件中没有写构造方法，但也可以编译成功，因为在编译时由编译器为其添加了如下的构造方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">Cell</span><span class="sh_symbol">(</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cell( ) {  } 
+</pre></div></div>
+      <p>但是有一个问题需要注意，当类定义了构造方法后，Java编译器将不再添加默认的构造方法，看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Cell</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> row<span class="sh_symbol">;</span>    </li><li><span class="sh_type">int</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">Cell</span> <span class="sh_symbol">(</span><span class="sh_type">int</span> row<span class="sh_symbol">,</span><span class="sh_type">int</span> col<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>row <span class="sh_symbol">=</span> row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>col <span class="sh_symbol">=</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">CellGame</span> <span class="sh_cbracket">{</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_usertype">Cell</span><span class="sh_normal">  </span>cell  <span class="sh_symbol">=</span>  <span class="sh_keyword">new</span>  <span class="sh_function">Cell</span><span class="sh_symbol">(</span> <span class="sh_symbol">);</span>  <span class="sh_comment">//编译错误</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Cell{
+	int row;    
+int col;
+	Cell (int row,int col){
+		this.row = row;
+		this.col = col;
+	}
+}
+public class CellGame {
+public static void main(String[] args) {
+        Cell  cell  =  new  Cell( );  //编译错误
+    }
+}
+</pre></div></div>
+      <p>可以看出，在创建Cell类对象时，发生了一个编译期错误，那是因为，在Cell类中已经定义了Cell(int,int)的构造方法，此时，编译器将不会再提供无参的构造方法了。所以此处发生了编译期错误。</p>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. 构造方法的重载</h3>
+      <p>很多时候，为了使用的方便，可以对一个类定义多个构造方法，这些构造方法都有相同的名称（类名），只是方法的参数不同，称之为构造方法的重载。</p>
+      <p>在创建对象时，Java编译器会根据不同的参数调用来不同构造方法。看如下的几组构造方法的声明及调用。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>声明：</li><li><span class="sh_function">Cell</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span>  row <span class="sh_symbol">,</span> <span class="sh_type">int</span>  col <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li><span class="sh_cbracket">}</span></li><li>调用：</li><li><span class="sh_usertype">Cell</span><span class="sh_normal">   </span>c1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span>  <span class="sh_function">Cell</span> <span class="sh_symbol">(</span> <span class="sh_number">5</span> <span class="sh_symbol">,</span> <span class="sh_number">6</span> <span class="sh_symbol">)</span>；</li><li><span style="display:none;">&nbsp;</span></li><li>声明：</li><li><span class="sh_function">Cell</span> <span class="sh_symbol">(</span> <span class="sh_symbol">)</span>   <span class="sh_cbracket">{</span>  </li><li><span class="sh_cbracket">}</span> </li><li>调用：</li><li><span class="sh_usertype">Cell</span><span class="sh_normal">  </span>c1 <span class="sh_symbol">=</span>  <span class="sh_keyword">new</span>  <span class="sh_function">Cell</span> <span class="sh_symbol">(</span>  <span class="sh_symbol">)</span> ；</li><li><span style="display:none;">&nbsp;</span></li><li>声明：</li><li><span class="sh_function">Cell</span> <span class="sh_symbol">(</span><span class="sh_type">int</span> row<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li><span class="sh_keyword">this</span><span class="sh_symbol">(</span>row  <span class="sh_symbol">,</span> row  <span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li><li>调用：</li><li><span class="sh_usertype">Cell</span><span class="sh_normal">  </span>c1 <span class="sh_symbol">=</span>  <span class="sh_keyword">new</span>  <span class="sh_function">Cell</span> <span class="sh_symbol">(</span> <span class="sh_number">5</span> <span class="sh_symbol">)</span> ；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">声明：
+Cell ( int  row , int  col ) {
+}
+调用：
+Cell   c1 = new  Cell ( 5 , 6 )；
+
+声明：
+Cell ( )   {  
+} 
+调用：
+Cell  c1 =  new  Cell (  ) ；
+
+声明：
+Cell (int row) {
+this(row  , row  );
+}
+调用：
+Cell  c1 =  new  Cell ( 5 ) ；
+</pre></div></div>
+      <p>可以注意到，在第三段声明的构造方法中，使用了this关键字，在构造方法中可以通过this关键字来调用另外的一个重载的构造方法。this(row,row)调用了第一段声明Cell(int row, int col)构造方法。</p>
+      <a name="Key02">
+      </a>
+      <h1>2. 数组</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 引用类型数组</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. 数组是对象</h3>
+      <p>在java中，数组属于引用数据类型，数组对象存放在堆中存储，数组变量属于引用类型，存储数组对象的地址信息，指向数组对象。而数组的元素可以看成数组对象的成员变量（只不过类型全部相同）。看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span><span class="sh_symbol">[</span> <span class="sh_symbol">]</span>   arr  <span class="sh_symbol">=</span> <span class="sh_keyword">new</span>   <span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_number">3</span> <span class="sh_symbol">]</span>   </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int[ ]   arr  = new   int [ 3 ]   
+</pre></div></div>
+      <p>内存的分配如下图– 4所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图- 4</p>
+      </div>
+      <p>说明： 在堆内存中分配了数组对象，分配三个int型空间，并将每个元素赋初始值为0，栈中存储对堆中数据的引用，即堆中int数组的首地址。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. 引用类型数组的声明</h3>
+      <p>刚刚声明的数组为基本类型数组，除了基本类型数组以外，也可以声明引用类型数组。所谓引用类型数组，即数组元素的类型不是基本类型(int,char,float。。) , 而是引用类型，看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Cell <span class="sh_symbol">[</span> <span class="sh_symbol">]</span>    cells  <span class="sh_symbol">=</span> <span class="sh_keyword">new</span>  Cell <span class="sh_symbol">[</span> <span class="sh_number">4</span> <span class="sh_symbol">]</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cell [ ]    cells  = new  Cell [ 4 ] ;
+</pre></div></div>
+      <p>其内存分配如下图– 5所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图- 5</p>
+      </div>
+      <p>从上图示可以看出，new  Cell[4]实际是分配了4个空间用于存放4个Cell类型的引用，并赋初始值为null，而并非是分配了4个Cell类型的对象。</p>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. 引用类型数组的初始化</h3>
+      <p>前面所介绍的基本类型数组的默认值同成员变量默认的初始值（如int类型的数组初始值为0）,而引用类型数组的默认初始值都是null。</p>
+      <p>如果希望每一个元素都指向具体的对象，则需要针对每一个数组元素进行“new”运算。与基本类型数组一样，也可以采用静态初始化的方式进行初始化操作。如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Cell<span class="sh_symbol">[</span> <span class="sh_symbol">]</span>  cells <span class="sh_symbol">=</span> <span class="sh_keyword">new</span>  Cell<span class="sh_symbol">[</span><span class="sh_number">4</span><span class="sh_symbol">];</span></li><li>cells<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">4</span><span class="sh_symbol">);</span></li><li>cells<span class="sh_symbol">[</span><span class="sh_number">1</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span><span class="sh_number">3</span><span class="sh_symbol">);</span></li><li>cells<span class="sh_symbol">[</span><span class="sh_number">2</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span><span class="sh_number">4</span><span class="sh_symbol">);</span></li><li>cells<span class="sh_symbol">[</span><span class="sh_number">3</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span><span class="sh_number">5</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cell[ ]  cells = new  Cell[4];
+cells[0] = new Cell(0,4);
+cells[1] = new Cell(1,3);
+cells[2] = new Cell(1,4);
+cells[3] = new Cell(1,5);
+</pre></div></div>
+      <p>等价于：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Cell<span class="sh_symbol">[</span> <span class="sh_symbol">]</span> cells <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> Cell<span class="sh_symbol">[</span> <span class="sh_symbol">]</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">4</span><span class="sh_symbol">)</span> <span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span><span class="sh_number">3</span><span class="sh_symbol">)</span> <span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span><span class="sh_number">4</span><span class="sh_symbol">)</span> <span class="sh_symbol">,</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span><span class="sh_number">5</span><span class="sh_symbol">)</span> </li><li><span class="sh_cbracket">}</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cell[ ] cells = new Cell[ ] {
+	new Cell(0,4) ,
+	new Cell(1,3) ,
+	new Cell(1,4) , 
+	new Cell(1,5) 
+} ;
+</pre></div></div>
+      <p>如上数组内存分配图如下图– 6 所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图- 6</p>
+      </div>
+      <a name="Key02_01_04">
+      </a>
+      <h3>2.1.4. 数组的类型是基本类型数组</h3>
+      <p>前面所介绍的数组的元素或为基本类型int，或为引用类型Cell，而数组本身也是一种数据类型，当然也可以作为数组的元素。看下面的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_symbol">[</span> <span class="sh_symbol">][</span> <span class="sh_symbol">]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span><span class="sh_symbol">[</span><span class="sh_number">3</span><span class="sh_symbol">][</span> <span class="sh_symbol">];</span></li><li>arr<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span><span class="sh_symbol">[</span><span class="sh_number">2</span><span class="sh_symbol">];</span></li><li>arr<span class="sh_symbol">[</span><span class="sh_number">1</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span><span class="sh_symbol">[</span><span class="sh_number">3</span><span class="sh_symbol">];</span></li><li>arr<span class="sh_symbol">[</span><span class="sh_number">2</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span><span class="sh_symbol">[</span><span class="sh_number">2</span><span class="sh_symbol">];</span></li><li>arr<span class="sh_symbol">[</span><span class="sh_number">1</span><span class="sh_symbol">][</span><span class="sh_number">1</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_number">100</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int [ ][ ] arr = new int[3][ ];
+arr[0] = new int[2];
+arr[1] = new int[3];
+arr[2] = new int[2];
+arr[1][1] = 100;
+</pre></div></div>
+      <p>分析如上代码可以看出，变量arr指向一个数组，该数组有三个元素，每个元素都是int类型数组，长度分别为2,3,2，arr[1][1]=100表示将arr数组中的第2个元素（数组）的第2个元素赋值为100， 其内存分配如图– 7所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image006.png">
+        <p>图- 7</p>
+      </div>
+      <p>对于元素为数组的数组，如果每个数组元素的长度相同，也可以采用如下的方式声明：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> row <span class="sh_symbol">=</span> <span class="sh_number">3</span><span class="sh_symbol">,</span> col <span class="sh_symbol">=</span> <span class="sh_number">4</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span><span class="sh_symbol">[][]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_type">int</span><span class="sh_symbol">[</span>row<span class="sh_symbol">][</span>col<span class="sh_symbol">];</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span><span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> row<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span><span class="sh_type">int</span> j <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> j <span class="sh_symbol">&lt;</span> col<span class="sh_symbol">;</span> j<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>arr<span class="sh_symbol">[</span>i<span class="sh_symbol">][</span>j<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> i <span class="sh_symbol">*</span> j<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int row = 3, col = 4;
+int[][] arr = new int[row][col];
+for (int i = 0; i &lt; row; i++) {
+for (int j = 0; j &lt; col; j++) {
+arr[i][j] = i * j;
+    }
+}
+</pre></div></div>
+      <p>如上形式的数组可以用来表示类似“矩阵”这样的数据结构（3行4列），如下图-8所示，arr[i][j] 可以认为访问行号为i，列号为j的那个元素。在其他的一些语言中有专门表示这样结构的所谓二维数组；但严格的讲，Java语言中没有真正的二维数组。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image007.png">
+        <p>图- 8</p>
+      </div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

@@ -1,0 +1,265 @@
+
+<!-- saved from url=(0091)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="9699531141"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#Key01">对象内存管理</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#Key02">继承的意义（上）</a>
+        </li>
+      </ol>
+      <h1>1. 对象内存管理</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 对象内存管理</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 对象内存管理</h3>
+      <p>在JAVA中，有java程序、虚拟机、操作系统三个层次，其中java程序与虚拟机交互，而虚拟机与操作系统交互。编译好的java字节码文件运行在JVM中。</p>
+      <p>程序中无论代码还是数据，都需要存储在内存中，而java程序所需内存均由JVM进行管理分配，开发者只需关心JVM是如何管理内存的，而无需关注某种操作系统是如何管理内存的，这就保证了java程序的平台无关性。</p>
+      <p>JVM会将申请的内存从逻辑上划分为三个区域：堆、栈、方法区。这三个区域分别用于存储不同的数据。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 堆内存</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 对象存储在堆中</h3>
+      <p>JVM在其内存空间开辟了一个称为“堆”的存储空间，这部分空间用于存储使用new关键字所创建的对象。请看如下代码:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Cell</span><span class="sh_normal">   </span>c  <span class="sh_symbol">=</span> <span class="sh_keyword">new</span>  Cell （<span class="sh_symbol">)</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cell   c  = new  Cell （)；
+</pre></div></div>
+      <p>其内存分布如图– 1所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图- 1</p>
+      </div>
+      <p>从图示1中可以看到右侧的堆内存，new Cell（）所创建的对象在堆中分配，同时成员变量亦在此分配，并赋初始值为零。引用类型变量c在栈内存中分配，其中保存的数据，为对象在堆内存中的地址信息，假设对象在堆内存的地址为40DF，则c中保存的即是40DF。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 成员变量的生命周期</h3>
+      <p>当声明好对象之后，对该对象（堆中的Cell）的访问需要依靠引用变量(栈中的c)，那么当一个对象没有任何引用时，该对象被视为废弃的对象，属于被回收的范围，同时该对象中的所有成员变量也随之被回收。</p>
+      <p>可以这样认为，成员变量的生命周期为：从对象在堆中创建开始到对象从堆中被回收结束。</p>
+      <p>请看如下的代码，演示了对象不再被引用:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Cell</span><span class="sh_normal">   </span>c  <span class="sh_symbol">=</span>  <span class="sh_keyword">new</span>  Cell（）；</li><li>c <span class="sh_symbol">=</span> <span class="sh_keyword">null</span> ；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cell   c  =  new  Cell（）；
+c = null ；
+</pre></div></div>
+      <p>当将c赋值为null时，表示c不再指向刚刚分配的对象空间，此时成员变量失效。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 垃圾回收机制</h3>
+      <p>垃圾回收器（Garbage Collection，GC）是JVM自带的一个线程（自动运行着的程序），用于回收没有任何引用所指向的对象。</p>
+      <p>GC线程会从栈中的引用变量开始跟踪，从而判定哪些内存是正在使用的，若GC无法跟踪到某一块堆内存，那么GC就认为这块内存不再使用了，即为可回收的。但是，java程序员不用担心内存管理，因为垃圾收集器会自动进行管理。</p>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. Java程序的内存泄露问题</h3>
+      <p>内存泄露是指，不再被使用的内存没有被及时的回收，严重的内存泄露会因过多的内存占用而导致程序的崩溃。在程序中应该尽量避免不必要的内存浪费。</p>
+      <p>GC线程判断对象是否可以被回收的依据是该对象是否有引用来指向，因此，当确定该对象不再使用时，应该及时的将其引用设置为null，这样，该对象即不再被引用，属于可回收的范围。</p>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. System.gc（）方法</h3>
+      <p>GC的回收对程序员来说是透明的，并不一定一发现有无引用的对象就立即回收。一般情况下，当我们需要GC线程即刻回收无用对象时，可以调用System.gc（）方法。此方法用于建议JVM马上调度GC线程回收资源，但具体的实现策略取决于不同的JVM系统。</p>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 非堆----栈</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 栈用于存放方法中的局部变量</h3>
+      <p>JVM在其内存空间开辟一个称为”栈”的存储空间，这部分空间用于存储程序运行时在方法中声明的所有的局部变量，例如，在main方法中有如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Cell</span><span class="sh_normal">   </span>c   <span class="sh_symbol">=</span>   <span class="sh_keyword">new</span>   <span class="sh_function">Cell</span> <span class="sh_symbol">(</span> <span class="sh_symbol">)</span>；</li><li><span class="sh_type">int</span> num  <span class="sh_symbol">=</span>  <span class="sh_number">5</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cell   c   =   new   Cell ( )；
+int num  =  5；
+</pre></div></div>
+      <p>其内存分配如图– 2 所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图- 2</p>
+      </div>
+      <p>说明：方法中的变量即为局部变量，是在栈内存中分配，若变量为值类型，则在栈中存储的就是该变量的值。若变量为引用类型，则在栈中存储的是堆中对象的地址。</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 局部变量的生命周期</h3>
+      <p>一个运行的Java程序从开始到结束会有多次方法的调用。JVM会为每一个方法的调用在栈中分配一个对应的空间，这个空间称为该方法的栈帧。一个栈帧对应一个正在调用中的方法，栈帧中存储了该方法的参数、局部变量等数据。当某一个方法调用完成后，其对应的栈帧将被清除，局部变量即失效。</p>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 成员变量和局部变量</h3>
+      <p>成员变量与局部变量的差别如下：</p>
+      <p>局部变量：</p>
+      <p>1) 定义在方法中；</p>
+      <p>2) 没有默认值，必须自行设定初始值；</p>
+      <p>3) 方法被调用时，存在栈中，方法调用结束时局部变量从栈中清除；</p>
+      <p>成员变量：</p>
+      <p>1) 定义在类中，方法外；</p>
+      <p>2) 由系统设定默认初始值，可以不显式初始化；</p>
+      <p>3) 所在类被实例化后，存在堆中，对象被回收时，成员变量失效；</p>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. 非堆----方法区</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. 方法区用于存放类的信息</h3>
+      <p>方法区用于存放类的信息，Java程序运行时，首先会通过类装载器载入类文件的字节码信息，经过解析后将其装入方法区。类的各种信息（包括方法）都在方法区存储，看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Cell</span><span class="sh_normal">   </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span>  <span class="sh_function">Cell</span><span class="sh_symbol">()</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cell   c = new  Cell()；
+</pre></div></div>
+      <p>程序在执行这句话时，Cell类首先被装载到JVM的方法区，其中包括类的基本信息和方法定义等，如下图– 3 所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图- 3</p>
+      </div>
+      <p>通过图示可以看出，在方法区中，包含Cell类的字节码文件，及类的基本信息及方法drop等。</p>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. 方法只有一份</h3>
+      <p>当类的信息被加载到方法区时，除了类的类型信息以外，同时类内的方法定义也被加载到方法区；</p>
+      <p>类在实例化对象时，多个对象会拥有各自在堆中的空间，但所有实例对象是共用在方法区中的一份方法定义的。意味着，方法只有一份。看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">JFrame</span><span class="sh_normal"> </span>f1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> JFrame（）； </li><li><span class="sh_usertype">JFrame</span><span class="sh_normal"> </span>f2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> JFrame（）； </li><li>f1<span class="sh_symbol">.</span><span class="sh_function">setSize</span><span class="sh_symbol">(</span><span class="sh_number">200</span><span class="sh_symbol">,</span> <span class="sh_number">300</span><span class="sh_symbol">);</span></li><li>f2<span class="sh_symbol">.</span><span class="sh_function">setSize</span><span class="sh_symbol">(</span><span class="sh_number">300</span><span class="sh_symbol">,</span><span class="sh_number">400</span><span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">JFrame f1 = new JFrame（）； 
+JFrame f2 = new JFrame（）； 
+f1.setSize(200, 300);
+f2.setSize(300,400); 
+</pre></div></div>
+      <p>如上的代码中，对象有两个，但是setSize方法只有一份，分别针对f1指向的对象和f2指向的对象调用了两次。</p>
+      <a name="Key02">
+      </a>
+      <h1>2. 继承的意义（上）</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 继承</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. 泛化的过程</h3>
+      <p>前面的案例中定义了T类和J类， 通过分析可以发现， 在这两个类中存在着大量的重复代码，像cells属性、print方法、drop方法、moveLeft方法、moveRight方法，在这两个类中都存在，并且实现上基本也是相同的，本着代码重用的原则，可以使用继承的方式来实现。</p>
+      <p>首先，构建T类和J类的父类Tetromino类，将公共的（T类和J类公有的）信息存放在父类中， T类和J类继承Tetromino父类。此时，子类即可以共享父类的数据。这个过程就是泛化的过程。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. extends关键字</h3>
+      <p>使用继承可以实现代码的重用，在java语言中，需要通过extends关键字实现类的继承。继承完成后，子类（Sub class）可以继承父类（Super class）的成员变量及成员方法，同时子类也可以定义自己的成员变量和成员方法。届时，子类将具有父类的成员及本类的成员。</p>
+      <p>需要注意的是，Java语言不支持多重继承，即：一个类只能继承一个父类，但一个父类可以有多个子类。看下面的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Tetromino</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;Cell<span class="sh_symbol">[]</span> cells<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Tetromino</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cells <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> Cell<span class="sh_symbol">[</span><span class="sh_number">4</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">drop</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span>  <span class="sh_comment">//同写过的T类 }</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">moveLeft</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span><span class="sh_comment">//同写过的T类}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">moveRight</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span><span class="sh_comment">//同写过的T类}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">print</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span><span class="sh_comment">//同写过的T类}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">TetrominoT</span> <span class="sh_keyword">extends</span> Tetromino <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">TetrominoT</span><span class="sh_symbol">(</span><span class="sh_type">int</span> row<span class="sh_symbol">,</span> <span class="sh_type">int</span> col<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cells<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>row<span class="sh_symbol">,</span> col<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cells<span class="sh_symbol">[</span><span class="sh_number">1</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>row<span class="sh_symbol">,</span> col <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cells<span class="sh_symbol">[</span><span class="sh_number">2</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>row<span class="sh_symbol">,</span> col <span class="sh_symbol">+</span> <span class="sh_number">2</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cells<span class="sh_symbol">[</span><span class="sh_number">3</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>row <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">,</span> col <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">);</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Tetromino {
+	Cell[] cells;
+	public Tetromino() {
+		cells = new Cell[4];
+	}
+	public void drop() {  //同写过的T类 }
+	public void moveLeft() {//同写过的T类}
+	public void moveRight() {//同写过的T类}
+	public void print() {//同写过的T类}
+}
+public class TetrominoT extends Tetromino {
+	public TetrominoT(int row, int col) {
+		cells[0] = new Cell(row, col);
+		cells[1] = new Cell(row, col + 1);
+		cells[2] = new Cell(row, col + 2);
+		cells[3] = new Cell(row + 1, col + 1); 
+	}
+}
+</pre></div></div>
+      <p>如上代码说明：声明父类Tetromino，将公共信息放在其中，包括Cell[]声明、drop（）方法、moveLeft（）方法、moveRight（）方法，print（）方法。声明无参构造函数，对成员变量Cell数组进行实例化。声明子类TetrominoT继承Tetromino，并声明有参构造函数，传递行row，列col参数，进行T型数组元素的初始化。</p>
+      <p>下面在main方法中，声明一个T型对象，即可以实现T型对象的构建：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">TetrominoT</span><span class="sh_normal">   </span>t   <span class="sh_symbol">=</span>    <span class="sh_keyword">new</span>   <span class="sh_function">TetrominoT</span><span class="sh_symbol">(</span> <span class="sh_number">1</span> <span class="sh_symbol">,</span> <span class="sh_number">1</span><span class="sh_symbol">)</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">TetrominoT   t   =    new   TetrominoT( 1 , 1)；
+</pre></div></div>
+      <p>上面的代码，在创建子类对象时，调用了子类的有参构造函数进行数据的初始化，试想下，父类Tetromino的无参构造函数执行了吗？通过分析可以肯定的是，父类的无参构造函数被执行了。在程序中并没有声明父类的构造函数，那它是如何执行的呢？</p>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. 继承中构造方法</h3>
+      <p>父类的无参构造方法之所以被执行，是因为java规定，子类在构造之前必须先构造父类。</p>
+      <p>事实上，子类的构造方法中是必须要通过super关键字来调用父类的构造方法的，这样才可以保证妥善的初始化继承自父类的成员变量。</p>
+      <p>但是看上一个案例中的代码并没有super调用父类构造方法，那是因为，如果子类的构造方法中没有调用父类的构造方法，则java编译器会自动的加入对父类无参构造方法的调用。请看如下代码，演示了super关键字的用法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_function">TetrominoT</span><span class="sh_symbol">(</span><span class="sh_type">int</span> row<span class="sh_symbol">,</span> <span class="sh_type">int</span> col<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li><span class="sh_keyword">super</span> <span class="sh_symbol">(</span> <span class="sh_symbol">)</span> <span class="sh_symbol">;</span>  </li><li>&nbsp;&nbsp;&nbsp;&nbsp;cells<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>row<span class="sh_symbol">,</span> col<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;cells<span class="sh_symbol">[</span><span class="sh_number">1</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>row<span class="sh_symbol">,</span> col <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;……&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span>  </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public TetrominoT(int row, int col) {
+super ( ) ;  
+	cells[0] = new Cell(row, col);
+	cells[1] = new Cell(row, col + 1);
+	……	
+}  
+</pre></div></div>
+      <p>上面的代码中，super();为编译器自动加入的，并且super关键字必须位于子类构造方法的第一行，否则会有编译错误。</p>
+      <p>另外一点需要注意的是，若父类没有提供无参的构造方法，则会出现编译错误。请看如下的示例：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Foo</span> <span class="sh_cbracket">{</span>     <span class="sh_comment">//父类</span></li><li>    <span class="sh_type">int</span> value<span class="sh_symbol">;</span></li><li>    <span class="sh_function">Foo</span><span class="sh_symbol">(</span><span class="sh_type">int</span> value<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>       <span class="sh_keyword">this</span><span class="sh_symbol">.</span>value <span class="sh_symbol">=</span> value<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Goo</span> <span class="sh_keyword">extends</span> Foo <span class="sh_cbracket">{</span>    <span class="sh_comment">//子类</span></li><li>    <span class="sh_type">int</span> num<span class="sh_symbol">;</span></li><li>    <span class="sh_function">Goo</span><span class="sh_symbol">(</span><span class="sh_type">int</span> num<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">this</span><span class="sh_symbol">.</span>num <span class="sh_symbol">=</span> num<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Foo {     //父类
+    int value;
+    Foo(int value) {
+       this.value = value;
+    }
+}
+class Goo extends Foo {    //子类
+    int num;
+    Goo(int num) {
+        this.num = num;
+    }
+}
+
+</pre></div></div>
+      <p>分析上面的代码，在子类构造方法中没有写super调用父类构造方法，这时编译器会默认添加super()来调用父类的无参构造方法，但是父类中又没有定义无参的构造方法，因此会发生编译错误。</p>
+      <p>针对上面的问题，可以有两种解决方案，方案一为在父类中添加无参的构造方法，方案二为在子类构造方法中显示调用父类的有参构造方法（常常使用），这样可以保证父类的成员变量均被初始化，参见下面的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Goo</span> <span class="sh_keyword">extends</span> Foo <span class="sh_cbracket">{</span></li><li>    <span class="sh_type">int</span> num<span class="sh_symbol">;</span></li><li>    <span class="sh_function">Goo</span><span class="sh_symbol">(</span><span class="sh_type">int</span> value<span class="sh_symbol">,</span> <span class="sh_type">int</span> num<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">super</span><span class="sh_symbol">(</span>value<span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">this</span><span class="sh_symbol">.</span>num <span class="sh_symbol">=</span> num</li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Goo extends Foo {
+    int num;
+    Goo(int value, int num) {
+        super(value);
+        this.num = num
+    }
+}
+</pre></div></div>
+      <p>如上的代码，在子类中调用了父类的构造方法，初始化了继承自父类的value成员变量，编译正确。</p>
+      <a name="Key02_01_04">
+      </a>
+      <h3>2.1.4. 父类的引用指向子类的对象</h3>
+      <p>一个子类的对象可以向上造型为父类的类型。即，定义父类型的引用可以指向子类的对象。看如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Foo</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_type">int</span> value<span class="sh_symbol">;</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">f</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span>…<span class="sh_cbracket">}</span></li><li>    <span class="sh_function">Foo</span><span class="sh_symbol">(</span><span class="sh_type">int</span> value<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>       <span class="sh_keyword">this</span><span class="sh_symbol">.</span>value <span class="sh_symbol">=</span> value<span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Goo</span> <span class="sh_keyword">extends</span> Foo <span class="sh_cbracket">{</span></li><li>    <span class="sh_type">int</span> num<span class="sh_symbol">;</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">g</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span>…<span class="sh_cbracket">}</span></li><li>    <span class="sh_function">Goo</span><span class="sh_symbol">(</span><span class="sh_type">int</span> value<span class="sh_symbol">,</span> <span class="sh_type">int</span> num<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">super</span><span class="sh_symbol">(</span>value<span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">this</span><span class="sh_symbol">.</span>num <span class="sh_symbol">=</span> num</li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Test</span><span class="sh_cbracket">{</span>    &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>    &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Foo</span><span class="sh_normal"> </span>obj <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Goo</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">,</span><span class="sh_number">3</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Foo {
+    int value;
+    public void f() {…}
+    Foo(int value) {
+       this.value = value;
+    }
+}
+class Goo extends Foo {
+    int num;
+    public void g() {…}
+    Goo(int value, int num) {
+        super(value);
+        this.num = num
+    }
+}
+class Test{    	public static void main(String[] args){
+    	Foo obj = new Goo(100,3);
+}
+}
+
+</pre></div></div>
+      <p>上面的代码，在main方法中，声明了父类型的引用来指向子类型的对象。但是通过父类的引用只能访问父类所定义的成员，而不能访问子类所扩展的部分。看下面的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Foo</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_type">int</span> value<span class="sh_symbol">;</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">f</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span>…<span class="sh_cbracket">}</span></li><li>    … … …</li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Goo</span> <span class="sh_keyword">extends</span> Foo <span class="sh_cbracket">{</span></li><li>    <span class="sh_type">int</span> num<span class="sh_symbol">;</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">g</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span>…<span class="sh_cbracket">}</span></li><li>    … … …</li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Test</span><span class="sh_cbracket">{</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_usertype">Foo</span><span class="sh_normal"> </span>obj <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Goo</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">,</span><span class="sh_number">3</span><span class="sh_symbol">);</span></li><li>obj<span class="sh_symbol">.</span>value<span class="sh_symbol">=</span><span class="sh_number">200</span><span class="sh_symbol">;</span></li><li>obj<span class="sh_symbol">.</span><span class="sh_function">f</span><span class="sh_symbol">();</span></li><li>obj<span class="sh_symbol">.</span>num <span class="sh_symbol">=</span> <span class="sh_number">5</span><span class="sh_symbol">;</span></li><li>obj<span class="sh_symbol">.</span><span class="sh_function">g</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Foo {
+    int value;
+    public void f() {…}
+    … … …
+}
+class Goo extends Foo {
+    int num;
+    public void g() {…}
+    … … …
+}
+class Test{
+public static void main(String[] args){
+	    Foo obj = new Goo(100,3);
+obj.value=200;
+obj.f();
+obj.num = 5;
+obj.g();
+}
+}
+</pre></div></div>
+      <p>分析上面的代码，在main方法中，声明父类型的引用指向了子类的对象，而后，访问父类的成员变量value及调用父类的方法f，均可以正常编译。但是，当通过obj引用访问num变量及g的方法时，会出现编译错误。那是因为，当用父类型引用指向了子类对象后，java编译器会根据引用的类型(Foo)，而不是对象的类型（Goo）来检查调用的方法是否匹配。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

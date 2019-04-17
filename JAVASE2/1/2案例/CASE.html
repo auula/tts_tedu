@@ -1,0 +1,641 @@
+
+<!-- saved from url=(0092)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="16964441198"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA SE02 Unit01</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#case1">输出一个目录中的内容</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#case2">输出一个目录中所有扩展名为.txt的文件</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#case3">测试RandomAccessFile的read()和write()方法</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#case4">测试RandomAccessFile的read(byte[])和write(byte[])方法</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#case5">测试文件指针的相关方法</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 输出一个目录中的内容</h2>
+      <h3>1.1 问题</h3>
+      <p>输出当前目录下所有的内容。</p>
+      <h3>1.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：构建测试方法</p>
+      <p>首先，新建TestFile类，并在类中新建测试方法testListFiles，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>File<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFile <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testListFiles</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.File;
+import java.io.IOException;
+import org.junit.Test;
+
+public class TestFile {
+#cold_bold	@Test
+#cold_bold	public void testListFiles() {
+#cold_bold		
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤二：获取当前目录下的内容</p>
+      <p>首先，使用File类构建表示当前目录的file对象；然后，使用File类的listFiles方法获取到当前目录下所有的内容，包括文件和目录；最后，遍历listFiles方法返回的数组查看当前目录下的内容，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>File<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testListFiles</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File dir <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File<span class="sh_symbol">[]</span> subs <span class="sh_symbol">=</span> dir<span class="sh_symbol">.</span><span class="sh_function">listFiles</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>File sub <span class="sh_symbol">:</span> subs<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>sub<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.File;
+import java.io.IOException;
+import org.junit.Test;
+
+public class TestFile {
+	@Test
+	public void testListFiles() {
+#cold_bold		File dir = new File(".");
+#cold_bold		File[] subs = dir.listFiles();
+#cold_bold		for (File sub : subs) {
+#cold_bold			System.out.println(sub);
+#cold_bold		}
+	}
+}
+</pre></div></div>
+      <p>上述代码中，“.”表示的当前目录，本题案例的当前目录，就是当前工程下。</p>
+      <p class="number">步骤三：运行</p>
+      <p>运行testListFiles方法，控制台输出结果如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">.\.</span>classpath</li><li><span class="sh_symbol">.\.</span>project</li><li><span class="sh_symbol">.\</span>a</li><li><span class="sh_symbol">.\</span>bin</li><li><span class="sh_symbol">.\</span>demo</li><li><span class="sh_symbol">.\</span>doc</li><li><span class="sh_symbol">.\</span>lib</li><li><span class="sh_symbol">.\</span>myDir</li><li><span class="sh_symbol">.\</span>src</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">.\.classpath
+.\.project
+.\a
+.\bin
+.\demo
+.\doc
+.\lib
+.\myDir
+.\src
+</pre></div></div>
+      <h3>1.3 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>File<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testListFiles</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File dir <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File<span class="sh_symbol">[]</span> subs <span class="sh_symbol">=</span> dir<span class="sh_symbol">.</span><span class="sh_function">listFiles</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>File sub <span class="sh_symbol">:</span> subs<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>sub<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.File;
+import java.io.IOException;
+import org.junit.Test;
+
+public class TestFile {
+	@Test
+	public void testListFiles() {
+		File dir = new File(".");
+		File[] subs = dir.listFiles();
+		for (File sub : subs) {
+			System.out.println(sub);
+		}
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 输出一个目录中所有扩展名为.txt的文件</h2>
+      <h3>2.1 问题</h3>
+      <p>输出当前目录下，所有扩展名为.txt的文件。</p>
+      <h3>2.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：构建测试方法</p>
+      <p>首先，在TestFile类中新建测试方法testFileFilter，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>File<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileFilter<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFile <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFileFilter</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
+import org.junit.Test;
+
+public class TestFile {
+#cold_bold	@Test
+#cold_bold	public void testFileFilter() {
+#cold_bold		
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤二：获取当前目录下的扩展名为.txt的文件</p>
+      <p>首先，使用File类构建表示当前目录的file对象；然后，使用File类的listFiles方法获取当前目录下的扩展名为.txt的文件；最后，遍历listFiles方法返回的数组查看当前目录下的内容，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>File<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileFilter<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFileFilter</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File dir <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File<span class="sh_symbol">[]</span> subs <span class="sh_symbol">=</span> dir<span class="sh_symbol">.</span><span class="sh_function">listFiles</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">FileFilter</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> boolean <span class="sh_function">accept</span><span class="sh_symbol">(</span>File file<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> file<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">().</span><span class="sh_function">endsWith</span><span class="sh_symbol">(</span><span class="sh_string">".txt"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>File sub <span class="sh_symbol">:</span> subs<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>sub<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
+import org.junit.Test;
+
+public class TestFile {
+	@Test
+	public void testFileFilter() {
+#cold_bold		File dir = new File(".");
+#cold_bold		File[] subs = dir.listFiles(new FileFilter() {
+#cold_bold			public boolean accept(File file) {
+#cold_bold				return file.getName().endsWith(".txt");
+#cold_bold			}
+#cold_bold		});
+#cold_bold		for (File sub : subs) {
+#cold_bold			System.out.println(sub);
+#cold_bold		}
+	}
+}
+</pre></div></div>
+      <p>此处使用了listFiles方法，该方法的参数为FileFilter类型，FileFilter是抽象路径名的过滤器。此接口的实例可传递给 File 类的 listFiles(FileFilter) 方法,实现过滤功能。</p>
+      <h3>2.3 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>File<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>FileFilter<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestFile <span class="sh_cbracket">{</span></li><li><span class="sh_comment">//...（之前案例的代码，略）</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testFileFilter</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File dir <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File<span class="sh_symbol">[]</span> subs <span class="sh_symbol">=</span> dir<span class="sh_symbol">.</span><span class="sh_function">listFiles</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">FileFilter</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> boolean <span class="sh_function">accept</span><span class="sh_symbol">(</span>File file<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> file<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">().</span><span class="sh_function">endsWith</span><span class="sh_symbol">(</span><span class="sh_string">".txt"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>File sub <span class="sh_symbol">:</span> subs<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>sub<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.File;
+import java.io.FileFilter;
+import java.io.IOException;
+import org.junit.Test;
+
+public class TestFile {
+//...（之前案例的代码，略）
+
+	@Test
+	public void testFileFilter() {
+		File dir = new File(".");
+		File[] subs = dir.listFiles(new FileFilter() {
+			public boolean accept(File file) {
+				return file.getName().endsWith(".txt");
+			}
+		});
+		for (File sub : subs) {
+			System.out.println(sub);
+		}
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 测试RandomAccessFile的read()和write()方法</h2>
+      <h3>3.1 问题</h3>
+      <p>使用RandomAccessFile类进行文件的读写，详细要求如下：</p>
+      <p>1）使用RandomAccessFile的write方法向文件raf.dat写入数字“1”。</p>
+      <p>2）使用RandomAccessFile的read方法从文件raf.dat中将数字“1”读取出来并打印到控制台。</p>
+      <h3>3.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：新建TestRandomAccessFile类，添加测试方法testWrite方法</p>
+      <p>首先，新建类TestRandomAccessFile；然后，在该类中添加测试方法testWrite，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试写出方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testWrite</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile
+ */
+public class TestRandomAccessFile {
+	/**
+	 * 测试写出方法
+	 * @throws Exception
+	 */
+	@Test
+	public void testWrite()throws Exception{
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：使用RandomAccessFile类的write方法向文件写数据</p>
+      <p>首先，使用读写模式创建RandomAccessFile类的对象；然后，使用RandomAccessFile类的write方法向文件raf.dat写数字“1”。该方法写出一个字节，写出的是int值的低8位。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试写出方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testWrite</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span><span class="sh_string">"rw"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//写出一个字节,写的是int值的低8位</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile
+ */
+public class TestRandomAccessFile {
+	/**
+	 * 测试写出方法
+	 * @throws Exception
+	 */
+	@Test
+	public void testWrite()throws Exception{
+#cold_bold		RandomAccessFile raf = new RandomAccessFile("raf.dat","rw");
+#cold_bold		//写出一个字节,写的是int值的低8位
+#cold_bold		raf.write(1);
+#cold_bold		raf.close();
+	}
+}
+</pre></div></div>
+      <p>运行testWrite方法，在当前工程下生成文件raf.dat，该文件的大小为1个字节。</p>
+      <p class="number">步骤三：添加测试方法testRead</p>
+      <p>在TestRandomAccessFile类中添加测试方法testRead，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试写出方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testWrite</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（代码略）</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试读取方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testRead</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+/**
+ * 测试RandomAccessFile
+*/
+public class TestRandomAccessFile {
+	/**
+	 * 测试写出方法
+	 * @throws Exception
+	 */
+	@Test
+	public void testWrite()throws Exception{
+		//...（代码略）
+	}
+	/**
+	 * 测试读取方法
+	 */
+#cold_bold	@Test
+#cold_bold	public void testRead()throws Exception{
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤四：使用TestRandomAccessFile类的read方法从文件读取数据</p>
+      <p>首先，使用只读模式创建RandomAccessFile类的对象；使用RandomAccessFile类的read方法从文件raf.dat读取数字“1”。该方法读取一个字节，读取的是int值的低8位。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试写出方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testWrite</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（代码略）</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试读取方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testRead</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span><span class="sh_string">"r"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//读取一个字节</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d <span class="sh_symbol">=</span> raf<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>d<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile
+*/
+public class TestRandomAccessFile {
+	/**
+	 * 测试写出方法
+	 * @throws Exception
+	 */
+	@Test
+	public void testWrite()throws Exception{
+		//...（代码略）
+	}
+	/**
+	 * 测试读取方法
+	 */
+	@Test
+	public void testRead()throws Exception{
+#cold_bold		RandomAccessFile raf = new RandomAccessFile("raf.dat","r");
+#cold_bold		//读取一个字节
+#cold_bold		int d = raf.read();
+#cold_bold		System.out.println(d);
+#cold_bold		raf.close();
+	}
+}
+</pre></div></div>
+      <p>运行testRead方法，控制台输出结果如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_number">1</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">1
+</pre></div></div>
+      <p>从输出结果可以看出，已经将数字“1”读取出来。</p>
+      <h3>3.3 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试写出方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testWrite</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span><span class="sh_string">"rw"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//写出一个字节,写的是int值的低8位</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试读取方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testRead</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span><span class="sh_string">"r"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//读取一个字节</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int d <span class="sh_symbol">=</span> raf<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>d<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile
+*/
+public class TestRandomAccessFile {
+	/**
+	 * 测试写出方法
+	 * @throws Exception
+	 */
+	@Test
+	public void testWrite()throws Exception{
+		RandomAccessFile raf = new RandomAccessFile("raf.dat","rw");
+		//写出一个字节,写的是int值的低8位
+		raf.write(1);
+		raf.close();
+	}
+	/**
+	 * 测试读取方法
+	 */
+	@Test
+	public void testRead()throws Exception{
+		RandomAccessFile raf = new RandomAccessFile("raf.dat","r");
+		//读取一个字节
+		int d = raf.read();
+		System.out.println(d);
+		raf.close();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 测试RandomAccessFile的read(byte[])和write(byte[])方法</h2>
+      <h3>4.1 问题</h3>
+      <p>使用RandomAccessFile类进行文件的读写，详细要求如下：</p>
+      <p>1）使用RandomAccessFile的write(byte[])方法向文件raf.dat写入字符串“HelloWorld”。</p>
+      <p>2）使用RandomAccessFile的read(byte[])方法从文件raf.dat中将字符串“HelloWorld”读取出来并打印到控制台。</p>
+      <h3>4.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：在TestRandomAccessFile类中，添加测试方法testWriteByteArray方法</p>
+      <p>在TestRandomAccessFile类中添加测试方法testWriteByteArray，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试批量写出</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testWriteByteArray</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile
+*/
+public class TestRandomAccessFile {
+	/**
+	 * 测试批量写出
+	 */
+#cold_bold	@Test
+#cold_bold	public void testWriteByteArray() throws Exception {
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤二：使用RandomAccessFile类的write(byte[])方法向文件写数据</p>
+      <p>首先，使用读写模式创建RandomAccessFile类的对象；然后，使用RandomAccessFile类的write(byte[])方法向文件raf.dat中写字符串“HelloWorld”。该方法将字节数组中所有字节一次性写出。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试批量写出</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testWriteByteArray</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span> <span class="sh_string">"rw"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将字符串按照默认编码转换为字节数组</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte<span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> <span class="sh_string">"HelloWorld"</span><span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将字节数组中所有字节一次性写出</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile
+*/
+public class TestRandomAccessFile {
+	/**
+	 * 测试批量写出
+	 */
+	@Test
+	public void testWriteByteArray() throws Exception {
+#cold_bold		RandomAccessFile raf = new RandomAccessFile("raf.dat", "rw");
+#cold_bold		// 将字符串按照默认编码转换为字节数组
+#cold_bold		byte[] buf = "HelloWorld".getBytes();
+#cold_bold		// 将字节数组中所有字节一次性写出
+#cold_bold		raf.write(buf);
+#cold_bold		raf.close();
+	}
+}
+</pre></div></div>
+      <p>运行testWriteByteArray方法，将当前工程下的raf.dat文件的大小变为10个字节。</p>
+      <p class="number">步骤三：添加测试方法testReadByteArray</p>
+      <p>在TestRandomAccessFile类中添加测试方法testReadByteArray，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试批量写出</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testWriteByteArray</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（代码略）</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试批量读取</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testReadByteArray</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile
+*/
+public class TestRandomAccessFile {
+	/**
+	 * 测试批量写出
+	 */
+	@Test
+	public void testWriteByteArray() throws Exception {
+		//...（代码略）
+	}
+	/**
+	 * 测试批量读取
+	 */
+#cold_bold	@Test
+#cold_bold	public void testReadByteArray() throws Exception {
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤四：使用TestRandomAccessFile类的read（byte[]）方法从文件读取数据</p>
+      <p>首先，使用只读模式创建RandomAccessFile类的对象；使用RandomAccessFile类的read(byte[])方法从文件raf.dat读取字符串“HelloWord”。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试批量写出</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testWriteByteArray</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（代码略）</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试批量读取</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testReadByteArray</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span> <span class="sh_string">"r"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 创建长度为10的字节数组</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte<span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> byte<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 尝试读取10个字节存入数组，返回值为读取的字节量</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int len <span class="sh_symbol">=</span> raf<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"读取到了:"</span> <span class="sh_symbol">+</span> len <span class="sh_symbol">+</span> <span class="sh_string">"个字节"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_predef_func">String</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile
+*/
+public class TestRandomAccessFile {
+	/**
+	 * 测试批量写出
+	 */
+	@Test
+	public void testWriteByteArray() throws Exception {
+		//...（代码略）
+	}
+	/**
+	 * 测试批量读取
+	 */
+	@Test
+	public void testReadByteArray() throws Exception {
+#cold_bold		RandomAccessFile raf = new RandomAccessFile("raf.dat", "r");
+#cold_bold		// 创建长度为10的字节数组
+#cold_bold		byte[] buf = new byte[10];
+#cold_bold		// 尝试读取10个字节存入数组，返回值为读取的字节量
+#cold_bold		int len = raf.read(buf);
+#cold_bold		System.out.println("读取到了:" + len + "个字节");
+#cold_bold		System.out.println(new String(buf));
+#cold_bold		raf.close();
+	}
+}
+</pre></div></div>
+      <p>运行testReadByteArray方法，控制台输出结果如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>读取到了<span class="sh_symbol">:</span><span class="sh_number">10</span>个字节</li><li>HelloWorld</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">读取到了:10个字节
+HelloWorld
+</pre></div></div>
+      <p>从输出结果可以看出，已经将字符串“HelloWorld”读取出来了。</p>
+      <h3>4.3 完整代码</h3>
+      <p>本案例中，类TestRandomAccessFile的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li><span class="sh_comment">//...（之前案例的代码，略）</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试批量写出</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testWriteByteArray</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span> <span class="sh_string">"rw"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将字符串按照默认编码转换为字节</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte<span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> <span class="sh_string">"HelloWorld"</span><span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将字节数组中所有字节一次性写出</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试批量读取</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span><span class="sh_type">@throws</span><span class="sh_comment"> Exception</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testReadByteArray</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span> <span class="sh_string">"r"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 创建长度为10的字节数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte<span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> byte<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 尝试读取10个字节存入数组，返回值为读取的字节量</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int len <span class="sh_symbol">=</span> raf<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"读取到了:"</span> <span class="sh_symbol">+</span> len <span class="sh_symbol">+</span> <span class="sh_string">"个字节"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_predef_func">String</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile
+ */
+public class TestRandomAccessFile {
+//...（之前案例的代码，略）
+
+	/**
+	 * 测试批量写出
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testWriteByteArray() throws Exception {
+		RandomAccessFile raf = new RandomAccessFile("raf.dat", "rw");
+		// 将字符串按照默认编码转换为字节
+		byte[] buf = "HelloWorld".getBytes();
+		// 将字节数组中所有字节一次性写出
+		raf.write(buf);
+		raf.close();
+	}
+
+	/**
+	 * 测试批量读取
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testReadByteArray() throws Exception {
+		RandomAccessFile raf = new RandomAccessFile("raf.dat", "r");
+		// 创建长度为10的字节数组
+		byte[] buf = new byte[10];
+		// 尝试读取10个字节存入数组，返回值为读取的字节量
+		int len = raf.read(buf);
+		System.out.println("读取到了:" + len + "个字节");
+		System.out.println(new String(buf));
+		raf.close();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case5">
+      </a>
+      <h2>5 测试文件指针的相关方法</h2>
+      <h3>5.1 问题</h3>
+      <p>使用RandomAccessFile类的对象操作文件指针，详细要求如下：</p>
+      <p>1）获取文件raf.dat的指针。</p>
+      <p>2）设置指针读取raf.dat中的字符串“World”。</p>
+      <p>3）将指针移动到raf.dat文件的开始。</p>
+      <h3>5.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：添加测试方法testPointer方法</p>
+      <p>在TestRandomAccessFile类中添加测试方法testPointer，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile </span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试指针相关方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testPointer</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile 
+ */
+public class TestRandomAccessFile {
+	/**
+	 * 测试指针相关方法
+	 */
+#cold_bold	@Test
+#cold_bold	public void testPointer() throws Exception {
+#cold_bold	
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤二：使用RandomAccessFile类的getFilePointer方法获取文件指针</p>
+      <p>使用RandomAccessFile类的getFilePointer方法获取raf.dat文件的指针，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile </span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试指针相关方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testPointer</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span> <span class="sh_string">"r"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 输出指针位置,默认从0开始(文件的第一个字节位置)</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li class="bold_code"></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile 
+ */
+public class TestRandomAccessFile {
+	/**
+	 * 测试指针相关方法
+	 */
+	@Test
+	public void testPointer() throws Exception {
+#cold_bold		RandomAccessFile raf = new RandomAccessFile("raf.dat", "r");
+#cold_bold		// 输出指针位置,默认从0开始(文件的第一个字节位置)
+#cold_bold		System.out.println("指针位置:" + raf.getFilePointer());
+#cold_bold
+#cold_bold		raf.close();
+	}
+}
+</pre></div></div>
+      <p>文件指针位置默认从0开始，即文件的第一个字节所在的位置。</p>
+      <p>运行testPointer方法，控制台输出结果如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>指针位置<span class="sh_symbol">:</span><span class="sh_number">0</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">指针位置:0
+</pre></div></div>
+      <p>从输出结果可以看出，文件指针位置为0。</p>
+      <p class="number">步骤三：读取字符串“World“</p>
+      <p>首先，使用RandomAccessFile类的skipBytes方法跳过“Hello”这5个字节并查看此时的文件指针位置；然后，使用RandomAccessFile类的read(byte[])方法读取“World”并输出；最后，再次获取此时指针的位置，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile </span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试指针相关方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testPointer</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span> <span class="sh_string">"r"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 输出指针位置,默认从0开始(文件的第一个字节位置)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 读取world,需要将hello这5个字节跳过</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">skipBytes</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 读取world这5个字节</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte<span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> byte<span class="sh_symbol">[</span><span class="sh_number">5</span><span class="sh_symbol">];</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_predef_func">String</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li>raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile 
+ */
+public class TestRandomAccessFile {
+	/**
+	 * 测试指针相关方法
+	 */
+	@Test
+	public void testPointer() throws Exception {
+		RandomAccessFile raf = new RandomAccessFile("raf.dat", "r");
+		// 输出指针位置,默认从0开始(文件的第一个字节位置)
+		System.out.println("指针位置:" + raf.getFilePointer());
+
+#cold_bold		// 读取world,需要将hello这5个字节跳过
+#cold_bold		raf.skipBytes(5);
+#cold_bold		System.out.println("指针位置:" + raf.getFilePointer());
+#cold_bold		// 读取world这5个字节
+#cold_bold		byte[] buf = new byte[5];
+#cold_bold		raf.read(buf);
+#cold_bold		System.out.println(new String(buf));
+#cold_bold		System.out.println("指针位置:" + raf.getFilePointer());
+raf.close();
+	}
+}
+</pre></div></div>
+      <p>运行testPointer方法，控制台的输出结果如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>指针位置<span class="sh_symbol">:</span><span class="sh_number">0</span></li><li class="bold_code">指针位置<span class="sh_symbol">:</span><span class="sh_number">5</span></li><li class="bold_code">World</li><li class="bold_code">指针位置<span class="sh_symbol">:</span><span class="sh_number">10</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">指针位置:0
+#cold_bold指针位置:5
+#cold_boldWorld
+#cold_bold指针位置:10
+</pre></div></div>
+      <p>从输出结果可以看出，当使用skipBytes方法跳过5个字节时，文件指针位置为5；从指针位置5开始读取，读取到了字符串“World”；读取完字符串“World”后，文件的指针位置变为10。</p>
+      <p class="number">步骤四：将指针移到文件开始</p>
+      <p>使用RandomAccessFile类的seek方法将文件指针移到raf.dat文件的开始，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile </span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试指针相关方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testPointer</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span> <span class="sh_string">"r"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 输出指针位置,默认从0开始(文件的第一个字节位置)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 读取World,需要将Hello这5个字节跳过</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">skipBytes</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 读取World这5个字节</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte<span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> byte<span class="sh_symbol">[</span><span class="sh_number">5</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_predef_func">String</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将游标移动到文件开始</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">seek</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile 
+ */
+public class TestRandomAccessFile {
+	/**
+	 * 测试指针相关方法
+	 */
+	@Test
+	public void testPointer() throws Exception {
+		RandomAccessFile raf = new RandomAccessFile("raf.dat", "r");
+		// 输出指针位置,默认从0开始(文件的第一个字节位置)
+		System.out.println("指针位置:" + raf.getFilePointer());
+
+		// 读取World,需要将Hello这5个字节跳过
+		raf.skipBytes(5);
+		System.out.println("指针位置:" + raf.getFilePointer());
+		// 读取World这5个字节
+		byte[] buf = new byte[5];
+		raf.read(buf);
+		System.out.println(new String(buf));
+		System.out.println("指针位置:" + raf.getFilePointer());
+
+		// 将游标移动到文件开始
+#cold_bold		raf.seek(0);
+#cold_bold		System.out.println("指针位置:" + raf.getFilePointer());
+
+		raf.close();
+	}
+}
+</pre></div></div>
+      <p>运行testPointer方法，控制台输出结果如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>指针位置<span class="sh_symbol">:</span><span class="sh_number">0</span></li><li>指针位置<span class="sh_symbol">:</span><span class="sh_number">5</span></li><li>world</li><li>指针位置<span class="sh_symbol">:</span><span class="sh_number">10</span></li><li class="bold_code">指针位置<span class="sh_symbol">:</span><span class="sh_number">0</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">指针位置:0
+指针位置:5
+world
+指针位置:10
+#cold_bold指针位置:0
+</pre></div></div>
+      <p>从输出结果可以看出，已经将指针移到了文件的开始。</p>
+      <h3>5.3 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>RandomAccessFile<span class="sh_symbol">;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试RandomAccessFile </span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRandomAccessFile <span class="sh_cbracket">{</span></li><li><span class="sh_comment">//...（之前案例的代码，略）</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试指针相关方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testPointer</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomAccessFile raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_string">"raf.dat"</span><span class="sh_symbol">,</span> <span class="sh_string">"r"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 输出指针位置,默认从0开始(文件的第一个字节位置)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 读取world,需要将hello这5个字节跳过</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">skipBytes</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 读取world这5个字节</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;byte<span class="sh_symbol">[]</span> buf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> byte<span class="sh_symbol">[</span><span class="sh_number">5</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_predef_func">String</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将游标移动到文件开始</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">seek</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"指针位置:"</span> <span class="sh_symbol">+</span> raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.RandomAccessFile;
+import org.junit.Test;
+
+/**
+ * 测试RandomAccessFile 
+ */
+public class TestRandomAccessFile {
+//...（之前案例的代码，略）
+
+	/**
+	 * 测试指针相关方法
+	 */
+	@Test
+	public void testPointer() throws Exception {
+		RandomAccessFile raf = new RandomAccessFile("raf.dat", "r");
+		// 输出指针位置,默认从0开始(文件的第一个字节位置)
+		System.out.println("指针位置:" + raf.getFilePointer());
+
+		// 读取world,需要将hello这5个字节跳过
+		raf.skipBytes(5);
+		System.out.println("指针位置:" + raf.getFilePointer());
+		// 读取world这5个字节
+		byte[] buf = new byte[5];
+		raf.read(buf);
+		System.out.println(new String(buf));
+		System.out.println("指针位置:" + raf.getFilePointer());
+
+		// 将游标移动到文件开始
+		raf.seek(0);
+		System.out.println("指针位置:" + raf.getFilePointer());
+
+		raf.close();
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

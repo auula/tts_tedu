@@ -1,0 +1,126 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="16777455990"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 下面代码输出的结果是？</h3> 
+    <p>请看下列代码：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testAddAllAndContainsAll</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collection<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> c1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"terry"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c1<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"allen"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collection<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> c2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> HashSet<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c2<span class="sh_symbol">.</span><span class="sh_function">addAll</span><span class="sh_symbol">(</span>c1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c2<span class="sh_symbol">);</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collection<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> c3 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c3<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"terry"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c1<span class="sh_symbol">.</span><span class="sh_function">containsAll</span><span class="sh_symbol">(</span>c3<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public void testAddAllAndContainsAll() {
+		Collection&lt;String&gt; c1 = new ArrayList&lt;String&gt;();
+		c1.add("terry");
+		c1.add("allen");
+		System.out.println(c1);
+		Collection&lt;String&gt; c2 = new HashSet&lt;String&gt;();
+		c2.addAll(c1);
+		System.out.println(c2); 
+		Collection&lt;String&gt; c3 = new ArrayList&lt;String&gt;();
+		c3.add("terry");
+		System.out.println(c1.containsAll(c3));
+	}
+</pre></div></div> 
+    <p>运行testAddAllAndContainsAll方法，程序的输出结果是：（）。</p> 
+    <p>A．[terry, allen]</p> 
+    <p>[allen, terry]</p> 
+    <p>false</p> 
+    <p>B．[terry, allen]</p> 
+    <p>[allen, terry]</p> 
+    <p>true</p> 
+    <p>C．[terry, allen]</p> 
+    <p>[]</p> 
+    <p>True</p> 
+    <p>D．[terry, allen]</p> 
+    <p>[]</p> 
+    <p>false</p> 
+   </div> 
+   <div> 
+    <h3>2 关于Iterator，说法正确的是？</h3> 
+    <p>A．Iterator用于遍历集合元素。获取Iterator可以使用Collection定义的iterator方法。</p> 
+    <p>B．Iterator提供了统一的遍历集合元素的方式，其提供了用于遍历集合的两个方法，hasNext用于返回迭代的下一个元素，next方法用于判断集合是否还有元素可以遍历。</p> 
+    <p>C．在使用Iterator遍历集合时，不能通过集合的remove方法删除集合元素，否则会抛出异常。我们可以通过迭代器自身提供的remove()方法来删除通过next()迭代出的元素。</p> 
+    <p>D．Java5.0之后推出了一个新的特性，增强for循环,也称为新循环。该循环只用于遍历集合或数组。在遍历集合时，该循环是与Iterator完全不同的迭代方式。</p> 
+   </div> 
+   <div> 
+    <h3>3 简述ArrayList和LinkedList的不同</h3> 
+   </div> 
+   <div> 
+    <h3>4 下面代码输出的结果是？</h3> 
+    <p>请看下列代码：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testInsertAndRemove</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"terry"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"allen"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"smith"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span> <span class="sh_string">"marry"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">remove</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public void testInsertAndRemove() {
+		List&lt;String&gt; list = new ArrayList&lt;String&gt;();
+		list.add("terry");
+		list.add("allen");
+		list.add("smith");
+		list.add(2, "marry");
+		System.out.println(list); 
+		list.remove(1);
+		System.out.println(list);
+	}
+</pre></div></div> 
+    <p>运行testInsertAndRemove方法，程序的输出结果是：（）。</p> 
+    <p>A．[terry, marry, allen, smith]</p> 
+    <p>[terry, marry, smith]</p> 
+    <p>B．[terry, marry, allen, smith]</p> 
+    <p>[allen, marry, smith]</p> 
+    <p>C．[terry, allen, marry, smith]</p> 
+    <p>[allen, marry, smith]</p> 
+    <p>D．[terry, allen, marry, smith]</p> 
+    <p>[terry, marry, smith]</p> 
+   </div> 
+   <div> 
+    <h3>5 下面代码输出的结果是？</h3> 
+    <p>请看下列代码：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testSubList</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>Integer<span class="sh_symbol">&gt;</span> list <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>Integer<span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> <span class="sh_number">10</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>i<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>Integer<span class="sh_symbol">&gt;</span> subList <span class="sh_symbol">=</span> list<span class="sh_symbol">.</span><span class="sh_function">subList</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span> <span class="sh_number">5</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> subList<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">();</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subList<span class="sh_symbol">.</span><span class="sh_function">set</span><span class="sh_symbol">(</span>i<span class="sh_symbol">,</span> subList<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>i<span class="sh_symbol">)</span> <span class="sh_symbol">*</span> <span class="sh_number">10</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>subList<span class="sh_symbol">);</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>list<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public void testSubList() {
+		List&lt;Integer&gt; list = new ArrayList&lt;Integer&gt;();
+		for (int i = 0; i &lt; 10; i++) {
+			list.add(i);
+		}
+		List&lt;Integer&gt; subList = list.subList(2, 5);
+		for (int i = 0; i &lt; subList.size(); i++) {
+			subList.set(i, subList.get(i) * 10);
+		}
+		System.out.println(subList); 
+		System.out.println(list);
+	}
+</pre></div></div> 
+    <p>运行testSubList方法，程序的输出结果是：（）。</p> 
+    <p>A．[20, 30, 40,50]</p> 
+    <p>[0, 1, 20, 30, 40, 50, 6, 7, 8, 9]</p> 
+    <p>B．[20, 30, 40,50]</p> 
+    <p>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]]</p> 
+    <p>C．[20, 30, 40]</p> 
+    <p>[0, 1, 20, 30, 40, 5, 6, 7, 8, 9]</p> 
+    <p>D．[20, 30, 40]</p> 
+    <p>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</p> 
+   </div> 
+   <div> 
+    <h3>6 简述List和数组直接相互转化的方法</h3> 
+   </div> 
+   <div> 
+    <h3>7 使用Comparator接口实现排序</h3> 
+    <p>使用Comparator接口实现对集合中的元素排序，详细要求如下：</p> 
+    <p>1） 使用ArrayList构建集合对象emps，要求该集合中存储Emp类型的数据。</p> 
+    <p>2） 分别构造name、age、gender以及salary为（"Terry", 25,'m',6000）、（"Allen", 21,'f',4000)、（"Smith", 23,'m',3000）的三个Emp类的对象，并将这三个对象加入到集合emps中。</p> 
+    <p>3） 使用Collections类提供的sort方法，按照Emp对象的salary属性的值升序排列集合emps，sort方法的声明如下：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY04/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_symbol">&lt;</span>T<span class="sh_symbol">&gt;</span> void <span class="sh_function">sort</span><span class="sh_symbol">(</span>List<span class="sh_symbol">&lt;</span>T<span class="sh_symbol">&gt;</span> list<span class="sh_symbol">,</span></li><li>                                   Comparator<span class="sh_symbol">&lt;?</span> <span class="sh_keyword">super</span> T<span class="sh_symbol">&gt;</span> c<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static &lt;T&gt; void sort(List&lt;T&gt; list,
+                                   Comparator&lt;? super T&gt; c)
+</pre></div></div> 
+   </div> 
+   <div> 
+    <h3>8 简述队列和栈的不同，以及在 Java语言中如何实现这两个数据结构</h3> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

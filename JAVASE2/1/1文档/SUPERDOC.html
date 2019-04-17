@@ -1,0 +1,176 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="16950204089"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#Key01">文件操作——File</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#Key02">文件操作——RandomAccessFile</a>
+        </li>
+      </ol>
+      <h1>1. 文件操作——File</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. File表示目录信息</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. listFiles方法</h3>
+      <p>File的listFiles方法用于返回一个抽象路径名数组，这些路径名表示此抽象路径名表示的目录中的文件。其方法定义:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>File<span class="sh_symbol">[]</span> <span class="sh_function">listFiles</span><span class="sh_symbol">()</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">File[] listFiles() 
+</pre></div></div>
+      <p>返回值：抽象路径名数组，这些路径名表示此抽象路径名表示的目录中的文件和目录。如果目录为空，那么数组也将为空。如果抽象路径名不表示一个目录，或者发生 I/O 错误，则返回 null。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. FileFilter接口</h3>
+      <p>通过listFiles方法我们可以获取一个目录下的所有子项，但有些时候我们并不希望获取全部子项，而是想获取部分满足我们实际需求的子项时，我们可以使用File的重载方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>File<span class="sh_symbol">[]</span> <span class="sh_function">listFiles</span><span class="sh_symbol">(</span><span class="sh_usertype">FileFilter</span><span class="sh_normal">  </span>filter<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">File[] listFiles(FileFilter  filter)
+</pre></div></div>
+      <p>这里我们看到，该重载方法 要求我们传入一个参数，其类型是FileFilter。什么是FileFilter呢? FileFilter是用于抽象路径名的过滤器，说白了就是定义一个规律规则，那么结合listFiles方法，我们就可以将满足此过滤规则的子项返回，其他则忽略。</p>
+      <p>FileFilter是一个接口，所以当我们需要定义某种过滤规则时，我们可以定义一个类来实现这个接口，而此接口的实例可传递给 File 类的 listFiles(FileFilter) 方法。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>File<span class="sh_symbol">[]</span> list <span class="sh_symbol">=</span> dir<span class="sh_symbol">.</span><span class="sh_function">listFiles</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">FileFilter</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">boolean</span> <span class="sh_function">accept</span><span class="sh_symbol">(</span><span class="sh_usertype">File</span><span class="sh_normal"> </span>pathname<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> pathname<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">().</span><span class="sh_function">startsWith</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span><span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">File[] list = dir.listFiles(new FileFilter() {
+	@Override
+	public boolean accept(File pathname) {
+		return pathname.getName().startsWith(".");
+	}
+}); 
+</pre></div></div>
+      <p>该方法的参数FileFilter实例的accept方法并进行过滤，listFiles方法会将所有accept方法返回true的子项保留并返回。这个例子里我们会将dir中子项的名字以"."开头的返回。</p>
+      <a name="Key02">
+      </a>
+      <h1>2. 文件操作——RandomAccessFile</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 创建对象</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. 简介</h3>
+      <p>Java提供了一个可以对文件随机访问的操作，访问包括读和写操作。该类名为RandomAccessFile。该类的读写是基于指针的操作。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. 只读模式</h3>
+      <p>RandomAccessFile在对文件进行随机访问操作时有两个模式，分别为只读模式(只读取文件数据)，和读写模式(对文件数据进行读写)。</p>
+      <p>只读模式:</p>
+      <p>在创建RandomAccessFile时，其提供的构造方法要求我们传入访问模式:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_usertype">File</span><span class="sh_normal"> </span>file<span class="sh_symbol">,</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>mode<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>filename<span class="sh_symbol">,</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>mode<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">RandomAccessFile(File file,String mode)
+	
+RandomAccessFile(String filename,String mode)
+</pre></div></div>
+      <p>其中构造方法的第一个参数是需要访问的文件，而第二个参数则是访问模式:</p>
+      <p>r”:字符串”r”表示对该文件的访问是只读的。</p>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. 读写模式</h3>
+      <p>创建一个基于文件访问的读写模式的RandomAccessFile我们只需要在第二个参数中传入”rw”即可。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">RandomAccessFile</span><span class="sh_normal"> </span>raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span>file<span class="sh_symbol">,</span>”rw”<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">RandomAccessFile raf = new RandomAccessFile(file,”rw”);
+</pre></div></div>
+      <p>那么这时在使用RandomAccessFile对该文件的访问就是又可读又可写的。</p>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 字节数据读写操作</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. write(int d)方法</h3>
+      <p>RandomAccessFile提供了一个可以向文件中写出字节的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">int</span> d<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(int d)
+</pre></div></div>
+      <p>该方法会根据当前指针所在位置处写入一个字节，是将参数int的”低8位”写出。</p>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. read()方法</h3>
+      <p>RandomAccessFile提供了一个可以从文件中读取字节的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_function">read</span><span class="sh_symbol">()</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int read() 
+</pre></div></div>
+      <p>该方法会从RandomAccessFile当前指针位置读取一个byte(8位) 填充到int的低八位, 高24位为0, 返回值范围正数: 0~255, 如果返回-1表示读取到了文件末尾EOF(EOF:End Of File)! 每次读取后自动移动文件指针, 准备下次读取。</p>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. write(byte[] d)方法</h3>
+      <p>RandomAccessFile提供了一个可以向文件中写出一组字节的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">byte</span><span class="sh_symbol">[]</span> d<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(byte[] d)
+</pre></div></div>
+      <p>该方法会根据当前指针所在位置处连续写出给定数组中的所有字节，与该方法相似的还有一个常用方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">byte</span><span class="sh_symbol">[]</span> d<span class="sh_symbol">,</span><span class="sh_type">int</span> offset<span class="sh_symbol">,</span><span class="sh_type">int</span> len<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(byte[] d,int offset,int len)
+</pre></div></div>
+      <p>该方法会根据当前指针所在位置处连续写出给定数组中的部分字节，这个部分是从数组的offset处开始，连续len个字节。</p>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. read(byte[] d)方法</h3>
+      <p>RandomAccessFile提供了一个可以从文件中批量读取字节的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_function">read</span><span class="sh_symbol">(</span><span class="sh_type">byte</span><span class="sh_symbol">[]</span> b<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int read(byte[] b)
+</pre></div></div>
+      <p>该方法会从文件中尝试最多读取给定数组的总长度的字节量，并从给定的字节数组第一个位置开始，将读取到的字节顺序存放至数组中，返回值为实际读取到的字节量 。</p>
+      <a name="Key02_02_05">
+      </a>
+      <h3>2.2.5. close方法</h3>
+      <p>RandomAccessFile在对文件访问的操作全部结束后，要调用close()方法来释放与其关联的所有系统资源。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">close</span><span class="sh_symbol">()</span>&nbsp;&nbsp;&nbsp;&nbsp;</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void close()	
+</pre></div></div>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">RandomAccessFile</span><span class="sh_normal"> </span>raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span>file<span class="sh_symbol">,</span>”rw”<span class="sh_symbol">);</span></li><li>…<span class="sh_symbol">..</span><span class="sh_comment">//读写操作 </span></li><li>raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span><span class="sh_comment">//访问完毕后要关闭以释放系统资源。 </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">RandomAccessFile raf = new RandomAccessFile(file,”rw”);
+…..//读写操作 
+raf.close();//访问完毕后要关闭以释放系统资源。 
+</pre></div></div>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. 文件指针操作</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. getFilePointer方法</h3>
+      <p>RandomAccessFile的读写操作都是基于指针的，也就是说总是在指针当前所指向的位置进行读写操作。</p>
+      <p>RandomAccessFile提供了一个可以获取当前指针位置的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">long</span> <span class="sh_function">getFilePointer</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">long getFilePointer()
+</pre></div></div>
+      <p>RandomAccessFile在创建时默认指向文件开始(第一个字节)，通过getFilePointer方法获取指针位置时值是"0"。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">RandomAccessFile</span><span class="sh_normal"> </span>raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span>file<span class="sh_symbol">,</span>”rw”<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span><span class="sh_comment">//0</span></li><li>raf<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>‘A’<span class="sh_symbol">);</span><span class="sh_comment">//写出一个字节后，指针自动向后移动到下一个字节位置</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span><span class="sh_comment">//1</span></li><li>raf<span class="sh_symbol">.</span><span class="sh_function">writeInt</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span><span class="sh_comment">//5</span></li><li>raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">RandomAccessFile raf = new RandomAccessFile(file,”rw”);
+System.out.println(raf.getFilePointer());//0
+raf.write(‘A’);//写出一个字节后，指针自动向后移动到下一个字节位置
+System.out.println(raf.getFilePointer());//1
+raf.writeInt(3);
+System.out.println(raf.getFilePointer());//5
+raf.close(); 
+</pre></div></div>
+      <a name="Key02_03_02">
+      </a>
+      <h3>2.3.2. seek方法</h3>
+      <p>RandomAccessFile的提供了一个方法用于移动指针位置。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">seek</span><span class="sh_symbol">(</span><span class="sh_type">long</span> pos<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void seek(long pos)
+</pre></div></div>
+      <p>使用该方法可以移动指针到指定位置。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">RandomAccessFile</span><span class="sh_normal"> </span>raf <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RandomAccessFile</span><span class="sh_symbol">(</span>file<span class="sh_symbol">,</span>”rw”<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span><span class="sh_comment">//0</span></li><li>raf<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>‘A’<span class="sh_symbol">);</span><span class="sh_comment">//指针位置1</span></li><li>raf<span class="sh_symbol">.</span><span class="sh_function">writeInt</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">);</span><span class="sh_comment">//指针位置5</span></li><li>raf<span class="sh_symbol">.</span><span class="sh_function">seek</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">);</span><span class="sh_comment">//将指针移动到文件开始处(第一个字节的位置)</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>raf<span class="sh_symbol">.</span><span class="sh_function">getFilePointer</span><span class="sh_symbol">());</span><span class="sh_comment">//0</span></li><li>raf<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">RandomAccessFile raf = new RandomAccessFile(file,”rw”);
+System.out.println(raf.getFilePointer());//0
+raf.write(‘A’);//指针位置1
+raf.writeInt(3);//指针位置5
+raf.seek(0);//将指针移动到文件开始处(第一个字节的位置)
+System.out.println(raf.getFilePointer());//0
+raf.close(); 
+</pre></div></div>
+      <a name="Key02_03_03">
+      </a>
+      <h3>2.3.3. skipBytes方法</h3>
+      <p>RandomAccessFile的提供了一个方法可以尝试跳过输入的 n 个字节以丢弃跳过的字节，方法定义为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_function">skipBytes</span><span class="sh_symbol">(</span><span class="sh_type">int</span> n<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int skipBytes(int n)
+</pre></div></div>
+      <p>该方法可能跳过一些较少数量的字节（可能包括零）。这可能由任意数量的条件引起；在跳过n个字节之前已到达文件的末尾只是其中的一种可能。此方法不抛出 EOFException。返回跳过的实际字节数。如果 n 为负数，则不跳过任何字节。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

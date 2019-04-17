@@ -1,0 +1,241 @@
+
+<!-- saved from url=(0092)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="19015513372"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#Key01">JDBC核心API</a>
+        </li>
+      </ol>
+      <h1>1. JDBC核心API</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. Statement</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. Statement执行查询</h3>
+      <p>通过Connection对象创建Statement的方式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Connection<span class="sh_symbol">.</span><span class="sh_function">createStatement</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Connection.createStatement();
+</pre></div></div>
+      <p>执行INSERT, UPDATE和DELETE等DML操作：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Statement<span class="sh_symbol">.</span><span class="sh_function">executeUpdate</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Statement.executeUpdate();
+</pre></div></div>
+      <p>执行SELECT：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Statement<span class="sh_symbol">.</span><span class="sh_function">executeQuery</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Statement.executeQuery();
+</pre></div></div>
+      <p>通过Statement对象返回SQL语句执行后的结果集:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> <span class="sh_string">"select empno, ename, sal, hiredate from emp"</span><span class="sh_symbol">;</span></li><li><span class="sh_usertype">Statement</span><span class="sh_normal"> </span>stmt <span class="sh_symbol">=</span> con<span class="sh_symbol">.</span><span class="sh_function">createStatement</span><span class="sh_symbol">();</span></li><li>ResultSetrs <span class="sh_symbol">=</span> stmt<span class="sh_symbol">.</span><span class="sh_function">executeQuery</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li><span class="sh_comment">//对rs的处理</span></li><li><span class="sh_comment">//代码略</span></li><li>stmt<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String sql = "select empno, ename, sal, hiredate from emp";
+Statement stmt = con.createStatement();
+ResultSetrs = stmt.executeQuery(sql);
+//对rs的处理
+//代码略
+stmt.close();
+</pre></div></div>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. Statement执行插入</h3>
+      <p>Statement.executeUpdate(sql)方法将返回SQL语句执行后影响的记录数:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> <span class="sh_string">"insert into emp(empno, ename, job, sal) values(1001, ‘张三丰’,‘Manager’9500)"</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> flag <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span>；</li><li><span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;con <span class="sh_symbol">=</span> ConnectionSource<span class="sh_symbol">.</span><span class="sh_function">getConnection</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmt <span class="sh_symbol">=</span> con<span class="sh_symbol">.</span><span class="sh_function">createStatement</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag <span class="sh_symbol">=</span> stmt<span class="sh_symbol">.</span><span class="sh_function">executeUpdate</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li>          <span class="sh_comment">//处理结果</span></li><li><span class="sh_cbracket">}</span><span class="sh_keyword">catch</span><span class="sh_symbol">(</span><span class="sh_usertype">SQLException</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>         <span class="sh_comment">//处理异常</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String sql = "insert into emp(empno, ename, job, sal) values(1001, ‘张三丰’,‘Manager’9500)";
+int flag = -1；
+try {
+		con = ConnectionSource.getConnection();
+		stmt = con.createStatement();
+		flag = stmt.executeUpdate(sql);
+          //处理结果
+}catch(SQLException e){
+         //处理异常
+}
+</pre></div></div>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. Statement执行更改</h3>
+      <p>和INSERT操作完全相同，只是SQL语句不同：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> <span class="sh_string">"update emp set sal = 9900 where empno = 1001"</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> flag <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span>；</li><li><span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;con <span class="sh_symbol">=</span> ConnectionSource<span class="sh_symbol">.</span><span class="sh_function">getConnection</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stmt <span class="sh_symbol">=</span> con<span class="sh_symbol">.</span><span class="sh_function">createStatement</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flag <span class="sh_symbol">=</span> stmt<span class="sh_symbol">.</span><span class="sh_function">executeUpdate</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li>          <span class="sh_comment">//处理结果</span></li><li><span class="sh_cbracket">}</span><span class="sh_keyword">catch</span><span class="sh_symbol">(</span><span class="sh_usertype">SQLException</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>         <span class="sh_comment">//处理异常</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String sql = "update emp set sal = 9900 where empno = 1001";
+int flag = -1；
+try {
+		con = ConnectionSource.getConnection();
+		stmt = con.createStatement();
+		flag = stmt.executeUpdate(sql);
+          //处理结果
+}catch(SQLException e){
+         //处理异常
+}
+</pre></div></div>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. PreparedStatement</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. PreparedStatement原理</h3>
+      <p>Statement主要用于执行静态SQL语句，即内容固定不变的SQL语句。Statement每执行一次都要对传入的SQL语句编译一次，效率较差。</p>
+      <p>某些情况下，SQL语句只是其中的参数有所不同，其余子句完全相同，适用于PreparedStatement。</p>
+      <p>PreparedStatement的另外一个好处就是预防sql注入攻击。</p>
+      <p>PreparedStatement是接口，继承自Statement接口。</p>
+      <p>使用PreparedStatement时，SQL语句已提前编译，三种常用方法 execute、executeQuery和executeUpdate已被更改，以使之不再需要参数。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图-1 PreparedStatement原理</p>
+      </div>
+      <p>PreparedStatement实例包含已事先编译的 SQL 语句，SQL 语句可有一个或多个 IN 参数，IN参数的值在 SQL 语句创建时未被指定。该语句为每个 IN 参数保留一个问号（“？”）作为占位符。</p>
+      <p>每个问号的值必须在该语句执行之前，通过适当的setInt或者setString等方法提供。</p>
+      <p>由于PreparedStatement对象已预编译过，所以其执行速度要快于 Statement 对象。因此，多次执行的 SQL 语句经常创建为PreparedStatement对象，以提高效率。</p>
+      <p>通常批量处理时使用PreparedStatement。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">//SQL语句已发送给数据库，并编译好为执行作好准备</span></li><li>PreparedStatementpstmt <span class="sh_symbol">=</span> con<span class="sh_symbol">.</span><span class="sh_function">prepareStatement</span><span class="sh_symbol">(</span></li><li>         <span class="sh_string">"UPDATE  emp   SET job= ? WHERE empno= ?"</span><span class="sh_symbol">);</span></li><li><span class="sh_comment">//对占位符进行初始化</span></li><li>pstmt<span class="sh_symbol">.</span><span class="sh_function">setLong</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_string">"Manager"</span><span class="sh_symbol">);</span></li><li>pstmt<span class="sh_symbol">.</span><span class="sh_function">setInt</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">,</span><span class="sh_number">1001</span><span class="sh_symbol">);</span></li><li><span class="sh_comment">//执行SQL语句</span></li><li>pstmt<span class="sh_symbol">.</span><span class="sh_function">executeUpdate</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">//SQL语句已发送给数据库，并编译好为执行作好准备
+PreparedStatementpstmt = con.prepareStatement(
+         "UPDATE  emp   SET job= ? WHERE empno= ?");
+//对占位符进行初始化
+pstmt.setLong(1, "Manager");
+pstmt.setInt(2,1001);
+//执行SQL语句
+pstmt.executeUpdate();
+</pre></div></div>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 通过PreparedStatement提升性能</h3>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图-2 数据库执行SQL语句过程</p>
+      </div>
+      <p>在数据库执行SQL语句过程中，制定执行计划开销巨大。</p>
+      <p>数据库本身具备SQL缓存功能，可以对statement的执行计划进行缓存，以免重复分析。其缓存原理是使用statement本身作为key并将执行计划存入与statement对应的缓存中，对曾经执行过的statements，再运行时执行计划将重用。</p>
+      <p>举例：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span> b FROM t <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_number">1</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT a, b FROM t WHERE c = 1；
+</pre></div></div>
+      <p>再次向数据库发送相同的statement时，数据库会对先前使用过的执行计划进行重用，降低开销。</p>
+      <p>但是，如下两条语句被视作不同的SQL语句,执行计划不可重用：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span> b FROM t <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_number">1</span>；</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span> b FROM t <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_number">2</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT a, b FROM t WHERE c = 1；
+SELECT a, b FROM t WHERE c = 2；
+</pre></div></div>
+      <p>这就是为什么要使用PreparedStatement：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">//执行计划可重用</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span><span class="sh_string">"select a,b from t where c = ?"</span><span class="sh_symbol">;</span></li><li>PreparedStatementps <span class="sh_symbol">=</span> conn<span class="sh_symbol">.</span><span class="sh_function">prepareStatement</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span>inti <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;</span> <span class="sh_number">1000</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span>  <span class="sh_cbracket">{</span></li><li>ps<span class="sh_symbol">.</span><span class="sh_function">setInt</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> i<span class="sh_symbol">);</span></li><li>ResultSetrs <span class="sh_symbol">=</span> ps<span class="sh_symbol">.</span><span class="sh_function">executeQuery</span><span class="sh_symbol">();</span></li><li>    <span class="sh_comment">//处理rs，省略</span></li><li>rs<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span></li><li>ps<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">//执行计划可重用
+String sql ="select a,b from t where c = ?";
+PreparedStatementps = conn.prepareStatement(sql);
+for (inti = 0; i&lt; 1000; i++)  {
+ps.setInt(1, i);
+ResultSetrs = ps.executeQuery();
+    //处理rs，省略
+rs.close();
+}
+ps.close();
+</pre></div></div>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. SQL Injection简介</h3>
+      <p>场景：如下SQL语句被发送到数据库中：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> <span class="sh_string">"select * from t where username = '"</span> <span class="sh_symbol">+</span> name <span class="sh_symbol">+</span> <span class="sh_string">"' and password = '"</span> <span class="sh_symbol">+</span> passwd <span class="sh_symbol">+</span> <span class="sh_string">"'"</span><span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String sql = "select * from t where username = '" + name + "' and password = '" + passwd + "'"; 
+</pre></div></div>
+      <p>输入用户名和密码参数后，数据库接受到的完整sql语句将是这种形式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> from t <span class="sh_usertype">where</span><span class="sh_normal"> </span>username <span class="sh_symbol">=</span> <span class="sh_string">'scott'</span> <span class="sh_usertype">and</span><span class="sh_normal"> </span>password <span class="sh_symbol">=</span> <span class="sh_string">'tiger'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from t where username = 'scott' and password = 'tiger';
+</pre></div></div>
+      <p>如果用户输入的passwd参数是：' or '1'='1, 则数据库收到的SQL语句将是：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> from t <span class="sh_usertype">where</span><span class="sh_normal"> </span>username <span class="sh_symbol">=</span> <span class="sh_string">'scott'</span> <span class="sh_usertype">and</span><span class="sh_normal"> </span>password <span class="sh_symbol">=</span> <span class="sh_string">''</span> or <span class="sh_string">'1'</span><span class="sh_symbol">=</span><span class="sh_string">'1’; </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from t where username = 'scott' and password = '' or '1'='1’; 
+</pre></div></div>
+      <p>此SQL语句的where条件将永远为true。即用户不需要输入正确的帐号密码，也能登录。这种现象称作SQL注入（SQL Injection）。</p>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. 通过PreparedStatement防止SQL Injection</h3>
+      <p>对JDBC而言，SQL注入攻击只对Statement有效，对PreparedStatement无效，因为PreparedStatement不允许在插入参数时改变SQL语句的逻辑结构。</p>
+      <p>使用预编译的语句对象时，用户传入的任何数据不会和原SQL语句发生匹配关系，无需对输入的数据做过滤。</p>
+      <p>如果用户将' or '1'='1传入赋值给占位符，下述SQL语句将无法执行：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;select <span class="sh_symbol">*</span> from t <span class="sh_usertype">where</span><span class="sh_normal"> </span>username <span class="sh_symbol">=</span> <span class="sh_symbol">?</span> <span class="sh_usertype">and</span><span class="sh_normal"> </span>password <span class="sh_symbol">=</span> <span class="sh_symbol">?;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	select * from t where username = ? and password = ?;
+</pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. ResultSet</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 结果集遍历</h3>
+      <p>结果集常用的遍历方式（使用rs.getXXX方法）：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> <span class="sh_string">"select empno, ename, sal, hiredate from emp"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;rs <span class="sh_symbol">=</span> stmt<span class="sh_symbol">.</span><span class="sh_function">executeQuery</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span> <span class="sh_symbol">(</span>rs<span class="sh_symbol">.</span><span class="sh_function">next</span><span class="sh_symbol">())</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intempno <span class="sh_symbol">=</span> rs<span class="sh_symbol">.</span><span class="sh_function">getInt</span><span class="sh_symbol">(</span><span class="sh_string">"empno"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>ename <span class="sh_symbol">=</span> rs<span class="sh_symbol">.</span><span class="sh_function">getString</span><span class="sh_symbol">(</span><span class="sh_string">"ename"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doublesal <span class="sh_symbol">=</span> rs<span class="sh_symbol">.</span><span class="sh_function">getDouble</span><span class="sh_symbol">(</span><span class="sh_string">"sal"</span><span class="sh_symbol">);</span>       </li><li><span class="sh_usertype">Date</span><span class="sh_normal"> </span>hiredate <span class="sh_symbol">=</span> rs<span class="sh_symbol">.</span><span class="sh_function">getDate</span><span class="sh_symbol">(</span><span class="sh_string">"hiredate"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>rs<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String sql = "select empno, ename, sal, hiredate from emp";
+	rs = stmt.executeQuery(sql);
+	while (rs.next()) {
+		intempno = rs.getInt("empno");
+		String ename = rs.getString("ename");
+		doublesal = rs.getDouble("sal");       
+Date hiredate = rs.getDate("hiredate");
+	}
+rs.close();
+</pre></div></div>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. ResultSetMetaData</h3>
+      <p>ResultSetMetaData: 数据结果集的元数据，和查询出来的结果集相关,从结果集(ResultSet)中获取。</p>
+      <p>下列代码获得ResultSetMetaData对象后，从中获取数据表的所有列名：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>ResultSetMetaDatarsm <span class="sh_symbol">=</span> rs<span class="sh_symbol">.</span><span class="sh_function">getMetaData</span><span class="sh_symbol">();</span></li><li>intcolumnCount <span class="sh_symbol">=</span> rsm<span class="sh_symbol">.</span><span class="sh_function">getColumnCount</span><span class="sh_symbol">();</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>columnName <span class="sh_symbol">=</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span><span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;=</span>columnCount<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;columnName <span class="sh_symbol">=</span> rsm<span class="sh_symbol">.</span><span class="sh_function">getColumnName</span><span class="sh_symbol">(</span>i<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">ResultSetMetaDatarsm = rs.getMetaData();
+intcolumnCount = rsm.getColumnCount();
+String columnName = null;
+for (int i = 1; i&lt;=columnCount; i++) {
+		columnName = rsm.getColumnName(i);
+}
+</pre></div></div>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 可滚动结果集</h3>
+      <p>常用的ResultSet，返回后，其初始指针在第一行之前（Before First），并且只能使用next()方法将指针向后移动，不能反向，一次移动一行，不能跳行。</p>
+      <p>可滚动的结果集：指针可以在结果集中任意移动。使用在需要指针移动的场合，比如分页。</p>
+      <p>获得可滚动的ResultSet，Statement或者PreparedStatement的创建有所不同：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Statement</span><span class="sh_normal"> </span>stmt <span class="sh_symbol">=</span> conn<span class="sh_symbol">.</span><span class="sh_function">createStatement</span><span class="sh_symbol">(</span>type<span class="sh_symbol">,</span> concurrency<span class="sh_symbol">);</span></li><li>PreparedStatementstmt <span class="sh_symbol">=</span> conn<span class="sh_symbol">.</span><span class="sh_function">prepareStatement</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">,</span> type<span class="sh_symbol">,</span> concurrency<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Statement stmt = conn.createStatement(type, concurrency);
+PreparedStatementstmt = conn.prepareStatement(sql, type, concurrency);
+</pre></div></div>
+      <p>其中type取值：</p>
+      <ul class="list">
+        <li>TYPE_FORWARD_ONLY：只能向前移动，默认参数
+</li>
+        <li>TYPE_SCROLL_INSENSITIVE：可滚动，不感知数据变化
+</li>
+        <li>TYPE_SCROLL_SENSITIVE：可滚动，感知数据变化
+</li>
+      </ul>
+      <p>concurrency取值：</p>
+      <ul class="list">
+        <li>CONCUR_READ_ONLY：只读
+</li>
+        <li>CONCUR_UPDATABLE：可更新
+</li>
+      </ul>
+      <p>获得可滚动结果集后，常用方法如下：</p>
+      <ul class="list">
+        <li>first：指针移动到第一条
+</li>
+        <li>last：指针移动到最后一条
+</li>
+        <li>beforeFirst：指针移动到第一条之前
+</li>
+        <li>afterLast：指针移动到最后一条之后
+</li>
+        <li>isFirst：判断指针是否指向第一条
+</li>
+        <li>isLast：判断指针是否指向最后一条
+</li>
+        <li>isBeforeFirst：判断指针是否在第一条之前
+</li>
+        <li>isAfterLast：判断指针是否在最后一条之后
+</li>
+        <li>relative：移动到当前指针的相对位置
+</li>
+        <li>next：移动到下一条
+</li>
+        <li>previous：移动到前一条
+</li>
+        <li>absolute：移动到绝对位置
+</li>
+      </ul>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

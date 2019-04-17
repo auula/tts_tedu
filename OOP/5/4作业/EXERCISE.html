@@ -1,0 +1,75 @@
+
+<!-- saved from url=(0091)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="10219475505"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 查看下列代码</h3> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">abstract</span> <span class="sh_keyword">class</span> Vehicle <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> int <span class="sh_function">speed</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">class</span> Car <span class="sh_keyword">extends</span> Vehicle <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> int <span class="sh_function">speed</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_number">60</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">class</span> RaceCar <span class="sh_keyword">extends</span> Car <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> int <span class="sh_function">speed</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_number">150</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestCar <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RaceCar racer <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RaceCar</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Car car <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RaceCar</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vehicle vehicle <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">RaceCar</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>racer<span class="sh_symbol">.</span><span class="sh_function">speed</span><span class="sh_symbol">()</span> <span class="sh_symbol">+</span> <span class="sh_string">", "</span> <span class="sh_symbol">+</span> car<span class="sh_symbol">.</span><span class="sh_function">speed</span><span class="sh_symbol">()</span> <span class="sh_symbol">+</span> <span class="sh_string">", "</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_symbol">+</span> vehicle<span class="sh_symbol">.</span><span class="sh_function">speed</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">abstract class Vehicle {
+	public int speed() {
+		return 0;
+	}
+}
+
+class Car extends Vehicle {
+	public int speed() {
+		return 60;
+	}
+}
+
+class RaceCar extends Car {
+	public int speed() {
+		return 150;
+	}
+}
+
+public class TestCar {
+	public static void main(String[] args) {
+		RaceCar racer = new RaceCar();
+		Car car = new RaceCar();
+		Vehicle vehicle = new RaceCar();
+		System.out.println(racer.speed() + ", " + car.speed() + ", "
+	    + vehicle.speed());
+	}
+}
+</pre></div></div> 
+    <p>上述代码运行的结果是</p> 
+    <p>A. 0,0,0</p> 
+    <p>B. 150,60,0</p> 
+    <p>C. 150,150,150</p> 
+    <p>D. 抛出运行时异常</p> 
+   </div> 
+   <div> 
+    <h3>2 编写正六边形类继承Shape，实现其area方法</h3> 
+    <p>在课上案例“根据周长计算不同形状图形的面积”基础上，编写正六边形类继承Shape，实现其area方法。</p> 
+    <p>注：正六边形的面积计算公式为：0.0721 * c * c，其中c为周长。</p> 
+   </div> 
+   <div> 
+    <h3>3 简述抽象类的意义</h3> 
+   </div> 
+   <div> 
+    <h3>4 编写建设银行接口CCB继承银联接口，并实现该接口</h3> 
+    <p>在课上案例“银行卡系统（实现银联接口）”的基础上，编写建设银行接口CCB。建设银行接口，用于描述中国建设银行发行的卡片功能，在满足银联接口的规则基础上，增加了支付燃气费的功能。</p> 
+   </div> 
+   <div> 
+    <h3>5 关于接口和抽象类，下列说法正确的是</h3> 
+    <p>A. 抽象类和接口都不能实例化。</p> 
+    <p>B. 接口里只能包含抽象方法，抽象类则可以包含普通方法。</p> 
+    <p>C. 接口里不包含构造器，抽象类里可以包含构造器。</p> 
+    <p>D. 一个类只能实现一个接口</p> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

@@ -1,0 +1,107 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="17965570333"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 简述视图的意义</h3> 
+   </div> 
+   <div> 
+    <h3>2 创建一个视图v_emp_salesman，内容是所有职位是SALESMAN的员工</h3> 
+   </div> 
+   <div> 
+    <h3>3 下列语句运行的结果是</h3> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>insert into v_emp_salesman <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">1234</span><span class="sh_symbol">,</span> ‘tina’<span class="sh_symbol">,</span> <span class="sh_number">3500</span><span class="sh_symbol">,</span> <span class="sh_number">20</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">insert into v_emp_salesman values(1234, ‘tina’, 3500, 20);
+</pre></div></div> 
+   </div> 
+   <div> 
+    <h3>4 下列关于视图说法正确的是</h3> 
+    <p>A.对复杂视图可以执行插入数据操作</p> 
+    <p>B.为了禁止在视图上执行DML操作，可以在建立视图时设置READ ONLY约束</p> 
+    <p>C.CHECK&nbsp;OPTION约束表示，通过视图所做的修改，必须在视图的可见范围内</p> 
+    <p>D.对视图的操作,最终都会转化成对基本表的操作</p> 
+   </div> 
+   <div> 
+    <h3>5 创建一个视图v_mgr_salary，列出每个主管的名字，以及他的下属中的最高薪水和最低薪水。</h3> 
+    <p>视图中数据显示的形式如图-1所示。</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image001.png"> 
+     <p>图-1</p> 
+    </div> 
+   </div> 
+   <div> 
+    <h3>6 关于序列的说法，下列正确的是</h3> 
+    <p>A．序列是Oracle提供的可用于产生一系列唯一数字的数据库对象。</p> 
+    <p>B．通常情况下，一个序列为一张表提供主键值，但一个序列也可以为多个表提供主键值。</p> 
+    <p>C．使用序列时，伪列NEXTVAL返回序列生成的下一个值。</p> 
+    <p>D．任何时候都可以使用伪列CURRVAL返回当前序列值。</p> 
+   </div> 
+   <div> 
+    <h3>7 创建序列stu_seq，然后，对student表进行插入，插入数据时，使用该序列生成主键</h3> 
+    <p>有学员表student，表结构如表－1所示：</p> 
+    <div class="table"> 
+     <p>表－1学员表student信息</p> 
+     <img src="./EXERCISE_files/table001.png"> 
+    </div> 
+    <p>1. 创建一个序列stu_seq，初始值是1000，步进是2。</p> 
+    <p>2. 构造SQL语句，向student数据表中插入一条记录，其信息如下：学号使用上一步创建的序列生成，学生姓名为张无忌，生日为1987-11-17，总成绩为639分。</p> 
+   </div> 
+   <div> 
+    <h3>8 简述索引的原理及创建索引的意义</h3> 
+   </div> 
+   <div> 
+    <h3>9 需要经常在emp表的ename列上执行大小写无关搜索，在此列上建立一个基于UPPER函数的索引</h3> 
+   </div> 
+   <div> 
+    <h3>10 列举需要创建索引以及不适合创建索引的场合</h3> 
+   </div> 
+   <div> 
+    <h3>11 简述主键选取的原则</h3> 
+   </div> 
+   <div> 
+    <h3>12 已知student表、course表和sc表，为sc表添加外键约束</h3> 
+    <p>已知学生表student，该表两个字段学号（id）、姓名（name），其中id列为主键列，创建该表的SQL语句如下所示：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table <span class="sh_function">student</span><span class="sh_symbol">(</span></li><li>  id <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li>  name <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span></li><li> <span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table student(
+  id number(10) primary key,
+  name varchar2(20)
+ );
+</pre></div></div> 
+    <p>有课程表course ，该表有两个字段编号（id）、课程名称（name），其中id列为主键列，创建该表的SQL语句如下所示：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table <span class="sh_function">course</span><span class="sh_symbol">(</span></li><li> id <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">)</span> primary key<span class="sh_symbol">,</span></li><li> name <span class="sh_function">varchar2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table course(
+ id number(10) primary key,
+ name varchar2(20)
+);
+</pre></div></div> 
+    <p>有选课表sc，该表有三个字段学号（sid）、课程编号（cid）、成绩（score），创建该表的SQL语句如下所示：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table <span class="sh_function">sc</span><span class="sh_symbol">(</span> </li><li> sid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span> </li><li> cid <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span> </li><li> score <span class="sh_function">number</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table sc( 
+ sid number(10), 
+ cid number(10), 
+ score number(5,2)
+);
+</pre></div></div> 
+    <p>本案例要求建立下列外键关联关系：</p> 
+    <p>1.sc表的学号列（sid），外键关联学生表（student）的学号列（id）。</p> 
+    <p>2.sc表的课程编号列（cid），外键关联课程表（course）的编号列（id）。</p> 
+    <p>请写出建立上述关联关系的SQL语句。</p> 
+   </div> 
+   <div> 
+    <h3>13 简述外键约束的意义</h3> 
+   </div> 
+   <div> 
+    <h3>14 简述外键约束对性能的影响，以及应对策略</h3> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

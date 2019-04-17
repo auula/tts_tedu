@@ -1,0 +1,153 @@
+
+<!-- saved from url=(0099)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="7760994980"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#Key01">方法</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#Key02">猜字母游戏</a>
+        </li>
+      </ol>
+      <h1>1. 方法</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 方法（函数，过程）</h2>
+      <p>各种语言都有方法的概念（有的语言称其为函数或过程），java中也一样。方法常常用于封装一段特定的逻辑功能，例如：执行计算或操作</p>
+      <p>方法可以在程序中反复被调用，这样，就可以减少代码的重复，更便于程序的维护。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 方法（函数、过程）</h2>
+      <p>一个排序的功能，你也需要排，我也需要排，他也需要排，难道每次都要重新写吗？显然很麻烦，后期修改维护也很麻烦，每个地方都需要改，并且有大量的代码重复，有没有一种方式可以解决这个问题呢？那就是方法。</p>
+      <p>各种语言都有方法的概念（有的语言称其为函数或过程），其主要实现对一段特定逻辑功能的封装，如：执行计算或操作。若想要使用这段功能，只需调用一下即可。</p>
+      <p>方法可以在程序中反复被调用，这样可大大减少代码的重复，从而便于程序维护。</p>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 定义方法（函数、过程）的功能</h3>
+      <p>方法用于封装一个特定的功能，定义时需要考虑五个要素：修饰词、返回值类型、方法名、参数列表、方法体。通过下面的代码进行讲解：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span>  <span class="sh_keyword">static</span> <span class="sh_type">int</span>  <span class="sh_function">sum</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span>  num1 <span class="sh_symbol">,</span> <span class="sh_type">int</span>  num2 <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>           <span class="sh_comment">// 方法体</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public  static int  sum ( int  num1 , int  num2 ) {
+           // 方法体
+}
+</pre></div></div>
+      <p>其中，public static为修饰词（后续课程详细介绍这两个关键字），int为返回值类型，sum为方法名（见名知义），int num1,int num2为参数列表。一对大括号｛｝中的为方法体（具体的业务功能实现）。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 定义参数和返回值</h3>
+      <p>方法的参数是指：在调用时传递给方法，需要被方法处理的数据。方法可以有参数也可以没有参数，绝大部分方法为有参数的，因为方法有参数可以使方法的处理更加灵活；在方法定义时，需要声明该方法所需要的参数变量（注意：声明该参数变量时需添加数据类型信息）；</p>
+      <p>在方法调用时，会将实际的参数值（数据）传递给方法的参数变量，同时必须保证传递参数的类型和个数符合方法的声明（后面详细介绍）。如下为几个方法定义的实例：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">say</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span>   <span class="sh_cbracket">}</span>       <span class="sh_comment">//无参方法</span></li><li><span class="sh_type">void</span> <span class="sh_function">say</span><span class="sh_symbol">(</span> <span class="sh_usertype">string</span><span class="sh_normal"> </span>name <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>   <span class="sh_cbracket">}</span>  <span class="sh_comment">//1个参数方法</span></li><li><span class="sh_type">int</span>   <span class="sh_function">sum</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span>   num1 <span class="sh_symbol">,</span> <span class="sh_type">int</span>   num2 <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>   <span class="sh_cbracket">}</span>      <span class="sh_comment">//2个参数方法</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void say() {   }       //无参方法
+void say( string name ) {   }  //1个参数方法
+int   sum ( int   num1 , int   num2 ) {   }      //2个参数方法
+</pre></div></div>
+      <p>上面的示例主要演示的是方法的参数信息，下面看一下方法的返回值。方法调用结束后可以返回一个数据，称之为返回值。当然，方法调用结束后也可以不返回数据，但不管是返回数据也好不返回数据也好，java语法规定，方法在声明时必须指定返回值类型，可分如下的两种情况进行处理：</p>
+      <ul class="list">
+        <li>若方法不需要返回数据，将返回值类型声明为void。
+</li>
+        <li>若方法需要返回数据，将返回值类型声明为特定数据类型。
+</li>
+      </ul>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 方法的调用</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. return语句</h3>
+      <p>在方法体中可通过return语句返回，return语句的作用在于结束方法且将数据返回给调用方。</p>
+      <p>若方法定义的返回值类型为非void，则方法体中必须使用return返回，并且return后的表达式类型必须与方法定义的返回类型匹配，如下代码所示。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">return</span>  num1 <span class="sh_symbol">+</span>num2 <span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">return  num1 +num2 ; 
+</pre></div></div>
+      <p>若方法定义的返回值类型为void，则方法体中可以不使用return返回，也可以使用return返回，若使用return ，则它的作用仅在于结束方法调用而返回调用方。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">return</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">return;
+</pre></div></div>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 调用方法时的参数传递</h3>
+      <p>下面将通过几个实例演示调用方法时如何传递参数：</p>
+      <p>示例一，定义方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span>  <span class="sh_keyword">static</span> <span class="sh_type">int</span>  <span class="sh_function">sum</span> <span class="sh_symbol">(</span> <span class="sh_type">int</span>  num1 <span class="sh_symbol">,</span> <span class="sh_type">int</span> num2 <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public  static int  sum ( int  num1 , int num2 ) {  }
+</pre></div></div>
+      <p>main方法中调用：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> result <span class="sh_symbol">=</span> <span class="sh_function">sum</span><span class="sh_symbol">(</span><span class="sh_number">5</span>，<span class="sh_number">6</span><span class="sh_symbol">);</span> </li><li><span class="sh_type">int</span>  a <span class="sh_symbol">=</span> <span class="sh_number">50</span><span class="sh_symbol">,</span> b <span class="sh_symbol">=</span> <span class="sh_number">60</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span>  result <span class="sh_symbol">=</span> <span class="sh_function">sum</span> <span class="sh_symbol">(</span> a <span class="sh_symbol">,</span> b <span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int result = sum(5，6); 
+int  a = 50, b = 60;
+int  result = sum ( a , b );
+</pre></div></div>
+      <p>示例二，定义方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span>  <span class="sh_keyword">static</span>  <span class="sh_type">void</span>  <span class="sh_function">sayHi</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>  <span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public  static  void  sayHi(String name) {  }
+</pre></div></div>
+      <p>main方法中调用：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>sayHi（“wkj”）<span class="sh_symbol">;</span></li><li>sayHi（”zhangsan”）<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">sayHi（“wkj”）;
+sayHi（”zhangsan”）;
+</pre></div></div>
+      <p>分析如上代码，方法调用时，会将实际的参数值（5，6，“wkj”，”zhangsan”）传递给方法的参数变量（int num1，int num2，String name），同时必须保证传递参数的类型和个数符合方法的声明。若不匹配会出现编译错误。</p>
+      <p>下面通过一个实例详细讲解方法调用的过程，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">int</span> <span class="sh_function">max</span><span class="sh_symbol">(</span><span class="sh_type">int</span> a<span class="sh_symbol">,</span> <span class="sh_type">int</span> b<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span> ……… <span class="sh_cbracket">}</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li><span class="sh_type">int</span> a <span class="sh_symbol">=</span> <span class="sh_number">5</span><span class="sh_symbol">;</span> <span class="sh_type">int</span> b<span class="sh_symbol">=</span><span class="sh_number">6</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> myMax <span class="sh_symbol">=</span> <span class="sh_function">max</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">6</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static int max(int a, int b) { ……… }
+public static void main(String[] args) {
+int a = 5; int b=6;
+int myMax = max(5,6);
+}
+</pre></div></div>
+      <p>上面的代码执行过程如下：</p>
+      <ol class="list">
+        <li>为main方法中的变量a、b、myMax分配空间并赋值。参见图 - 2 。
+</li>
+      </ol>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图- 2</p>
+      </div>
+      <ol class="list">
+        <li>调用方法max，为max方法的参数变量a，b分配空间。参见图 – 3。
+</li>
+      </ol>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图- 3</p>
+      </div>
+      <ol class="list">
+        <li>将调用值传递到参数变量中。参见图 – 4。
+</li>
+      </ol>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图- 4</p>
+      </div>
+      <ol class="list">
+        <li>max方法运行完返回，参数变量空间释放。参见图 – 5。
+</li>
+      </ol>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图- 5</p>
+      </div>
+      <ol class="list">
+        <li>main方法中的myMax变量得到返回值。参见图 – 6。
+</li>
+      </ol>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图- 6</p>
+      </div>
+      <a name="Key02">
+      </a>
+      <h1>2. 猜字母游戏</h1>
+      <p>详见cookbook。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

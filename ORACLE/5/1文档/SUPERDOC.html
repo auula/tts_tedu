@@ -1,0 +1,589 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17936779645"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#Key01">视图、序列、索引</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#Key02">约束</a>
+        </li>
+      </ol>
+      <h1>1. 视图、序列、索引</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 视图</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 什么是视图</h3>
+      <p>视图(VIEW)也被称作虚表，即虚拟的表，是一组数据的逻辑表示,其本质是对应于一条SELECT语句，结果集被赋予一个名字，即视图名字。</p>
+      <p>视图本身并不包含任何数据，它只包含映射到基表的一个查询语句，当基表数据发生变化，视图数据也随之变化。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图-1视图和表</p>
+      </div>
+      <p>创建视图的语法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_symbol">[</span><span class="sh_usertype">OR</span><span class="sh_normal"> </span>REPLACE<span class="sh_symbol">]</span> <span class="sh_usertype">VIEW</span><span class="sh_normal"> </span>view_name<span class="sh_symbol">[(</span>alias<span class="sh_symbol">[,</span> alias…<span class="sh_symbol">])]</span></li><li><span class="sh_usertype">AS</span><span class="sh_normal"> </span>subquery <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE [OR REPLACE] VIEW view_name[(alias[, alias…])]
+AS subquery ;
+</pre></div></div>
+      <p>视图创建后，可以像操作表一样操作视图，主要是查询操作。</p>
+      <p>语法中的Subquery是SELECT查询语句，对应的表被称作基表。</p>
+      <p>根据视图所对应的子查询种类分为几种类型:</p>
+      <ul class="list">
+        <li>SELECT语句是基于单表建立的，且不包含任何函数运算、表达式或分组函数，叫做简单视图，此时视图是基表的子集；
+</li>
+        <li>SELECT语句同样是基于单表，但包含了单行函数、表达式、分组函数或GROUP BY子句，叫做复杂视图；
+</li>
+        <li>SELECT语句是基于多个表的，叫做连接视图。
+</li>
+      </ul>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 视图的作用</h3>
+      <p>如果需要经常执行某项复杂查询，可以基于这个复杂查询建立视图，此后查询此视图即可，简化复杂查询；</p>
+      <p>视图本质上就是一条SELECT语句，所以当访问视图时，只能访问到所对应的SELECT语句中涉及到的列，对基表中的其它列起到安全和保密的作用，可以限制数据访问。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 授权创建视图</h3>
+      <p>创建视图的DDL语句是CREATE VIEW，用户必须有CREATE VIEW系统权限，才能创建视图。如果没有权限，创建视图时会提示：权限不足。</p>
+      <p>管理员可以通过DCL语句授予用户创建视图的权限。下例中管理员给用户tarena创建视图的权限：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>GRANT CREATE VIEW  <span class="sh_usertype">TO</span><span class="sh_normal"> </span>tarena<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">GRANT CREATE VIEW  TO tarena;
+</pre></div></div>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 创建简单视图（单表）</h3>
+      <p>创建一个简单视图V_EMP_10，来显示部门10中的员工的编码、姓名和薪水：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">VIEW</span><span class="sh_normal"> </span>v_emp_10</li><li>AS</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> deptno </li><li>FROM emp </li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>deptno <span class="sh_symbol">=</span> <span class="sh_number">10</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE VIEW v_emp_10
+AS
+SELECT empno, ename, sal, deptno 
+FROM emp 
+WHERE deptno = 10;
+</pre></div></div>
+      <p>查看视图结构：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">DESC</span><span class="sh_normal"> </span>v_emp_10<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">DESC v_emp_10;
+</pre></div></div>
+      <a name="Key01_01_05">
+      </a>
+      <h3>1.1.5. 查询视图</h3>
+      <p>查询视图和查询表的操作相同：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">*</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>v_emp_10<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT * FROM v_emp_10;
+</pre></div></div>
+      <p>此时视图的列名，和创建视图时的列名一致，不一定是原列名：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>id<span class="sh_symbol">,</span> name<span class="sh_symbol">,</span> salary <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>v_emp_10<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT id, name, salary FROM v_emp_10;
+</pre></div></div>
+      <a name="Key01_01_06">
+      </a>
+      <h3>1.1.6. 对视图进行INSERT操作</h3>
+      <p>视图本身并不包含数据，只是基表数据的逻辑映射。所以当对视图执行DML操作时，实际上是对基表的DML操作。对视图执行DML操作的基本原则：</p>
+      <ul class="list">
+        <li>简单视图能够执行DML操作，下列情况除外：在基表中定义了非空列，但简单视图对应的SELECT语句并没有包含这个非空列，导致这个非空列对视图不可见，这时无法对视图执行INSERT操作；
+</li>
+        <li>如果视图定义中包含了函数、表达式、分组语句、DISTINCT关键字或ROWNUM伪列，不允许执行DML操作；
+</li>
+        <li>DML操作不能违反基表的约束条件。
+</li>
+      </ul>
+      <p>对简单视图执行INSERT操作，成功插入数据到基表中:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span>v_emp_10 </li><li><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1234</span><span class="sh_symbol">,</span> <span class="sh_string">'DOCTOR'</span><span class="sh_symbol">,</span> <span class="sh_number">4000</span><span class="sh_symbol">,</span> <span class="sh_number">10</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO v_emp_10 
+VALUES(1234, 'DOCTOR', 4000, 10);
+</pre></div></div>
+      <p>简单视图可以通过DML操作影响到基表数据。</p>
+      <a name="Key01_01_07">
+      </a>
+      <h3>1.1.7. 创建具有CHECK OPTION约束的视图</h3>
+      <p>语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_symbol">[</span><span class="sh_usertype">OR</span><span class="sh_normal"> </span>REPLACE<span class="sh_symbol">]</span> <span class="sh_usertype">VIEW</span><span class="sh_normal"> </span>view_name<span class="sh_symbol">[(</span>alias<span class="sh_symbol">[,</span> alias…<span class="sh_symbol">])]</span></li><li>AS subquery </li><li><span class="sh_symbol">[</span>WITHCHECKOPTION<span class="sh_symbol">];</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE [OR REPLACE] VIEW view_name[(alias[, alias…])]
+AS subquery 
+[WITHCHECKOPTION];
+</pre></div></div>
+      <p>其中：WITH CHECK OPTION短语表示，通过视图所做的修改，必须在视图的可见范围内：</p>
+      <ul class="list">
+        <li>假设INSERT，新增的记录在视图仍可查看
+</li>
+        <li>假设UPDATE，修改后的结果必须能通过视图查看到
+</li>
+        <li>假设DELETE，只能删除现有视图里能查到的记录
+</li>
+      </ul>
+      <p>创建带有CHECK OPTION约束的视图：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE OR REPLACE <span class="sh_usertype">VIEW</span><span class="sh_normal"> </span>v_emp_10</li><li>AS</li><li>SELECT <span class="sh_usertype">empno</span><span class="sh_normal"> </span>id<span class="sh_symbol">,</span> <span class="sh_usertype">ename</span><span class="sh_normal"> </span>name<span class="sh_symbol">,</span> <span class="sh_usertype">sal</span><span class="sh_normal"> </span>salary<span class="sh_symbol">,</span> deptno </li><li>FROM emp </li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>deptno <span class="sh_symbol">=</span> <span class="sh_number">10</span></li><li>WITH <span class="sh_usertype">CHECK</span><span class="sh_normal"> </span>OPTION<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE OR REPLACE VIEW v_emp_10
+AS
+SELECT empno id, ename name, sal salary, deptno 
+FROM emp 
+WHERE deptno = 10
+WITH CHECK OPTION;
+</pre></div></div>
+      <p>下述DML语句操作失败，因为部门20不在视图可见范围内：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span><span class="sh_usertype">v_emp_10</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1008</span><span class="sh_symbol">,</span>‘donna’<span class="sh_symbol">,</span><span class="sh_number">5500</span><span class="sh_symbol">,</span> <span class="sh_number">20</span><span class="sh_symbol">);</span> </li><li><span class="sh_usertype">UPDATE</span><span class="sh_normal"> </span>v_emp_10 <span class="sh_usertype">SET</span><span class="sh_normal"> </span>deptno <span class="sh_symbol">=</span> <span class="sh_number">20</span> <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>id <span class="sh_symbol">=</span> <span class="sh_number">7782</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO v_emp_10 VALUES(1008,‘donna’,5500, 20); 
+UPDATE v_emp_10 SET deptno = 20 WHERE id = 7782;
+</pre></div></div>
+      <a name="Key01_01_08">
+      </a>
+      <h3>1.1.8. 创建具有READ ONLY约束的视图</h3>
+      <p>对简单视图进行DML操作是合法的，但是不安全的。如果没有在视图上执行 DML 操作的必要，在建立视图时声明为只读来避免这种情况，保证视图对应的基表数据不会被非法修改。加入READ ONLY约束的视图语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_symbol">[</span><span class="sh_usertype">OR</span><span class="sh_normal"> </span>REPLACE<span class="sh_symbol">]</span> <span class="sh_usertype">VIEW</span><span class="sh_normal"> </span>view_name<span class="sh_symbol">[(</span>alias<span class="sh_symbol">[,</span> alias…<span class="sh_symbol">])]</span></li><li>AS subquery </li><li><span class="sh_symbol">[</span><span class="sh_usertype">WITHREAD</span><span class="sh_normal"> </span>ONLY<span class="sh_symbol">];</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE [OR REPLACE] VIEW view_name[(alias[, alias…])]
+AS subquery 
+[WITHREAD ONLY];
+</pre></div></div>
+      <p>创建视图，带有READ ONLY约束：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE OR REPLACE <span class="sh_usertype">VIEW</span><span class="sh_normal"> </span>v_emp_10</li><li>AS</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> deptno FROM emp </li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>deptno <span class="sh_symbol">=</span> <span class="sh_number">10</span></li><li>WITH <span class="sh_usertype">READ</span><span class="sh_normal"> </span>ONLY<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE OR REPLACE VIEW v_emp_10
+AS
+SELECT empno, ename, sal, deptno FROM emp 
+WHERE deptno = 10
+WITH READ ONLY;
+</pre></div></div>
+      <p>此时对只读视图执行DML操作，将会失败：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span>v_emp_10 </li><li><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1258</span><span class="sh_symbol">,</span> <span class="sh_string">'DONNA'</span><span class="sh_symbol">,</span> <span class="sh_number">3000</span><span class="sh_symbol">,</span> <span class="sh_number">10</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO v_emp_10 
+VALUES(1258, 'DONNA', 3000, 10);
+</pre></div></div>
+      <p>得到如下结果：</p>
+      <p>ERROR 位于第 1 行:</p>
+      <p>ORA-01733: 此处不允许虚拟列</p>
+      <a name="Key01_01_09">
+      </a>
+      <h3>1.1.9. 通过查询USER_VIEWS获取相关信息</h3>
+      <p>和视图相关的数据字典有：</p>
+      <ul class="list">
+        <li>USER_OBJECTS
+</li>
+        <li>USER_VIEWS
+</li>
+        <li>USER_UPDATABLE_COLUMNS
+</li>
+      </ul>
+      <p>例一：在数据字典USER_OBJECTS中查询所有视图名称：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>object_name <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>user_objects </li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>object_type <span class="sh_symbol">=</span> <span class="sh_string">'VIEW'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT object_name FROM user_objects 
+WHERE object_type = 'VIEW';
+</pre></div></div>
+      <p>例二：在数据字典USER_VIEWS中查询指定视图：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT text <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>user_views </li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>view_name <span class="sh_symbol">=</span> <span class="sh_string">'V_EMP_10'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT text FROM user_views 
+WHERE view_name = 'V_EMP_10';
+</pre></div></div>
+      <p>例三：在数据字典USER_UPDATABLE_COLUMNS中查询视图：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>column_name<span class="sh_symbol">,</span> insertable<span class="sh_symbol">,</span> updatable<span class="sh_symbol">,</span> deletable </li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>user_updatable_columns</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>table_name <span class="sh_symbol">=</span> <span class="sh_string">'V_EMP_10'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT column_name, insertable, updatable, deletable 
+FROM user_updatable_columns
+WHERE table_name = 'V_EMP_10';
+</pre></div></div>
+      <a name="Key01_01_10">
+      </a>
+      <h3>1.1.10. 创建复杂视图（多表关联）</h3>
+      <p>复杂视图指在子查询中包含了表达式、单行函数或分组函数的视图。此时必须为子查询中的表达式或函数定义别名。</p>
+      <p>例如，创建一个视图V_EMP_SALARY，把职员表的数据按部门分组，获得每个部门的平均薪水、薪水总和、最高薪水和最低薪水：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">VIEW</span><span class="sh_normal"> </span>v_emp_salary</li><li>AS</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span> <span class="sh_function">avg</span><span class="sh_symbol">(</span>e<span class="sh_symbol">.</span>sal<span class="sh_symbol">)</span> avg_sal<span class="sh_symbol">,</span> <span class="sh_function">sum</span><span class="sh_symbol">(</span>e<span class="sh_symbol">.</span>sal<span class="sh_symbol">)</span> sum_sal<span class="sh_symbol">,</span> </li><li><span class="sh_function">max</span><span class="sh_symbol">(</span>e<span class="sh_symbol">.</span>sal<span class="sh_symbol">)</span> max_sal<span class="sh_symbol">,</span> <span class="sh_function">min</span><span class="sh_symbol">(</span>e<span class="sh_symbol">.</span>sal<span class="sh_symbol">)</span> min_sal </li><li>FROM emp e join dept d</li><li><span class="sh_usertype">ON</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno</li><li>GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>d<span class="sh_symbol">.</span>dname<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE VIEW v_emp_salary
+AS
+SELECT d.dname, avg(e.sal) avg_sal, sum(e.sal) sum_sal, 
+max(e.sal) max_sal, min(e.sal) min_sal 
+FROM emp e join dept d
+ON e.deptno = d.deptno
+GROUP BY d.dname;
+</pre></div></div>
+      <p>查询复杂视图：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">*</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>v_emp_salary<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT * FROM v_emp_salary;
+</pre></div></div>
+      <p>复杂视图不允许DML操作，会报错。</p>
+      <p>当不再需要视图的定义，可以使用DROP VIEW语句删除视图，语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>DROP <span class="sh_usertype">VIEW</span><span class="sh_normal"> </span>view_name<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">DROP VIEW view_name;
+</pre></div></div>
+      <p>例如删除视图v_emp_10：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>DROP <span class="sh_usertype">VIEW</span><span class="sh_normal"> </span>v_emp_10<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">DROP VIEW v_emp_10;
+</pre></div></div>
+      <p>视图虽然是存放在数据字典中的独立对象，但视图仅仅是基于表的一个查询定义，所以对视图的删除不会导致基表数据的丢失，不会影响基表数据。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 序列</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 什么是序列</h3>
+      <p>序列(SEQUENCE)是一种用来生成唯一数字值的数据库对象。序列的值由Oracle程序按递增或递减顺序自动生成，通常用来自动产生表的主键值，是一种高效率获得唯一键值的途径。</p>
+      <p>序列是独立的数据库对象，和表是独立的对象，序列并不依附于表。</p>
+      <p>通常情况下，一个序列为一个表提供主键值，但一个序列也可以为多个表提供主键值。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 创建序列</h3>
+      <p>创建序列的语法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">CREATE</span><span class="sh_normal"> </span>SEQUENCE <span class="sh_symbol">[</span>schema<span class="sh_symbol">.]</span>sequence_name</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">[</span> START <span class="sh_usertype">WITH</span><span class="sh_normal"> </span>i <span class="sh_symbol">]</span> <span class="sh_symbol">[</span> INCREMENT <span class="sh_usertype">BY</span><span class="sh_normal"> </span>j <span class="sh_symbol">]</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">[</span> <span class="sh_usertype">MAXVALUE</span><span class="sh_normal"> </span>m <span class="sh_symbol">|</span> NOMAXVALUE <span class="sh_symbol">]</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">[</span> <span class="sh_usertype">MINVALUE</span><span class="sh_normal"> </span>n <span class="sh_symbol">|</span> NOMINVALUE <span class="sh_symbol">]</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">[</span> CYCLE <span class="sh_symbol">|</span> NOCYCLE <span class="sh_symbol">][</span> <span class="sh_usertype">CACHE</span><span class="sh_normal"> </span>p <span class="sh_symbol">|</span> NOCACHE <span class="sh_symbol">]</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE SEQUENCE [schema.]sequence_name
+	[ START WITH i ] [ INCREMENT BY j ]
+	[ MAXVALUE m | NOMAXVALUE ]
+	[ MINVALUE n | NOMINVALUE ]
+	[ CYCLE | NOCYCLE ][ CACHE p | NOCACHE ]
+</pre></div></div>
+      <p>其中：</p>
+      <ul class="list">
+        <li>sequence_name是序列名，将创建在schema方案下
+</li>
+        <li>序列的第一个序列值是i，步进是j
+</li>
+        <li>如果j是正数，表示递增，如果是负数，表示递减
+</li>
+        <li>序列可生成的最大值是m，最小值是n
+</li>
+        <li>如果没有设置任何可选参数，序列的第一个值是1，步进是1
+</li>
+        <li>CYCLE表示在递增至最大值或递减至最小值之后是否继续生成序列号，默认是NOCYCLE
+</li>
+        <li>CACHE用来指定先预取p个数据在缓存中，以提高序列值的生成效率，默认是20
+</li>
+      </ul>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 使用序列</h3>
+      <p>举例说明，创建一个序列，起始数据是100，步进是10：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">SEQUENCE</span><span class="sh_normal"> </span>emp_seq </li><li>    START WITH <span class="sh_number">100</span></li><li>    INCREMENT BY <span class="sh_number">10</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE SEQUENCE emp_seq 
+    START WITH 100
+    INCREMENT BY 10;
+</pre></div></div>
+      <p>当序列被创建后，第一个序列值将是100，将要生成的序列号分别是110、120、130等。</p>
+      <p>序列中有两个伪列：</p>
+      <ul class="list">
+        <li>NEXTVAL：获取序列的下个值
+</li>
+        <li>CURRVAL：获取序列的当前值
+</li>
+      </ul>
+      <p>当序列创建以后，必须先执行一次NEXTVAL，之后才能使用CURRVAL。</p>
+      <p>获取序列的第一个值，并且使用序列值为EMP表插入新的记录：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>emp_seq<span class="sh_symbol">.</span>NEXTVAL <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li><li>    INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span><span class="sh_function">emp</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">)</span>      </li><li>                <span class="sh_function">VALUES</span><span class="sh_symbol">(</span>emp_seq<span class="sh_symbol">.</span>NEXTVAL<span class="sh_symbol">,</span> <span class="sh_string">'donna'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT emp_seq.NEXTVAL FROM DUAL;
+    INSERT INTO emp(empno, ename)      
+                VALUES(emp_seq.NEXTVAL, 'donna');
+</pre></div></div>
+      <p>查询刚刚生成的记录，主键值将是110：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>empno<span class="sh_symbol">,</span> ename FROM emp</li><li> <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>ename <span class="sh_symbol">=</span> <span class="sh_string">'DONNA'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT empno, ename FROM emp
+ WHERE ename = 'DONNA';
+</pre></div></div>
+      <p>此时查询序列的当前值，会得到110的数字。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>emp_seq<span class="sh_symbol">.</span>CURRVAL <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT emp_seq.CURRVAL FROM DUAL;
+</pre></div></div>
+      <p>在序列的使用过程中，比如执行了一条语句：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>emp_seq<span class="sh_symbol">.</span>NEXTVAL FROM DUAL</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT emp_seq.NEXTVAL FROM DUAL
+</pre></div></div>
+      <p>则浪费了一个序列值，会导致表的主键值不连续。而CURRVAL的使用不会导致序列值的递进。</p>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. 删除序列</h3>
+      <p>删除序列的语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>DROP <span class="sh_usertype">SEQUENCE</span><span class="sh_normal"> </span>sequence_name<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">DROP SEQUENCE sequence_name;
+</pre></div></div>
+      <p>删除序列emp_seq：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>DROP <span class="sh_usertype">SEQUENCE</span><span class="sh_normal"> </span>emp_seq<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">DROP SEQUENCE emp_seq;
+</pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 索引</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 索引的原理</h3>
+      <p>索引是一种允许直接访问数据表中某一数据行的树型结构，为了提高查询效率而引入，是独立于表的对象，可以存放在与表不同的表空间（TABLESPACE）中。索引记录中存有索引关键字和指向表中数据的指针（地址）。对索引进行的I/O操作比对表进行操作要少很多。</p>
+      <p>索引一旦被建立就将被Oracle系统自动维护，查询语句中不用指定使用哪个索引，是一种提高查询效率的机制。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图-2Oracle B-tree索引的结构</p>
+      </div>
+      <p>ROWID: 伪列，唯一标识一条数据记录，可理解为行地址。</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 创建索引</h3>
+      <p>创建索引的语法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_symbol">[</span>UNIQUE<span class="sh_symbol">]</span> <span class="sh_usertype">INDEX</span><span class="sh_normal"> </span>index_name</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">ON</span><span class="sh_normal"> </span><span class="sh_function">table</span><span class="sh_symbol">(</span>column<span class="sh_symbol">[,</span> column…<span class="sh_symbol">]);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE [UNIQUE] INDEX index_name
+		ON table(column[, column…]);
+</pre></div></div>
+      <p>其中：</p>
+      <ul class="list">
+        <li>index_name表示索引名称
+</li>
+        <li>table表示表名
+</li>
+        <li>column表示列名，可以建立单列索引或复合索引
+</li>
+        <li>UNIQUE表示唯一索引
+</li>
+      </ul>
+      <p>在EMP表的ENAME列上建立索引：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">INDEX</span><span class="sh_normal"> </span>idx_emp_ename <span class="sh_usertype">ON</span><span class="sh_normal"> </span><span class="sh_function">emp</span><span class="sh_symbol">(</span>ename<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE INDEX idx_emp_ename ON emp(ename);
+</pre></div></div>
+      <p>复合索引也叫多列索引，是基于多个列的索引。如果经常在ORDER BY子句中使用job和salary作为排序依据，可以建立复合索引：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">INDEX</span><span class="sh_normal"> </span>idx_emp_job_sal <span class="sh_usertype">ON</span><span class="sh_normal"> </span><span class="sh_function">emp</span><span class="sh_symbol">(</span>job<span class="sh_symbol">,</span> sal<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE INDEX idx_emp_job_sal ON emp(job, sal);
+</pre></div></div>
+      <p>当做下面的查询时，会自动应用索引idx_emp_job_sal</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> job FROM emp </li><li>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>job<span class="sh_symbol">,</span> sal<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT empno, ename, sal, job FROM emp 
+ORDER BY job, sal;
+</pre></div></div>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 创建基于函数的索引</h3>
+      <p>如果需要在emp表的ename列上执行大小写无关搜索，可以在此列上建立一个基于UPPER函数的索引:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    CREATE <span class="sh_usertype">INDEX</span><span class="sh_normal"> </span>emp_ename_upper_idx </li><li>    <span class="sh_usertype">ON</span><span class="sh_normal"> </span><span class="sh_function">emp</span><span class="sh_symbol">(</span><span class="sh_function">UPPER</span><span class="sh_symbol">(</span>ename<span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    CREATE INDEX emp_ename_upper_idx 
+    ON emp(UPPER(ename));
+</pre></div></div>
+      <p>当做下面的查询时，会自动应用刚刚建立的索引:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    SELECT <span class="sh_symbol">*</span> FROM emp </li><li>        <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span><span class="sh_function">UPPER</span><span class="sh_symbol">(</span>ename<span class="sh_symbol">)</span> <span class="sh_symbol">=</span> <span class="sh_string">'KING'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT * FROM emp 
+        WHERE UPPER(ename) = 'KING';
+</pre></div></div>
+      <a name="Key01_03_04">
+      </a>
+      <h3>1.3.4. 修改和删除索引</h3>
+      <p>如果经常在索引列上执行DML操作，需要定期重建索引，提高索引的空间利用率，语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    ALTER <span class="sh_usertype">INDEX</span><span class="sh_normal"> </span><span class="sh_usertype">index_name</span><span class="sh_normal"> </span>REBUILD<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    ALTER INDEX index_name REBUILD;
+</pre></div></div>
+      <p>重建索引idx_emp_ename：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    ALTER <span class="sh_usertype">INDEX</span><span class="sh_normal"> </span><span class="sh_usertype">idx_emp_ename</span><span class="sh_normal"> </span>REBUILD<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    ALTER INDEX idx_emp_ename REBUILD;
+</pre></div></div>
+      <p>当一个表上有不合理的索引，会导致操作性能下降，删除索引的语法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    DROP <span class="sh_usertype">INDEX</span><span class="sh_normal"> </span>index_name<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    DROP INDEX index_name;
+</pre></div></div>
+      <p>删除索引idx_emp_ename：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    DROP <span class="sh_usertype">INDEX</span><span class="sh_normal"> </span>idx_emp_ename<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    DROP INDEX idx_emp_ename;
+</pre></div></div>
+      <a name="Key01_03_05">
+      </a>
+      <h3>1.3.5. 合理使用索引提升查询效率</h3>
+      <p>为提升查询效率，创建和使用索引的原则：</p>
+      <ul class="list">
+        <li>为经常出现在WHERE子句中的列创建索引
+</li>
+        <li>为经常出现在ORDER BY、DISTINCT后面的字段建立索引。如果建立的是复合索引，索引的字段顺序要和这些关键字后面的字段顺序一致
+</li>
+        <li>为经常作为表的连接条件的列上创建索引
+</li>
+        <li>不要在经常做DML操作的表上建立索引
+</li>
+        <li>不要在小表上建立索引
+</li>
+        <li>限制表上的索引数目，索引并不是越多越好
+</li>
+        <li>删除很少被使用的、不合理的索引
+</li>
+      </ul>
+      <a name="Key02">
+      </a>
+      <h1>2. 约束</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 约束概述</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. 约束的作用</h3>
+      <p>约束（CONSTRAINT）的全称是约束条件，也称作完整性约束条件。约束是在数据表上强制执行的一些数据校验规则，当执行DML操作时，数据必须符合这些规则，如果不符合则无法执行。</p>
+      <p>约束条件可以保证表中数据的完整性，保证数据间的商业逻辑。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. 约束的类型</h3>
+      <p>约束条件包括：</p>
+      <ul class="list">
+        <li>非空约束(Not Null)，简称NN
+</li>
+        <li>唯一性约束(Unique)，简称UK
+</li>
+        <li>主键约束(Primary Key)，简称PK
+</li>
+        <li>外键约束(Foreign Key)，简称FK
+</li>
+        <li>检查约束(Check)，简称CK
+</li>
+      </ul>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 非空约束</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. 建表时添加非空约束</h3>
+      <p>非空约束用于确保字段值不为空。默认情况下，任何列都允许有空值，但业务逻辑可能会要求某些列不能取空值。当某个字段被设置了非空约束条件，这个字段中必须存在有效值，即：</p>
+      <ul class="list">
+        <li>当执行INSERT操作时，必须提供这个列的数据
+</li>
+        <li>当执行UPDATE操作时，不能给这个列的值设置为NULL
+</li>
+      </ul>
+      <p>建表时添加非空约束：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">employees</span> <span class="sh_symbol">(</span></li><li><span class="sh_usertype">eid</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">)</span> <span class="sh_usertype">NOT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">,</span></li><li><span class="sh_usertype">salary</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>hiredate DATE </li><li>      <span class="sh_usertype">CONSTRAINT</span><span class="sh_normal"> </span>employees_hiredate_nn NOT NULL</li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE employees (
+eid NUMBER(6),
+name VARCHAR2(30) NOT NULL,
+salary NUMBER(7, 2),
+hiredate DATE 
+      CONSTRAINT employees_hiredate_nn NOT NULL
+);
+</pre></div></div>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. 修改表时添加非空约束</h3>
+      <p>可以在建表之后，通过修改表的定义，添加非空约束：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>ALTER TABLE employees </li><li><span class="sh_function">MODIFY</span> <span class="sh_symbol">(</span><span class="sh_usertype">eid</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">)</span> <span class="sh_usertype">NOT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">ALTER TABLE employees 
+MODIFY (eid NUMBER(6) NOT NULL);
+</pre></div></div>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. 取消非空约束</h3>
+      <p>如果业务要求取消某列的非空约束，可以采用重建表或者修改表的方式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>ALTER TABLE employees </li><li><span class="sh_function">MODIFY</span> <span class="sh_symbol">(</span><span class="sh_usertype">eid</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">ALTER TABLE employees 
+MODIFY (eid NUMBER(6));
+</pre></div></div>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. 唯一性约束</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. 什么是唯一性约束</h3>
+      <p>唯一性(Unique)约束条件用于保证字段或者字段的组合不出现重复值。当给表的某个列定义了唯一约束条件，该列的值不允许重复，但允许是NULL值。</p>
+      <p>唯一性约束条件可以在建表同时建立，也可以在建表以后再建立。</p>
+      <a name="Key02_03_02">
+      </a>
+      <h3>2.3.2. 添加唯一性约束</h3>
+      <p>在建表employees的同时，在eid、email列上创建唯一约束条件，并在建表后在name列上建立一个名为employees_name_uk的唯一约束条件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>DROP <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span>employees <span class="sh_symbol">;</span> <span class="sh_symbol">--</span>将表删掉重新创建</li><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">employees</span> <span class="sh_symbol">(</span></li><li><span class="sh_usertype">eid</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">)</span> UNIQUE<span class="sh_symbol">,</span></li><li><span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">email</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">salary</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">hiredate</span><span class="sh_normal"> </span>DATE<span class="sh_symbol">,</span></li><li><span class="sh_usertype">CONSTRAINT</span><span class="sh_normal"> </span><span class="sh_usertype">employees_email_uk</span><span class="sh_normal"> </span><span class="sh_function">UNIQUE</span><span class="sh_symbol">(</span>email<span class="sh_symbol">)</span></li><li> <span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">DROP TABLE employees ; --将表删掉重新创建
+CREATE TABLE employees (
+eid NUMBER(6) UNIQUE,
+name VARCHAR2(30),
+email VARCHAR2(50),
+salary NUMBER(7, 2),
+hiredate DATE,
+CONSTRAINT employees_email_uk UNIQUE(email)
+ );
+</pre></div></div>
+      <p>在建表之后增加唯一性约束条件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>ALTER TABLE employees </li><li>ADD <span class="sh_usertype">CONSTRAINT</span><span class="sh_normal"> </span><span class="sh_usertype">employees_name_uk</span><span class="sh_normal"> </span><span class="sh_function">UNIQUE</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">ALTER TABLE employees 
+ADD CONSTRAINT employees_name_uk UNIQUE(name);
+</pre></div></div>
+      <a name="Key02_04">
+      </a>
+      <h2>2.4. 主键约束</h2>
+      <a name="Key02_04_01">
+      </a>
+      <h3>2.4.1. 主键的意义</h3>
+      <p>主键(Primary Key)约束条件从功能上看相当于非空（NOT NULL）且唯一（UNIQUE）的组合。主键字段可以是单字段或多字段组合，即：在主键约束下的单字段或者多字段组合上不允许有空值，也不允许有重复值。</p>
+      <p>主键可以用来在表中唯一的确定一行数据。一个表上只允许建立一个主键，而其它约束条件则没有明确的个数限制。</p>
+      <a name="Key02_04_02">
+      </a>
+      <h3>2.4.2. 主键选取的原则</h3>
+      <ul class="list">
+        <li>主键应是对系统无意义的数据
+</li>
+        <li>永远也不要更新主键，让主键除了唯一标识一行之外，再无其他的用途
+</li>
+        <li>主键不应包含动态变化的数据，如时间戳
+</li>
+        <li>主键应自动生成，不要人为干预，以免使它带有除了唯一标识一行以外的意义
+</li>
+        <li>主键尽量建立在单列上
+</li>
+      </ul>
+      <a name="Key02_04_03">
+      </a>
+      <h3>2.4.3. 添加主键约束</h3>
+      <p>在建表时添加主键约束条件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">employees2</span> <span class="sh_symbol">(</span></li><li><span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">email</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">salary</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>hiredate DATE</li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE employees2 (
+name VARCHAR2(30),
+email VARCHAR2(50),
+salary NUMBER(7, 2),
+hiredate DATE
+);
+</pre></div></div>
+      <p>建表后创建主键约束条件，并自定义约束条件名称：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">employees3</span> <span class="sh_symbol">(</span></li><li><span class="sh_usertype">eid</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">email</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">50</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">salary</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>hiredate DATE</li><li><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>ALTER TABLE employees3 </li><li>ADD CONSTRAINT </li><li>         employees3_eid_pk <span class="sh_usertype">PRIMARY</span><span class="sh_normal"> </span><span class="sh_function">KEY</span> <span class="sh_symbol">(</span>eid<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE employees3 (
+eid NUMBER(6),
+name VARCHAR2(30),
+email VARCHAR2(50),
+salary NUMBER(7, 2),
+hiredate DATE
+);
+
+ALTER TABLE employees3 
+ADD CONSTRAINT 
+         employees3_eid_pk PRIMARY KEY (eid);
+</pre></div></div>
+      <a name="Key02_05">
+      </a>
+      <h2>2.5. 外键约束</h2>
+      <a name="Key02_05_01">
+      </a>
+      <h3>2.5.1. 2.5.1	外键约束的意义</h3>
+      <p>外键约束条件定义在两个表的字段或一个表的两个字段上，用于保证相关两个字段的关系。比如emp表的deptno列参照dept表的deptno列，则dept称作主表或父表，emp表称作从表或子表。</p>
+      <a name="Key02_05_02">
+      </a>
+      <h3>2.5.2. 2.5.2	添加外键约束</h3>
+      <p>先建表，在建表后建立外键约束条件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">employees4</span> <span class="sh_symbol">(</span></li><li><span class="sh_usertype">eid</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">salary</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">deptno</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>ALTER TABLE employees4</li><li>ADD <span class="sh_usertype">CONSTRAINT</span><span class="sh_normal"> </span>employees4_deptno_fk </li><li><span class="sh_usertype">FOREIGN</span><span class="sh_normal"> </span><span class="sh_function">KEY</span> <span class="sh_symbol">(</span>deptno<span class="sh_symbol">)</span> <span class="sh_usertype">REFERENCES</span><span class="sh_normal"> </span><span class="sh_function">dept</span><span class="sh_symbol">(</span>deptno<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE employees4 (
+eid NUMBER(6),
+name VARCHAR2(30),
+salary NUMBER(7, 2),
+deptno NUMBER(4)
+);
+
+ALTER TABLE employees4
+ADD CONSTRAINT employees4_deptno_fk 
+FOREIGN KEY (deptno) REFERENCES dept(deptno);
+</pre></div></div>
+      <a name="Key02_05_03">
+      </a>
+      <h3>2.5.3. 2.5.3	外键约束对一致性的维护</h3>
+      <p>外键约束条件包括两个方面的数据约束：</p>
+      <ul class="list">
+        <li>从表上定义的外键的列值，必须从主表被参照的列值中选取，或者为NULL；
+</li>
+        <li>当主表参照列的值被从表参照时，主表的该行记录不允许被删除。
+</li>
+      </ul>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>成功DML语句：</li><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span><span class="sh_function">employees4</span><span class="sh_symbol">(</span>eid<span class="sh_symbol">,</span> name<span class="sh_symbol">,</span> deptno<span class="sh_symbol">)</span> </li><li>    <span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1234</span><span class="sh_symbol">,</span> ‘<span class="sh_usertype">rose</span><span class="sh_normal"> </span>tyler’<span class="sh_symbol">,</span> <span class="sh_number">40</span><span class="sh_symbol">);--</span>成功</li><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span><span class="sh_function">employees4</span><span class="sh_symbol">(</span>eid<span class="sh_symbol">,</span> name<span class="sh_symbol">,</span> deptno<span class="sh_symbol">)</span> </li><li>    <span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1235</span><span class="sh_symbol">,</span> ‘<span class="sh_usertype">martha</span><span class="sh_normal"> </span>jones’<span class="sh_symbol">,</span> NULL<span class="sh_symbol">);</span> <span class="sh_symbol">--</span>成功</li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">--</span>失败DML语句：</li><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal">   </span><span class="sh_function">employees4</span><span class="sh_symbol">(</span>eid<span class="sh_symbol">,</span> name<span class="sh_symbol">,</span> deptno<span class="sh_symbol">)</span> </li><li>    <span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1236</span><span class="sh_symbol">,</span> <span class="sh_string">'donna noble'</span><span class="sh_symbol">,</span> <span class="sh_number">50</span><span class="sh_symbol">);</span></li><li>    <span class="sh_symbol">--</span>失败，不存在部门<span class="sh_number">50</span></li><li>DELETE FROM dept <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>deptno  <span class="sh_symbol">=</span> <span class="sh_number">40</span><span class="sh_symbol">;</span></li><li>    <span class="sh_symbol">--</span>失败，<span class="sh_number">40</span>被参照，不允许删除</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--成功DML语句：
+INSERT INTO employees4(eid, name, deptno) 
+    VALUES(1234, ‘rose tyler’, 40);--成功
+INSERT INTO employees4(eid, name, deptno) 
+    VALUES(1235, ‘martha jones’, NULL); --成功
+
+--失败DML语句：
+INSERT INTO   employees4(eid, name, deptno) 
+    VALUES(1236, 'donna noble', 50);
+    --失败，不存在部门50
+DELETE FROM dept WHERE deptno  = 40;
+    --失败，40被参照，不允许删除
+</pre></div></div>
+      <a name="Key02_05_04">
+      </a>
+      <h3>2.5.4. 2.5.4	外键约束对性能的降低</h3>
+      <p>如果在一个频繁DML操作的表上建立外键，每次DML操作，都将导致数据库自动对外键所关联的对应表做检查，产生开销，如果已在程序中控制逻辑，这些判断将增加额外负担，可以省去。</p>
+      <p>另外外键确定了主从表的先后生成关系，有时会影响业务逻辑。</p>
+      <a name="Key02_05_05">
+      </a>
+      <h3>2.5.5. 2.5.5	关联不一定需要外键约束</h3>
+      <p>如果业务逻辑要求保证数据完整性，可由程序或触发器控制，不一定需要外键约束。</p>
+      <p>另外为了简化开发，维护数据时不用考虑外键约束，以及大量数据DML操作时不需考虑外键耗费时间。</p>
+      <a name="Key02_06">
+      </a>
+      <h2>2.6. 检查约束</h2>
+      <a name="Key02_06_01">
+      </a>
+      <h3>2.6.1. 2.6.1	什么是检查约束</h3>
+      <p>检查(Check)约束条件用来强制在字段上的每个值都要满足Check中定义的条件。当定义了Check约束的列新增或修改数据时，数据必须符合Check约束中定义的条件。</p>
+      <a name="Key02_06_02">
+      </a>
+      <h3>2.6.2. 2.6.2	添加检查约束</h3>
+      <p>员工的薪水必须大于2000元，增加检查约束：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>ALTER TABLE employees4</li><li>ADD <span class="sh_usertype">CONSTRAINT</span><span class="sh_normal"> </span>employees4_salary_check</li><li><span class="sh_function">CHECK</span> <span class="sh_symbol">(</span>salary <span class="sh_symbol">&gt;</span> <span class="sh_number">2000</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">ALTER TABLE employees4
+ADD CONSTRAINT employees4_salary_check
+CHECK (salary &gt; 2000);
+</pre></div></div>
+      <p>当插入大于2000的数据，操作成功：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span><span class="sh_function">employees4</span><span class="sh_symbol">(</span>eid<span class="sh_symbol">,</span> name<span class="sh_symbol">,</span> salary<span class="sh_symbol">,</span> deptno<span class="sh_symbol">)</span> </li><li><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1236</span><span class="sh_symbol">,</span> <span class="sh_string">'donna noble'</span><span class="sh_symbol">,</span> <span class="sh_number">2500</span><span class="sh_symbol">,</span> <span class="sh_number">40</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO employees4(eid, name, salary, deptno) 
+VALUES(1236, 'donna noble', 2500, 40);
+</pre></div></div>
+      <p>试图修改职员的薪水为1500元，更新失败：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>UPDATE employees4 <span class="sh_usertype">SET</span><span class="sh_normal"> </span>salary <span class="sh_symbol">=</span> <span class="sh_number">1500</span></li><li> <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>eid <span class="sh_symbol">=</span> <span class="sh_number">1236</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">UPDATE employees4 SET salary = 1500
+ WHERE eid = 1236;
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

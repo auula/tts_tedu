@@ -1,0 +1,287 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="16611043735"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#Key01">正则表达式</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#Key02">Object</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#Key03">包装类</a>
+        </li>
+      </ol>
+      <h1>1. 正则表达式</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 基本正则表达式</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 正则表达式简介</h3>
+      <p>所谓正则表达式就是使用一系列预定义的特殊字符来描述一个字符串的格式规则，然后使用该格式规则匹配某个字符串是否符合格式要求。</p>
+      <p class="number">1、“.”和"\"</p>
+      <p>"."点儿，在正则表达式中表示任意一个字符。</p>
+      <p>"\"在正则表达式中是转意字符，当我们需要描述一个已经被正则表达式使用的特殊字符时，我们就可以通过使用"\"将其转变为原本的意思。</p>
+      <p>"\"在正则表达式中也有一些预定义的特殊内容:</p>
+      <ul class="list">
+        <li>\d：表示任意一个数字
+</li>
+        <li>\w：表示任意一个单词字符（只能是 数字，字母，下划线）
+</li>
+        <li>\s：表示任意一个空白字符(\t  \r  \n  \f  \x0B)
+</li>
+        <li>\D：表示任意一个非数字字符
+</li>
+        <li>\W：表示任意一个非单词字符
+</li>
+        <li>\S：表示任意一个非空白字符
+</li>
+      </ul>
+      <p class="number">2、"字符集合 []"</p>
+      <p>"[]"用来描述单一字符，方括号内部可以定义这个字符的内容，也可以描述一个范围。例如:</p>
+      <p>[abc]:表示该字符只能是a或者b或者c</p>
+      <p>[123]:表示该字符只能是1或者2或者3</p>
+      <p>当我们需要描述所有小写字母时，我们可以使用范围 [a-z]，表示该字符可以是任意一个小写字母。</p>
+      <p>同样还可以使用 [0-9] 来表示该字符可以是任意一个数字。</p>
+      <p>也可以在多个范围内选择。比如，[a-zA-Z0-9_] 表示该字符可以是任意字母，数字以及"下划线"。</p>
+      <p class="number">3、"*"、"+"、"？"</p>
+      <p>通常我们需要描述的字符串会有很多重复出现的元素，但又不需要严格限制出现的次数时，我们就可以使用"*","+"这些量词。</p>
+      <p>例如：邮箱地址，那么在"@"字符前允许出现若干字符作为用户名。这时候我们就可以使用"\w+"来描述这里至少出现一个单词字符了。</p>
+      <ul class="list">
+        <li>"+"：表示内容可以连续出现至少1次以上
+</li>
+        <li>"*"：表示内容出现0-若干次
+</li>
+        <li>"?"：表示内容出现0-1次
+</li>
+      </ul>
+      <p class="number">4、{n}、{n,}{n,m}</p>
+      <p>除了前面讲到的量词外，有时我们也需要要求内容出现的次数有具体要求。比如手机号码。这时我们要求出现的数字就不能是一个模糊的概念了，而必须要求11位。又比如我们要求用户输入密码时，要求密码是6-15位。遇到这类问题是，我们可以使用:</p>
+      <ul class="list">
+        <li>{n}：表示内容必须出现n次
+</li>
+        <li>{n,m}：表示内容出现n-m次
+</li>
+        <li>{n,}：表示内容出现至少n次
+</li>
+      </ul>
+      <p>例如，\d{11} 就表示数字只能出现11位,这样就解决了上述的问题。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 分组</h3>
+      <p>通过上面的内容，我们还无法解决类似下面的问题:</p>
+      <p>在描述电话号码时，前面有区号，区号的形式可以是0086或者+86</p>
+      <p>那么我们如何在这两个字符串之间选择？</p>
+      <p>这时我们可以使用分组"()"。() 可以将内容看做一个整体，()中可以使用"|"来表示或关系。例如，(+86|0086) 表示这里可以是+86或者0086。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. "^"和"$"</h3>
+      <p>通过在正则表达式的开始添加"^"以及末尾添加"$"来表示一个整体。若不使用它们，那么正则表达式只匹配某个字符串的部分内容是否符合格式规则，但使用它们，则要求字符串必须从头到尾都满足该格式规则。</p>
+      <p>例如，^\w{ 8,10 }$ 表示整体字符串只能出现单词字符8-10个。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. String正则相关API</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. matches方法</h3>
+      <p>matches()方法的参数要求我们传入一个用字符串描述的正则表达式，然后使用该正则表达式描述的字符串格式规则来匹配当前字符串，若满足那么该方法返回true。否则返回false。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>emailRegEx <span class="sh_symbol">=</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_string">"^[a-zA-Z0-9_.-]+@([a-zA-Z0-9-]+</span><span class="sh_specialchar">\\</span><span class="sh_string">.)+[a-zA-Z0-9]{2,4}$"</span><span class="sh_symbol">;</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>email <span class="sh_symbol">=</span> <span class="sh_string">"bjliyi@tarena.com.cn"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>email<span class="sh_symbol">.</span><span class="sh_function">matches</span><span class="sh_symbol">(</span>emailRegEx<span class="sh_symbol">));</span><span class="sh_comment">//true</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	String emailRegEx =
+			 "^[a-zA-Z0-9_.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z0-9]{2,4}$"; 
+	String email = "bjliyi@tarena.com.cn";
+	System.out.println(email.matches(emailRegEx));//true
+</pre></div></div>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. split方法</h3>
+      <p>String[] split(String regex):参数要求传入一个用字符串描述的正则表达式，然后使用该正则表达式描述的字符串规则来匹配当前字符串，并按照满足的部分将字符串拆分。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"java,c#,php,javascript"</span><span class="sh_symbol">;</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;String<span class="sh_symbol">[]</span> array <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">split</span><span class="sh_symbol">(</span><span class="sh_string">","</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//[java,c#,php,javascript]</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>array<span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	String str = "java,c#,php,javascript"; 
+	String[] array = str.split(",");
+	//[java,c#,php,javascript]
+	System.out.println(Arrays.toString(array));
+</pre></div></div>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. replaceAll方法</h3>
+      <p>String replaceAll(String regex,String replacement):参数要求传入一个用字符串描述的正则表达式和一个需要替换的字符串，然后使用该正则表达式描述的字符串规则来匹配当前字符串，并将满足的部分替换为需要替换的这个字符串。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"abc123bcd45ef6g7890"</span><span class="sh_symbol">;;</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">replaceAll</span><span class="sh_symbol">(</span><span class="sh_string">"</span><span class="sh_specialchar">\\</span><span class="sh_string">d+"</span><span class="sh_symbol">,</span> <span class="sh_string">"数字"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span><span class="sh_comment">//abc数字bcd数字ef数字g数字</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	String str = "abc123bcd45ef6g7890";; 
+	str = str.replaceAll("\\d+", "数字");
+	System.out.println(str);//abc数字bcd数字ef数字g数字
+</pre></div></div>
+      <a name="Key02">
+      </a>
+      <h1>2. Object</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. Object</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. Object</h3>
+      <p>Object类是java中所有类的顶级父类。若我们定义的一个类没有显式的使用extends继承某个类时，默认就是继承自Object的。</p>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. toString()方法</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. 如何重写 toString 方法</h3>
+      <p>既然Object是所有类的顶级父类，那么在Object中定义的方法所有的类都具备。其中之一就是toStirng()方法。</p>
+      <p>String toString():该方法java希望我们重写时返回一个字符串，这个字符串的原则为:用一个字符串来描述当前对象。</p>
+      <p>Object实现了toString()方法，返回的是当前对象的“句柄”。</p>
+      <p>格式为:类的完全限定名@hashcode。</p>
+      <p>因为Object实现的toString()方法不具备什么实际开发意义，所以若我们需要在子类中使用该方法时通常我们会重写它。</p>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. String类重写toString()</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_usertype">String</span><span class="sh_normal"> </span><span class="sh_function">toString</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">this</span><span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public String toString(){
+	return this;
+}
+</pre></div></div>
+      <p>从源码中我们可以看到，String重写了Object的toString()方法，该方法直接将当前字符串对象自身返回。</p>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. equals()方法</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. equals方法</h3>
+      <p>boolean equals():该方法java希望我们重写时返回一个boolean值，表示两个对象间的内容比较是否一致。</p>
+      <p>Object已经实现了该方法，代码如下:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_type">boolean</span> <span class="sh_function">equals</span> <span class="sh_symbol">(</span><span class="sh_usertype">Object</span><span class="sh_normal"> </span>obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_symbol">(</span><span class="sh_keyword">this</span> <span class="sh_symbol">==</span> obj<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public boolean equals (Object obj) {
+	return (this == obj);
+}
+</pre></div></div>
+      <p>由此看出，实际上Object中重写该方法依旧使用"=="比较，所以当我们在子类中需要比较对象内容时就要重写该方法。</p>
+      <a name="Key02_03_02">
+      </a>
+      <h3>2.3.2. 如何重写equals方法</h3>
+      <p>重写equals方法应遵循几个规则:</p>
+      <ol class="list">
+        <li>任何对象与null比较都应返回false
+</li>
+        <li>两个对象不属于同一个类时应返回false
+</li>
+        <li>同一个对象equals比较应当恒等为true
+</li>
+      </ol>
+      <p>那么除此之外，两个对象在比较时，应根据具体的业务需求来自行决定对象的哪些属性相同时对象内容相同。</p>
+      <a name="Key02_03_03">
+      </a>
+      <h3>2.3.3. String重写equals()方法</h3>
+      <p>String重写了equals方法，作用是比较两个字符串对象中保存的字符序列是否完全一致。</p>
+      <a name="Key02_03_04">
+      </a>
+      <h3>2.3.4. equals与 == 的区别</h3>
+      <p>"=="是值比较，对于引用类型变量而言，该变量保存的是对象的地址，所以使用"=="比较时，意思为两个变量的地址是否相等，换句话说就是看两个变量引用的是否为同一个对象</p>
+      <p>equals是内容比较，对于两个引用变量而言，是比较两个变量所引用的对象内容是否相同。</p>
+      <p>举个例子，	就好像一对双胞胎，他们是两个独立的个体，是两个对象。所以那么用"=="比较是 false。但是因为他们“长得一样”，所以equals方法比较是true。</p>
+      <p>我们也可以变相的理解为:"=="是判断是否为同一个，而"equals"是判断像不像。</p>
+      <a name="Key03">
+      </a>
+      <h1>3. 包装类</h1>
+      <a name="Key03_01">
+      </a>
+      <h2>3.1. 包装类概述</h2>
+      <a name="Key03_01_01">
+      </a>
+      <h3>3.1.1. 包装类概述</h3>
+      <p>我们知道java是面向对象的语言，其精髓之一是可以使用多态性，提高程序的灵活度。但是java中有8个基本类型:byte,short,int,long,float,double,char,boolean。它们是以值的形式存在于内存中，而不是对象。它们不是Object的子类，不能参与面向对象的开发。在java1.5版本以前以下的代码是不能通过的</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Test</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"hello"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_function">doSome</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span><span class="sh_comment">//可以，因为String是Object的子类</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//程序编译不通过，原因在于int不是Object的子类，不能使用多态性。</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">doSome</span><span class="sh_symbol">(</span>i<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">doSome</span><span class="sh_symbol">(</span><span class="sh_usertype">Object</span><span class="sh_normal"> </span>o<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">....</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Test{
+	public static void main(String[] args){
+		String str = "hello";
+        doSome(str);//可以，因为String是Object的子类
+		
+		int i = 1;
+		//程序编译不通过，原因在于int不是Object的子类，不能使用多态性。
+		doSome(i);
+	}
+	public static void doSome(Object o){
+		....
+	}
+}
+</pre></div></div>
+      <p>问题出现的原因就是基本类型int没有继承关系，它不是Object的子类。所以，若想让基本类型以对象的形式存在，我们就需要定义一个类Integer,然后用其实例来描述一个基本类型int。这样的好处在于，我们使用对象来描述基本类型数据，而类又是继承自Object的。从而可以让基本类型参与面向对象的开发。好在，像Integer这样的类不需要我们定义，因为java已经提供了8中基本类型对应的包装类。</p>
+      <p>注:java1.5版本后出现了自动拆装箱特性，上述代码可以正常编译通过。自动拆装箱我们后面会详细描述。</p>
+      <p>对于8个基本类型，java提供了他们相应的包装类:</p>
+      <p>基本类型                        包装类</p>
+      <p>byte							   java.lang.Byte</p>
+      <p>short						   java.lang.Short</p>
+      <p>int							   java.lang.Integer</p>
+      <p>long							   java.lang.Long</p>
+      <p>float							   java.lang.Float</p>
+      <p>double						   java.lang.Double</p>
+      <p>char							   java.lang.Character</p>
+      <p>boolean						   java.lang.Boolean</p>
+      <p>其中除了Character与Boolean的父类是Object之外，其余的都是继承自:java.lang.Number</p>
+      <a name="Key03_02">
+      </a>
+      <h2>3.2. 8个基本类型包装类</h2>
+      <a name="Key03_02_01">
+      </a>
+      <h3>3.2.1. Number及其主要方法</h3>
+      <p>上一节我们已经知道，除了Character与Boolean之外的其他包装类都是继承自Number的，这些包装类都有一个共性，描述的都是数字。那么我们来了解一下他们的父类:java.lang.Number</p>
+      <p>Number是一个抽象类。本身不能实例化。Number 的子类必须提供将表示的数值转换为 byte、double、float、int、long 和 short 的方法</p>
+      <p>比如:</p>
+      <p>abstract double doubleValue()    以double形式返回指定的数值</p>
+      <p>abstract int intValue()            以int形式返回指定的数值</p>
+      <p>abstract float floatValue()         以float形式返回指定的数值</p>
+      <p>剩下的抽象方法请参阅API文档:java.lang.Number 。</p>
+      <a name="Key03_02_02">
+      </a>
+      <h3>3.2.2. Integer常用功能</h3>
+      <p>java.lang.Integer是int的包装类，其每一个实例用于描述一个基本类型int的值。</p>
+      <p>Integer有一个静态方法static int parseInt(String s)。</p>
+      <p>该方法的作用是将一个描述整数的字符串解析为该整数，并用int形式返回。该方法可能会抛出NumberFormatException异常:当给定的字符串里边含有非整数字符时。</p>
+      <a name="Key03_02_03">
+      </a>
+      <h3>3.2.3. Double常用功能</h3>
+      <p>java.lang.Double是double的包装类，其每一个实例用于描述一个基本类型double的值。</p>
+      <p>Double有一个静态方法static double parseDouble(String s)。</p>
+      <p>该方法的作用是将一个描述小数的字符串解析为该小数，并用double形式返回。该方法可能会抛出NumberFormatException异常: 如果字符串不包含可解析的 double 值。</p>
+      <a name="Key03_02_04">
+      </a>
+      <h3>3.2.4. 自动装箱和拆箱操作</h3>
+      <p>现在我们来学习一下如何在基本类型与包装类之间相互转换。</p>
+      <p>当我们需要将基本类型转换为包装类时，我们可以调用包装类的一个静态方法valueOf():</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Integer</span><span class="sh_normal"> </span>i <span class="sh_symbol">=</span> Integer<span class="sh_symbol">.</span><span class="sh_function">valueOf</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">Double</span><span class="sh_normal"> </span>d <span class="sh_symbol">=</span> Double<span class="sh_symbol">.</span><span class="sh_function">valueOf</span><span class="sh_symbol">(</span><span class="sh_number">1.1</span><span class="sh_symbol">):</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Integer i = Integer.valueOf(1);
+Double d = Double.valueOf(1.1):
+</pre></div></div>
+      <p>当我们需要将包装类转换为基本类型时，我们可以使用包装类的方法xxxValue()方法（这里不同的包装类方法名不完全一致，但都是以Value结尾）:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Integer</span><span class="sh_normal"> </span>i <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Integer</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span></li><li><span class="sh_type">int</span> n <span class="sh_symbol">=</span> i<span class="sh_symbol">.</span><span class="sh_function">intValue</span><span class="sh_symbol">();</span></li><li><span class="sh_usertype">Double</span><span class="sh_normal"> </span>d <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Double</span><span class="sh_symbol">(</span><span class="sh_number">1.1</span><span class="sh_symbol">);</span></li><li><span class="sh_type">double</span> dn <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span><span class="sh_function">doubleValue</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Integer i = new Integer(1);
+int n = i.intValue();
+Double d = new Double(1.1);
+double dn = d.doubleValue();
+</pre></div></div>
+      <p>虽然我们可以通过上述的方法在基本类型与包装类之间相互转换。但是在实际编写代码时相对还是比较麻烦的。java在1.5版本后推出了一个新的特性:自动拆装箱。</p>
+      <p>以下代码在java1.4时编译不通过，但是在java1.5之后可以:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> i <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Integer</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">);</span><span class="sh_comment">//可以自动将包装类转换为基本类型  自动拆箱</span></li><li><span class="sh_usertype">Integer</span><span class="sh_normal"> </span>in <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span><span class="sh_comment">//可以自动将基本类型转换为包装类  自动装箱</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int i = new Integer(1);//可以自动将包装类转换为基本类型  自动拆箱
+Integer in = 1;//可以自动将基本类型转换为包装类  自动装箱
+</pre></div></div>
+      <p>那么java是如何实现的自动拆装箱呢?</p>
+      <p>事实上JVM不支持该特性，自动拆装箱只是编译器在编译过程中的"预处理"操作。编译器在看到需要在包装类与基本类型之间转换时，会在编译为字节码时进行改变:</p>
+      <p>源代码中              编译后的字节码中</p>
+      <p>Integer a = 100   =&gt;  Integer a = Integer.valueOf(100);</p>
+      <p>Integer b = 200   =&gt;  Integer b = Integer.valueOf(200);</p>
+      <p>Integer c = a+b   =&gt;  Integer c = Integer.valueOf (a.intValue( ) + b.intValue( ));</p>
+      <p>double d = c     =&gt;  double d  = c . doubleValue( );</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

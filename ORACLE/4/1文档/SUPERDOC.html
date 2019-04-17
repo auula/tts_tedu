@@ -1,0 +1,456 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17894165928"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#Key01">SQL(高级查询)</a>
+        </li>
+      </ol>
+      <h1>1. SQL(高级查询)</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 子查询</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 子查询在WHERE子句中</h3>
+      <p>在SELECT查询中，在WHERE查询条件中的限制条件不是一个确定的值，而是来自于另外一个查询的结果。为了给查询提供数据而首先执行的查询语句叫做子查询。</p>
+      <p>子查询：嵌入在其它SQL语句中的SELECT语句，大部分时候出现在WHERE子句中。子查询嵌入的语句称作主查询或父查询。主查询可以是SELECT语句，也可以是其它类型的语句比如DML或DDL语句。</p>
+      <p>根据返回结果的不同，子查询可分为单行子查询、多行子查询及多列子查询。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图-1子查询</p>
+      </div>
+      <p>例如查找和SCOTT同职位的员工：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>job</li><li>FROM emp e</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>job <span class="sh_symbol">=</span> </li><li>  <span class="sh_symbol">(</span>SELECT job FROM emp <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>ename <span class="sh_symbol">=</span> <span class="sh_string">'SCOTT'</span><span class="sh_symbol">)</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e.ename, e.job
+FROM emp e
+WHERE e.job = 
+  (SELECT job FROM emp WHERE ename = 'SCOTT')；
+</pre></div></div>
+      <p>查找薪水比整个机构平均薪水高的员工：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>deptno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> sal</li><li>FROM emp e</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>sal<span class="sh_symbol">&gt;</span> <span class="sh_symbol">(</span><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">AVG</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno, ename, sal
+FROM emp e
+WHERE sal&gt; (SELECT AVG(sal) FROM emp);
+</pre></div></div>
+      <p>如果子查询返回多行，主查询中要使用多行比较操作符，包括IN、ALL、ANY。其中ALL和ANY不能单独使用，需要配合单行比较操作符&gt;、&gt;=、&lt;、&lt;=一起使用。例如查询出部门中有SALESMAN但职位不是SALESMAN的员工的信息：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> deptno</li><li>FROM emp</li><li>WHERE deptno IN </li><li><span class="sh_symbol">(</span>SELECT deptno FROM emp <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>job <span class="sh_symbol">=</span> <span class="sh_string">'SALESMAN'</span><span class="sh_symbol">)</span></li><li><span class="sh_usertype">AND</span><span class="sh_normal"> </span>job <span class="sh_symbol">&lt;&gt;</span> <span class="sh_string">'SALESMAN'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT empno, ename, job, sal, deptno
+FROM emp
+WHERE deptno IN 
+(SELECT deptno FROM emp WHERE job = 'SALESMAN')
+AND job &lt;&gt; 'SALESMAN';
+</pre></div></div>
+      <p>在子查询中需要引用到主查询的字段数据，使用EXISTS关键字。EXISTS后边的子查询至少返回一行数据，则整个条件返回TRUE。如果子查询没有结果，则返回FALSE。例如列出来那些有员工的部门信息：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>deptno<span class="sh_symbol">,</span> dname FROM dept d</li><li>WHERE EXISTS </li><li>                <span class="sh_symbol">(</span>SELECT <span class="sh_symbol">*</span> FROM emp e</li><li>                 <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>d<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> e<span class="sh_symbol">.</span>deptno<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno, dname FROM dept d
+WHERE EXISTS 
+                (SELECT * FROM emp e
+                 WHERE d.deptno = e.deptno);
+</pre></div></div>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 子查询在HAVING部分</h3>
+      <p>子查询不仅可以出现在WHERE子句中，还可以出现在HAVING部分。例如查询列出最低薪水高于部门30的最低薪水的部门信息：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>deptno<span class="sh_symbol">,</span> <span class="sh_function">MIN</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> min_sal</li><li>FROM emp</li><li>GROUP BY deptno</li><li><span class="sh_usertype">HAVING</span><span class="sh_normal"> </span><span class="sh_function">MIN</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> <span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">(</span><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">MIN</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> FROM emp <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>deptno <span class="sh_symbol">=</span> <span class="sh_number">30</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno, MIN(sal) min_sal
+FROM emp
+GROUP BY deptno
+HAVING MIN(sal) &gt;
+(SELECT MIN(sal) FROM emp WHERE deptno = 30);
+</pre></div></div>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 子查询在FROM部分</h3>
+      <p>在查询语句中，FROM子句用来指定要查询的表。如果要在一个子查询的结果中继续查询，则子查询出现在FROM 子句中，这个子查询也称作行内视图或者匿名视图。这时，把子查询当作视图对待，但视图没有名字，只能在当前的SQL语句中有效。</p>
+      <p>查询出薪水比本部门平均薪水高的员工信息：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>deptno<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>sal</li><li>FROM <span class="sh_usertype">emp</span><span class="sh_normal"> </span>e<span class="sh_symbol">,</span></li><li><span class="sh_symbol">(</span><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>deptno<span class="sh_symbol">,</span> <span class="sh_function">AVG</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> avg_sal FROM emp GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>deptno<span class="sh_symbol">)</span> x</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> x<span class="sh_symbol">.</span>deptno</li><li>ande<span class="sh_symbol">.</span>sal<span class="sh_symbol">&gt;</span>x<span class="sh_symbol">.</span>avg_sal</li><li>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e.deptno, e.ename, e.sal
+FROM emp e,
+(SELECT deptno, AVG(sal) avg_sal FROM emp GROUP BY deptno) x
+WHERE e.deptno = x.deptno
+ande.sal&gt;x.avg_sal
+ORDER BY e.deptno;
+</pre></div></div>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 子查询在SELECT部分</h3>
+      <p>把子查询放在SELECT子句部分，可以认为是外连接的另一种表现形式，使用更灵活：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>sal<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>deptno<span class="sh_symbol">,</span></li><li>           <span class="sh_symbol">(</span><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>d<span class="sh_symbol">.</span>deptno FROM dept d </li><li>            <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>d<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> e<span class="sh_symbol">.</span>deptno<span class="sh_symbol">)</span>  deptno</li><li>FROM <span class="sh_usertype">emp</span><span class="sh_normal"> </span>e<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT e.ename, e.sal, e.deptno,
+           (SELECT d.deptno FROM dept d 
+            WHERE d.deptno = e.deptno)  deptno
+FROM emp e;
+</pre></div></div>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 分页查询</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. ROWNUM</h3>
+      <p>ROWNUM被称作伪列，用于返回标识行数据顺序的数字。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ROWNUM<span class="sh_symbol">,</span> empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> sal</li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ROWNUM, empno, ename, sal
+FROM emp;
+</pre></div></div>
+      <p>ROWNUM只能从1计数，不能从结果集中直接截取。下面的查询语句将没有结果：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ROWNUM<span class="sh_symbol">,</span> empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> sal</li><li>FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>rownum<span class="sh_symbol">&gt;</span> <span class="sh_number">3</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ROWNUM, empno, ename, sal
+FROM emp
+WHERE rownum&gt; 3;
+</pre></div></div>
+      <p>如果利用ROWNUM截取结果集中的部分数据，需要用到行内视图：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT  <span class="sh_symbol">*</span> FROM </li><li>  <span class="sh_symbol">(</span><span class="sh_usertype">SELECT</span><span class="sh_normal">  </span>ROWNUMrn <span class="sh_symbol">,</span> e<span class="sh_symbol">.*</span> FROM <span class="sh_usertype">emp</span><span class="sh_normal"> </span>e <span class="sh_symbol">)</span>  </li><li> WHERE rn BETWEEN <span class="sh_number">8</span> AND <span class="sh_number">10</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT  * FROM 
+  (SELECT  ROWNUMrn , e.* FROM emp e )  
+ WHERE rn BETWEEN 8 AND 10;
+</pre></div></div>
+      <p>也就是将ROWNUM先作为行内视图的一个列，在主查询中就可以使用这个列值作为条件。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 使用子查询进行分页</h3>
+      <p>分页策略是指每次只取一页的数据。当每次换页，取下一页的数据。在ORACLE中利用ROWNUM的功能来进行分页。</p>
+      <p>假设结果集共105条，每20条分为一页，则共6页：</p>
+      <p>Page1： 1 至 20</p>
+      <p>Page2： 21 至40</p>
+      <p>…</p>
+      <p>PageN:  (n - 1) * pageSize + 1 至  n * pageSize</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 分页与ORDER BY</h3>
+      <p>按薪水倒序排列，取出结果集中第8到第10条的记录：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT  <span class="sh_symbol">*</span> FROM </li><li>  <span class="sh_symbol">(</span><span class="sh_usertype">SELECT</span><span class="sh_normal">  </span>ROWNUMrn <span class="sh_symbol">,</span> t<span class="sh_symbol">.*</span> FROM </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">(</span><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>empno<span class="sh_symbol">,</span>ename<span class="sh_symbol">,</span>sal FROM emp</li><li>     ORDER BY <span class="sh_usertype">sal</span><span class="sh_normal"> </span>DESC<span class="sh_symbol">)</span>  t</li><li>  <span class="sh_symbol">)</span>  </li><li> WHERE rn BETWEEN <span class="sh_number">8</span> AND <span class="sh_number">10</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT  * FROM 
+  (SELECT  ROWNUMrn , t.* FROM 
+	(SELECT empno,ename,sal FROM emp
+     ORDER BY sal DESC)  t
+  )  
+ WHERE rn BETWEEN 8 AND 10;
+</pre></div></div>
+      <p>根据要查看的页数，计算起点值（(n - 1) * pageSize + 1）和终点值（n * pageSize），替换掉BETWEEN和AND的参数，即得到当前页的记录。</p>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. DECODE函数</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. DECODE函数基本语法</h3>
+      <p>DECODE函数的语法如下：</p>
+      <p>DECODE (expr, search1, result1[, search2, result2…][, default])</p>
+      <p>它用于比较参数expr的值，如果匹配到哪一个search条件，就返回对应的result结果，可以有多组search和result的对应关系，如果任何一个search条件都没有匹配到，则返回最后default的值。default参数是可选的，如果没有提供default参数值，当没有匹配到时，将返回NULL。</p>
+      <p>查询职员表，根据职员的职位计算奖励金额，当职位分别是’MANAGER’、’ANALYST’、’SALESMAN’时，奖励金额分别是薪水的1.2倍、1.1倍、1.05倍，如果不是这三个职位，则奖励金额取薪水值：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span></li><li><span class="sh_function">DECODE</span><span class="sh_symbol">(</span>job<span class="sh_symbol">,</span> <span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span> sal <span class="sh_symbol">*</span> <span class="sh_number">1.2</span><span class="sh_symbol">,</span></li><li>               <span class="sh_string">'ANALYST'</span><span class="sh_symbol">,</span> sal <span class="sh_symbol">*</span> <span class="sh_number">1.1</span><span class="sh_symbol">,</span></li><li>              <span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span> sal <span class="sh_symbol">*</span> <span class="sh_number">1.05</span><span class="sh_symbol">,</span></li><li>sal</li><li>     <span class="sh_symbol">)</span> bonus</li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, job, sal,
+DECODE(job, 'MANAGER', sal * 1.2,
+               'ANALYST', sal * 1.1,
+              'SALESMAN', sal * 1.05,
+sal
+     ) bonus
+FROM emp;
+</pre></div></div>
+      <p>和DECODE函数功能相似的有CASE语句，实现类似于if-else的操作。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span></li><li>     CASE <span class="sh_usertype">job</span><span class="sh_normal"> </span>WHEN <span class="sh_string">'MANAGER'</span> <span class="sh_usertype">THEN</span><span class="sh_normal"> </span>sal <span class="sh_symbol">*</span> <span class="sh_number">1.2</span></li><li>      WHEN <span class="sh_string">'ANALYST'</span> <span class="sh_usertype">THEN</span><span class="sh_normal"> </span>sal <span class="sh_symbol">*</span> <span class="sh_number">1.1</span></li><li>     WHEN <span class="sh_string">'SALESMAN'</span> <span class="sh_usertype">THEN</span><span class="sh_normal"> </span>sal <span class="sh_symbol">*</span> <span class="sh_number">1.05</span></li><li>                    ELSE sal END</li><li>bonus</li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, job, sal,
+     CASE job WHEN 'MANAGER' THEN sal * 1.2
+      WHEN 'ANALYST' THEN sal * 1.1
+     WHEN 'SALESMAN' THEN sal * 1.05
+                    ELSE sal END
+bonus
+FROM emp;
+</pre></div></div>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. DECODE函数在分组查询中的应用</h3>
+      <p>DECODE函数可以按字段内容分组，例如：计算职位的人数，analyst/manager职位属于vip，其余是普通员工operation,这种功能无法用GROUP BY简单实现。用decode的实现方式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">DECODE</span><span class="sh_symbol">(</span>job<span class="sh_symbol">,</span> <span class="sh_string">'ANALYST'</span><span class="sh_symbol">,</span> <span class="sh_string">'VIP'</span><span class="sh_symbol">,</span> </li><li>                       <span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span> <span class="sh_string">'VIP'</span><span class="sh_symbol">,</span> </li><li>                       <span class="sh_string">'OPERATION'</span><span class="sh_symbol">)</span> job<span class="sh_symbol">,</span></li><li><span class="sh_function">COUNT</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">)</span> job_cnt</li><li>FROM emp</li><li>GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span><span class="sh_function">DECODE</span><span class="sh_symbol">(</span>job<span class="sh_symbol">,</span> <span class="sh_string">'ANALYST'</span><span class="sh_symbol">,</span> <span class="sh_string">'VIP'</span><span class="sh_symbol">,</span> <span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span> <span class="sh_string">'VIP'</span><span class="sh_symbol">,</span> <span class="sh_string">'OPERATION'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT DECODE(job, 'ANALYST', 'VIP', 
+                       'MANAGER', 'VIP', 
+                       'OPERATION') job,
+COUNT(1) job_cnt
+FROM emp
+GROUP BY DECODE(job, 'ANALYST', 'VIP', 'MANAGER', 'VIP', 'OPERATION');
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图-2DECODE函数的运行结果</p>
+      </div>
+      <p>DECODE函数也可以按字段内容排序，例如：Dept表中按”研发部”、“市场部”、“销售部”排序，用普通的select语句，无法按照字面数据排序：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>deptno<span class="sh_symbol">,</span> dname<span class="sh_symbol">,</span> loc</li><li>FROM dept</li><li>ORDER BY </li><li>      <span class="sh_function">DECODE</span><span class="sh_symbol">(</span>dname<span class="sh_symbol">,</span> <span class="sh_string">'研发部'</span><span class="sh_symbol">,</span><span class="sh_number">1</span><span class="sh_symbol">,</span><span class="sh_string">'市场部'</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">,</span><span class="sh_string">'销售部'</span><span class="sh_symbol">,</span><span class="sh_number">3</span><span class="sh_symbol">),</span> loc<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno, dname, loc
+FROM dept
+ORDER BY 
+      DECODE(dname, '研发部',1,'市场部',2,'销售部',3), loc;
+</pre></div></div>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. 排序函数</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. ROW_NUMBER</h3>
+      <p>ROW_NUMBER语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">ROW_NUMBER</span><span class="sh_symbol">()</span> <span class="sh_function">OVER</span><span class="sh_symbol">(</span></li><li>          PARTITION BY col1 ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>col2<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">ROW_NUMBER() OVER(
+          PARTITION BY col1 ORDER BY col2)
+</pre></div></div>
+      <p>表示根据col1分组，在分组内部根据col2排序。此函数计算的值就表示每组内部排序后的顺序编号，组内连续且唯一。</p>
+      <p>ROWNUM是伪列， ROW_NUMBER功能更强，可以直接从结果集中取出子集。</p>
+      <p>场景：按照部门编码分组显示，每组内按职员编码排序，并赋予组内编码</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>deptno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> empno<span class="sh_symbol">,</span></li><li> <span class="sh_function">ROW_NUMBER</span><span class="sh_symbol">()</span></li><li>   <span class="sh_function">OVER</span> <span class="sh_symbol">(</span>PARTITION BY deptno ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>empno<span class="sh_symbol">)</span>     <span class="sh_usertype">AS</span><span class="sh_normal"> </span>emp_id</li><li>   <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li><li><p></p></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno, ename, empno,
+ ROW_NUMBER()
+   OVER (PARTITION BY deptno ORDER BY empno)     AS emp_id
+   FROM emp;
+<p></p></pre></div></div>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. RANK</h3>
+      <p>RANK函数的语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">RANK</span><span class="sh_symbol">()</span> <span class="sh_function">OVER</span><span class="sh_symbol">(</span></li><li>          PARTITION BY col1 ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>col2<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">RANK() OVER(
+          PARTITION BY col1 ORDER BY col2)
+</pre></div></div>
+      <p>表示根据col1分组，在分组内部根据col2给予等级标识，即排名，相同的数据返回相同排名。特点是跳跃排序，如果有相同数据，则排名相同，比如并列第二，则两行数据都标记为2，但下一位将是第四名。</p>
+      <p>和ROW_NUMBER的区别是有结果有重复值，而ROW_NUMBER没有。</p>
+      <p>场景：按照部门编码分组，同组内按薪水倒序排序，相同薪水则按奖金数正序排序，并给予组内等级，用Rank_ID表示</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>deptno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> comm<span class="sh_symbol">,</span></li><li><span class="sh_function">RANK</span><span class="sh_symbol">()</span> <span class="sh_function">OVER</span> <span class="sh_symbol">(</span>PARTITION BY deptno</li><li>   ORDER BY <span class="sh_usertype">sal</span><span class="sh_normal"> </span>DESC<span class="sh_symbol">,</span> comm<span class="sh_symbol">)</span> <span class="sh_string">"Rank_ID"</span></li><li>   FROM emp；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno, ename, sal, comm,
+RANK() OVER (PARTITION BY deptno
+   ORDER BY sal DESC, comm) "Rank_ID"
+   FROM emp；
+</pre></div></div>
+      <a name="Key01_04_03">
+      </a>
+      <h3>1.4.3. DENSE_RANK</h3>
+      <p>DENSE_RANK函数的语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">DENSE_RANK</span><span class="sh_symbol">()</span> <span class="sh_function">OVER</span><span class="sh_symbol">(</span></li><li>          PARTITION BY col1 ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>col2<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">DENSE_RANK() OVER(
+          PARTITION BY col1 ORDER BY col2)
+</pre></div></div>
+      <p>表示根据col1分组，在分组内部根据col2给予等级标识，即排名，相同的数据返回相同排名。特点是连续排序，如果有并列第二，下一个排序将是三，这一点是和RANK的不同，RANK是跳跃排序。</p>
+      <p>场景：关联emp和dept表，按照部门编码分组，每组内按照员工薪水排序，列出员工的部门名字、姓名和薪水：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>sal<span class="sh_symbol">,</span> </li><li>            <span class="sh_function">DENSE_RANK</span><span class="sh_symbol">()</span></li><li>      <span class="sh_function">OVER</span> <span class="sh_symbol">(</span>PARTITION <span class="sh_usertype">BY</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>deptno ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>e<span class="sh_symbol">.</span>sal<span class="sh_symbol">)</span>     </li><li>            AS drank</li><li>   FROM emp e join dept d</li><li>one<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT d.dname, e.ename, e.sal, 
+            DENSE_RANK()
+      OVER (PARTITION BY e.deptno ORDER BY e.sal)     
+            AS drank
+   FROM emp e join dept d
+one.deptno = d.deptno;
+</pre></div></div>
+      <a name="Key01_05">
+      </a>
+      <h2>1.5. 高级分组函数</h2>
+      <a name="Key01_05_01">
+      </a>
+      <h3>1.5.1. ROLLUP</h3>
+      <p>ROLLUP、CUBE 和 GROUPING SETS 运算符是 GROUP BY 子句的扩展，可以生成与使用 UNION ALL 来组合单个分组查询时相同的结果集，用来简化和高效的实现统计查询。语法形式如下：</p>
+      <ul class="list">
+        <li>GROUP BY ROLLUP(a, b, c)
+</li>
+        <li>GROUP BY CUBE(a, b, c)
+</li>
+        <li>GROUP BY GROUPING SETS ( (a), (b))
+</li>
+      </ul>
+      <p>假设有表test，有a、b、c、d四个列。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>c<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span><span class="sh_function">ROLLUP</span><span class="sh_symbol">(</span>a<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>c<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT a,b,c,SUM(d) FROM test GROUP BY ROLLUP(a,b,c);
+</pre></div></div>
+      <p>等价于：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>c<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>c</li><li>UNION ALL</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span><span class="sh_keyword">null</span><span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>b</li><li>UNION ALL</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span><span class="sh_keyword">null</span><span class="sh_symbol">,</span><span class="sh_keyword">null</span><span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP BY a</li><li>UNION ALL</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_keyword">null</span><span class="sh_symbol">,</span><span class="sh_keyword">null</span><span class="sh_symbol">,</span><span class="sh_keyword">null</span><span class="sh_symbol">,</span><span class="sh_function">sum</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>test<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT a,b,c,SUM(d) FROM test GROUP BY a,b,c
+UNION ALL
+SELECT a,b,null,SUM(d) FROM test GROUP BY a,b
+UNION ALL
+SELECT a,null,null,SUM(d) FROM test GROUP BY a
+UNION ALL
+SELECT null,null,null,sum(d) FROM test;
+</pre></div></div>
+      <p>对ROLLUP的列从右到左以一次少一列的方式进行分组直到所有列都去掉后的分组(也就是全表分组)。对于n个参数的ROLLUP，有n+1次分组。</p>
+      <div class="table">
+        <p>表－1 数据样例表</p>
+        <img src="./SUPERDOC_files/table001.png">
+      </div>
+      <p>准备数据：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SQL<span class="sh_symbol">&gt;</span>DROP <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span>sales_tab<span class="sh_symbol">;</span></li><li>SQL<span class="sh_symbol">&gt;</span>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">sales_tab</span> <span class="sh_symbol">(</span></li><li>year_id   NUMBER <span class="sh_usertype">NOT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">,</span></li><li>month_id   NUMBER <span class="sh_usertype">NOT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">,</span></li><li>day_id   NUMBER <span class="sh_usertype">NOT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">,</span></li><li><span class="sh_usertype">sales_value</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">)</span> NOT NULL</li><li><span class="sh_symbol">);</span></li><li>SQL<span class="sh_symbol">&gt;</span>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span>sales_tab</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">TRUNC</span><span class="sh_symbol">(</span>DBMS_RANDOM<span class="sh_symbol">.</span><span class="sh_function">value</span><span class="sh_symbol">(</span>low <span class="sh_symbol">=&gt;</span> <span class="sh_number">2010</span><span class="sh_symbol">,</span> high <span class="sh_symbol">=&gt;</span> <span class="sh_number">2012</span><span class="sh_symbol">))</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span></li><li><span class="sh_function">TRUNC</span><span class="sh_symbol">(</span>DBMS_RANDOM<span class="sh_symbol">.</span><span class="sh_function">value</span><span class="sh_symbol">(</span>low <span class="sh_symbol">=&gt;</span> <span class="sh_number">1</span><span class="sh_symbol">,</span> high <span class="sh_symbol">=&gt;</span> <span class="sh_number">13</span><span class="sh_symbol">))</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>month_id<span class="sh_symbol">,</span></li><li><span class="sh_function">TRUNC</span><span class="sh_symbol">(</span>DBMS_RANDOM<span class="sh_symbol">.</span><span class="sh_function">value</span><span class="sh_symbol">(</span>low <span class="sh_symbol">=&gt;</span> <span class="sh_number">1</span><span class="sh_symbol">,</span> high <span class="sh_symbol">=&gt;</span> <span class="sh_number">32</span><span class="sh_symbol">))</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>day_id<span class="sh_symbol">,</span></li><li><span class="sh_function">ROUND</span><span class="sh_symbol">(</span>DBMS_RANDOM<span class="sh_symbol">.</span><span class="sh_function">value</span><span class="sh_symbol">(</span>low <span class="sh_symbol">=&gt;</span> <span class="sh_number">1</span><span class="sh_symbol">,</span> high <span class="sh_symbol">=&gt;</span> <span class="sh_number">100</span><span class="sh_symbol">),</span> <span class="sh_number">2</span><span class="sh_symbol">)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>sales_value</li><li>FROM   dual</li><li>CONNECT <span class="sh_usertype">BY</span><span class="sh_normal"> </span>level <span class="sh_symbol">&lt;=</span> <span class="sh_number">1000</span><span class="sh_symbol">;</span></li><li>SQL<span class="sh_symbol">&gt;</span>COMMIT<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SQL&gt;DROP TABLE sales_tab;
+SQL&gt;CREATE TABLE sales_tab (
+year_id   NUMBER NOT NULL,
+month_id   NUMBER NOT NULL,
+day_id   NUMBER NOT NULL,
+sales_value NUMBER(10,2) NOT NULL
+);
+SQL&gt;INSERT INTO sales_tab
+SELECT TRUNC(DBMS_RANDOM.value(low =&gt; 2010, high =&gt; 2012)) AS year_id,
+TRUNC(DBMS_RANDOM.value(low =&gt; 1, high =&gt; 13)) AS month_id,
+TRUNC(DBMS_RANDOM.value(low =&gt; 1, high =&gt; 32)) AS day_id,
+ROUND(DBMS_RANDOM.value(low =&gt; 1, high =&gt; 100), 2) AS sales_value
+FROM   dual
+CONNECT BY level &lt;= 1000;
+SQL&gt;COMMIT;
+</pre></div></div>
+      <p>复习组函数的用法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SQL<span class="sh_symbol">&gt;</span><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>sales_value <span class="sh_usertype">FROM</span><span class="sh_normal">   </span>sales_tab<span class="sh_symbol">;</span></li><li>SQL<span class="sh_symbol">&gt;</span><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> <span class="sh_function">COUNT</span><span class="sh_symbol">(*)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>num_rows<span class="sh_symbol">,</span></li><li><span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>sales_value</li><li><span class="sh_usertype">FROM</span><span class="sh_normal">   </span>sales_tab</li><li>GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>year_id</li><li>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">;</span></li><li>SQL<span class="sh_symbol">&gt;</span><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span></li><li><span class="sh_function">COUNT</span><span class="sh_symbol">(*)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>num_rows<span class="sh_symbol">,</span></li><li><span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>sales_value</li><li><span class="sh_usertype">FROM</span><span class="sh_normal">   </span>sales_tab</li><li>GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id</li><li>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SQL&gt;SELECT SUM(sales_value) AS sales_value FROM   sales_tab;
+SQL&gt;SELECT year_id, COUNT(*) AS num_rows,
+SUM(sales_value) AS sales_value
+FROM   sales_tab
+GROUP BY year_id
+ORDER BY year_id;
+SQL&gt;SELECT year_id, month_id,
+COUNT(*) AS num_rows,
+SUM(sales_value) AS sales_value
+FROM   sales_tab
+GROUP BY year_id, month_id
+ORDER BY year_id, month_id;
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图-3 在测试表中使用组函数的运行结果</p>
+      </div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图-4 在测试表中使用组函数的运行结果</p>
+      </div>
+      <p>ROLLUP函数的用法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> </li><li><span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>sales_value</li><li><span class="sh_usertype">FROM</span><span class="sh_normal">   </span>sales_tab</li><li>GROUP BY </li><li><span class="sh_function">ROLLUP</span> <span class="sh_symbol">(</span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">)</span></li><li>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT year_id, month_id, 
+SUM(sales_value) AS sales_value
+FROM   sales_tab
+GROUP BY 
+ROLLUP (year_id, month_id)
+ORDER BY year_id, month_id;
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图-5 在测试表中使用ROLLUP函数的运行结果</p>
+      </div>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> day_id<span class="sh_symbol">,</span> <span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>sales_value</li><li><span class="sh_usertype">FROM</span><span class="sh_normal">   </span>sales_tab</li><li>GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span><span class="sh_function">ROLLUP</span> <span class="sh_symbol">(</span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> day_id<span class="sh_symbol">)</span></li><li>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> day_id<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT year_id, month_id, day_id, SUM(sales_value) AS sales_value
+FROM   sales_tab
+GROUP BY ROLLUP (year_id, month_id, day_id)
+ORDER BY year_id, month_id, day_id;
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image006.png">
+        <p>图-6 在测试表中使用ROLLUP函数的运行结果</p>
+      </div>
+      <a name="Key01_05_02">
+      </a>
+      <h3>1.5.2. CUBE</h3>
+      <p>CUBE函数的语法形式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span><span class="sh_function">CUBE</span><span class="sh_symbol">(</span>a<span class="sh_symbol">,</span> b<span class="sh_symbol">,</span> c<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">GROUP BY CUBE(a, b, c)
+</pre></div></div>
+      <p>对cube的每个参数，都可以理解为取值为参与分组和不参与分组两个值的一个维度，所有维度取值组合的集合就是分组后的集合。对于n个参数的cube，有2^n次分组。</p>
+      <p>如果GROUP BY CUBE(a,b,c)，首先对(a,b,c)进行GROUP BY，然后依次是(a,b)，(a,c)，(a)，(b,c)，(b)，(c)，最后对全表进行GROUP BY操作，所以一共是2^3=8次分组。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>c<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span><span class="sh_function">CUBE</span><span class="sh_symbol">(</span>a<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>c<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT a,b,c,SUM(d) FROM test GROUP BY CUBE(a,b,c);
+</pre></div></div>
+      <p>等价于：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>c<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>c</li><li>UNION ALL</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>b</li><li>UNION ALL</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span>c<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>c</li><li>UNION ALL</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>a<span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP BY a</li><li>UNION ALL</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>c<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span>b<span class="sh_symbol">,</span>c</li><li>UNION ALL</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">,</span>b<span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP BY b</li><li>UNION ALL</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span>c<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> FROM test GROUP BY c</li><li>UNION ALL</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_function">SUM</span><span class="sh_symbol">(</span>d<span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>test <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT a,b,c,SUM(d) FROM test GROUP BY a,b,c
+UNION ALL
+SELECT a,b,NULL,SUM(d) FROM test GROUP BY a,b
+UNION ALL
+SELECT a,NULL,c,SUM(d) FROM test GROUP BY a,c
+UNION ALL
+SELECT a,NULL,NULL,SUM(d) FROM test GROUP BY a
+UNION ALL
+SELECT NULL,b,c,SUM(d) FROM test GROUP BY b,c
+UNION ALL
+SELECT NULL,b,NULL,SUM(d) FROM test GROUP BY b
+UNION ALL
+SELECT NULL,NULL,c,SUM(d) FROM test GROUP BY c
+UNION ALL
+SELECT NULL,NULL,NULL,SUM(d) FROM test ;
+</pre></div></div>
+      <p>等价于只是方便理解，其内部运行机制并不相同，其效率远高于UNION ALL。</p>
+      <p>在sales_value表中使用cube函数：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span></li><li><span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>sales_value</li><li><span class="sh_usertype">FROM</span><span class="sh_normal">   </span>sales_tab</li><li>GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span><span class="sh_function">CUBE</span> <span class="sh_symbol">(</span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">)</span></li><li>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT year_id, month_id,
+SUM(sales_value) AS sales_value
+FROM   sales_tab
+GROUP BY CUBE (year_id, month_id)
+ORDER BY year_id, month_id;
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image007.png">
+        <p>图-7在测试表中使用CUBE函数的运行结果</p>
+      </div>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span>  month_id<span class="sh_symbol">,</span> day_id<span class="sh_symbol">,</span></li><li><span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>sales_value</li><li><span class="sh_usertype">FROM</span><span class="sh_normal">   </span>sales_tab</li><li>GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span><span class="sh_function">CUBE</span> <span class="sh_symbol">(</span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> day_id<span class="sh_symbol">)</span></li><li>ORDER <span class="sh_usertype">BY</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> day_id<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT year_id,  month_id, day_id,
+SUM(sales_value) AS sales_value
+FROM   sales_tab
+GROUP BY CUBE (year_id, month_id, day_id)
+ORDER BY year_id, month_id, day_id;
+</pre></div></div>
+      <a name="Key01_05_03">
+      </a>
+      <h3>1.5.3. GROUPING SETS</h3>
+      <p>GROUPING SETS 运算符可以生成与使用单个 GROUP BY、ROLLUP 或 CUBE 运算符所生成的结果集相同的结果集，但是使用更灵活。</p>
+      <p>如果不需要获得由完备的 ROLLUP 或 CUBE 运算符生成的全部分组，则可以使用 GROUPING SETS 仅指定所需的分组。GROUPING SETS 列表可以包含重复的分组。</p>
+      <p>GROUPING SETS示例：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> <span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span>  </li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>sales_tab</li><li>GROUP <span class="sh_usertype">BY</span><span class="sh_normal"> </span><span class="sh_function">CUBE</span> <span class="sh_symbol">(</span>year_id<span class="sh_symbol">,</span>month_id<span class="sh_symbol">)</span></li><li>order by <span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">;</span> </li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> <span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span>  </li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>sales_tab</li><li>GROUP BY <span class="sh_usertype">GROUPING</span><span class="sh_normal"> </span><span class="sh_function">SETS</span> <span class="sh_symbol">(</span>  <span class="sh_symbol">(</span>year_id<span class="sh_symbol">),</span> <span class="sh_symbol">(</span>month_id<span class="sh_symbol">))</span></li><li>order by <span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">2</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT year_id, month_id, SUM(sales_value)  
+FROM sales_tab
+GROUP BY CUBE (year_id,month_id)
+order by 1, 2; 
+
+SELECT year_id, month_id, SUM(sales_value)  
+FROM sales_tab
+GROUP BY GROUPING SETS (  (year_id), (month_id))
+order by 1, 2
+</pre></div></div>
+      <p>其中分组方式示例如下：</p>
+      <ul class="list">
+        <li>使用GROUP BY GROUPING SETS(a,b,c)，则对(a),(b),(c)进行GROUP BY
+</li>
+        <li>使用GROUP BY GROUPING SETS((a,b),c), 则对(a,b),(c)进行GROUP BY
+</li>
+        <li>GROUPING BY GROUPING SET(a,a) , 则对(a)进行2次GROUP BY, GROUPING SETS的参数允许重复
+</li>
+      </ul>
+      <a name="Key01_06">
+      </a>
+      <h2>1.6. 集合操作</h2>
+      <a name="Key01_06_01">
+      </a>
+      <h3>1.6.1. UNION、UNION ALL<p>图-8 集合操作</p></h3>
+      <p>为了合并多个SELECT语句的结果，可以使用集合操作符，实现集合的并、交、差。</p>
+      <p>集合操作符包括UNION、UNION ALL、INTERSECT和MINUS。多条作集合操作的SELECT语句的列的个数和数据类型必须匹配。</p>
+      <p>ORDER BY子句只能放在最后的一个查询语句中。</p>
+      <p>集合操作的语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT statement1</li><li><span class="sh_symbol">[</span>UNION <span class="sh_symbol">|</span> <span class="sh_usertype">UNION</span><span class="sh_normal"> </span>ALL <span class="sh_symbol">|</span> INTERSECT <span class="sh_symbol">|</span> MINUS<span class="sh_symbol">]</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>statement2<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT statement1
+[UNION | UNION ALL | INTERSECT | MINUS]
+SELECT statement2;
+</pre></div></div>
+      <p>UNION和UNION ALL用来获取两个或两个以上结果集的并集：</p>
+      <ul class="list">
+        <li>UNION操作符会自动去掉合并后的重复记录。
+</li>
+        <li>UNION ALL返回两个结果集中的所有行，包括重复的行。
+</li>
+        <li>UNION操作符对查询结果排序，UNION ALL不排序。
+</li>
+      </ul>
+      <p>例如，合并职位是’MANAGER’的员工和薪水大于2500的员工集合，查看两种方式的结果差别：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>Union</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>job <span class="sh_symbol">=</span> <span class="sh_string">'MANAGER'</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>sal<span class="sh_symbol">&gt;</span> <span class="sh_number">2500</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">--</span>Union all</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>job <span class="sh_symbol">=</span> <span class="sh_string">'MANAGER'</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>sal<span class="sh_symbol">&gt;</span> <span class="sh_number">2500</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--Union
+SELECT ename, job, sal FROM emp
+WHERE job = 'MANAGER'
+SELECT ename, job, sal FROM emp
+WHERE sal&gt; 2500;
+
+--Union all
+SELECT ename, job, sal FROM emp
+WHERE job = 'MANAGER'
+SELECT ename, job, sal FROM emp
+WHERE sal&gt; 2500;
+</pre></div></div>
+      <a name="Key01_06_02">
+      </a>
+      <h3>1.6.2. INTERSECT</h3>
+      <p>INTERSECT函数获得两个结果集的交集，只有同时存在于两个结果集中的数据，才被显示输出。使用INTERSECT操作符后的结果集会以第一列的数据作升序排列。</p>
+      <p>例如：显示职位是’MANAGER’的员工和薪水大于2500的员工的交集：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>job <span class="sh_symbol">=</span> <span class="sh_string">'MANAGER'</span></li><li>INTERSECT</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>sal<span class="sh_symbol">&gt;</span> <span class="sh_number">2500</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, job, sal FROM emp
+WHERE job = 'MANAGER'
+INTERSECT
+SELECT ename, job, sal FROM emp
+WHERE sal&gt; 2500;
+</pre></div></div>
+      <a name="Key01_06_03">
+      </a>
+      <h3>1.6.3. MINUS</h3>
+      <p>MINUS函数获取两个结果集的差集。只有在第一个结果集中存在，在第二个结果集中不存在的数据，才能够被显示出来。也就是结果集一减去结果集二的结果。</p>
+      <p>例如：列出职位是MANAGER但薪水低于2500的员工记录：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>job <span class="sh_symbol">=</span> <span class="sh_string">'MANAGER'</span></li><li>MINUS</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span>ename<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> sal FROM emp</li><li><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>sal<span class="sh_symbol">&gt;</span> <span class="sh_number">2500</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, job, sal FROM emp
+WHERE job = 'MANAGER'
+MINUS
+SELECT ename, job, sal FROM emp
+WHERE sal&gt; 2500;
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

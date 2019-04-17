@@ -1,0 +1,789 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="5703777849"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA SERVLETJSP DAY07</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#case1">使用Session实现访问计数</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#case2">使用Session实现登录</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#case3">Session超时的设置</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#case4">URL重写</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#case5">验证码</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#case6">为登录添加验证码功能</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 使用Session实现访问计数</h2>
+      <h3>1.1 问题</h3>
+      <p>记录不同客户端访问服务器的次数</p>
+      <h3>1.2 方案</h3>
+      <p>由于对不同的客户端需要区分，所以使用session记录不同客户端的数据。由于访问次数需要保留，所以使用setAttribute方法进行记录。第一次访问时存储为1，后续访问在此基础上自增。</p>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：新建CountServlet</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图- 1</p>
+      </div>
+      <p class="number">步骤二：部署应用，访问</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图- 2</p>
+      </div>
+      <p class="number">步骤三：多次刷新页面查看计数变化</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图- 3</p>
+      </div>
+      <p class="number">步骤四：重启浏览器，查看页面输出</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图- 4</p>
+      </div>
+      <p class="number">步骤五：查看控制台输出窗口</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+        <p>图– 5</p>
+      </div>
+      <p>结论：sessionID跟随一次会话，存储在客户端浏览器的内存中一个叫JSESSIONID的Cookie里面。第一次创建后，只要不关闭浏览器，那么每一次的请求sessionID都会被自动发送到服务器端。重启浏览器后，sessionID会被销毁，重新创建新的数值。</p>
+      <div class="image">
+        <img src="./CASE_files/image006.png">
+        <p>图- 6</p>
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image007.png">
+        <p>图- 7</p>
+      </div>
+      <p>图-6为第一次访问，JSESSIONID在响应头中以Set-Cookie的形式传回客户端。图-7为刷新页面时的数据包，在请求头中，JSESSIONID以Cookie消息头的形式发给服务器端，以此同一个ID值找到对应的session对象。</p>
+      <h3>1.4 完整代码</h3>
+      <p>CountServlet.java文件的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpSession<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> CountServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取session对象</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpSession session <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出sessionID</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>session<span class="sh_symbol">.</span><span class="sh_function">getId</span><span class="sh_symbol">());</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取绑定的计数器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Integer count <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>Integer<span class="sh_symbol">)</span>session<span class="sh_symbol">.</span><span class="sh_function">getAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"count"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>count<span class="sh_symbol">==</span><span class="sh_keyword">null</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span><span class="sh_comment">//第一次访问</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span><span class="sh_comment">//不是第一次访问</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count<span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//在session中绑定计数器</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"count"</span><span class="sh_symbol">,</span> count<span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出提示信息</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"这是第"</span><span class="sh_symbol">+</span>count<span class="sh_symbol">+</span><span class="sh_string">"次访问"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class CountServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, 
+						HttpServletResponse response)
+						throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();		
+		//获取session对象
+		HttpSession session = request.getSession();		
+		//输出sessionID
+		System.out.println(session.getId());		
+		//获取绑定的计数器
+		Integer count = (Integer)session.getAttribute("count");		
+		if(count==null){//第一次访问
+			count = 1;
+		}else{//不是第一次访问
+			count++;
+		}		
+		//在session中绑定计数器
+		session.setAttribute("count", count);		
+		//输出提示信息
+		out.println("这是第"+count+"次访问");
+		out.close();
+	}
+}
+</pre></div></div>
+      <p>web.xml文件代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span>xml version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span>app version<span class="sh_symbol">=</span><span class="sh_string">"2.5"</span> xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee"</span></li><li> xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>CountServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>CountServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>CountServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span><span class="sh_regexp">/count&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"&gt;
+&lt;servlet&gt;
+&lt;servlet-name&gt;CountServlet&lt;/servlet-name&gt;
+&lt;servlet-class&gt;web.CountServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;CountServlet&lt;/servlet-name&gt;
+&lt;url-pattern&gt;/count&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 使用Session实现登录</h2>
+      <h3>2.1 问题</h3>
+      <p>保存登录信息，保护某些资源只有在登录验证之后才能访问。</p>
+      <h3>2.2 方案</h3>
+      <p>登录信息提交后进行验证，验证通过则将用户信息保存在session中，验证失败则转发回登录页面。对于需要保护的资源，添加从session中获取绑定值的功能，以判断是否能够成功获取绑定的用户信息为判断依据，获取到则代表已验证，则允许访问，获取不到绑定在session中的用户信息，代码验证没有通过，则拒绝访问该资源，而将请求重定向到登录页面。</p>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：新建login.jsp页面</p>
+      <div class="image">
+        <img src="./CASE_files/image008.png">
+        <p>图– 8</p>
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image009.png">
+        <p>图- 9</p>
+      </div>
+      <p class="number">步骤二：新建ActionServlet类及配置</p>
+      <div class="image">
+        <img src="./CASE_files/image010.png">
+        <p>图– 10</p>
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image011.png">
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image012.png">
+        <p>图- 11</p>
+      </div>
+      <p class="number">步骤三：新建index.jsp页面</p>
+      <div class="image">
+        <img src="./CASE_files/image013.png">
+        <p>图- 12</p>
+      </div>
+      <p class="number">步骤四：部署后直接访问index.jsp页面</p>
+      <p>部署后访问index.jsp失败，会重定向到login.jsp页面</p>
+      <div class="image">
+        <img src="./CASE_files/image014.png">
+        <p>图- 13</p>
+      </div>
+      <p class="number">步骤五：在login.jsp页面进行登录</p>
+      <div class="image">
+        <img src="./CASE_files/image015.png">
+        <p>图- 14</p>
+      </div>
+      <p class="number">步骤六：新开页面后直接访问index.jsp页面</p>
+      <div class="image">
+        <img src="./CASE_files/image016.png">
+        <p>图- 15</p>
+      </div>
+      <p>在新开的页面直接访问index.jsp页面也能够看到显示的登录信息。</p>
+      <p class="number">步骤七：重启浏览器后访问index.jsp页面</p>
+      <p>重启浏览器后，直接访问index.jsp页面，结果与步骤四一致。因为，关闭浏览器后保存的JSESSIONID信息会丢失，以至于无法再在服务器中找到绑定了登录信息的session对象，于是认为没有登录过，进行了重定向操作。</p>
+      <p class="number">步骤八：修改index.jsp页面，添加“登出”链接</p>
+      <div class="image">
+        <img src="./CASE_files/image017.png">
+        <p>图- 16</p>
+      </div>
+      <p class="number">步骤九：修改ActionServlet</p>
+      <div class="image">
+        <img src="./CASE_files/image018.png">
+        <p>图- 17</p>
+      </div>
+      <p class="number">步骤十：重新访问login.jsp进行登录</p>
+      <div class="image">
+        <img src="./CASE_files/image019.png">
+        <p>图- 18</p>
+      </div>
+      <p class="number">步骤十一：点击“登出”后，再次访问index.jsp</p>
+      <p>登出后，再次直接输入地址访问index.jsp，结果同步骤四，重定向到login.jsp页面。符合登出功能的效果。</p>
+      <h3>2.4 完整代码</h3>
+      <p>ActionServlet.java文件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpSession<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ActionServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> action <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span>uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">)</span> <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpSession session <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>session<span class="sh_symbol">.</span><span class="sh_function">getId</span><span class="sh_symbol">());</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 判断动作是否为登录</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>action<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"login"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> pwd <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"pwd"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>name<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"111"</span><span class="sh_symbol">)</span> <span class="sh_symbol">&amp;&amp;</span> pwd<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"111"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">,</span> name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 重定向到首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span><span class="sh_string">"index.jsp"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 登录失败</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"msg"</span><span class="sh_symbol">,</span> <span class="sh_string">"用户名或密码错误"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">getRequestDispatcher</span><span class="sh_symbol">(</span><span class="sh_string">"login.jsp"</span><span class="sh_symbol">).</span><span class="sh_function">forward</span><span class="sh_symbol">(</span>request<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>action<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"logout"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// session失效</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">invalidate</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span><span class="sh_string">"login.jsp"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class ActionServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		String uri = request.getRequestURI();
+		String action = uri.substring(uri.lastIndexOf("/") + 1,
+				uri.lastIndexOf("."));
+		HttpSession session = request.getSession();
+		System.out.println(session.getId());		
+		// 判断动作是否为登录
+		if (action.equals("login")) {
+			String name = request.getParameter("uname");
+			String pwd = request.getParameter("pwd");						
+			if (name.equals("111") &amp;&amp; pwd.equals("111")) {
+				session.setAttribute("uname", name);
+				// 重定向到首页
+				response.sendRedirect("index.jsp");
+			} else {
+				// 登录失败
+				request.setAttribute("msg", "用户名或密码错误");
+				request.getRequestDispatcher("login.jsp").forward(request,
+						response);
+			}
+		} else if (action.equals("logout")) {
+			// session失效
+			session.invalidate();
+			response.sendRedirect("login.jsp");
+		}
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <p>web.xml文件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span>xml version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span>app version<span class="sh_symbol">=</span><span class="sh_string">"2.5"</span> xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee"</span></li><li> xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>CountServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>CountServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>CountServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span><span class="sh_regexp">/count&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;*.</span><span class="sh_keyword">do</span><span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"&gt;
+&lt;servlet&gt;
+&lt;servlet-name&gt;CountServlet&lt;/servlet-name&gt;
+&lt;servlet-class&gt;web.CountServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet&gt;
+&lt;servlet-name&gt;ActionServlet&lt;/servlet-name&gt;
+&lt;servlet-class&gt;web.ActionServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;CountServlet&lt;/servlet-name&gt;
+&lt;url-pattern&gt;/count&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;ActionServlet&lt;/servlet-name&gt;
+&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</pre></div></div>
+      <p>login.jsp文件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@ page contentType<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span></li><li>    pageEncoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>Insert title here<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>h3<span class="sh_symbol">&gt;</span>登录<span class="sh_symbol">&lt;/</span>h3<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>form action<span class="sh_symbol">=</span><span class="sh_string">"login.do"</span> method<span class="sh_symbol">=</span><span class="sh_string">"post"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名：<span class="sh_symbol">&lt;</span>input name<span class="sh_symbol">=</span><span class="sh_string">"uname"</span><span class="sh_symbol">/&gt;&lt;</span>Br<span class="sh_symbol">&gt;&lt;</span>br<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：<span class="sh_symbol">&lt;</span>input name<span class="sh_symbol">=</span><span class="sh_string">"pwd"</span> type<span class="sh_symbol">=</span><span class="sh_string">"password"</span><span class="sh_symbol">/&gt;&lt;</span>br<span class="sh_symbol">&gt;&lt;</span>Br<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"submit"</span> value<span class="sh_symbol">=</span><span class="sh_string">"登录"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>form<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@ page contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;html&gt;
+	&lt;head&gt;	
+		&lt;title&gt;Insert title here&lt;/title&gt;		
+	&lt;/head&gt;
+	&lt;body&gt;
+	&lt;h3&gt;登录&lt;/h3&gt;
+	&lt;form action="login.do" method="post"&gt;
+		用户名：&lt;input name="uname"/&gt;&lt;Br&gt;&lt;br&gt;
+		密码：&lt;input name="pwd" type="password"/&gt;&lt;br&gt;&lt;Br&gt;		
+		&lt;input type="submit" value="登录"/&gt;
+	&lt;/form&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p>index.jsp文件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@ page contentType<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span></li><li>    pageEncoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;%</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//session验证</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Object</span> uname <span class="sh_symbol">=</span> session<span class="sh_symbol">.</span><span class="sh_function">getAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>uname <span class="sh_symbol">==</span> <span class="sh_keyword">null</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span><span class="sh_string">"login.jsp"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>h3<span class="sh_symbol">&gt;</span>首页<span class="sh_symbol">&lt;/</span>h3<span class="sh_symbol">&gt;</span>欢迎你：<span class="sh_symbol">&lt;%=</span>uname<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">()%&gt;&lt;</span>br<span class="sh_symbol">&gt;&lt;</span>Br<span class="sh_symbol">&gt;&lt;</span>Br<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>a href<span class="sh_symbol">=</span><span class="sh_string">"logout.do"</span><span class="sh_symbol">&gt;</span>登出<span class="sh_symbol">&lt;/</span>a<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@ page contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;%
+	//session验证
+	Object uname = session.getAttribute("uname");
+	if(uname == null){
+		response.sendRedirect("login.jsp");
+		return;
+	}
+%&gt;
+&lt;html&gt;
+	&lt;head&gt;			
+	&lt;/head&gt;
+	&lt;body&gt;
+	&lt;h3&gt;首页&lt;/h3&gt;欢迎你：&lt;%=uname.toString()%&gt;&lt;br&gt;&lt;Br&gt;&lt;Br&gt;	
+	&lt;a href="logout.do"&gt;登出&lt;/a&gt;	
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 Session超时的设置</h2>
+      <h3>3.1 问题</h3>
+      <p>使用编程式，修改session的超时时间为10秒。实现当用户登陆后，如果十秒钟没有任何动作，则session时效，此时再访问index.jsp页面，则依然会重定向到login.jsp页面，重新登录。</p>
+      <h3>3.2 方案</h3>
+      <p>使用setMaxInactiveInterval(10)方法实现编程式的session超时设置。时间单位为秒。</p>
+      <h3>3.3 步骤</h3>
+      <p class="number">步骤一：修改ActionServlet</p>
+      <p>在创建session后，设置超时时间为10秒。</p>
+      <div class="image">
+        <img src="./CASE_files/image020.png">
+        <p>图- 19</p>
+      </div>
+      <p class="number">步骤二：访问login.jsp页面后十秒内不操作</p>
+      <p>访问login.jsp，输入用户信息进行登录，到达index.jsp页面后，不再有任何动作，过十秒后，刷新index.jsp页面，请求会重定向到login.jsp页面。</p>
+      <p>如果以声明式的方式修改超时时间，则需要到tomcat的conf目录下，寻找web.xml文件，修改session-timeout。</p>
+      <div class="image">
+        <img src="./CASE_files/image021.png">
+        <p>图- 20</p>
+      </div>
+      <h3>3.4 完整代码</h3>
+      <p>ActionServlet.java文件代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpSession<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ActionServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> action <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span>uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">)</span> <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 判断动作是否为登录</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>action<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"login"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> pwd <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"pwd"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>name<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"111"</span><span class="sh_symbol">)</span> <span class="sh_symbol">&amp;&amp;</span> pwd<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"111"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>HttpSession session <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>session<span class="sh_symbol">.</span><span class="sh_function">getId</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 编程式--设定session超时时间为10秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">setMaxInactiveInterval</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">,</span> name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 重定向到首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span><span class="sh_string">"index.jsp"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 登录失败</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"msg"</span><span class="sh_symbol">,</span> <span class="sh_string">"用户名或密码错误"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">getRequestDispatcher</span><span class="sh_symbol">(</span><span class="sh_string">"login.jsp"</span><span class="sh_symbol">).</span><span class="sh_function">forward</span><span class="sh_symbol">(</span>request<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>action<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"logout"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>HttpSession session <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// session失效</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">invalidate</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span><span class="sh_string">"login.jsp"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class ActionServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		String uri = request.getRequestURI();
+		String action = uri.substring(uri.lastIndexOf("/") + 1,
+				uri.lastIndexOf("."));
+		
+
+		// 判断动作是否为登录
+		if (action.equals("login")) {
+			String name = request.getParameter("uname");
+			String pwd = request.getParameter("pwd");
+			if (name.equals("111") &amp;&amp; pwd.equals("111")) {
+HttpSession session = request.getSession();
+		System.out.println(session.getId());
+		// 编程式--设定session超时时间为10秒
+		session.setMaxInactiveInterval(10);
+	session.setAttribute("uname", name);
+				// 重定向到首页
+				response.sendRedirect("index.jsp");				
+			} else {
+				// 登录失败
+				request.setAttribute("msg", "用户名或密码错误");
+				request.getRequestDispatcher("login.jsp").forward(request,
+						response);
+			}
+		} else if (action.equals("logout")) {
+HttpSession session = request.getSession();
+			// session失效
+			session.invalidate();
+			response.sendRedirect("login.jsp");
+		}
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 URL重写</h2>
+      <h3>4.1 问题</h3>
+      <p>如果浏览器禁用Cookie，则session不能再继续使用。如何在禁用Cookie的情况下依然能继续使用session。</p>
+      <h3>4.2 方案</h3>
+      <p>使用URL重写的方法，即改写原本的访问地址，在URI后面使用参数的方式携带上sessionID。</p>
+      <h3>4.3 步骤</h3>
+      <p class="number">步骤一：修改ActionServlet</p>
+      <div class="image">
+        <img src="./CASE_files/image022.png">
+        <p>图- 21</p>
+      </div>
+      <p class="number">步骤二：禁用浏览器Cookie</p>
+      <div class="image">
+        <img src="./CASE_files/image023.png">
+        <p>图- 22</p>
+      </div>
+      <p class="number">步骤三：使用login.jsp完成登录</p>
+      <div class="image">
+        <img src="./CASE_files/image024.png">
+        <p>图  - 23</p>
+      </div>
+      <p>由于禁用了cookie，所以要想继续使用session那么就可以通过如上方式，在URL中添加sessionID信息，以达到传递id标识的作用。</p>
+      <h3>4.4 完整代码</h3>
+      <p>ActionServlet.java文件代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpSession<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ActionServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> action <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span>uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">)</span> <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpSession session <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>session<span class="sh_symbol">.</span><span class="sh_function">getId</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 编程式--设定session超时时间为10秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//session.setMaxInactiveInterval(10);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 判断动作是否为登录</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>action<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"login"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> pwd <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"pwd"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>name<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"111"</span><span class="sh_symbol">)</span> <span class="sh_symbol">&amp;&amp;</span> pwd<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"111"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">,</span> name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 重定向到首页&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        response<span class="sh_symbol">.</span><span class="sh_function">encodeRedirectURL</span><span class="sh_symbol">(</span><span class="sh_string">"index.jsp"</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 登录失败</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"msg"</span><span class="sh_symbol">,</span> <span class="sh_string">"用户名或密码错误"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">getRequestDispatcher</span><span class="sh_symbol">(</span><span class="sh_string">"login.jsp"</span><span class="sh_symbol">).</span><span class="sh_function">forward</span><span class="sh_symbol">(</span>request<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>action<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"logout"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// session失效</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">invalidate</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span><span class="sh_string">"login.jsp"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class ActionServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		String uri = request.getRequestURI();
+		String action = uri.substring(uri.lastIndexOf("/") + 1,
+				uri.lastIndexOf("."));
+		HttpSession session = request.getSession();
+		System.out.println(session.getId());
+		// 编程式--设定session超时时间为10秒
+		//session.setMaxInactiveInterval(10);
+		// 判断动作是否为登录
+		if (action.equals("login")) {
+			String name = request.getParameter("uname");
+			String pwd = request.getParameter("pwd");			
+			if (name.equals("111") &amp;&amp; pwd.equals("111")) {
+				session.setAttribute("uname", name);
+				// 重定向到首页				
+				 response.sendRedirect(
+				        response.encodeRedirectURL("index.jsp"));
+			} else {
+				// 登录失败
+				request.setAttribute("msg", "用户名或密码错误");				request.getRequestDispatcher("login.jsp").forward(request,
+						response);
+			}
+		} else if (action.equals("logout")) {
+			// session失效
+			session.invalidate();
+			response.sendRedirect("login.jsp");
+		}
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <a name="case5">
+      </a>
+      <h2>5 验证码</h2>
+      <h3>5.1 问题</h3>
+      <p>根据随机产生的字符串绘制图片，并输出到jsp页面中</p>
+      <h3>5.2 方案</h3>
+      <p>使用java的绘图技术，动态绘制一张图片，由Servlet完成后，通过OutputStream将其内容输出到客户端。浏览器通过img标签的src属性访问该Servlet以获得动态图片。</p>
+      <h3>5.3 步骤</h3>
+      <p class="number">步骤一：创建validateCode.jsp页面</p>
+      <div class="image">
+        <img src="./CASE_files/image025.png">
+        <p>图- 24</p>
+      </div>
+      <p class="number">步骤二：创建ValidateCode.java文件</p>
+      <div class="image">
+        <img src="./CASE_files/image026.png">
+        <p>图- 25</p>
+      </div>
+      <p class="number">步骤三：部署后访问查看图片</p>
+      <div class="image">
+        <img src="./CASE_files/image027.png">
+        <p>图- 26</p>
+      </div>
+      <h3>5.4 完整代码</h3>
+      <p>ValidateCode.java文件代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>awt<span class="sh_symbol">.</span>Color<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>awt<span class="sh_symbol">.</span>Font<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>awt<span class="sh_symbol">.</span>Graphics<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>awt<span class="sh_symbol">.</span>image<span class="sh_symbol">.</span>BufferedImage<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>OutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>imageio<span class="sh_symbol">.</span>ImageIO<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpSession<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ValidateCode <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//0.创建空白图片</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufferedImage image <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedImage</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span>BufferedImage<span class="sh_symbol">.</span>TYPE_INT_RGB<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//1.获取图片画笔</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Graphics g <span class="sh_symbol">=</span> image<span class="sh_symbol">.</span><span class="sh_function">getGraphics</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random r <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//2.设置画笔颜色</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setColor</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Color</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">)));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//3.绘制矩形的背景</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">fillRect</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">,</span> <span class="sh_number">100</span><span class="sh_symbol">,</span> <span class="sh_number">30</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//4.调用自定义的方法，获取长度为5的字母数字组合的字符串</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> number <span class="sh_symbol">=</span> <span class="sh_function">getNumber</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setColor</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Color</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setFont</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Font</span><span class="sh_symbol">(</span><span class="sh_keyword">null</span><span class="sh_symbol">,</span>Font<span class="sh_symbol">.</span>BOLD<span class="sh_symbol">,</span><span class="sh_number">24</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//5.设置颜色字体后，绘制字符串</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">drawString</span><span class="sh_symbol">(</span>number<span class="sh_symbol">,</span> <span class="sh_number">5</span><span class="sh_symbol">,</span> <span class="sh_number">25</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//6.绘制8条干扰线</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span><span class="sh_number">8</span><span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setColor</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Color</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">)));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">drawLine</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"image/jpeg"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OutputStream ops <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getOutputStream</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImageIO<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>image<span class="sh_symbol">,</span> <span class="sh_string">"jpeg"</span><span class="sh_symbol">,</span> ops<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ops<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_predef_func">String</span> <span class="sh_function">getNumber</span><span class="sh_symbol">(</span>int size<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> number <span class="sh_symbol">=</span> <span class="sh_string">""</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random r <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>size<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number<span class="sh_symbol">+=</span>str<span class="sh_symbol">.</span><span class="sh_function">charAt</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span>str<span class="sh_symbol">.</span><span class="sh_function">length</span><span class="sh_symbol">()));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> number<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+public class ValidateCode extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		//0.创建空白图片
+		BufferedImage image = new BufferedImage(100,30,BufferedImage.TYPE_INT_RGB);
+		//1.获取图片画笔
+		Graphics g = image.getGraphics();
+		Random r = new Random();
+		//2.设置画笔颜色
+		g.setColor(new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
+		//3.绘制矩形的背景
+		g.fillRect(0, 0, 100, 30);	
+		//4.调用自定义的方法，获取长度为5的字母数字组合的字符串
+		String number = getNumber(5);		
+		g.setColor(new Color(0,0,0));
+		g.setFont(new Font(null,Font.BOLD,24));
+		//5.设置颜色字体后，绘制字符串
+		g.drawString(number, 5, 25);
+		//6.绘制8条干扰线
+		for(int i=0;i&lt;8;i++){
+			g.setColor(new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255),r.nextInt(255)));
+			g.drawLine(r.nextInt(100), r.nextInt(30), r.nextInt(100), r.nextInt(30));
+		}
+		response.setContentType("image/jpeg");
+		OutputStream ops = response.getOutputStream();
+		ImageIO.write(image, "jpeg", ops);
+		ops.close();
+	}
+	
+	private String getNumber(int size){
+		String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		String number = "";
+		Random r = new Random();
+		for(int i=0;i&lt;size;i++){
+			number+=str.charAt(r.nextInt(str.length()));
+		}
+		return number;
+	}
+
+}
+</pre></div></div>
+      <p>validateCode.jsp文件代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@ page contentType<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span></li><li>    pageEncoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">%&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>Insert title here<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">.</span>s1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cursor<span class="sh_symbol">:</span>pointer<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;验证码：<span class="sh_symbol">&lt;</span>input name<span class="sh_symbol">=</span><span class="sh_string">"vcode"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"code"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"this.src='code?'+Math.random();"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"s1"</span> title<span class="sh_symbol">=</span><span class="sh_string">"点击更换"</span> <span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@ page contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+
+&lt;html&gt;
+	&lt;head&gt;	
+		&lt;title&gt;Insert title here&lt;/title&gt;
+		&lt;style type="text/css"&gt;
+			.s1{
+				cursor:pointer;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		验证码：&lt;input name="vcode"/&gt;
+		&lt;img src="code" onclick="this.src='code?'+Math.random();" 
+		class="s1" title="点击更换" /&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p>web.xml文件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span>xml version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span>app version<span class="sh_symbol">=</span><span class="sh_string">"2.5"</span> xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee"</span></li><li> xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ValidateCode<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>ValidateCode<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ValidateCode<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span><span class="sh_regexp">/code&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"&gt;
+&lt;servlet&gt;
+&lt;servlet-name&gt;ValidateCode&lt;/servlet-name&gt;
+&lt;servlet-class&gt;web.ValidateCode&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;ValidateCode&lt;/servlet-name&gt;
+&lt;url-pattern&gt;/code&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</pre></div></div>
+      <a name="case6">
+      </a>
+      <h2>6 为登录添加验证码功能</h2>
+      <h3>6.1 问题</h3>
+      <p>在登录时添加验证码功能。</p>
+      <h3>6.2 方案</h3>
+      <p>在产生验证码的随机字符串之后，绑定到session中，验证过程中将用户输入和session绑定中的验证码比对一致后再判断用户名和密码。</p>
+      <h3>6.3 步骤</h3>
+      <p class="number">步骤一：修改ValidateCode.java文件</p>
+      <div class="image">
+        <img src="./CASE_files/image028.png">
+        <p>图 - 27</p>
+      </div>
+      <p class="number">步骤二：修改login.jsp页面</p>
+      <div class="image">
+        <img src="./CASE_files/image029.png">
+        <p>图– 28</p>
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image030.png">
+        <p>图 - 29</p>
+      </div>
+      <p class="number">步骤三：修改ActionServlet.java文件</p>
+      <div class="image">
+        <img src="./CASE_files/image031.png">
+        <p>图 - 30</p>
+      </div>
+      <p class="number">步骤四：重新部署，访问应用</p>
+      <p>用户名和密码以及验证码均正确的情况下登录成功。验证码区分大小写。登出后直接访问index.jsp会自动回到login.jsp页面。</p>
+      <h3>6.4 完整代码</h3>
+      <p>ValidateCode.java文件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>awt<span class="sh_symbol">.</span>Color<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>awt<span class="sh_symbol">.</span>Font<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>awt<span class="sh_symbol">.</span>Graphics<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>awt<span class="sh_symbol">.</span>image<span class="sh_symbol">.</span>BufferedImage<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>OutputStream<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>imageio<span class="sh_symbol">.</span>ImageIO<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpSession<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ValidateCode <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//0.创建空白图片</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BufferedImage image <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedImage</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">,</span>BufferedImage<span class="sh_symbol">.</span>TYPE_INT_RGB<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//1.获取图片画笔</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Graphics g <span class="sh_symbol">=</span> image<span class="sh_symbol">.</span><span class="sh_function">getGraphics</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random r <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//2.设置画笔颜色</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setColor</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Color</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">)));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//3.绘制矩形的背景</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">fillRect</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">,</span> <span class="sh_number">100</span><span class="sh_symbol">,</span> <span class="sh_number">30</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//4.调用自定义的方法，获取长度为5的字母数字组合的字符串</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> number <span class="sh_symbol">=</span> <span class="sh_function">getNumber</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpSession session <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"code"</span><span class="sh_symbol">,</span> number<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setColor</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Color</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setFont</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Font</span><span class="sh_symbol">(</span><span class="sh_keyword">null</span><span class="sh_symbol">,</span>Font<span class="sh_symbol">.</span>BOLD<span class="sh_symbol">,</span><span class="sh_number">24</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//5.设置颜色字体后，绘制字符串</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">drawString</span><span class="sh_symbol">(</span>number<span class="sh_symbol">,</span> <span class="sh_number">5</span><span class="sh_symbol">,</span> <span class="sh_number">25</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//6.绘制8条干扰线</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span><span class="sh_number">8</span><span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">setColor</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">Color</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">),</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">255</span><span class="sh_symbol">)));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g<span class="sh_symbol">.</span><span class="sh_function">drawLine</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">),</span> r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"image/jpeg"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OutputStream ops <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getOutputStream</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ImageIO<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>image<span class="sh_symbol">,</span> <span class="sh_string">"jpeg"</span><span class="sh_symbol">,</span> ops<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ops<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_predef_func">String</span> <span class="sh_function">getNumber</span><span class="sh_symbol">(</span>int size<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> number <span class="sh_symbol">=</span> <span class="sh_string">""</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random r <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>size<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number<span class="sh_symbol">+=</span>str<span class="sh_symbol">.</span><span class="sh_function">charAt</span><span class="sh_symbol">(</span>r<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span>str<span class="sh_symbol">.</span><span class="sh_function">length</span><span class="sh_symbol">()));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> number<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.Random;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+public class ValidateCode extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		//0.创建空白图片
+		BufferedImage image = new BufferedImage(100,30,BufferedImage.TYPE_INT_RGB);
+		//1.获取图片画笔
+		Graphics g = image.getGraphics();
+		Random r = new Random();
+		//2.设置画笔颜色
+		g.setColor(new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
+		//3.绘制矩形的背景
+		g.fillRect(0, 0, 100, 30);	
+		//4.调用自定义的方法，获取长度为5的字母数字组合的字符串
+		String number = getNumber(5);		
+		HttpSession session = request.getSession();
+		session.setAttribute("code", number);
+		g.setColor(new Color(0,0,0));
+		g.setFont(new Font(null,Font.BOLD,24));
+		//5.设置颜色字体后，绘制字符串
+		g.drawString(number, 5, 25);
+		//6.绘制8条干扰线
+		for(int i=0;i&lt;8;i++){
+			g.setColor(new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255),r.nextInt(255)));
+			g.drawLine(r.nextInt(100), r.nextInt(30), r.nextInt(100), r.nextInt(30));
+		}
+		response.setContentType("image/jpeg");
+		OutputStream ops = response.getOutputStream();
+		ImageIO.write(image, "jpeg", ops);
+		ops.close();
+	}
+	
+	private String getNumber(int size){
+		String str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		String number = "";
+		Random r = new Random();
+		for(int i=0;i&lt;size;i++){
+			number+=str.charAt(r.nextInt(str.length()));
+		}
+		return number;
+	}
+
+}
+</pre></div></div>
+      <p>login.jsp文件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@ page contentType<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span></li><li>    pageEncoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>Insert title here<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">.</span>s1<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cursor<span class="sh_symbol">:</span>pointer<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>h3<span class="sh_symbol">&gt;</span>登录<span class="sh_symbol">&lt;/</span>h3<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>form action<span class="sh_symbol">=</span><span class="sh_string">"login.do"</span> method<span class="sh_symbol">=</span><span class="sh_string">"post"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名：<span class="sh_symbol">&lt;</span>input name<span class="sh_symbol">=</span><span class="sh_string">"uname"</span><span class="sh_symbol">/&gt;&lt;</span>Br<span class="sh_symbol">&gt;&lt;</span>br<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：<span class="sh_symbol">&lt;</span>input name<span class="sh_symbol">=</span><span class="sh_string">"pwd"</span> type<span class="sh_symbol">=</span><span class="sh_string">"password"</span><span class="sh_symbol">/&gt;&lt;</span>br<span class="sh_symbol">&gt;&lt;</span>Br<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;验证码：<span class="sh_symbol">&lt;</span>input name<span class="sh_symbol">=</span><span class="sh_string">"vcode"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"code"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"this.src='code?'+Math.random();"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"s1"</span> title<span class="sh_symbol">=</span><span class="sh_string">"点击更换"</span> <span class="sh_symbol">/&gt;&lt;</span>br<span class="sh_symbol">&gt;&lt;</span>Br<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"submit"</span> value<span class="sh_symbol">=</span><span class="sh_string">"登录"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>form<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@ page contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%&gt;
+&lt;html&gt;
+	&lt;head&gt;	
+		&lt;title&gt;Insert title here&lt;/title&gt;
+		&lt;style type="text/css"&gt;
+			.s1{
+				cursor:pointer;
+			}
+		&lt;/style&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+	&lt;h3&gt;登录&lt;/h3&gt;
+	&lt;form action="login.do" method="post"&gt;
+		用户名：&lt;input name="uname"/&gt;&lt;Br&gt;&lt;br&gt;
+		密码：&lt;input name="pwd" type="password"/&gt;&lt;br&gt;&lt;Br&gt;
+		验证码：&lt;input name="vcode"/&gt;
+		&lt;img src="code" onclick="this.src='code?'+Math.random();" 
+		class="s1" title="点击更换" /&gt;&lt;br&gt;&lt;Br&gt;
+		&lt;input type="submit" value="登录"/&gt;
+	&lt;/form&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p>ActionServlet文件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li>import javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpSession<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> ActionServlet <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">service</span><span class="sh_symbol">(</span>HttpServletRequest request<span class="sh_symbol">,</span> HttpServletResponse response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PrintWriter out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> action <span class="sh_symbol">=</span> uri<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span>uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"/"</span><span class="sh_symbol">)</span> <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uri<span class="sh_symbol">.</span><span class="sh_function">lastIndexOf</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">));</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 判断动作是否为登录</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>action<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"login"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> name <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> pwd <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"pwd"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> number <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"vcode"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpSession session <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> code <span class="sh_symbol">=</span> session<span class="sh_symbol">.</span><span class="sh_function">getAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"code"</span><span class="sh_symbol">).</span><span class="sh_function">toString</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>number<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>code<span class="sh_symbol">)</span> <span class="sh_symbol">&amp;&amp;</span> name<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"111"</span><span class="sh_symbol">)</span> <span class="sh_symbol">&amp;&amp;</span> pwd<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"111"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 编程式--设定session超时时间为10秒</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//session.setMaxInactiveInterval(10);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"uname"</span><span class="sh_symbol">,</span> name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 重定向到首页</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//response.sendRedirect("index.jsp");</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; response<span class="sh_symbol">.</span><span class="sh_function">encodeRedirectURL</span><span class="sh_symbol">(</span><span class="sh_string">"index.jsp"</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 登录失败</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"msg"</span><span class="sh_symbol">,</span> <span class="sh_string">"用户名或密码错误"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">getRequestDispatcher</span><span class="sh_symbol">(</span><span class="sh_string">"login.jsp"</span><span class="sh_symbol">).</span><span class="sh_function">forward</span><span class="sh_symbol">(</span>request<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>action<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"logout"</span><span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HttpSession session <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// session失效</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session<span class="sh_symbol">.</span><span class="sh_function">invalidate</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span><span class="sh_string">"login.jsp"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+public class ActionServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		String uri = request.getRequestURI();
+		String action = uri.substring(uri.lastIndexOf("/") + 1,
+				uri.lastIndexOf("."));			
+		// 判断动作是否为登录
+		if (action.equals("login")) {
+			String name = request.getParameter("uname");
+			String pwd = request.getParameter("pwd");
+			String number = request.getParameter("vcode");
+			HttpSession session = request.getSession();
+			String code = session.getAttribute("code").toString();
+			if (number.equals(code) &amp;&amp; name.equals("111") &amp;&amp; pwd.equals("111")) {
+				// 编程式--设定session超时时间为10秒
+				//session.setMaxInactiveInterval(10);
+				session.setAttribute("uname", name);
+				// 重定向到首页
+				//response.sendRedirect("index.jsp");
+				 response.sendRedirect(
+				 response.encodeRedirectURL("index.jsp"));
+			} else {
+				// 登录失败
+				request.setAttribute("msg", "用户名或密码错误");
+				request.getRequestDispatcher("login.jsp").forward(request,
+						response);
+			}
+		} else if (action.equals("logout")) {
+			HttpSession session = request.getSession();
+			// session失效
+			session.invalidate();
+			response.sendRedirect("login.jsp");
+		}
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <p>web.xml文件：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY07/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span>xml version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span>app version<span class="sh_symbol">=</span><span class="sh_string">"2.5"</span> xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee"</span></li><li> xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>CountServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>CountServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ValidateCode<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>ValidateCode<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>CountServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span><span class="sh_regexp">/count&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ActionServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;*.</span><span class="sh_keyword">do</span><span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>ValidateCode<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span><span class="sh_regexp">/code&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"&gt;
+&lt;servlet&gt;
+&lt;servlet-name&gt;CountServlet&lt;/servlet-name&gt;
+&lt;servlet-class&gt;web.CountServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet&gt;
+&lt;servlet-name&gt;ActionServlet&lt;/servlet-name&gt;
+&lt;servlet-class&gt;web.ActionServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet&gt;
+&lt;servlet-name&gt;ValidateCode&lt;/servlet-name&gt;
+&lt;servlet-class&gt;web.ValidateCode&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;CountServlet&lt;/servlet-name&gt;
+&lt;url-pattern&gt;/count&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;ActionServlet&lt;/servlet-name&gt;
+&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+&lt;servlet-mapping&gt;
+&lt;servlet-name&gt;ValidateCode&lt;/servlet-name&gt;
+&lt;url-pattern&gt;/code&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

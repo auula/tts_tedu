@@ -1,0 +1,219 @@
+
+<!-- saved from url=(0090)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17479465598"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA ORACLE DAY02</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#case1">Oracle字符串函数综合示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#case2">Oracle数值函数综合示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#case3">Oracle日期转换综合示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#case4">Oracle常用日期函数综合示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#case5">Oracle空值函数综合示例</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 Oracle字符串函数综合示例</h2>
+      <h3>1.1 问题</h3>
+      <p>本案例的详细要求如下：</p>
+      <p>1）职员表emp中有姓名（ename）为smith的员工记录，但不能确定其名字的大小写格式。下列SQL语句中能够查询出名字为smith的员工信息的是：（）。</p>
+      <p>A．SELECT ename,job,hiredateFROM emp WHERE ename= 'smith';</p>
+      <p>B．SELECT ename,job,hiredateFROM emp WHERE upper (ename)= 'smith';</p>
+      <p>C．SELECT ename,job,hiredateFROM emp WHERE ename=upper('smith');</p>
+      <p>D．SELECT ename,job,hiredateFROM emp WHERE lower(ename)= 'smith';</p>
+      <p>2）写SQL语句查找员工名字的长度为5个字符的员工信息。</p>
+      <p>3）查询员工的姓名和工资，按下面的形式显示：</p>
+      <p>ENAME            SALARY</p>
+      <p>-----------------------------------------------------</p>
+      <p>SMITH			$$$$$$$$$$$$800</p>
+      <p>ALLEN			$$$$$$$$$$$1600</p>
+      <p>WARD				$$$$$$$$$$$1250</p>
+      <h3>1.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一:查询名字为smith的员工信息</p>
+      <p>职员表中有名字（ename）为smith的员工记录，但不能确定其名字的大小写格式，因此使用lower或upper函数将数据库中的名字信息都转成小写或大写，与“smith”或“SMITH”使用“=”等号进行比较，即可查出该员工的信息，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT ename<span class="sh_symbol">,</span>job<span class="sh_symbol">,</span>hiredateFROM empWHERE <span class="sh_function">LOWER</span><span class="sh_symbol">(</span>ename<span class="sh_symbol">)=</span> <span class="sh_string">'smith'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename,job,hiredateFROM empWHERE LOWER(ename)= 'smith';
+</pre></div></div>
+      <p>或</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECTename<span class="sh_symbol">,</span>job<span class="sh_symbol">,</span><span class="sh_function">hiredateFROMempWHEREUPPER</span><span class="sh_symbol">(</span>ename<span class="sh_symbol">)=</span> <span class="sh_string">'SMITH'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECTename,job,hiredateFROMempWHEREUPPER(ename)= 'SMITH';
+</pre></div></div>
+      <p>因此，在此案例中，正确的答案为D。</p>
+      <p class="number">步骤二：查找员工名字的长度为5个字符的员工信息</p>
+      <p>要查找员工名字的长度为5个字符的员工信息，可以使用length方法计算员工名字的长度，然后与5使用“=”进行比较，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> job FROM emp WHERE <span class="sh_function">LENGTH</span><span class="sh_symbol">(</span>ename<span class="sh_symbol">)</span> <span class="sh_symbol">=</span> <span class="sh_number">5</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, sal, job FROM emp WHERE LENGTH(ename) = 5;
+</pre></div></div>
+      <p class="number">步骤三：工资列不足15使用“$”左补足15位</p>
+      <p>使用LPAD方法实现对工资列的左补位，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT ename<span class="sh_symbol">,</span> <span class="sh_function">LPAD</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">,</span> <span class="sh_number">15</span><span class="sh_symbol">,</span> <span class="sh_string">'$'</span><span class="sh_symbol">)</span> as <span class="sh_string">"SALARY"</span> FROM emp <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, LPAD(sal, 15, '$') as "SALARY" FROM emp ;
+</pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 Oracle数值函数综合示例</h2>
+      <h3>2.1 问题</h3>
+      <p>查询各员工的名字ename，并显示出各员工在公司工作的工作天数，用整数表示。提示: 将入职日期与当前日期比较，得到该员工已经工作的天数。显示形式如下：</p>
+      <p>ENAME      HIREDATE	WORKTIME</p>
+      <p>-----------------------------------------------------</p>
+      <p>SMITH		17-12月-80			12193</p>
+      <p>ALLEN		20-2月 -81			12128</p>
+      <p>WARD		22-2月 -81			12126</p>
+      <p>JONES		02-4月 -81			12087</p>
+      <p>MARTIN		28-9月 -81			11908</p>
+      <p>BLAKE		01-5月 -81			12058</p>
+      <h3>2.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一:计算各员工在公司工作的天数</p>
+      <p>首先，使用当前日期时间SYSDATE减去入职时间列hiredate，然后，在该差值的基础上进行四舍五入来计算员工在公司工作的天数，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT ename<span class="sh_symbol">,</span> hiredate<span class="sh_symbol">,</span> </li><li><span class="sh_function">ROUND</span><span class="sh_symbol">(</span>SYSDATE<span class="sh_symbol">-</span>hiredate<span class="sh_symbol">)</span> as <span class="sh_string">"WORKTIME"</span></li><li>FROM emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, hiredate, 
+ROUND(SYSDATE-hiredate) as "WORKTIME"
+FROM emp;
+</pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 Oracle日期转换综合示例</h2>
+      <h3>3.1 问题</h3>
+      <p>本案例的详细要求如下：</p>
+      <p>1）按照”2009-4-11 20:35:10 ”格式显示系统时间。</p>
+      <p>2）现需要显示职员的入职时间格式为“17 of  November 2004”，下列SQL语句正确的是（）。</p>
+      <p>A．</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_function">hiredate</span><span class="sh_symbol">(</span><span class="sh_string">'fmDD "of" MONTH YYYY'</span><span class="sh_symbol">)</span> <span class="sh_string">"Date Hired"</span> FROM emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT hiredate('fmDD "of" MONTH YYYY') "Date Hired" FROM emp;
+</pre></div></div>
+      <p>B．</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_function">hiredate</span><span class="sh_symbol">(</span><span class="sh_string">'DD "of" MONTH YYYY'</span><span class="sh_symbol">)</span> <span class="sh_string">"Date Hired"</span> FROM emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT hiredate('DD "of" MONTH YYYY') "Date Hired" FROM emp;
+</pre></div></div>
+      <p>C．</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_function">TO_CHAR</span> <span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'DDspth of MONTH YYYY'</span><span class="sh_symbol">)</span> <span class="sh_string">"Date Hired"</span> </li><li>FROM emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT TO_CHAR (hiredate,'DDspth of MONTH YYYY') "Date Hired" 
+FROM emp;
+</pre></div></div>
+      <p>D．</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'fmDD "of" MONTH YYYY'</span><span class="sh_symbol">)</span> <span class="sh_string">"Date Hired"</span> </li><li>FROM emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT TO_CHAR(hiredate,'fmDD "of" MONTH YYYY') "Date Hired" 
+FROM emp;
+</pre></div></div>
+      <p>3）构造SQL语句，产生类似于下面形式的结果：</p>
+      <p>ENAME            HIREDATE                REVIEW</p>
+      <p>--------------------------------------------------------------------</p>
+      <p>SMITH           1980-12-17             1980年12月17日</p>
+      <p>即hiredate列显示的格式为“1980-12-17”；再将hiredate列以“1980年12月17日”格式显示，并且显示的列名为“REVIEW”。</p>
+      <h3>3.2 步骤</h3>
+      <p class="number">步骤一：按格式显示系统时间</p>
+      <p>使用SYSDATE表示返回当前的系统时间，精确到秒；使用“YYYY”表示4位数字的年份；使用MM表示2位数字的月份；使用DD表示2位数字的天；使用HH24表示24小时制的小时；使用MI表示分钟；使用SS表示秒。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>SYSDATE<span class="sh_symbol">,</span> <span class="sh_string">'yyyy-mm-dd hh24:mi:ss'</span> <span class="sh_symbol">)</span> FROM DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT TO_CHAR(SYSDATE, 'yyyy-mm-dd hh24:mi:ss' ) FROM DUAL;
+</pre></div></div>
+      <p class="number">步骤二：按格式显示员工的入职时间</p>
+      <p>显示职员的入职时间格式为“17 of  November 2004”，按Oracle的日期格式如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_string">'fmDD "of" MONTH YYYY'</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">'fmDD "of" MONTH YYYY'
+</pre></div></div>
+      <p>其中，fm表示格式；DD表示2位数字的天；“of”即为显示字符串“of”；MONTH表示全拼的月份；YYYY表示4位数字的年份。</p>
+      <p>然后，使用to_char函数，将日期类型的表示的时间，按格式转换为字符类型的时间，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span><span class="sh_string">'fmDD "of" MONTH YYYY'</span><span class="sh_symbol">)</span> <span class="sh_string">"Date Hired"</span> </li><li>FROM emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT TO_CHAR(hiredate,'fmDD "of" MONTH YYYY') "Date Hired" 
+FROM emp;
+</pre></div></div>
+      <p>上述SQL语句中，"Date Hired"是“TO_CHAR(hiredate,'fmDD "of" MONTH YYYY')”的别名，在SQL中将别名加上双引号，可以区分别名中字符的大小写。不加双引号别名默认显示为大写。</p>
+      <p>因此，本案例中D选项正确。</p>
+      <p class="number">步骤三：按格式显示员工的入职时间</p>
+      <p>使用to_char函数配合Oracle日期格式将hiredate列显示的格式为“1980-12-17”，并且将hiredate列以“1980年12月17日”格式显示，并且显示的列名为“REVIEW”，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT  ename<span class="sh_symbol">,</span> <span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span> <span class="sh_string">'yyyy-mm-dd'</span><span class="sh_symbol">)</span> as <span class="sh_string">"HIREDATE"</span><span class="sh_symbol">,</span> </li><li><span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span> <span class="sh_string">'yyyy"年"mm"月"dd'</span><span class="sh_symbol">)</span>  as <span class="sh_string">"REVIEW"</span></li><li>FROM emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT  ename, TO_CHAR(hiredate, 'yyyy-mm-dd') as "HIREDATE", 
+TO_CHAR(hiredate, 'yyyy"年"mm"月"dd')  as "REVIEW"
+FROM emp;
+</pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 Oracle常用日期函数综合示例</h2>
+      <h3>4.1 问题</h3>
+      <p>查询一个订单，从下单开始到启运需要多长时间，以月为单位（例如：3个月，6个月），写出正确的查询语句。假设订单表名为ord，其中订单编码、下单时间、启运时间的列名分别为：custid、orderdate、shipdate。</p>
+      <h3>4.2 方案</h3>
+      <p>使用MONTHS_BETWEEN计算下单时间（orderdate）与启运时间（shipdate）这两个日期值之间间隔的月份数，然后，将该间隔的月份数使用ROUND方法进行四舍五入，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT custid<span class="sh_symbol">,</span> orderdate<span class="sh_symbol">,</span> shipdate<span class="sh_symbol">,</span></li><li><span class="sh_function">ROUND</span><span class="sh_symbol">(</span><span class="sh_function">MONTHS_BETWEEN</span><span class="sh_symbol">(</span>shipdate<span class="sh_symbol">,</span> orderdate<span class="sh_symbol">))</span> as <span class="sh_string">"Time Taken"</span> FROM ord<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT custid, orderdate, shipdate,
+ROUND(MONTHS_BETWEEN(shipdate, orderdate)) as "Time Taken" FROM ord;
+</pre></div></div>
+      <h3>4.3 完整代码</h3>
+      <p>本案例可按如下SQL语句进行测试。</p>
+      <p>创建ord表的SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE TABLE <span class="sh_function">ord</span><span class="sh_symbol">(</span></li><li>  custid <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li>  orderdate DATE<span class="sh_symbol">,</span></li><li>  shipdate DATE</li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE ord(
+  custid NUMBER(4),
+  orderdate DATE,
+  shipdate DATE
+);
+</pre></div></div>
+      <p>向ord表中插入测试数据的SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO <span class="sh_function">ord</span><span class="sh_symbol">(</span>custid<span class="sh_symbol">,</span>orderdate<span class="sh_symbol">,</span>shipdate<span class="sh_symbol">)</span><span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">1001</span><span class="sh_symbol">,</span><span class="sh_string">'12-4月-98'</span><span class="sh_symbol">,</span><span class="sh_string">'10-8月-98'</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_function">ord</span><span class="sh_symbol">(</span>custid<span class="sh_symbol">,</span>orderdate<span class="sh_symbol">,</span>shipdate<span class="sh_symbol">)</span><span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">1002</span><span class="sh_symbol">,</span><span class="sh_string">'12-3月-98'</span><span class="sh_symbol">,</span><span class="sh_string">'10-6月-98'</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_function">ord</span><span class="sh_symbol">(</span>custid<span class="sh_symbol">,</span>orderdate<span class="sh_symbol">,</span>shipdate<span class="sh_symbol">)</span><span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">1003</span><span class="sh_symbol">,</span><span class="sh_string">'12-2月-98'</span><span class="sh_symbol">,</span><span class="sh_string">'10-9月-98'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO ord(custid,orderdate,shipdate)values(1001,'12-4月-98','10-8月-98');
+INSERT INTO ord(custid,orderdate,shipdate)values(1002,'12-3月-98','10-6月-98');
+INSERT INTO ord(custid,orderdate,shipdate)values(1003,'12-2月-98','10-9月-98');
+</pre></div></div>
+      <p>查询一个订单，从下单开始到启运需要多长时间，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT custid<span class="sh_symbol">,</span> orderdate<span class="sh_symbol">,</span> shipdate<span class="sh_symbol">,</span></li><li><span class="sh_function">ROUND</span><span class="sh_symbol">(</span><span class="sh_function">MONTHS_BETWEEN</span><span class="sh_symbol">(</span>shipdate<span class="sh_symbol">,</span> orderdate<span class="sh_symbol">))</span> as <span class="sh_string">"Time Taken"</span> FROM ord<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT custid, orderdate, shipdate,
+ROUND(MONTHS_BETWEEN(shipdate, orderdate)) as "Time Taken" FROM ord;
+</pre></div></div>
+      <a name="case5">
+      </a>
+      <h2>5 Oracle空值函数综合示例</h2>
+      <h3>5.1 问题</h3>
+      <p>现有数据表Customer，其结构如表-1所示：</p>
+      <div class="table">
+        <p>表-1 customer表结构</p>
+        <img src="./CASE_files/table001.png">
+      </div>
+      <p>1)构造SQL语句，列出Customer数据表中每个客户的信息。如果客户生日未提供，则该列值显示“not available”；如果没有余额信息，则显示“no account”。</p>
+      <p>2) 构造SQL语句，列出生日在1987年的客户的全部信息。</p>
+      <h3>5.2 步骤</h3>
+      <p class="number">步骤一：列出Customer数据表中每个客户的信息</p>
+      <p>使用TO_CHAR函数将日期类型的birthday列的数据转换为字符类型，然后，使用NVL函数，当birthday为NULL值时，将birthday列的数据显示为“not available”。同理，使用TO_CHAR函数将数值类型的account列数据转换为字符类型，然后，使用NVL函数，当account为NULL值时，将account列的数据显示为“noaccount”，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT cust_id<span class="sh_symbol">,</span> cname<span class="sh_symbol">,</span> <span class="sh_function">NVL</span><span class="sh_symbol">(</span><span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>birthday<span class="sh_symbol">,</span> <span class="sh_string">'yyyy-mm-dd'</span><span class="sh_symbol">),</span> <span class="sh_string">'not available'</span><span class="sh_symbol">),</span></li><li><span class="sh_function">NVL</span><span class="sh_symbol">(</span><span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>account<span class="sh_symbol">),</span> <span class="sh_string">'no account'</span><span class="sh_symbol">)</span></li><li>FROM customer<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT cust_id, cname, NVL(TO_CHAR(birthday, 'yyyy-mm-dd'), 'not available'),
+NVL(TO_CHAR(account), 'no account')
+FROM customer;
+</pre></div></div>
+      <p>上述SQL语句中，使用TO_CHAR函数将日期类型的数据、数值类型的数据转换为字符类型，这是因为，NVL函数要求两个参数的数据类型必须保持一致。</p>
+      <p class="number">步骤二：列出生日在1987年的客户的全部信息</p>
+      <p>使用TO_CHAR函数将获取birthday列的年份数据，与“1987”使用“=”等号进行比较，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">*</span> FROM customer </li><li>WHERE <span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>birthday<span class="sh_symbol">,</span> <span class="sh_string">'yyyy'</span><span class="sh_symbol">)</span> <span class="sh_symbol">=</span> <span class="sh_string">'1987'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT * FROM customer 
+WHERE TO_CHAR(birthday, 'yyyy') = '1987';
+</pre></div></div>
+      <h3>5.3 完整代码</h3>
+      <p>本案例可按如下SQL语句进行测试。</p>
+      <p>创建customer表的SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>create table <span class="sh_function">customer</span><span class="sh_symbol">(</span></li><li>    cust_id <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span>  Primary Key<span class="sh_symbol">,</span>   </li><li>    cname <span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">25</span><span class="sh_symbol">)</span> Not Null<span class="sh_symbol">,</span>       </li><li>    birthday DATE<span class="sh_symbol">,</span>                     </li><li>    account NUMBER                 </li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">create table customer(
+    cust_id NUMBER(4)  Primary Key,   
+    cname VARCHAR2(25) Not Null,       
+    birthday DATE,                     
+    account NUMBER                 
+);
+</pre></div></div>
+      <p>向customer插入如下测试数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO <span class="sh_function">customer</span><span class="sh_symbol">(</span>cust_id<span class="sh_symbol">,</span>cname<span class="sh_symbol">,</span>birthday<span class="sh_symbol">,</span>account<span class="sh_symbol">)</span><span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">1001</span><span class="sh_symbol">,</span><span class="sh_string">'郭靖'</span><span class="sh_symbol">,</span><span class="sh_string">'12-12月-13'</span><span class="sh_symbol">,</span><span class="sh_number">200</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_function">customer</span><span class="sh_symbol">(</span>cust_id<span class="sh_symbol">,</span>cname<span class="sh_symbol">)</span><span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">1002</span><span class="sh_symbol">,</span><span class="sh_string">'黄蓉'</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_function">customer</span><span class="sh_symbol">(</span>cust_id<span class="sh_symbol">,</span>cname<span class="sh_symbol">,</span>birthday<span class="sh_symbol">,</span>account<span class="sh_symbol">)</span><span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">1003</span><span class="sh_symbol">,</span><span class="sh_string">'梅超风'</span><span class="sh_symbol">,</span><span class="sh_string">'12-12月-87'</span><span class="sh_symbol">,</span><span class="sh_number">200</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO customer(cust_id,cname,birthday,account)values(1001,'郭靖','12-12月-13',200);
+INSERT INTO customer(cust_id,cname)values(1002,'黄蓉');
+INSERT INTO customer(cust_id,cname,birthday,account)values(1003,'梅超风','12-12月-87',200);
+</pre></div></div>
+      <p>列出Customer数据表中每个客户的信息的SQL语句如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT cust_id<span class="sh_symbol">,</span> cname<span class="sh_symbol">,</span> </li><li><span class="sh_function">NVL</span><span class="sh_symbol">(</span><span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>birthday<span class="sh_symbol">,</span> <span class="sh_string">'yyyy-mm-dd'</span><span class="sh_symbol">),</span> <span class="sh_string">'not available'</span><span class="sh_symbol">),</span> <span class="sh_function">NVL</span><span class="sh_symbol">(</span><span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>account<span class="sh_symbol">),</span> <span class="sh_string">'no account'</span><span class="sh_symbol">)</span></li><li>FROM customer<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT cust_id, cname, 
+NVL(TO_CHAR(birthday, 'yyyy-mm-dd'), 'not available'), NVL(TO_CHAR(account), 'no account')
+FROM customer;
+</pre></div></div>
+      <p>列出生日在1987年的客户的全部信息的SQL语句如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">*</span> FROM customer </li><li>WHERE <span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>birthday<span class="sh_symbol">,</span> <span class="sh_string">'yyyy'</span><span class="sh_symbol">)</span> <span class="sh_symbol">=</span> <span class="sh_string">'1987'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT * FROM customer 
+WHERE TO_CHAR(birthday, 'yyyy') = '1987';
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

@@ -1,0 +1,377 @@
+
+<!-- saved from url=(0092)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="26434284452"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#page_top_case">Top</a>
+      <h1>WebBasicJavaScriptUnit01</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#case1">JavaScript 之HelloWorld案例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#case2">计算平方</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#case3">猜数字</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#case4">计算阶乘</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 JavaScript 之HelloWorld案例</h2>
+      <h3>1.1 问题</h3>
+      <p>1）创建 html 页面；</p>
+      <p>2）为页面添加三个按钮；</p>
+      <p>3）为按钮定义单击事件，并分别用三种方式添加JavaScrip 代码，以弹出 HelloWorld。</p>
+      <h3>1.2 方案</h3>
+      <p>使用JavaScript的三种方式：</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建HTML</p>
+      <p>在day04文件夹下，创建demo1.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>使用JS<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"hello.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">f2</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_function">alert</span><span class="sh_symbol">(</span><span class="sh_string">'嵌入式使用JS'</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"按钮1"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"alert('事件定义式使用JS');"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"按钮2"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f2();"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"按钮3"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f3();"</span><span class="sh_symbol">/&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;使用JS&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="hello.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function f2() {
+        alert('嵌入式使用JS');
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;input type="button" value="按钮1" onclick="alert('事件定义式使用JS');"/&gt;
+    &lt;input type="button" value="按钮2" onclick="f2();"/&gt;
+    &lt;input type="button" value="按钮3" onclick="f3();"/&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：创建JS</p>
+      <p>在day04文件夹下创建hello.js，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">function</span> <span class="sh_function">f3</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">alert</span><span class="sh_symbol">(</span><span class="sh_string">'文件调用式使用JS'</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">function f3() {
+	alert('文件调用式使用JS');	
+}
+</pre></div></div>
+      <p class="number">步骤三：测试</p>
+      <p>使用浏览器打开demo1.html，点击按钮1，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>点击按钮2，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p>点击按钮3，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <h3>1.4 完整代码</h3>
+      <p>demo1.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>使用JS<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span> src<span class="sh_symbol">=</span><span class="sh_string">"hello.js"</span><span class="sh_symbol">&gt;&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">f2</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_function">alert</span><span class="sh_symbol">(</span><span class="sh_string">'嵌入式使用JS'</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"按钮1"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"alert('事件定义式使用JS');"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"按钮2"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f2();"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"按钮3"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"f3();"</span><span class="sh_symbol">/&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;使用JS&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript" src="hello.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      function f2() {
+        alert('嵌入式使用JS');
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;input type="button" value="按钮1" onclick="alert('事件定义式使用JS');"/&gt;
+    &lt;input type="button" value="按钮2" onclick="f2();"/&gt;
+    &lt;input type="button" value="按钮3" onclick="f3();"/&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>hello.js完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">function</span> <span class="sh_function">f3</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">alert</span><span class="sh_symbol">(</span><span class="sh_string">'文件调用式使用JS'</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">function f3() {
+	alert('文件调用式使用JS');	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 计算平方</h2>
+      <h3>2.1 问题</h3>
+      <p>1）判断页面文本框中录入的文本是否为数值</p>
+      <p>2）如果录入的文本不能转换为数值，则提示重新录入</p>
+      <p>3）如果录入的文本为数值，则计算平方</p>
+      <h3>2.2 方案</h3>
+      <p>使用数据类型转换函数：</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo2.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>计算平方<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">cal</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> num_obj <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"num"</span><span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">var</span> result_obj <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">);</span></li><li>        </li><li>        <span class="sh_keyword">var</span> num <span class="sh_symbol">=</span> num_obj<span class="sh_symbol">.</span>value<span class="sh_symbol">;</span></li><li>        <span class="sh_keyword">if</span><span class="sh_symbol">(</span>num <span class="sh_symbol">==</span> <span class="sh_string">""</span> <span class="sh_symbol">||</span> <span class="sh_predef_func">isNaN</span><span class="sh_symbol">(</span>num<span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>          result_obj<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"必须输入数字!"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">var</span> n <span class="sh_symbol">=</span> <span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>num<span class="sh_symbol">);</span></li><li>          result_obj<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> n <span class="sh_symbol">*</span> n<span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>计算平方<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> id<span class="sh_symbol">=</span><span class="sh_string">"num"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"平方"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"cal();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">=</span> <span class="sh_symbol">&lt;</span>span id<span class="sh_symbol">=</span><span class="sh_string">"result"</span><span class="sh_symbol">&gt;&lt;/</span>span<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;计算平方&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript"&gt;
+      function cal() {
+        var num_obj = document.getElementById("num");
+        var result_obj = document.getElementById("result");
+        
+        var num = num_obj.value;
+        if(num == "" || isNaN(num)) {
+          result_obj.innerHTML = "必须输入数字!";
+        } else {
+          var n = parseInt(num);
+          result_obj.innerHTML = n * n;
+        }
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;计算平方&lt;/h1&gt;
+    &lt;p&gt;
+      &lt;input type="text" id="num"/&gt;
+      &lt;input type="button" value="平方" onclick="cal();"/&gt;
+      = &lt;span id="result"&gt;&lt;/span&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>使用浏览器打开demo2.html，输入数字，点击平方按钮，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <h3>2.4 完整代码</h3>
+      <p>demo2.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>计算平方<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">cal</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> num_obj <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"num"</span><span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">var</span> result_obj <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">);</span></li><li>        </li><li>        <span class="sh_keyword">var</span> num <span class="sh_symbol">=</span> num_obj<span class="sh_symbol">.</span>value<span class="sh_symbol">;</span></li><li>        <span class="sh_keyword">if</span><span class="sh_symbol">(</span>num <span class="sh_symbol">==</span> <span class="sh_string">""</span> <span class="sh_symbol">||</span> <span class="sh_predef_func">isNaN</span><span class="sh_symbol">(</span>num<span class="sh_symbol">))</span> <span class="sh_cbracket">{</span></li><li>          result_obj<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"必须输入数字!"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">var</span> n <span class="sh_symbol">=</span> <span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>num<span class="sh_symbol">);</span></li><li>          result_obj<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> n <span class="sh_symbol">*</span> n<span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>计算平方<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> id<span class="sh_symbol">=</span><span class="sh_string">"num"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"平方"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"cal();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">=</span> <span class="sh_symbol">&lt;</span>span id<span class="sh_symbol">=</span><span class="sh_string">"result"</span><span class="sh_symbol">&gt;&lt;/</span>span<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;计算平方&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript"&gt;
+      function cal() {
+        var num_obj = document.getElementById("num");
+        var result_obj = document.getElementById("result");
+        
+        var num = num_obj.value;
+        if(num == "" || isNaN(num)) {
+          result_obj.innerHTML = "必须输入数字!";
+        } else {
+          var n = parseInt(num);
+          result_obj.innerHTML = n * n;
+        }
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;计算平方&lt;/h1&gt;
+    &lt;p&gt;
+      &lt;input type="text" id="num"/&gt;
+      &lt;input type="button" value="平方" onclick="cal();"/&gt;
+      = &lt;span id="result"&gt;&lt;/span&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 猜数字</h2>
+      <h3>3.1 问题</h3>
+      <p>1）判断页面文本框中录入的文本是否为数值</p>
+      <p>2）如果录入的文本不能转换为数值，则提示重新录入</p>
+      <p>3）如果可以转换为数值，则与内置好的数值进行比较，并提示比较的结果（“小了”、“大了”或者“猜对了”）</p>
+      <h3>3.2 方案</h3>
+      <p>使用关系运算符：</p>
+      <p>&gt;：大于</p>
+      <p>==：等于</p>
+      <p>使用逻辑运算符：</p>
+      <p>||：或</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建 demo3.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>猜数字<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">var</span> init_num <span class="sh_symbol">=</span> <span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span><span class="sh_predef_var">Math</span><span class="sh_symbol">.</span><span class="sh_function">random</span><span class="sh_symbol">()*</span><span class="sh_number">100</span><span class="sh_symbol">)+</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>      console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span>init_num<span class="sh_symbol">);</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">guess</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>       <span class="sh_keyword">var</span> num <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"num"</span><span class="sh_symbol">).</span>value<span class="sh_symbol">;</span></li><li>       <span class="sh_keyword">var</span> result <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">);</span></li><li>       <span class="sh_keyword">if</span><span class="sh_symbol">(</span>num <span class="sh_symbol">==</span> <span class="sh_string">""</span> <span class="sh_symbol">||</span> <span class="sh_predef_func">isNaN</span><span class="sh_symbol">(</span>num<span class="sh_symbol">)</span> <span class="sh_symbol">||</span> num<span class="sh_symbol">&lt;</span><span class="sh_number">1</span> <span class="sh_symbol">||</span> num<span class="sh_symbol">&gt;</span><span class="sh_number">100</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>         result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"必须输入1-100之间的数字!"</span><span class="sh_symbol">;</span></li><li>       <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">if</span><span class="sh_symbol">(</span>num<span class="sh_symbol">&gt;</span>init_num<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>          result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"大了!"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>num<span class="sh_symbol">&lt;</span>init_num<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>          result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"小了!"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>          result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"对了!"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span></li><li>       <span class="sh_cbracket">}</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>猜数字游戏<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> id<span class="sh_symbol">=</span><span class="sh_string">"num"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"开始猜"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"guess();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>span id<span class="sh_symbol">=</span><span class="sh_string">"result"</span><span class="sh_symbol">&gt;&lt;/</span>span<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span>    </li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;猜数字&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript"&gt;
+      var init_num = parseInt(Math.random()*100)+1;
+      console.log(init_num);
+      function guess() {
+       var num = document.getElementById("num").value;
+       var result = document.getElementById("result");
+       if(num == "" || isNaN(num) || num&lt;1 || num&gt;100) {
+         result.innerHTML = "必须输入1-100之间的数字!";
+       } else {
+        if(num&gt;init_num) {
+          result.innerHTML = "大了!";
+        } else if(num&lt;init_num) {
+          result.innerHTML = "小了!";
+        } else {
+          result.innerHTML = "对了!";
+        }
+       }
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;猜数字游戏&lt;/h1&gt;
+    &lt;p&gt;
+      &lt;input type="text" id="num"/&gt;
+      &lt;input type="button" value="开始猜" onclick="guess();"/&gt;
+      &lt;span id="result"&gt;&lt;/span&gt;
+    &lt;/p&gt;    
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>打开demo3.html，输入任意数字，点击开始猜按钮，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <h3>3.4 完整代码</h3>
+      <p>demo3.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>猜数字<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">var</span> init_num <span class="sh_symbol">=</span> <span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span><span class="sh_predef_var">Math</span><span class="sh_symbol">.</span><span class="sh_function">random</span><span class="sh_symbol">()*</span><span class="sh_number">100</span><span class="sh_symbol">)+</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>      console<span class="sh_symbol">.</span><span class="sh_function">log</span><span class="sh_symbol">(</span>init_num<span class="sh_symbol">);</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">guess</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>       <span class="sh_keyword">var</span> num <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"num"</span><span class="sh_symbol">).</span>value<span class="sh_symbol">;</span></li><li>       <span class="sh_keyword">var</span> result <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">);</span></li><li>       <span class="sh_keyword">if</span><span class="sh_symbol">(</span>num <span class="sh_symbol">==</span> <span class="sh_string">""</span> <span class="sh_symbol">||</span> <span class="sh_predef_func">isNaN</span><span class="sh_symbol">(</span>num<span class="sh_symbol">)</span> <span class="sh_symbol">||</span> num<span class="sh_symbol">&lt;</span><span class="sh_number">1</span> <span class="sh_symbol">||</span> num<span class="sh_symbol">&gt;</span><span class="sh_number">100</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>         result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"必须输入1-100之间的数字!"</span><span class="sh_symbol">;</span></li><li>       <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">if</span><span class="sh_symbol">(</span>num<span class="sh_symbol">&gt;</span>init_num<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>          result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"大了!"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>num<span class="sh_symbol">&lt;</span>init_num<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>          result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"小了!"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>          result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"对了!"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span></li><li>       <span class="sh_cbracket">}</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>猜数字游戏<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> id<span class="sh_symbol">=</span><span class="sh_string">"num"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"开始猜"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"guess();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>span id<span class="sh_symbol">=</span><span class="sh_string">"result"</span><span class="sh_symbol">&gt;&lt;/</span>span<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span>    </li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;猜数字&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript"&gt;
+      var init_num = parseInt(Math.random()*100)+1;
+      console.log(init_num);
+      function guess() {
+       var num = document.getElementById("num").value;
+       var result = document.getElementById("result");
+       if(num == "" || isNaN(num) || num&lt;1 || num&gt;100) {
+         result.innerHTML = "必须输入1-100之间的数字!";
+       } else {
+        if(num&gt;init_num) {
+          result.innerHTML = "大了!";
+        } else if(num&lt;init_num) {
+          result.innerHTML = "小了!";
+        } else {
+          result.innerHTML = "对了!";
+        }
+       }
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;猜数字游戏&lt;/h1&gt;
+    &lt;p&gt;
+      &lt;input type="text" id="num"/&gt;
+      &lt;input type="button" value="开始猜" onclick="guess();"/&gt;
+      &lt;span id="result"&gt;&lt;/span&gt;
+    &lt;/p&gt;    
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 计算阶乘</h2>
+      <h3>4.1 问题</h3>
+      <p>1）在文本框中输入一个1-100的整数</p>
+      <p>2）计算该整数的阶乘</p>
+      <h3>4.2 方案</h3>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo4.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>计算阶乘<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">cal</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>       <span class="sh_keyword">var</span> num <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"num"</span><span class="sh_symbol">).</span>value<span class="sh_symbol">;</span></li><li>       <span class="sh_keyword">var</span> result <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">);</span></li><li>       </li><li>       <span class="sh_keyword">if</span><span class="sh_symbol">(</span>num <span class="sh_symbol">==</span> <span class="sh_string">""</span> <span class="sh_symbol">||</span> <span class="sh_predef_func">isNaN</span><span class="sh_symbol">(</span>num<span class="sh_symbol">)</span> <span class="sh_symbol">||</span> num<span class="sh_symbol">&lt;</span><span class="sh_number">1</span> <span class="sh_symbol">||</span> num<span class="sh_symbol">&gt;</span><span class="sh_number">100</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"必须输入1-100之间的数字！"</span><span class="sh_symbol">;</span> </li><li>       <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> n <span class="sh_symbol">=</span> <span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>num<span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">var</span> sum <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>        <span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_keyword">var</span> i<span class="sh_symbol">=</span>n<span class="sh_symbol">;</span>i<span class="sh_symbol">;</span>i<span class="sh_symbol">--)</span> <span class="sh_cbracket">{</span></li><li>          sum <span class="sh_symbol">*=</span> i<span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span></li><li>        result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> sum<span class="sh_symbol">;</span></li><li>       <span class="sh_cbracket">}</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>计算阶乘<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> id<span class="sh_symbol">=</span><span class="sh_string">"num"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"阶乘"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"cal();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">=</span> <span class="sh_symbol">&lt;</span>span id<span class="sh_symbol">=</span><span class="sh_string">"result"</span><span class="sh_symbol">&gt;&lt;/</span>span<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span>    </li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;计算阶乘&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript"&gt;
+      function cal() {
+       var num = document.getElementById("num").value;
+       var result = document.getElementById("result");
+       
+       if(num == "" || isNaN(num) || num&lt;1 || num&gt;100) {
+        result.innerHTML = "必须输入1-100之间的数字！"; 
+       } else {
+        var n = parseInt(num);
+        var sum = 1;
+        for(var i=n;i;i--) {
+          sum *= i;
+        }
+        result.innerHTML = sum;
+       }
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;计算阶乘&lt;/h1&gt;
+    &lt;p&gt;
+      &lt;input type="text" id="num"/&gt;
+      &lt;input type="button" value="阶乘" onclick="cal();"/&gt;
+      = &lt;span id="result"&gt;&lt;/span&gt;
+    &lt;/p&gt;    
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>使用浏览器打开demo4.html，输入任意整数，点击计算按钮，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <h3>4.4 完整代码</h3>
+      <p>demo4.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>计算阶乘<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">cal</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>       <span class="sh_keyword">var</span> num <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"num"</span><span class="sh_symbol">).</span>value<span class="sh_symbol">;</span></li><li>       <span class="sh_keyword">var</span> result <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"result"</span><span class="sh_symbol">);</span></li><li>       </li><li>       <span class="sh_keyword">if</span><span class="sh_symbol">(</span>num <span class="sh_symbol">==</span> <span class="sh_string">""</span> <span class="sh_symbol">||</span> <span class="sh_predef_func">isNaN</span><span class="sh_symbol">(</span>num<span class="sh_symbol">)</span> <span class="sh_symbol">||</span> num<span class="sh_symbol">&lt;</span><span class="sh_number">1</span> <span class="sh_symbol">||</span> num<span class="sh_symbol">&gt;</span><span class="sh_number">100</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> <span class="sh_string">"必须输入1-100之间的数字！"</span><span class="sh_symbol">;</span> </li><li>       <span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">var</span> n <span class="sh_symbol">=</span> <span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>num<span class="sh_symbol">);</span></li><li>        <span class="sh_keyword">var</span> sum <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>        <span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_keyword">var</span> i<span class="sh_symbol">=</span>n<span class="sh_symbol">;</span>i<span class="sh_symbol">;</span>i<span class="sh_symbol">--)</span> <span class="sh_cbracket">{</span></li><li>          sum <span class="sh_symbol">*=</span> i<span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span></li><li>        result<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> sum<span class="sh_symbol">;</span></li><li>       <span class="sh_cbracket">}</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>计算阶乘<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"text"</span> id<span class="sh_symbol">=</span><span class="sh_string">"num"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"阶乘"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"cal();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">=</span> <span class="sh_symbol">&lt;</span>span id<span class="sh_symbol">=</span><span class="sh_string">"result"</span><span class="sh_symbol">&gt;&lt;/</span>span<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span>    </li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;计算阶乘&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript"&gt;
+      function cal() {
+       var num = document.getElementById("num").value;
+       var result = document.getElementById("result");
+       
+       if(num == "" || isNaN(num) || num&lt;1 || num&gt;100) {
+        result.innerHTML = "必须输入1-100之间的数字！"; 
+       } else {
+        var n = parseInt(num);
+        var sum = 1;
+        for(var i=n;i;i--) {
+          sum *= i;
+        }
+        result.innerHTML = sum;
+       }
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;计算阶乘&lt;/h1&gt;
+    &lt;p&gt;
+      &lt;input type="text" id="num"/&gt;
+      &lt;input type="button" value="阶乘" onclick="cal();"/&gt;
+      = &lt;span id="result"&gt;&lt;/span&gt;
+    &lt;/p&gt;    
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY04/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

@@ -1,0 +1,968 @@
+
+<!-- saved from url=(0092)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="16622566877"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA SE01 Unit02</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#case1">编写验证Email的正则表达式</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#case2">使用split方法拆分字符串</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#case3">使用replaceAll实现字符串替换</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#case4">重写Cell类的toString方法</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#case5">重写Cell类的equals方法</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#case6">测试Number的intValue和doubleValue方法</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#case7">测试Integer的parseInt方法</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#case8">测试Double的parseDouble方法</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 编写验证Email的正则表达式</h2>
+      <h3>1.1 问题</h3>
+      <p>写出与email匹配的正则表达式，并测试该正则表达式的正确性。</p>
+      <h3>1.2 方案</h3>
+      <p>首先，分析email的正则表达式，email的正则表达式如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">[</span>a<span class="sh_symbol">-</span>zA<span class="sh_symbol">-</span>Z0<span class="sh_symbol">-</span>9_<span class="sh_symbol">\.-]+</span>@<span class="sh_symbol">([</span>a<span class="sh_symbol">-</span>zA<span class="sh_symbol">-</span>Z0<span class="sh_number">-9</span><span class="sh_symbol">-]+\.)+[</span>a<span class="sh_symbol">-</span>zA<span class="sh_symbol">-</span>Z0<span class="sh_number">-9</span><span class="sh_symbol">]</span><span class="sh_cbracket">{</span><span class="sh_number">2</span><span class="sh_symbol">,</span><span class="sh_number">4</span><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">[a-zA-Z0-9_\.-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{2,4}
+</pre></div></div>
+      <p>以上正则表达式可以分成三部分，各个部分如下：</p>
+      <p>1） [a-zA-Z0-9_\.-]+@</p>
+      <p>表示a~z、A～Z、0～9、下划线、点以及减号可以出现至少1次也可以多次，然后出现@符号。</p>
+      <p>2） ([a-zA-Z0-9-]+\.)+</p>
+      <p>这段中的“（）”表示分组，这段正则表示这一组至少出现一次，也可以出现多次。括号中的内容表示，a~z、A～Z、0～9及减号可以至少出现1次也可以出现多次，然后出现“.”字符。</p>
+      <p>3） [a-zA-Z0-9]{2,4}</p>
+      <p>表示a~z、A～Z、0～9可以出现大于等于2次，小于等于4次。</p>
+      <p>其次，使用String类的matches方法，可以测试一个字符串是否和一个正则表达式匹配，matches方法的声明如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> boolean <span class="sh_function">matches</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> regex<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public boolean matches(String regex)
+</pre></div></div>
+      <p>以上方法表示当字符串和正则表达式regex匹配时返回true，否则，返回false。</p>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：添加测试方法</p>
+      <p>首先，在名为JavaSE的工程下的src下新建名为day02的包，然后，在该包下新建名为TestRegEx的类，然后在该类中添加测试方法email，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRegEx <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试email是否合法</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">email</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestRegEx {
+#cold_bold	/**
+#cold_bold	 * 
+#cold_bold	 * 测试email是否合法
+#cold_bold	 */
+#cold_bold	@Test
+#cold_bold	public void email() {
+#cold_bold	}	
+}
+</pre></div></div>
+      <p class="number">步骤二：测试email正则表达式的正确性</p>
+      <p>首先，定义字符变量emailRegEx，该变量赋值为正则表达式:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_string">"^[a-zA-Z0-9_</span><span class="sh_specialchar">\\</span><span class="sh_string">.-]+@([a-zA-Z0-9-]+</span><span class="sh_specialchar">\\</span><span class="sh_string">.)+[a-zA-Z0-9]{2,4}$"</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">"^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z0-9]{2,4}$"
+</pre></div></div>
+      <p>其中，^表示匹配输入的开始位置，$表示匹配输入的结束位置。此处需要注意的是，在正则表达式中“\.”表示的是“.”字符，但是，在Java代码中需要对“\”字符做转意，即“\\”表示一个“\”。因此在定义Java的正则表达式变量emailRegEx时，使用“\\.”来表示一个“.”字符。</p>
+      <p>然后，测试email（bjliyi@tarena.com.cn）是否和正则表达式emailRegEx匹配，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRegEx <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试email是否合法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">email</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> emailRegEx <span class="sh_symbol">=</span></li><li class="bold_code"> <span class="sh_string">"^[a-zA-Z0-9_</span><span class="sh_specialchar">\.</span><span class="sh_string">-]+@([a-zA-Z0-9-]+</span><span class="sh_specialchar">\.</span><span class="sh_string">)+[a-zA-Z0-9]{2,4}$"</span><span class="sh_symbol">;</span></li><li class="bold_code"></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> email <span class="sh_symbol">=</span> <span class="sh_string">"bjliyi@tarena.com.cn"</span><span class="sh_symbol">;</span></li><li class="bold_code"></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>email<span class="sh_symbol">.</span><span class="sh_function">matches</span><span class="sh_symbol">(</span>emailRegEx<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestRegEx {
+	/**
+	 * 
+	 * 测试email是否合法
+	 */
+	@Test
+	public void email() {
+#cold_bold		String emailRegEx =
+#cold_bold "^[a-zA-Z0-9_\.-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z0-9]{2,4}$";
+#cold_bold
+#cold_bold		String email = "bjliyi@tarena.com.cn";
+#cold_bold
+#cold_bold		System.out.println(email.matches(emailRegEx));
+	}	
+}
+</pre></div></div>
+      <p class="number">步骤三：运行</p>
+      <p>运行方法email，控制台输出结果如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">true</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">true
+</pre></div></div>
+      <p>从输出结果可以看出email（bjliyi@tarena.com.cn）和正则表达式emailRegEx是匹配的。</p>
+      <h3>1.4 完整代码</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRegEx <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试email是否合法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">email</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> emailRegEx <span class="sh_symbol">=</span></li><li> <span class="sh_string">"^[a-zA-Z0-9_</span><span class="sh_specialchar">\\</span><span class="sh_string">.-]+@([a-zA-Z0-9-]+</span><span class="sh_specialchar">\\</span><span class="sh_string">.)+[a-zA-Z0-9]{2,4}$"</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> email <span class="sh_symbol">=</span> <span class="sh_string">"bjliyi@tarena.com.cn"</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>email<span class="sh_symbol">.</span><span class="sh_function">matches</span><span class="sh_symbol">(</span>emailRegEx<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestRegEx {
+	/**
+	 * 
+	 * 测试email是否合法
+	 */
+	@Test
+	public void email() {
+		String emailRegEx =
+ "^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z0-9]{2,4}$";
+
+		String email = "bjliyi@tarena.com.cn";
+
+		System.out.println(email.matches(emailRegEx));
+	}	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 使用split方法拆分字符串</h2>
+      <h3>2.1 问题</h3>
+      <p>使用split方法进行字符串的拆分，具体要求如下所示：</p>
+      <p>1） 使用空格对字符串"java cpp php c# objective-c"进行拆分。</p>
+      <p>2） 使用+、-以及=对字符串"100+200-150=150"进行拆分。</p>
+      <h3>2.2 方案</h3>
+      <p>在Java API中的String类提供了split方法，实现使用正则表达式对字符串进行拆分的方法，split方法的声明如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> <span class="sh_function">split</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span>  regex<span class="sh_symbol">)</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String[] split(String  regex) 
+</pre></div></div>
+      <p>以上方法表示以regex所表示的字符串为分隔符，将字符串拆分成字符串数组，其中，参数regex为正则表达式。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：添加测试方法</p>
+      <p>在TestRegEx中添加测试方法testSplit，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li class="bold_code">import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRegEx <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用split方法拆分字符串</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testSplit</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+#cold_boldimport java.util.Arrays;
+
+public class TestRegEx {
+#cold_bold	/**
+#cold_bold	 * 使用split方法拆分字符串
+#cold_bold	 * 
+#cold_bold	 */
+#cold_bold	@Test
+#cold_bold	public void testSplit() {
+#cold_bold		
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤二：使用split方法</p>
+      <p>首先，使用空格对字符串"java cpp php c# objective-c" 进行分割，在正则表达式中，使用“\\s”来表示一个空白字符。</p>
+      <p>然后，使用+、-以及=对字符串"100+200-150=150"进行拆分，在正则表达式中，使用</p>
+      <p>"[\\+\\-=]"来表示+、-以及=。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRegEx <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用split方法拆分字符串</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testSplit</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 按空格拆分</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"java cpp php c# objective-c"</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> strArr <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">split</span><span class="sh_symbol">(</span><span class="sh_string">"</span><span class="sh_specialchar">\\</span><span class="sh_string">s"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>strArr<span class="sh_symbol">));</span></li><li class="bold_code"></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 按+、-、=符号拆分</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> line <span class="sh_symbol">=</span> <span class="sh_string">"100+200-150=150"</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strArr <span class="sh_symbol">=</span> line<span class="sh_symbol">.</span><span class="sh_function">split</span><span class="sh_symbol">(</span><span class="sh_string">"[</span><span class="sh_specialchar">\\</span><span class="sh_string">+</span><span class="sh_specialchar">\\</span><span class="sh_string">-=]"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>strArr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+import java.util.Arrays;
+
+public class TestRegEx {
+	/**
+	 * 使用split方法拆分字符串
+	 * 
+	 */
+	@Test
+	public void testSplit() {
+#cold_bold		// 按空格拆分
+#cold_bold		String str = "java cpp php c# objective-c";
+#cold_bold		String[] strArr = str.split("\\s");
+#cold_bold		System.out.println(Arrays.toString(strArr));
+#cold_bold
+#cold_bold		// 按+、-、=符号拆分
+#cold_bold		String line = "100+200-150=150";
+#cold_bold		strArr = line.split("[\\+\\-=]");
+#cold_bold		System.out.println(Arrays.toString(strArr));
+	}
+}
+</pre></div></div>
+      <p class="number">步骤三：运行</p>
+      <p>运行方法testSplit，控制台输出结果如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">[</span>java<span class="sh_symbol">,</span> cpp<span class="sh_symbol">,</span> php<span class="sh_symbol">,</span> c#<span class="sh_symbol">,</span> objective<span class="sh_symbol">-</span>c<span class="sh_symbol">]</span></li><li><span class="sh_symbol">[</span><span class="sh_number">100</span><span class="sh_symbol">,</span> <span class="sh_number">200</span><span class="sh_symbol">,</span> <span class="sh_number">150</span><span class="sh_symbol">,</span> <span class="sh_number">150</span><span class="sh_symbol">]</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">[java, cpp, php, c#, objective-c]
+[100, 200, 150, 150]
+</pre></div></div>
+      <p>从输出结果可以看出已经将字符串"java cpp php c# objective-c"和字符串"100+200-150=150"按照要求的方式拆分为数组中元素。</p>
+      <h3>2.4 完整代码</h3>
+      <p>本案例中，类TestRegEx的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRegEx <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（之前案例的代码，略）</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用split方法拆分字符串</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testSplit</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 按空格拆分</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"java cpp php c# objective-c"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> strArr <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">split</span><span class="sh_symbol">(</span><span class="sh_string">"</span><span class="sh_specialchar">\\</span><span class="sh_string">s"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>strArr<span class="sh_symbol">));</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 按+、-、=符号拆分</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> line <span class="sh_symbol">=</span> <span class="sh_string">"100+200-150=150"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strArr <span class="sh_symbol">=</span> line<span class="sh_symbol">.</span><span class="sh_function">split</span><span class="sh_symbol">(</span><span class="sh_string">"[</span><span class="sh_specialchar">\\</span><span class="sh_string">+</span><span class="sh_specialchar">\\</span><span class="sh_string">-=]"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>strArr<span class="sh_symbol">));</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+import java.util.Arrays;
+
+public class TestRegEx {
+	//...（之前案例的代码，略）
+
+	/**
+	 * 使用split方法拆分字符串
+	 * 
+	 */
+	@Test
+	public void testSplit() {
+		// 按空格拆分
+		String str = "java cpp php c# objective-c";
+		String[] strArr = str.split("\\s");
+		System.out.println(Arrays.toString(strArr));
+
+		// 按+、-、=符号拆分
+		String line = "100+200-150=150";
+		strArr = line.split("[\\+\\-=]");
+		System.out.println(Arrays.toString(strArr));
+
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 使用replaceAll实现字符串替换</h2>
+      <h3>3.1 问题</h3>
+      <p>使用replaceAll实现字符串替换，具体要求为将字符串"abc123bcd45ef6g7890"中的数字替换为汉字“数字”，如果是连续的数字，那么替换为一个汉字“数字”。</p>
+      <h3>3.2 方案</h3>
+      <p>在Java API中的String类提供了replaceAll方法，实现将字符串中匹配正则表达式的字符串替换成其它字符串，replaceAll方法的声明如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_predef_func">String</span> <span class="sh_function">replaceAll</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span> regex<span class="sh_symbol">,</span> <span class="sh_predef_func">String</span> replacement<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String replaceAll(String regex, String replacement)
+</pre></div></div>
+      <p>以上方法实现将字符串中匹配正则表达式regex的字符串替换成replacement。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：添加测试方法</p>
+      <p>在TestRegEx中添加测试方法testReplaceAll，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRegEx <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用replaceAll方法实现字符串替换</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testReplaceAll</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+import java.util.Arrays;
+
+public class TestRegEx {
+#cold_bold	/**
+#cold_bold	 * 使用replaceAll方法实现字符串替换
+#cold_bold	 * 
+#cold_bold	 */
+#cold_bold	@Test
+#cold_bold	public void testReplaceAll() {
+#cold_bold		
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤二：使用replaceAll方法</p>
+      <p>将字符串"abc123bcd45ef6g7890"中的数字替换为汉字“数字”，如果是连续的数字，那么替换为一个汉字“数字”，在正则表达式中，使用"[\\d+]"来表示可以出现一个或多个数字，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRegEx <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用replaceAll方法实现字符串替换</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testReplaceAll</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将str中的所有数字替换为“数字”二字</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"abc123bcd45ef6g7890"</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">replaceAll</span><span class="sh_symbol">(</span><span class="sh_string">"</span><span class="sh_specialchar">\\</span><span class="sh_string">d+"</span><span class="sh_symbol">,</span> <span class="sh_string">"数字"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+import java.util.Arrays;
+
+public class TestRegEx {
+	/**
+	 * 使用replaceAll方法实现字符串替换
+	 * 
+	 */
+	@Test
+	public void testReplaceAll() {
+#cold_bold		// 将str中的所有数字替换为“数字”二字
+#cold_bold		String str = "abc123bcd45ef6g7890";
+#cold_bold		str = str.replaceAll("\\d+", "数字");
+#cold_bold		System.out.println(str);
+	}
+}
+</pre></div></div>
+      <p class="number">步骤三：运行</p>
+      <p>运行方法testReplaceAll，控制台输出结果如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>abc数字bcd数字ef数字g数字</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">abc数字bcd数字ef数字g数字
+</pre></div></div>
+      <p>从输出结果可以看出已经将字符串"abc123bcd45ef6g7890"中的数字替换为汉字“数字”。</p>
+      <h3>3.4 完整代码</h3>
+      <p>本案例中，类TestRegEx的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestRegEx <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（之前案例的代码，略）</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 使用replaceAll方法实现字符串替换</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * </span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testReplaceAll</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 将str中的所有数字替换为“数字”二字</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"abc123bcd45ef6g7890"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">replaceAll</span><span class="sh_symbol">(</span><span class="sh_string">"</span><span class="sh_specialchar">\\</span><span class="sh_string">d+"</span><span class="sh_symbol">,</span> <span class="sh_string">"数字"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+import java.util.Arrays;
+
+public class TestRegEx {
+	//...（之前案例的代码，略）
+
+	/**
+	 * 使用replaceAll方法实现字符串替换
+	 * 
+	 */
+	@Test
+	public void testReplaceAll() {
+		// 将str中的所有数字替换为“数字”二字
+		String str = "abc123bcd45ef6g7890";
+		str = str.replaceAll("\\d+", "数字");
+		System.out.println(str);
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 重写Cell类的toString方法</h2>
+      <h3>4.1 问题</h3>
+      <p>Object是Java的继承root类，Java类继承了Object的所有方法，如: toString(),  hashCode(), equals()，其中toString()方法的特点如下:</p>
+      <p>1），toString() 方法 返回对象的文本描述。</p>
+      <p>2），经常被系统默认调用, 默认返回: 全限定名@HashCode，默认调用是指输出对象时会默认调用toString方法。</p>
+      <p>3），建议Java类覆盖toString(), 返回合理的文本。</p>
+      <p>本案例要求在Cell类中覆盖toString方法，返回行列的值，例如：6，3。</p>
+      <h3>4.2 方案</h3>
+      <p>首先，新建 Cell 类，然后在其中覆盖toString方法，返回row和col的值；</p>
+      <p>然后，测试toString方法是否覆盖生效。首先，在JavaSE工程下的day02包下新建TestCell，然后，在该类中添加测试方法testToString，最后，实例化一个Cell类的对象，其row、col为6、3，并输出该对象。</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：新建Cell类</p>
+      <p>新建 Cell 类，然后在其中覆盖toString方法，返回row和col的值，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Cell <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int col<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>int row<span class="sh_symbol">,</span> int col<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>row <span class="sh_symbol">=</span> row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>col <span class="sh_symbol">=</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>Cell cell<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">.</span>row<span class="sh_symbol">,</span> cell<span class="sh_symbol">.</span>col<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">drop</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row<span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">moveRight</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col<span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">moveLeft</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col<span class="sh_symbol">--;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">toString</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> row <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> col<span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+public class Cell {
+	int row;
+	int col;
+
+	public Cell(int row, int col) {
+		this.row = row;
+		this.col = col;
+	}
+
+	public Cell() {
+		this(0, 0);
+	}
+
+	public Cell(Cell cell) {
+		this(cell.row, cell.col);
+	}
+
+	public void drop() {
+		row++;
+	}
+
+	public void moveRight() {
+		col++;
+	}
+
+	public void moveLeft() {
+		col--;
+	}
+
+#cold_bold	@Override
+#cold_bold	public String toString() {
+#cold_bold		return row + "," + col;
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤二：写测试方法</p>
+      <p>测试toString方法是否覆盖生效。首先，在JavaSE工程下的day02包下新建TestCell，然后，在该类中添加测试方法testToString，最后，实例化一个Cell类的对象，其row、col为6、3，并输出该对象，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestCell <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试toString方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testToString</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell cell <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">);</span> <span class="sh_comment">// 6,3</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestCell {
+	/**
+	 * 测试toString方法
+	 */
+	@Test
+	public void testToString() {
+		Cell cell = new Cell(6, 3);
+		System.out.println(cell); // 6,3
+	}
+}
+</pre></div></div>
+      <p class="number">步骤三：运行</p>
+      <p>运行testToString方法，控制台输出结果如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_number">6</span><span class="sh_symbol">,</span><span class="sh_number">3</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">6,3
+</pre></div></div>
+      <p>从运行结果可以看出，已经成功覆盖了toString方法，返回实际row、col的值6、3。</p>
+      <h3>4.4 完整代码</h3>
+      <p>本案例中，类Cell的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Cell <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int col<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>int row<span class="sh_symbol">,</span> int col<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>row <span class="sh_symbol">=</span> row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>col <span class="sh_symbol">=</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>Cell cell<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">.</span>row<span class="sh_symbol">,</span> cell<span class="sh_symbol">.</span>col<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">drop</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row<span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">moveRight</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col<span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">moveLeft</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col<span class="sh_symbol">--;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">toString</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> row <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+public class Cell {
+	int row;
+	int col;
+
+	public Cell(int row, int col) {
+		this.row = row;
+		this.col = col;
+	}
+
+	public Cell() {
+		this(0, 0);
+	}
+
+	public Cell(Cell cell) {
+		this(cell.row, cell.col);
+	}
+
+	public void drop() {
+		row++;
+	}
+
+	public void moveRight() {
+		col++;
+	}
+
+	public void moveLeft() {
+		col--;
+	}
+
+	@Override
+	public String toString() {
+		return row + "," + col;
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>TestCell类完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestCell <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试toString方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testToString</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell cell <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">);</span> <span class="sh_comment">// 6,3</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestCell {
+	/**
+	 * 测试toString方法
+	 */
+	@Test
+	public void testToString() {
+		Cell cell = new Cell(6, 3);
+		System.out.println(cell); // 6,3
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case5">
+      </a>
+      <h2>5 重写Cell类的equals方法</h2>
+      <h3>5.1 问题</h3>
+      <p>Java程序中测试两个变量是否相等有两种方式：一种是利用==运算符，另一种是利用equals。</p>
+      <p>当使用==比较两个引用变量时，它们必须指向同一个对象，==判断才会返回true。</p>
+      <p>equals方法是Object类提供的一个实例方法，因此所有引用变量都可以调用该方法来判断是否与其它引用变量相等。但使用这个方法判断两个对象相等的标准与使用==运算符没有区别，同样要求两个引用变量指向同一个对象才会返回true。因此这个Object类提供的equals方法没有太大的实际意义，如果希望采用自定义的相等标准，则可以采用重写equals方法。</p>
+      <p>本案例要求在Cell类中重写equals方法，两个Cell引用变量相等的条件是行行相等，列列相等。</p>
+      <h3>5.2 方案</h3>
+      <p>首先，在上一案例的基础上，在Cell类中覆盖equals方法，两个Cell引用变量相等的条件是行行相等，列列相等</p>
+      <p>然后，测试equals方法是否覆盖生效。首先，在类TestCell中添加测试方法testEquals，然后，创建cell1对象和cell2对象，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;Cell cell1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;Cell cell2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	Cell cell1 = new Cell(6, 3);
+	Cell cell2 = new Cell(6, 3); 
+</pre></div></div>
+      <p>最后分别使用==和equals比较cell1对象和cell2对象是否相等。</p>
+      <h3>5.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：在Cell类中覆盖equals方法</p>
+      <p>在上一案例的基础上，在Cell类中覆盖equals方法，两个Cell引用变量调用equals方法返回true的条件是行行相等，列列相等，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Cell <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int col<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>int row<span class="sh_symbol">,</span> int col<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>row <span class="sh_symbol">=</span> row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>col <span class="sh_symbol">=</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>Cell cell<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">.</span>row<span class="sh_symbol">,</span> cell<span class="sh_symbol">.</span>col<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">drop</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row<span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">moveRight</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col<span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">moveLeft</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col<span class="sh_symbol">--;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">toString</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> row <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> boolean <span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>obj <span class="sh_symbol">==</span> <span class="sh_keyword">null</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span><span class="sh_keyword">this</span> <span class="sh_symbol">==</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">true</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>obj <span class="sh_keyword">instanceof</span> Cell<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell cell <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>Cell<span class="sh_symbol">)</span> obj<span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> cell<span class="sh_symbol">.</span>row <span class="sh_symbol">==</span> row <span class="sh_symbol">&amp;&amp;</span> cell<span class="sh_symbol">.</span>col <span class="sh_symbol">==</span> col<span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+public class Cell {
+	int row;
+	int col;
+
+	public Cell(int row, int col) {
+		this.row = row;
+		this.col = col;
+	}
+
+	public Cell() {
+		this(0, 0);
+	}
+
+	public Cell(Cell cell) {
+		this(cell.row, cell.col);
+	}
+
+	public void drop() {
+		row++;
+	}
+
+	public void moveRight() {
+		col++;
+	}
+
+	public void moveLeft() {
+		col--;
+	}
+
+	@Override
+	public String toString() {
+		return row + "," + col;
+	}
+
+#cold_bold	@Override
+#cold_bold	public boolean equals(Object obj) {
+#cold_bold		if (obj == null) {
+#cold_bold			return false;
+#cold_bold		}
+#cold_bold		if (this == obj) {
+#cold_bold			return true;
+#cold_bold		}
+#cold_bold		if (obj instanceof Cell) {
+#cold_bold			Cell cell = (Cell) obj;
+#cold_bold			return cell.row == row &amp;&amp; cell.col == col;
+#cold_bold		} else {
+#cold_bold			return false;
+#cold_bold		}
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤二：测试equals方法是否生效</p>
+      <p>测试equals方法是否覆盖生效。首先，在类TestCell中添加测试方法testEquals，然后，创建cell1对象和cell2对象； 最后分别使用==和equals比较cell1对象和cell2对象是否相等，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestCell <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试equals方法</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testEquals</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell cell1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell cell2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cell1 <span class="sh_symbol">==</span> cell2<span class="sh_symbol">);</span> <span class="sh_comment">// false</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cell1<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>cell2<span class="sh_symbol">));</span> <span class="sh_comment">// true</span></li><li class="bold_code"></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestCell {
+#cold_bold	/**
+#cold_bold	 * 测试equals方法
+#cold_bold	 */
+#cold_bold	@Test
+#cold_bold	public void testEquals() {
+#cold_bold		Cell cell1 = new Cell(6, 3);
+#cold_bold		Cell cell2 = new Cell(6, 3);
+#cold_bold		System.out.println(cell1 == cell2); // false
+#cold_bold		System.out.println(cell1.equals(cell2)); // true
+#cold_bold
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤三：运行</p>
+      <p>运行testEquals方法，控制台输出结果如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">false</span></li><li><span class="sh_keyword">true</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">false
+true
+</pre></div></div>
+      <p>从运行结果可以看出，使用==比较的结果为false、使用equals比较的结果为true，说明Cell类成功覆盖了equals方法，实现了行行相等并且列列相等两个Cell的引用变量则相等。</p>
+      <h3>5.4 完整代码</h3>
+      <p>本案例中，类Cell的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Cell <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int col<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>int row<span class="sh_symbol">,</span> int col<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>row <span class="sh_symbol">=</span> row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>col <span class="sh_symbol">=</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>Cell cell<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">.</span>row<span class="sh_symbol">,</span> cell<span class="sh_symbol">.</span>col<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">drop</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row<span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">moveRight</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col<span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">moveLeft</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;col<span class="sh_symbol">--;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">toString</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> row <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> boolean <span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_predef_func">Object</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>obj <span class="sh_symbol">==</span> <span class="sh_keyword">null</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span><span class="sh_keyword">this</span> <span class="sh_symbol">==</span> obj<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">true</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>obj <span class="sh_keyword">instanceof</span> Cell<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell cell <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>Cell<span class="sh_symbol">)</span> obj<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> cell<span class="sh_symbol">.</span>row <span class="sh_symbol">==</span> row <span class="sh_symbol">&amp;&amp;</span> cell<span class="sh_symbol">.</span>col <span class="sh_symbol">==</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">false</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+public class Cell {
+	int row;
+	int col;
+
+	public Cell(int row, int col) {
+		this.row = row;
+		this.col = col;
+	}
+
+	public Cell() {
+		this(0, 0);
+	}
+
+	public Cell(Cell cell) {
+		this(cell.row, cell.col);
+	}
+
+	public void drop() {
+		row++;
+	}
+
+	public void moveRight() {
+		col++;
+	}
+
+	public void moveLeft() {
+		col--;
+	}
+
+	@Override
+	public String toString() {
+		return row + "," + col;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (this == obj) {
+			return true;
+		}
+		if (obj instanceof Cell) {
+			Cell cell = (Cell) obj;
+			return cell.row == row &amp;&amp; cell.col == col;
+		} else {
+			return false;
+		}
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>TestCell类完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestCell <span class="sh_cbracket">{</span></li><li><span class="sh_comment">//...（之前案例的代码，略）</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试equals方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testEquals</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell cell1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell cell2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span> <span class="sh_number">3</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cell1 <span class="sh_symbol">==</span> cell2<span class="sh_symbol">);</span> <span class="sh_comment">// false</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cell1<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>cell2<span class="sh_symbol">));</span> <span class="sh_comment">// true</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestCell {
+//...（之前案例的代码，略）
+
+	/**
+	 * 测试equals方法
+	 */
+	@Test
+	public void testEquals() {
+		Cell cell1 = new Cell(6, 3);
+		Cell cell2 = new Cell(6, 3);
+		System.out.println(cell1 == cell2); // false
+		System.out.println(cell1.equals(cell2)); // true
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case6">
+      </a>
+      <h2>6 测试Number的intValue和doubleValue方法</h2>
+      <h3>6.1 问题</h3>
+      <p>在Java中，抽象类 Number 是 BigDecimal、BigInteger、Byte、Double、Float、Integer、Long 和 Short 类的超类。该类提供了六个方法，如图-1所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图- 1</p>
+      </div>
+      <p>以上六个方法中，floatValue方法和doubleValue方法在使用时，可能涉及到舍入；其它四个方法可能涉及到舍入或者取整。</p>
+      <p>本案例要求测试Number类的intValue方法和doubleValue方法，即，首先，定义Number类型的两个变量：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Number</span> d <span class="sh_symbol">=</span> <span class="sh_number">123.45</span><span class="sh_symbol">;</span></li><li><span class="sh_predef_func">Number</span> n <span class="sh_symbol">=</span> <span class="sh_number">123</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	Number d = 123.45;
+Number n = 123;
+</pre></div></div>
+      <p>要求获取d对象和n对象所属的数据类型。</p>
+      <p>然后，将d对象分别转换为int类型变量和double类型变量，并输出转换后的结果。</p>
+      <p>最后，将n对象分别转换为int类型变量和double类型变量，并输出转换后的结果。</p>
+      <h3>6.2 方案</h3>
+      <p>首先，构建包和类，并在类中新建测试方法。</p>
+      <p>其次，使用代码d.getClass().getName()和代码n.getClass().getName()获取d对象和n对象所属的数据类型。此处只需了解这样可以获取对象所属数据类型即可。</p>
+      <p>第三，使用Number类的 intValue方法和doubleValue方法，将d对象分别转换为int类型变量和double类型变量，并输出转换后的结果。</p>
+      <p>第四，使用Number类的 intValue方法和doubleValue方法，将n对象分别转换为int类型变量和double类型变量，并输出转换后的结果。</p>
+      <h3>6.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：构建包、类以及测试方法</p>
+      <p>首先在day02包下新建名为TestNumber的类，然后在该类中新建测试方法testIntValueAndDoubleValue，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestNumber <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试Number的intValue方法和doubleValue方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testIntValueAndDoubleValue</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestNumber {
+	/**
+	 * 测试Number的intValue方法和doubleValue方法
+	 */
+	@Test
+	public void testIntValueAndDoubleValue() {
+		
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：获取Number类的对象所属类型</p>
+      <p>使用代码d.getClass().getName()和代码n.getClass().getName()获取d对象和n对象所属的数据类型。此处只需了解这样可以获取对象所属数据类型即可。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestNumber <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试Number的intValue方法和doubleValue方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testIntValueAndDoubleValue</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Number</span> d <span class="sh_symbol">=</span> <span class="sh_number">123.45</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Number</span> n <span class="sh_symbol">=</span> <span class="sh_number">123</span><span class="sh_symbol">;</span></li><li class="bold_code"></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 输出d和n对象所属的类型</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>d<span class="sh_symbol">.</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">());</span> <span class="sh_comment">// java.lang.Double</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>n<span class="sh_symbol">.</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">());</span> <span class="sh_comment">// java.lang.Integer</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestNumber {
+	/**
+	 * 测试Number的intValue方法和doubleValue方法
+	 */
+	@Test
+	public void testIntValueAndDoubleValue() {
+#cold_bold		Number d = 123.45;
+#cold_bold		Number n = 123;
+#cold_bold
+#cold_bold		// 输出d和n对象所属的类型
+#cold_bold		System.out.println(d.getClass().getName()); // java.lang.Double
+#cold_bold		System.out.println(n.getClass().getName()); // java.lang.Integer
+	}
+}
+</pre></div></div>
+      <p class="number">步骤三：运行</p>
+      <p>运行步骤二中的testIntValueAndDoubleValue方法，控制台输出结果如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>java<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>Double</li><li>java<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>Integer</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">java.lang.Double
+java.lang.Integer
+</pre></div></div>
+      <p>从输出结果可以看出，d的所属类型为Double，n的所属类型为Integer，这是因为，123.45该直接量的类型为double，经过自动装箱以后转换为Double类型，Double类型是Number类型的子类，子类类型转换为父类类型属于自动类型转换，因此，d的所属类型为Double，同理，n的所属类型为Integer。</p>
+      <p class="number">步骤四：将d对象分别转换为int类型变量和double类型变量</p>
+      <p>使用Number类的 intValue方法和doubleValue方法，将d对象分别转换为int类型变量和double类型变量，并输出转换后的结果，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestNumber <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试Number的intValue方法和doubleValue方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testIntValueAndDoubleValue</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Number</span> d <span class="sh_symbol">=</span> <span class="sh_number">123.45</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Number</span> n <span class="sh_symbol">=</span> <span class="sh_number">123</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 输出d和n对象所属的类型</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>d<span class="sh_symbol">.</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">());</span> <span class="sh_comment">// java.lang.Double</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>n<span class="sh_symbol">.</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">());</span> <span class="sh_comment">// java.lang.Integer</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int intValue <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span><span class="sh_function">intValue</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double doubleValue <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span><span class="sh_function">doubleValue</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>intValue <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> doubleValue<span class="sh_symbol">);</span> <span class="sh_comment">// 123,123.45</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestNumber {
+	/**
+	 * 测试Number的intValue方法和doubleValue方法
+	 */
+	@Test
+	public void testIntValueAndDoubleValue() {
+		Number d = 123.45;
+		Number n = 123;
+
+		// 输出d和n对象所属的类型
+		System.out.println(d.getClass().getName()); // java.lang.Double
+		System.out.println(n.getClass().getName()); // java.lang.Integer
+
+#cold_bold		int intValue = d.intValue();
+#cold_bold		double doubleValue = d.doubleValue();
+#cold_bold		System.out.println(intValue + "," + doubleValue); // 123,123.45
+	}
+}
+</pre></div></div>
+      <p class="number">步骤五：运行</p>
+      <p>运行方法testIntValueAndDoubleValue，最后一条输出语句的输出内容为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_number">123</span><span class="sh_symbol">,</span><span class="sh_number">123.45</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">123,123.45
+</pre></div></div>
+      <p>从输出结果上可以看出，将原本Double类型的对象d，转换为int类型后，取了d对象的整数部分。但转换为double类型后没有变化。</p>
+      <p class="number">步骤六：将n对象分别转换为int类型变量和double类型变量</p>
+      <p>使用Number类的 intValue方法和doubleValue方法，将n对象分别转换为int类型变量和double类型变量，并输出转换后的结果。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestNumber <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试Number的intValue方法和doubleValue方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testIntValueAndDoubleValue</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Number</span> d <span class="sh_symbol">=</span> <span class="sh_number">123.45</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Number</span> n <span class="sh_symbol">=</span> <span class="sh_number">123</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 输出d和n对象所属的类型</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>d<span class="sh_symbol">.</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">());</span> <span class="sh_comment">// java.lang.Double</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>n<span class="sh_symbol">.</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">());</span> <span class="sh_comment">// java.lang.Integer</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int intValue <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span><span class="sh_function">intValue</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double doubleValue <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span><span class="sh_function">doubleValue</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>intValue <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> doubleValue<span class="sh_symbol">);</span> <span class="sh_comment">// 123,123.45</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intValue <span class="sh_symbol">=</span> n<span class="sh_symbol">.</span><span class="sh_function">intValue</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doubleValue <span class="sh_symbol">=</span> n<span class="sh_symbol">.</span><span class="sh_function">doubleValue</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>intValue <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> doubleValue<span class="sh_symbol">);</span> <span class="sh_comment">// 123,123.0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestNumber {
+	/**
+	 * 测试Number的intValue方法和doubleValue方法
+	 */
+	@Test
+	public void testIntValueAndDoubleValue() {
+		Number d = 123.45;
+		Number n = 123;
+
+		// 输出d和n对象所属的类型
+		System.out.println(d.getClass().getName()); // java.lang.Double
+		System.out.println(n.getClass().getName()); // java.lang.Integer
+
+		int intValue = d.intValue();
+		double doubleValue = d.doubleValue();
+		System.out.println(intValue + "," + doubleValue); // 123,123.45
+
+#cold_bold		intValue = n.intValue();
+#cold_bold		doubleValue = n.doubleValue();
+#cold_bold		System.out.println(intValue + "," + doubleValue); // 123,123.0
+	}
+}
+</pre></div></div>
+      <p class="number">步骤七：运行</p>
+      <p>再次运行testIntValueAndDoubleValue方法，最后一条输出语句的输出内容为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_number">123</span><span class="sh_symbol">,</span><span class="sh_number">123.0</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">123,123.0
+</pre></div></div>
+      <p>从输出结果上可以看出，将原本Integer类型的对象n，转换为double类型后，小数点后保留一位小数。但转换为int类型后没有变化。</p>
+      <h3>6.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestNumber <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试Number的intValue方法和doubleValue方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testIntValueAndDoubleValue</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Number</span> d <span class="sh_symbol">=</span> <span class="sh_number">123.45</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Number</span> n <span class="sh_symbol">=</span> <span class="sh_number">123</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 输出d和n对象所属的类型</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>d<span class="sh_symbol">.</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">());</span> <span class="sh_comment">// java.lang.Double</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>n<span class="sh_symbol">.</span><span class="sh_function">getClass</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">());</span> <span class="sh_comment">// java.lang.Integer</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int intValue <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span><span class="sh_function">intValue</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double doubleValue <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span><span class="sh_function">doubleValue</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>intValue <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> doubleValue<span class="sh_symbol">);</span> <span class="sh_comment">// 123,123.45</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;intValue <span class="sh_symbol">=</span> n<span class="sh_symbol">.</span><span class="sh_function">intValue</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;doubleValue <span class="sh_symbol">=</span> n<span class="sh_symbol">.</span><span class="sh_function">doubleValue</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>intValue <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> doubleValue<span class="sh_symbol">);</span> <span class="sh_comment">// 123,123.0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestNumber {
+	/**
+	 * 测试Number的intValue方法和doubleValue方法
+	 */
+	@Test
+	public void testIntValueAndDoubleValue() {
+		Number d = 123.45;
+		Number n = 123;
+
+		// 输出d和n对象所属的类型
+		System.out.println(d.getClass().getName()); // java.lang.Double
+		System.out.println(n.getClass().getName()); // java.lang.Integer
+
+		int intValue = d.intValue();
+		double doubleValue = d.doubleValue();
+		System.out.println(intValue + "," + doubleValue); // 123,123.45
+
+		intValue = n.intValue();
+		doubleValue = n.doubleValue();
+		System.out.println(intValue + "," + doubleValue); // 123,123.0
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case7">
+      </a>
+      <h2>7 测试Integer的parseInt方法</h2>
+      <h3>7.1 问题</h3>
+      <p>测试Integer的parseInt方法,即，首先将字符串“123”转换为int类型并输出结果，然后，将字符串"壹佰贰拾叁"转换为int类型，并查看运行效果。</p>
+      <h3>7.2 方案</h3>
+      <p>首先，使用Integer的parseInt方法，将字符串“123”转换为int类型，正常运行并可以输出int类型的值123；然后，再次使用Integer的parseInt方法，将字符串"壹佰贰拾叁"转换为int类型，运行后，会出现异常。</p>
+      <h3>7.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：构建测试方法</p>
+      <p>在day02包下新建类TestInteger，在该类中添加单元测试方法testParseInt，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestInteger <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试Integer的parseInt方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testParseInt</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestInteger {
+	/**
+	 * 测试Integer的parseInt方法
+	 */
+	@Test
+	public void testParseInt() {
+		
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：将字符串“123”转成整数类型</p>
+      <p>使用Integer的parseInt方法，将字符串“123”转换为int类型，正常运行并可以输出int类型的值123，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestInteger <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试Integer的parseInt方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testParseInt</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"123"</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int value <span class="sh_symbol">=</span> Integer<span class="sh_symbol">.</span><span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>value<span class="sh_symbol">);</span> <span class="sh_comment">// 123</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestInteger {
+	/**
+	 * 测试Integer的parseInt方法
+	 */
+	@Test
+	public void testParseInt() {
+#cold_bold		String str = "123";
+#cold_bold		int value = Integer.parseInt(str);
+#cold_bold		System.out.println(value); // 123
+}
+}
+</pre></div></div>
+      <p>运行上述代码，控制台输出结果为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_number">123</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">123
+</pre></div></div>
+      <p>说明已经成功的将字符串“123”转换成int类型的123。</p>
+      <p class="number">步骤三：字符串"壹佰贰拾叁"转换为int类型</p>
+      <p>再次使用Integer的parseInt方法，将字符串"壹佰贰拾叁"转换为int类型，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestInteger <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试Integer的parseInt方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testParseInt</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"123"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int value <span class="sh_symbol">=</span> Integer<span class="sh_symbol">.</span><span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>value<span class="sh_symbol">);</span> <span class="sh_comment">// 123</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> <span class="sh_string">"壹佰贰拾叁"</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 会抛出NumberFormatException</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value <span class="sh_symbol">=</span> Integer<span class="sh_symbol">.</span><span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestInteger {
+	/**
+	 * 测试Integer的parseInt方法
+	 */
+	@Test
+	public void testParseInt() {
+		String str = "123";
+		int value = Integer.parseInt(str);
+		System.out.println(value); // 123
+
+#cold_bold		str = "壹佰贰拾叁";
+#cold_bold		// 会抛出NumberFormatException
+#cold_bold		value = Integer.parseInt(str);
+	}
+}
+</pre></div></div>
+      <p>运行上述代码后，会出现异常:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>java<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>NumberFormatException<span class="sh_symbol">:</span> For input string<span class="sh_symbol">:</span> <span class="sh_string">"壹佰贰拾叁"</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">java.lang.NumberFormatException: For input string: "壹佰贰拾叁"
+</pre></div></div>
+      <p>从异常情况可以看出，Java程序无法将字符串"壹佰贰拾叁"转换为int类型，因此，抛出了java.lang.NumberFormatException异常。所以在使用Integer的parseInt方法时，要注意传入的方法的参数为数字。</p>
+      <h3>7.4 完整代码</h3>
+      <p>本案例中，类TestInteger的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestInteger <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; * 测试Integer的parseInt方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testParseInt</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"123"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int value <span class="sh_symbol">=</span> Integer<span class="sh_symbol">.</span><span class="sh_predef_func">parseInt</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>value<span class="sh_symbol">);</span> <span class="sh_comment">// 123</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> <span class="sh_string">"壹佰贰拾叁"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 会抛出NumberFormatException</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// value = Integer.parseInt(str);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestInteger {
+	/**
+	 * 测试Integer的parseInt方法
+	 */
+	@Test
+	public void testParseInt() {
+		String str = "123";
+		int value = Integer.parseInt(str);
+		System.out.println(value); // 123
+
+		str = "壹佰贰拾叁";
+		// 会抛出NumberFormatException
+		// value = Integer.parseInt(str);
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case8">
+      </a>
+      <h2>8 测试Double的parseDouble方法</h2>
+      <h3>8.1 问题</h3>
+      <p>测试Double的parseDouble方法,即，首先将字符串“12345.00”转换为double类型并输出结果，然后，将字符串"￥12345.00"转换为double类型，并查看运行效果。</p>
+      <h3>8.2 方案</h3>
+      <p>首先，使用Double的parseDouble方法，将字符串“12345.00”转换为double类型，正常运行并可以输出double类型的值12345.00； 然后，再次使用Double的parseDouble方法，将字符串"￥12345.00"转换为double类型，运行后，会出现异常。</p>
+      <h3>8.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：构建测试方法</p>
+      <p>在TestInteger类中添加单元测试方法testParseDouble，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestInteger <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; *测试Double的parseDouble方法</span></li><li class="bold_code"><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testParseDouble</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestInteger {
+#cold_bold	/**
+#cold_bold	 *测试Double的parseDouble方法
+#cold_bold	 */
+#cold_bold	@Test
+#cold_bold	public void testParseDouble() {
+#cold_bold		
+#cold_bold	}
+}
+</pre></div></div>
+      <p class="number">步骤二：将字符串“12345.00”转成double类型</p>
+      <p>使用Double的parseDouble方法，将字符串“12345.00”转换为double类型，正常运行并可以输出double类型的值12345.0，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestInteger <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; *测试Double的parseDouble方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testParseDouble</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"12345.00"</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double value <span class="sh_symbol">=</span> Double<span class="sh_symbol">.</span><span class="sh_function">parseDouble</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span> <span class="sh_comment">// 12345.0</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>value<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestInteger {
+	/**
+	 *测试Double的parseDouble方法
+	 */
+	@Test
+	public void testParseDouble() {
+#cold_bold		String str = "12345.00";
+#cold_bold		double value = Double.parseDouble(str); // 12345.0
+#cold_bold		System.out.println(value);
+	}
+}
+</pre></div></div>
+      <p>运行上述代码，控制台输出结果为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_number">12345.0</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">12345.0
+</pre></div></div>
+      <p>说明已经成功的将字符串“12345.00”转换成double类型的12345.0。</p>
+      <p class="number">步骤三：字符串"￥12345.00"转换为double类型</p>
+      <p>再次使用Double的parseDouble方法，将字符串"￥12345.00"转换为double类型，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestInteger <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; *测试Double的parseDouble方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testParseDouble</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"12345.00"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double value <span class="sh_symbol">=</span> Double<span class="sh_symbol">.</span><span class="sh_function">parseDouble</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span> <span class="sh_comment">// 12345.0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>value<span class="sh_symbol">);</span></li><li class="bold_code"></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> <span class="sh_string">"￥12345.00"</span><span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 会抛出NumberFormatException</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// value = Double.parseDouble(str);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestInteger {
+	/**
+	 *测试Double的parseDouble方法
+	 */
+	@Test
+	public void testParseDouble() {
+		String str = "12345.00";
+		double value = Double.parseDouble(str); // 12345.0
+		System.out.println(value);
+#cold_bold
+#cold_bold		str = "￥12345.00";
+#cold_bold		// 会抛出NumberFormatException
+#cold_bold		// value = Double.parseDouble(str);
+	}
+}
+</pre></div></div>
+      <p>运行上述代码后，会出现异常:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>java<span class="sh_symbol">.</span>lang<span class="sh_symbol">.</span>NumberFormatException<span class="sh_symbol">:</span> For input string<span class="sh_symbol">:</span> <span class="sh_string">"￥12345.00"</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">java.lang.NumberFormatException: For input string: "￥12345.00"
+</pre></div></div>
+      <p>从异常情况可以看出，Java程序无法将字符串"￥12345.00"转换为double类型，因此，抛出了java.lang.NumberFormatException异常。所以在使用Double的parseDouble方法时，要注意传入的方法的参数为数字。</p>
+      <h3>8.4 完整代码</h3>
+      <p>本案例中，类TestInteger的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>package day02<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>import org<span class="sh_symbol">.</span>junit<span class="sh_symbol">.</span>Test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> TestInteger <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//...（之前案例的代码，略）</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; *测试Double的parseDouble方法</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Test</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testParseDouble</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">String</span> str <span class="sh_symbol">=</span> <span class="sh_string">"12345.00"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double value <span class="sh_symbol">=</span> Double<span class="sh_symbol">.</span><span class="sh_function">parseDouble</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span> <span class="sh_comment">// 12345.0</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>value<span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> <span class="sh_string">"￥12345.00"</span><span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 会抛出NumberFormatException</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// value = Double.parseDouble(str);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package day02;
+
+import org.junit.Test;
+
+public class TestInteger {
+	//...（之前案例的代码，略）
+
+	/**
+	 *测试Double的parseDouble方法
+	 */
+	@Test
+	public void testParseDouble() {
+		String str = "12345.00";
+		double value = Double.parseDouble(str); // 12345.0
+		System.out.println(value);
+
+		str = "￥12345.00";
+
+		// 会抛出NumberFormatException
+		// value = Double.parseDouble(str);
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY02/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

@@ -1,0 +1,372 @@
+
+<!-- saved from url=(0092)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="18933218152"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#Key01">JDBC原理</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#Key02">JDBC基础编程</a>
+        </li>
+      </ol>
+      <h1>1. JDBC原理</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. JDBC标准</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. JDBC是什么</h3>
+      <p>Java Database Connectivity：Java访问数据库的解决方案。</p>
+      <p>JDBC是Java应用程序访问数据库的里程碑式解决方案。Java研发者希望用相同的方式访问不同的数据库，以实现与具体数据库无关的Java操作界面。</p>
+      <p>JDBC定义了一套标准接口，即访问数据库的通用API，不同的数据库厂商根据各自数据库的特点去实现这些接口。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图-1应用、JDBC和数据库的关系</p>
+      </div>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. JDBC接口及数据库厂商实现</h3>
+      <p>JDBC中定义了一些接口：</p>
+      <p>1、驱动管理：</p>
+      <ul class="list">
+        <li>DriverManager
+</li>
+      </ul>
+      <p>2、连接接口</p>
+      <ul class="list">
+        <li>Connection
+</li>
+        <li>DatabasemetaData
+</li>
+      </ul>
+      <p>3、语句对象接口</p>
+      <ul class="list">
+        <li>Statement
+</li>
+        <li>PreparedStatement
+</li>
+        <li>CallableStatement
+</li>
+      </ul>
+      <p>4、结果集接口</p>
+      <ul class="list">
+        <li>ResultSet
+</li>
+        <li>ResultSetMetaData
+</li>
+      </ul>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. JDBC工作原理</h3>
+      <p>JDBC只定义接口，具体实现由各个数据库厂商负责。</p>
+      <p>程序员使用时只需要调用接口，实际调用的是底层数据库厂商的实现部分。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图-2 通过JDBC访问数据库的过程</p>
+      </div>
+      <p>JDBC访问数据库的工作过程：</p>
+      <ol class="list">
+        <li>加载驱动，建立连接
+</li>
+        <li>创建语句对象
+</li>
+        <li>执行SQL语句
+</li>
+        <li>处理结果集
+</li>
+        <li>关闭连接
+</li>
+      </ol>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. Driver接口及驱动类加载</h3>
+      <p>要使用JDBC接口，需要先将对应数据库的实现部分（驱动）加载进来。</p>
+      <p>驱动类加载方式（Oracle）：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Class<span class="sh_symbol">.</span><span class="sh_function">forName</span><span class="sh_symbol">(</span><span class="sh_string">"oracle.jdbc.driver.OracleDriver"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Class.forName("oracle.jdbc.driver.OracleDriver");
+</pre></div></div>
+      <p>这条语句的含义是：装载驱动类，驱动类通过static块实现在DriverManager中的“自动注册”。</p>
+      <a name="Key01_01_05">
+      </a>
+      <h3>1.1.5. Connection接口</h3>
+      <p>Connection接口负责应用程序对数据库的连接，在加载驱动之后，使用url、username、password三个参数，创建到具体数据库的连接。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Class<span class="sh_symbol">.</span><span class="sh_function">forName</span><span class="sh_symbol">(</span><span class="sh_string">"oracle.jdbc.OracleDriver"</span><span class="sh_symbol">)</span></li><li><span class="sh_comment">//根据url连接参数，找到与之匹配的Driver对象，调用其方法获取连接</span></li><li><span class="sh_usertype">Connection</span><span class="sh_normal"> </span>conn <span class="sh_symbol">=</span> DriverManager<span class="sh_symbol">.</span><span class="sh_function">getConnection</span><span class="sh_symbol">(</span></li><li><span class="sh_string">"jdbc:oracle:thin:@192.168.0.26:1521:tarena"</span><span class="sh_symbol">,</span></li><li><span class="sh_string">"openlab"</span><span class="sh_symbol">,</span><span class="sh_string">"open123"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Class.forName("oracle.jdbc.OracleDriver")
+//根据url连接参数，找到与之匹配的Driver对象，调用其方法获取连接
+Connection conn = DriverManager.getConnection(
+"jdbc:oracle:thin:@192.168.0.26:1521:tarena",
+"openlab","open123");
+</pre></div></div>
+      <p>需要注意的是:Connection只是接口，真正的实现是由数据库厂商提供的驱动包完成的。</p>
+      <a name="Key01_01_06">
+      </a>
+      <h3>1.1.6. Statement接口</h3>
+      <p>Statement接口用来处理发送到数据库的SQL语句对象，通过Connection对象创建。主要有三个常用方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Statement</span><span class="sh_normal"> </span>stmt<span class="sh_symbol">=</span>conn<span class="sh_symbol">.</span><span class="sh_function">createStatement</span><span class="sh_symbol">();</span></li><li><span class="sh_comment">//1.execute方法，如果执行的sql是查询语句且有结果集则返回true，如果是非查询语句或者没有结果集，返回false</span></li><li><span class="sh_type">boolean</span> flag <span class="sh_symbol">=</span> stmt<span class="sh_symbol">.</span><span class="sh_function">execute</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li><span class="sh_comment">//2.执行查询语句，返回结果集</span></li><li>ResultSetrs <span class="sh_symbol">=</span> stmt<span class="sh_symbol">.</span><span class="sh_function">executeQuery</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li><span class="sh_comment">//3.执行DML语句，返回影响的记录数</span></li><li><span class="sh_type">int</span> flag <span class="sh_symbol">=</span> stmt<span class="sh_symbol">.</span><span class="sh_function">executeUpdate</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Statement stmt=conn.createStatement();
+//1.execute方法，如果执行的sql是查询语句且有结果集则返回true，如果是非查询语句或者没有结果集，返回false
+boolean flag = stmt.execute(sql);
+//2.执行查询语句，返回结果集
+ResultSetrs = stmt.executeQuery(sql);
+//3.执行DML语句，返回影响的记录数
+int flag = stmt.executeUpdate(sql);
+</pre></div></div>
+      <a name="Key01_01_07">
+      </a>
+      <h3>1.1.7. ResultSet接口</h3>
+      <p>执行查询SQL语句后返回的结果集，由ResultSet接口接收。</p>
+      <p>常用处理方式：遍历 / 判断是否有结果（登录）。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>sql <span class="sh_symbol">=</span> <span class="sh_string">"select * from emp"</span><span class="sh_symbol">;</span></li><li>ResultSetrs <span class="sh_symbol">=</span> stmt<span class="sh_symbol">.</span><span class="sh_function">executeQuery</span><span class="sh_symbol">(</span>sql<span class="sh_symbol">);</span></li><li><span class="sh_keyword">while</span> <span class="sh_symbol">(</span>rs<span class="sh_symbol">.</span><span class="sh_function">next</span><span class="sh_symbol">())</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>rs<span class="sh_symbol">.</span><span class="sh_function">getInt</span><span class="sh_symbol">(</span><span class="sh_string">"empno"</span><span class="sh_symbol">)+</span><span class="sh_string">",“</span></li><li><span class="sh_string">       +rs.getString("</span>ename<span class="sh_string">") );</span></li><li><span class="sh_string">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String sql = "select * from emp";
+ResultSetrs = stmt.executeQuery(sql);
+while (rs.next()) {
+	System.out.println(rs.getInt("empno")+",“
+       +rs.getString("ename") );
+}
+</pre></div></div>
+      <p>查询的结果存放在ResultSet对象的一系列行中，指针的最初位置在行首，使用next()方法用来在行间移动，getXXX()方法用来取得字段的内容。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 数据库厂商实现</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. Oracle实现</h3>
+      <p>在Java程序中访问不同数据库，需要下载对应数据库的驱动。Oracle数据库提供的驱动为ojdbc6.jar或者ojdbc14.jar，在开发时需要将驱动类加载到项目中，通过设置MyEclipse的Build Path选项。</p>
+      <p>使用时就可以如下方式加载驱动类了：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Class<span class="sh_symbol">.</span><span class="sh_function">forName</span><span class="sh_symbol">(</span><span class="sh_string">"oracle.jdbc.driver.OracleDriver"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Class.forName("oracle.jdbc.driver.OracleDriver");
+</pre></div></div>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. MySQL实现</h3>
+      <p>MySQL对应的数据库驱动名为mysql-connector-java-5.0.4-bin.jar（不同版本可能有不同名称），将驱动类加载到项目中同样通过设置MyEclipse的Build Path选项。</p>
+      <p>加载驱动类的方式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Class<span class="sh_symbol">.</span><span class="sh_function">forName</span><span class="sh_symbol">(</span><span class="sh_string">"com.mysql.jdbc.Driver"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Class.forName("com.mysql.jdbc.Driver");
+</pre></div></div>
+      <a name="Key02">
+      </a>
+      <h1>2. JDBC基础编程</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 连接管理</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. 通过连接工具类获取连接</h3>
+      <p>在工程中，通常编写一个访问数据库的工具类，此后所有访问数据库的操作，都从工具类中获取连接。</p>
+      <p>实现工具类的两种方式：</p>
+      <ul class="list">
+        <li>直接把数据配置写在工具类。
+</li>
+        <li>把数据库配置写在一个properties属性文件里，工具类读入属性文件，逐行获取数据库参数。
+</li>
+      </ul>
+      <p>建议使用第二种。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. 通过属性文件维护连接属性</h3>
+      <p>db.properties的内容：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>#驱动类名</li><li>jdbc<span class="sh_symbol">.</span>driver<span class="sh_symbol">=</span>oracle<span class="sh_symbol">.</span>jdbc<span class="sh_symbol">.</span>driver<span class="sh_symbol">.</span>OracleDriver</li><li>#连接字符串</li><li>jdbc<span class="sh_symbol">.</span>url<span class="sh_symbol">=</span>jdbc<span class="sh_symbol">:</span>oracle<span class="sh_symbol">:</span>thin<span class="sh_symbol">:</span>@<span class="sh_number">192.168.0.26</span><span class="sh_symbol">:</span><span class="sh_number">1521</span><span class="sh_symbol">:</span>tarena</li><li>#访问数据库的用户名</li><li>jdbc<span class="sh_symbol">.</span>user<span class="sh_symbol">=</span>openlab</li><li>#访问数据库的密码</li><li>jdbc<span class="sh_symbol">.</span>password<span class="sh_symbol">=</span>open123</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">#驱动类名
+jdbc.driver=oracle.jdbc.driver.OracleDriver
+#连接字符串
+jdbc.url=jdbc:oracle:thin:@192.168.0.26:1521:tarena
+#访问数据库的用户名
+jdbc.user=openlab
+#访问数据库的密码
+jdbc.password=open123
+</pre></div></div>
+      <p>注意：在properties文件中，#符号表示注释。</p>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. 从类路径中加载属性文件</h3>
+      <p>定义好db.properties之后，需要在Java程序中找到它，可以使用从类路径加载的方式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">//属性文件所在的位置</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>path <span class="sh_symbol">=</span> <span class="sh_string">"com/tarena/dms/daodemo/v2/db.properties"</span><span class="sh_symbol">;</span></li><li><span class="sh_comment">//获得当前类的路径，加载指定属性文件</span></li><li>properties<span class="sh_symbol">.</span><span class="sh_function">load</span><span class="sh_symbol">(</span>DBUtility<span class="sh_symbol">.</span><span class="sh_keyword">class</span><span class="sh_symbol">.</span><span class="sh_function">getClassLoader</span><span class="sh_symbol">()</span></li><li><span class="sh_symbol">.</span><span class="sh_function">getResourceAsStream</span><span class="sh_symbol">(</span>path<span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">//属性文件所在的位置
+String path = "com/tarena/dms/daodemo/v2/db.properties";
+//获得当前类的路径，加载指定属性文件
+properties.load(DBUtility.class.getClassLoader()
+.getResourceAsStream(path));
+</pre></div></div>
+      <a name="Key02_01_04">
+      </a>
+      <h3>2.1.4. 连接的关闭</h3>
+      <p>在工具类中定义公共的关闭连接的方法，所有访问数据库的应用，共享此方法。当完成功能，关闭连接。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">protected</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">closeConnection</span><span class="sh_symbol">(</span><span class="sh_usertype">Connection</span><span class="sh_normal"> </span>con<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>con <span class="sh_symbol">!=</span> <span class="sh_keyword">null</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;con<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span><span class="sh_usertype">SQLException</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">protected static void closeConnection(Connection con) {
+		if (con != null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+e.printStackTrace();
+			}
+		}
+	}
+</pre></div></div>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 连接池技术</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. 为什么要使用连接池</h3>
+      <p>数据库连接的建立及关闭资源消耗巨大。传统数据库访问方式：一次数据库访问对应一个物理连接,每次操作数据库都要打开、关闭该物理连接, 系统性能严重受损。</p>
+      <p>解决方案：数据库连接池（Connection Pool）。</p>
+      <p>系统初始运行时，主动建立足够的连接，组成一个池.每次应用程序请求数据库连接时，无需重新打开连接，而是从池中取出已有的连接，使用完后，不再关闭，而是归还。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图-3 连接池示意图</p>
+      </div>
+      <p>连接池中连接的释放与使用原则</p>
+      <ul class="list">
+        <li>应用启动时，创建初始化数目的连接 
+</li>
+        <li>当申请时无连接可用或者达到指定的最小连接数，按增量参数值创建新的连接      
+</li>
+        <li>为确保连接池中最小的连接数的策略：
+</li>
+      </ul>
+      <ol class="list">
+        <li>动态检查：定时检查连接池，一旦发现数量小于最小连接数，则补充相应的新连接，保证连接池正常运转 
+</li>
+        <li>静态检查：空闲连接不足时，系统才检测是否达到最小连接数
+</li>
+      </ol>
+      <ul class="list">
+        <li>按需分配，用过归还，超时归还
+</li>
+      </ul>
+      <p>连接池也只是JDBC中定义的接口，具体实现由厂商实完成。</p>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. 使用Apache DBCP连接池</h3>
+      <p>DBCP(DataBase connection pool)：数据库连接池，是Apache的一个 Java 连接池开源项目，同时也是 Tomcat 使用的连接池组件。相当于是Apache开发的针对连接池接口的一个实现方案。</p>
+      <p>连接池是创建和管理连接的缓冲池技术，将连接准备好被任何需要它们的应用使用。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图-4连接池在数据访问中的应用</p>
+      </div>
+      <p>使用Apache DBCP需要两个jar包文件：</p>
+      <ul class="list">
+        <li>commons-dbcp-1.4.jar  连接池的实现
+</li>
+        <li>commons-pool-1.5.jar  连接池实现的依赖库
+</li>
+      </ul>
+      <p>将上述两个文件在MyEclipse的Build Path选项中导入到项目。</p>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. 通过DataSource获取连接</h3>
+      <p>先通过属性文件获取连接池参数，然后加载这些参数，获得连接：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">//创建数据源对象</span></li><li><span class="sh_keyword">private</span> <span class="sh_keyword">static</span> BasicDataSourcedataSource <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BasicDataSource</span><span class="sh_symbol">();</span></li><li><span class="sh_comment">//加载参数</span></li><li>dataSource<span class="sh_symbol">.</span><span class="sh_function">setDriverClassName</span><span class="sh_symbol">(</span>driveClassName<span class="sh_symbol">);</span></li><li>dataSource<span class="sh_symbol">.</span><span class="sh_function">setUrl</span><span class="sh_symbol">(</span>url<span class="sh_symbol">);</span></li><li>dataSource<span class="sh_symbol">.</span><span class="sh_function">setUsername</span><span class="sh_symbol">(</span>username<span class="sh_symbol">);</span></li><li>dataSource<span class="sh_symbol">.</span><span class="sh_function">setPassword</span><span class="sh_symbol">(</span>password<span class="sh_symbol">);</span></li><li><span class="sh_comment">//获得连接</span></li><li><span class="sh_usertype">Connection</span><span class="sh_normal"> </span>conn <span class="sh_symbol">=</span> dataSource<span class="sh_symbol">.</span><span class="sh_function">getConnection</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">//创建数据源对象
+private static BasicDataSourcedataSource = new BasicDataSource();
+//加载参数
+dataSource.setDriverClassName(driveClassName);
+dataSource.setUrl(url);
+dataSource.setUsername(username);
+dataSource.setPassword(password);
+//获得连接
+Connection conn = dataSource.getConnection();
+</pre></div></div>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. 连接池参数</h3>
+      <p>常用参数有：</p>
+      <ul class="list">
+        <li>初始连接数
+</li>
+        <li>最大连接数
+</li>
+        <li>最小连接数
+</li>
+        <li>每次增加的连接数
+</li>
+        <li>超时时间
+</li>
+        <li>最大空闲连接
+</li>
+        <li>最小空闲连接
+</li>
+      </ul>
+      <p>根据应用需要，设置合适的值。</p>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. 异常处理</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. SQLException简介</h3>
+      <p>Java.sql.SQLException是在处理JDBC时常见的exception对象，用来表示JDBC操作过程中发生的具体错误;</p>
+      <p>一般的SQLException都是因为操作数据库时出错 , 比如Sql语句写错，或者数据库中的表或数据出错。</p>
+      <p>常见异常：</p>
+      <ul class="list">
+        <li>登录被拒绝
+</li>
+        <li>可能原因：程序里取键值对信息时的大小写和属性文件中不匹配
+</li>
+        <li>列名无效
+</li>
+        <li>可能原因：查找的表和查找的列不匹配
+</li>
+        <li>无效字符
+</li>
+        <li>可能原因：SQL语句语法有错 , 比如语句结尾时不能有分号
+</li>
+        <li>无法转换为内部表示
+</li>
+        <li>可能原因：结果集取数据时注意数据类型。 
+</li>
+        <li>表或者视图不存在
+</li>
+        <li>检查SQL中的表名是否正确
+</li>
+        <li>不能将空值插入
+</li>
+        <li>检查执行insert操作时，是否表有NOT NULL约束，而没有给出数据
+</li>
+        <li>缺少表达式
+</li>
+        <li>检查SQL语句的语法
+</li>
+        <li>SQL 命令未正确结束
+</li>
+        <li>检查SQL语句的语法
+</li>
+        <li>无效数字：
+</li>
+        <li>企图将字符串类型的值填入数字型而造成，检查SQL语句
+</li>
+      </ul>
+      <p>其他可能出现的异常</p>
+      <ul class="list">
+        <li>文件找不到
+</li>
+        <li>可能原因：db.properties文件路径不正确
+</li>
+      </ul>
+      <p class="emphasiz">注意: 新增数据后务必要commit, 否则Java程序运行查询后找不到数据。</p>
+      <a name="Key02_03_02">
+      </a>
+      <h3>2.3.2. 处理SQLException</h3>
+      <p>SQLException属于Checked Exception，必须使用try…catch或throws明确处理。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_keyword">synchronized</span> <span class="sh_usertype">Connection</span><span class="sh_normal"> </span><span class="sh_function">getConnection</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> SQLException <span class="sh_cbracket">{</span></li><li>     <span class="sh_comment">//语句，省略</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static synchronized Connection getConnection() throws SQLException {
+     //语句，省略
+}
+</pre></div></div>
+      <p>或者：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JDBC/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//语句，省略&nbsp;&nbsp;&nbsp;&nbsp;</span></li><li><span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span><span class="sh_usertype">SQLException</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span><span class="sh_comment">//追踪处理</span></li><li>     <span class="sh_comment">//throw new RuntimeException(e);//或者抛出</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">try {
+	//语句，省略	
+} catch (SQLException e) {
+	e.printStackTrace();//追踪处理
+     //throw new RuntimeException(e);//或者抛出
+}
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

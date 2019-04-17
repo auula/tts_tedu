@@ -1,0 +1,177 @@
+
+<!-- saved from url=(0091)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="16470333625"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#Key01">抽象类、接口和内部类（下）</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#Key02">面向对象汇总</a>
+        </li>
+      </ol>
+      <h1>1. 抽象类、接口和内部类（下）</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 多态</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 多态的意义</h3>
+      <p>前面所讲解的现象就是多态，多态即多种形态，主要有两个方面的表现。</p>
+      <p>首先，一个类型的引用在指向不同的对象时会有不同的实现，看如下的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>达内职员 emp1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> 达内讲师<span class="sh_symbol">();</span> </li><li>达内职员 emp2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> 达内项目经理<span class="sh_symbol">();</span></li><li>emp1<span class="sh_symbol">.</span>完成工作<span class="sh_symbol">();</span></li><li>emp2<span class="sh_symbol">.</span>完成工作<span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">达内职员 emp1 = new 达内讲师(); 
+达内职员 emp2 = new 达内项目经理();
+emp1.完成工作();
+emp2.完成工作();
+</pre></div></div>
+      <p>同样是达内职员类型，当指向不同的对象时，可以有不同的表现。</p>
+      <p>其次，同样一个对象，造型成不同的类型时，会有不同的功能，看如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>达内讲师 teacher <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> 达内讲师<span class="sh_symbol">();</span></li><li>企业技术顾问 consultant <span class="sh_symbol">=</span> teacher<span class="sh_symbol">;</span></li><li>技术图书作者 author <span class="sh_symbol">=</span> teacher<span class="sh_symbol">;</span></li><li>consultant<span class="sh_symbol">.</span>培训员工<span class="sh_symbol">();</span></li><li>author<span class="sh_symbol">.</span>编辑稿件<span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">达内讲师 teacher = new 达内讲师();
+企业技术顾问 consultant = teacher;
+技术图书作者 author = teacher;
+consultant.培训员工();
+author.编辑稿件();
+</pre></div></div>
+      <p>通过上面的代码，可以看出，同样的达内讲师对象，当将其造型为企业技术顾问及技术图书作者时，可以实现不同的功能。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 向上造型</h3>
+      <p>在前面的课程中，介绍了一个现象，父类的引用指向子类的对象。这个现象就是下面要给大家介绍的现象，叫做向上造型。</p>
+      <p>一个类的对象可以向上造型的类型有：父类的类型及其实现的接口类型。当发生向上造型时，Java编译器会根据类型检查调用方法是否匹配。看如下的图 -1：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图 -1</p>
+        <p>实际应用中，可以使用如下的代码进行操作：</p>
+      </div>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>达内讲师 teacher <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> 达内讲师<span class="sh_symbol">();</span></li><li>达内职员 emp <span class="sh_symbol">=</span> teacher<span class="sh_symbol">;</span></li><li>企业技术顾问 consultant <span class="sh_symbol">=</span> teacher<span class="sh_symbol">;</span></li><li>技术图书作者 author <span class="sh_symbol">=</span> teacher<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>emp<span class="sh_symbol">.</span>上班打卡<span class="sh_symbol">();</span></li><li>emp<span class="sh_symbol">.</span>完成工作<span class="sh_symbol">();</span></li><li>consultant<span class="sh_symbol">.</span>培训员工<span class="sh_symbol">();</span></li><li>author<span class="sh_symbol">.</span>编辑稿件<span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">达内讲师 teacher = new 达内讲师();
+达内职员 emp = teacher;
+企业技术顾问 consultant = teacher;
+技术图书作者 author = teacher;
+
+emp.上班打卡();
+emp.完成工作();
+consultant.培训员工();
+author.编辑稿件();
+</pre></div></div>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 强制转型</h3>
+      <p>在实际应用中，还可以通过强制转换将父类型变量转换为子类型变量，前提是该变量指向的对象确实是该子类类型。也可通过强制转换将变量转换为某种接口类型，前提是该变量指向的对象确实实现了该接口。如果在强制转换过程中出现违背上述两个前提，将会抛出ClassCastException。看如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>达内职员 emp1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> 达内讲师<span class="sh_symbol">();</span></li><li>达内讲师 teacher <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>达内讲师<span class="sh_symbol">)</span> emp1<span class="sh_symbol">;</span></li><li>技术图书作者 author <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>技术图书作者<span class="sh_symbol">)</span> emp1<span class="sh_symbol">;</span></li><li>达内项目经理 pm <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>达内项目经理<span class="sh_symbol">)</span> emp1<span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">达内职员 emp1 = new 达内讲师();
+达内讲师 teacher = (达内讲师) emp1;
+技术图书作者 author = (技术图书作者) emp1;
+达内项目经理 pm = (达内项目经理) emp1; 
+</pre></div></div>
+      <p>分析如下代码，声明达内职员类型emp1指向子类达内讲师对象，而后将emp1强制转换为达内讲师类，完全没有问题，而后将emp1再转换为技术图书作者类型，因为emp1实现了技术图书作者接口，所以转换也没有问题。但是最后一句，将emp1强制转换为达内项目经理，则会出现错误，抛出ClassCastException异常，意为，类型转换异常。因为emp1与达内项目经理没有父子关系及实现关系。</p>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. instanceof关键字</h3>
+      <p>在强制转型中，为了避免出现ClassCastException，可以通过instanceof关键字判断某个引用指向的对象是否为指定类型。看如下代码所示:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>达内职员 emp1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> 达内讲师<span class="sh_symbol">();</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>emp1 <span class="sh_keyword">instanceof</span> 达内讲师<span class="sh_symbol">);</span> <span class="sh_comment">// true</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>emp1 <span class="sh_keyword">instanceof</span> 技术图书作者<span class="sh_symbol">);</span> <span class="sh_comment">// true</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>emp1 <span class="sh_keyword">instanceof</span> 达内项目经理<span class="sh_symbol">);</span> <span class="sh_comment">// false</span></li><li>达内项目经理 pm <span class="sh_symbol">=</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">if</span> <span class="sh_symbol">(</span>emp1 <span class="sh_keyword">instanceof</span> 达内项目经理<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>    pm <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>达内项目经理<span class="sh_symbol">)</span> emp1<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">达内职员 emp1 = new 达内讲师();
+System.out.println(emp1 instanceof 达内讲师); // true
+System.out.println(emp1 instanceof 技术图书作者); // true
+System.out.println(emp1 instanceof 达内项目经理); // false
+达内项目经理 pm = null;
+if (emp1 instanceof 达内项目经理) {
+    pm = (达内项目经理) emp1;
+} 
+</pre></div></div>
+      <p>分析如上代码，可以看出，因为emp1指向的为达内讲师，所以判断emp1是否是达内讲师类，返回结果为true，而达内讲师类又实现了技术图书作者接口，所以判断emp1是否为技术图书作者，返回结果也为御前。当想将emp1转换为达内项目经理时，先通过instanceof关键字判断，而后再转型。这样则可以避免发生ClassCastException，因为只要instanceof为true，则强制转换一定成功。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 内部类</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 定义成员内部类</h3>
+      <p>一个类可以定义在另外一个类的内部，定义在类内部的类称之为Inner，其所在的类称之为Outer；Inter定义在Outer的内部，通常只服务于Outer，对外不具备可见性，Inter可以直接调用Outer的成员及方法（包括私有的）。看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Outer</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_type">int</span> time<span class="sh_symbol">;</span></li><li>    <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Inner</span><span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">timeInc</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>        &nbsp;&nbsp;&nbsp;&nbsp;time<span class="sh_symbol">++;</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Outer{
+	private int time;
+    class Inner{
+        public void timeInc(){
+        	time++;
+}
+}
+}
+</pre></div></div>
+      <p>从上面的代码可以看出，在Outer类之中声明了Inner类，在Inner类中直接操作了Outer类的私有成员变量time。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 创建内部类对象</h3>
+      <p>一般情况下，Inner对象会在Outer对象中创建（构造方法或其他方法）;Inner对象中会有一个隐式的引用指向创建它的Outer类对象。看如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Outer</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_keyword">private</span> <span class="sh_type">int</span> time<span class="sh_symbol">;</span></li><li>    <span class="sh_keyword">private</span> <span class="sh_usertype">Inner</span><span class="sh_normal"> </span>inner<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>    <span class="sh_function">Outer</span><span class="sh_symbol">(</span><span class="sh_type">int</span> time<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">this</span><span class="sh_symbol">.</span>time <span class="sh_symbol">=</span> time<span class="sh_symbol">;</span></li><li>        inner <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Inner</span><span class="sh_symbol">();</span></li><li>        inner<span class="sh_symbol">.</span><span class="sh_function">timeInc</span><span class="sh_symbol">();</span></li><li>    <span class="sh_cbracket">}</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">printTime</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>time<span class="sh_symbol">);</span></li><li>    <span class="sh_cbracket">}</span></li><li>    <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Inner</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">timeInc</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>            time<span class="sh_symbol">++;</span></li><li>        <span class="sh_cbracket">}</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Outer {
+    private int time;
+    private Inner inner;
+
+    Outer(int time) {
+        this.time = time;
+        inner = new Inner();
+        inner.timeInc();
+    }
+    public void printTime() {
+        System.out.println(time);
+    }
+    class Inner {
+        public void timeInc() {
+            time++;
+        }
+    }
+}
+</pre></div></div>
+      <p>在main方法中，声明如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Outer</span><span class="sh_normal"> </span>outer <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Outer</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span></li><li>outer<span class="sh_symbol">.</span><span class="sh_function">printTime</span><span class="sh_symbol">();</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Outer outer = new Outer(100);
+outer.printTime(); 
+</pre></div></div>
+      <p>上面代码的输出结果为：101。在Outer构造方法中创建的Inner对象会有一个隐式的引用指向创建它的Outer对象，调用Inner对象的timeInc方法，即会对Outer的time属性进行操作。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 定义匿名内部类</h3>
+      <p>如果在一段程序中需要创建一个类的对象（通常这个类需要实现某个接口或者继承某个类），而且对象创建后，这个类的价值也就不存在了，这个类可以不必命名，称之为匿名内部类。看下面的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SuperType</span><span class="sh_normal"> </span>obj <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">SuperType</span> <span class="sh_symbol">(</span>…<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>       … … …</li><li><span class="sh_cbracket">}</span><span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SuperType obj = new SuperType (…) {
+       … … …
+}; 
+</pre></div></div>
+      <p>其中，第一个SuperType为用匿名类所实现的接口或所继承的父类类型声明的引用；第二个SuperType为匿名类所要实现的接口或继承的父类；小括号（）中为构造方法参数；大括号中为匿名中定义的成员变量或方法。</p>
+      <p>请参见下面的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">interface</span><span class="sh_normal"> </span><span class="sh_classname">Action</span> <span class="sh_cbracket">{</span>    &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">execute</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span> </li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Main</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>       <span class="sh_usertype">Action</span><span class="sh_normal"> </span>action <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Action</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>           <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">execute</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>               System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"Hello, World"</span><span class="sh_symbol">);</span></li><li>           <span class="sh_cbracket">}</span></li><li>       <span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li>       action<span class="sh_symbol">.</span><span class="sh_function">execute</span><span class="sh_symbol">();</span> </li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public interface Action {    	public void execute();
+} 
+public class Main {
+    public static void main(String[] args) {
+       Action action = new Action(){
+           public void execute() {
+               System.out.println("Hello, World");
+           }
+       };
+       action.execute(); 
+    }
+} 
+</pre></div></div>
+      <p>如上的代码中，创建了实现了Action接口的内部匿名类对象，并调用其execute方法。</p>
+      <a name="Key02">
+      </a>
+      <h1>2. 面向对象汇总</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 面向对象汇总</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. 面向对象汇总</h3>
+      <p>面向对象三大特征：封装、继承、多态</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

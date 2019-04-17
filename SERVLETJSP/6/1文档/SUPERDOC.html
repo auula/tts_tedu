@@ -1,0 +1,294 @@
+
+<!-- saved from url=(0098)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="5645273505"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#Key01">状态管理-Cookie</a>
+        </li>
+      </ol>
+      <h1>1. 状态管理-Cookie</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 状态管理</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 为什么需要状态管理</h3>
+      <p>Web应用程序使用HTTP协议作为传输数据的标准协议，而HTTP协议是无状态协议，即一次请求对应一次响应，响应结束后连接即断开，同一个用户的不同请求对于服务器端来讲并不会认为这两个请求有什么关联性，并不会以此区分不同的客户端。但实际情况中还是需要服务器端能够区分不同的客户端以及记录与客户端相关的一些数据，所以状态管理能够做到不同客户端的身份识别。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 什么是状态管理</h3>
+      <p>将客户端与服务器之间多次交互当做一个整体来看待，并且将多次交互中涉及的数据保存下来，提供给后续的交互进行数据的管理即状态管理。</p>
+      <p>这里的状态指的是当前的数据，管理指的是在这个多次交互的过程中对数据的存储、修改、删除。</p>
+      <p>生活中很多与状态管理类似的案例。如洗车卡记录洗车次数就是很典型的状态管理。洗车卡可以是一张记录简单次数的标示，车主每次携带卡片洗车后由商家修改，车主即可带走这张记录数据的卡片，商家不会保存任何数据，客户自己负责携带需要维护的数据。还有一种处理方式就是商家只给客户一个卡号，每次客户来洗车时自己不会记录洗车次数，只要报上卡号，商家就会从系统中找到与卡号对应的数据，修改后仍然是商家保存，客户带走的只是一个卡号这个标示。</p>
+      <p>以上两种模式都能实现洗车次数的记录，也就是数据的管理，只是各有利弊，程序中的状态管理与这个案例都采用了同样的处理原理。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 状态管理两种常见模式</h3>
+      <p>状态管理的过程中重要的是数据的保存，只有存下来的数据才能在多次交互中起到记录的作用，所以可以按照管理的数据的存储方式和位置的不同来区分状态管理的模式。</p>
+      <p>如果将数据存储在客户端，每次向服务器端发请求时都将存在客户端的数据随着请求发送到服务器端，修改后再发回到客户端保存的这种模式叫做Cookie。</p>
+      <p>如果将数据存储在服务器端，并且为这组数据标示一个编号，只将编号发回给客户端。当客户端向服务器发送请求时只需要将这个编号发过来，服务器端按照这个编号找到对应的数据进行管理的这种模式叫做Session——会话。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. Cookie</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 什么是Cookie</h3>
+      <p>一小段文本信息随着请求和响应，在客户端和服务器端之间来回传递。根据设定的时间来决定该段文本在客户端保存时长的这种工作模式叫做Cookie。最初服务器将信息发给客户端时是通过响应数据的Set-Cookie头信息来完成的。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. Cookie的原理</h3>
+      <p>如图-1所示为Cookie的生成及使用原理。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图 -  1</p>
+      </div>
+      <p>如果客户端向服务器端AddServlet发送请求，遇到创建Cookie的代码时，那么一小段文本信息就会随着response响应中的头信息被传递会客户端。如图中Set-Cookie：uname=xxx就是从服务器端传递回客户端的文本信息。当文本信息到达客户端以后，会被保存在客户端的内存或硬盘上，存在内存中会随着内存的释放而消失，存在硬盘上则会保存更长的时间。</p>
+      <p>一旦客户端存有服务器发回的文本信息，那么当浏览器再次向服务器发起请求时，如请求FindServlet这个组件，那么存储的文本信息会随着请求数据包的消息头以Cookie：uname=xxx这样的形式将文本信息发送到服务器端。只要Cookie的生命周期没有结束，那么不管是存在内存还是硬盘上的信息都会在客户端向服务器端发出请求时自动的随着消息头发送过去。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 如何创建Cookie</h3>
+      <p>Servlet API提供了javax.servlet.http.Cookie这种类型来解释Cookie。其中存储的文本以name-value对的形式进行区分，所以创建Cookie时指定name-value对即可。这个name-value最终是以Set-Cookie这种消息头的形式跟随相应数据包到达客户端，所以要想将数据添加到消息头中需要使用response对象提供的方法。</p>
+      <p>创建Cookie的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Cookie</span><span class="sh_normal">  </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cookie</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">,</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>value<span class="sh_symbol">);</span></li><li>response<span class="sh_symbol">.</span><span class="sh_function">addCookie</span><span class="sh_symbol">(</span> c <span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cookie  c = new Cookie(String name,String value);
+response.addCookie( c );
+</pre></div></div>
+      <p>代码中的第一行实现了这段name-value对的文本的创建。</p>
+      <p>代码中的第二行执行的效果就是在响应数据包中追加一个Set-Cookie的消息头。如果发送了相同name的Cookie数据，那么之前的数据会被覆盖。能够创建多少个Cookie存放在客户端与当前浏览器的种类相关。</p>
+      <p>以下代码实现了创建两个Cookie:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="hide sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>net<span class="sh_symbol">.</span>URLEncoder<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">AddCookieServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"text/html;charset=utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">PrintWriter</span><span class="sh_normal"> </span>out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建cookie</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cookie</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">,</span><span class="sh_string">"Lisa"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cookie</span><span class="sh_symbol">(</span><span class="sh_string">"city"</span><span class="sh_symbol">,</span><span class="sh_string">"NewYork"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">addCookie</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">addCookie</span><span class="sh_symbol">(</span>c2<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
+
+import javax.servlet.*;
+import javax.servlet.*;
+
+public class AddCookieServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			                throws ServletException, IOException {
+		response.setContentType(
+				"text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		//创建cookie
+		Cookie c = new Cookie("username","Lisa");		
+		Cookie c2 = new Cookie("city","NewYork");
+		response.addCookie(c);
+		response.addCookie(c2);
+		out.close();
+	}
+
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. 如何查询Cookie</h3>
+      <p>当客户端向服务器发出请求时，服务器端可以尝试着从请求数据包的消息头中获取是否携带了Cookie信息。实现这一功能的代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Cookie<span class="sh_symbol">[]</span> request<span class="sh_symbol">.</span><span class="sh_function">getCookies</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cookie[] request.getCookies();
+</pre></div></div>
+      <p>由于客户端是可以存放多个Cookie的，所以request提供的获取Cookie的方法的返回值是Cookie数组，如果想进一步获取某一个Cookie信息可以通过遍历数组，分别获取每一个Cookie的name和value。代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Cookie<span class="sh_symbol">[]</span> cookies <span class="sh_symbol">=</span>  request<span class="sh_symbol">.</span><span class="sh_function">getCookies</span><span class="sh_symbol">();</span></li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span>cookies<span class="sh_symbol">!=</span><span class="sh_keyword">null</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c <span class="sh_symbol">:</span> cookies<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>cookieName <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>cookieValue <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span><span class="sh_function">getValue</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cookie[] cookies =  request.getCookies();
+if(cookies!=null){
+		for(Cookie c : cookies){
+			String cookieName = c.getName();
+			String cookieValue = c.getValue();
+		}
+}
+</pre></div></div>
+      <p>查询Cookie的完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="hide sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>net<span class="sh_symbol">.</span>URLDecoder<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.*;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">FindCookieServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">PrintWriter</span><span class="sh_normal"> </span>out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cookie<span class="sh_symbol">[]</span> cookies <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getCookies</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>cookies <span class="sh_symbol">!=</span> <span class="sh_keyword">null</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>cookies<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> cookies<span class="sh_symbol">[</span>i<span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>name <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>value <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span><span class="sh_function">getValue</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name <span class="sh_symbol">+</span> <span class="sh_string">"："</span>  value <span class="sh_symbol">+</span> <span class="sh_string">"&lt;br/&gt;"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"没有找到cookie"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class FindCookieServlet extends HttpServlet {
+	public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			              throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null){
+			for(int i=0;i&lt;cookies.length;i++){
+				Cookie c = cookies[i];
+				String name = c.getName();
+				String value = c.getValue();
+				out.println(name + "："  value + "&lt;br/&gt;");
+			}
+		}else{
+			out.println("没有找到cookie");
+		}
+		out.close();
+	}
+
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. 如何修改Cookie</h3>
+      <p>所谓Cookie的修改，本质是获取到要变更值的Cookie，通过setValue方法将新的数据存入到cookie中，然后由response响应对象发回到客户端，对原有旧值覆盖后即实现了修改。主要实现代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Cookie<span class="sh_symbol">[]</span> cookies <span class="sh_symbol">=</span>  request<span class="sh_symbol">.</span><span class="sh_function">getCookies</span><span class="sh_symbol">();</span></li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span>cookies<span class="sh_symbol">!=</span><span class="sh_keyword">null</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c <span class="sh_symbol">:</span> cookies<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>cookieName <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span>（name<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span>“uname”<span class="sh_symbol">))</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c<span class="sh_symbol">.</span><span class="sh_function">setValue</span><span class="sh_symbol">(</span>“Mark”<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">addCookie</span><span class="sh_symbol">(</span> c <span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cookie[] cookies =  request.getCookies();
+if(cookies!=null){
+		for(Cookie c : cookies){
+			String cookieName = c.getName();
+			if（name.equals(“uname”)){
+				c.setValue(“Mark”);
+				response.addCookie( c );
+		}
+}
+</pre></div></div>
+      <p>其中response.addCookie（c）是非常重要的语句，如果没有这一行代码，那么就算是使用setValue方法修改了Cookie的值，但是不发回到客户端的话，也不会实现数值的改变。所以只要见到response.addCookie这行代码，即服务器端发回了带有Set-Cookie消息头的信息。</p>
+      <a name="Key01_02_06">
+      </a>
+      <h3>1.2.6. Cookie的生存时间</h3>
+      <p>默认情况下，Cookie会被浏览器保存在内存中，此时Cookie的生命周期由浏览器决定，只要不关闭浏览器Cookie就会一直存在。</p>
+      <p>如果希望关闭浏览器后Cookie仍存在，则可以通过设置过期时间使得Cookie存在硬盘上得以保存更长的时间。</p>
+      <p>设置Cookie的过期时间使用如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">setMaxAge</span><span class="sh_symbol">(</span><span class="sh_type">int</span> seconds<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void setMaxAge(int seconds);
+</pre></div></div>
+      <p>该方法是Cookie提供的实例方法。参数seconds的单位为秒，但精度不是很高。</p>
+      <p>seconds &gt; 0 ：代表Cookie保存在硬盘上的时长</p>
+      <p>seconds = 0  ： 代表Cookie的生命时长为现在，而这一刻稍纵即逝，所以马上Cookie就等同于过了生存时间，所以会被立即删除。这也是删除Cookie的实现方式。</p>
+      <p>seconds &lt; 0 ：缺省值，浏览器会将Cookie保存在内存中。</p>
+      <p>以下代码实现了Cookie保存在硬盘上40秒：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>net<span class="sh_symbol">.</span>URLEncoder<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">AddCookieServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"text/html;charset=utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">PrintWriter</span><span class="sh_normal"> </span>out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建cookie</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cookie</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">,</span><span class="sh_string">"Lisa"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c<span class="sh_symbol">.</span><span class="sh_function">setMagAge</span><span class="sh_symbol">(</span><span class="sh_number">40</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cookie</span><span class="sh_symbol">(</span><span class="sh_string">"city"</span><span class="sh_symbol">,</span><span class="sh_string">"NewYork"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">addCookie</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">addCookie</span><span class="sh_symbol">(</span>c2<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
+
+import javax.servlet.*;
+import javax.servlet.*;
+
+public class AddCookieServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			                throws ServletException, IOException {
+		response.setContentType(
+				"text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		//创建cookie
+		Cookie c = new Cookie("username","Lisa");
+		c.setMagAge(40);
+		Cookie c2 = new Cookie("city","NewYork");
+		response.addCookie(c);
+		response.addCookie(c2);
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <a name="Key01_02_07">
+      </a>
+      <h3>1.2.7. Cookie编码</h3>
+      <p>Cookie作为在网络传输的一段字符串文本，只能保存合法的ASCII字符，如果要保存中文需要将中文变成合法的ASCII字符，即编码。使用如下代码可以实现将中文保存到Cookie中。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cookie</span><span class="sh_symbol">(</span><span class="sh_string">"city"</span><span class="sh_symbol">,</span>URLEncoder<span class="sh_symbol">.</span><span class="sh_function">encode</span><span class="sh_symbol">(</span><span class="sh_string">"北京"</span><span class="sh_symbol">,</span><span class="sh_string">"utf-8"</span><span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cookie c = new Cookie("city",URLEncoder.encode("北京","utf-8"));
+</pre></div></div>
+      <p>完整实现保存用户名和城市信息的代码如下。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="hide sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>net<span class="sh_symbol">.</span>URLEncoder<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">AddCookieServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_string">"text/html;charset=utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">PrintWriter</span><span class="sh_normal"> </span>out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建cookie</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cookie</span><span class="sh_symbol">(</span><span class="sh_string">"username"</span><span class="sh_symbol">,</span>URLEncoder<span class="sh_symbol">.</span>encode（<span class="sh_string">"女神"</span><span class="sh_symbol">,</span>”utf<span class="sh_number">-8</span>”）<span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     <span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cookie</span><span class="sh_symbol">(</span><span class="sh_string">"city"</span><span class="sh_symbol">,</span>URLEncoder<span class="sh_symbol">.</span><span class="sh_function">encode</span><span class="sh_symbol">(</span>“北京”<span class="sh_symbol">.</span><span class="sh_string">"utf-8"</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">addCookie</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">addCookie</span><span class="sh_symbol">(</span>c2<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLEncoder;
+
+import javax.servlet.*;
+import javax.servlet.*;
+
+public class AddCookieServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			                throws ServletException, IOException {
+		response.setContentType(
+				"text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		//创建cookie
+		Cookie c = new Cookie("username",URLEncoder.encode（"女神",”utf-8”）);		     Cookie c2 = new Cookie("city",URLEncoder.encode(“北京”."utf-8"));
+		response.addCookie(c);
+		response.addCookie(c2);
+		out.close();
+	}
+
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="Key01_02_08">
+      </a>
+      <h3>1.2.8. Cookie解码</h3>
+      <p>服务器读取客户端经过编码之后的信息时，要想能够正确显示需要将信息解码后才能输出。使用URLDecoder的decode（）方法即可。实现解码的完整代码如下:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="hide sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>net<span class="sh_symbol">.</span>URLDecoder<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">FindCookieServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;               <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">PrintWriter</span><span class="sh_normal"> </span>out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cookie<span class="sh_symbol">[]</span> cookies <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getCookies</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>cookies <span class="sh_symbol">!=</span> <span class="sh_keyword">null</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>cookies<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> cookies<span class="sh_symbol">[</span>i<span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>name <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>value <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span><span class="sh_function">getValue</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name <span class="sh_symbol">+</span> “<span class="sh_symbol">:</span>” <span class="sh_symbol">+</span> URLDecoder<span class="sh_symbol">.</span><span class="sh_function">decode</span><span class="sh_symbol">(</span>value<span class="sh_symbol">,</span><span class="sh_string">"utf-8"</span><span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"没有找到cookie"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.URLDecoder;
+
+import javax.servlet.*;
+import javax.servlet.*;
+
+public class FindCookieServlet extends HttpServlet {
+	public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			               throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null){
+			for(int i=0;i&lt;cookies.length;i++){
+				Cookie c = cookies[i];
+				String name = c.getName();
+				String value = c.getValue();
+				out.println(name + “:” + URLDecoder.decode(value,"utf-8"));
+			}
+		}else{
+			out.println("没有找到cookie");
+		}
+		out.close();
+	}
+
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. Cookie的路径问题</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 什么是Cookie的路径问题</h3>
+      <p>客户端存储Cookie之后，并不是针对同一个应用访问任何资源时都自动发送Cookie到服务器端，而是会进行路径的判断。只有符合路径规范的请求才会发送Cookie到服务器端。</p>
+      <p>客户端在接受Cookie时会为该Cookie记录一个默认路径，这个路径记录的是添加这个Cookie的Web组件的路径。如，当客户端向  http://localhost:8080/test/file/addCookie.jsp发送请求时创建了cookie，那么该cookie的路径就是 /test/file.</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 什么时候发送Cookie</h3>
+      <p>只有当访问的地址是Cookie的路径或者其子路径时，浏览器才发送Cookie到服务器端。</p>
+      <p>如，Cookie的路径是 /test/file，那么如果访问的是 /test/file/a.jsp 或者 /test/file/b/c.jsp时，都会发送Cookie。</p>
+      <p>如果访问的是 /test/d.jsp，则浏览器不会发送Cookie。</p>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 如何设置Cookie的路径</h3>
+      <p>设置Cookie的路径可以使用Cookie的API方法，setPath(String uri);</p>
+      <p>如以下代码就实现了设置Cookie的路径为应用的顶级目录，这样所有资源路径要么与此路径相等，要么是子路径，从而实现了客户端发送任何请求时都会发送Cookie。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY06/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Cookie</span><span class="sh_normal"> </span>c  <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cookie</span><span class="sh_symbol">(</span>“uname”，“jack”<span class="sh_symbol">);</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">setPath</span><span class="sh_symbol">(</span>“<span class="sh_symbol">/</span>test”<span class="sh_symbol">);</span></li><li>response<span class="sh_symbol">.</span><span class="sh_function">addCookie</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cookie c  = new Cookie(“uname”，“jack”);
+c.setPath(“/test”);
+response.addCookie(c);
+</pre></div></div>
+      <a name="Key01_03_04">
+      </a>
+      <h3>1.3.4. Cookie的限制</h3>
+      <p>Cookie由于存放的位置在客户端，所以可以通过修改设置被用户禁止。Cookie本质就是一小段文本，一小段说的是只能保存少量数据，长度是有限制的，一般为4kb左右。文本说的是只能保存字符串，不能保留复杂的对象类型数据。</p>
+      <p>作为网络中传输的内容，Cookie安全性很低，非常容易通过截取数据包来获取，在没有加密的情况下不要用于存放敏感数据。</p>
+      <p>就算是能够存放的长度很短，但作为网络中传输的内容也会增加网络的传输量影响带宽。在服务器处理大量请求的时候，Cookie的传递无疑会增加网络的负载量。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

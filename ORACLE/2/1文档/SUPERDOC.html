@@ -1,0 +1,576 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17468466593"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#Key01">Oracle字符串操作</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#Key02">Oracle数值操作</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#Key03">Oracle日期操作</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#Key04">空值操作</a>
+        </li>
+      </ol>
+      <h1>1. Oracle字符串操作</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 字符串类型</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. CHAR和VARCHAR2类型</h3>
+      <p>CHAR和VARCHAR2类型都是用来表示字符串数据类型，用来在表中存放字符串信息, 比如姓名、职业、地址等。</p>
+      <p>CHAR存放定长字符，如果数据存不满定长长度，则补齐空格；</p>
+      <p>VARCHAR2存放变长字符，实际数据有多少长度则占用多少。</p>
+      <p>如保存字符串’HELLOWORLD’，共10个英文字母：</p>
+      <ul class="list">
+        <li>CHAR(100)： 10个字母，补齐90个空格，实际占用100个字节。
+</li>
+        <li>VARCHAR2(100) ：10个字母，实际占用10个字节。
+</li>
+      </ul>
+      <p>CHAR类型浪费空间换取查询时间的缩短，VARCHAR2节省空间查询时间较CHAR类型要长。字符串按照自然顺序排序。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. CHAR和VARCHAR2的存储编码</h3>
+      <p>字符串在数据库中存储的默认单位是字节，也可显式指定为字符。如：</p>
+      <ul class="list">
+        <li>CHAR(10)，等价于 CHAR(10 BYTE)
+</li>
+        <li>如果指定单位为字符：CHAR(10 CHAR)，20个字节
+</li>
+        <li>VARCHAR2(10)， 等价于VARCHAR2（10 BYTE）
+</li>
+        <li>指定单位为字符：VARCHAR2(10 CHAR)，20个字节
+</li>
+      </ul>
+      <p>每个英文字符占用一个字节，每个中文字符按编码不同，占用2-4个字节：</p>
+      <ul class="list">
+        <li>ZHS16GBK: 2个字节
+</li>
+        <li>UTF-8: 2-4个字节
+</li>
+      </ul>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. CHAR和VARCHAR2的最大长度</h3>
+      <p>CHAR类型的最大取值为2000字节，也就是定义为CHAR（2000）。其中最多保存2000个英文字符，1000个汉字（GBK）。</p>
+      <p>VARCHAR2最大取值为4000字节，也就是VARCHAR2（4000），最多保存4000个英文字符，2000个汉字（GBK）。</p>
+      <p>CHAR如果不指定长度，默认为1个字节， VARCHAR2必须指定长度。</p>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. LONG和CLOB类型</h3>
+      <p>LONG类型可以认为是VARCHAR2的加长版，用来存储变长字符串，最多达2GB的字符串数据，但是LONG类型有诸多限制，所以不建议使用：</p>
+      <ul class="list">
+        <li>每个表只能有一个LONG类型列；
+</li>
+        <li>不能作为主键；
+</li>
+        <li>不能建立索引；
+</li>
+        <li>不能出现在查询条件中等
+</li>
+      </ul>
+      <p>CLOB用来存储定长或变长字符串，最多达4GB的字符串数据，ORACLE建议开发中使用CLOB替代LONG类型，比如如下方式定义数据表：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">student</span><span class="sh_symbol">(</span></li><li><span class="sh_usertype">id</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">detail</span><span class="sh_normal"> </span>CLOB<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    CREATE TABLE student(
+id NUMBER(4),
+name CHAR(20),
+detail CLOB);
+</pre></div></div>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 字符串函数</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. CONCAT和“||”</h3>
+      <p>CONCAT是字符串连接函数，语法是：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">CONCAT</span><span class="sh_symbol">(</span>char1<span class="sh_symbol">,</span> char2<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CONCAT(char1, char2)
+</pre></div></div>
+      <p>用于返回两个字符串连接后的结果，两个参数char1、char2是要连接的两个字符串。concat只能有两个参数，所以如果连接三个字符串时，需要两个concat函数。比如连接emp表中的name列和salary列，中间用“：”隔开：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">CONCAT</span><span class="sh_symbol">(</span><span class="sh_function">CONCAT</span><span class="sh_symbol">(</span>name<span class="sh_symbol">,</span> <span class="sh_string">' : '</span><span class="sh_symbol">),</span> sal<span class="sh_symbol">)</span><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT CONCAT(CONCAT(name, ' : '), sal)FROM emp;
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图-1  CONCAT连接字符串的结果</p>
+      </div>
+      <p>在连接两个以上操作符时并不是很方便。concat的等价操作是连接操作符”||”。当多个字串连接时，用||符号更直观。下述SQL语句实现相同的效果：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>   SELECTename <span class="sh_symbol">||</span> <span class="sh_string">' : '</span> <span class="sh_symbol">||</span> <span class="sh_usertype">sal</span><span class="sh_normal"> </span>FROMemp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">   SELECTename || ' : ' || sal FROMemp;
+</pre></div></div>
+      <p>在连接时，如果任何一个参数是NULL，相当于连接了一个空格。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. LENGTH</h3>
+      <p>LENGTH(char)用于返回参数字符串的长度。如果字符类型是VARCHAR2，返回字符的实际长度，如果字符类型是CHAR，长度还包括后补的空格。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECTename<span class="sh_symbol">,</span> <span class="sh_function">LENGTH</span><span class="sh_symbol">(</span>name<span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECTename, LENGTH(name) FROM emp;
+</pre></div></div>
+      <p>将列出name和name的字符串长度：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图-2Lenth函数的运行结果</p>
+      </div>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. UPPER、LOWER和INITCAP</h3>
+      <p>这三个函数全部是英文的大小写转换函数，用来转换字符的大小写：</p>
+      <ul class="list">
+        <li>UPPER(char)用于将字符转换为大写形式
+</li>
+        <li>LOWER(char)用于将字符转换为小写形式
+</li>
+        <li>INITCAP(char)用于将字符串中每个单词的首字符大写，其它字符小写，单词之间用空格和非字母字符分隔
+</li>
+      </ul>
+      <p>如果这三个函数的输入参数是NULL值，仍然返回NULL值。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">UPPER</span><span class="sh_symbol">(</span><span class="sh_string">'hello world'</span><span class="sh_symbol">),</span> <span class="sh_function">LOWER</span><span class="sh_symbol">(</span><span class="sh_string">'HELLO WORLD'</span><span class="sh_symbol">),</span> <span class="sh_function">INITCAP</span><span class="sh_symbol">(</span><span class="sh_string">'hello world'</span><span class="sh_symbol">)</span> </li><li>    <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT UPPER('hello world'), LOWER('HELLO WORLD'), INITCAP('hello world') 
+    FROM DUAL;
+</pre></div></div>
+      <p>将列出参数“hello world”的大写、小写和首字符大写的形式。一般用来查询数据表中不确定大小写的情况。查询结果如图-3所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图-3大小写转换函数的运行结果</p>
+      </div>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. TRIM、LTRIM、RTRIM</h3>
+      <p>这三个TRIM函数的作用都是截去子字符串。语法形式及解释：</p>
+      <ul class="list">
+        <li>TRIM(c2 FROM c1)  表示从c1的前后截去c2
+</li>
+        <li>LTRIM(c1[, c2])  表示从c1的左边（Left）截去c2
+</li>
+        <li>RTRIM(c1[, c2])  表示从c1的右边（Right）截去c2
+</li>
+      </ul>
+      <p>在后两个函数中，如果没有参数c2，就去除空格。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li> <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">TRIM</span><span class="sh_symbol">(</span><span class="sh_string">'e'</span> from <span class="sh_string">'elite'</span><span class="sh_symbol">)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>t1<span class="sh_symbol">,</span></li><li><span class="sh_function">LTRIM</span><span class="sh_symbol">(</span><span class="sh_string">'elite'</span><span class="sh_symbol">,</span> <span class="sh_string">'e'</span><span class="sh_symbol">)</span> <span class="sh_usertype">AS</span><span class="sh_normal"> </span>t2<span class="sh_symbol">,</span></li><li><span class="sh_function">RTRIM</span><span class="sh_symbol">(</span><span class="sh_string">'elite'</span><span class="sh_symbol">,</span> <span class="sh_string">'e'</span><span class="sh_symbol">)</span> AS t3 </li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;"> SELECT TRIM('e' from 'elite') AS t1,
+LTRIM('elite', 'e') AS t2,
+RTRIM('elite', 'e') AS t3 
+FROM DUAL;
+</pre></div></div>
+      <p>其中最常用的是TRIM，经常用来去掉字符串前后的空格。运行结果如图-4所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图-4TRIM函数的运行结果</p>
+      </div>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. LPAD、RPAD</h3>
+      <p>PAD意即补丁，LPAD和RPAD两个函数都叫做补位函数，LPAD表示LEFT PAD，在左边打补丁，RPAD表示RIGHT PAD，在右边打补丁。语法如下：</p>
+      <ul class="list">
+        <li>LPAD(char1, n, char2)  左补位函数
+</li>
+        <li>RPAD(char1, n, char2)  右补位函数
+</li>
+      </ul>
+      <p>参数的含义：在字符串参数char1的左端或右端用char2补足到n位，其中参数char2可重复多次。例如在EMP表中使用左补位，将sal用$补齐6位，运行结果如图-5所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图-5补位函数的运行结果</p>
+      </div>
+      <a name="Key01_02_06">
+      </a>
+      <h3>1.2.6. SUBSTR</h3>
+      <p>SUBSTR表示在一个字符串中截取子串，语法是：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">SUBSTR</span><span class="sh_symbol">(</span><span class="sh_type">char</span><span class="sh_symbol">,</span> <span class="sh_symbol">[</span>m<span class="sh_symbol">[,</span> n<span class="sh_symbol">]])</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SUBSTR(char, [m[, n]])
+</pre></div></div>
+      <p>用于返回char中从m位开始取n个字符的子串，字符串的首位计数从1开始。参数含义如下：</p>
+      <ul class="list">
+        <li>如果m = 0，则从首字符开始，如果m取负数，则从尾部开始
+</li>
+        <li>如果没有设置n，或者n的长度超过了char的长度，则取到字符串末尾为止
+</li>
+      </ul>
+      <p>例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>   SELECT </li><li><span class="sh_function">SUBSTR</span><span class="sh_symbol">(</span><span class="sh_string">'Doctor Who travels in TARDIS'</span><span class="sh_symbol">,</span> <span class="sh_number">8</span><span class="sh_symbol">,</span> <span class="sh_number">25</span><span class="sh_symbol">)</span></li><li>   <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">   SELECT 
+SUBSTR('Doctor Who travels in TARDIS', 8, 25)
+   FROM DUAL;
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image006.png">
+        <p>图-6取子串函数的运行结果</p>
+      </div>
+      <a name="Key01_02_07">
+      </a>
+      <h3>1.2.7. INSTR</h3>
+      <p>用来返回在一个字符串中子串的位置。语法是：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">INSTR</span><span class="sh_symbol">(</span>char1<span class="sh_symbol">,</span> char2<span class="sh_symbol">[,</span> n <span class="sh_symbol">[,</span> m<span class="sh_symbol">]])</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSTR(char1, char2[, n [, m]])
+</pre></div></div>
+      <p>参数的含义：</p>
+      <ul class="list">
+        <li>返回子串char2在源字符串char1中的位置
+</li>
+        <li>从n的位置开始搜索，没有指定n，从第1个字符开始搜索
+</li>
+        <li>m用于指定子串的第m次出现次数，如果不指定取值1
+</li>
+        <li>如果在char1中没有找到子串char2 ，返回0
+</li>
+      </ul>
+      <p>例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">INSTR</span><span class="sh_symbol">(</span><span class="sh_string">'Doctor Who'</span><span class="sh_symbol">,</span> <span class="sh_string">'Who'</span><span class="sh_symbol">)</span> words <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT INSTR('Doctor Who', 'Who') words FROM DUAL;
+</pre></div></div>
+      <p>结果将返回8.</p>
+      <a name="Key02">
+      </a>
+      <h1>2. Oracle数值操作</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 数值类型</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. NUMBER（p）表示整数</h3>
+      <p>数据表中的数值类型用NUMBER表示，完整语法是：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span>precision ，scale<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">NUMBER(precision ，scale)
+</pre></div></div>
+      <p>可以用来表示整数和浮点数。如果没有设置参数s，则默认取值0，即NUMBER(p)用来表示整数。P表示数字的总位数，取值为1-38。一般用来在表中存放如编码、年龄、次数等用整数记录的数据。例如建表时指定学生编码是4位数字：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">student</span> <span class="sh_symbol">(</span></li><li><span class="sh_usertype">id</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span> </li><li><span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE student (
+id NUMBER(4), 
+name CHAR(20));
+</pre></div></div>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. NUMBER（P,S）表示浮点数</h3>
+      <p>如果NUMBER(precision ，scale)的两个参数全部显式定义，则表示浮点数：</p>
+      <ul class="list">
+        <li>precision：NUMBER可以存储的最大数字长度（不包括左右两边的0）
+</li>
+        <li>scale：在小数点右边的最大数字长度（包括左侧0）
+</li>
+      </ul>
+      <p>如果指定了s但是没有指定p，则p默认为38，例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>列名 NUMBER（<span class="sh_symbol">*</span>，S）</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">列名 NUMBER（*，S）
+</pre></div></div>
+      <p>NUMBER（p,s）经常用来做表中存放金额、成绩等有小数位的数据。例如创建学生表，指定成绩整数位最多3位，小数位最多2位：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">student</span> <span class="sh_symbol">(</span></li><li><span class="sh_usertype">id</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span> </li><li><span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">score</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE student (
+id NUMBER(4), 
+name CHAR(20),
+score NUMBER(5, 2));
+</pre></div></div>
+      <p>NUMBER的变种数据类型：内部实现是NUMBER，可以将其理解为NUMBER的别名，目的是多种数据库及编程语言兼容</p>
+      <ul class="list">
+        <li>NUMERIC(p,s)：完全映射至NUMBER(p,s)
+</li>
+        <li>DECIMAL(p,s)或DEC(p,s)：完全映射至NUMBER(p,s)
+</li>
+        <li>INTEGER或INT：完全映射至NUMBER(38)类型
+</li>
+        <li>SMALLINT：完全映射至NUMBER(38)类型
+</li>
+        <li>FLOAT(b)：映射至NUMBER类型
+</li>
+        <li>DOUBLE PRECISION：映射至NUMBER类型
+</li>
+        <li>REAL：映射至NUMBER类型
+</li>
+      </ul>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 数值函数</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. ROUND</h3>
+      <p>数值函数指参数是数值类型的函数。常用的有ROUND、TRUNC、MOD、CEIL和FLOOR。其中ROUND用来四舍五入，语法如下：</p>
+      <p>ROUND(n[, m])用于将参数n按照m的数字要求四舍五入。其中：</p>
+      <ul class="list">
+        <li>参数中的n可以是任何数字，指要被处理的数字
+</li>
+        <li>m必须是整数
+</li>
+        <li>m取正数则四舍五入到小数点后第m位
+</li>
+        <li>m取0值则四舍五入到整数位
+</li>
+        <li>m取负数，则四舍五入到小数点前m位
+</li>
+        <li>m缺省，默认值是0
+</li>
+      </ul>
+      <p>例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">ROUND</span><span class="sh_symbol">(</span><span class="sh_number">45.678</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span> <span class="sh_symbol">--</span><span class="sh_number">45.68</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">ROUND</span><span class="sh_symbol">(</span><span class="sh_number">45.678</span><span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;--</span><span class="sh_number">46</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">ROUND</span><span class="sh_symbol">(</span><span class="sh_number">45.678</span><span class="sh_symbol">,</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;--</span><span class="sh_number">50</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ROUND(45.678, 2) FROM DUAL; --45.68
+SELECT ROUND(45.678, 0) FROM DUAL;--46
+SELECT ROUND(45.678, -1) FROM DUAL;--50
+</pre></div></div>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. trunc</h3>
+      <p>TRUNC(n[, m])的功能是截取，其中n和m的定义和ROUND(n[, m])相同，不同的是功能上按照截取的方式处理数字n。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">TRUNC</span><span class="sh_symbol">(</span><span class="sh_number">45.678</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span> <span class="sh_symbol">--</span><span class="sh_number">45.67</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">TRUNC</span><span class="sh_symbol">(</span><span class="sh_number">45.678</span><span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;--</span><span class="sh_number">45</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">TRUNC</span><span class="sh_symbol">(</span><span class="sh_number">45.678</span><span class="sh_symbol">,</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;--</span><span class="sh_number">40</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT TRUNC(45.678, 2) FROM DUAL; --45.67
+SELECT TRUNC(45.678, 0) FROM DUAL;--45
+SELECT TRUNC(45.678, -1) FROM DUAL;--40
+</pre></div></div>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. MOD</h3>
+      <p>MOD(m, n)是取模函数，返回m除以n后的余数，如果n为0则直接返回m。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>薪水值按<span class="sh_number">1000</span>取余数</li><li>SELECTename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> <span class="sh_function">MOD</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">,</span> <span class="sh_number">1000</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--薪水值按1000取余数
+SELECTename, sal, MOD(sal, 1000) FROM emp; 
+</pre></div></div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image007.png">
+        <p>图-7薪水列按1000取模后的运行结果</p>
+      </div>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. CEIL和FLOOR</h3>
+      <p>CEIL(n)、FLOOR(n)这两个函数顾名思义，一个是天花板，就是取大于或等于n的最小整数值，一个是地板，就是取小于或等于n的最大整数值。比如数字n = 4.5，那么它的CEIL是5.0，它的FLOOR是4.0。在SQL语句中的例子如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">CEIL</span><span class="sh_symbol">(</span><span class="sh_number">45.678</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span> <span class="sh_symbol">--</span><span class="sh_number">46</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">FLOOR</span><span class="sh_symbol">(</span><span class="sh_number">45.678</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;--</span><span class="sh_number">45</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT CEIL(45.678) FROM DUAL; --46
+SELECT FLOOR(45.678) FROM DUAL;--45
+</pre></div></div>
+      <a name="Key03">
+      </a>
+      <h1>3. Oracle日期操作</h1>
+      <a name="Key03_01">
+      </a>
+      <h2>3.1. 日期类型</h2>
+      <a name="Key03_01_01">
+      </a>
+      <h3>3.1.1. DATE</h3>
+      <p>DATE和TIMESTAMP是ORACLE中最常用的日期类型。DATE用来保存日期和时间。表示范围从是公元前4712年1月1日至公元9999年12月31日。</p>
+      <p>DATE类型在数据库中的实际存储固定为7个字节，格式分别为：</p>
+      <ul class="list">
+        <li> 第1字节：世纪+100
+</li>
+        <li> 第2字节：年
+</li>
+        <li> 第3字节：月
+</li>
+        <li> 第4字节：天
+</li>
+        <li> 第5字节：小时+1
+</li>
+        <li> 第6字节：分+1
+</li>
+        <li> 第7字节：秒+1
+</li>
+      </ul>
+      <a name="Key03_01_02">
+      </a>
+      <h3>3.1.2. TIMESTAMP</h3>
+      <p>TIMESTAMP表示时间戳，与DATE的区别是不仅可以保存日期和时间，还能保存小数秒，可指定为0-9位，默认6位，最高精度可以到ns(纳秒)级别。</p>
+      <p>数据库内部用7或者11个字节存储，精度为0时，用7字节存储，与DATE功能相同，精度大于0则用11字节存储。格式为：</p>
+      <ul class="list">
+        <li> 第1字节-第7字节：和DATE相同
+</li>
+        <li> 第8-11字节：纳秒，采用4个字节存储，内部运算类型为整型
+</li>
+      </ul>
+      <p>用日期类型建表的例子：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">test</span><span class="sh_symbol">(</span></li><li><span class="sh_usertype">c1</span><span class="sh_normal"> </span>DATE<span class="sh_symbol">,</span></li><li><span class="sh_usertype">c2</span><span class="sh_normal"> </span><span class="sh_function">TIMESTAMP</span><span class="sh_symbol">(</span><span class="sh_number">9</span><span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    CREATE TABLE test(
+c1 DATE,
+c2 TIMESTAMP(9));
+</pre></div></div>
+      <a name="Key03_02">
+      </a>
+      <h2>3.2. 日期关键字</h2>
+      <a name="Key03_02_01">
+      </a>
+      <h3>3.2.1. SYSDATE</h3>
+      <p>SYSDATE本质是一个Oracle的内部函数，用来返回当前的系统时间，精确到秒，默认显示格式是DD-MON-RR，只有年月日并不显示时间。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT SYSDATE <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT SYSDATE FROM DUAL;
+</pre></div></div>
+      <p>如果数据库是英文环境，将显示“03-MAY-14”的形式，如果是中文环境，将显示“03-5月-14”的形式。如果想显示时分秒，需要将格式转换一下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>SYSDATE<span class="sh_symbol">,</span><span class="sh_string">'yyyy-mm-dd day hh24:mi:ss'</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT TO_CHAR(SYSDATE,'yyyy-mm-dd day hh24:mi:ss') FROM DUAL;
+</pre></div></div>
+      <p>运行结果是：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image008.png">
+        <p>图-8显示当前的系统时间</p>
+      </div>
+      <p>在建表时，可以将系统时间SYSDATE作为某一列的默认值，当插入新的记录，将会取当时的系统时间，作为数据表的一列数据保存起来。例如学生表，学生的注册时间列即默认取值数据记录插入的时间：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">student</span> <span class="sh_symbol">(</span><span class="sh_usertype">id</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>registerDate DATE <span class="sh_usertype">DEFAULT</span><span class="sh_normal"> </span>SYSDATE<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    CREATE TABLE student (id NUMBER(4),
+name CHAR(20),
+registerDate DATE DEFAULT SYSDATE);
+</pre></div></div>
+      <a name="Key03_02_02">
+      </a>
+      <h3>3.2.2. SYSTIMESTAMP</h3>
+      <p>SYSTIMESTAMP也是Oracle的内部日期函数，返回当前系统日期和时间，精确到毫秒。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT SYSTIMESTAMP <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>SYSTIMESTAMP<span class="sh_symbol">,</span><span class="sh_string">'SSSS.FF'</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT SYSTIMESTAMP FROM DUAL;
+SELECT TO_CHAR(SYSTIMESTAMP,'SSSS.FF') FROM DUAL;
+</pre></div></div>
+      <a name="Key03_03">
+      </a>
+      <h2>3.3. 日期转换函数</h2>
+      <a name="Key03_03_01">
+      </a>
+      <h3>3.3.1. TO_DATE</h3>
+      <p>日期数据有时需要和字符串数据相互转换，需要用到日期转换函数，包括TO_CHAR和TO_DATE。</p>
+      <p>TO_DATE的功能是将字符串按照定制格式转换为日期类型，语法格式是：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">TO_DATE</span><span class="sh_symbol">(</span><span class="sh_type">char</span><span class="sh_symbol">[,</span> fmt<span class="sh_symbol">[,</span> nlsparams<span class="sh_symbol">]])</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">TO_DATE(char[, fmt[, nlsparams]])
+</pre></div></div>
+      <p>其中：char是要转换的字符串，fmt是转换格式，nlsparams是指定日期语言。其中比较重要的是格式，常用的日期格式如下：</p>
+      <div class="table">
+        <p>表-1 常用日期格式</p>
+        <img src="./SUPERDOC_files/table001.png">
+      </div>
+      <p>例子：查询2002年以后入职的员工：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>  SELECTename<span class="sh_symbol">,</span> hiredate</li><li>  FROM emp</li><li>  <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>hiredate<span class="sh_symbol">&gt;</span></li><li> <span class="sh_function">TO_DATE</span><span class="sh_symbol">(</span>‘<span class="sh_number">2002-01-01</span><span class="sh_string">',</span></li><li><span class="sh_string">  '</span>YYYY<span class="sh_symbol">-</span>MM<span class="sh_symbol">-</span>DD<span class="sh_string">');</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">  SELECTename, hiredate
+  FROM emp
+  WHERE hiredate&gt;
+ TO_DATE(‘2002-01-01',
+  'YYYY-MM-DD');
+</pre></div></div>
+      <a name="Key03_03_02">
+      </a>
+      <h3>3.3.2. TO_CHAR</h3>
+      <p>TO_CHAR的作用是将其它类型（日期，数值）的数据转换为字符类型，主要应用在日期类型上。语法格式：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>date<span class="sh_symbol">[,</span> fmt<span class="sh_symbol">[,</span> nlsparams<span class="sh_symbol">]])</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">TO_CHAR(date[, fmt[, nlsparams]])
+</pre></div></div>
+      <p>其中fmt是格式，将日期类型数据date按照fmt格式输出字符串，nlsparams用于指定日期语言。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>  SELECTename<span class="sh_symbol">,</span><span class="sh_function">TO_CHAR</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span> <span class="sh_string">'YYYY"年"MM"月"DD"日"'</span><span class="sh_symbol">)</span> </li><li>  <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">  SELECTename,TO_CHAR(hiredate, 'YYYY"年"MM"月"DD"日"') 
+  FROM emp;
+</pre></div></div>
+      <a name="Key03_04">
+      </a>
+      <h2>3.4. 日期常用函数</h2>
+      <a name="Key03_04_01">
+      </a>
+      <h3>3.4.1. LAST_DAY</h3>
+      <p>LAST_DAY(date)：返回日期date所在月的最后一天，一般是在按照自然月计算某些业务逻辑，或者安排月末周期性活动时很有用处。例子：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">LAST_DAY</span><span class="sh_symbol">(</span>SYSDATE<span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;--</span>查询当月的最后一天</li><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">LAST_DAY</span><span class="sh_symbol">(</span><span class="sh_string">'20-2月-09'</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;--</span>查询<span class="sh_number">09</span>年<span class="sh_number">2</span>月的最后一天</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT LAST_DAY(SYSDATE) FROM DUAL;--查询当月的最后一天
+SELECT LAST_DAY('20-2月-09') FROM DUAL;--查询09年2月的最后一天
+</pre></div></div>
+      <a name="Key03_04_02">
+      </a>
+      <h3>3.4.2. ADD_MONTHS</h3>
+      <p>ADD_MONTHS(date, i)：返回日期date加上i个月后的日期值.</p>
+      <p>其中：</p>
+      <ul class="list">
+        <li>参数i可以是任何数字，大部分时候取正值整数
+</li>
+        <li>如果i是小数，将会被截取整数后再参与运算
+</li>
+        <li>如果i是负数，则获得的是减去i个月后的日期值
+</li>
+      </ul>
+      <p>例如计算职员入职20周年纪念日：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    SELECTename<span class="sh_symbol">,</span> <span class="sh_function">ADD_MONTHS</span><span class="sh_symbol">(</span>hiredate<span class="sh_symbol">,</span> <span class="sh_number">20</span> <span class="sh_symbol">*</span> <span class="sh_number">12</span><span class="sh_symbol">)</span> <span class="sh_string">"20周年"</span> </li><li>    <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECTename, ADD_MONTHS(hiredate, 20 * 12) "20周年" 
+    FROM emp;
+</pre></div></div>
+      <a name="Key03_04_03">
+      </a>
+      <h3>3.4.3. MONTHS_BETWEEN</h3>
+      <p>MONTHS_BETWEEN(date1, date2)：计算date1和date2两个日期值之间间隔了多少个月，实际运算是date1-date2，如果date2时间比date1晚，会得到负值。</p>
+      <p>除非两个日期间隔是整数月，否则会得到带小数位的结果，比如计算2009年9月1日到2009年10月10日之间间隔多少个月，会得到1.29个月。例如计算职员入职多少个月：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    SELECTename<span class="sh_symbol">,</span> <span class="sh_function">MONTHS_BETWEEN</span><span class="sh_symbol">(</span>SYSDATE<span class="sh_symbol">,</span> hiredate<span class="sh_symbol">)</span> hiredate FROM emp；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECTename, MONTHS_BETWEEN(SYSDATE, hiredate) hiredate FROM emp；
+</pre></div></div>
+      <a name="Key03_04_04">
+      </a>
+      <h3>3.4.4. NEXT_DAY</h3>
+      <p>NEXT_DAY(date, char)：返回date日期数据的下一个周几，周几是由参数char来决定的。在中文环境下，直接使用”星期三”这种形式，英文环境下，需要使用”WEDNESDAY”这种英文的周几。为避免麻烦，可以直接用数字1-7表示周日-周六。</p>
+      <p>需要注意的是NEXT_DAY不要按字面意思理解为明天。查询下个周三是几号：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">NEXT_DAY</span><span class="sh_symbol">(</span>SYSDATE<span class="sh_symbol">,</span> <span class="sh_number">4</span><span class="sh_symbol">)</span> next_wedn <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT NEXT_DAY(SYSDATE, 4) next_wedn FROM DUAL;
+</pre></div></div>
+      <a name="Key03_04_05">
+      </a>
+      <h3>3.4.5. LEAST、GREATEST</h3>
+      <p>比较函数LEAST和GREATEST语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">GREATEST</span><span class="sh_symbol">(</span>expr1<span class="sh_symbol">[,</span> expr2<span class="sh_symbol">[,</span> expr3<span class="sh_symbol">]]</span>…<span class="sh_symbol">)</span></li><li><span class="sh_function">LEAST</span><span class="sh_symbol">(</span>expr1<span class="sh_symbol">[,</span> expr2<span class="sh_symbol">[,</span> expr3<span class="sh_symbol">]]</span>…<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">GREATEST(expr1[, expr2[, expr3]]…)
+LEAST(expr1[, expr2[, expr3]]…)
+</pre></div></div>
+      <p>两个函数都可以有多个参数值，但参数类型必须一致，返回结果是参数列表中最大或最小的值。</p>
+      <p>在比较之前，在参数列表中第二个以后的参数会被隐含的转换为第一个参数的数据类型，所以如果可以转换，则继续比较，如果不能转换将会报错。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">LEAST</span><span class="sh_symbol">(</span>SYSDATE<span class="sh_symbol">,</span> <span class="sh_string">'10-10月 -08'</span><span class="sh_symbol">)</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT LEAST(SYSDATE, '10-10月 -08') FROM DUAL;
+</pre></div></div>
+      <a name="Key03_04_06">
+      </a>
+      <h3>3.4.6. EXTRACT</h3>
+      <p>EXTRACT直译是抽取或提取：</p>
+      <p>EXTRACT(date FROM datetime)：从参数datetime中提取参数date指定的数据，比如提取年、月、日。例如取出当前日期的年：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">EXTRACT</span><span class="sh_symbol">(</span>YEAR <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>SYSDATE<span class="sh_symbol">)</span> current_year <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT EXTRACT(YEAR FROM SYSDATE) current_year FROM DUAL;
+</pre></div></div>
+      <p>取出指定时间的小时：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">SELECT</span><span class="sh_normal"> </span><span class="sh_function">EXTRACT</span><span class="sh_symbol">(</span>HOUR <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>TIMESTAMP <span class="sh_string">'2008-10-10 10:10:10'</span><span class="sh_symbol">)</span> </li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT EXTRACT(HOUR FROM TIMESTAMP '2008-10-10 10:10:10') 
+FROM DUAL;
+</pre></div></div>
+      <a name="Key04">
+      </a>
+      <h1>4. 空值操作</h1>
+      <a name="Key04_01">
+      </a>
+      <h2>4.1. NULL的含义</h2>
+      <p>NULL是数据库里的重要概念，即空值。当表中的某些字段值，数据未知或暂时不存在，取值NULL。</p>
+      <p>Java中的简单数据类型是不能取值NULL的，在数据库中，任何数据类型均可取值NULL。</p>
+      <a name="Key04_02">
+      </a>
+      <h2>4.2. NULL操作</h2>
+      <a name="Key04_02_01">
+      </a>
+      <h3>4.2.1. 插入NULL值</h3>
+      <p>在数据表中插入记录时，如果要插入NULL值，可以用显式指定NULL值的方式，或者不插入某个字段值，即隐式表示NULL值。例如表student中：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">student</span><span class="sh_symbol">(</span><span class="sh_usertype">id</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span> <span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span> <span class="sh_usertype">gender</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">));</span></li><li><span style="display:none;">&nbsp;</span></li><li>INSERT INTO <span class="sh_usertype">student</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1000</span><span class="sh_symbol">,</span> <span class="sh_string">'李莫愁'</span><span class="sh_symbol">,</span> <span class="sh_string">'F'</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>INSERT INTO <span class="sh_usertype">student</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1001</span><span class="sh_symbol">,</span> <span class="sh_string">'林平之'</span><span class="sh_symbol">,</span> NULL<span class="sh_symbol">);--</span>显式插入NULL值</li><li><span style="display:none;">&nbsp;</span></li><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span><span class="sh_function">student</span><span class="sh_symbol">(</span>id<span class="sh_symbol">,</span> name<span class="sh_symbol">)</span> <span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1002</span><span class="sh_symbol">,</span> <span class="sh_string">'张无忌'</span><span class="sh_symbol">);--</span>隐式插入NULL值</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE student(id NUMBER(4), name CHAR(20), gender CHAR(1));
+
+INSERT INTO student VALUES(1000, '李莫愁', 'F');
+
+INSERT INTO student VALUES(1001, '林平之', NULL);--显式插入NULL值
+
+INSERT INTO student(id, name) VALUES(1002, '张无忌');--隐式插入NULL值
+</pre></div></div>
+      <a name="Key04_02_02">
+      </a>
+      <h3>4.2.2. 更新成NULL值</h3>
+      <p>把数据表的某个字段更新为NULL值，和更新为其他数据的语法是相同的。比如更新</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>UPDATE student <span class="sh_usertype">SET</span><span class="sh_normal"> </span>gender <span class="sh_symbol">=</span> NULL<span class="sh_symbol">;</span> <span class="sh_symbol">--</span>全表都被更新</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">UPDATE student SET gender = NULL; --全表都被更新
+</pre></div></div>
+      <p>注意这种更新只有在此列没有非空约束的情况下才可操作。如果gender列有非空约束，则无法更新为NULL值，上述语句会报错。</p>
+      <a name="Key04_02_03">
+      </a>
+      <h3>4.2.3. NULL条件查询</h3>
+      <p>在条件查询中，因为NULL不等于任何值，所以不能用“列名=NULL”这种形式查询。必须用“列名 IS NULL”来判断，或者用“列名 IS NOT NULL”来查询非空数据。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">*</span> FROM student WHERE gender <span class="sh_usertype">IS</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT * FROM student WHERE gender IS NULL;
+</pre></div></div>
+      <a name="Key04_02_04">
+      </a>
+      <h3>4.2.4. 非空约束</h3>
+      <p>非空(NOT NULL)约束是约束条件的一种，用于确保数据表中某个字段值不为空。</p>
+      <p>因为在默认情况下，任何数据类型的列都允许有空值，但系统的业务逻辑可能会要求某些列不能取空值。这时需要在建表时指定该列不允许为空。</p>
+      <p>一旦某个字段被设置了非空约束条件，这个字段中必须存在有效值。即：当执行插入数据的操作时，必须提供这个列的数据，当执行更新操作时，不能给这个列的值设置为NULL。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>创建数据表student，其中gender列不允许为空</li><li>CREATE TABLE student</li><li>    <span class="sh_symbol">(</span><span class="sh_usertype">id</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li><span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span> </li><li><span class="sh_usertype">gender</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">)</span> <span class="sh_usertype">NOT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--创建数据表student，其中gender列不允许为空
+CREATE TABLE student
+    (id NUMBER(4),
+name CHAR(20), 
+gender CHAR(1) NOT NULL);
+</pre></div></div>
+      <a name="Key04_03">
+      </a>
+      <h2>4.3. 空值函数</h2>
+      <a name="Key04_03_01">
+      </a>
+      <h3>4.3.1. NVL</h3>
+      <p>NVL(expr1, expr2)：将NULL转变为非NULL值。如果expr1为NULL，则取值expr2, expr2是非空值。</p>
+      <p>其中expr1和expr2可以是任何数据类型，但两个参数的数据类型必须是一致的。</p>
+      <p>计算员工月收入，如果comm列为空值的话，最终计算结果将是空，不符合逻辑，所以先将取NULL值的comm列转换为0，再相加。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECTename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> comm<span class="sh_symbol">,</span>sal <span class="sh_symbol">+</span> <span class="sh_function">nvl</span><span class="sh_symbol">(</span>comm<span class="sh_symbol">,</span> <span class="sh_number">0</span><span class="sh_symbol">)</span> salary</li><li><span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECTename, sal, comm,sal + nvl(comm, 0) salary
+FROM emp;
+</pre></div></div>
+      <a name="Key04_03_02">
+      </a>
+      <h3>4.3.2. NVL2</h3>
+      <p>NVL2(expr1, expr2, expr3)：和NVL函数功能类似，都是将NULL转变为非空值。NVL2用来判断expr1是否为NULL，如果不是NULL，返回expr2，如果是NULL，返回expr3。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    SELECTename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> comm<span class="sh_symbol">,</span> </li><li><span class="sh_function">nvl2</span><span class="sh_symbol">(</span>comm<span class="sh_symbol">,</span> sal <span class="sh_symbol">+</span> comm<span class="sh_symbol">,</span> sal<span class="sh_symbol">)</span> salary</li><li>    <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECTename, sal, comm, 
+nvl2(comm, sal + comm, sal) salary
+    FROM emp;
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

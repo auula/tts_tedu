@@ -1,0 +1,208 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="17884312340"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 Oracle基础查询综合示例</h3> 
+    <p>有职员表 emp，表结构如表－1所示：</p> 
+    <div class="table"> 
+     <p>表－1 职员表emp 信息</p> 
+     <img src="./EXERCISE_files/table001.png"> 
+    </div> 
+    <p>emp 表中的示例数据如图－1所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image001.png"> 
+     <p>图－1</p> 
+    </div> 
+    <p>有部门表 dept，表结构如表－2所示：</p> 
+    <div class="table"> 
+     <p>表－2 部门表 dept 信息</p> 
+     <img src="./EXERCISE_files/table002.png"> 
+    </div> 
+    <p>dept表中的示例数据如图－2所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image002.png"> 
+     <p>图－2</p> 
+    </div> 
+    <p>需要完成如下查询：</p> 
+    <p>1、查询职员表中，在20和30号部门工作的员工姓名和部门号。</p> 
+    <p>2、查询职员表中，没有管理者的员工姓名及职位，并按职位排序。</p> 
+    <p>3、查询职员表中，有绩效的员工姓名、薪资和绩效，并按工资倒序排列。</p> 
+    <p>4、查询职员表中，员工姓名的第三个字母是A的员工姓名。</p> 
+    <p>5、查询职员表中的职员名字、职位、薪资，并显示为如图－3所示效果：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image003.png"> 
+     <p>图－3</p> 
+    </div> 
+    <p>提示：列之间用逗号连接，列头显示成OUT_PUT。</p> 
+    <p>6、查询职员表中员工号、姓名、工资，以及工资提高百分之20%后的结果。</p> 
+    <p>7、查询员工的姓名和工资，条件限定为：工资必须大于1200，并对查询结果按入职时间进行排列，早入职排在前面，晚入职排在后面。</p> 
+    <p>8、查询ACCOUNT部门以外的其他部门的编号、名称以及所在地。</p> 
+   </div> 
+   <div> 
+    <h3>2 Oracle分组查询综合示例</h3> 
+    <p>对于如前所示的职员表 emp，需要完成如下查询：</p> 
+    <p>1、查询每个部门中每个职位的最高薪水。</p> 
+    <p>2、有SQL语句如下所示：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT a<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> a<span class="sh_symbol">.</span>sal<span class="sh_symbol">,</span> a<span class="sh_symbol">.</span>deptno<span class="sh_symbol">,</span> b<span class="sh_symbol">.</span>maxsal&nbsp;&nbsp;&nbsp;&nbsp;</li><li>FROM emp  a<span class="sh_symbol">,</span></li><li><span class="sh_symbol">(</span>SELECT deptno<span class="sh_symbol">,</span> <span class="sh_function">max</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> maxsal</li><li>FROM emp</li><li>GROUP BY deptno<span class="sh_symbol">)</span>  b</li><li>WHERE a<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> b<span class="sh_symbol">.</span>deptno</li><li>AND a<span class="sh_symbol">.</span> sal <span class="sh_symbol">&lt;</span> b<span class="sh_symbol">.</span>maxsal<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT a.ename, a.sal, a.deptno, b.maxsal	
+FROM emp  a,
+(SELECT deptno, max(sal) maxsal
+FROM emp
+GROUP BY deptno)  b
+WHERE a.deptno = b.deptno
+AND a. sal &lt; b.maxsal;
+</pre></div></div> 
+    <p>此 SQL 语句的功能是什么？写出其查询结果。</p> 
+    <p>3、假设员工表中，员工和管理者中间只有一个层级，也就是说，每个员工最多只有一个上级，作为管理者的员工不再有上级管理者，并且，上级管理者相同的员工，他们属于同一个部门。找出EMP 中那些工资高于他们所在部门的管理者工资的员工。</p> 
+    <p>4、找出EMP 中那些工资高于他们所在部门普通员工平均工资的员工。</p> 
+   </div> 
+   <div> 
+    <h3>3 Oracle分组查询综合示例（提高题，选做）</h3> 
+    <p>1、下列 SQL语句出错的原因是（）。</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    SELECT classid<span class="sh_symbol">,</span><span class="sh_function">AVG</span><span class="sh_symbol">(</span><span class="sh_function">MONTHS_BETWEEN</span><span class="sh_symbol">(</span>SYSDATE<span class="sh_symbol">,</span>entertime<span class="sh_symbol">))</span></li><li>    FROM student</li><li>    WHERE <span class="sh_function">AVG</span><span class="sh_symbol">(</span> <span class="sh_function">MONTHS_BETWEEN</span> <span class="sh_symbol">(</span>SYSDATE<span class="sh_symbol">,</span> entertime<span class="sh_symbol">))&gt;</span><span class="sh_number">12</span></li><li>    GROUP BYclassid</li><li>    ORDER BY <span class="sh_function">AVG</span><span class="sh_symbol">(</span><span class="sh_function">MONTHS_BETWEEN</span> <span class="sh_symbol">(</span>SYSDATE<span class="sh_symbol">,</span> entertime<span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    SELECT classid,AVG(MONTHS_BETWEEN(SYSDATE,entertime))
+    FROM student
+    WHERE AVG( MONTHS_BETWEEN (SYSDATE, entertime))&gt;12
+    GROUP BYclassid
+    ORDER BY AVG(MONTHS_BETWEEN (SYSDATE, entertime));
+</pre></div></div> 
+    <p>A) select短语中不能出现组函数。</p> 
+    <p>B) where短语中不能限制分组结果。</p> 
+    <p>C) order by子句中不能包含组函数。</p> 
+    <p>D) 组函数中不能包含单行函数。</p> 
+    <p>2、有学员表Student，该表的结构如表－3所示：</p> 
+    <div class="table"> 
+     <p>表- 3 学员表 Student 信息</p> 
+     <img src="./EXERCISE_files/table003.png"> 
+    </div> 
+    <p>编写 SQL 语句，查询每班中每个科目的最高成绩。</p> 
+    <p>3、针对表－3所示的 Student 表，执行下述SQL语句：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_number">1</span><span class="sh_symbol">)</span>  SELECT a<span class="sh_symbol">.</span>name<span class="sh_symbol">,</span> a<span class="sh_symbol">.</span>score<span class="sh_symbol">,</span> a<span class="sh_symbol">.</span>classid<span class="sh_symbol">,</span> b<span class="sh_symbol">.</span>avgscore</li><li><span class="sh_number">2</span><span class="sh_symbol">)</span>  FROM studenta<span class="sh_symbol">,</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_number">3</span><span class="sh_symbol">)</span>  <span class="sh_symbol">(</span>SELECT classid<span class="sh_symbol">,</span> <span class="sh_function">avg</span><span class="sh_symbol">(</span>score<span class="sh_symbol">)</span> avgscore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_number">4</span><span class="sh_symbol">)</span>  FROM student&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_number">5</span><span class="sh_symbol">)</span>  GROUP BY classid<span class="sh_symbol">)</span>b&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_number">6</span><span class="sh_symbol">)</span>  WHERE a<span class="sh_symbol">.</span>classid <span class="sh_symbol">=</span> b<span class="sh_symbol">.</span>classid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_number">7</span><span class="sh_symbol">)</span>  AND a<span class="sh_symbol">.</span>score<span class="sh_symbol">&gt;</span> b<span class="sh_symbol">.</span> avgscore<span class="sh_symbol">;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">1)  SELECT a.name, a.score, a.classid, b.avgscore
+2)  FROM studenta,								
+3)  (SELECT classid, avg(score) avgscore				
+4)  FROM student								
+5)  GROUP BY classid)b							
+6)  WHERE a.classid = b.classid					
+7)  AND a.score&gt; b. avgscore;							
+</pre></div></div> 
+    <p>关于运行结果，下列描述正确的是（）。</p> 
+    <p>A) 第一行出现错误</p> 
+    <p>B) 第三行出现错误</p> 
+    <p>C) 第六行出现错误</p> 
+    <p>D) 语句正常执行</p> 
+   </div> 
+   <div> 
+    <h3>4 Oracle关联查询综合示例</h3> 
+    <p>1、有职员表emp，若需列出所有薪水高于平均薪水值的员工信息，则有 SQL语句如下：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY03/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT ename<span class="sh_symbol">,</span> job FROM emp WHERE sal <span class="sh_symbol">&gt;</span> <span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename, job FROM emp WHERE sal &gt; avg(sal);
+</pre></div></div> 
+    <p>上述语句是否正确？如果有错，写出正确的SQL语句。</p> 
+    <p>2、有学员分数表，如图－5所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image005.png"> 
+     <p>图－5</p> 
+    </div> 
+    <p>编写一条SQL 语句，查询出每门课都大于80 分的学生姓名。</p> 
+    <p>3、有USERLIST 表如图－6所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image006.png"> 
+     <p>图－6</p> 
+    </div> 
+    <p>有 CHAEGE 表如图－7所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image007.png"> 
+     <p>图－7</p> 
+    </div> 
+    <p>请用最少的SQL 语句，产生如表－4所示的查询结果：</p> 
+    <div class="table"> 
+     <p>表－4 查询结果</p> 
+     <img src="./EXERCISE_files/table004.png"> 
+    </div> 
+    <p>其中，数据是经过USERLIST、CHAEGE 表进行合适的连接，并以ACCOUNT 字段为关键字分组求和得到。</p> 
+    <p>特别注意：电话号码421004 在USERLIST 表中有一条记录，在CHARGE 表中并没有记录。但是，在查询结果中，合同CCCC 具有一条记录。</p> 
+    <p>4、有两个表emp和taxgrade，其字段分别为：</p> 
+    <p>emp（员工）表: empname，empno，sal</p> 
+    <p>taxgrade（税别）表： taxmin，taxmax，grade</p> 
+    <p>上述字段中，除字段empname外，其他字段均为数值类型。</p> 
+    <p>emp 表的数据如表－5所示：</p> 
+    <div class="table"> 
+     <p>表－5 emp表示例数据</p> 
+     <img src="./EXERCISE_files/table005.png"> 
+    </div> 
+    <p>taxgrade 表的数据如表－6所示：</p> 
+    <div class="table"> 
+     <p>表－6 taxgrade表示例数据</p> 
+     <img src="./EXERCISE_files/table006.png"> 
+    </div> 
+    <p>编写SQL语句，查询编号为1的员工的税别。</p> 
+    <p>5、有学员表 student，用于记录：学号，姓名，性别，年龄，组织部门；有课程表course，用于记录：课程编号，课程名称；还有选课表 sc，用于记录：学号，课程编号，成绩。三表的结构以及关联如图－8所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image008.png"> 
+     <p>图－8</p> 
+    </div> 
+    <p>完成如下要求的 SQL 语句：</p> 
+    <p>1)写一个SQL语句，查询选修了’计算机原理’的学生学号和姓名</p> 
+    <p>2)写一个SQL语句，查询’周星驰’同学选修了的课程名字</p> 
+    <p>6、有表test ，表结构如表－7所示：</p> 
+    <div class="table"> 
+     <p>表－7 test表</p> 
+     <img src="./EXERCISE_files/table007.png"> 
+    </div> 
+    <p>编写 SQL 语句，查询所有年龄比所属主管年龄大的人的ID和 NAME。</p> 
+    <p>7、有表 city 记载城市信息，如表－8所示：</p> 
+    <div class="table"> 
+     <p>表－8 city表</p> 
+     <img src="./EXERCISE_files/table008.png"> 
+    </div> 
+    <p>有表 state，记载省份信息，如表－9所示：</p> 
+    <div class="table"> 
+     <p>表－9 state表</p> 
+     <img src="./EXERCISE_files/table009.png"> 
+    </div> 
+    <p>欲得到如表－10所示的查询结果：</p> 
+    <div class="table"> 
+     <p>表－10 查询结果</p> 
+     <img src="./EXERCISE_files/table010.png"> 
+    </div> 
+    <p>请编写相应的SQL语句。</p> 
+   </div> 
+   <div> 
+    <h3>5 Oracle关联查询综合示例（提高题，选做）</h3> 
+    <p>有科目表，记载学员的学习科目数据，如表－11所示：</p> 
+    <div class="table"> 
+     <p>表－11 t_subject表（科目表）</p> 
+     <img src="./EXERCISE_files/table011.png"> 
+    </div> 
+    <p>有学员表，记载学员的信息，如表－12所示：</p> 
+    <div class="table"> 
+     <p>表－12 t_student表（学员表）</p> 
+     <img src="./EXERCISE_files/table012.png"> 
+    </div> 
+    <p>有考核规则表，记载考核规则，如表－13所示：</p> 
+    <div class="table"> 
+     <p>表－13 t_assess_rule表（考核规则表）</p> 
+     <img src="./EXERCISE_files/table013.png"> 
+    </div> 
+    <p>有学员成绩表，如表－14所示（注，各科的成绩计算方法根据考核规则中占有的比率计算）：</p> 
+    <div class="table"> 
+     <p>表－14t_performance表（成绩表）</p> 
+     <img src="./EXERCISE_files/table014.png"> 
+    </div> 
+    <p>1、如何算出一班(class_id=1)每个学生各科的成绩？</p> 
+    <p>2、请对一班(class_id=1)每个学生各科成绩的总分进行排序。</p> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

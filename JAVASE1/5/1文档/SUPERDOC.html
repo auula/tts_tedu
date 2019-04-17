@@ -1,0 +1,224 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="16786685535"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#Key01">查询表</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#Key02">文件操作——File</a>
+        </li>
+      </ol>
+      <h1>1. 查询表</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. Map接口</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. Map 接口</h3>
+      <p>java提供了一组可以以键值对(key-value)的形式存储数据的数据结构，这种数据结构成为Map。我们可以把Map看成一个多行两列的表格，其中第一列存放key,第二列存放value。</p>
+      <p>而每一行就相当于一组key-value对，表示一组数据。</p>
+      <p>Map对存入的元素有一个要求，就是key不能重复，所谓不能重复指的是在Map中不能包含两个equals为true的key。</p>
+      <p>Map对于key,value的类型没有严格要求，只要是引用类型均可。但是为了保证在使用时不会造成数据混乱，通常我们会使用泛型去约束key与value的类型。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. put方法</h3>
+      <p>既然我们知道了Map在保存数据时实际上是存入了两部分信息的 ，key与value。那么我们来看看如何向Map中存入数据。</p>
+      <p>Map提供了一个方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">V</span><span class="sh_normal"> </span><span class="sh_function">put</span><span class="sh_symbol">(</span><span class="sh_usertype">K</span><span class="sh_normal"> </span>k<span class="sh_symbol">,</span><span class="sh_usertype">V</span><span class="sh_normal"> </span>v<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">V put(K k,V v)
+</pre></div></div>
+      <p>该方法的作用是将key-value对存入Map中，因为Map中不允许出现重复的key,所以若当次存入的key已经在Map中存在，则是替换value操作，而返回值则为被替换的元素。若此key不存在，那么返回值为null。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. get方法</h3>
+      <p>我们学会了如何向Map中存入数据，那么我们再来看看如何获取数据。Map中获取数据的方式是给定Key获取对应的Value。</p>
+      <p>Map提供了一个方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">V</span><span class="sh_normal"> </span><span class="sh_function">get</span><span class="sh_symbol">(</span><span class="sh_usertype">Object</span><span class="sh_normal"> </span>key<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">V get(Object key)
+</pre></div></div>
+      <p>该方法的作用就是根据给定的key去查找Map中对应的value并返回，若当前Map中不包含给定的key,那么返回值为null。</p>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. containsKey方法</h3>
+      <p>Map中的containsKey方法用于检测当前Map中是否包含给定的key。其方法定义如下:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">containsKey</span><span class="sh_symbol">(</span><span class="sh_usertype">Object</span><span class="sh_normal"> </span>key<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean containsKey(Object key)
+</pre></div></div>
+      <p>若当前Map中包含给定的key(这里检查是否包含是根据key的equals比较结果为依据的。)则返回true。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. HashMap</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. hash表原理</h3>
+      <p>HashMap是Map的一个常用的子类实现。其实使用散列算法实现的。</p>
+      <p>HashMap内部维护着一个散列数组(就是一个存放元素的数组)，我们称其为散列桶，而当我们向HashMap中存入一组键值对时，HashMap首先获取key这个对象的hashcode()方法的返回值，然后使用该值进行一个散列算法，得出一个数字，这个数字就是这组键值对要存入散列数组中的下标位置。</p>
+      <p>那么得知了下标位置后，HashMap还会查看散列数组当前位置是否包含该元素。（这里要注意的是，散列数组中每个元素并非是直接存储键值对的，而是存入了一个链表，这个链表中的每个节点才是真实保存这组键值对的。）检查是否包含该元素时根据当前要存入的key在当前散列数组对应位置中的链表里是否已经包含这个key,若不包含则将这组键值对存入链表，否则就替换value。</p>
+      <p>那么在获取元素时，HashMap同样先根据key的hashcode值进行散列算法，找到它在散列数组中的位置，然后遍历该位置的链表，找到该key所对应的value之后返回。</p>
+      <p>看到这里可能有个疑问，链表中应该只能存入一个元素，那么HashMap是如何将key-value存入链表的某个节点的呢？实际上，HashMap会将每组键值对封装为一个Entry的实例，然后将该实例存入链表。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. hashcode方法</h3>
+      <p>HashMap的存取是依赖于key的hashcode方法的返回值的，而hashcode方法实际上是在Object中定义的。其定义如下:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_function">hashCode</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int hashCode()
+</pre></div></div>
+      <p>重写一个类的hashcode()方法有以下注意事项:</p>
+      <p>1、若一个类重写了equals方法，那么就应当重写hashcode()方法。</p>
+      <p>2、若两个对象的equals方法比较为true,那么它们应当具有相同的hashcode值。</p>
+      <p>3、对于同一个对象而言，在内容没有发生改变的情况下，多次调用hashCode()方法应当总是返回相同的值。</p>
+      <p>4、对于两个对象equals比较为false的，并不要求其hashcode值一定不同，但是应尽量保证不同，这样可以提高散列表性能。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 装载因子及HashMap优化</h3>
+      <p>在散列表中有一下名词需要了解:</p>
+      <ul class="list">
+        <li>Capacity：容量, hash表里bucket(桶)的数量, 也就是散列数组大小. 
+</li>
+        <li>Initial capacity：初始容量, 创建hash表的时 初始bucket的数量, 默认构建容量是16. 也可以使用特定容量. 
+</li>
+        <li>Size ： 大小, 当前散列表中存储数据的数量. 
+</li>
+        <li>Load factor：加载因子, 默认值0.75(就是75%), 向散列表增加数据时如果 size/capacity 的值大于Load factor则发生扩容并且重新散列(rehash). 
+</li>
+      </ul>
+      <p>那么当加载因子较小时候散列查找性能会提高, 同时也浪费了散列桶空间容量.  0.75是性能和空间相对平衡结果. 在创建散列表时候指定合理容量, 从而可以减少rehash提高性能。</p>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 有序Map</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. LinkedHashMap实现有序的Map</h3>
+      <p>Map 接口的哈希表和链表实现，具有可预知的迭代顺序。此实现与 HashMap 的不同之处在于，LinkedHashMap维护着一个双向循环链表。此链表定义了迭代顺序，该迭代顺序通常就是将存放元素的顺序。</p>
+      <p>需要注意的是，如果在Map中重新存入以有的key，那么key的位置会不会发生改变，只是将value值替换。</p>
+      <a name="Key02">
+      </a>
+      <h1>2. 文件操作——File</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 创建File对象</h2>
+      <p>java.io.File用于表示文件（目录），也就是说程序员可以通过File类在程序中操作硬盘上的文件和目录。</p>
+      <p>File类只用于表示文件（目录）的信息（名称、大小等），换句话说只能访问文件或目录的相关属性，不能对文件的内容进行访问。</p>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. File(pathname)</h3>
+      <p>File提供了较多的构造方法来创建实例，其中之一就是:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>pathname<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">File(String pathname)
+</pre></div></div>
+      <p>通过将给定路径名字符串转换成抽象路径名来创建一个新 File 实例</p>
+      <p>提示:抽象路径应尽量使用相对路径，并且目录的层级分隔符不要直接写”/”或”\”,应使用File.separator这个常量表示，以避免不同系统带来的差异。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. File(parent,child)</h3>
+      <p>File的另一个常用构造方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_usertype">File</span><span class="sh_normal"> </span>parent<span class="sh_symbol">,</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>child<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">File(File parent,String child)
+</pre></div></div>
+      <p>根据 parent 抽象路径名和 child 路径名字符串创建一个新 File 实例。</p>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. isFile() 方法</h3>
+      <p>File的isFile方法用于判断当前File对象表示的是否为一个文件</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">isFile</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean isFile()
+</pre></div></div>
+      <p>该方法若返回true,这表示File表示的是一个文件。</p>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. File表示文件信息</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. length方法</h3>
+      <p>File的length方法用于返回由此抽象路径名表示的文件的长度，其定义为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">long</span> <span class="sh_function">length</span><span class="sh_symbol">()</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">long length() 
+</pre></div></div>
+      <p>该方法返回的long值表示该文件所占用的字节量。</p>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. exists方法</h3>
+      <p>File的exists方法用于测试此抽象路径名表示的文件或目录是否存在，其方法定义:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">exists</span><span class="sh_symbol">()</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean exists() 
+</pre></div></div>
+      <p>若该File表示的文件或目录存在则返回true,否则返回false。</p>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. createNewFile方法</h3>
+      <p>File的createNewFile方法用于当且仅当不存在具有此抽象路径名指定的名称的文件时，原子地创建由此抽象路径名指定的一个新的空文件。 其方法定义:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">createNewFile</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean createNewFile()
+</pre></div></div>
+      <p>返回值:如果指定的文件不存在并成功地创建，则返回 true；如果指定的文件已经存在，则返回 false 。</p>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. delete方法</h3>
+      <p>File的delete方法用于删除此抽象路径名表示的文件或目录。 其方法定义:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">delete</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean delete()
+</pre></div></div>
+      <p>返回值:当且仅当成功删除文件或目录时，返回 true；否则返回 false。</p>
+      <p>需要注意的是，若此File对象所表示的是一个目录时，在删除时需要保证此为空目录才可以成功删除(目录中不能含有任何子项)。</p>
+      <a name="Key02_02_05">
+      </a>
+      <h3>2.2.5. isDirectory()</h3>
+      <p>File的isDirectory方法用于判断当前File对象表示的是否为一个目录</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">isDirectory</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean isDirectory()
+</pre></div></div>
+      <p>返回值:若File对象表示的是一个目录，则返回true</p>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. File表示目录信息</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. mkdir方法</h3>
+      <p>File的mkdir方法用于创建此抽象路径名指定的目录。其方法定义:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">mkdir</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean mkdir()
+</pre></div></div>
+      <p>返回值：当且仅当已创建目录时，返回 true；否则返回 false</p>
+      <a name="Key02_03_02">
+      </a>
+      <h3>2.3.2. mkdirs方法</h3>
+      <p>File的mkdirs方法用于创建此抽象路径名指定的目录，包括所有必需但不存在的父目录。注意，此操作失败时也可能已经成功地创建了一部分必需的父目录。其方法定义:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">boolean</span> <span class="sh_function">mkdirs</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">boolean mkdirs()
+</pre></div></div>
+      <p>返回值：当且仅当已创建目录以及所有必需的父目录时，返回 true；否则返回 false</p>
+      <a name="Key02_03_03">
+      </a>
+      <h3>2.3.3. delete方法</h3>
+      <p>2.2.5节中我们介绍了File的delete方法是用于删除此抽象路径名表示的文件或目录。在此强调，在删除目录时要特别注意:需要保证此为空目录才可以成功删除(目录中不能含有任何子项)。</p>
+      <a name="Key02_03_04">
+      </a>
+      <h3>2.3.4. listFiles方法</h3>
+      <p>File的listFiles方法用于返回一个抽象路径名数组，这些路径名表示此抽象路径名表示的目录中的文件。其方法定义:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>File<span class="sh_symbol">[]</span> <span class="sh_function">listFiles</span><span class="sh_symbol">()</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">File[] listFiles() 
+</pre></div></div>
+      <p>返回值：抽象路径名数组，这些路径名表示此抽象路径名表示的目录中的文件和目录。如果目录为空，那么数组也将为空。如果抽象路径名不表示一个目录，或者发生 I/O 错误，则返回 null。</p>
+      <a name="Key02_03_05">
+      </a>
+      <h3>2.3.5. FileFilter接口</h3>
+      <p>通过listFiles方法我们可以获取一个目录下的所有子项，但有些时候我们并不希望获取全部子项，而是想获取部分满足我们实际需求的子项时，我们可以使用File的重载方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>File<span class="sh_symbol">[]</span> <span class="sh_function">listFiles</span><span class="sh_symbol">(</span><span class="sh_usertype">FileFilter</span><span class="sh_normal">  </span>filter<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">File[] listFiles(FileFilter  filter)
+</pre></div></div>
+      <p>这里我们看到，该重载方法 要求我们传入一个参数，其类型是FileFilter。什么是FileFilter呢? FileFilter是用于抽象路径名的过滤器，说白了就是定义一个规律规则，那么结合listFiles方法，我们就可以将满足此过滤规则的子项返回，其他则忽略。</p>
+      <p>FileFilter是一个接口，所以当我们需要定义某种过滤规则时，我们可以定义一个类来实现这个接口，而此接口的实例可传递给 File 类的 listFiles(FileFilter) 方法。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>File<span class="sh_symbol">[]</span> list <span class="sh_symbol">=</span> dir<span class="sh_symbol">.</span><span class="sh_function">listFiles</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">FileFilter</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">boolean</span> <span class="sh_function">accept</span><span class="sh_symbol">(</span><span class="sh_usertype">File</span><span class="sh_normal"> </span>pathname<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> pathname<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">().</span><span class="sh_function">startsWith</span><span class="sh_symbol">(</span><span class="sh_string">"."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span><span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">File[] list = dir.listFiles(new FileFilter() {
+	@Override
+	public boolean accept(File pathname) {
+		return pathname.getName().startsWith(".");
+	}
+}); 
+</pre></div></div>
+      <p>该方法的参数FileFilter实例的accept方法并进行过滤，listFiles方法会将所有accept方法返回true的子项保留并返回。这个例子里我们会将dir中子项的名字以"."开头的返回。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

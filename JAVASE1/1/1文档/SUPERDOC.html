@@ -1,0 +1,305 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="16562910621"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#Key01">API文档</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#Key02">字符串基本操作</a>
+        </li>
+      </ol>
+      <h1>1. API文档</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. JDK API</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 什么是 JDK API</h3>
+      <p>API文档是我们用来了解JDK中提供的类库，我们可以先通过索引输入并找到我们需要了解的类，而后我们就可以方便的了解该类的作用，常量的作用，以及该类提供的所有方法的作用，以及方法的参数及返回值的含义。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. JDK包结构</h3>
+      <p>JDK包是由sun开发的一组已经实现的类库，里面有非常丰富的功能类。可以为我们的开发提供各种支持。</p>
+      <p>JDK根据提供的功能不同，将类库划分为若干个包，比如用于操作输入输出的java.io包，java程序语言设计基础类的java.lang包，提供各种数学运算的java.math包，基于网络应用的java.net包，以及一些共用程序类所在的java.util包等等。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 文档注释规范</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 文档注释</h3>
+      <p>通过注释提高Java源程序代码的可读性；使得Java程序条理清晰，易于区分代码行与注释行。另外通常在程序开头加入作者，时间，版本，要实现的功能等内容注释，方便后来的维护以及程序员的交流。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 文档注释规范</h3>
+      <p>常用的文档注释规范有：</p>
+      <p class="number">1、@author</p>
+      <p>用来标注该类的作者信息，例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 这个是一个类</span></li><li><span class="sh_comment"> * </span><span class="sh_type">@author</span><span class="sh_comment"> Xiloer</span></li><li><span class="sh_comment"> *</span></li><li><span class="sh_comment"> */</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 这个是一个类
+ * @author Xiloer
+ *
+ */
+</pre></div></div>
+      <p class="number">2、@deprecated</p>
+      <p>用来标注一个类、方法、变量已过时，不再建议使用。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 这是一个普通方法,该方法具有设计缺陷，不建议再使用。</span></li><li><span class="sh_comment"> * </span><span class="sh_type">@deprecated</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_usertype">String</span><span class="sh_normal"> </span><span class="sh_function">sayHello</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 这是一个普通方法,该方法具有设计缺陷，不建议再使用。
+ * @deprecated
+ */
+public String sayHello(String name){
+	return null;		
+}
+</pre></div></div>
+      <p class="number">3、@since</p>
+      <p>用来标注从哪个版本开始启用，例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 这是一个普通方法</span></li><li><span class="sh_comment"> * </span><span class="sh_type">@since</span><span class="sh_comment"> 1.5.1</span></li><li><span class="sh_comment"> */</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 这是一个普通方法
+ * @since 1.5.1
+ */
+</pre></div></div>
+      <p class="number">4、@param</p>
+      <p>用来标注方法的参数说明，例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 这是一个普通方法</span></li><li><span class="sh_comment"> * </span><span class="sh_type">@param</span><span class="sh_comment"> name 该参数用来设置当前用户的名字</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">setName</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">.....</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 这是一个普通方法
+ * @param name 该参数用来设置当前用户的名字
+ */
+public void setName(String name){
+	.....
+}
+</pre></div></div>
+      <p class="number">5、@return</p>
+      <p>用来标注方法的返回值说明，例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 获取当前用户的用户名</span></li><li><span class="sh_comment"> * </span><span class="sh_type">@return</span><span class="sh_comment">  当前用户的用户名</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_usertype">String</span><span class="sh_normal"> </span><span class="sh_function">getName</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span><span class="sh_symbol">....</span><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 获取当前用户的用户名
+ * @return  当前用户的用户名
+ */
+public String getName(){....}
+</pre></div></div>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. javadoc命令生成文档</h3>
+      <p>通过使用javadoc命令，可以将已经编写好的带有文档注释的类，或某个包下的所有类对应的生成一个API文档</p>
+      <a name="Key02">
+      </a>
+      <h1>2. 字符串基本操作</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. String及其常见API</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. String是不可变对象</h3>
+      <p>由于字符串在实际开发中被广泛使用，那么在频繁使用某个字符串时，会出现频繁创建一个字符串对象的现象，java为此对字符串的使用采用了一个优化措施，使得String对象为不可变对象，一旦在内存中创建，内容不能发生变化，若要对字符串内容改变，那么就会创建新对象。这样做的目的是可以最大程度的重用相同内容的字符串以减小系统资源的开销。那么字符串对象是如何做到重用的？我们通过2.1.2来了解</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. String常量池</h3>
+      <p>上一节我们已经知道，JVM对字符串有一个限制，让字符串作为不变对象，这样就可以做到重用。事实上，当我们通过字面量，常量来初始化一个字符串时，JVM首先会从字符串的常量池(一个JVM内部维护的内存区域，用来保存已经创建过的字符串对象)中查询用来保存该字符串的对象是否存在，若存在则直接引用，若不存在则创建该字符串对象并存入常量池，然后引用它。因为字符串内容不能改变，所以我们可以放心的重用他们。</p>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. 内存编码及长度</h3>
+      <p>java存储每一个字符均使用2个字节保存，使用的是Unicode编码。并且任何一个字符(无论是英文还是汉字)每个字符的长度都是1。所以字符串的长度就是该字符串所有的字符个数。</p>
+      <p>int length():返回当前字符串的长度。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>  <span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"HelloWorld"</span><span class="sh_symbol">;</span></li><li>  System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">.</span><span class="sh_function">length</span><span class="sh_symbol">());</span><span class="sh_comment">//10</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">  String str = "HelloWorld";
+  System.out.println(str.length());//10
+</pre></div></div>
+      <a name="Key02_01_04">
+      </a>
+      <h3>2.1.4. 使用indexOf实现检索</h3>
+      <p>int indexOf(int ch):用来检查给定的一个字符在当前字符串中第一次出现的下标位置。这里的下标和数组的下标意思相近，0表示该字符串的第1个字符，以此类推。当该字符串中并不包含给定的字符时，那么该方法返回-1。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>  <span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"HelloWorld"</span><span class="sh_symbol">;</span></li><li>  System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">.</span><span class="sh_function">indexOf</span><span class="sh_symbol">(</span><span class="sh_string">'W'</span><span class="sh_symbol">));</span><span class="sh_comment">//5</span></li><li>  System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">.</span><span class="sh_function">indexOf</span><span class="sh_symbol">(</span><span class="sh_string">'h'</span><span class="sh_symbol">))</span><span class="sh_comment">//-1</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">  String str = "HelloWorld";
+  System.out.println(str.indexOf('W'));//5
+  System.out.println(str.indexOf('h'))//-1
+</pre></div></div>
+      <a name="Key02_01_05">
+      </a>
+      <h3>2.1.5. 使用substring获取子串</h3>
+      <p>String substring(int begin,int end):用来截取当前字符串的部分内容以获取这个子字符串。我们只需要传入两个整数，一个用来表示从哪里开始，另一个用来表示截取到哪里。这里的位置要使用字符串的下标来表示，并且要注意，这两个数字表示的范围是“含头不含尾的”，换句话说就是包含开始下标的字符，但是不包含结束下标的字符。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>  <span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"HelloWorld"</span><span class="sh_symbol">;</span></li><li>  <span class="sh_usertype">String</span><span class="sh_normal"> </span>subStr <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">substring</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">5</span><span class="sh_symbol">);</span>  </li><li>  System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>subStr<span class="sh_symbol">)</span><span class="sh_comment">//Hello</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">  String str = "HelloWorld";
+  String subStr = str.substring(0,5);  
+  System.out.println(subStr)//Hello
+</pre></div></div>
+      <a name="Key02_01_06">
+      </a>
+      <h3>2.1.6. trim</h3>
+      <p>String trim():将字符串两边的空白(空白有很多种，空格是其中之一)去除掉，并将去除后的新字符串返回给我们。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span><span class="sh_string">"  Hello   World&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>trim <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">trim</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>trim<span class="sh_symbol">);</span><span class="sh_comment">// Hello   World</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	String str ="  Hello   World		";
+	String trim = str.trim();
+	System.out.println(trim);// Hello   World
+</pre></div></div>
+      <a name="Key02_01_07">
+      </a>
+      <h3>2.1.7. charAt</h3>
+      <p>char charAt(int index):用于给定一个下标位置，来获取该字符串中这个位置的字符。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"HelloWorld"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">char</span> chr <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">charAt</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>chr<span class="sh_symbol">);</span><span class="sh_comment">//W</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	String str = "HelloWorld";
+	char chr = str.charAt(5);
+	System.out.println(chr);//W
+</pre></div></div>
+      <a name="Key02_01_08">
+      </a>
+      <h3>2.1.8. startsWith和endsWith</h3>
+      <p>boolean startsWith(String suffix):用来判断当前字符串是否是以给定的字符串开始的。这里要注意大小写是敏感的。</p>
+      <p>boolean endsWith(String suffix):用来判断当前字符串是否是以给定的字符串结尾的。</p>
+      <p>例如我们可以使用endsWith()就可以根据一个文件的名字来判断它是否是以".jpg",".gif"等字符串结尾来得知该文件是否为图片。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"java.jpg"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>str<span class="sh_symbol">.</span><span class="sh_function">endsWith</span><span class="sh_symbol">(</span><span class="sh_string">".jpg"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"是一张图片"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>        System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"不是一张图片"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	String str = "java.jpg";
+	if(str.endsWith(".jpg")){
+		System.out.println("是一张图片");
+	}else{
+        System.out.println("不是一张图片");
+	}
+</pre></div></div>
+      <a name="Key02_01_09">
+      </a>
+      <h3>2.1.9. 大小写变换</h3>
+      <p>String toUpperCase():用来将当前字符串中的英文部分的字符全部变为大写后再将新的字符串返回</p>
+      <p>String toLowerCase():用来将当前字符串中的英文部分的字符全部变为小写后再将新的字符串返回</p>
+      <p>例如，我们上网时常会要求我们输入验证码，图片中的英文可能是大写的，但我们输入时并不需要严格按照大小写输入却依旧可以验证成功。这就得力于该方法。我们可以将输入的验证码全部转换为大写，在将图片中显示的内容也全部转换为大写后再比较即可。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"HelloWorld"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>lower <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">toLowerCase</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>upper <span class="sh_symbol">=</span> str<span class="sh_symbol">.</span><span class="sh_function">toUpperCase</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"lower:"</span><span class="sh_symbol">+</span>lower<span class="sh_symbol">);</span><span class="sh_comment">//helloworld</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"upper:"</span><span class="sh_symbol">+</span>upper<span class="sh_symbol">);</span><span class="sh_comment">//HELLOWORLD</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	String str = "HelloWorld";
+	String lower = str.toLowerCase();
+	String upper = str.toUpperCase();
+	System.out.println("lower:"+lower);//helloworld
+	System.out.println("upper:"+upper);//HELLOWORLD
+</pre></div></div>
+      <a name="Key02_01_10">
+      </a>
+      <h3>2.1.10. valueOf</h3>
+      <p>字符串提供了很多重载的valueOf()方法，可以将其他基本类型的值以字符串的形式描述。</p>
+      <ul class="list">
+        <li>static String valueOf(int i): 返回 int 参数的字符串表示形式
+</li>
+        <li>static String valueOf(boolean b): 返回 boolean 参数的字符串表示形式
+</li>
+        <li>static String valueOf(char c): 返回 char 参数的字符串表示形式
+</li>
+        <li>static String valueOf(double d): 返回 double 参数的字符串表示形式
+</li>
+        <li>static String valueOf(char[] c): 返回 char 数组参数的字符串表示形式
+</li>
+        <li>static String valueOf(char[] c,int offset,int count): 返回 char 数组参数的特定子数组的字符串表示形式。
+</li>
+        <li>static String valueOf(float): 返回 float 参数的字符串表示形式
+</li>
+        <li>static String valueOf(long l): 返回 long 参数的字符串表示形式
+</li>
+        <li>static String valueOf(Object o): 返回 Object 参数的字符串表示形式
+</li>
+      </ul>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">double</span> pi <span class="sh_symbol">=</span> <span class="sh_number">3.1415926</span><span class="sh_symbol">;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>    <span class="sh_type">int</span> value <span class="sh_symbol">=</span> <span class="sh_number">123</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">boolean</span> flag <span class="sh_symbol">=</span> <span class="sh_keyword">true</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">char</span><span class="sh_symbol">[]</span> charArr <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span> <span class="sh_string">'a'</span><span class="sh_symbol">,</span> <span class="sh_string">'b'</span><span class="sh_symbol">,</span> <span class="sh_string">'c'</span><span class="sh_symbol">,</span> <span class="sh_string">'d'</span><span class="sh_symbol">,</span> <span class="sh_string">'e'</span><span class="sh_symbol">,</span> <span class="sh_string">'f'</span><span class="sh_symbol">,</span> <span class="sh_string">'g'</span> <span class="sh_cbracket">}</span><span class="sh_symbol">;</span> </li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> String<span class="sh_symbol">.</span><span class="sh_function">valueOf</span><span class="sh_symbol">(</span>pi<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span> </li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> String<span class="sh_symbol">.</span><span class="sh_function">valueOf</span><span class="sh_symbol">(</span>value<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span> </li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> String<span class="sh_symbol">.</span><span class="sh_function">valueOf</span><span class="sh_symbol">(</span>flag<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span> </li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;str <span class="sh_symbol">=</span> String<span class="sh_symbol">.</span><span class="sh_function">valueOf</span><span class="sh_symbol">(</span>charArr<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	double pi = 3.1415926;	
+    int value = 123;
+	boolean flag = true;
+	char[] charArr = { 'a', 'b', 'c', 'd', 'e', 'f', 'g' }; 
+
+	String str = String.valueOf(pi);
+	System.out.println(str); 
+
+	str = String.valueOf(value);
+	System.out.println(str); 
+
+	str = String.valueOf(flag);
+	System.out.println(str); 
+
+	str = String.valueOf(charArr);
+	System.out.println(str);
+</pre></div></div>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. StringBuilder及其常用API</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. StringBuilder封装可变字符串</h3>
+      <p>String类我们已经得知，它是不变对象，那么每当对内容修改时都会引发新对象的创建。那么当我们有一个需求是需要频繁修改字符串时，这样不仅不能减少内存的开销，反而会增加内存的开销。为此java为我们提供了一个专门用于修改字符串内容的类:StringBuilder.</p>
+      <p>该类封装了可变的字符串，换句话说，当我们需要改变字符串内容时，并不会创建新对象，而是在原对象基础上进行修改。从而减小了内存的开销。</p>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. StringBuilder常用方法</h3>
+      <p>StringBuilder类的常用方法有：</p>
+      <ul class="list">
+        <li>append(String   str)：追加字符串；
+</li>
+        <li>insert (int dstOffset，String s)：插入字符串；
+</li>
+        <li>delete(int start，int end)：删除字符串；
+</li>
+        <li>replace(int start，int end，String str): 替换字符串；
+</li>
+        <li>reverse()：字符串反转。
+</li>
+      </ul>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. StringBuilder</h3>
+      <p>StringBuilder的很多方法的返回值均为StringBuilder类型。这些方法的返回语句均为：return this。</p>
+      <p>由于改变封装的字符序列后又返回了该对象的引用。可以按照如下简洁的方式书写代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    buf<span class="sh_symbol">.</span><span class="sh_function">append</span><span class="sh_symbol">(</span><span class="sh_string">"ibm"</span><span class="sh_symbol">).</span><span class="sh_function">append</span><span class="sh_symbol">(</span><span class="sh_string">"java"</span><span class="sh_symbol">).</span><span class="sh_function">insert</span><span class="sh_symbol">(</span><span class="sh_number">3</span><span class="sh_symbol">,</span> <span class="sh_string">"oracle"</span><span class="sh_symbol">).</span><span class="sh_function">replace</span><span class="sh_symbol">(</span><span class="sh_number">9</span><span class="sh_symbol">,</span> <span class="sh_number">13</span><span class="sh_symbol">,</span> <span class="sh_string">"JAVA"</span><span class="sh_symbol">);</span></li><li>    System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>buf<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">());</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    buf.append("ibm").append("java").insert(3, "oracle").replace(9, 13, "JAVA");
+    System.out.println(buf.toString());
+</pre></div></div>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. 使用append实现追加</h3>
+      <p>StringBuilder append(String):用于将给定的字符串追加到当前字符串末尾。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">StringBuilder</span><span class="sh_normal"> </span>builder <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">StringBuilder</span><span class="sh_symbol">(</span><span class="sh_string">"Hello"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;builder<span class="sh_symbol">.</span><span class="sh_function">append</span><span class="sh_symbol">(</span><span class="sh_string">"World"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>builder<span class="sh_symbol">);</span><span class="sh_comment">//HelloWorld</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	StringBuilder builder = new StringBuilder("Hello");
+	builder.append("World");	
+	System.out.println(builder);//HelloWorld
+</pre></div></div>
+      <a name="Key02_02_05">
+      </a>
+      <h3>2.2.5. 使用insert实现插入</h3>
+      <p>StringBuilder insert(int offset, String str):用于将给定的字符串插入到指定的位置。这个位置也是字符串的下标。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">StringBuilder</span><span class="sh_normal"> </span>builder <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">StringBuilder</span><span class="sh_symbol">(</span><span class="sh_string">"HelloWorld"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;builder<span class="sh_symbol">.</span><span class="sh_function">insert</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_string">"!"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>builder<span class="sh_symbol">);</span><span class="sh_comment">//Hello!World</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	StringBuilder builder = new StringBuilder("HelloWorld");
+	builder.insert(5,"!");	
+	System.out.println(builder);//Hello!World
+</pre></div></div>
+      <a name="Key02_02_06">
+      </a>
+      <h3>2.2.6. 使用delete实现删除</h3>
+      <p>StringBuilder delete(int start,int end):用于删除给定字符串中的部分内容。需要传入两个参数，描述要删除的字符串的范围，同样这个范围是"含头不含尾的"</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">StringBuilder</span><span class="sh_normal"> </span>builder <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">StringBuilder</span><span class="sh_symbol">(</span><span class="sh_string">"HelloWorld"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;builder<span class="sh_symbol">.</span><span class="sh_function">delete</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">5</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>builder<span class="sh_symbol">);</span><span class="sh_comment">// World</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	StringBuilder builder = new StringBuilder("HelloWorld");
+	builder.delete(0,5);	
+	System.out.println(builder);// World
+</pre></div></div>
+      <a name="Key02_02_07">
+      </a>
+      <h3>2.2.7. StringBuilder 总结</h3>
+      <p>StringBuilder是可变字符串。字符串的内容计算，建议采用StringBuilder实现，这样性能会好一些。</p>
+      <p>java的字符串连接的过程是利用StringBuilder实现的，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>s <span class="sh_symbol">=</span> <span class="sh_string">"AB"</span><span class="sh_symbol">;</span>  <span class="sh_usertype">String</span><span class="sh_normal"> </span>s1 <span class="sh_symbol">=</span> s <span class="sh_symbol">+</span> <span class="sh_string">"DE"</span><span class="sh_symbol">+</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>s1 <span class="sh_symbol">=</span> </li><li><span class="sh_keyword">new</span> <span class="sh_function">StringBuilder</span><span class="sh_symbol">(</span>s<span class="sh_symbol">).</span><span class="sh_function">append</span><span class="sh_symbol">(</span><span class="sh_string">"DE"</span><span class="sh_symbol">).</span><span class="sh_function">append</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">).</span><span class="sh_function">toString</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">String s = "AB";  String s1 = s + "DE"+1;
+String s1 = 
+new StringBuilder(s).append("DE").append(1).toString();
+</pre></div></div>
+      <p>StringBuffer 和StringBuilder的区别：</p>
+      <ul class="list">
+        <li>StringBuffer是线程安全的，同步处理的，性能稍慢；
+</li>
+        <li>StringBuilder是非线程安全的，并发处理的，性能稍快。
+</li>
+      </ul>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

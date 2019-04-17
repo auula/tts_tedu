@@ -1,0 +1,58 @@
+body { margin:0; font-size:12px; line-height:24px; background:url(../images/bg_video.png) 0 0 repeat; font-family:"Î¢ÈíÑÅºÚ"; color:#fff;}
+
+.content-box-table-vedio a:HOVER {
+	cursor: pointer;
+}
+.content-box-table-vedio tbody tr.content{
+	background-color:#6F6F6F;color:#555;
+    text-align:center;
+}
+.content-box-table-vedio table thead 
+{
+    font-weight: bold;
+    font-size: 12px;
+    border-bottom: 2px solid #ddd;
+} 
+.content-box-table-vedio tbody tr{
+	background-color: #2e2e2e
+}
+.content-box-table-vedio tbody tr:hover,
+.content-box-table-vedio tbody tr.alt-row:hover
+{
+    background-color:#8B8B8B;
+} 
+
+.content-box-table-vedio table th 
+{
+    font-weight: bold;
+    font-size: 12px;
+    border-bottom: 0px solid #ddd;
+}                
+.content-box-table-vedio tbody 
+{
+    border-bottom: 0px solid #ddd;
+}       
+#modify-user {
+    background: url("${ctx}/images/icons/cry.png") no-repeat scroll transparent;
+    height: 50px;
+    margin-left: 0;
+    padding-left: 80px;
+    padding-top: 30px;
+}
+
+div.pdf {	
+    padding: 20px;
+}
+
+.pdf_div {
+    margin: 0 auto;
+    width: 960px;
+    background:#202020;
+}
+
+.pdf_div2 {
+    background-color: #2e2e2e;
+    float: right;
+    height: 500px;
+    width: 210px;
+}

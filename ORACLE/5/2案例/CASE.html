@@ -1,0 +1,266 @@
+
+<!-- saved from url=(0090)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17946479082"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA ORACLE DAY05</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#case1">Oracle视图操作综合示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#case2">通过序列实现自动生成主键</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#case3">外键约束综合示例</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 Oracle视图操作综合示例</h2>
+      <h3>1.1 问题</h3>
+      <p>有学员表student，表结构如表－1所示：</p>
+      <div class="table">
+        <p>表－1 学员表student信息</p>
+        <img src="./CASE_files/table001.png">
+      </div>
+      <p>学员表student的示例数据如图-1所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>请根据上述表结构和示例数据，完成如下各个案例。</p>
+      <p>1) 基于student表创建视图v_student_101，该视图包含student表的数据的子集，即所有专业为101的学生的数据为视图v_student_101的数据。</p>
+      <p>2）查询视图v_student_101中的所有数据。</p>
+      <p>3）对视图v_student_101执行插入操作，插入的数据信息为sid、sname、score的数据分别为1234、rose、90，并检查插入操作的结果。</p>
+      <p>4）基于student表创建了一个视图v_student，查询学生的平均成绩，该视图的数据显示如图-2所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <p>5）在视图v_student中，执行如下SQL语句：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>update v_student set avg_score <span class="sh_symbol">=</span><span class="sh_number">80</span> where class_id<span class="sh_symbol">=</span><span class="sh_number">101</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">update v_student set avg_score =80 where class_id=101；
+</pre></div></div>
+      <p>执行上述SQL语句，将产生的结果是什么？</p>
+      <p>6）定义视图v_stu，在视图v_student现有列的基础上，加入人数一列,并查询。</p>
+      <p>7）从v_stu视图中查找数据的SQL语句为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">*</span> FORM View v_student<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT * FORM View v_student;
+</pre></div></div>
+      <p>上述查询视图的SQL语句是否正确？为什么？</p>
+      <p>8）删除视图v_student以及v_stu。</p>
+      <h3>1.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建视图v_student_101</p>
+      <p>使用create view语句基于student表创建名为v_student_101的视图，该视图包含student表的数据的子集，即所有专业为101的学生的数据为视图v_student_101的数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE VIEW v_student_101</li><li>&nbsp;&nbsp;&nbsp;&nbsp;AS</li><li>&nbsp;&nbsp;&nbsp;&nbsp;SELECT sid<span class="sh_symbol">,</span> sname<span class="sh_symbol">,</span> score</li><li>&nbsp;&nbsp;&nbsp;&nbsp;FROM student</li><li>where class_id <span class="sh_symbol">=</span> <span class="sh_number">101</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE VIEW v_student_101
+	AS
+	SELECT sid, sname, score
+	FROM student
+where class_id = 101;
+</pre></div></div>
+      <p class="number">步骤二：查询视图中的数据</p>
+      <p>使用select语句查询视图v_student_101中的所有数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> from v_student_101<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from v_student_101;
+</pre></div></div>
+      <p>查询的结果如图-3所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p>从查询结果中的数据可以看出，只包含所在专业为101的学员信息。</p>
+      <p class="number">步骤三：对视图执行插入操作</p>
+      <p>使用insert语句对视图v_student_101执行插入操作，插入的数据信息为sid、sname、score的数据分别为1234、rose、90，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>insert into v_student_101 <span class="sh_function">values</span><span class="sh_symbol">(</span><span class="sh_number">1234</span><span class="sh_symbol">,</span>‘rose’<span class="sh_symbol">,</span><span class="sh_number">90</span><span class="sh_symbol">);</span></li><li>commit；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">insert into v_student_101 values(1234,‘rose’,90);
+commit；
+</pre></div></div>
+      <p>使用如下SQL语句查询v_student_101视图的数据：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> from v_student_101<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from v_student_101;
+</pre></div></div>
+      <p>会发现查询不到刚插入的数据。接着，使用下列SQL语句去查询表student：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> fromstudent<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * fromstudent;
+</pre></div></div>
+      <p>会发现student表多了一条记录，即为刚刚插入的那条数据。视图本身并不包含数据，只是基表数据的逻辑映射。当对视图(v_student_101)执行DML操作时，实际上是对基表（student）的DML操作。</p>
+      <p class="number">步骤四：创建复杂视图v_student</p>
+      <p>使用create view语句基于student表创建了一个视图v_student，查询学生的平均成绩，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;CREATE VIEW v_student</li><li>&nbsp;&nbsp;&nbsp;&nbsp;AS</li><li>&nbsp;&nbsp;&nbsp;&nbsp;SELECT class_id<span class="sh_symbol">,</span> <span class="sh_function">avg</span><span class="sh_symbol">(</span>score<span class="sh_symbol">)</span> avg_score</li><li>&nbsp;&nbsp;&nbsp;&nbsp;FROM student</li><li>&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY class_id<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	CREATE VIEW v_student
+	AS
+	SELECT class_id, avg(score) avg_score
+	FROM student
+	GROUP BY class_id;
+</pre></div></div>
+      <p>复杂视图指在子查询中包含了表达式、单行函数或分组函数的视图，上述视图属于负载视图。复杂视图必须为子查询中的表达式或函数定义别名。</p>
+      <p class="number">步骤五：对复杂视图v_student执行DML操作</p>
+      <p>在视图v_student中，执行如下SQL语句：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>update v_student set avg_score <span class="sh_symbol">=</span><span class="sh_number">80</span> where class_id<span class="sh_symbol">=</span><span class="sh_number">101</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">update v_student set avg_score =80 where class_id=101；
+</pre></div></div>
+      <p>执行上述SQL语句，产生的结果如图-4所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p>从图-4可以看出复杂视图不允许DML操作。</p>
+      <p class="number">步骤六：创建复杂视图v_stu</p>
+      <p>使用create view语句创建复杂视图v_stu，该视图在v_student视图现有列的基础上，加入人数一列，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE VIEW v_stu</li><li>&nbsp;&nbsp;&nbsp;&nbsp;AS</li><li>&nbsp;&nbsp;&nbsp;&nbsp;SELECT class_id<span class="sh_symbol">,</span> <span class="sh_function">avg</span><span class="sh_symbol">(</span>score<span class="sh_symbol">)</span> avg_score<span class="sh_symbol">,</span> <span class="sh_function">count</span><span class="sh_symbol">(*)</span> cnt </li><li>&nbsp;&nbsp;&nbsp;&nbsp;FROM student</li><li>&nbsp;&nbsp;&nbsp;&nbsp;GROUP BY class_id<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE VIEW v_stu
+	AS
+	SELECT class_id, avg(score) avg_score, count(*) cnt 
+	FROM student
+	GROUP BY class_id;
+</pre></div></div>
+      <p>查询该视图的SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> from v_stu<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from v_stu;
+</pre></div></div>
+      <p>查询结果如图-5所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p class="number">步骤七：查询视图</p>
+      <p>从v_student视图中查找数据的SQL语句为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">*</span> FORM View v_student<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT * FORM View v_student;
+</pre></div></div>
+      <p>上述查询视图的SQL语句是不正确的。查询视图和查询表的SQL语句类似，只需将表名的位置更换为视图名字即可，正确的写法为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_symbol">*</span> FORM v_student<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT * FORM v_student;
+</pre></div></div>
+      <p class="number">步骤八：删除视图v_student以及v_stu</p>
+      <p>使用drop view语句删除视图v_student以及v_stu，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>DROPVIEWv_student<span class="sh_symbol">;</span></li><li>DROPVIEWv_stu<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">DROPVIEWv_student;
+DROPVIEWv_stu;
+</pre></div></div>
+      <p>执行上述SQL语句将视图v_student以及v_stu删除掉，但是创建这两个视图的基表student的数据并不受影响。这是因为，视图虽然是存放在数据字典中的独立对象，但视图仅仅是基于表的一个查询定义，所以对视图的删除不会导致基表数据的丢失，不会影响基表数据。</p>
+      <a name="case2">
+      </a>
+      <h2>2 通过序列实现自动生成主键</h2>
+      <h3>2.1 问题</h3>
+      <p>本案例的详细要求如下：</p>
+      <p>1）创建序列emp_seq，该序列的起始值为100，步进为10。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE SEQUENCE emp_seq </li><li>START WITH <span class="sh_number">100</span> </li><li>INCREMENT BY <span class="sh_number">10</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE SEQUENCE emp_seq 
+START WITH 100 
+INCREMENT BY 10;
+</pre></div></div>
+      <p>2）查询序列的下一个值。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT emp_seq<span class="sh_symbol">.</span>NEXTVAL FROM DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT emp_seq.NEXTVAL FROM DUAL;
+</pre></div></div>
+      <p>3）利用序列emp_seq为emp表生成主键。向emp表插入的数据为empno由序列生成、ename为“donna”。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO <span class="sh_function">emp</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">)</span> </li><li><span class="sh_function">VALUES</span><span class="sh_symbol">(</span>emp_seq<span class="sh_symbol">.</span>NEXTVAL<span class="sh_symbol">,</span> <span class="sh_string">'donna'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO emp(empno, ename) 
+VALUES(emp_seq.NEXTVAL, 'donna');
+</pre></div></div>
+      <p>4）查询插入的数据是否插入成功。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT empno<span class="sh_symbol">,</span> ename FROM emp WHERE ename <span class="sh_symbol">=</span> <span class="sh_string">'donna'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT empno, ename FROM emp WHERE ename = 'donna';
+</pre></div></div>
+      <p>5）查询序列emp_seq的当前值。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT emp_seq<span class="sh_symbol">.</span>CURRVAL FROM DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT emp_seq.CURRVAL FROM DUAL;
+</pre></div></div>
+      <p>6）再次利用序列emp_seq为EMP表生成主键，数据为empno由序列生成、ename为“donna”，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO <span class="sh_function">emp</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">)</span> </li><li><span class="sh_function">VALUES</span><span class="sh_symbol">(</span>emp_seq<span class="sh_symbol">.</span>NEXTVAL<span class="sh_symbol">,</span> <span class="sh_string">'donna'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO emp(empno, ename) 
+VALUES(emp_seq.NEXTVAL, 'donna');
+</pre></div></div>
+      <p>7）查询上一步骤中插入的数据是否插入成功。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT empno<span class="sh_symbol">,</span> ename FROM emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT empno, ename FROM emp;
+</pre></div></div>
+      <h3>2.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建序列emp_seq</p>
+      <p>使用create sequence创建序列emp_seq，该序列的起始值为100，步进为10,SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE SEQUENCE emp_seq </li><li>START WITH <span class="sh_number">100</span> </li><li>INCREMENT BY <span class="sh_number">10</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE SEQUENCE emp_seq 
+START WITH 100 
+INCREMENT BY 10;
+</pre></div></div>
+      <p class="number">步骤二：查询序列的下一个值</p>
+      <p>使用查询NEXTVAL获取序列emp_seq的下一个值,SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT emp_seq<span class="sh_symbol">.</span>NEXTVAL FROM DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT emp_seq.NEXTVAL FROM DUAL;
+</pre></div></div>
+      <p class="number">步骤三：使用序列作为表的主键</p>
+      <p>利用序列emp_seq为emp表生成主键，向emp表插入的为empno由序列生成、ename为“donna”，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO <span class="sh_function">emp</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">)</span> </li><li><span class="sh_function">VALUES</span><span class="sh_symbol">(</span>emp_seq<span class="sh_symbol">.</span>NEXTVAL<span class="sh_symbol">,</span> <span class="sh_string">'donna'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO emp(empno, ename) 
+VALUES(emp_seq.NEXTVAL, 'donna');
+</pre></div></div>
+      <p class="number">步骤四：查询插入的数据是否插入成功</p>
+      <p>查询上一步骤中向emp表插入的数据是否插入成功，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT empno<span class="sh_symbol">,</span> ename FROM emp WHERE ename <span class="sh_symbol">=</span> <span class="sh_string">'donna'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT empno, ename FROM emp WHERE ename = 'donna';
+</pre></div></div>
+      <p>执行上述SQL语句emp表的数据如图-6所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <p>从图-6可以看出该记录中的empno列的数据为110，在之前100的基础上步进了10。</p>
+      <p class="number">步骤五：查询序列的当前值</p>
+      <p>查询序列emp_seq的当前值,SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT emp_seq<span class="sh_symbol">.</span>CURRVAL FROM DUAL<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT emp_seq.CURRVAL FROM DUAL;
+</pre></div></div>
+      <p>查询后，序列的当前值为110。</p>
+      <p class="number">步骤六：再次利用序列作为主键插入数据</p>
+      <p>再次利用序列emp_seq为EMP表生成主键，数据为empno由序列生成、ename为“donna”，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO <span class="sh_function">emp</span><span class="sh_symbol">(</span>empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">)</span> </li><li><span class="sh_function">VALUES</span><span class="sh_symbol">(</span>emp_seq<span class="sh_symbol">.</span>NEXTVAL<span class="sh_symbol">,</span> <span class="sh_string">'donna'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO emp(empno, ename) 
+VALUES(emp_seq.NEXTVAL, 'donna');
+</pre></div></div>
+      <p class="number">步骤七：查询上一步骤中插入的数据是否插入成功</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT empno<span class="sh_symbol">,</span> ename FROM emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT empno, ename FROM emp;
+</pre></div></div>
+      <p>执行上述SQL语句，查询的结果如图-7所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <p>从图-7的查询结果可以看出，序列的当前值为120。</p>
+      <a name="case3">
+      </a>
+      <h2>3 外键约束综合示例</h2>
+      <h3>3.1 问题</h3>
+      <p>本案例的详细要求如下：</p>
+      <p>1) 请看如下SQL语句：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>deleteproduct where p_id<span class="sh_symbol">=</span> <span class="sh_number">1011</span><span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">deleteproduct where p_id= 1011; 
+</pre></div></div>
+      <p>执行上述SQL语句，提示错误“已找到子记录日志”，错误的原因什么？</p>
+      <p>2）student表结构如表-2所示。</p>
+      <div class="table">
+        <p>表－2学员表student 信息</p>
+        <img src="./CASE_files/table002.png">
+      </div>
+      <p>student表的如图-8所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image008.png">
+        <p>图-8</p>
+      </div>
+      <p>GraduateTime表结构如表-3所示。</p>
+      <div class="table">
+        <p>表－3 GraduateTime表信息</p>
+        <img src="./CASE_files/table003.png">
+      </div>
+      <p>GraduateTime表的数据如图-9所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image009.png">
+        <p>图-9</p>
+      </div>
+      <p>其中，student表和GraduateTime表存在外键关系，即毕业时间graduate_time列作为外键（Foreign Key）关联到GraduateTime表的主键列（id）。</p>
+      <p>下列SQL语句会引发异常“ORA-02291：违反完整约束条件－未找到父项关键字”的是：（）。</p>
+      <p>A．update student set graduate_time =1003 where id=1011;</p>
+      <p>B．update student set name= 'smith', graduate_time = 1005 where id=1011;</p>
+      <p>C．update student set name= 'smith', graduate_time = 1004 where id=1011;</p>
+      <p>D．update student set id=null, score= 85 where graduate_time = 1005;</p>
+      <h3>3.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：问题一解答</p>
+      <p>本题中提示错误“已找到子记录日志“说明product表中，编码为1011的商品被其它表中的数据参照，该表中的该行记录不允许删除。如果解除外键关联关系，再实施删除则会成功。</p>
+      <p class="number">步骤二：问题二解答</p>
+      <p>问题二的正确答案为B。外键约束条件包括两个方面的数据约束：</p>
+      <p>1）从表上定义的外键的列值，必须从主表被参照的列值中选取，或者为NULL；</p>
+      <p>2）当主表参照列的值被从表参照时，主表的该行记录不允许被删除。</p>
+      <p>本题属于上述描述中的第一条。B选项中的更新语句，欲将学员ID为1011的毕业时间（graduate_time）更新为1005，列graduate_time为外键，其数据要参照主表（GraduateTime）id列的数据，由于在GraduateTime表不存在id列为1005的数据，因此会引发异常“ORA-02291：违反完整约束条件－未找到父项关键字”。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

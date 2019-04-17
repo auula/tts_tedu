@@ -1,0 +1,362 @@
+
+<!-- saved from url=(0092)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="26533233149"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#page_top_case">Top</a>
+      <h1>WebBasicJavaScriptUnit03</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#case1">动态时钟的启动和停止</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#case2">动态提示信息</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#case3">图片轮播</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 动态时钟的启动和停止</h2>
+      <h3>1.1 问题</h3>
+      <p>1）显示当前时间</p>
+      <p>2）启动时钟</p>
+      <p>3）停止时钟</p>
+      <h3>1.2 方案</h3>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建HTML</p>
+      <p>在day06文件夹下创建demo1.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>动态时钟<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">var</span> timer<span class="sh_symbol">;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">start</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        timer <span class="sh_symbol">=</span> <span class="sh_function">setInterval</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">var</span> now <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_predef_func">Date</span><span class="sh_symbol">();</span></li><li>          <span class="sh_keyword">var</span> time <span class="sh_symbol">=</span> now<span class="sh_symbol">.</span><span class="sh_function">toLocaleTimeString</span><span class="sh_symbol">();</span></li><li>          <span class="sh_keyword">var</span> c <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"clock"</span><span class="sh_symbol">);</span></li><li>          c<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> time<span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">stop</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_function">clearInterval</span><span class="sh_symbol">(</span>timer<span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>动态时钟<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>当前时间：<span class="sh_symbol">&lt;</span>span id<span class="sh_symbol">=</span><span class="sh_string">"clock"</span><span class="sh_symbol">&gt;&lt;</span><span class="sh_regexp">/span&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"启动"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"start();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"停止"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"stop();"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;动态时钟&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript"&gt;
+      var timer;
+      function start() {
+        timer = setInterval(function(){
+          var now = new Date();
+          var time = now.toLocaleTimeString();
+          var c = document.getElementById("clock");
+          c.innerHTML = time;
+        }, 1000);
+      }
+      function stop() {
+        clearInterval(timer);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;动态时钟&lt;/h1&gt;
+    &lt;p&gt;当前时间：&lt;span id="clock"&gt;&lt;/span&gt;&lt;/p&gt;
+    &lt;p&gt;
+      &lt;input type="button" value="启动" onclick="start();"/&gt;
+      &lt;input type="button" value="停止" onclick="stop();"/&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>使用浏览器打开demo1.html，点击启动按钮，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <h3>1.4 完整代码</h3>
+      <p>demo1.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>动态时钟<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">var</span> timer<span class="sh_symbol">;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">start</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        timer <span class="sh_symbol">=</span> <span class="sh_function">setInterval</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">var</span> now <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_predef_func">Date</span><span class="sh_symbol">();</span></li><li>          <span class="sh_keyword">var</span> time <span class="sh_symbol">=</span> now<span class="sh_symbol">.</span><span class="sh_function">toLocaleTimeString</span><span class="sh_symbol">();</span></li><li>          <span class="sh_keyword">var</span> c <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"clock"</span><span class="sh_symbol">);</span></li><li>          c<span class="sh_symbol">.</span>innerHTML <span class="sh_symbol">=</span> time<span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">stop</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_function">clearInterval</span><span class="sh_symbol">(</span>timer<span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>动态时钟<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span>当前时间：<span class="sh_symbol">&lt;</span>span id<span class="sh_symbol">=</span><span class="sh_string">"clock"</span><span class="sh_symbol">&gt;&lt;</span><span class="sh_regexp">/span&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"启动"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"start();"</span><span class="sh_symbol">/&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"停止"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"stop();"</span><span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;动态时钟&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;script type="text/javascript"&gt;
+      var timer;
+      function start() {
+        timer = setInterval(function(){
+          var now = new Date();
+          var time = now.toLocaleTimeString();
+          var c = document.getElementById("clock");
+          c.innerHTML = time;
+        }, 1000);
+      }
+      function stop() {
+        clearInterval(timer);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;动态时钟&lt;/h1&gt;
+    &lt;p&gt;当前时间：&lt;span id="clock"&gt;&lt;/span&gt;&lt;/p&gt;
+    &lt;p&gt;
+      &lt;input type="button" value="启动" onclick="start();"/&gt;
+      &lt;input type="button" value="停止" onclick="stop();"/&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 动态提示信息</h2>
+      <h3>2.1 问题</h3>
+      <p>1）点击按钮时弹出提示信息</p>
+      <p>2）N秒后自动关闭弹出界面</p>
+      <h3>2.2 方案</h3>
+      <p>使用setTimeout推迟隐藏显示框2秒。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo2.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>动态提示信息<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      #msg <span class="sh_cbracket">{</span></li><li>        border<span class="sh_symbol">:</span>1px solid #ccc<span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span>10px<span class="sh_symbol">;</span></li><li>        text<span class="sh_symbol">-</span>align<span class="sh_symbol">:</span>center<span class="sh_symbol">;</span></li><li>        width<span class="sh_symbol">:</span>200px<span class="sh_symbol">;</span></li><li>        background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span> #eee<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>hide <span class="sh_cbracket">{</span></li><li>        display<span class="sh_symbol">:</span>none<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>show <span class="sh_cbracket">{</span></li><li>        display<span class="sh_symbol">:</span>block<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">del</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>         <span class="sh_keyword">var</span> m <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"msg"</span><span class="sh_symbol">);</span></li><li>         m<span class="sh_symbol">.</span>className <span class="sh_symbol">=</span> <span class="sh_string">"show"</span><span class="sh_symbol">;</span></li><li>         <span class="sh_keyword">var</span> timer <span class="sh_symbol">=</span> <span class="sh_function">setTimeout</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>          m<span class="sh_symbol">.</span>className <span class="sh_symbol">=</span> <span class="sh_string">"hide"</span><span class="sh_symbol">;</span></li><li>          <span class="sh_function">clearTimeout</span><span class="sh_symbol">(</span>timer<span class="sh_symbol">);</span></li><li>         <span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_number">2000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>动态提示信息<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"删除"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"del();"</span><span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p id<span class="sh_symbol">=</span><span class="sh_string">"msg"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"hide"</span><span class="sh_symbol">&gt;</span>操作成功<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;动态提示信息&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;style type="text/css"&gt;
+      #msg {
+        border:1px solid #ccc;
+        padding:10px;
+        text-align:center;
+        width:200px;
+        background-color: #eee;
+      }
+      .hide {
+        display:none;
+      }
+      .show {
+        display:block;
+      }
+    &lt;/style&gt;
+    &lt;script type="text/javascript"&gt;
+      function del() {
+         var m = document.getElementById("msg");
+         m.className = "show";
+         var timer = setTimeout(function(){
+          m.className = "hide";
+          clearTimeout(timer);
+         }, 2000);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;动态提示信息&lt;/h1&gt;
+    &lt;p&gt;&lt;input type="button" value="删除" onclick="del();"/&gt;&lt;/p&gt;
+    &lt;p id="msg" class="hide"&gt;操作成功&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>使用浏览器打开demo2.html，点击删除按钮，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <h3>2.4 完整代码</h3>
+      <p>demo2.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>动态提示信息<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      #msg <span class="sh_cbracket">{</span></li><li>        border<span class="sh_symbol">:</span>1px solid #ccc<span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span>10px<span class="sh_symbol">;</span></li><li>        text<span class="sh_symbol">-</span>align<span class="sh_symbol">:</span>center<span class="sh_symbol">;</span></li><li>        width<span class="sh_symbol">:</span>200px<span class="sh_symbol">;</span></li><li>        background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span> #eee<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>hide <span class="sh_cbracket">{</span></li><li>        display<span class="sh_symbol">:</span>none<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>show <span class="sh_cbracket">{</span></li><li>        display<span class="sh_symbol">:</span>block<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">del</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>         <span class="sh_keyword">var</span> m <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"msg"</span><span class="sh_symbol">);</span></li><li>         m<span class="sh_symbol">.</span>className <span class="sh_symbol">=</span> <span class="sh_string">"show"</span><span class="sh_symbol">;</span></li><li>         <span class="sh_keyword">var</span> timer <span class="sh_symbol">=</span> <span class="sh_function">setTimeout</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>          m<span class="sh_symbol">.</span>className <span class="sh_symbol">=</span> <span class="sh_string">"hide"</span><span class="sh_symbol">;</span></li><li>          <span class="sh_function">clearTimeout</span><span class="sh_symbol">(</span>timer<span class="sh_symbol">);</span></li><li>         <span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_number">2000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>动态提示信息<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"删除"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"del();"</span><span class="sh_regexp">/&gt;&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>p id<span class="sh_symbol">=</span><span class="sh_string">"msg"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"hide"</span><span class="sh_symbol">&gt;</span>操作成功<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;动态提示信息&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;style type="text/css"&gt;
+      #msg {
+        border:1px solid #ccc;
+        padding:10px;
+        text-align:center;
+        width:200px;
+        background-color: #eee;
+      }
+      .hide {
+        display:none;
+      }
+      .show {
+        display:block;
+      }
+    &lt;/style&gt;
+    &lt;script type="text/javascript"&gt;
+      function del() {
+         var m = document.getElementById("msg");
+         m.className = "show";
+         var timer = setTimeout(function(){
+          m.className = "hide";
+          clearTimeout(timer);
+         }, 2000);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;动态提示信息&lt;/h1&gt;
+    &lt;p&gt;&lt;input type="button" value="删除" onclick="del();"/&gt;&lt;/p&gt;
+    &lt;p id="msg" class="hide"&gt;操作成功&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 图片轮播</h2>
+      <h3>3.1 问题</h3>
+      <p>1）在页面上增加一组图片</p>
+      <p>2）默认显示第一张图片</p>
+      <p>3）设置每N秒切换显示一张图片</p>
+      <h3>3.2 方案</h3>
+      <p>使用className属性修改节点的样式。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建HTML</p>
+      <p>创建demo3.html，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>图片轮播<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">.</span>photo <span class="sh_cbracket">{</span></li><li>        list<span class="sh_symbol">-</span>style<span class="sh_symbol">-</span>type<span class="sh_symbol">:</span> none<span class="sh_symbol">;</span></li><li>        border<span class="sh_symbol">:</span> 2px solid #ccc<span class="sh_symbol">;</span></li><li>        width<span class="sh_symbol">:</span> 480px<span class="sh_symbol">;</span></li><li>        height<span class="sh_symbol">:</span> 360px<span class="sh_symbol">;</span></li><li>        margin<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>photo li <span class="sh_cbracket">{</span></li><li>        width<span class="sh_symbol">:</span> 480px<span class="sh_symbol">;</span></li><li>        height<span class="sh_symbol">:</span> 360px<span class="sh_symbol">;</span></li><li>        margin<span class="sh_symbol">:</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>show<span class="sh_cbracket">{</span></li><li>        display<span class="sh_symbol">:</span> block<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>hide<span class="sh_cbracket">{</span></li><li>        display<span class="sh_symbol">:</span> none<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">var</span> timer<span class="sh_symbol">;</span></li><li>      <span class="sh_keyword">var</span> index <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">start</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        timer <span class="sh_symbol">=</span> <span class="sh_function">setInterval</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">var</span> ul <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"photo"</span><span class="sh_symbol">);</span></li><li>          <span class="sh_keyword">var</span> lis <span class="sh_symbol">=</span> ul<span class="sh_symbol">.</span><span class="sh_function">getElementsByTagName</span><span class="sh_symbol">(</span><span class="sh_string">"li"</span><span class="sh_symbol">);</span></li><li>          <span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_keyword">var</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>lis<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>            lis<span class="sh_symbol">[</span>i<span class="sh_symbol">].</span>className <span class="sh_symbol">=</span> <span class="sh_string">"hide"</span><span class="sh_symbol">;</span></li><li>          <span class="sh_cbracket">}</span></li><li>          index<span class="sh_symbol">++;</span></li><li>          lis<span class="sh_symbol">[</span>index<span class="sh_symbol">%</span>lis<span class="sh_symbol">.</span>length<span class="sh_symbol">].</span>className <span class="sh_symbol">=</span> <span class="sh_string">"show"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">stop</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_function">clearInterval</span><span class="sh_symbol">(</span>timer<span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body onload<span class="sh_symbol">=</span><span class="sh_string">"start();"</span><span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>图片轮播<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>ul <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"photo"</span> id<span class="sh_symbol">=</span><span class="sh_string">"photo"</span></li><li>      onmouseover<span class="sh_symbol">=</span><span class="sh_string">"stop();"</span> onmouseout<span class="sh_symbol">=</span><span class="sh_string">"start();"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>li <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"show"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/f1.jpg"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>li<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>li <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"hide"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/f2.jpg"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>li<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>li <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"hide"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/f3.jpg"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>li<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>li <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"hide"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/f4.jpg"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>li<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>ul<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;图片轮播&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;style type="text/css"&gt;
+      .photo {
+        list-style-type: none;
+        border: 2px solid #ccc;
+        width: 480px;
+        height: 360px;
+        margin:0;
+        padding:0;
+      }
+      .photo li {
+        width: 480px;
+        height: 360px;
+        margin: 0;
+        padding: 0;
+      }
+      .show{
+        display: block;
+      }
+      .hide{
+        display: none;
+      }
+    &lt;/style&gt;
+    &lt;script type="text/javascript"&gt;
+      var timer;
+      var index = 0;
+      function start() {
+        timer = setInterval(function(){
+          var ul = document.getElementById("photo");
+          var lis = ul.getElementsByTagName("li");
+          for(var i=0;i&lt;lis.length;i++) {
+            lis[i].className = "hide";
+          }
+          index++;
+          lis[index%lis.length].className = "show";
+        }, 1000);
+      }
+      function stop() {
+        clearInterval(timer);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body onload="start();"&gt;
+    &lt;h1&gt;图片轮播&lt;/h1&gt;
+    &lt;ul class="photo" id="photo"
+      onmouseover="stop();" onmouseout="start();"&gt;
+      &lt;li class="show"&gt;
+        &lt;img src="../images/f1.jpg"&gt;
+      &lt;/li&gt;
+      &lt;li class="hide"&gt;
+        &lt;img src="../images/f2.jpg"&gt;
+      &lt;/li&gt;
+      &lt;li class="hide"&gt;
+        &lt;img src="../images/f3.jpg"&gt;
+      &lt;/li&gt;
+      &lt;li class="hide"&gt;
+        &lt;img src="../images/f4.jpg"&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <p class="number">步骤二：测试</p>
+      <p>使用浏览器打开demo3.html，效果如下图：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <h3>3.4 完整代码</h3>
+      <p>demo3.html完整代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!</span>DOCTYPE html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>图片轮播<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>meta charset<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span> <span class="sh_symbol">/&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">.</span>photo <span class="sh_cbracket">{</span></li><li>        list<span class="sh_symbol">-</span>style<span class="sh_symbol">-</span>type<span class="sh_symbol">:</span> none<span class="sh_symbol">;</span></li><li>        border<span class="sh_symbol">:</span> 2px solid #ccc<span class="sh_symbol">;</span></li><li>        width<span class="sh_symbol">:</span> 480px<span class="sh_symbol">;</span></li><li>        height<span class="sh_symbol">:</span> 360px<span class="sh_symbol">;</span></li><li>        margin<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span><span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>photo li <span class="sh_cbracket">{</span></li><li>        width<span class="sh_symbol">:</span> 480px<span class="sh_symbol">;</span></li><li>        height<span class="sh_symbol">:</span> 360px<span class="sh_symbol">;</span></li><li>        margin<span class="sh_symbol">:</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>        padding<span class="sh_symbol">:</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>show<span class="sh_cbracket">{</span></li><li>        display<span class="sh_symbol">:</span> block<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_symbol">.</span>hide<span class="sh_cbracket">{</span></li><li>        display<span class="sh_symbol">:</span> none<span class="sh_symbol">;</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>script type<span class="sh_symbol">=</span><span class="sh_string">"text/javascript"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_keyword">var</span> timer<span class="sh_symbol">;</span></li><li>      <span class="sh_keyword">var</span> index <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">start</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        timer <span class="sh_symbol">=</span> <span class="sh_function">setInterval</span><span class="sh_symbol">(</span><span class="sh_keyword">function</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">var</span> ul <span class="sh_symbol">=</span> document<span class="sh_symbol">.</span><span class="sh_function">getElementById</span><span class="sh_symbol">(</span><span class="sh_string">"photo"</span><span class="sh_symbol">);</span></li><li>          <span class="sh_keyword">var</span> lis <span class="sh_symbol">=</span> ul<span class="sh_symbol">.</span><span class="sh_function">getElementsByTagName</span><span class="sh_symbol">(</span><span class="sh_string">"li"</span><span class="sh_symbol">);</span></li><li>          <span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_keyword">var</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>lis<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>            lis<span class="sh_symbol">[</span>i<span class="sh_symbol">].</span>className <span class="sh_symbol">=</span> <span class="sh_string">"hide"</span><span class="sh_symbol">;</span></li><li>          <span class="sh_cbracket">}</span></li><li>          index<span class="sh_symbol">++;</span></li><li>          lis<span class="sh_symbol">[</span>index<span class="sh_symbol">%</span>lis<span class="sh_symbol">.</span>length<span class="sh_symbol">].</span>className <span class="sh_symbol">=</span> <span class="sh_string">"show"</span><span class="sh_symbol">;</span></li><li>        <span class="sh_cbracket">}</span><span class="sh_symbol">,</span> <span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>      <span class="sh_keyword">function</span> <span class="sh_function">stop</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_function">clearInterval</span><span class="sh_symbol">(</span>timer<span class="sh_symbol">);</span></li><li>      <span class="sh_cbracket">}</span></li><li>    <span class="sh_symbol">&lt;/</span>script<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>body onload<span class="sh_symbol">=</span><span class="sh_string">"start();"</span><span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span>图片轮播<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;</span>ul <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"photo"</span> id<span class="sh_symbol">=</span><span class="sh_string">"photo"</span></li><li>      onmouseover<span class="sh_symbol">=</span><span class="sh_string">"stop();"</span> onmouseout<span class="sh_symbol">=</span><span class="sh_string">"start();"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>li <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"show"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/f1.jpg"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>li<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>li <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"hide"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/f2.jpg"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>li<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>li <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"hide"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/f3.jpg"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>li<span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;</span>li <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"hide"</span><span class="sh_symbol">&gt;</span></li><li>        <span class="sh_symbol">&lt;</span>img src<span class="sh_symbol">=</span><span class="sh_string">"../images/f4.jpg"</span><span class="sh_symbol">&gt;</span></li><li>      <span class="sh_symbol">&lt;/</span>li<span class="sh_symbol">&gt;</span></li><li>    <span class="sh_symbol">&lt;/</span>ul<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;图片轮播&lt;/title&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;style type="text/css"&gt;
+      .photo {
+        list-style-type: none;
+        border: 2px solid #ccc;
+        width: 480px;
+        height: 360px;
+        margin:0;
+        padding:0;
+      }
+      .photo li {
+        width: 480px;
+        height: 360px;
+        margin: 0;
+        padding: 0;
+      }
+      .show{
+        display: block;
+      }
+      .hide{
+        display: none;
+      }
+    &lt;/style&gt;
+    &lt;script type="text/javascript"&gt;
+      var timer;
+      var index = 0;
+      function start() {
+        timer = setInterval(function(){
+          var ul = document.getElementById("photo");
+          var lis = ul.getElementsByTagName("li");
+          for(var i=0;i&lt;lis.length;i++) {
+            lis[i].className = "hide";
+          }
+          index++;
+          lis[index%lis.length].className = "show";
+        }, 1000);
+      }
+      function stop() {
+        clearInterval(timer);
+      }
+    &lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body onload="start();"&gt;
+    &lt;h1&gt;图片轮播&lt;/h1&gt;
+    &lt;ul class="photo" id="photo"
+      onmouseover="stop();" onmouseout="start();"&gt;
+      &lt;li class="show"&gt;
+        &lt;img src="../images/f1.jpg"&gt;
+      &lt;/li&gt;
+      &lt;li class="hide"&gt;
+        &lt;img src="../images/f2.jpg"&gt;
+      &lt;/li&gt;
+      &lt;li class="hide"&gt;
+        &lt;img src="../images/f3.jpg"&gt;
+      &lt;/li&gt;
+      &lt;li class="hide"&gt;
+        &lt;img src="../images/f4.jpg"&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/WEBBASIC/DAY06/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

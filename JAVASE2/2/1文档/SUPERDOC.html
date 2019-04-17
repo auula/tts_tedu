@@ -1,0 +1,395 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="16992973621"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#Key01">基本IO操作</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#Key02">文件数据IO操作</a>
+        </li>
+      </ol>
+      <h1>1. 基本IO操作</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. InputStream与OutputStream</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 输入与输出</h3>
+      <p>我们编写的程序除了自身会定义一些数据信息外，经常还会引用外界的数据，或是将自身的数据发送到外界。比如，我们编写的程序想读取一个文本文件，又或者我们想将程序中的某些数据写入到一个文件中。这时我们就要使用输入与输出。</p>
+      <p>什么是输入:输入是一个从外界进入到程序的方向，通常我们需要“读取”外界的数据时，使用输入。所以输入是用来读取数据的。</p>
+      <p>什么是输出:输出是一个从程序发送到外界的方向，通常我们需要”写出”数据到外界时，使用输出。所以输出是用来写出数据的。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 节点流与处理流</h3>
+      <p>按照流是否直接与特定的地方 (如磁盘、内存、设备等) 相连，分为节点流和处理流两类。</p>
+      <p>节点流：可以从或向一个特定的地方（节点）读写数据。</p>
+      <p>处理流：是对一个已存在的流的连接和封装，通过所封装的流的功能调用实现数据读写。</p>
+      <p>处理流的构造方法总是要带一个其他的流对象做参数。一个流对象经过其他流的多次包装，称为流的链接。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. InputStream与OutputStream常用方法</h3>
+      <p>InputStream是所有字节输入流的父类，其定义了基础的读取方法，常用的方法如下:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_function">read</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int read()
+</pre></div></div>
+      <p>读取一个字节，以int形式返回，该int值的”低八位”有效，若返回值为-1则表示EOF。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_function">read</span><span class="sh_symbol">(</span><span class="sh_type">byte</span><span class="sh_symbol">[]</span> d<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int read(byte[] d)
+</pre></div></div>
+      <p>尝试最多读取给定数组的length个字节并存入该数组，返回值为实际读取到的字节量。</p>
+      <p>OutputStream是所有字节输出流的父类，其定义了基础的写出方法，常用的方法如下:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">int</span> d<span class="sh_symbol">)</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(int d) 
+</pre></div></div>
+      <p>写出一个字节,写的是给定的int的”低八位”</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">byte</span><span class="sh_symbol">[]</span> d<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(byte[] d)
+</pre></div></div>
+      <p>将给定的字节数组中的所有字节全部写出</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 文件流</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 创建FOS对象(重写模式)</h3>
+      <p>FileOutputStream是文件的字节输出流，我们使用该流可以以字节为单位将数据写入文件。</p>
+      <p>构造方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_usertype">File</span><span class="sh_normal"> </span>file<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream(File file)
+</pre></div></div>
+      <p>创建一个向指定 File 对象表示的文件中写入数据的文件输出流。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">FIle</span><span class="sh_normal"> </span>file <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_string">"demo.dat"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">FileOutputStream</span><span class="sh_normal"> </span>fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span>file<span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FIle file = new File("demo.dat");
+FileOutputStream fos = new FileOutputStream(file); 
+</pre></div></div>
+      <p>构造方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>filename<span class="sh_symbol">):</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream(String filename):
+</pre></div></div>
+      <p>创建一个向具有指定名称的文件中写入数据的输出文 件流。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">FileOutputStream</span><span class="sh_normal"> </span>fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"demo.dat"</span><span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream fos = new FileOutputStream("demo.dat"); 
+</pre></div></div>
+      <p>这里需要注意，若指定的文件已经包含内容，那么当使用FOS对其写入数据时，会将该文件中原有数据全部清除。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 创建FOS对象(追加模式)</h3>
+      <p>通过上一节的构造方法创建的FOS对文件进行写操作时会覆盖文件中原有数据。若想在文件的原有数据之后追加新数据则需要以下构造方法创建FOS</p>
+      <p>构造方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_usertype">File</span><span class="sh_normal"> </span>file<span class="sh_symbol">,</span><span class="sh_type">boolean</span> append<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream(File file,boolean append)
+</pre></div></div>
+      <p>创建一个向指定 File 对象表示的文件中写入数据的文件输出流。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">File</span><span class="sh_normal"> </span>file <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_string">"demo.dat"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">FileOutputStream</span><span class="sh_normal"> </span>fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span>file<span class="sh_symbol">,</span><span class="sh_keyword">true</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">File file = new File("demo.dat");
+FileOutputStream fos = new FileOutputStream(file,true);
+</pre></div></div>
+      <p>构造方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>filename<span class="sh_symbol">,</span><span class="sh_type">boolean</span> append<span class="sh_symbol">):</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream(String filename,boolean append):
+</pre></div></div>
+      <p>创建一个向具有指定名称的文件中写入数据的输出文 件流。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">FileOutputStream</span><span class="sh_normal"> </span>fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"demo.dat"</span><span class="sh_symbol">,</span><span class="sh_keyword">true</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream fos = new FileOutputStream("demo.dat",true);
+</pre></div></div>
+      <p>以上两个构造方法中，第二个参数若为true,那么通过该FOS写出的数据都是在文件末尾追加的。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 创建FIS对象</h3>
+      <p>FileInputStream是文件的字节输入流，我们使用该流可以以字节为单位读取文件内容。</p>
+      <p>FileInputStream有两个常用的构造方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_usertype">File</span><span class="sh_normal"> </span>file<span class="sh_symbol">):</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileInputStream(File file):
+</pre></div></div>
+      <p>创建用于读取给定的File对象所表示的文件FIS</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">File</span><span class="sh_normal"> </span>file <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span><span class="sh_string">"demo.dat"</span><span class="sh_symbol">);</span></li><li>FileInputStream fis </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span>file<span class="sh_symbol">);</span><span class="sh_comment">//创建一个用于读取demo.dat文件的输入流</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">File file = new File("demo.dat");
+FileInputStream fis 
+	= new FileInputStream(file);//创建一个用于读取demo.dat文件的输入流
+</pre></div></div>
+      <p>另一个构造方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">):</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileInputStream(String name):
+</pre></div></div>
+      <p>创建用于读取给定的文件系统中的路径名name所指定的文件的FIS</p>
+      <p>例如</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>FileInputStream fis</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建一个用于读取demo.dat文件的输入流</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"demo"</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileInputStream fis
+	//创建一个用于读取demo.dat文件的输入流
+	= new FileInputStream("demo");
+</pre></div></div>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. read()和write(int d)方法</h3>
+      <p>FileInputStream继承自InputStream,其提供了以字节为单位读取文件数据的方法read。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_function">read</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int read()
+</pre></div></div>
+      <p>从此输入流中读取一个数据字节,若返回-1则表示EOF(End Of File)</p>
+      <p>FileOutputStream继承自OutputStream,其提供了以字节为单位向文件写数据的方法write。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">int</span> d<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(int d)
+</pre></div></div>
+      <p>将指定字节写入此文件输出流。,这里只写给定的int值的”低八位”</p>
+      <p>例如</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">FileOutputStream</span><span class="sh_normal"> </span>fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"demo.dat"</span><span class="sh_symbol">);</span></li><li>fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_string">'A'</span><span class="sh_symbol">);</span><span class="sh_comment">//这里要注意，char占用2个字节，但这里只写入了1个字节。</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream fos = new FileOutputStream("demo.dat");
+fos.write('A');//这里要注意，char占用2个字节，但这里只写入了1个字节。
+</pre></div></div>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. read(byte[] d)和write(byte[] d)方法</h3>
+      <p>FileInputStream也支持批量读取字节数据的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_function">read</span><span class="sh_symbol">(</span><span class="sh_type">byte</span><span class="sh_symbol">[]</span> b<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int read(byte[] b)
+</pre></div></div>
+      <p>从此输入流中将最多 b.length 个字节的数据读入一个 byte 数组中 。</p>
+      <p>FileOutputStream也支持批量写出字节数据的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">byte</span><span class="sh_symbol">[]</span> d<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(byte[] d)
+</pre></div></div>
+      <p>将 b.length 个字节从指定 byte 数组写入此文件输出流中。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">FileOutputStream</span><span class="sh_normal"> </span>fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"demo.txt"</span><span class="sh_symbol">);</span></li><li><span class="sh_type">byte</span><span class="sh_symbol">[]</span> data <span class="sh_symbol">=</span> <span class="sh_string">"HelloWorld"</span><span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">();</span></li><li>fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>data<span class="sh_symbol">);</span><span class="sh_comment">//会将HelloWorld的所有字节写入文件。 </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream fos = new FileOutputStream("demo.txt");
+byte[] data = "HelloWorld".getBytes();
+fos.write(data);//会将HelloWorld的所有字节写入文件。 
+</pre></div></div>
+      <p>将指定 byte 数组中从偏移量 off 开始的 len 个字节写入此文件输出流的方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">byte</span><span class="sh_symbol">[]</span> d<span class="sh_symbol">,</span><span class="sh_type">int</span> offset<span class="sh_symbol">,</span><span class="sh_type">int</span> len<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(byte[] d,int offset,int len)
+</pre></div></div>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">FileOutputStream</span><span class="sh_normal"> </span>fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"demo.txt"</span><span class="sh_symbol">);</span></li><li><span class="sh_type">byte</span><span class="sh_symbol">[]</span> data <span class="sh_symbol">=</span> <span class="sh_string">"HelloWorld"</span><span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">();</span></li><li>fos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>data<span class="sh_symbol">,</span><span class="sh_number">5</span><span class="sh_symbol">,</span><span class="sh_number">5</span><span class="sh_symbol">);</span><span class="sh_comment">//只会将world这5个字节写入文件。 </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileOutputStream fos = new FileOutputStream("demo.txt");
+byte[] data = "HelloWorld".getBytes();
+fos.write(data,5,5);//只会将world这5个字节写入文件。 
+</pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 缓冲流</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. BOS基本工作原理</h3>
+      <p>与缓冲输入流相似，在向硬件设备做写出操作时，增大写出次数无疑也会降低写出效率，为此我们可以使用缓冲输出流来一次性批量写出若干数据减少写出次数来提高写	出效率。</p>
+      <p>BufferedOutputStream缓冲输出流内部也维护着一个缓冲区，每当我们向该流写数据时，都会先将数据存入缓冲区，当缓冲区已满时，缓冲流会将数据一次性全部写出。</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. BOS实现写出缓冲</h3>
+      <p>实现写出缓冲：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">testBos</span><span class="sh_symbol">()</span><span class="sh_keyword">throws</span> Exception <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">FileOutputStream</span><span class="sh_normal"> </span>fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"demo.dat"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建缓冲字节输出流</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;BufferedOutputStream bos</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedOutputStream</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">);</span></li><li><span class="sh_comment">//所有字节被存入缓冲区，等待一次性写出</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;bos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_string">"helloworld"</span><span class="sh_symbol">.</span><span class="sh_function">getBytes</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//关闭流之前，缓冲输出流会将缓冲区内容一次性写出</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;bos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public void testBos()throws Exception {
+	FileOutputStream fos = new FileOutputStream("demo.dat");
+	//创建缓冲字节输出流
+	BufferedOutputStream bos
+			= new BufferedOutputStream(fos);
+//所有字节被存入缓冲区，等待一次性写出
+	bos.write("helloworld".getBytes());
+	//关闭流之前，缓冲输出流会将缓冲区内容一次性写出
+	bos.close();
+}
+</pre></div></div>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. BOS的flush方法</h3>
+      <p>使用缓冲输出流可以提高写出效率，但是这也存在着一个问题，就是写出数据缺乏即时性。有时我们需要在执行完某些写出操作后，就希望将这些数据确实写出，而非在缓冲区中保存直到缓冲区满后才写出。这时我们可以使用缓冲流的一个方法flush。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">flush</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void flush()
+</pre></div></div>
+      <p>清空缓冲区，将缓冲区中的数据强制写出。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>BufferedOutputStream bos</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedOutputStream</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"demo.dat"</span><span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">);</span></li><li>bos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_string">'a'</span><span class="sh_symbol">);</span><span class="sh_comment">//并没有向磁盘写出，而是写入到了BOS的缓存中</span></li><li>bos<span class="sh_symbol">.</span><span class="sh_function">flush</span><span class="sh_symbol">();</span><span class="sh_comment">//强制将缓存中的数据一次性写出，这时‘a’才会被写入磁盘</span></li><li>bos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span><span class="sh_comment">//实际上，close()方法在变比缓冲流前也调用了flush()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">BufferedOutputStream bos
+			= new BufferedOutputStream(
+				new FileOutputStream("demo.dat")
+			);
+bos.write('a');//并没有向磁盘写出，而是写入到了BOS的缓存中
+bos.flush();//强制将缓存中的数据一次性写出，这时‘a’才会被写入磁盘
+bos.close();//实际上，close()方法在变比缓冲流前也调用了flush()
+</pre></div></div>
+      <a name="Key01_03_04">
+      </a>
+      <h3>1.3.4. BIS基本工作原理</h3>
+      <p>在读取数据时若以字节为单位读取数据，会导致读取次数过于频繁从而大大的降低读取效率。为此我们可以通过提高一次读取的字节数量减少读写次数来提高读取的效率。</p>
+      <p>BufferedInputStream是缓冲字节输入流。其内部维护着一个缓冲区(字节数组)，使用该流在读取一个字节时，该流会尽可能多的一次性读取若干字节并存入缓冲区，然后逐一的将字节返回，直到缓冲区中的数据被全部读取完毕，会再次读取若干字节从而反复。这样就减少了读取的次数，从而提高了读取效率。</p>
+      <p>BIS是一个处理流，该流为我们提供了缓冲功能。</p>
+      <a name="Key01_03_05">
+      </a>
+      <h3>1.3.5. BIS实现输入缓冲</h3>
+      <p>使用缓冲流来实现文件复制:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">FileInputStream</span><span class="sh_normal"> </span>fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"java.zip"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">BufferedInputStream</span><span class="sh_normal"> </span>bis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedInputStream</span><span class="sh_symbol">(</span>fis<span class="sh_symbol">);</span></li><li><span class="sh_usertype">FileOutputStream</span><span class="sh_normal"> </span>fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"copy_java.zip"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">BufferedOutputStream</span><span class="sh_normal"> </span>bos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">BufferedOutputStream</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">);</span></li><li><span class="sh_type">int</span> d <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">while</span><span class="sh_symbol">((</span>d <span class="sh_symbol">=</span> bis<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())!=-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;bos<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>d<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li><li>bis<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span><span class="sh_comment">//读写完毕后要关闭流，只需要关闭最外层的流即可</span></li><li>bos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileInputStream fis = new FileInputStream("java.zip");
+BufferedInputStream bis = new BufferedInputStream(fis);
+FileOutputStream fos = new FileOutputStream("copy_java.zip");
+BufferedOutputStream bos = new BufferedOutputStream(fos);
+int d = -1;
+while((d = bis.read())!=-1){
+	bos.write(d);
+}
+bis.close();//读写完毕后要关闭流，只需要关闭最外层的流即可
+bos.close();
+</pre></div></div>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. 对象流</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. 对象序列化概念</h3>
+      <p>对象是存在于内存中的。有时候我们需要将对象保存到硬盘上，又有时我们需要将对象传输到另一台计算机上等等这样的操作。这时我们需要将对象转换为一个字节序列，而这个过程就称为对象序列化。相反，我们有这样一个字节序列需要将其转换为对应的对象，这个过程就称为对象的反序列化。</p>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. 使用OOS实现对象序列化</h3>
+      <p>ObjectOutputStream是用来对对象进行序列化的输出流。</p>
+      <p>其实现对象序列化的方法为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">writeObject</span><span class="sh_symbol">(</span><span class="sh_usertype">Object</span><span class="sh_normal"> </span>o<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void writeObject(Object o)
+</pre></div></div>
+      <p>该方法可以将给定的对象转换为一个字节序列后写出。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Emp</span><span class="sh_normal"> </span>emp <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">(</span><span class="sh_string">"张三"</span><span class="sh_symbol">,</span><span class="sh_number">12</span>，<span class="sh_string">"男"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">FileOutputStream</span><span class="sh_normal"> </span>fos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"Emp.obj"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">ObjectOutputStream</span><span class="sh_normal"> </span>oos <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ObjectOutputStream</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">);</span></li><li>oos<span class="sh_symbol">.</span><span class="sh_function">writeObject</span><span class="sh_symbol">(</span>emp<span class="sh_symbol">);</span><span class="sh_comment">//将emp对象序列化后写入文件</span></li><li>oos<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Emp emp = new Emp("张三",12，"男");
+FileOutputStream fos = new FileOutputStream("Emp.obj");
+ObjectOutputStream oos = new ObjectOutputStream(fos);
+oos.writeObject(emp);//将emp对象序列化后写入文件
+oos.close();
+</pre></div></div>
+      <a name="Key01_04_03">
+      </a>
+      <h3>1.4.3. 使用OIS实现对象反序列化</h3>
+      <p>ObjectInputStream是用来对对象进行反序列化的输入流。</p>
+      <p>其实现对象反序列化的方法为:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Object</span><span class="sh_normal"> </span><span class="sh_function">readObject</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Object readObject()
+</pre></div></div>
+      <p>该方法可以从流中读取字节并转换为对应的对象。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">FileInputStream</span><span class="sh_normal"> </span>fis <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"Emp.obj"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">ObjectInputStream</span><span class="sh_normal"> </span>ois <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">ObjectInputStream</span><span class="sh_symbol">(</span>fis<span class="sh_symbol">);</span></li><li><span class="sh_usertype">Emp</span><span class="sh_normal"> </span>emp <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>Emp<span class="sh_symbol">)</span>ois<span class="sh_symbol">.</span><span class="sh_function">readObject</span><span class="sh_symbol">();</span><span class="sh_comment">//将Emp对象从文件中读取并反序列</span></li><li><span class="sh_symbol">....</span></li><li>ois<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">FileInputStream fis = new FileInputStream("Emp.obj");
+ObjectInputStream ois = new ObjectInputStream(fis);
+Emp emp = (Emp)ois.readObject();//将Emp对象从文件中读取并反序列
+....
+ois.close();
+</pre></div></div>
+      <a name="Key01_04_04">
+      </a>
+      <h3>1.4.4. Serializable接口</h3>
+      <p>ObjectOutputStream在对对象进行序列化时有一个要求，就是需要序列化的对象所属的类必须实现Serializable接口。</p>
+      <p>实现该接口不需要重写任何方法。其只是作为可序列化的标志。</p>
+      <p>通常实现该接口的类需要提供一个常量serialVersionUID，表明该类的版本。若不显示的声明，在对象序列化时也会根据当前类的各个方面计算该类的默认serialVersionUID，但不同平台编译器实现有所不同，所以若向跨平台，都应显示的声明版本号。</p>
+      <p>如果声明的类序列化存到硬盘上面，之后随着需求的变化更改了类别的属性(增加或减少或改名)，那么当反序列化时，就会出现InvalidClassException，这样就会造成不兼容性的问题。 	但当serialVersionUID相同时，它就会将不一样的field以type的预设值反序列化，可避开不兼容性问题。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Emp</span> <span class="sh_keyword">implements</span> Serializable<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_keyword">static</span> <span class="sh_keyword">final</span> <span class="sh_type">long</span> serialVersionUID <span class="sh_symbol">=</span> <span class="sh_number">1L</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_type">int</span> age<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_usertype">String</span><span class="sh_normal"> </span>gender<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//getter and setter and other</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">...</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Emp implements Serializable{
+	private static final long serialVersionUID = 1L;
+	private String name;
+	private int age;
+	private String gender;
+	//getter and setter and other
+	...
+}
+</pre></div></div>
+      <a name="Key01_04_05">
+      </a>
+      <h3>1.4.5. transient关键字</h3>
+      <p>对象在序列化后得到的字节序列往往比较大，有时我们在对一个对象进行序列化时可以忽略某些不必要的属性，从而对序列化后得到的字节序列”瘦身”。</p>
+      <p>关键字 transient</p>
+      <p>被该关键字修饰的属性在序列化时其值将被忽略</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Emp</span> <span class="sh_keyword">implements</span> Serializable<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_keyword">static</span> <span class="sh_keyword">final</span> <span class="sh_type">long</span> serialVersionUID <span class="sh_symbol">=</span> <span class="sh_number">1L</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_keyword">transient</span> <span class="sh_type">int</span> age<span class="sh_symbol">;</span><span class="sh_comment">//该属性在序列化时会被忽略</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_usertype">String</span><span class="sh_normal"> </span>gender<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//getter and setter and other</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">...</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Emp implements Serializable{
+	private static final long serialVersionUID = 1L;
+	private String name;
+	private transient int age;//该属性在序列化时会被忽略
+	private String gender;
+	//getter and setter and other
+	...
+}
+</pre></div></div>
+      <a name="Key02">
+      </a>
+      <h1>2. 文件数据IO操作</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. Reader和Writer</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. 字符流原理</h3>
+      <p>Reader是所有字符输入流的父类，而Writer是所有字符输出流的父类。字符流是以字符(char)为单位读写数据的。一次处理一个unicode。字符流都是高级流，其底层都是依靠字节流进行读写数据的，所以底层仍然是基于字节读写数据的。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. 常用方法</h3>
+      <p>Reader的常用方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_function">read</span><span class="sh_symbol">()</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int read()
+</pre></div></div>
+      <p>读取一个字符，返回的int”值低16”位有效。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> <span class="sh_function">read</span><span class="sh_symbol">(</span><span class="sh_type">char</span><span class="sh_symbol">[]</span> chs<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int read(char[] chs)
+</pre></div></div>
+      <p>从该流中读取一个字符数组length个字符并存入该数组，返回值为实际读取到的字符量。</p>
+      <p>Writer的常用方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">int</span> c<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(int c)
+</pre></div></div>
+      <p>写出一个字符,写出给定int值”低16”位表示的字符。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">char</span><span class="sh_symbol">[]</span> chs<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(char[] chs)
+</pre></div></div>
+      <p>将给定字符数组中所有字符写出。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>str<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(String str)
+</pre></div></div>
+      <p>将给定的字符串写出</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">void</span> <span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_type">char</span><span class="sh_symbol">[]</span> chs<span class="sh_symbol">,</span><span class="sh_type">int</span> offset<span class="sh_symbol">,</span><span class="sh_type">int</span> len<span class="sh_symbol">):</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">void write(char[] chs,int offset,int len):
+</pre></div></div>
+      <p>将给定的字符数组中从offset处开始连续的len个字符写出</p>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 转换流</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. 字符转换流原理</h3>
+      <p>InputStreamReader：字符输入流， 使用该流可以设置字符集，并按照指定的字符集从流中按照该编码将字节数据转换为字符并读取。</p>
+      <p>OutputStreamWriter:字符输出流，使用该流可以设置字符集，并按照指定的字符集将字符转换为对应字节后通过该流写出。</p>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. 指定字符编码</h3>
+      <p>InputStreamReader的构造方法允许我们设置字符集:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">InputStreamReader</span><span class="sh_symbol">(</span><span class="sh_usertype">InputStream</span><span class="sh_normal"> </span>in<span class="sh_symbol">,</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>charsetName<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">InputStreamReader(InputStream in,String charsetName)
+</pre></div></div>
+      <p>基于给定的字节输入流以及字符编码创建ISR</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">InputStreamReader</span><span class="sh_symbol">(</span><span class="sh_usertype">InputStream</span><span class="sh_normal"> </span>in<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">InputStreamReader(InputStream in)
+</pre></div></div>
+      <p>该构造方法会根据系统默认字符集创建ISR</p>
+      <p>OutputStreamWriter:的构造方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">OutputStreamWriter</span><span class="sh_symbol">(</span><span class="sh_usertype">OutputStream</span><span class="sh_normal"> </span>out<span class="sh_symbol">,</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>charsetName<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">OutputStreamWriter(OutputStream out,String charsetName)
+</pre></div></div>
+      <p>基于给定的字节输出流以及字符编码创建OSW</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_function">OutputStreamWriter</span><span class="sh_symbol">(</span><span class="sh_usertype">OutputStream</span><span class="sh_normal"> </span>out<span class="sh_symbol">)</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">OutputStreamWriter(OutputStream out) 
+</pre></div></div>
+      <p>该构造方法会根据系统默认字符集创建OSW</p>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. 使用OutputStreamWriter</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">...</span></li><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">testOutput</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> IOException<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"demo.txt"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;OutputStreamWriter writer</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//这里使用的字符编码为UTF-8</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">OutputStreamWriter</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">,</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> <span class="sh_string">"大家好!"</span><span class="sh_symbol">;</span><span class="sh_comment">//UTF-8中文为3个字节，英文符号占1个字节</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;writer<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>str<span class="sh_symbol">);</span><span class="sh_comment">//写出后该文件大小应该为10字节</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;writer<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_symbol">...</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">...
+public void testOutput() throws IOException{
+	FileOutputStream fos 
+		= new FileOutputStream("demo.txt");
+	OutputStreamWriter writer
+		//这里使用的字符编码为UTF-8
+		= new OutputStreamWriter(fos,"UTF-8");		
+	String str = "大家好!";//UTF-8中文为3个字节，英文符号占1个字节
+	writer.write(str);//写出后该文件大小应该为10字节
+	writer.close();
+}
+... 
+</pre></div></div>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. 使用InputStreamReader</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">...</span></li><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">testInput</span><span class="sh_symbol">()</span> <span class="sh_keyword">throws</span> IOException<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;FileInputStream fis </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileInputStream</span><span class="sh_symbol">(</span><span class="sh_string">"demo.txt"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/*</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;*  这里设置了字符编码为GBK</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;*  之后再通过ISR读取demo.txt文件时</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;*  就使用GBK编码读取字符了</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;*/</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;InputStreamReader reader</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">InputStreamReader</span><span class="sh_symbol">(</span>fis<span class="sh_symbol">,</span><span class="sh_string">"GBK"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span> c <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span><span class="sh_symbol">((</span>c <span class="sh_symbol">=</span> reader<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">())</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">((</span><span class="sh_type">char</span><span class="sh_symbol">)</span>c<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;reader<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span> </li><li><span class="sh_symbol">...</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">...
+public void testInput() throws IOException{
+	FileInputStream fis 
+		= new FileInputStream("demo.txt");
+	/*
+	*  这里设置了字符编码为GBK
+	*  之后再通过ISR读取demo.txt文件时
+	*  就使用GBK编码读取字符了
+	*/
+	InputStreamReader reader
+		= new InputStreamReader(fis,"GBK");
+	int c = -1;
+	while((c = reader.read()) != -1){
+		System.out.print((char)c);
+	} 
+	reader.close();
+} 
+...
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

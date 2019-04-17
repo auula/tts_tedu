@@ -1,0 +1,131 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="17448677472"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 什么是关系型数据库管理系统</h3> 
+   </div> 
+   <div> 
+    <h3>2 下列关于表的结构说法正确的是</h3> 
+    <p>A．表是二维的, 由行和列组成。</p> 
+    <p>B．表的行(Row)是横排数据，也被称作字段(Field)。</p> 
+    <p>C．表的列(Column)是纵列数据，也被称作记录(Record)。</p> 
+    <p>D．表是关系数据库的基本存储结构,一个关系数据库由多个数据表(Table)组成。</p> 
+   </div> 
+   <div> 
+    <h3>3 简述几种主流的数据库及其厂商</h3> 
+   </div> 
+   <div> 
+    <h3>4 简述结构化查询语言的分类</h3> 
+   </div> 
+   <div> 
+    <h3>5 关于number类型，下列说法正确的是</h3> 
+    <p>A．在Oracle中，number表示数字类型。</p> 
+    <p>B．“salary NUMBER(6,2)“表示salary列中的数据，整数位最大为4位，小数位最大位数是2位，即最大取值：9999.99。</p> 
+    <p>C．“id NUMBER(4)“表示id列中的数据，整数位最大为4位，没有小数。</p> 
+    <p>D．“fee NUMBER(7,2)“表示fee列中的数据，整数最大位数为7位，小数为2位。</p> 
+   </div> 
+   <div> 
+    <h3>6 关于char和varchar2，下列说法正确的是</h3> 
+    <p>A．char和varchar2都表示字符类型，无区别。</p> 
+    <p>B．char表示固定长度的字符类型，而varchar2表示变长的字符类型。</p> 
+    <p>C．“job VARCHAR2(100)”表示job列中最多可存储长度为100个字节的字符串。根据其中保存的数据长度，占用的空间是变化的，最大占用空间为100个字节。</p> 
+    <p>D．“ename CHAR(20)”表示ename列中最多可存储20个字节的字符串，并且占用的空间是固定的20个字节。</p> 
+   </div> 
+   <div> 
+    <h3>7 已知表如下，下列insert语句正确的是：</h3> 
+    <p>已知创建student表的SQL语句如下：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE TABLE <span class="sh_function">student</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;id <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;name <span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;gender <span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;birth DATE</li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE student(
+	id NUMBER(4),
+	name VARCHAR2(20),
+	gender CHAR(1),
+	birth DATE
+);
+</pre></div></div> 
+    <p>下列对student表实施插入的SQL语句正确的是：（）。</p> 
+    <p>A．insert into student(id,name,birth)</p> 
+    <p>values(1001,'smith','1989-01-12');</p> 
+    <p>B．英文环境可以采用如下插入语句实施插入：</p> 
+    <p>insert into student(id,name,birth)</p> 
+    <p>values(1001,'smith','12-JAN-89');</p> 
+    <p>C．中文环境可以采用如下插入语句实施插入：</p> 
+    <p>insert into student(id,name,birth)</p> 
+    <p>values(1001,'smith','12-1月-89');</p> 
+    <p>D．insert into student(id,name,birth)</p> 
+    <p>values(1001,'smith',to_date('1989-01-12','yyyy-mm-dd'));</p> 
+   </div> 
+   <div> 
+    <h3>8 创建账务账户表（Account）</h3> 
+    <p>帐务帐户表的信息如表-1所示：</p> 
+    <div class="table"> 
+     <p>表-1 帐务帐户表信息</p> 
+     <img src="./EXERCISE_files/table001.png"> 
+    </div> 
+    <p>请根据上述表信息创建账务账户表Account。</p> 
+   </div> 
+   <div> 
+    <h3>9 修改账务账户表（Account）</h3> 
+    <p>修改账务账户表，详细要求如下：</p> 
+    <p>1）修改account表的表名为t_account；</p> 
+    <p>2）向t_account表增加一列bak，其数据类型为varchar2，长度为50；</p> 
+    <p>3）修改t_account表中的bak列的长度为40，并增加默认值的设置，默认值为“login”；</p> 
+    <p>4）删除t_account表中的bak列。</p> 
+   </div> 
+   <div> 
+    <h3>10 插入账务账户数据</h3> 
+    <p>向t_account表中插入一条记录，该条记录的数据如表-2所示。</p> 
+    <div class="table"> 
+     <p>表- 2</p> 
+     <img src="./EXERCISE_files/table002.png"> 
+    </div> 
+   </div> 
+   <div> 
+    <h3>11 更改账务账户数据</h3> 
+    <p>将账务账户表ID为1的账务账户的密码更改为801206。</p> 
+   </div> 
+   <div> 
+    <h3>12 删除账务账户数据</h3> 
+    <p>删除账务账户表中ID为1的账务账户信息。</p> 
+   </div> 
+   <div> 
+    <h3>13 创建示例表emp和dept</h3> 
+    <p>创建职员表 emp，表结构如表－3所示：</p> 
+    <div class="table"> 
+     <p>表－3职员表emp 信息</p> 
+     <img src="./EXERCISE_files/table003.png"> 
+    </div> 
+    <p>创建部门表 dept，表结构如表－4所示：</p> 
+    <div class="table"> 
+     <p>表－4 部门表 dept 信息</p> 
+     <img src="./EXERCISE_files/table004.png"> 
+    </div> 
+   </div> 
+   <div> 
+    <h3>14 为示例表emp和dept插入示例数据</h3> 
+    <p>为职员表 emp插入示例数据，示例数据如图－1所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image001.png"> 
+     <p>图－1</p> 
+    </div> 
+    <p>为部门表 dept插入示例数据，示例数据如图－2所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image002.png"> 
+     <p>图－2</p> 
+    </div> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

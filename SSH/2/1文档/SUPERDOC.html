@@ -1,0 +1,341 @@
+
+<!-- saved from url=(0095)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="37874008269"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#Key01">OGNL</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#Key02">ValueStack</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#Key03">ValueStack</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#Key04">重构资费列表</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#Key05">Action基本原理</a>
+        </li>
+      </ol>
+      <h1>1. OGNL</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. OGNL介绍</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 什么是OGNL</h3>
+      <p>Object Graph Navigation Language，是一门功能强大的表达式语言，类似于EL。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 为什么用OGNL</h3>
+      <p>OGNL表达式功能很强大，后面我们会重点阐述。而Struts2默认采用OGNL表达式访问Action的数据，实际上是通过ValueStack用封装后的OGNL来访问的Action。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. OGNL原理</h3>
+      <p>OGNL是独立的开源组件，Struts2对其进行了改造及封装，要想了解Struts2中OGNL的运行原理，需参考ValueStack。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. OGNL用法</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. Struts2显示标签</h3>
+      <p>Struts2中，OGNL表达式要结合Struts2标签来访问数据，即OGNL表达式要写在Struts2标签内，因此我们先来介绍第一个Struts2的标签——显示标签。</p>
+      <p>1、语法</p>
+      <p>&lt;s:property value="OGNL"/&gt;</p>
+      <p>2、解释</p>
+      <p>该标签的作用是根据OGNL表达式访问Action，并将取出的数据替换标签本身。如下图，实际上该标签类似于EL表达式中的${ }。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 2个常用的OGNL表达式</h3>
+      <p>OGNL表达式一共有8种使用方法，其中前2种要求大家必须掌握，是经常要用到的方式，后6种了解即可，下面我们来介绍这2种必须掌握的OGNL。</p>
+      <p>1、访问基本属性</p>
+      <ul class="list">
+        <li>语法：&lt;s:property value="属性名"/&gt;
+</li>
+        <li>解释：这种方式的作用是将Action中的基本属性直接显示到标签的位置，属性名指的是Action中的属性。
+</li>
+        <li>举例：&lt;s:property value="name"/&gt;
+</li>
+      </ul>
+      <p>2、访问实体对象</p>
+      <ul class="list">
+        <li>语法：&lt;s:property value="对象名.属性名"/&gt;
+</li>
+        <li>解释：这种方式的作用是将Action中的实体对象属性显示到标签的位置，对象名指的是Action中的实体对象，属性名指的是实体对象中的属性。
+</li>
+        <li>举例“&lt;s:property value="user.userName"/&gt;
+</li>
+      </ul>
+      <p class="emphasiz">可以看出，这两种访问Action的方式实际上与EL表达式用法完全一致，是最常用的，也是最容易掌握的2种方式。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 6个需要了解的OGNL表达式</h3>
+      <ul class="list">
+        <li>语法：&lt;s:property value="属性名[index]"/&gt;
+</li>
+        <li>解释：这种方式的作用是访问Action中的数组或集合的某元素，其中属性指的是Action中的数组或集合属性，index指的是数组或集合的下标。
+</li>
+        <li>举例：&lt;s:property value="langs[1]"/&gt;
+</li>
+        <li>语法：&lt;s:property value="属性名.KEY"/&gt;
+</li>
+        <li>解释：这种方式的作用是访问Action中的Map类型的属性值，其中属性指的是Action中的Map类型属性，KEY指的是Map属性的key，即可以通过其key来直接输出对应的值。
+</li>
+        <li>举例：&lt;s:property value="msgMap.success"/&gt;
+</li>
+        <li>语法：&lt;s:property value="OGNL和运算"/&gt;
+</li>
+        <li>解释：这种方式的作用是在访问Action数据后，可以对OGNL表达式返回的结果直接进行计算，并将计算结果输出于标签位置。
+</li>
+        <li>举例：&lt;s:property value="name+‘，你好‘"/&gt;
+</li>
+        <li>语法：&lt;s:property value="OGNL.方法"/&gt;
+</li>
+        <li>解释：这种方式的作用是在访问Action数据后，可以直接调用OGNL表达式返回值的方法，并将最终的结果输出于标签位置。
+</li>
+        <li>举例：&lt;s:property value="name.toUpperCase()"/&gt;
+</li>
+        <li>语法：&lt;s:property value="OGNL"/&gt;
+</li>
+        <li>解释：这种方式的作用是不访问Action的数据，而是直接使用OGNL表达式创建一个临时的集合，并返回输出于标签位置。
+</li>
+        <li>举例：&lt;s:property value="{1,2,3}"/&gt;
+</li>
+        <li>语法：&lt;s:property value="OGNL"/&gt;
+</li>
+        <li>解释：这种方式的作用是不访问Action的数据，而是直接使用OGNL表达式创建一个临时的Map，并返回输出于标签位置
+</li>
+        <li>举例：&lt;s:property value="#{‘bj‘:’北京‘,’sh’:’上海’}"/&gt;
+</li>
+      </ul>
+      <a name="Key02">
+      </a>
+      <h1>2. ValueStack</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. ValueStack介绍</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. 什么是ValueStack</h3>
+      <p>ValueStack是Struts2中，Action向页面传递数据的媒介，ValueStack封装了Action的数据，并允许JSP通过OGNL来对其进行访问。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. ValueStack原理</h3>
+      <p>如下图，Struts2使用了ValueStack对OGNL组件进行了封装，其封装的实际上是改造后的OGNL，当然我们不关注改造的过程，只需要掌握改造后的OGNL在ValueStack中的运行原理即可。</p>
+      <p>ValueStack中首先封装了OGNL解析引擎，用于解析传入的OGNL表达式，其目的就是在页面上以标签+字符串的方式访问Java对象，从而降低了页面代码的开发难度，提升了页面代码的维护效率，而OGNL表达式传入引擎的时机我们在后面的Action基本原理中会讲到。</p>
+      <p>OGNL引擎可以访问2种类型的对象，一种是栈类型，另一种是Map类型。</p>
+      <p>1、栈</p>
+      <ul class="list">
+        <li>默认情况下，OGNL表达式访问的是这个栈，访问的规则是从栈顶向下依次以栈的每一级元素作为root对象来取值，直到取到值则返回，如果没有取到任何数据则返回null。
+</li>
+        <li>root对象就是JavaBean，只是在ValueStack中按照这种方式称呼而已。OGNL访问root对象，其写法是直接从root对象的属性写起，比如以Action为root对象，访问Action中的user属性，那么OGNL表达式为user.userName。
+</li>
+        <li>栈中封装的是最常用的数据，通常情况下是Action和另外一个Struts2自身要使用的对象，其中Action位于栈顶。此类型的目的是为了简化OGNL表达式，这一点我们在后面的迭代标签时会有更直观的体会。
+</li>
+      </ul>
+      <p>2、Map</p>
+      <ul class="list">
+        <li>如果OGNL表达式以“#”开头，那么OGNL引擎会访问Map类型的对象，此时OGNL表达式的写法为#key，返回的值为该key在Map中对应的值，这种对象通常我们称之为context对象。
+</li>
+        <li>context对象用于封装程序的上下文数据，包含request、session、page、application等。实际上，context对象封装的是完整的数据，也包含了action的数据。
+</li>
+        <li>context对象是完整的数据对象，有了它其实就足够了，但是Struts2设计出了栈，完全是处于简化OGNL表达式的目的，当然这种行为会增加一些理解的难度，我们需要重点关注栈里数据的变化，但这和使用的方便相比就不足挂齿了。
+</li>
+      </ul>
+      <p class="emphasiz">总体来说，由于context对象中的数据固定了，因此对context对象的访问比较简单和直接。而栈中数据是会有所变化的，并且访问时也是自顶向下动态访问的，因此我们在学习ValueStack时要重点关注栈的结构和变化。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 访问ValueStack</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. 1、通过debug标签观察其结构</h3>
+      <p>ValueStack的原理是比较抽象的，对于其结构的理解也不够直观。对于这种情况，Struts2提供了一个调试标签，可以用于观察ValueStack的结构，该标签的效果如下图。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <p>可以看出，该标签会在页面上生成一个debug链接，点击后会展开ValueStack的结构描述内容，其中包括栈的结构及数据、context对象的结构及数据。</p>
+      <p>该标签的语法比较简单，即&lt;s:debug/&gt;。其作用仅仅是用于调试的，是给开发人员来使用的，当项目提交测试以及上线时，要删除该标记。</p>
+      <p class="emphasiz">值得注意的是，该标签存在互斥性，在页面上如果写多个调试标签，实际上只有第一个是准确的，其他的标签内容有问题。但鉴于该标签仅仅是给开发人员调试使用的，因此我们在了解这个规则的前提下，只要保持页面上只有一个调试标签即可正常使用。</p>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. 2、输出栈顶</h3>
+      <p>前面我们介绍了Struts2的显示标签，即&lt;s:property value="OGNL"/&gt;。这个标签有一种特殊的用法，可以直接输出栈顶的内容，语法为&lt;s:property /&gt;。</p>
+      <p>也就是说，将显示标签的value属性去掉，那么该标签将默认输出栈顶的内容。</p>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. 3、访问context对象</h3>
+      <p>Context对象是一个Map类型的对象，我们使用OGNL访问它的方式是固定的,即#key，返回的值是当前key在Map中对应的值。</p>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. 4、迭代集合</h3>
+      <p>我们可以使用Struts2的迭代标签结合着OGNL，来迭代Action中的集合属性，迭代集合标签的语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>s<span class="sh_symbol">:</span><span class="sh_usertype">iterator</span><span class="sh_normal"> </span>value<span class="sh_symbol">=</span><span class="sh_string">"users"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>s<span class="sh_symbol">:</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>value<span class="sh_symbol">=</span><span class="sh_string">"userName"</span><span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;/</span>s<span class="sh_symbol">:</span>iterator<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;s:iterator value="users"&gt;
+	&lt;s:property value="userName"/&gt;
+&lt;/s:iterator&gt;
+</pre></div></div>
+      <p>users是OGNL表达式，自顶向下访问ValueStack栈中root对象的users属性，这里会从栈顶的Action对象取到该集合属性（List&lt;User&gt; users）值 。</p>
+      <p>需要注意的是，在迭代的过程中，ValueStack的栈顶会发生变化，循环变量User会被压入栈顶，此时Action被压到栈的第二位,即栈顶由由原来的Action变为循环变量User，如下图</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <p>userName是OGNL表达式，自顶向下访问ValueStack栈中root对象的userName属性，这里会从栈顶的User对象取到userName属性值。</p>
+      <p>可以看出，这种动态访问栈中数据的方式，对我们的理解增加了一些难度，但是却可以简化循环内部的OGNL表达式，因为在循环时栈顶即为循环变量，我们以它为root写OGNL不用关注变量的名字了，而这部分代码在项目中是十分频繁出现的，因此牺牲一些理解难度的代价是完全值得的。</p>
+      <a name="Key02_02_05">
+      </a>
+      <h3>2.2.5. 5、按数字迭代</h3>
+      <p>有时候我们也需要按照数字的方式进行迭代，比如资费列表的分页功能。对于这种方式，Struts2也有对应的标签支持，按照数字迭代的标签语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>s<span class="sh_symbol">:</span><span class="sh_usertype">iterator</span><span class="sh_normal"> </span>begin<span class="sh_symbol">=</span><span class="sh_string">"from"</span> end<span class="sh_symbol">=</span><span class="sh_string">"to"</span> var<span class="sh_symbol">=</span><span class="sh_string">"k"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>s<span class="sh_symbol">:</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>value<span class="sh_symbol">=</span><span class="sh_string">"#k"</span><span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;/</span>s<span class="sh_symbol">:</span>iterator<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;s:iterator begin="from" end="to" var="k"&gt;
+	&lt;s:property value="#k"/&gt;
+&lt;/s:iterator&gt;
+</pre></div></div>
+      <p>from/to是OGNL表达式，自顶向下访问ValueStack栈中root对象的from/to属性，这里会从栈顶的Action对象取到属性（int from=1, to=3）值。</p>
+      <p>与迭代集合一样，按数字迭代时，栈顶也会变为循环变量。即在循环过程中，循环变量会被压入栈顶，此时Action被压到栈的第二位，如下图</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p>需要注意的是，我们不能以数字做root对象，因此无法写OGNL访问栈顶的整数（数字内部没东西了，而访问root需要写其内部属性名）。此时可以声明循环变量k，该声明会将循环变量加入context对象中（如k=2），这样我们就可以写#k这样的OGNL表达式来访问context对象，从而得到循环变量的值。</p>
+      <p>其实，我们也可以不写OGNL表达式，而是直接输出栈顶的值，即&lt;s:property/&gt;。</p>
+      <p>ValueStack结构看似复杂，但是需要我们重点关注的无非是栈顶的变化，而此变化也仅仅是在循环时发生，因此记住这唯一的变化情况即可，该情况我总结如下：</p>
+      <p class="emphasiz">1、默认情况下栈顶为Action。</p>
+      <p class="emphasiz">2、循环过程中，栈顶为循环变量。</p>
+      <p class="emphasiz">迭代集合时，循环变量是集合中的对象，通常都是实体对象，即栈顶为实体对象，我们可以以实体对象为root来写OGNL表达式。</p>
+      <p class="emphasiz">按数字迭代时，循环变量是数字，我们不能以数字为实体对象写OGNL，如果需要引用该数字，需要通过var声明变量名，然后以“#变量名”来引用它，这种情况下，我们是从context对象中取出的值。</p>
+      <p class="emphasiz">3、循环结束后，栈顶变回Action。</p>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. Struts2对EL的支持</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. EL表达式如何访问ValueStack</h3>
+      <p>Struts2将数据封装于ValueStack，默认使用OGNL表达式来取值，而在此之前我们却使用了EL表达式取Action的值，那么EL表达式是从哪里取的值，如何取的值呢？</p>
+      <p>实际上EL表达式也是从ValueStack中取到的值，因为Struts2把传递的数据都放于ValueStack中了。但我们知道EL表达式的取值范围是page、request、session、application，而我们并没有把数据放入上述任何一个对象中，Struts2实现支持EL表达式的方式是以一个request的包装类来替代request，该包装类是request的子类，并覆写了它的getAttribute方法，在取值方法中先试图从原始request对象中取值，如果没有再从ValueStack中取值。</p>
+      <p>该request包装类的部分源码如下：</p>
+      <a name="Key03">
+      </a>
+      <h1>3. ValueStack</h1>
+      <a name="Key03_01">
+      </a>
+      <h2>3.1. 访问ValueStack</h2>
+      <a name="Key03_01_01">
+      </a>
+      <h3>3.1.1. 4、迭代集合</h3>
+      <p>我们可以使用Struts2的迭代标签结合着OGNL，来迭代Action中的集合属性，迭代集合标签的语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>s<span class="sh_symbol">:</span><span class="sh_usertype">iterator</span><span class="sh_normal"> </span>value<span class="sh_symbol">=</span><span class="sh_string">"users"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>s<span class="sh_symbol">:</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>value<span class="sh_symbol">=</span><span class="sh_string">"userName"</span><span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;/</span>s<span class="sh_symbol">:</span>iterator<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;s:iterator value="users"&gt;
+	&lt;s:property value="userName"/&gt;
+&lt;/s:iterator&gt;
+</pre></div></div>
+      <p>users是OGNL表达式，自顶向下访问ValueStack栈中root对象的users属性，这里会从栈顶的Action对象取到该集合属性（List&lt;User&gt; users）值 。</p>
+      <p>需要注意的是，在迭代的过程中，ValueStack的栈顶会发生变化，循环变量User会被压入栈顶，此时Action被压到栈的第二位,即栈顶由由原来的Action变为循环变量User，如下图</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <p>userName是OGNL表达式，自顶向下访问ValueStack栈中root对象的userName属性，这里会从栈顶的User对象取到userName属性值。</p>
+      <p>可以看出，这种动态访问栈中数据的方式，对我们的理解增加了一些难度，但是却可以简化循环内部的OGNL表达式，因为在循环时栈顶即为循环变量，我们以它为root写OGNL不用关注变量的名字了，而这部分代码在项目中是十分频繁出现的，因此牺牲一些理解难度的代价是完全值得的。</p>
+      <a name="Key03_01_02">
+      </a>
+      <h3>3.1.2. 5、按数字迭代</h3>
+      <p>有时候我们也需要按照数字的方式进行迭代，比如资费列表的分页功能。对于这种方式，Struts2也有对应的标签支持，按照数字迭代的标签语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY02/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>s<span class="sh_symbol">:</span><span class="sh_usertype">iterator</span><span class="sh_normal"> </span>begin<span class="sh_symbol">=</span><span class="sh_string">"from"</span> end<span class="sh_symbol">=</span><span class="sh_string">"to"</span> var<span class="sh_symbol">=</span><span class="sh_string">"k"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>s<span class="sh_symbol">:</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>value<span class="sh_symbol">=</span><span class="sh_string">"#k"</span><span class="sh_symbol">/&gt;</span></li><li><span class="sh_symbol">&lt;/</span>s<span class="sh_symbol">:</span>iterator<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;s:iterator begin="from" end="to" var="k"&gt;
+	&lt;s:property value="#k"/&gt;
+&lt;/s:iterator&gt;
+</pre></div></div>
+      <p>from/to是OGNL表达式，自顶向下访问ValueStack栈中root对象的from/to属性，这里会从栈顶的Action对象取到属性（int from=1, to=3）值。</p>
+      <p>与迭代集合一样，按数字迭代时，栈顶也会变为循环变量。即在循环过程中，循环变量会被压入栈顶，此时Action被压到栈的第二位，如下图</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <p>需要注意的是，我们不能以数字做root对象，因此无法写OGNL访问栈顶的整数（数字内部没东西了，而访问root需要写其内部属性名）。此时可以声明循环变量k，该声明会将循环变量加入context对象中（如k=2），这样我们就可以写#k这样的OGNL表达式来访问context对象，从而得到循环变量的值。</p>
+      <p>其实，我们也可以不写OGNL表达式，而是直接输出栈顶的值，即&lt;s:property/&gt;。</p>
+      <p>ValueStack结构看似复杂，但是需要我们重点关注的无非是栈顶的变化，而此变化也仅仅是在循环时发生，因此记住这唯一的变化情况即可，该情况我总结如下：</p>
+      <p class="emphasiz">1、默认情况下栈顶为Action。</p>
+      <p class="emphasiz">2、循环过程中，栈顶为循环变量。</p>
+      <p class="emphasiz">迭代集合时，循环变量是集合中的对象，通常都是实体对象，即栈顶为实体对象，我们可以以实体对象为root来写OGNL表达式。</p>
+      <p class="emphasiz">按数字迭代时，循环变量是数字，我们不能以数字为实体对象写OGNL，如果需要引用该数字，需要通过var声明变量名，然后以“#变量名”来引用它，这种情况下，我们是从context对象中取出的值。</p>
+      <p class="emphasiz">3、循环结束后，栈顶变回Action。</p>
+      <a name="Key03_02">
+      </a>
+      <h2>3.2. Struts2对EL的支持</h2>
+      <a name="Key03_02_01">
+      </a>
+      <h3>3.2.1. EL表达式如何访问ValueStack</h3>
+      <p>Struts2将数据封装于ValueStack，默认使用OGNL表达式来取值，而在此之前我们却使用了EL表达式取Action的值，那么EL表达式是从哪里取的值，如何取的值呢？</p>
+      <p>实际上EL表达式也是从ValueStack中取到的值，因为Struts2把传递的数据都放于ValueStack中了。但我们知道EL表达式的取值范围是page、request、session、application，而我们并没有把数据放入上述任何一个对象中，Struts2实现支持EL表达式的方式是以一个request的包装类来替代request，该包装类是request的子类，并覆写了它的getAttribute方法，在取值方法中先试图从原始request对象中取值，如果没有再从ValueStack中取值。</p>
+      <p>该request包装类的部分源码如下：</p>
+      <a name="Key04">
+      </a>
+      <h1>4. 重构资费列表</h1>
+      <a name="Key04_01">
+      </a>
+      <h2>4.1. 重构资费列表</h2>
+      <a name="Key04_01_01">
+      </a>
+      <h3>4.1.1. 用Struts2标签+OGNL重构资费列表</h3>
+      <p>重构资费列表页面，我们可以分2步进行。</p>
+      <p>首先重构数据显示区域，将原来的JSTL+EL替换成Struts2标签+OGNL，完成后刷新页面做单元测试。</p>
+      <p>然后重构分页部分，将原来你的JSTL+EL替换成Struts2标签+OGNL，完成后刷新做单元测试。</p>
+      <a name="Key05">
+      </a>
+      <h1>5. Action基本原理</h1>
+      <a name="Key05_01">
+      </a>
+      <h2>5.1. 6大核心组件</h2>
+      <a name="Key05_01_01">
+      </a>
+      <h3>5.1.1. 6大核心组件关系</h3>
+      <p>Struts2中包含6大核心组件，它们彼此关联、相互协作，共同处理了一次请求。Struts2理论课实际上就是围绕这6大核心组件展开的，因此我们需要深刻的理解这6大核心组件的关系，这实际上也就是说明了Struts2的基本原理。</p>
+      <p>如下图，是Struts2中6大核心组件（红色）的关系：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image008.png">
+        <p>图-8</p>
+      </div>
+      <p>针对这张图，我们再进一步解释6大核心组件的关系,这里我按照6大核心组件调用的顺序来加以说明。</p>
+      <p class="emphasiz">值得注意的是，每次请求都会重新初始化除了FC之外的其他5大核心组件，即这些组件不是单例的，因此是线程安全的。并且在最终请求结束时销毁这些组件，但在请求未结束之前，这些组件是存活的，因此在JSP的标签中，我们是可以使用OGNL表达式访问ValueStack对象中的数据的。</p>
+      <a name="Key05_01_02">
+      </a>
+      <h3>5.1.2. 6大核心组件作用</h3>
+      <p>1、FC</p>
+      <p>前端控制器，负责统一的分发请求。</p>
+      <p>2、Action</p>
+      <p>业务控制器，负责处理某一类业务。</p>
+      <p>3、ValueStack</p>
+      <p>Action与JSP数据交互的媒介。</p>
+      <p>4、Interceptor</p>
+      <p>拦截器，负责扩展Action，处理Action的共通事务。</p>
+      <p>5、Result</p>
+      <p>负责输出的组件。</p>
+      <p>6、Tags</p>
+      <p>标签，负责显示数据、生成框体。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

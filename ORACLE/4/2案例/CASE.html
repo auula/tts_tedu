@@ -1,0 +1,288 @@
+
+<!-- saved from url=(0090)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17908799227"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA ORACLE DAY04</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#case1">Oracle子查询综合示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#case2">Oracle分页查询综合示例</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#case3">Oracle高级查询综合示例</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 Oracle子查询综合示例</h2>
+      <h3>1.1 问题</h3>
+      <p>对于emp表和dept表，完成如下各个案例。</p>
+      <p>1)执行下列SQL语句：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT ename<span class="sh_symbol">,</span>sal FROM emp WHERE sal<span class="sh_symbol">=</span> </li><li> <span class="sh_symbol">(</span>SELECT sal FROM emp</li><li> WHERE ename<span class="sh_symbol">=</span> <span class="sh_string">'smith'</span> OR deptno<span class="sh_symbol">=</span><span class="sh_number">20</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT ename,sal FROM emp WHERE sal= 
+ (SELECT sal FROM emp
+ WHERE ename= 'smith' OR deptno=20);
+</pre></div></div>
+      <p>这条语句出错的原因在于（）。</p>
+      <p>A．子查询中不能出现where子句。</p>
+      <p>B．逻辑运算符OR不允许出现在where子句中。</p>
+      <p>C．子查询得到多行结果，主查询中使用的是单行比较运算符。</p>
+      <p>D．子查询得到单行结果，主查询中使用的是多行比较运算符。</p>
+      <p>2)写SQL语句，查询哪个部门的平均工资是最高的，列出部门编码、平均工资。</p>
+      <p>3)写SQL语句，列出各个部门中工资最高的员工的信息：名字、部门号、工资。</p>
+      <p>4)写SQL语句，查询管理者是“KING”的员工姓名（ename）和工资（sal）。</p>
+      <p>5)写SQL语句，查询部门所在地（loc）为“NEW YORK”的部门的员工的姓名（ename），部门名称（dname）和岗位名称（job）。</p>
+      <p>6)写SQL语句，查询工资比公司平均工资高的所有员工的员工号（empno），姓名（ename）和工资（sal）。</p>
+      <p>7)写SQL语句，查询姓名中包含字母“u”的员工在相同部门的员工的员工号（empno）和姓名（ename）。</p>
+      <p>8)写SQL语句，查询哪些员工的薪水比本部门的平均薪水低。</p>
+      <h3>1.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一:子查询得到多行结果，主查询中要求使用多行比较运算符</p>
+      <p>案例中，子查询SQL语句：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT sal FROM emp</li><li>WHERE ename<span class="sh_symbol">=</span> <span class="sh_string">'smith'</span> OR deptno<span class="sh_symbol">=</span><span class="sh_number">20</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT sal FROM emp
+WHERE ename= 'smith' OR deptno=20；
+</pre></div></div>
+      <p>该SQL语句返回多条数据，对于这种返回多条数据的情况，Oracle要求使用多行比较运算符。本案例中，在主查询中使用了“=”运算符，它属于单行运算符，因此，在此案例中，正确的答案为C。</p>
+      <p class="number">步骤二：查询哪个部门的平均工资是最高的</p>
+      <p>首先，使用group by子句配合子查询，查询出平均工资最高的部门，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_function">max</span><span class="sh_symbol">(</span><span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">))</span> from emp group by deptno；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select max(avg(sal)) from emp group by deptno；
+</pre></div></div>
+      <p>然后，将上述查询的结果作为主查询的条件，进一步查询出平均工资最高的部门的部门编码，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select deptno<span class="sh_symbol">,</span> <span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> from emp </li><li>group by deptno </li><li>having <span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>select <span class="sh_function">max</span><span class="sh_symbol">(</span><span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">))</span> from emp group by deptno<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select deptno, avg(sal) from emp 
+group by deptno 
+having avg(sal) = (select max(avg(sal)) from emp group by deptno);
+</pre></div></div>
+      <p>上述SQL语句中，设置分组的条件使用了having子句。</p>
+      <p class="number">步骤三：列出各个部门中工资最高的员工的信息</p>
+      <p>首先，使用group by 子句配合组函数查询出各个部门的最高工资，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select deptno <span class="sh_symbol">,</span> <span class="sh_function">max</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> from emp group by deptno；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select deptno , max(sal) from emp group by deptno；
+</pre></div></div>
+      <p>然后，将上述查询的结果作为where条件的值，即使用in操作符判断哪些员工与上述查询的结果集中的任一数据相等，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select ename <span class="sh_symbol">,</span>  sal <span class="sh_symbol">,</span> deptno from emp </li><li><span class="sh_function">where</span> <span class="sh_symbol">(</span>deptno <span class="sh_symbol">,</span> sal<span class="sh_symbol">)</span> <span class="sh_keyword">in</span> </li><li><span class="sh_symbol">(</span>select deptno <span class="sh_symbol">,</span> <span class="sh_function">max</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> from emp group by deptno<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select ename ,  sal , deptno from emp 
+where (deptno , sal) in 
+(select deptno , max(sal) from emp group by deptno);
+</pre></div></div>
+      <p class="number">步骤四：查询管理者是“KING”的员工姓名（ename）和工资（sal）</p>
+      <p>首先，查询员工“KING”的员工编号，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select empno from emp where ename <span class="sh_symbol">=</span> <span class="sh_string">'KING'</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select empno from emp where ename = 'KING'；
+</pre></div></div>
+      <p>然后，将上述查询的结果作为where条件的值，当员工的管理者ID（mgr）等于上述查询结果时，该员工的管理者即为“KING”，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select ename<span class="sh_symbol">,</span> sal</li><li>from emp</li><li>where mgr <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>select empno from emp where ename <span class="sh_symbol">=</span> <span class="sh_string">'KING'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select ename, sal
+from emp
+where mgr = (select empno from emp where ename = 'KING');
+</pre></div></div>
+      <p class="number">步骤五：查询部门所在地（loc）为“NEW YORK”的部门的员工信息</p>
+      <p>首先，查询部门所在地为“NEW YORK”的部门编号，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select deptno from dept where loc <span class="sh_symbol">=</span> <span class="sh_string">'NEW YORK'</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select deptno from dept where loc = 'NEW YORK'；
+</pre></div></div>
+      <p>然后，将上述查询的结果作为where条件的值，查询部门所在地为“NEW YORK”的部门里的所有员工的员工号（empno）、姓名（ename）和工资（sal）。SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> d<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>job</li><li>from emp e join dept d</li><li>on e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno</li><li>where e<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>select deptno from dept where loc <span class="sh_symbol">=</span> <span class="sh_string">'NEW YORK'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select e.ename, d.dname, e.job
+from emp e join dept d
+on e.deptno = d.deptno
+where e.deptno = (select deptno from dept where loc = 'NEW YORK');
+</pre></div></div>
+      <p>由于需要显示部门名称（dname），因此在上述SQL语句中，使用join... on将表emp和表dept做内连接查询。</p>
+      <p class="number">步骤六：查询工资比公司平均工资高的所有员工信息</p>
+      <p>首先，查询所有员工的平均工资，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> from emp；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select avg(sal) from emp；
+</pre></div></div>
+      <p>然后，将上述查询的结果作为where条件的值，当职员表中的某条记录的工资（sal）大于上述查询结果时，该员工的工资即高于公司的平均工资，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select empno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> sal</li><li>from emp</li><li>where  sal<span class="sh_symbol">&gt;</span> <span class="sh_symbol">(</span>select <span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span> from emp<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select empno, ename, sal
+from emp
+where  sal&gt; (select avg(sal) from emp);
+</pre></div></div>
+      <p class="number">步骤七：查询姓名中包含字母“u”的员工在相同部门的员工信息</p>
+      <p>首先，使用like运算符查询姓名中包含字母“u”的员工的员工编号，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select deptno from emp where ename like <span class="sh_string">'%U%'</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select deptno from emp where ename like '%U%'；
+</pre></div></div>
+      <p>然后，将上述查询的结果作为where条件的值，当职员表中的某条记录的部门编号等于上述查询结果中的任意一个时，该员工所在的部门与姓名中包含字母“u”的员工的部门相同，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select empno<span class="sh_symbol">,</span> ename</li><li>from emp</li><li>where deptno <span class="sh_keyword">in</span> <span class="sh_symbol">(</span>select deptno from emp where ename like <span class="sh_string">'%U%'</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select empno, ename
+from emp
+where deptno in (select deptno from emp where ename like '%U%');
+</pre></div></div>
+      <p class="number">步骤八：查询哪些员工的薪水比本部门的平均薪水低</p>
+      <p>本题可以使用关联子查询来解决，关联子查询的语法如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT  column1<span class="sh_symbol">,</span> column2<span class="sh_symbol">,</span> …</li><li>FROM     table1 o</li><li>WHERE   column1 operator</li><li>                     <span class="sh_symbol">(</span>SELECT column</li><li>                      FROM table2 i</li><li>WHERE  i<span class="sh_symbol">.</span>expr1 <span class="sh_symbol">=</span> o<span class="sh_symbol">.</span>expr2<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT  column1, column2, …
+FROM     table1 o
+WHERE   column1 operator
+                     (SELECT column
+                      FROM table2 i
+WHERE  i.expr1 = o.expr2)
+</pre></div></div>
+      <p>本题中要解决的问题为如何在主查询和子查询中来表示同一部门，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span></li><li>from emp b</li><li>where b<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> a<span class="sh_symbol">.</span>deptno；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select avg(sal)
+from emp b
+where b.deptno = a.deptno；
+</pre></div></div>
+      <p>其中a.deptno的a为主查询中emp表的别名。</p>
+      <p>将上述查询作为主查询的条件，查询哪些员工的薪水比本部门的平均薪水低，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>selectename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> deptno</li><li>from emp a</li><li>where sal <span class="sh_symbol">&lt;</span> <span class="sh_symbol">(</span> select <span class="sh_function">avg</span><span class="sh_symbol">(</span>sal<span class="sh_symbol">)</span></li><li>from emp b</li><li>where b<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> a<span class="sh_symbol">.</span>deptno <span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">selectename, sal, deptno
+from emp a
+where sal &lt; ( select avg(sal)
+from emp b
+where b.deptno = a.deptno ) ;
+</pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 Oracle分页查询综合示例</h2>
+      <h3>2.1 问题</h3>
+      <p>根据上一案例中的表结构和示例数据，完成如下查询：</p>
+      <p>1)查询emp表前5条记录</p>
+      <p>2)查询第3-5条记录，无需排序</p>
+      <p>3)查询公司工资最高的三个人</p>
+      <p>4)查询公司工资最低的五个人</p>
+      <h3>2.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一:查询emp表前5条记录</p>
+      <p>使用ROWNUM伪列，查询emp表前5条记录，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> from emp where rownum <span class="sh_symbol">&lt;=</span> <span class="sh_number">5</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from emp where rownum &lt;= 5;
+</pre></div></div>
+      <p>ROWNUM是一个伪列，对查询返回的行编号即行号，由1开始依次递增。注意：Oracle的rownum数值是在获取每行之后才赋予的，因此使用“rownum&gt;数字”是查询不到数据的。</p>
+      <p class="number">步骤二:查询第3-5条记录，无需排序</p>
+      <p>首先，利用ROWNUM截取结果集中的部分数据，需要用到行内视图，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select rownum num<span class="sh_symbol">,</span> e<span class="sh_symbol">.*</span> from emp e；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select rownum num, e.* from emp e；
+</pre></div></div>
+      <p>上述SQL语句中给ROWNUM一个别名num。</p>
+      <p>然后，将上述查询的结果作为一张虚表，其中，num为这张表中的一列。查询第3-5条记录，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> <span class="sh_function">from</span> <span class="sh_symbol">(</span>select rownum num<span class="sh_symbol">,</span> e<span class="sh_symbol">.*</span> from emp e<span class="sh_symbol">)</span> </li><li>where num <span class="sh_symbol">&gt;=</span> <span class="sh_number">3</span> and num <span class="sh_symbol">&lt;=</span> <span class="sh_number">5</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from (select rownum num, e.* from emp e) 
+where num &gt;= 3 and num &lt;= 5;
+</pre></div></div>
+      <p class="number">步骤三:查询公司工资最高的三个人</p>
+      <p>首先，按工资降序排列员工数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> from emp order by sal desc；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from emp order by sal desc；
+</pre></div></div>
+      <p>然后，将上述查询的结果作为一张虚表，再根据ROWNUM的特性查询公司工资最高的三个人，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> from </li><li><span class="sh_symbol">(</span>select <span class="sh_symbol">*</span> from emp order by sal desc<span class="sh_symbol">)</span></li><li>where rownum <span class="sh_symbol">&lt;=</span> <span class="sh_number">3</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from 
+(select * from emp order by sal desc)
+where rownum &lt;= 3;
+</pre></div></div>
+      <p class="number">步骤四:查询公司工资最低的五个人</p>
+      <p>首先，按工资升序排列员工数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> from emp order by sal；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from emp order by sal；
+</pre></div></div>
+      <p>然后，将上述查询的结果作为一张虚表，再根据ROWNUM的特性查询公司工资最低的五个人，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>select <span class="sh_symbol">*</span> from </li><li><span class="sh_symbol">(</span>select <span class="sh_symbol">*</span> from emp order by sal<span class="sh_symbol">)</span></li><li>where rownum <span class="sh_symbol">&lt;=</span> <span class="sh_number">5</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">select * from 
+(select * from emp order by sal)
+where rownum &lt;= 5;
+</pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 Oracle高级查询综合示例</h2>
+      <h3>3.1 问题</h3>
+      <p>本案例的详细要求如下：</p>
+      <p>1）计算职位的人数，其中，“ANALYST”和“MANAGER”职位用“VIP”表示，其余是普通员工，职位用“OPERATION”显示。分别计算VIP职位和普通职员职位的人数，数据显示效果如图-1所示。</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <p>2）将dept表中的数据中按”OPERATIONS”、“ACCOUNTING”、“SALES”进行自定义排序。</p>
+      <p>3）按照部门编码分组显示，每组内按职员编码排序，并赋予组内编码，要求使用ROW_NUMBER函数完成。</p>
+      <p>4）将职员表中按照部门编码分组，同组内按薪水降序排列，相同薪水则按奖金数升序排列，并显示等级标识，用Rank_ID表示，要求使用RANK函数完成。</p>
+      <p>5）关联emp和dept表，按照部门编码分组，每组内按照员工薪水升序排列，列出员工的部门名字、姓名和薪水及等级drank，要求使用DENSE_RANK函数完成。</p>
+      <p>6）创建sales_tab，该表存储了2010-2011年每月每天的销售额，创建表的SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE TABLE <span class="sh_function">sales_tab</span> <span class="sh_symbol">(</span></li><li>year_id   NUMBER NOT NULL<span class="sh_symbol">,</span></li><li>month_id   NUMBER NOT NULL<span class="sh_symbol">,</span></li><li>day_id   NUMBER NOT NULL<span class="sh_symbol">,</span></li><li>sales_value <span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">)</span> NOT NULL</li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE sales_tab (
+year_id   NUMBER NOT NULL,
+month_id   NUMBER NOT NULL,
+day_id   NUMBER NOT NULL,
+sales_value NUMBER(10,2) NOT NULL
+);
+</pre></div></div>
+      <p>向sales_tab表中插入测试数据，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT INTO sales_tab</li><li>SELECT <span class="sh_function">TRUNC</span><span class="sh_symbol">(</span>DBMS_RANDOM<span class="sh_symbol">.</span><span class="sh_function">value</span><span class="sh_symbol">(</span><span class="sh_number">2010</span><span class="sh_symbol">,</span> <span class="sh_number">2012</span><span class="sh_symbol">))</span> AS year_id<span class="sh_symbol">,</span></li><li><span class="sh_function">TRUNC</span><span class="sh_symbol">(</span>DBMS_RANDOM<span class="sh_symbol">.</span><span class="sh_function">value</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">13</span><span class="sh_symbol">))</span> AS month_id<span class="sh_symbol">,</span></li><li><span class="sh_function">TRUNC</span><span class="sh_symbol">(</span>DBMS_RANDOM<span class="sh_symbol">.</span><span class="sh_function">value</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">32</span><span class="sh_symbol">))</span> AS day_id<span class="sh_symbol">,</span></li><li><span class="sh_function">ROUND</span><span class="sh_symbol">(</span>DBMS_RANDOM<span class="sh_symbol">.</span><span class="sh_function">value</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">100</span><span class="sh_symbol">),</span> <span class="sh_number">2</span><span class="sh_symbol">)</span> AS sales_value</li><li>FROM   dual</li><li>CONNECT BY level <span class="sh_symbol">&lt;=</span> <span class="sh_number">1000</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO sales_tab
+SELECT TRUNC(DBMS_RANDOM.value(2010, 2012)) AS year_id,
+TRUNC(DBMS_RANDOM.value(1, 13)) AS month_id,
+TRUNC(DBMS_RANDOM.value(1, 32)) AS day_id,
+ROUND(DBMS_RANDOM.value(1, 100), 2) AS sales_value
+FROM   dual
+CONNECT BY level &lt;= 1000;
+</pre></div></div>
+      <p>以上SQL语句向sales_tab表中插入1000条随机数据，年的范围为2010-2011年，月范围为1-12月，日范围为1-31天，销售额的范围为1到100（不包括100）的随机浮点数。</p>
+      <p>请统计2010-2011年每月每日的销售额，要求使用ROLLUP函数来完成。</p>
+      <p>7）统计年月的销售额，要求使用CUBE函数来完成。</p>
+      <p>8）统计年月的销售额，要求使用GROUPING SETS函数来完成。</p>
+      <h3>3.2 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：使用DECODE函数，按要求显示数据</p>
+      <p>使用DECODE函数，计算职位的人数，“ANALYST”和“MANAGER”职位用“VIP”表示，其余是普通员工，职位用“OPERATION”表示。分别计算VIP职位和普通职员职位的人数，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT <span class="sh_function">DECODE</span><span class="sh_symbol">(</span>job<span class="sh_symbol">,</span></li><li>                       <span class="sh_string">'ANALYST'</span><span class="sh_symbol">,</span> <span class="sh_string">'VIP'</span><span class="sh_symbol">,</span> </li><li>                       <span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span> <span class="sh_string">'VIP'</span><span class="sh_symbol">,</span> </li><li>                       <span class="sh_string">'OPERATION'</span><span class="sh_symbol">)</span> job<span class="sh_symbol">,</span></li><li><span class="sh_function">COUNT</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">)</span> job_cnt </li><li>FROM emp</li><li>GROUP BY <span class="sh_function">DECODE</span><span class="sh_symbol">(</span>job<span class="sh_symbol">,</span> <span class="sh_string">'ANALYST'</span><span class="sh_symbol">,</span> <span class="sh_string">'VIP'</span><span class="sh_symbol">,</span> <span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span> <span class="sh_string">'VIP'</span><span class="sh_symbol">,</span> <span class="sh_string">'OPERATION'</span><span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT DECODE(job,
+                       'ANALYST', 'VIP', 
+                       'MANAGER', 'VIP', 
+                       'OPERATION') job,
+COUNT(1) job_cnt 
+FROM emp
+GROUP BY DECODE(job, 'ANALYST', 'VIP', 'MANAGER', 'VIP', 'OPERATION'); 
+</pre></div></div>
+      <p class="number">步骤二：使用DECODE函数实现自定义排序</p>
+      <p>使用DECODE函数，将dept表中的数据按”OPERATIONS”、“ACCOUNTING”、“SALES”进行自定义排序，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT deptno<span class="sh_symbol">,</span> dname<span class="sh_symbol">,</span> loc</li><li>FROM dept</li><li>ORDER BY </li><li><span class="sh_function">DECODE</span><span class="sh_symbol">(</span>dname<span class="sh_symbol">,</span> <span class="sh_string">'OPERATIONS'</span><span class="sh_symbol">,</span><span class="sh_number">1</span><span class="sh_symbol">,</span><span class="sh_string">'ACCOUNTING'</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">,</span><span class="sh_string">'SALES'</span><span class="sh_symbol">,</span><span class="sh_number">3</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno, dname, loc
+FROM dept
+ORDER BY 
+DECODE(dname, 'OPERATIONS',1,'ACCOUNTING',2,'SALES',3);
+</pre></div></div>
+      <p class="number">步骤三：使用ROW_NUMBER函数实现分组排序</p>
+      <p>使用ROW_NUMBER函数按照部门编码分组显示，每组内按职员编码排序，并赋予组内编码，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT deptno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> empno<span class="sh_symbol">,</span></li><li><span class="sh_function">ROW_NUMBER</span><span class="sh_symbol">()</span></li><li><span class="sh_function">OVER</span> <span class="sh_symbol">(</span>PARTITION BY deptno ORDER BY empno<span class="sh_symbol">)</span>     AS emp_id </li><li>FROM emp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT deptno, ename, empno,
+ROW_NUMBER()
+OVER (PARTITION BY deptno ORDER BY empno)     AS emp_id 
+FROM emp;
+</pre></div></div>
+      <p>ROW_NUMBER函数计算的值就表示每组内部排序后的顺序编号，组内连续且唯一。</p>
+      <p class="number">步骤四：使用RANK函数实现分组排序</p>
+      <p>使用RANK函数将职员表中按照部门编码分组，同组内按薪水降序排列，相同薪水则按奖金数升序排列，并显示等级标识，用Rank_ID表示，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECTdeptno<span class="sh_symbol">,</span> ename<span class="sh_symbol">,</span> sal<span class="sh_symbol">,</span> comm<span class="sh_symbol">,</span></li><li><span class="sh_function">RANK</span><span class="sh_symbol">()</span> <span class="sh_function">OVER</span> <span class="sh_symbol">(</span>PARTITIONBYdeptno</li><li>ORDERBYsalDESC<span class="sh_symbol">,</span> comm<span class="sh_symbol">)</span> <span class="sh_string">"Rank_ID"</span></li><li>FROMemp<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECTdeptno, ename, sal, comm,
+RANK() OVER (PARTITIONBYdeptno
+ORDERBYsalDESC, comm) "Rank_ID"
+FROMemp;
+</pre></div></div>
+      <p>RANK函数排序后的等级标识是跳跃的，即如果有相同数据，则排名相同，比如并列第二，则两行数据都标记为2，但下一位将是第四名。</p>
+      <p class="number">步骤五：使用DENSE_RANK函数实现分组排序</p>
+      <p>关联emp和dept表，使用DENSE_RANK函数，按照部门编码分组，每组内按照员工薪水升序排列，列出员工的部门名字、姓名和薪水及等级drank，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECTd<span class="sh_symbol">.</span>dname<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>ename<span class="sh_symbol">,</span> e<span class="sh_symbol">.</span>sal<span class="sh_symbol">,</span> </li><li><span class="sh_function">DENSE_RANK</span><span class="sh_symbol">()</span></li><li><span class="sh_function">OVER</span> <span class="sh_symbol">(</span>PARTITIONBYe<span class="sh_symbol">.</span>deptnoORDERBYe<span class="sh_symbol">.</span>sal<span class="sh_symbol">)</span>     </li><li>ASdrank</li><li>FROMempejoindeptd</li><li>one<span class="sh_symbol">.</span>deptno <span class="sh_symbol">=</span> d<span class="sh_symbol">.</span>deptno<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECTd.dname, e.ename, e.sal, 
+DENSE_RANK()
+OVER (PARTITIONBYe.deptnoORDERBYe.sal)     
+ASdrank
+FROMempejoindeptd
+one.deptno = d.deptno;
+</pre></div></div>
+      <p>DENSE_RANK函数排序后的等级标识是连续的，即如果有并列第二，下一个排序将是三，这一点是和RANK函数不同，RANK是跳跃排序。</p>
+      <p>使用ROLLUP函数统计2010-2011年每月每日的销售额，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> day_id<span class="sh_symbol">,</span> <span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span> AS sales_value </li><li>FROM   sales_tab </li><li>GROUP BY <span class="sh_function">ROLLUP</span> <span class="sh_symbol">(</span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> day_id<span class="sh_symbol">)</span></li><li>ORDER BY year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> day_id<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT year_id, month_id, day_id, SUM(sales_value) AS sales_value 
+FROM   sales_tab 
+GROUP BY ROLLUP (year_id, month_id, day_id)
+ORDER BY year_id, month_id, day_id;
+</pre></div></div>
+      <p>上述SQL语句会依次按照（year_id, month_id, day_id）分组、（year_id, month_id）分组、（day_id）分组以及全表分组。</p>
+      <p>使用CUBE函数统计年月的销售额，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span></li><li><span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span> AS sales_value </li><li>FROM   sales_tab </li><li>GROUP BY <span class="sh_function">CUBE</span> <span class="sh_symbol">(</span>year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">)</span></li><li>ORDER BY year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT year_id, month_id,
+SUM(sales_value) AS sales_value 
+FROM   sales_tab 
+GROUP BY CUBE (year_id, month_id)
+ORDER BY year_id, month_id; 
+</pre></div></div>
+      <p>上述SQL语句会依次按照(year_id, month_id)分组、（year_id）分组、（month_id）分组以及全表分组。</p>
+      <p class="number">步骤八：使用GROUPING SETS函数统计销售额</p>
+      <p>使用GROUPING SETS函数统计年月的销售额，SQL语句如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>SELECT year_id<span class="sh_symbol">,</span> month_id<span class="sh_symbol">,</span> <span class="sh_function">SUM</span><span class="sh_symbol">(</span>sales_value<span class="sh_symbol">)</span>  </li><li>FROM sales_tab  </li><li>GROUP BY GROUPING <span class="sh_function">SETS</span> <span class="sh_symbol">((</span>year_id<span class="sh_symbol">),</span> <span class="sh_symbol">(</span>month_id<span class="sh_symbol">))</span></li><li>order by <span class="sh_number">1</span><span class="sh_symbol">,</span> <span class="sh_number">2</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">SELECT year_id, month_id, SUM(sales_value)  
+FROM sales_tab  
+GROUP BY GROUPING SETS ((year_id), (month_id))
+order by 1, 2;
+</pre></div></div>
+      <p>上述SQL语句会依次按照(year_id)分组、(month_id)分组。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

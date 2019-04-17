@@ -1,0 +1,106 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY02/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="17495958792"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 下列select语句输出的结果是？</h3> 
+    <p>有职员表 emp，表结构如表－1所示：</p> 
+    <div class="table"> 
+     <p>表－1 职员表emp 信息</p> 
+     <img src="./EXERCISE_files/table001.png"> 
+    </div> 
+    <p>emp 表中的示例数据如图－1所示：</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image001.png"> 
+     <p>图－1</p> 
+    </div> 
+    <p>对于emp表或者dual表，执行如下查询，请描述各查询的结果。</p> 
+    <p>1．selectjob, length(job) from emp order by job;</p> 
+    <p>2．select ename || ' earns $' || sal ||' monthly but wants $' || sal * 3 as“Dream Salary”from emp;</p> 
+    <p>3．select empno, ename from emp where upper (job)= 'clerk';</p> 
+    <p>4．selectSUBSTR('Doctor Who', 1, 6) from dual;</p> 
+    <p>5．select TRIM('半' FROM '半月二更半') AS"上联"from dual;</p> 
+    <p>6．select TRIM (leading '半' FROM '半月二更半') AS "上联"from dual;</p> 
+    <p>7．select TRIM (trailing '半' FROM '半月二更半') AS "上联"from dual;</p> 
+    <p>8．selectLPAD('TARDIS', 10, '*') from dual;</p> 
+    <p>9．selectLPAD('TARDIS', 3, '*') from dual;</p> 
+    <p>10．select * from emp where length(ename) = 5;</p> 
+   </div> 
+   <div> 
+    <h3>2 关于类型定义Number(9,2)，下列说法正确的是</h3> 
+    <p>A．整数部分9位，小数部分2位，共11位</p> 
+    <p>B．整数部分7位，小数部分2位，共9位</p> 
+    <p>C．整数部分6位，小数点一位，小数部分2位，共9位</p> 
+    <p>D．整数部分5位，小数部分2位，共7位</p> 
+   </div> 
+   <div> 
+    <h3>3 下列select语句输出的结果是？</h3> 
+    <p>对于emp表或者dual表，执行如下查询，请描述各查询的结果。</p> 
+    <p>1．select ename , sal , round(sal*1.08) from emp;</p> 
+    <p>2．selectmod(11,4) from dual;</p> 
+    <p>3．selecttrunc(123.123,-1)from&nbsp;dual;</p> 
+    <p>4．select floor(sysdate-hiredate) as "入职天数",ename from emp;</p> 
+   </div> 
+   <div> 
+    <h3>4 简述date和timestamp的区别</h3> 
+   </div> 
+   <div> 
+    <h3>5 按要求完成插入语句（包含日期类型）</h3> 
+    <p>向Unit01课后练习中，所创建的t_account表中插入一条记录，该记录的数据如表-2所示。</p> 
+    <div class="table"> 
+     <p>表- 2插入数据明细</p> 
+     <img src="./EXERCISE_files/table002.png"> 
+    </div> 
+   </div> 
+   <div> 
+    <h3>6 按指定输出格式写出select语句（包含日期类型）</h3> 
+    <p>1．按照“2009年4月11日 20时35分10秒”格式显示系统时间。</p> 
+    <p>2．构造查询语句，产生类似于下面形式的结果：</p> 
+    <p>NAME HIREDATE REVIEW</p> 
+    <p>--------------------------------------------------------------------------</p> 
+    <p>ALLEN 1980年12月17日 1980/12/17</p> 
+   </div> 
+   <div> 
+    <h3>7 下列select语句输出的结果是？</h3> 
+    <p>对于emp表或者dual表，执行如下查询，请描述各查询的结果。</p> 
+    <p>1．select * from emp where extract(year from hiredate) = '1987';</p> 
+    <p>2．select ename, last_day(hiredate) from emp;</p> 
+    <p>3．select next_day(sysdate, 7) from dual;</p> 
+    <p>4．select ename, add_months(hiredate, 3) from emp;</p> 
+    <p>5．select ename, months_between(sysdate, hiredate) from emp;</p> 
+    <p>6．select greatest(to_date('20070101', 'yyyymmdd'),hiredate) from emp;</p> 
+   </div> 
+   <div> 
+    <h3>8 已知表结构如下，按要求完成select语句</h3> 
+    <p>现有数据表Customer，其结构如表－3所示：</p> 
+    <div class="table"> 
+     <p>表－3 顾客表Customer 信息</p> 
+     <img src="./EXERCISE_files/table003.png"> 
+    </div> 
+    <p>构造SQL语句，列出Customer数据表中生日未提供的客户记录。</p> 
+   </div> 
+   <div> 
+    <h3>9 已知表结构如下，按要求完成select语句</h3> 
+    <p>对于emp表，构造SQL语句，查询员工编码empno，姓名ename，以及月收入(薪水 + 奖金)。注意：有的员工暂时没有奖金，即，如果comm列为null，则按照数值0计算。</p> 
+   </div> 
+   <div> 
+    <h3>10 已知表结构如下，按要求完成select语句</h3> 
+    <p>查询emp表，列出员工的编码、姓名和入职时间。</p> 
+    <p>要求：如果入职时间为null，则显示'not available'；如果入职时间不为null，则按照yyyy-mm-dd格式显示。</p> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

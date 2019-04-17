@@ -1,0 +1,407 @@
+
+<!-- saved from url=(0098)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="26825040056"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#Key01">Servlet开发要点</a>
+        </li>
+      </ol>
+      <h1>1. Servlet开发要点</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 重定向</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 什么是重定向</h3>
+      <p>在服务器为浏览器提供响应时，回传的数据包中的状态行里面是302状态码，同时在消息头内会增加一个键值对，名称为Location，值是一个新的URL地址。当这个响应到达浏览器的时候，这一次的请求响应过程并未结束，浏览器遇见302状态码之后，会立即按照Location头信息中指定的URL地址发送新的一个请求，这样一个在接到响应后又立即发出请求的过程叫做重定向。对于客户端用户来讲，中间的变化过程不会被察觉，因为这个过程是由浏览器自动完成的。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 重定向原理</h3>
+      <p>在重定向的过程中，影响浏览器做出动作的关键点即响应中的状态码及Location这个消息头。302状态就像一道命令一样，使得浏览器做出新的一次请求，而请求的地址会从头信息中查找。由于这个新的请求动作是由浏览器发出的，所以浏览器的地址栏上的地址会变成Location消息头中的地址。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 如何重定向</h3>
+      <p>由于发回的响应信息由response对象控制，所以使用如下代码即可实现重定向的过程：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>response<span class="sh_symbol">.</span><span class="sh_function">sendRedirect</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>url<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">response.sendRedirect(String url);
+</pre></div></div>
+      <p>该方法的参数值url即Location消息头中的重定向地址。注意，该段代码后面如果还有其他代码的话也会被继续执行的。</p>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 重定向特点</h3>
+      <p>由于重定向动作的执行者为浏览器，所以请求的地址可以是任意地址，哪怕是当前应用以外的应用；浏览器发出请求时一定会保持地址栏与目标地址的一致，所以发生重定向时可以从地址栏中看到地址的改变；由于整个跳转过程是在浏览器收到响应后重新发起请求，所以涉及到的Web组件并不会共享同一个request和response。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图- 1</p>
+      </div>
+      <p>在图 – 1中，1和4是两个完全不同的请求，如果在1号请求中曾经携带了某些表单数据，但4号这个全新请求中则不会获取到这些表单数据，也就是两次请求涉及到的Web组件不会共享request和response。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. Servlet容器如何处理请求资源路径</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 什么是请求资源路径</h3>
+      <p>在地址栏中输入的请求地址中，端口号之后的部分都是请求资源路径。紧跟端口号的是部署到Web服务器上的应用名（appName），紧跟应用名的则是具体的应用内的组件路径。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. Web服务器对请求地址的处理过程</h3>
+      <p>浏览器依据地址中的IP和端口号与Web服务器建立连接，服务器会获取到请求资源路径信息。根据端口号后面的应用名找到服务器上对应的应用。默认情况下容器会认为应用名后面的是一个Servlet，所以回到web.xml文件中所有是否有与该值匹配的&lt;url-pattern&gt;，找到匹配的值之后再按照&lt;servlet-name&gt;完成对应关系的查找，进而找到要执行的Servlet。如果没有找到匹配的资源服务器就会返回404错误。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 匹配Servlet的规则</h3>
+      <p>容器在进行url-pattern比对的时候是遵循一定的匹配原则的。这些原则主要有：</p>
+      <p class="number">精确匹配</p>
+      <p>即具体资源名称与web.xml文件中的url-pattern严格匹配相等才执行。如，配置的内容如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>test<span class="sh_symbol">.</span>MyServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;/</span>abc<span class="sh_symbol">.</span>html<span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;servlet&gt;
+	&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+	&lt;servlet-class&gt;test.MyServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+	&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+	&lt;url-pattern&gt;/abc.html&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</pre></div></div>
+      <p>则在地址栏中输入 http://ip:port/appName/abc.html 时，服务器就会去执行test.MyServlet这个组件，就算是在应用的根目录下的确有abc.html这个文件，也不会执行。</p>
+      <p class="number">通配符匹配</p>
+      <p>使用“*”这个符号来匹配0个或多个字符，已达到路径的批量匹配的效果。</p>
+      <p>如配置文件中的节点为如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>test<span class="sh_symbol">.</span>MyServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span><span class="sh_comment">/*&lt;/url-pattern&gt;</span></li><li><span class="sh_comment">&lt;/servlet-mapping&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;servlet&gt;
+	&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+	&lt;servlet-class&gt;test.MyServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+	&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+	&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</pre></div></div>
+      <p>则，在地址栏中输入以下任何地址时都是匹配成功的。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>http<span class="sh_symbol">:</span><span class="sh_comment">//ip:port/appName/abc.html</span></li><li>http<span class="sh_symbol">:</span><span class="sh_comment">//ip:port/appName/abc/def/ghi.html </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">http://ip:port/appName/abc.html
+http://ip:port/appName/abc/def/ghi.html 
+</pre></div></div>
+      <p class="number">后缀匹配</p>
+      <p>在配置url-pattern节点时，不使用斜杠开头，用“*.”开头来匹配任意多个字符的模式叫做后缀匹配。</p>
+      <p>如配置文件中的节点为如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>test<span class="sh_symbol">.</span>MyServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;*.</span><span class="sh_keyword">do</span><span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;servlet&gt;
+	&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+	&lt;servlet-class&gt;test.MyServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+	&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+	&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</pre></div></div>
+      <p>则，在地址栏中输入以下任何地址时都是匹配成功的。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>http<span class="sh_symbol">:</span><span class="sh_comment">//ip:port/appName/abc.do</span></li><li>http<span class="sh_symbol">:</span><span class="sh_comment">//ip:port/appName/abc/def/ghi.do</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">http://ip:port/appName/abc.do
+http://ip:port/appName/abc/def/ghi.do
+</pre></div></div>
+      <p>在这三种匹配方式中，优先级最高的是精确匹配。如果容器在使用以上原则都不能找到相匹配的资源来执行时，就按照地址到应用中查找对应的文件。此时如果找到文件则返回，找不到资源来执行就返回404错误。</p>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 一个Servlet实现多请求</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 为什么要将多Servlet合并</h3>
+      <p>Servlet作为Web应用中最核心的环节是因为这个组件不仅能接受请求，还能够为该请求提供响应，所以Servlet一般都会充当整个应用的控制器来进行请求的分发，为不同的请求找到对应的资源。于是程序中大多只需要一个Servlet完成这个分发工作即可，合并多个Servlet为一个Servlet会让程序的处理逻辑更加明确。</p>
+      <p>要想完成多个Servlet合并为一个Servlet，需要完成以下两个步骤：</p>
+      <ul class="list">
+        <li>使用后缀模式完成请求资源路径的匹配
+</li>
+        <li>分析请求资源路径中的请求目标，完成分发的动作
+</li>
+      </ul>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 使用后缀匹配模式完成请求资源路径的匹配</h3>
+      <p>修改web.xml文件，将更多的servlet配置节点删除，只保留一个节点即可，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span><span class="sh_usertype">app</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"2.4"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee </span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span><span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>SomeServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;*.</span><span class="sh_keyword">do</span><span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"&gt;
+  	&lt;servlet&gt;
+  		&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+  		&lt;servlet-class&gt;web.SomeServlet&lt;/servlet-class&gt;
+  	&lt;/servlet&gt;
+  	&lt;servlet-mapping&gt;
+  		&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+  		&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;
+  	&lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</pre></div></div>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 分析请求资源后分发</h3>
+      <p>配置完web.xml文件后，不同请求都会发送到Web.SomeServlet来处理，要想起到分发的作用，则需要分析调过来的请求中具体的请求目标是什么。使用如下代码逻辑来完成分发动作。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">package</span> web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">SomeServlet</span> <span class="sh_keyword">extends</span> HttpServlet<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      <span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span> &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> </li><li>ServletException<span class="sh_symbol">,</span>IOException<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获得请求资源路径</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>uri <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"uri:"</span> <span class="sh_symbol">+</span> uri<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>uri<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/test/list.do"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"进行员工列表的处理..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>uri<span class="sh_symbol">.</span><span class="sh_function">equals</span><span class="sh_symbol">(</span><span class="sh_string">"/test/add.do"</span><span class="sh_symbol">))</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"添加员工的处理..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class SomeServlet extends HttpServlet{
+	public void service(HttpServletRequest request,
+			      HttpServletResponse response) 	throws 
+ServletException,IOException{
+		//获得请求资源路径
+		String uri = request.getRequestURI();
+		System.out.println("uri:" + uri);
+		if(uri.equals("/test/list.do")){
+			System.out.println("进行员工列表的处理...");
+		}else if(uri.equals("/test/add.do")){
+			System.out.println("添加员工的处理...");
+		}
+	}
+}
+</pre></div></div>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. Servlet的生命周期</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. 什么是Servlet生命周期</h3>
+      <p>Servlet容器如何创建Servlet对象、如何为Servlet对象分配、准备资源、如何调用对应的方法来处理请求以及如何销毁Servlet对象的整个过程即Servlet的生命周期。</p>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. 生命周期的四个阶段</h3>
+      <p class="number">阶段一、实例化</p>
+      <p>实例化阶段是Servlet生命周期中的第一步，由Servlet容器调用Servlet的构造器创建一个具体的Servlet对象的过程。而这个创建的时机可以是在容器收到针对这个组件的请求之后，即用了才创建；也可以在容器启动之后立刻创建实例，而不管此时Servlet是否使用的上。使用如下代码可以设置Servlet是否在服务器启动时就执行创建。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>test<span class="sh_symbol">/</span>SomeServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>load<span class="sh_symbol">-</span>on<span class="sh_symbol">-</span>startup<span class="sh_symbol">&gt;</span><span class="sh_number">1</span><span class="sh_symbol">&lt;/</span>load<span class="sh_symbol">-</span>on<span class="sh_symbol">-</span>startup<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span><span class="sh_comment">/*&lt;/url-pattern&gt;</span></li><li><span class="sh_comment">&lt;/servlet-mapping&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;servlet&gt;
+	&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+	&lt;servlet-class&gt;test/SomeServlet&lt;/servlet-class&gt;
+		&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt; 
+	&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+	&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+</pre></div></div>
+      <p>配置文件中的load-on-startup节点用于设置该Servlet的创建时机。</p>
+      <p>当其中的值大于等于0时，表示容器在启动时就会创建实例</p>
+      <p>小于0时或没有指定时，代表容器在该Servlet被请求时再执行创建</p>
+      <p>正数的值越小，优先级越高，应用启动时就越先被创建。</p>
+      <p class="number">阶段二、初始化</p>
+      <p>Servlet在被加载实例化之后，必须要初始化它。在初始化阶段，init（）方法会被调用。这个方法在javax.servlet.Servlet接口中定义。其中，方法以一个ServletConfig类型的对象作为参数。ServletConfig对象由Servlet引擎负责创建，从中可以读取到事先在web.xml文件中通过&lt;init-param&gt;节点配置的多个name-value名值对。ServletConfig对象还可以让Servlet接受一个ServletContext对象。</p>
+      <p>一般情况下，init方法不需要编写，因GenericServlet已经提供了init方法的实现，并且提供了getServletConfig方法来获得ServletConfig对象。</p>
+      <p class="emphasiz">注：init方法只被执行一次。</p>
+      <p>以下代码为在servlet配置中，增加初始化参数</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span><span class="sh_usertype">app</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"2.4"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee </span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span><span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>test<span class="sh_symbol">/</span>SomeServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>init<span class="sh_symbol">-</span>param<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>param<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>debug<span class="sh_symbol">&lt;/</span>param<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>param<span class="sh_symbol">-</span>value<span class="sh_symbol">&gt;</span><span class="sh_keyword">true</span><span class="sh_symbol">&lt;/</span>param<span class="sh_symbol">-</span>valule<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>init<span class="sh_symbol">-</span>param<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>someServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span><span class="sh_comment">/*&lt;/url-pattern&gt;</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/servlet-mapping&gt;</span></li><li><span class="sh_comment">&lt;/web-app&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"&gt;
+  	&lt;servlet&gt;
+		&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+		&lt;servlet-class&gt;test/SomeServlet&lt;/servlet-class&gt;
+			&lt;init-param&gt;
+				&lt;param-name&gt;debug&lt;/param-name&gt;
+				&lt;param-value&gt;true&lt;/param-valule&gt;
+			&lt;/init-param&gt;
+	&lt;/servlet&gt;
+	&lt;servlet-mapping&gt; 
+		&lt;servlet-name&gt;someServlet&lt;/servlet-name&gt;
+		&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+	&lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</pre></div></div>
+      <p>使用以下代码可以读取Servlet配置中增加的初始化参数</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">package</span> test<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletConfig<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">SomeServlet</span> <span class="sh_keyword">extends</span> HttpServlet<span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              <span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;                      <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span>IOException<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"SomeServlet's service..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">ServletConfig</span><span class="sh_normal"> </span>config <span class="sh_symbol">=</span> <span class="sh_function">getServletConfig</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>debug <span class="sh_symbol">=</span> config<span class="sh_symbol">.</span><span class="sh_function">getInitParameter</span><span class="sh_symbol">(</span><span class="sh_string">"debug"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"debug:"</span> <span class="sh_symbol">+</span> debug<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package test;
+
+import java.io.IOException;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class SomeServlet extends HttpServlet{
+
+	public void service(HttpServletRequest request,
+			              HttpServletResponse response) 
+	                      throws ServletException,IOException{
+		System.out.println("SomeServlet's service...");
+		ServletConfig config = getServletConfig();
+		String debug = config.getInitParameter("debug");
+		System.out.println("debug:" + debug);
+	}
+}
+</pre></div></div>
+      <p class="number">阶段三、就绪</p>
+      <p>Servlet被初始化以后就处于能够响应请求的就绪状态。每个对Servlet的请求由一个ServletRequest对象代表，Servlet给客户端的响应由一个ServletResponse对象代表。当客户端有一个请求时，容器就会将请求与响应对象转给Servlet，以参数的形式传给service方法。service方法由javax.servlet.Servlet定义，由具体的Servlet实现。</p>
+      <p class="number">阶段四、销毁</p>
+      <p>Servlet容器在销毁Servlet对象时会调用destroy方法来释放资源。通常情况下Servlet容器停止或者重新启动都会引起销毁Servlet对象的动作，但除此之外，Servlet容器也有自身管理Servlet对象的准则，整个生命周期并不需要人为进行干预。</p>
+      <a name="Key01_04_03">
+      </a>
+      <h3>1.4.3. Servlet接口</h3>
+      <p>在ServletAPI中最重要的是Servlet接口，所有Servlet都会直接或间接的与该接口发生联系，或是直接实现该接口，或间接继承自实现了该接口的类。</p>
+      <p>该接口包括以下四个方法：</p>
+      <ul class="list">
+        <li>init(ServletConfig config)
+</li>
+        <li>service(ServletRequest req,ServletResponse res)
+</li>
+        <li>destroy( )
+</li>
+      </ul>
+      <p>在最开始制定Servlet规范时，设计者希望这套规范能够支持多种协议的组件开发，所以Servlet接口是最重要的一个接口。虽然我们写的程序中编写的Servlet都是继承自HttpServlet，但本质上都是对该接口的实现，因为HttpServlet就是针对Servlet这个接口的一个抽象的实现类。可以理解为HttpServlet是支持HTTP协议的分支的一部分。设计Servlet接口中的service方法时，也是希望该方法能够处理多种协议下的请求及响应，所以参数类型是ServletRequest，而在HttpServlet这个支持HTTP协议的分支中，service方法的参数则变成了HttpServletRequest和HttpServletResponse，这两个类分别继承于ServletRequest和ServletResponse，也就是对这两个类的一个具体协议的包装，区别是增加了很多与HTTP协议相关的使用API。</p>
+      <p>制定的这种规范在实际使用中发现，并不会扩展为HTTP协议之外，所以有了过度设计的缺陷，也为在编写HTTP协议的Web应用时添加了一些不必要的操作。</p>
+      <a name="Key01_04_04">
+      </a>
+      <h3>1.4.4. Servlet涉及到的抽象类</h3>
+      <p>Servlet API中另一个重要的类就是GenericServlet这个抽象类，它对Servlet接口中的部分方法（init和destroy）添加了实现，使得开发时只需要考虑针对service方法的业务实现即可。</p>
+      <p>HttpServlet又是在继承GenericServlet的基础上进一步的扩展，一个是public voidinit(ServletConfig config)，另一个是 public void&nbsp;init()。他们有如下的关系： init（ServletConfig&nbsp;config）方法由tomcat自动调用，它读取web工程下的web.xml，将读取的信息打包传给此参数，此方法的参数同时将接收的信息传递给GenericServlet类中的成员变量config，同时调用init()。以后程序员想重写init方法可以选择init（ServletConfig config）或者init()，但是选择init（ServletConfig&nbsp;config）势必会覆盖此方法已实现的内容，没有为config变量赋值，此后若是调用getServletConfig（）方法返回config时会产生空指针异常的，所以想重写init（ServletConfig config）方法，必须在方法体中第一句写上 super.init（config），为了防止程序员忘记重写super.init（config）方法sun公司自动为用户生成一个public void init()的方法。GenericServlet具体的定义如下所示</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>GenericServlet<span class="sh_cbracket">{</span></li><li>       ServletConfig config；</li><li>       <span class="sh_keyword">public</span> <span class="sh_type">void</span> init（）</li><li>       <span class="sh_cbracket">{</span>    <span class="sh_cbracket">}</span>   <span class="sh_comment">//此方法什么也没做，可以说是为编程人员预留的接口</span></li><li>      <span class="sh_keyword">public</span> <span class="sh_type">void</span> init（ServletConfig config）</li><li>      <span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">this</span><span class="sh_symbol">.</span>config<span class="sh_symbol">=</span>config<span class="sh_symbol">;</span></li><li>          <span class="sh_keyword">this</span><span class="sh_symbol">.</span><span class="sh_function">init</span><span class="sh_symbol">();</span></li><li>      <span class="sh_cbracket">}</span></li><li>     getServletConfig（）</li><li>     <span class="sh_cbracket">{</span></li><li>     &nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">return</span> config；</li><li>     <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">GenericServlet{
+       ServletConfig config；
+       public void init（）
+       {    }   //此方法什么也没做，可以说是为编程人员预留的接口
+      public void init（ServletConfig config）
+      {
+          this.config=config;
+          this.init();
+      }
+     getServletConfig（）
+     {
+     	 return config；
+     }
+}
+</pre></div></div>
+      <a name="Key01_05">
+      </a>
+      <h2>1.5. ServletContext</h2>
+      <a name="Key01_05_01">
+      </a>
+      <h3>1.5.1. 什么是Servlet上下文</h3>
+      <p>WEB容器在启动时，它会为每个WEB应用程序都创建一个对应的ServletContext对象，它代表当前web应用，是一个全局的环境变量。该应用中的任何组件，在任何时候都可以访问到该对象，所以Servlet上下文具有唯一性。</p>
+      <a name="Key01_05_02">
+      </a>
+      <h3>1.5.2. 如何获得Servlet上下文</h3>
+      <p>获取该对象的方式有以下四种：</p>
+      <ul class="list">
+        <li>GenericeServlet（HttpServlet）提供的  getServletContext（）
+</li>
+        <li>ServletConfig提供的    getServletContext（）
+</li>
+        <li>HttpSession提供的     getServletContext（）
+</li>
+        <li>FilterConfig提供的      getServletContext（）
+</li>
+      </ul>
+      <a name="Key01_05_03">
+      </a>
+      <h3>1.5.3. Servlet上下文的作用及特点</h3>
+      <p>Servlet上下文的作用：</p>
+      <ul class="list">
+        <li>在Web应用范围内存取共享数据:如 setAttribute(),getAttribute()
+</li>
+        <li>访问Web应用的静态资源：如getRealPath(String  path)
+</li>
+        <li>跨多个请求、用户和Servlet
+</li>
+      </ul>
+      <p>例如，以下是两个Servlet的完整代码，实现了跨Servlet的数据共享</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.*</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">SomeServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">PrintWriter</span><span class="sh_normal"> </span>out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">ServletContext</span><span class="sh_normal"> </span>sctx <span class="sh_symbol">=</span> <span class="sh_function">getServletContext</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sctx<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">,</span> <span class="sh_string">"Lisa"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.*</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">OtherServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;              <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">ServletContext</span><span class="sh_normal"> </span>sctx <span class="sh_symbol">=</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">getServletContext</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>name <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>String<span class="sh_symbol">)</span> sctx<span class="sh_symbol">.</span><span class="sh_function">getAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"name"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.*
+import javax.servlet.http.*
+
+public class SomeServlet extends HttpServlet {
+
+	public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			              throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		ServletContext sctx = getServletContext();
+		sctx.setAttribute("name", "Lisa");
+		out.close();
+	}
+
+}
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.*
+import javax.servlet.http.*
+
+public class OtherServlet extends HttpServlet {
+	public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			              throws ServletException, IOException {
+		response.setContentType("text/html;charset=utf-8");
+		ServletContext sctx =	getServletContext();
+		String name = (String) sctx.getAttribute("name");
+		out.close();
+	}
+
+}
+</pre></div></div>
+      <a name="Key01_06">
+      </a>
+      <h2>1.6. Servlet线程安全问题</h2>
+      <a name="Key01_06_01">
+      </a>
+      <h3>1.6.1. 为什么会有线程安全问题</h3>
+      <p>当浏览器访问服务器的通讯模块SomeServlet时，会启动一个线程T1来进行一系列的创建动作来处理这个请求。一般的web服务器的编程模型如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span>（flag）<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Socket</span><span class="sh_normal"> </span>s <span class="sh_symbol">=</span> ss<span class="sh_symbol">.</span><span class="sh_function">accept</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Thread</span><span class="sh_normal"> </span>t <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Thread</span><span class="sh_symbol">(</span>s<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t<span class="sh_symbol">.</span><span class="sh_function">start</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">				while（flag）{
+					Socket s = ss.accept();
+					Thread t = new Thread(s);
+					t.start();
+				}
+</pre></div></div>
+      <p>如果刚好同时也有一个请求来访问SomeServlet，但是服务器只有一个servlet实例，所以服务器会启动线程T2，此时就有可能产生T1和T2同时访问someservlet的情况，如果要修改属性就会有安全隐患</p>
+      <a name="Key01_06_02">
+      </a>
+      <h3>1.6.2. 如何保证Servlet线程安全</h3>
+      <p>使用synchronized对代码加锁即可。代码结构如下</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="hide sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">SomeServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_type">int</span> count <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request<span class="sh_symbol">,</span> </li><li><span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                  <span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">synchronized</span><span class="sh_symbol">(</span><span class="sh_keyword">this</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count <span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">sleep</span><span class="sh_symbol">(</span><span class="sh_number">1000</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span><span class="sh_usertype">InterruptedException</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thread<span class="sh_symbol">.</span><span class="sh_function">currentThread</span><span class="sh_symbol">().</span><span class="sh_function">getName</span><span class="sh_symbol">()</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">+</span> <span class="sh_string">":"</span> <span class="sh_symbol">+</span> count<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.*;
+import javax.servlet.*;
+
+public class SomeServlet extends HttpServlet {
+		private int count = 0;
+		public void service(HttpServletRequest request, 
+HttpServletResponse response)
+			                  throws ServletException, IOException {
+		synchronized(this){
+			count ++;
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println(
+					Thread.currentThread().getName() 
+					+ ":" + count);
+		}
+		
+	}
+
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY03/SUPERDOC/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

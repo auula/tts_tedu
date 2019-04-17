@@ -1,0 +1,260 @@
+
+<!-- saved from url=(0091)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="9543874427"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#Key01">对象和类（上）</a>
+        </li>
+      </ol>
+      <h1>1. 对象和类（上）</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 面向对象程序设计</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 面向过程的结构化程序设计</h3>
+      <p>首先来看一个需求，实现员工信息管理，将员工简历信息中的数据：姓名、性别、年龄、薪水， 存储在信息管理系统中进行操作。可以定义一个输出雇员信息的方法进行数据的输出，传递4个参数，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/** 打印员工信息的方法   */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">printEmpInfo</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">,</span><span class="sh_type">int</span> age<span class="sh_symbol">,</span> </li><li><span class="sh_type">char</span> gender<span class="sh_symbol">,</span><span class="sh_type">double</span> salary<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--------------------"</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"姓名： "</span> <span class="sh_symbol">+</span> name<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"年龄："</span> <span class="sh_symbol">+</span> age<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"性别："</span> <span class="sh_symbol">+</span> gender<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"薪水："</span> <span class="sh_symbol">+</span> salary<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/** 打印员工信息的方法   */
+public static void printEmpInfo(String name,int age, 
+char gender,double salary) {
+System.out.println("--------------------");
+System.out.println("姓名： " + name);
+System.out.println("年龄：" + age);
+System.out.println("性别：" + gender);
+System.out.println("薪水：" + salary);
+}
+</pre></div></div>
+      <p>在main() 方法中声明雇员信息数据（分别为4个变量）， 然后调用如上的输出雇员方法进行数据的输出，当提升工资后，再调用输出方法输出，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/** 打印雇员信息    */</span></li><li><span class="sh_keyword">public</span>  <span class="sh_keyword">static</span>  <span class="sh_type">void</span>  <span class="sh_function">main</span>  <span class="sh_symbol">(</span>String<span class="sh_symbol">[</span> <span class="sh_symbol">]</span>  args <span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>      <span class="sh_comment">//雇员1</span></li><li>      <span class="sh_usertype">String</span><span class="sh_normal"> </span>emp1Name <span class="sh_symbol">=</span> <span class="sh_string">"黄河大虾"</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> emp1Age <span class="sh_symbol">=</span> <span class="sh_number">25</span><span class="sh_symbol">;</span></li><li>      <span class="sh_type">char</span> emp1Gender <span class="sh_symbol">=</span> <span class="sh_string">'男'</span><span class="sh_symbol">;</span></li><li><span class="sh_type">double</span> emp1Salary <span class="sh_symbol">=</span> <span class="sh_number">8000.00</span><span class="sh_symbol">;</span></li><li>    </li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_comment">//打印员工信息</span></li><li><span class="sh_function">printEmpInfo</span><span class="sh_symbol">(</span>emp1Name<span class="sh_symbol">,</span> emp1Age<span class="sh_symbol">,</span> emp1Gender<span class="sh_symbol">,</span> emp1Salary<span class="sh_symbol">);</span></li><li>      </li><li>      <span class="sh_comment">//修改员工工资（增长20%）并打印</span></li><li>      emp1Salary <span class="sh_symbol">*=</span> <span class="sh_number">120.0</span> <span class="sh_symbol">/</span> <span class="sh_number">100.0</span><span class="sh_symbol">;</span></li><li><span class="sh_function">printEmpInfo</span><span class="sh_symbol">(</span>emp1Name<span class="sh_symbol">,</span> emp1Age<span class="sh_symbol">,</span>emp1Gender<span class="sh_symbol">,</span> emp1Salary<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/** 打印雇员信息    */
+public  static  void  main  (String[ ]  args ){
+      //雇员1
+      String emp1Name = "黄河大虾";
+int emp1Age = 25;
+      char emp1Gender = '男';
+double emp1Salary = 8000.00;
+    
+	  //打印员工信息
+printEmpInfo(emp1Name, emp1Age, emp1Gender, emp1Salary);
+      
+      //修改员工工资（增长20%）并打印
+      emp1Salary *= 120.0 / 100.0;
+printEmpInfo(emp1Name, emp1Age,emp1Gender, emp1Salary);
+}
+</pre></div></div>
+      <p>如上代码的实现方式即为面向过程的结构化程序设计， 何为面向过程？面向过程是一种以过程为核心的编程思想，即分析出解决问题所需要的步骤，然后使用方法将这些步骤一步一步的实现，使用的时候，在main方法中一个一个依次调用就可以了。</p>
+      <p>分析如上代码，看看结构化程序的弊端所在，首先，如上代码缺乏对数据的封装，变量emp1Name,emp1Age,emp1Gender,emp1Salary为4个完全独立的变量， 并不是一个整体。其次，数据和方法（对数据的操作）的分离，在打印雇员信息方法中，传递了4个参数，而这4个参数与在main方法中所定义的4个变量并无直接关系。这就是面向过程程序设计的弊端，那如何解决？使用面向对象的程序设计。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 什么是抽象数据类型</h3>
+      <p>面向对象的第一步就是抽象数据类型，所谓抽象数据类型可以理解为：将不同类型的数</p>
+      <p>据的集合组成个整体用来描述一种新的事物。像如上程序中，可以将姓名、年龄、性别、工资这4个不同类型的数据组成一个整体来描述雇员这个新事物。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 什么是类</h3>
+      <p>类定义了一种抽象数据类型，而类不但定义了抽象数据类型的组成（成员变量），同时还定义了对该类型可以实施的操作（方法）。看如下代码定义了雇员类:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/** 定义雇员类 */</span></li><li><span class="sh_keyword">public</span>  <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Emp</span><span class="sh_cbracket">{</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> age<span class="sh_symbol">;</span></li><li><span class="sh_type">char</span> gender<span class="sh_symbol">;</span></li><li><span class="sh_type">double</span> salary<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/** 定义雇员类 */
+public  class Emp{
+String name;
+int age;
+char gender;
+double salary;
+}
+</pre></div></div>
+      <p>在如上的实例代码中，仅仅定义了Emp类型的组成，即成员变量。该类定义了4个成员变量：String类型的name用于存放名字；int类型的age用于存放年龄；char类型的gender用于存放性别；double类型的salary用于存放工资。</p>
+      <p>这个时候printEmpInfo()方法的参数也可以进行修改了， 可以将其改为Emp类型（Emp是一种抽象数据类型），这样可以看出是将一个雇员信息当作了一个整体来操作，看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">printEmpInfo</span><span class="sh_symbol">(</span><span class="sh_usertype">Emp</span><span class="sh_normal"> </span>emp<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--------------------"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"姓名： "</span> <span class="sh_symbol">+</span> emp<span class="sh_symbol">.</span>name<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"年龄："</span> <span class="sh_symbol">+</span> emp<span class="sh_symbol">.</span>age<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"性别："</span> <span class="sh_symbol">+</span> emp<span class="sh_symbol">.</span>gender<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"薪水："</span> <span class="sh_symbol">+</span> emp<span class="sh_symbol">.</span>salary<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static void printEmpInfo(Emp emp) {
+	System.out.println("--------------------");
+	System.out.println("姓名： " + emp.name);
+	System.out.println("年龄：" + emp.age);
+	System.out.println("性别：" + emp.gender);
+	System.out.println("薪水：" + emp.salary);
+}
+</pre></div></div>
+      <p>当调用如上方法时，需要传递一个Emp类型的数据，称之为Emp类型的对象。每个Emp类型的对象都包含name、age、gender和salary四个成员，通过“.”的方式进行访问。下面看一下在main ()方法中的调用代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li><span class="sh_usertype">Emp</span><span class="sh_normal"> </span>emp1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span>    <span class="sh_comment">//使用new关键字创建Emp类型的对象</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;emp1<span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> <span class="sh_string">"黄河大虾"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;emp1<span class="sh_symbol">.</span>age <span class="sh_symbol">=</span> <span class="sh_number">25</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;emp1<span class="sh_symbol">.</span>gender <span class="sh_symbol">=</span> <span class="sh_string">'男'</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;emp1<span class="sh_symbol">.</span>salary <span class="sh_symbol">=</span> <span class="sh_number">8000</span><span class="sh_symbol">;</span>      <span class="sh_comment">//为该对象的各个成员变量赋值</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">printEmpInfo</span><span class="sh_symbol">(</span>emp1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;emp1<span class="sh_symbol">.</span>salary <span class="sh_symbol">*=</span> <span class="sh_number">120.0</span> <span class="sh_symbol">/</span> <span class="sh_number">100.0</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_function">printEmpInfo</span><span class="sh_symbol">(</span>emp1<span class="sh_symbol">);</span>      <span class="sh_comment">//使用该对象调用printEmpInfo方法</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static void main(String[] args) {
+Emp emp1 = new Emp();    //使用new关键字创建Emp类型的对象
+	emp1.name = "黄河大虾";
+	emp1.age = 25;
+	emp1.gender = '男';
+	emp1.salary = 8000;      //为该对象的各个成员变量赋值
+
+	printEmpInfo(emp1);
+	emp1.salary *= 120.0 / 100.0;
+	printEmpInfo(emp1);      //使用该对象调用printEmpInfo方法
+}
+</pre></div></div>
+      <p>分析如上几段代码可以看出，定义了Emp类以后，提升了代码的模块化以及代码的重用性，但程序依然存在问题，即：打印信息的方法是只针对Emp数据的操作，属于Emp自身的方法，需要实现数据和方法（对该类数据的操作）的统一，也就是说，可以将打印信息的方法也放在Emp中定义，修改后的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**进一步修改后的雇员类*/</span></li><li><span class="sh_keyword">public</span>  <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Emp</span><span class="sh_cbracket">{</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>name<span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> age<span class="sh_symbol">;</span></li><li><span class="sh_type">char</span> gender<span class="sh_symbol">;</span></li><li><span class="sh_type">double</span> salary<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>    <span class="sh_comment">/**打印信息的方法*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">printInfo</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span>   <span class="sh_comment">//定义在类中，可直接对成员变量进行操作</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"--------------------"</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"姓名： "</span> <span class="sh_symbol">+</span> name<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"年龄："</span> <span class="sh_symbol">+</span> age<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"性别："</span> <span class="sh_symbol">+</span> gender<span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"薪水："</span> <span class="sh_symbol">+</span> salary<span class="sh_symbol">);</span></li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_comment">/**针对修改后的Emp类的使用方式*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">EmpManager</span> <span class="sh_cbracket">{</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li><span class="sh_usertype">Emp</span><span class="sh_normal"> </span>emp2 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emp2<span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> <span class="sh_string">"白发馍女"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emp2<span class="sh_symbol">.</span>age <span class="sh_symbol">=</span> <span class="sh_number">24</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emp2<span class="sh_symbol">.</span>gender <span class="sh_symbol">=</span> <span class="sh_string">'女'</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emp2<span class="sh_symbol">.</span>salary <span class="sh_symbol">=</span> <span class="sh_number">6000</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**调用方法打印信息*/</span> <span class="sh_comment">//创建完Emp对象后，对其成员变量赋值，然后调</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emp2<span class="sh_symbol">.</span><span class="sh_function">printInfo</span><span class="sh_symbol">();</span>    <span class="sh_comment">//用其printInfo（）方法打印各个成员变量信息</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emp2<span class="sh_symbol">.</span>salary <span class="sh_symbol">*=</span> <span class="sh_number">125.0</span> <span class="sh_symbol">/</span> <span class="sh_number">100.0</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;emp2<span class="sh_symbol">.</span><span class="sh_function">printInfo</span><span class="sh_symbol">();</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**进一步修改后的雇员类*/
+public  class Emp{
+String name;
+int age;
+char gender;
+double salary;
+
+    /**打印信息的方法*/
+public void printInfo() {   //定义在类中，可直接对成员变量进行操作
+System.out.println("--------------------");
+System.out.println("姓名： " + name);
+System.out.println("年龄：" + age);
+System.out.println("性别：" + gender);
+System.out.println("薪水：" + salary);
+    }
+}
+/**针对修改后的Emp类的使用方式*/
+public class EmpManager {
+public static void main(String[] args) {
+Emp emp2 = new Emp();
+		emp2.name = "白发馍女";
+		emp2.age = 24;
+		emp2.gender = '女';
+		emp2.salary = 6000;
+		/**调用方法打印信息*/ //创建完Emp对象后，对其成员变量赋值，然后调
+		emp2.printInfo();    //用其printInfo（）方法打印各个成员变量信息
+		emp2.salary *= 125.0 / 100.0;
+		emp2.printInfo();	
+    }
+}
+</pre></div></div>
+      <p>通过上面的代码，很好的实现了对数据的封装，并且实现了数据与方法的统一。这种方式即为面向对象方式，即:以对象为中心来构建软件系统。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 定义一个类</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 定义类的成员变量</h3>
+      <p>类是一种引用数据类型。类为对象的模板，简单的说就是分类。</p>
+      <p>类的定义包括“成员变量”的定义和“方法”的定义，其中“成员变量”用于描述一类对象共同的数据结构。在Java语言中，类的成员变量的定义可以使用如下语法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span> 类名 <span class="sh_cbracket">{</span></li><li>成员变量类型 变量名称；</li><li>………</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class 类名 {
+成员变量类型 变量名称；
+………
+}
+</pre></div></div>
+      <p>定义好类之后，可以创建该类的对象，对象创建之后，其成员变量可以按照默认的方式初始化；对象成员变量的默认初始化值规则如下图 - 5所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图- 5</p>
+      </div>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 定义类的方法</h3>
+      <p>类中除了定义成员变量，还可以定义方法，用于描述对象的形为，封装对象的功能。在Java语言中，可以按照如下方式定义类中的方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span> 类名 <span class="sh_cbracket">{</span></li><li>返回值类型 方法名称<span class="sh_symbol">(</span>参数列表<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>方法体………</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;… … …</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class 类名 {
+返回值类型 方法名称(参数列表) {
+方法体………
+	}
+	… … …
+}
+</pre></div></div>
+      <p>下面，通过案例对成员方法进行演示，需求：为方块类定义drop（）方法如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal">  </span><span class="sh_classname">Cell</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">int</span>  row <span class="sh_symbol">;</span>    <span class="sh_type">int</span>  col <span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/**方块下落的方法*/</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span>  <span class="sh_type">void</span>  <span class="sh_function">drop</span> <span class="sh_symbol">(</span> <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row <span class="sh_symbol">++;</span>&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_comment">//行++，即下落</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li> <span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class  Cell {
+	int  row ;    int  col ;
+	/**方块下落的方法*/
+	public  void  drop ( ) {
+		row ++;	    //行++，即下落
+	}
+ }
+</pre></div></div>
+      <p>调用方法，也和访问成员变量一样，通过“.”符号，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/** 创建方块类对象，调用下落方法，并打印效果*/</span></li><li><span class="sh_keyword">class</span><span class="sh_normal">  </span><span class="sh_classname">TestCell</span> <span class="sh_cbracket">{</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>args<span class="sh_symbol">[])</span><span class="sh_cbracket">{</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"-------绘制Cell-----"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_usertype">Cell</span><span class="sh_normal"> </span>cell <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    cell<span class="sh_symbol">.</span>row <span class="sh_symbol">=</span> <span class="sh_number">15</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    cell<span class="sh_symbol">.</span>col <span class="sh_symbol">=</span> <span class="sh_number">6</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_function">printCell</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">);</span></li><li>&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;    System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"----Cell下落一行----"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_comment">//调用drop方法，下落一行</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    cell<span class="sh_symbol">.</span><span class="sh_function">drop</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_function">printCell</span><span class="sh_symbol">(</span>cell<span class="sh_symbol">);</span>     </li><li>    <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/** 创建方块类对象，调用下落方法，并打印效果*/
+class  TestCell {
+public static void main(String args[]){
+System.out.println("-------绘制Cell-----");
+	    Cell cell = new Cell();
+	    cell.row = 15;
+	    cell.col = 6;
+	    printCell(cell);
+&nbsp;
+	    System.out.println("----Cell下落一行----");
+	    //调用drop方法，下落一行
+	    cell.drop();
+	    printCell(cell);     
+    }
+}
+</pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 创建并使用对象</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 使用new关键字创建对象</h3>
+      <p>类定义完成后，可以使用new关键字来创建对象。new运算的语法为： new  类名（）；此创建对象的过程也通常称为实例化。</p>
+      <p>javax.swing.JFrame是JDK提供的一个类，用于封装显示在桌面上的一个窗体。使用new JFrame()可以创建一个窗体对象，如下图 – 1所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图- 1</p>
+      </div>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 引用类型变量</h3>
+      <p>为了能够对实例化的对象进行访问控制，需一个特殊的变量，即引用。对引用有两点需要说明：</p>
+      <ol class="list">
+        <li>引用类型变量可以存储该类对象的地址信息，通常称为“指向该类的对象”，当一个引用类型变量指向该类的对象，就可以通过这个变量对对象实施访问。
+</li>
+        <li>除8种基本类型之外，用类、接口、数组等声明的变量都称为引用类型变量，简称“引用”。
+</li>
+      </ol>
+      <p>可以看图 – 3，描述了类、对象、引用之间的关系：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图- 3</p>
+      </div>
+      <p>当创建了引用类型变量之后，就可以通过引用来访问对象的成员变量或调用方法，如下代码所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Emp</span><span class="sh_normal"> </span>emp   <span class="sh_symbol">=</span>   <span class="sh_keyword">new</span> Emp（）<span class="sh_symbol">;</span></li><li>emp<span class="sh_symbol">.</span>name<span class="sh_symbol">=</span>“黄河大侠”<span class="sh_symbol">;</span>         <span class="sh_comment">//访问对象的成员变量</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_usertype">JFrame</span><span class="sh_normal"> </span>frame <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">JFrame</span><span class="sh_symbol">();</span></li><li>frame<span class="sh_symbol">.</span><span class="sh_function">setSize</span><span class="sh_symbol">(</span><span class="sh_number">200</span><span class="sh_symbol">,</span><span class="sh_number">300</span><span class="sh_symbol">);</span>       <span class="sh_comment">//调用方法</span></li><li><p></p></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Emp emp   =   new Emp（）;
+emp.name=“黄河大侠”;         //访问对象的成员变量
+
+JFrame frame = new JFrame();
+frame.setSize(200,300);       //调用方法
+<p></p></pre></div></div>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 访问对象的成员变量、调用方法</h3>
+      <p>当创建了引用后，即可以通过引用来访问对象的成员变量，以及调用方法。看如下的示例：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Cell</span><span class="sh_normal"> </span>c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">();</span></li><li>c<span class="sh_symbol">.</span>row <span class="sh_symbol">=</span> <span class="sh_number">2</span><span class="sh_symbol">;</span></li><li>c<span class="sh_symbol">.</span>col <span class="sh_symbol">=</span> <span class="sh_number">3</span><span class="sh_symbol">;</span>   <span class="sh_comment">//访问成员变量</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">drop</span><span class="sh_symbol">();</span></li><li>c<span class="sh_symbol">.</span><span class="sh_function">moveLeft</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>str <span class="sh_symbol">=</span> c<span class="sh_symbol">.</span><span class="sh_function">getCellInfo</span><span class="sh_symbol">();</span>  <span class="sh_comment">//调用方法</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Cell c = new Cell();
+c.row = 2;
+c.col = 3;   //访问成员变量
+c.drop();
+c.moveLeft(2);
+String str = c.getCellInfo();  //调用方法
+</pre></div></div>
+      <a name="Key01_03_04">
+      </a>
+      <h3>1.3.4. 引用类型变量的赋值</h3>
+      <p>引用类型变量存储的是对象的地址信息， 对引用类型变量的赋值， 除了使用上面的new关键字以外，还可以有另外一种赋值方式， 即：相同类型的引用类型变量之间相互赋值。 需要注意的是：引用类型变量之间的赋值不会创建新的对象，但有可能会使两个以上的引用指向同一个对象。 请看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Emp</span><span class="sh_normal"> </span>e1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span></li><li><span class="sh_usertype">Emp</span><span class="sh_normal"> </span>e2 <span class="sh_symbol">=</span> e1<span class="sh_symbol">;</span>  <span class="sh_comment">//将e1的值（对象的地址信息）赋给e2，e2和e1指向相同的对象。 </span></li><li>e1<span class="sh_symbol">.</span>name <span class="sh_symbol">=</span>“黄河大虾”<span class="sh_symbol">;</span></li><li>e2<span class="sh_symbol">.</span>name <span class="sh_symbol">=</span> “白发馍女”<span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>e1<span class="sh_symbol">.</span>name<span class="sh_symbol">);</span>   </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Emp e1 = new Emp();
+Emp e2 = e1;  //将e1的值（对象的地址信息）赋给e2，e2和e1指向相同的对象。 
+e1.name =“黄河大虾”;
+e2.name = “白发馍女”;
+System.out.println(e1.name);   
+</pre></div></div>
+      <p>如上代码的输出结果为：白发馍女。因为e1与e2存储的地址相同，也就意味着e1与e2指向了同一个对象，那么对该对象的修改，将会影响所有对该对象的引用。</p>
+      <a name="Key01_03_05">
+      </a>
+      <h3>1.3.5. null和NullPointerException</h3>
+      <p>对于引用类型变量，除了上面的两种赋值方式之外，还可以对其赋值为null。null的含义为“空”，表示还没有指向任何对象。例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Emp</span><span class="sh_normal"> </span>emp <span class="sh_symbol">=</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span>   <span class="sh_comment">//引用emp中的值为null，没有指向任何对象； </span></li><li>emp <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Emp</span><span class="sh_symbol">();</span>  <span class="sh_comment">//引用emp指向了一个Emp对象； </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Emp emp = null;   //引用emp中的值为null，没有指向任何对象； 
+emp = new Emp();  //引用emp指向了一个Emp对象； 
+</pre></div></div>
+      <p>需要注意：当一个引用的值为null的时候，如果通过引用访问对象成员变量或者调用方法是不合逻辑的（因其没有指向某对象，自然不会有属性和方法）。此时，会产生NullPointerException（空指针异常）。异常的详细概念后面详细讲。请看下面的代码，将就产生NullPointerException：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">JFrame</span><span class="sh_normal"> </span>frame <span class="sh_symbol">=</span> <span class="sh_keyword">null</span><span class="sh_symbol">;</span></li><li>frame<span class="sh_symbol">.</span><span class="sh_function">setSize</span><span class="sh_symbol">(</span><span class="sh_number">200</span><span class="sh_symbol">,</span><span class="sh_number">300</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">JFrame frame = null;
+frame.setSize(200,300);
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

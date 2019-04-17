@@ -1,0 +1,516 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17292750358"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#Key01">XML语法</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#Key02">XML解析</a>
+        </li>
+      </ol>
+      <h1>1. XML语法</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. XML用途</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. XML用途</h3>
+      <p>XML 指可扩展标记语言（EXtensible Markup Language），是独立于软件和硬件的信息传输工具，应用于 web 开发的许多方面，常用于简化数据的存储和共享。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 基本语法</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. xml指令</h3>
+      <p>处理指令，简称PI （processing instruction）。处理指令用来指挥解析引擎如何解析XML文档内容。</p>
+      <p>以下为例:</p>
+      <p>&lt;?xml version=“1.0” encoding=“utf-8” ?&gt;</p>
+      <p>在XML中，所有的处理指令都以&lt;?开始，?&gt;结束。&lt;?后面紧跟的是处理指令的名称。例子中就是一个XML处理指令，XML处理指令要求指定一个version属性。并允许指定可选的standalone和encoding，其中standalone是指是否允许使用外部声明，可设置为yes或no。yes是指定不使用外部声明。no为使用。encoding是指作者使用的字符编码格式。有UTF-8,GBK,gb2312等等。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 元素和属性</h3>
+      <p>XML 元素指的是从（且包括）开始标签直到（且包括）结束标签的部分。元素可包含其他元素、文本或者两者的混合物。元素也可以拥有属性。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span><span class="sh_usertype">datasource</span><span class="sh_normal"> </span>id<span class="sh_symbol">=</span><span class="sh_string">"db_oracle"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>name<span class="sh_symbol">=</span><span class="sh_string">"url"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jdbc<span class="sh_symbol">:</span>thin@<span class="sh_number">192.168.0.26</span><span class="sh_symbol">:</span><span class="sh_number">1521</span><span class="sh_symbol">:</span>tarena</li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;/</span>property<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>name<span class="sh_symbol">=</span><span class="sh_string">"dbUser"</span><span class="sh_symbol">&gt;</span>openlab<span class="sh_symbol">&lt;/</span>property<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>name<span class="sh_symbol">=</span><span class="sh_string">"dbPwd"</span><span class="sh_symbol">&gt;</span>open123<span class="sh_symbol">&lt;/</span>property<span class="sh_symbol">&gt;</span></li><li>   <span class="sh_symbol">&lt;/</span>datasource<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;datasource id="db_oracle"&gt;
+	  &lt;property name="url"&gt;
+		jdbc:thin@192.168.0.26:1521:tarena
+	  &lt;/property&gt;
+	  &lt;property name="dbUser"&gt;openlab&lt;/property&gt;
+	  &lt;property name="dbPwd"&gt;open123&lt;/property&gt;
+   &lt;/datasource&gt;
+</pre></div></div>
+      <p>其中datasource就是一个元素，它可以包含其他元素，例如property。同理property也是一个元素，元素除了包含元素还可以包含文本信息。元素也可以含有属性，比如property就具有name属性。</p>
+      <p>XML 元素可以在开始标签中包含属性，属性 (Attribute) 提供关于元素的额外（附加）信息。属性通常提供不属于数据组成部分的信息，但是对需要处理这个元素的应用程序来说却很重要。</p>
+      <p>XML 属性必须加引号，属性值必须被引号包围，不过单引号和双引号均可使用。</p>
+      <p>如果属性值本身包含双引号，那么有必要使用单引号包围它，或者可以使用实体引用。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span><span class="sh_usertype">datasource</span><span class="sh_normal"> </span>id<span class="sh_symbol">=</span><span class="sh_string">"db_oracle"</span><span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;…</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>datasource<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	&lt;datasource id="db_oracle"&gt;	
+		…
+	&lt;/datasource&gt;
+
+</pre></div></div>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 大小写敏感</h3>
+      <p>XML对大小写是敏感的，这一点不象HTML。在XML中，标记&lt; Letter&gt; 和标记 &lt; letter&gt; 是不一样的。 因此，打开和结束标记的大小写应该写成相同的:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>letter<span class="sh_symbol">&gt;</span>…<span class="sh_symbol">&lt;/</span>letter<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>Letter<span class="sh_symbol">&gt;</span>…<span class="sh_symbol">&lt;/</span>Letter<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;letter&gt;…&lt;/letter&gt;
+&lt;Letter&gt;…&lt;/Letter&gt;
+</pre></div></div>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. 元素必须有关闭标签</h3>
+      <p>XML要求每个元素必须由起始标签和关闭标签组成。关闭标签与起始标签的名字相同，写法上多一个“/”</p>
+      <p>例如:</p>
+      <p>&lt;Letter&gt;      只有起始标记是不行的。</p>
+      <p>&lt;Letter&gt;&lt;/Letter&gt; 必须要有关闭标签</p>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. 必须有根元素</h3>
+      <p>XML要求必须有根元素，所谓根元素就是不被其它元素包围（不含有父元素）。并且根元素只能有一个。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>   <span class="sh_symbol">&lt;</span><span class="sh_usertype">datasource</span><span class="sh_normal"> </span>id<span class="sh_symbol">=</span>“db_oracle”<span class="sh_symbol">&gt;</span>    根元素 </li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>name<span class="sh_symbol">=</span><span class="sh_string">"url"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jdbc<span class="sh_symbol">:</span>thin@<span class="sh_number">192.168.0.26</span><span class="sh_symbol">:</span><span class="sh_number">1521</span><span class="sh_symbol">:</span>tarena</li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;/</span>property<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>name<span class="sh_symbol">=</span><span class="sh_string">"dbUser"</span><span class="sh_symbol">&gt;</span>openlab<span class="sh_symbol">&lt;/</span>property<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>name<span class="sh_symbol">=</span><span class="sh_string">"dbPwd"</span><span class="sh_symbol">&gt;</span>open123<span class="sh_symbol">&lt;/</span>property<span class="sh_symbol">&gt;</span></li><li>   <span class="sh_symbol">&lt;/</span>datasource<span class="sh_symbol">&gt;</span></li><li>   这里不能再定义与datasource平级的元素！ </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">   &lt;datasource id=“db_oracle”&gt;    根元素 
+	  &lt;property name="url"&gt;
+		jdbc:thin@192.168.0.26:1521:tarena
+	  &lt;/property&gt;
+	  &lt;property name="dbUser"&gt;openlab&lt;/property&gt;
+	  &lt;property name="dbPwd"&gt;open123&lt;/property&gt;
+   &lt;/datasource&gt;
+   这里不能再定义与datasource平级的元素！ 
+</pre></div></div>
+      <a name="Key01_02_06">
+      </a>
+      <h3>1.2.6. 元素必须正确嵌套</h3>
+      <p>XML要求所有元素必须正确的嵌套。起始标记与结束标记不能在不同元素之间交叉定义。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>   <span class="sh_symbol">&lt;</span><span class="sh_usertype">datasource</span><span class="sh_normal"> </span>id<span class="sh_symbol">=</span>“db_oracle”<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;</span><span class="sh_usertype">property</span><span class="sh_normal"> </span>name<span class="sh_symbol">=</span><span class="sh_string">"dbPwd"</span><span class="sh_symbol">&gt;</span> open123</li><li>     <span class="sh_symbol">&lt;/</span>datasource<span class="sh_symbol">&gt;</span>  这里嵌套关系出现了错误<span class="sh_symbol">!</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>property<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">   &lt;datasource id=“db_oracle”&gt;
+	  &lt;property name="dbPwd"&gt; open123
+     &lt;/datasource&gt;  这里嵌套关系出现了错误!
+	&lt;/property&gt;
+</pre></div></div>
+      <a name="Key01_02_07">
+      </a>
+      <h3>1.2.7. 实体引用</h3>
+      <p>实体可以是常用的短语，键盘字符，文件，数据库记录或任何包含数据的项。在XML中，有时实体内包含一些字符，如 &amp; &lt; &gt;“ ‘ 等。这些均需要对其进行转义，否则会对XML解释器生成错误。</p>
+      <p>xml常用内置的实体引用如表－1所示:</p>
+      <div class="table">
+        <p>表－1 XML常用实体引用</p>
+        <img src="./SUPERDOC_files/table001.png">
+      </div>
+      <a name="Key01_02_08">
+      </a>
+      <h3>1.2.8. CDATA段</h3>
+      <p>格式：&lt; ! [ CDATA  [ 文本内容 ] ] &gt;</p>
+      <p>当在xml中某一段内容想作为普通信息看待，而其中又出现了大量的xml敏感字符时，若我们使用实体引用替换显然是件很麻烦的事情，并且还使得xml的易读性变差，这时我们可以使用CDATA段来解决。特殊标签中的实体引用都被忽略，所有内容被当成一整块文本数据对待</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>  <span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"utf-8"</span><span class="sh_symbol">?&gt;</span> </li><li>  <span class="sh_symbol">&lt;</span>root<span class="sh_symbol">&gt;</span> </li><li>    <span class="sh_symbol">&lt;![</span>CDATA<span class="sh_symbol">[</span> </li><li>        <span class="sh_symbol">&lt;</span>hello<span class="sh_symbol">&gt;</span>这里的内容不需要特殊转意，都会被当做文本 </li><li>        <span class="sh_symbol">&lt;</span>world<span class="sh_symbol">&gt;</span> </li><li>      <span class="sh_symbol">]]&gt;</span> </li><li>     <span class="sh_symbol">&lt;</span>subRoot<span class="sh_symbol">&gt;</span> <span class="sh_symbol">&lt;/</span>subRoot<span class="sh_symbol">&gt;</span> </li><li>   <span class="sh_symbol">&lt;/</span>root<span class="sh_symbol">&gt;</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">  &lt;?xml version="1.0" encoding="utf-8"?&gt; 
+  &lt;root&gt; 
+    &lt;![CDATA[ 
+        &lt;hello&gt;这里的内容不需要特殊转意，都会被当做文本 
+        &lt;world&gt; 
+      ]]&gt; 
+     &lt;subRoot&gt; &lt;/subRoot&gt; 
+   &lt;/root&gt; 
+</pre></div></div>
+      <a name="Key02">
+      </a>
+      <h1>2. XML解析</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. XML解析方式</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. SAX解析方式</h3>
+      <p>SAX（simple API for XML）是一种XML解析的替代方法。相比于DOM，SAX是一种速度更快，更有效的方法。它逐行扫描文档，一边扫描一边解析。而且相比于DOM，SAX可以在解析文档的任意时刻停止解析。 其优缺点分别为：</p>
+      <p>优点：  解析可以立即开始，速度快，没有内存压力</p>
+      <p>缺点：  不能对节点做修改</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. DOM解析方式</h3>
+      <p>DOM：(Document Object Model, 即文档对象模型) 是 W3C 组织推荐的处理 XML 的一种方式。DOM解析器在解析XML文档时，会把文档中的所有元素，按照其出现的层次关系，解析成一个个Node对象(节点)。其优缺点分别为:</p>
+      <p>优点:把xml文件在内存中构造树形结构，可以遍历和修改节点</p>
+      <p>缺点： 如果文件比较大，内存有压力，解析的时间会比较长</p>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 读取XML</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. SAXReader读取XML文档</h3>
+      <p>使用SAXReader需要导入dom4j-full.jar包。其是DOM4J的一个核心API，用于读取XML文档。</p>
+      <p>DOM4J是一个Java的XML API，类似于JDOM，用来读写XML文件的。DOM4J是一个非常非常优秀的Java XML API，具有性能优异、功能强大和极端易用使用的特点，同时它也是一个开放源代码的软件。</p>
+      <p>创建SAXReader来读取XML文档。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_usertype">Document</span><span class="sh_normal"> </span><span class="sh_function">readXML</span><span class="sh_symbol">(</span><span class="sh_usertype">String</span><span class="sh_normal"> </span>filename<span class="sh_symbol">)</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> DocumentException<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建SAXReader </span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">SAXReader</span><span class="sh_normal"> </span>reader <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">SAXReader</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//读取指定文件</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Document</span><span class="sh_normal"> </span>doc <span class="sh_symbol">=</span> reader<span class="sh_symbol">.</span><span class="sh_function">read</span><span class="sh_symbol">(</span><span class="sh_keyword">new</span> <span class="sh_function">File</span><span class="sh_symbol">(</span>filename<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> doc<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span><span class="sh_usertype">DocumentException</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throw</span> e<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static Document readXML(String filename) 
+											throws DocumentException{
+	try {
+		//创建SAXReader 
+			SAXReader reader = new SAXReader();
+		//读取指定文件
+			Document doc = reader.read(new File(filename));
+		return doc;
+	} catch (DocumentException e) {
+		e.printStackTrace();
+		throw e;
+	}
+}
+</pre></div></div>
+      <p>通过上面的代码看到，我们使用了SAXReader读取了一个指定的文件，那么调用的方法是:</p>
+      <p>Document reader(File file)</p>
+      <p>该方法会读取给定的文件，并将其封装到一个名为Document的对象中。</p>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. Document的getRootElement方法</h3>
+      <p>Document 对象是一棵文档树的根，可为我们提供对文档数据的最初（或最顶层）的访问入口。</p>
+      <p>当我们得到Document后就相当于我们得到了XML描述的整个树结构。那么我们就来开始解析的第一步工作，获取根元素。</p>
+      <p>获取根元素前，我们还需要提一下一个名为Element的类。Element用于描述XML中的一个元素。元素可包含属性、其他元素或文本。如果元素含有文本，则在文本节点中表示该文本。</p>
+      <p>Document的方法:</p>
+      <p>Element getRootElement()</p>
+      <p>用来获取当前XML文档中的根元素。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">try</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Document</span><span class="sh_normal"> </span>doc <span class="sh_symbol">=</span> <span class="sh_function">readXML</span><span class="sh_symbol">(</span><span class="sh_string">"build.xml"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取根元素 </span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Element</span><span class="sh_normal"> </span>root <span class="sh_symbol">=</span> doc<span class="sh_symbol">.</span><span class="sh_function">getRootElement</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> <span class="sh_keyword">catch</span> <span class="sh_symbol">(</span><span class="sh_usertype">Exception</span><span class="sh_normal"> </span>e<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e<span class="sh_symbol">.</span><span class="sh_function">printStackTrace</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">try {
+		Document doc = readXML("build.xml");
+		//获取根元素 
+			Element root = doc.getRootElement();
+	} catch (Exception e) {
+		e.printStackTrace();
+	} 
+</pre></div></div>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. Element</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. element方法</h3>
+      <p>当我们通过解析XML得到一个Element对象时，如何获取该对象所表示的元素的一些相关信息呢?</p>
+      <p>其中Element提供了一个方法:</p>
+      <p>Element element(String name)</p>
+      <p>该方法用于获取当前元素下指定名字的子元素。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试element方法</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testElement</span><span class="sh_symbol">(</span><span class="sh_usertype">Element</span><span class="sh_normal"> </span>element<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取当前元素下名为path的子元素</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Element</span><span class="sh_normal"> </span>e <span class="sh_symbol">=</span> element<span class="sh_symbol">.</span><span class="sh_function">element</span><span class="sh_symbol">(</span><span class="sh_string">"path"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>e<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试element方法
+*/
+public static void testElement(Element element){
+		//获取当前元素下名为path的子元素
+		Element e = element.element("path");
+		System.out.println(e);
+} 
+</pre></div></div>
+      <p>若当前元素下包含若干个同名子元素，那么element方法会获取该元素中第一个子元素。</p>
+      <p>若我们希望获取当前元素下所有同名的子元素，我们可以使用elements方法。</p>
+      <a name="Key02_03_02">
+      </a>
+      <h3>2.3.2. elements方法</h3>
+      <p>Element提供了另一个方法用于获取当前元素下所有子元素，其方法为:</p>
+      <p>List elements()</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试elements方法</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testElements</span><span class="sh_symbol">(</span><span class="sh_usertype">Element</span><span class="sh_normal"> </span>element<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">List&lt;Element&gt;</span><span class="sh_normal"> </span>elements <span class="sh_symbol">=</span> element<span class="sh_symbol">.</span><span class="sh_function">elements</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_usertype">Element</span><span class="sh_normal"> </span>e <span class="sh_symbol">:</span> elements<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>e<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试elements方法
+*/
+public static void testElements(Element element){
+		List&lt;Element&gt; elements = element.elements();
+		for(Element e : elements){
+			System.out.println(e);
+		} 
+}
+</pre></div></div>
+      <p>elements还有重载方法，比如我们希望获取当前元素下同名的所有子元素时，我们可以使用:</p>
+      <p>List elements(String name)</p>
+      <p>该方法会获取当前元素下所有给定名字的子元素。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试elements方法</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testElements</span><span class="sh_symbol">(</span><span class="sh_usertype">Element</span><span class="sh_normal"> </span>element<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取所有名为path的子元素</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">List&lt;Element&gt;</span><span class="sh_normal"> </span>elements <span class="sh_symbol">=</span> element<span class="sh_symbol">.</span><span class="sh_function">elements</span><span class="sh_symbol">(</span><span class="sh_string">"path"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_usertype">Element</span><span class="sh_normal"> </span>e <span class="sh_symbol">:</span> elements<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>e<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试elements方法
+*/
+public static void testElements(Element element){
+	//获取所有名为path的子元素
+	List&lt;Element&gt; elements = element.elements("path");
+	for(Element e : elements){
+		System.out.println(e);
+	} 
+}
+</pre></div></div>
+      <a name="Key02_03_03">
+      </a>
+      <h3>2.3.3. getName方法</h3>
+      <p>Element提供了一个方法，用于获取当前元素的名字:</p>
+      <p>String getName()</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试getName方法 </span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testGetName</span><span class="sh_symbol">(</span><span class="sh_usertype">Element</span><span class="sh_normal"> </span>element<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>name <span class="sh_symbol">=</span> element<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span> </li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试getName方法 
+ */
+public static void testGetName(Element element){
+	String name = element.getName();
+	System.out.println(name); 
+} 
+</pre></div></div>
+      <a name="Key02_03_04">
+      </a>
+      <h3>2.3.4. getText方法</h3>
+      <p>Element还提供了一个方法，用于获取元素的文本节点(其实标记与结束标记之间的文本)</p>
+      <p>String getText()</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试getText方法</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testGetText</span><span class="sh_symbol">(</span><span class="sh_usertype">Element</span><span class="sh_normal"> </span>element<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>name <span class="sh_symbol">=</span> element<span class="sh_symbol">.</span><span class="sh_function">getText</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>name<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试getText方法
+*/
+public static void testGetText(Element element){
+	String name = element.getText();
+	System.out.println(name);
+} 
+</pre></div></div>
+      <a name="Key02_03_05">
+      </a>
+      <h3>2.3.5. attribute方法</h3>
+      <p>Element的attribute方法用于获取当前元素的属性信息，其方法定义为:</p>
+      <ul class="list">
+        <li>Attribute attribute(int index)
+</li>
+      </ul>
+      <p>获取当前元素的指定属性，index为索引，从0开始。</p>
+      <ul class="list">
+        <li>Attribute attribute(String name)
+</li>
+      </ul>
+      <p>获取当前元素的指定名字的属性。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试attribute方法</span></li><li><span class="sh_comment">*/</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testAttribute</span><span class="sh_symbol">(</span><span class="sh_usertype">Element</span><span class="sh_normal"> </span>element<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取当前元素的第一个属性</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Attribute</span><span class="sh_normal"> </span>attr <span class="sh_symbol">=</span> element<span class="sh_symbol">.</span><span class="sh_function">attribute</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取当前元素的name属性</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//Attribute attr = element.attribute("name"); </span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试attribute方法
+*/
+public static void testAttribute(Element element){
+	//获取当前元素的第一个属性
+	Attribute attr = element.attribute(0);
+	//获取当前元素的name属性
+	//Attribute attr = element.attribute("name"); 
+} 
+</pre></div></div>
+      <a name="Key02_04">
+      </a>
+      <h2>2.4. Attribute</h2>
+      <a name="Key02_04_01">
+      </a>
+      <h3>2.4.1. getName方法和getValue方法</h3>
+      <p>Attribute类的每一个实例用于描述一个元素中的某个属性信息。根据该对象我们通常会获取其对应的属性名与属性值的信息，这两个信息的获取依靠下列方法:</p>
+      <ul class="list">
+        <li>String getName() : 获取属性的名字 
+</li>
+        <li>String getValue()  : 获取属性的值
+</li>
+      </ul>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试attribute方法 </span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testAttribute</span><span class="sh_symbol">(</span><span class="sh_usertype">Element</span><span class="sh_normal"> </span>element<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//获取当前元素的第一个属性</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Attribute</span><span class="sh_normal"> </span>attr <span class="sh_symbol">=</span> element<span class="sh_symbol">.</span><span class="sh_function">attribute</span><span class="sh_symbol">(</span><span class="sh_number">0</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>attr<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>attr<span class="sh_symbol">.</span><span class="sh_function">getValue</span><span class="sh_symbol">());</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试attribute方法 
+ */
+public static void testAttribute(Element element){
+	//获取当前元素的第一个属性
+	Attribute attr = element.attribute(0);
+	System.out.println(attr.getName());
+	System.out.println(attr.getValue());
+} 
+</pre></div></div>
+      <a name="Key02_05">
+      </a>
+      <h2>2.5. 写XML</h2>
+      <a name="Key02_05_01">
+      </a>
+      <h3>2.5.1. 构建Document对象</h3>
+      <p>使用DOM4J我们还可以通过自行构建Document对象，并组建树状结构来描述一个XML文档，并使用DOM4J将其写入一个文件。</p>
+      <p>那么在写XML文件时，做的第一件事自然就是构建Document对象。那么我们来看看如何构建一个Document对象。</p>
+      <p>构建Docuemnt对象，我们可以使用DOM4J提供的一个类:DocumentHelper,其提供了一个静态方法:</p>
+      <p>static Document createDocument()</p>
+      <p>该方法会创建一个Docuemnt对象。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 创建Document对象</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_usertype">Document</span><span class="sh_normal"> </span><span class="sh_function">createDocument</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> DocumentHelper<span class="sh_symbol">.</span><span class="sh_function">createDocument</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 创建Document对象
+ */
+public static Document createDocument(){
+	return DocumentHelper.createDocument();
+} 
+</pre></div></div>
+      <a name="Key02_05_02">
+      </a>
+      <h3>2.5.2. Document的addElement方法</h3>
+      <p>当我们创建好Document后，我们就可以开始添加XML的根元素，通过前面的知识介绍我们知道，Element是用来描述XML中的一个元素的，所以我们要向Document中添加一个Element来表示根元素。</p>
+      <p>Document提供了这样的一个方法，可以方便的添加根元素：</p>
+      <p>Element addElement(String name)</p>
+      <p>该方法的作用是向Docuemnt中添加指定名字的根元素，这里需要注意的是，该方法只应当调用一次，否则会抛出文档已经存在根元素的异常。当根元素添加完毕后，该方法会将根元素所对应的Element对象返回，以便我们根据根元素来组织整个树。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试写出xml文件</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testWriteXml</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Document</span><span class="sh_normal"> </span>doc <span class="sh_symbol">=</span> <span class="sh_function">createDocument</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//添加根元素</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Element</span><span class="sh_normal"> </span>root <span class="sh_symbol">=</span> doc<span class="sh_symbol">.</span><span class="sh_function">addElement</span><span class="sh_symbol">(</span><span class="sh_string">"project"</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试写出xml文件
+ */
+public static void testWriteXml(){
+	Document doc = createDocument();
+	//添加根元素
+	Element root = doc.addElement("project");
+} 
+</pre></div></div>
+      <a name="Key02_05_03">
+      </a>
+      <h3>2.5.3. Element的addElement方法</h3>
+      <p>有了根元素后，我们如何向根元素中添加子元素呢？</p>
+      <p>Element类同样提供了一个方法，用于向该元素中添加子元素:</p>
+      <p>Element addElement(String name)</p>
+      <p>该方法会向当前元素中添加给定名字的子元素，并将其对应的Element对象返回。</p>
+      <p>例如：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试写出xml文件</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testWriteXml</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;…</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Element</span><span class="sh_normal"> </span>root <span class="sh_symbol">=</span> doc<span class="sh_symbol">.</span><span class="sh_function">addElement</span><span class="sh_symbol">(</span><span class="sh_string">"project"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//向根元素中添加名为path的子元素</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Element</span><span class="sh_normal"> </span>ele <span class="sh_symbol">=</span> root<span class="sh_symbol">.</span><span class="sh_function">addElement</span><span class="sh_symbol">(</span><span class="sh_string">"path"</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试写出xml文件
+ */
+public static void testWriteXml(){
+	…
+	Element root = doc.addElement("project");
+	//向根元素中添加名为path的子元素
+	Element ele = root.addElement("path");
+} 
+</pre></div></div>
+      <a name="Key02_05_04">
+      </a>
+      <h3>2.5.4. Element的addAttribute方法</h3>
+      <p>除了向元素中添加子元素外，我们也经常会给当前元素添加属性。Element类提供了用于添加属性的方法:</p>
+      <p>Element addAttribute(String name,String value)</p>
+      <p>该方法会向当前元素中添加给定名字以及对应的值的属性。返回值依然为当前元素，这样做的目的在于我们连续添加元素时的代码复杂度可以减低，这个类似StringBuilder的append等方法的道理。</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试写出xml文件</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testWriteXml</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;…</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Element</span><span class="sh_normal"> </span>ele <span class="sh_symbol">=</span> root<span class="sh_symbol">.</span><span class="sh_function">addElement</span><span class="sh_symbol">(</span><span class="sh_string">"path"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//为path元素添加属性id,其值为cp</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;ele<span class="sh_symbol">.</span><span class="sh_function">addAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"id"</span><span class="sh_symbol">,</span> <span class="sh_string">"cp"</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试写出xml文件
+ */
+public static void testWriteXml(){
+	…
+	Element ele = root.addElement("path");
+	//为path元素添加属性id,其值为cp
+	ele.addAttribute("id", "cp");
+} 
+</pre></div></div>
+      <a name="Key02_05_05">
+      </a>
+      <h3>2.5.5. Element的addText方法</h3>
+      <p>Element还提供了一个方法，可以向元素的文本节点添加文本信息。其方法定义为:</p>
+      <p>Element addText(String text)</p>
+      <p>例如:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">/**</span></li><li><span class="sh_comment"> * 测试写出xml文件</span></li><li><span class="sh_comment"> */</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testWriteXml</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;…</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//为path元素添加属性id,其值为cp</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;ele<span class="sh_symbol">.</span><span class="sh_function">addAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"id"</span><span class="sh_symbol">,</span> <span class="sh_string">"cp"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//添加文本信息 </span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;ele<span class="sh_symbol">.</span><span class="sh_function">addText</span><span class="sh_symbol">(</span>“content<span class="sh_string">"); </span></li><li><span class="sh_string">} </span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">/**
+ * 测试写出xml文件
+ */
+public static void testWriteXml(){
+	…
+	//为path元素添加属性id,其值为cp
+	ele.addAttribute("id", "cp");
+	//添加文本信息 
+	ele.addText(“content"); 
+} 
+</pre></div></div>
+      <a name="Key02_05_06">
+      </a>
+      <h3>2.5.6. XMLWriter输出XML文档</h3>
+      <p>当我们构建好Docuement后，我们可以通过XMLWriter来输出。</p>
+      <p>例如:</p>
+      <p>/**</p>
+      <p>* 测试写出xml文件</p>
+      <p>*/</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">testWriteXml</span><span class="sh_symbol">()</span><span class="sh_keyword">throw</span> IOException<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;…</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//写出</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">XMLWriter</span><span class="sh_normal"> </span>writer <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">XMLWriter</span><span class="sh_symbol">();</span><span class="sh_comment">//构建用于写xml的输出流</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;FileOutputStream fos </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">FileOutputStream</span><span class="sh_symbol">(</span><span class="sh_string">"builder.xml"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;writer<span class="sh_symbol">.</span><span class="sh_function">setOutputStream</span><span class="sh_symbol">(</span>fos<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;writer<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>doc<span class="sh_symbol">);</span><span class="sh_comment">//将Document对象输出到文件中</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;writer<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span> </li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static void testWriteXml()throw IOException{
+	…
+	//写出
+	XMLWriter writer = new XMLWriter();//构建用于写xml的输出流
+	FileOutputStream fos 
+		= new FileOutputStream("builder.xml");
+	writer.setOutputStream(fos);
+	writer.write(doc);//将Document对象输出到文件中
+	writer.close(); 
+} 
+</pre></div></div>
+      <a name="Key02_06">
+      </a>
+      <h2>2.6. XPATH</h2>
+      <a name="Key02_06_01">
+      </a>
+      <h3>2.6.1. 路径表达式</h3>
+      <p>XPath 是一门在 XML 文档中查找信息的语言。XPath 可用来在 XML 文档中对元素和属性进行遍历。由于我们单纯使用dom定位节点时，大部分时间需要一层一层的处理，如果有了xPath，我们定位我们的节点将变得很轻松。他可以根据路径，属性，甚至是条件进行节点的检索。</p>
+      <ul class="list">
+        <li>XPath 使用路径表达式在 XML 文档中进行导航 
+</li>
+        <li>XPath 包含一个标准函数库 
+</li>
+        <li>XPath 是 XSLT 中的主要元素 
+</li>
+        <li>XPath 是一个 W3C 标准 
+</li>
+      </ul>
+      <p>路径表达式语法:</p>
+      <ul class="list">
+        <li>斜杠（/）作为路径内部的分割符。 
+</li>
+        <li>同一个节点有绝对路径和相对路径两种写法:
+</li>
+        <li>路径（absolute path）必须用"/"起首，后面紧跟根节点，比如/step/step/...。 
+</li>
+        <li>相对路径（relative path）则是除了绝对路径以外的其他写法，比如 step/step，	也就是不使用"/"起首。 
+</li>
+        <li> "."表示当前节点。 
+</li>
+        <li>".."表示当前节点的父节点
+</li>
+        <li>nodename（节点名称）：表示选择该节点的所有子节点 
+</li>
+        <li>"/"：表示选择根节点 
+</li>
+        <li>"//"：表示选择任意位置的某个节点 
+</li>
+        <li>"@"： 表示选择某个属性
+</li>
+      </ul>
+      <p>我们以下面的xml来举例说明:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal">&nbsp;</span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span>&nbsp;encoding<span class="sh_symbol">=</span><span class="sh_string">"ISO-8859-1"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>bookstore<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>book<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span><span class="sh_usertype">title</span><span class="sh_normal">&nbsp;</span>lang<span class="sh_symbol">=</span><span class="sh_string">"eng"</span><span class="sh_symbol">&gt;</span><span class="sh_usertype">Harry</span><span class="sh_normal">&nbsp;</span>Potter<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>price<span class="sh_symbol">&gt;</span><span class="sh_number">29.99</span><span class="sh_symbol">&lt;/</span>price<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;/</span>book<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>book<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span><span class="sh_usertype">title</span><span class="sh_normal">&nbsp;</span>lang<span class="sh_symbol">=</span><span class="sh_string">"eng"</span><span class="sh_symbol">&gt;</span><span class="sh_usertype">Learning</span><span class="sh_normal">&nbsp;</span>XML<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>price<span class="sh_symbol">&gt;</span><span class="sh_number">39.95</span><span class="sh_symbol">&lt;/</span>price<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;/</span>book<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>bookstore<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml&nbsp;version="1.0"&nbsp;encoding="ISO-8859-1"?&gt;
+&lt;bookstore&gt;
+&nbsp;&nbsp;&lt;book&gt;&nbsp;&nbsp;&nbsp;&nbsp;	&lt;title&nbsp;lang="eng"&gt;Harry&nbsp;Potter&lt;/title&gt;&nbsp;&nbsp;&nbsp;		&lt;price&gt;29.99&lt;/price&gt;&nbsp;&nbsp;	  &lt;/book&gt;
+&nbsp;&nbsp;&lt;book&gt;&nbsp;&nbsp;&nbsp;&nbsp;	&lt;title&nbsp;lang="eng"&gt;Learning&nbsp;XML&lt;/title&gt;&nbsp;&nbsp;&nbsp;&nbsp;	&lt;price&gt;39.95&lt;/price&gt;&nbsp;&nbsp;	  &lt;/book&gt;
+&lt;/bookstore&gt;
+
+</pre></div></div>
+      <p>常用的表达式如表－2所示：</p>
+      <div class="table">
+        <p>表－2 常用路径表达式</p>
+        <img src="./SUPERDOC_files/table002.png">
+      </div>
+      <a name="Key02_06_02">
+      </a>
+      <h3>2.6.2. 谓语</h3>
+      <p>所谓"谓语条件"，就是对路径表达式的附加条件。所有的条件，都写在方括号"[]"中，表示对节点进行进一步的筛选。 常用谓语如表－3所示：</p>
+      <div class="table">
+        <p>表－3 常用谓语</p>
+        <img src="./SUPERDOC_files/table003.png">
+      </div>
+      <a name="Key02_06_03">
+      </a>
+      <h3>2.6.3. 通配符</h3>
+      <p>通配符的使用如下:</p>
+      <ul class="list">
+        <li>"*"表示匹配任何元素节点。
+</li>
+        <li>"@*"表示匹配任何属性值。 
+</li>
+        <li> node()表示匹配任何类型的节点。 
+</li>
+      </ul>
+      <p>常用通配符用法如表－4所示：</p>
+      <div class="table">
+        <p>表－4 通配符</p>
+        <img src="./SUPERDOC_files/table004.png">
+      </div>
+      <a name="Key02_06_04">
+      </a>
+      <h3>2.6.4. Dom4J对XPath的支持</h3>
+      <p>DOM4J支持使用XPATH来检索XML内容。若想使用需要引入一个jar包到项目中，该jar包名字应为: jaxen-xx-xx.jar。版本不同，可能名字略有差别。</p>
+      <p>若不引用此包，程序会引发:</p>
+      <p>java.lang.NoClassDefFoundError:org/jaxen/jaxenException异常。</p>
+      <p>Document提供了一个对XPATH检索的方法:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE02/DAY07/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">List</span><span class="sh_normal"> </span><span class="sh_function">selectNodes</span><span class="sh_symbol">(</span><span class="sh_usertype">Stirng</span><span class="sh_normal"> </span>xpath<span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">List selectNodes(Stirng xpath)
+</pre></div></div>
+      <p>传入xpath路径，获取相应的信息 .</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

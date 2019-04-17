@@ -1,0 +1,374 @@
+
+<!-- saved from url=(0113)http://tts8.tmooc.cn/video/ttsVideo?menuId=419487&version=JSD_V05&period=JAVA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="./ttsVideo_files/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="./ttsVideo_files/static.js"></script>
+<script type="text/javascript" src="./ttsVideo_files/swfobject.js"></script>
+<script type="text/javascript" src="./ttsVideo_files/ParsedQueryString.js"></script>
+<link rel="stylesheet" href="./ttsVideo_files/video.css">
+
+
+ <script type="text/javascript">
+			var videoBase = "http://videotts.it211.com.cn/";
+			//var videoBase = "http://localhost:8080/localtts8/"
+ 			var tr = $("table").children().children().first();
+ 			tr.addClass("content");
+		    var firstVideoUrl = 'JAVA_FUNDAMENTAL_DAY01_AM.m3u8';
+		    var videoName = firstVideoUrl.split("\.")[0];
+            var pqs = new ParsedQueryString();
+            var parameterNames = pqs.params(true);
+//             $.ajax({
+// 			 	url: encodeURI(videoBase + videoName + "/" +firstVideoUrl),
+// 			    type: 'GET',
+// 			    success: function(response) {
+            	
+// 			    },
+// 			    error:function(response){
+// 			    	if(response.status==404){
+// 			    		window.location.href=videoBase+"video/ccVideo?menuId=419487";
+// 			    	}
+				   
+// 			    }
+// 			 });
+            var parameters = {
+            	//视频域名/视频名/视频
+                //src: "http://192.168.177.22:8080/tts7.0/source/"+videoName + "/" +vedioURL,
+                //src: "http://videotts.it211.com.cn/"+videoName + "/" +vedioURL,
+                src:videoBase + videoName + "/" +firstVideoUrl,
+                autoPlay: "true",
+                verbose: true,
+                controlBarAutoHide: "true",
+                controlBarPosition: "bottom",
+               	// poster: "/scripts/bofang/add.png",
+                plugin_hls: basePath+"script/bofang/bofang/HLSDynamicPlugin.swf"
+            };
+            
+            for (var i = 0; i < parameterNames.length; i++) {
+                var parameterName = parameterNames[i];
+                parameters[parameterName] = pqs.param(parameterName) ||
+                parameters[parameterName];
+            }
+            
+       	    var wmodeValue = "direct";
+            var wmodeOptions = ["direct", "opaque", "transparent", "window"];
+            if (parameters.hasOwnProperty("wmode"))
+            {
+            	if (wmodeOptions.indexOf(parameters.wmode) >= 0)
+            	{
+            		wmodeValue = parameters.wmode;
+            	}	            	
+            	delete parameters.wmode;
+            }
+            // Embed the player SWF:	            
+            swfobject.embedSWF(
+				basePath+"script/bofang/bofang/StrobeMediaPlayback.swf", 
+				"1024_div1_id", 
+				750, 
+				500, 
+				"10.1.0", 
+				basePath+"script/bofang/bofang/expressInstall.swf", 
+				parameters, 
+				{
+	                allowFullScreen: "true",
+	                wmode: wmodeValue
+	            }, 
+	            {
+	                name: "1024_div1_id"
+	            }
+			);
+            
+    
+    function change_Video(ind,vedioURL, opt){
+		$(opt).parent().parent().siblings().removeClass("content");
+		$(opt).parent().parent().addClass("content");
+		 //var url=$("#url_apan_id_"+ind).text();
+		 //_flie= flie+url;
+		 //initPlayer();
+		 //_player2.play();
+		 // Collect query parameters in an object that we can
+            // forward to SWFObject:
+            var videoName = vedioURL.split("\.")[0];
+            var pqs = new ParsedQueryString();
+            var parameterNames = pqs.params(true);
+            var parameters = {
+            	//视频域名/视频名/视频
+                //src: "http://192.168.177.22:8080/tts7.0/source/"+videoName + "/" +vedioURL,
+                //src: "http://videotts.it211.com.cn/"+videoName + "/" +vedioURL,
+                src:videoBase + videoName + "/" +vedioURL,
+                autoPlay: "true",
+                verbose: true,
+                controlBarAutoHide: "true",
+                controlBarPosition: "bottom",
+               	// poster: "/scripts/bofang/add.png",
+                plugin_hls: basePath+"script/bofang/bofang/HLSDynamicPlugin.swf"
+            };
+            
+            for (var i = 0; i < parameterNames.length; i++) {
+                var parameterName = parameterNames[i];
+                parameters[parameterName] = pqs.param(parameterName) ||
+                parameters[parameterName];
+            }
+            
+       	    var wmodeValue = "direct";
+            var wmodeOptions = ["direct", "opaque", "transparent", "window"];
+            if (parameters.hasOwnProperty("wmode"))
+            {
+            	if (wmodeOptions.indexOf(parameters.wmode) >= 0)
+            	{
+            		wmodeValue = parameters.wmode;
+            	}	            	
+            	delete parameters.wmode;
+            }
+            // Embed the player SWF:	            
+            swfobject.embedSWF(
+				basePath+"script/bofang/bofang/StrobeMediaPlayback.swf", 
+				"1024_div1_id", 
+				750, 
+				500, 
+				"10.1.0", 
+				basePath+"script/bofang/bofang/expressInstall.swf", 
+				parameters, 
+				{
+	                allowFullScreen: "true",
+	                wmode: wmodeValue
+	            }, 
+	            {
+	                name: "1024_div1_id"
+	            }
+			);
+            /**保存观看日志**/
+            saveVideoStatsLog(vedioURL);
+	}
+    /**
+     * 保存观看日志
+     * @param {Object} vedioURL
+     */
+    function saveVideoStatsLog(vedioURL){
+    	 vedioURL = vedioURL.substring(0,vedioURL.indexOf("."));
+    	$.ajax({
+			url:basePath+"video/saveVideoStatsLog?menuId=419487&videoUrl="+vedioURL,  
+			type:'POST',
+			dataType:'json',
+			async:false,
+			success:function(msg){
+				console.log("video log save success");
+			},
+			error:function(msg){
+				console.log("video log save fail");
+			}
+		});
+    }
+      $(window).bind('beforeunload',function(){
+    	 	 saveVideoStatsLog("");
+    	  });
+     
+        </script><style type="text/css" media="screen">#1024_div1_id {visibility:hidden}</style>
+
+</head><style type="text/css" id="6883297264"></style><body><div class="content-box-content">
+	<div class="pdf">	
+
+	
+	<div id="1024_div_id" class="pdf_div">
+	<div id="1024_div2_id" class="pdf_div2">
+		<div class="content-box-table-vedio" id="1024_div3_id">
+			<table style="width:100%;">
+			 	<tbody id="vedio_list_id">
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_1">JAVA_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(1,&#39;JAVA_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_1" style="color: #fff;font-size: 12px;padding-left: 10px;">JAVA</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_2">JAVA_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(2,&#39;JAVA_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_2" style="color: #fff;font-size: 12px;padding-left: 10px;">JAVA</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_3">JAVA_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(3,&#39;JAVA_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_3" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_4">JAVA_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(4,&#39;JAVA_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_4" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_5">JAVA_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(5,&#39;JAVA_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_5" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_6">JAVA_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(6,&#39;JAVA_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_6" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_7">JAVA_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(7,&#39;JAVA_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_7" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_8">JAVA_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(8,&#39;JAVA_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_8" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_9">JAVA_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(9,&#39;JAVA_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_9" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_10">JAVA_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(10,&#39;JAVA_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_10" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_11">JAVA_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(11,&#39;JAVA_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_11" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_12">JAVA_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(12,&#39;JAVA_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_12" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_13">VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(13,&#39;VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_13" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_14">VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(14,&#39;VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_14" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_15">VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(15,&#39;VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_15" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_16">VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(16,&#39;VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_16" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_17">VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(17,&#39;VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_17" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_18">VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(18,&#39;VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_18" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_19">VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(19,&#39;VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_19" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_20">VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(20,&#39;VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_20" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_21">VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(21,&#39;VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_21" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_22">VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(22,&#39;VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_22" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_23">VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(23,&#39;VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_23" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_24">jsd16060630am.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(24,&#39;jsd16060630am.m3u8&#39;,this)" id="a_name_24" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_25">jsd16060630pm.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(25,&#39;jsd16060630pm.m3u8&#39;,this)" id="a_name_25" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_26">VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(26,&#39;VIP_JSD_FUNDAMENTAL_DAY01_AM.m3u8&#39;,this)" id="a_name_26" style="color: #fff;font-size: 12px;padding-left: 10px;">上午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 			<tr style="height: 30px;">
+			 				<td align="left">
+			 					<span style="display: none" id="url_apan_id_27">VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8</span>
+			 					<a href="javascript:;" title="" onclick="change_Video(27,&#39;VIP_JSD_FUNDAMENTAL_DAY01_PM.m3u8&#39;,this)" id="a_name_27" style="color: #fff;font-size: 12px;padding-left: 10px;">下午</a>
+			 				</td>
+			 			</tr>
+			 		
+			 	</tbody>
+			</table>
+		</div>
+	</div>
+	<object type="application/x-shockwave-flash" name="1024_div1_id" data="./ttsVideo_files/StrobeMediaPlayback.swf" width="750" height="500" id="1024_div1_id" style="visibility: visible;"><param name="allowFullScreen" value="true"><param name="wmode" value="direct"><param name="flashvars" value="src=http://videotts.it211.com.cn/JAVA_FUNDAMENTAL_DAY01_AM/JAVA_FUNDAMENTAL_DAY01_AM.m3u8&amp;autoPlay=true&amp;verbose=true&amp;controlBarAutoHide=true&amp;controlBarPosition=bottom&amp;plugin_hls=http://tts8.tmooc.cn/script/bofang/bofang/HLSDynamicPlugin.swf"></object>
+
+	</div>
+
+</div>
+</div></body></html>

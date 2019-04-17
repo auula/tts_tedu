@@ -1,0 +1,383 @@
+
+<!-- saved from url=(0098)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="26726957776"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#Key01">Servlet基础</a>
+        </li>
+      </ol>
+      <h1>1. Servlet基础</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. Web应用的演变</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 单机程序</h3>
+      <p>软件从附着于电脑硬件之日起，就在不断的进行着自我完善和演变。从其使用模式的角度出发，可以简单分为单机程序和网络程序。发展到今时今日仍有大量的不依赖网络的单机程序被我们使用，如记事本、Excel、PPT、ZIP压缩等软件都是大家熟知的装机必备软件。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 网络程序</h3>
+      <p>当电脑越来越多的参与到日常生产生活中，单机程序已经不能满足企业的需要。企业级应用要求能够最大程度的让更多的客户端参与到协同办公之中，所以依赖于网络的程序开始大力发展起来。最早的网络程序是基于主机+终端模式的，也就是整个应用中只有一台大型主机，各个操作地点都是使用一条专线与主机相连，终端不提供任何运算和界面，类似于Unix形式，所有的运算和处理都由主机来完成。主机一般处理能力非常强大，并且稳定，主要机型都是由IBM这样的大公司提供。但主机的高昂的价格以及扩展难、维护费用高等弊端并不是一般企业所能承受，所以除银行、航空订票、证券等大企业在使用以外，大多数企业开始转投CS架构的程序，即客户端服务器架构。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 网络程序-CS架构</h3>
+      <p>CS架构的发展过程经历了两层CS架构，三层CS架构以及多层CS架构的演变。</p>
+      <p>两层的CS架构是由客户端和后面的数据库组成的。数据库用于存放数据，并且使用数据库编程语言编写业务逻辑，客户端则使用VB、VC、Delphi这样的可视化编程方便的语言来开发客户端的输入输出界面。用户通过界面向服务器发送请求，服务器发回的数据则通过界面进行显示，服务器的角色就由数据库来充当。这样做的好处就是开发效率高，满足企业需求。但是这种架构存在着很大的弊端，第一是可移植性差，如当数据库从SQL Server更换为Oracle时就必须将业务逻辑用新的语言再重新编写一遍；第二则是大型系统做不了，因为客户端与数据库需要建立持续的连接，而数据库能够支持的最大连接数是有限制的。所以在2000年这样的架构流行之后，慢慢的就开始向三层CS架构转变。</p>
+      <p>三层的CS架构指的是客户端+应用服务器+数据库，即将混合在数据库端的业务逻辑从中分离出来，放入到应用服务器中，数据库只负责数据的管理、存储及检索。客户端负责界面。三层之中的应用服务器其实也是程序，类似于前面讲过的TCP、Socket编程，任何支持TCP编程的语言都可以作为应用服务器。三层CS架构的工作流程如图 – 1 所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图- 1</p>
+      </div>
+      <p>用户通过GUI（图形用户界面）进行操作，然后调用客户端的通信模块，通信模块依据自定义协议将请求数据打包，通过网络发送该请求，到达应用服务器时，应用服务器同样也有一个通信模块，将收到的数据包按照协议进行拆包，调用相应的业务处理模块，处理数据，其中可能需要访问数据库来完成数据的获取，将处理完的结果再次发送给通信模块，通信模块将结果按照自定义协议进行打包，然后将数据包发送给客户端的通信模块，客户端进行拆包获取响应数据，将结果显示在界面上，更新界面上的数据显示。</p>
+      <p>这样的程序结构虽然在一定程度上降低了对数据库编程的依赖，并且能够适应大型的应用程序，但数据通信模块的增加却提升了开发的难度以及整体架构的复杂度。</p>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 网络程序-BS架构</h3>
+      <p>为了降低三层CS架构中与通信有关的复杂度，BS架构开始成为了网络程序中一大重要的架构类型。</p>
+      <p>BS架构即Browser + Web Server + DB。其工作流程如图 – 2所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图- 2</p>
+      </div>
+      <p>由于三层CS架构中，自定义协议提升了整体的复杂度，那么就将自定义协议变成标准的HTTP协议。于是客户端使用HTTP协议进行数据打包拆包的程序即各厂商依据标准开发的浏览器，Web服务器也是基于HTTP协议由一些厂商提供，如IIS，Apache等。这样基于浏览器和服务器的架构中，由于协议已被限定，所以与通信有关的数据打包拆包的过程都不用我们开发人员来编写程序，只需要考虑将HTTP协议解析出来的数据进行业务处理，以及将什么样的结果提供给响应即可。也就是开发过程中只需要考虑7,8,9这三个步骤即可。于是大大降低了网络程序的开发难度，所以这种架构得到了大量的应用。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 什么是Servlet</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 扩展Web服务器功能</h3>
+      <p>在BS架构中，早期的Web服务器只能处理静态资源的请求，也就是无法根据请求进行计算后再生成相应的HTML内容。为了补充Web服务器的这个缺陷，于是增强服务器功能的CGI技术最早产生了。CGI（Common Gateway Interface通用网关接口）也是一种规范，可以使用不同的语言来开发，如Perl，C，Java等都可以。当客户端请求静态资源时，Web服务器会自己处理并返回，当客户端请求动态资源时，Web服务器会把请求转交给扩展程序来处理，并将扩展程序的处理结果返回给客户端。但是CGI技术开发复杂，性能较差，只要有一个请求到达，Web服务器就会单独分配一个进程来进行处理，可移植性不好，所以慢慢就由后来的Servlet技术所取代。</p>
+      <p>Servlet技术是使用Java语言开发的一套组件规范，不再像CGI技术那样需要分配单独的进程来处理请求，而是单独分配一个线程来处理，于是大大提升了处理效率。并且Java语言是跨平台的语言，也提升了Web服务器扩展程序的可移植性，已经取代了CGI技术，成为BS架构中的主流技术。所有后续的BS架构中的主流框架本质上都是基于Servlet来实现的。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 组件规范</h3>
+      <p>组件规范是依靠一套API来实现的，也就是说开发中只要基于Sun公司提供的这套API，按照一定的规则来编写程序，那么就可以实现针对Web服务器的功能扩展。</p>
+      <p>但是组件只是对部分功能的一个实现，不能单独运行，必须放在一定的环境中才能运行。而这个针对各个组件进行管理、创建、销毁的运行环境即容器。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. Servlet组件运行原理</h3>
+      <p>Servlet作为补充Web服务器功能的组件，需要依赖于Servlet容器才能运行，它的运行原理如图 – 3所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图- 3</p>
+      </div>
+      <p>在浏览器中输入请求地址后，浏览器会依据IP地址及端口号找到对应的Web服务器，如果请求的是静态资源，Web服务器直接提供响应；如果请求的是动态资源，Web服务器的通信模块会将该请求传递给Servlet容器的通信模块，Servlet容器负责创建Servlet实例，并将请求中的数据解析出来传递给Servlet。在Servlet处理完数据之后，响应结果也是由容器的通信模块负责返回给Web服务器。后续的Servlet的销毁及管理都由容器来负责。</p>
+      <p>能够充当Servlet容器这个角色的有很多软件，如Tomcat、Weblogic、JBoss等。而这些Servlet容器不仅仅具备了管理Servlet组件的功能，也具备了Web服务器的一些功能，所以很多时候只要安装一个Tomcat软件就同时具备了Web服务器及Servlet容器的双重功能。</p>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 如何开发一个Servlet</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 安装Tomcat</h3>
+      <p>Servlet是Web服务器功能的补充，要想能够运行必须依赖Servlet容器的管理才可以，为了进行下一步的Servlet的具体开发，则需要先准备用于运行Servlet的环境，在学习过程中我们选择的是主流的Tomcat作为Web服务器及Servlet容器。</p>
+      <p>下面，简单介绍下Tomcat的安装步骤：</p>
+      <p class="number">步骤一：下载并解压安装文件</p>
+      <p>在浏览器中输入 tomcat.apache.org，在Download菜单中选择Tomcat7.0后会得到如图- 4 所示的下载链接。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图- 4</p>
+      </div>
+      <p>选择Core下面符合当前操作系统的版本后下载，下载后的文件为压缩文件，解压到硬盘即可。假定Tomcat解压后的路径为 c:\java\tomcat7.0</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图- 5</p>
+      </div>
+      <p class="number">步骤二：配置环境变量</p>
+      <p>选择“我的电脑”右键 (“属性”( “高级系统设置” ( “环境变量”  用于新建及修改一些环境变量，以保证系统记录解压的Tomcat软件的位置。如图-6所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image006.png">
+        <p>图- 6</p>
+      </div>
+      <p>点击系统变量下的“新建”按钮，创建“变量名”为 CATALINA_HOME ， “变量值“ 为 c:\java\tomcat7.0的环境变量后点击确定按钮，如图- 7所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image007.png">
+        <p>图- 7</p>
+      </div>
+      <p>选中系统变量中的“Path“后点击编辑，在原有内容的最前面添加 “ %CATALINA_HOME%\bin; ” 后点击确定按钮。注意：修改值的时候光标放在最前面，并且要用分号将路径与原有Path的值分开。如图- 8所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image008.png">
+        <p>图- 8</p>
+      </div>
+      <p>若安装jdk时已配置了CLASS_PATH变量，则选中系统变量中的“CLASS_PATH“后点击编辑，在原有内容的最前面添加 “ %CATALINA_HOME%\lib\servlet-api.jar; ” 后点击确定按钮。注意：修改值的时候光标放在最前面，并且要用分号将路径与原有CLASS_PATH的值分开。如图- 9所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image009.png">
+        <p>图- 9</p>
+      </div>
+      <p>至此，环境变量配置完毕。</p>
+      <p class="number">步骤三：启动Tomcat</p>
+      <p>为了检测环境变量是否配置成功，以及Tomcat是否能够成功启动，首先进入命令行，windows系统下可以使用 “cmd“命令进入。在命令行窗口下输入“startup”命令，会得到如图 – 10 所示结果。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image010.png">
+        <p>图- 10</p>
+      </div>
+      <p>打开浏览器，输入 “ http://localhost:8080 ”地址后，看到如图 – 11 所示结果。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image011.png">
+        <p>图- 11</p>
+      </div>
+      <p>至此，看到该页面即代表Tomcat启动成功。</p>
+      <p class="number">步骤四：关闭Tomcat</p>
+      <p>在命令提示符下输入“shutdown”命令后，Tomcat的命令提示符窗口会关闭，在浏览器中再次输入http://localhost:8080后，看不到 图- 11，代表关闭Tomcat</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 开发Servlet的步骤</h3>
+      <p class="number">步骤一：编写一个实现Servlet接口或继承HttpServlet的Java类</p>
+      <p>在硬盘上新建一个文件名为“HelloServlet.java”的源文件，并编写代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">package</span> web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">HelloServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">protected</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>req<span class="sh_symbol">,</span> <span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>resp<span class="sh_symbol">)</span><span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resp<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">PrintWriter</span><span class="sh_normal"> </span>out <span class="sh_symbol">=</span> resp<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span><span class="sh_string">"&lt;h1&gt;Hello Servlet"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class HelloServlet extends HttpServlet {	
+	protected void service(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
+		resp.setContentType("text/html");
+		PrintWriter out = resp.getWriter();
+		out.write("&lt;h1&gt;Hello Servlet");
+		out.close();
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：使用javac命令编译源文件为字节码文件</p>
+      <p>在命令行提示符下，进入到HelloServlet.java文件所在的位置，输入如下命令：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">javac</span><span class="sh_normal"> </span>HelloServlet<span class="sh_symbol">.</span>java –<span class="sh_usertype">cp</span><span class="sh_normal">  </span>c<span class="sh_symbol">:\</span>java<span class="sh_symbol">\</span>tomcat7<span class="sh_number">.0</span><span class="sh_symbol">\</span>lib<span class="sh_symbol">\</span>servlet<span class="sh_symbol">-</span>api<span class="sh_symbol">.</span>jar</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">javac HelloServlet.java –cp  c:\java\tomcat7.0\lib\servlet-api.jar
+</pre></div></div>
+      <p>在没有报错的情况下会在java源文件的同级目录内出现HelloServlet.class的文件，代表编译成功。</p>
+      <p class="number">步骤三：将编译完的组件打包</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image012.png">
+        <p>图- 12</p>
+      </div>
+      <p>按照如图 – 12 所示的结构将组建打包，并新建web.xml文件，内容如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span><span class="sh_usertype">app</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"2.5"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/javaee </span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span><span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>helloServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>HelloServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>helloServlet<span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;/</span>sayHi<span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>servlet<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"&gt;
+  &lt;servlet&gt;
+  	&lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;
+  	&lt;servlet-class&gt;web.HelloServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+  	&lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;
+  	&lt;url-pattern&gt;/sayHi&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;
+</pre></div></div>
+      <p class="number">步骤四：部署</p>
+      <p>将整个firstweb文件夹拷贝到c:\java\tomcat7.0\webapps</p>
+      <p class="number">步骤五：启动Tomcat，并访问Servlet</p>
+      <p>在命令提示符下输入“startup”命令启动Tomcat，启动成功后，打开浏览器，在地址栏中输入 “ http://localhost:8080/firstweb/sayHi “回车，得到第一个Web应用程序的运行结果。如图 – 13所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image013.png">
+        <p>图- 13</p>
+      </div>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. 常见错误及解决方法</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. 404错误产生原因及解决方法</h3>
+      <p>在刚开始进行Web应用开发的时候，经常看见页面出现404这个数字，我们一般会称之为运行产生了404错误。类似于404这个数字，还有可能在页面上看到405、500这两个数字，他们都是服务器执行完客户端的请求以后，返回给客户端的一个关于执行结果的状态编码说明。 如果在运行结果页面中没有看到期待的页面，却看到了404、405、500这样的数字，那么代表着服务器告诉客户端运行产生了错误，掌握何种错误情况产生对应的数字将有利于问题的解决。</p>
+      <p>404产生的原因为Web服务器（容器）根据请求地址找不到对应资源，以下情况都会出现404的错误提示：</p>
+      <ol class="list">
+        <li>输入的地址有误（应用名大小写不正确，名称拼写不正确）
+</li>
+        <li>在web.xml文件中&lt;servlet&gt;和&lt;servlet-mapping&gt;中的两个&lt;servlet-name&gt;不一致
+</li>
+        <li>没有将工程部署到Tomcat的webapps下面
+</li>
+        <li>Web工程部署时的结构没有遵循Servlet的规范
+</li>
+      </ol>
+      <p>具体的解决办法就是根据上面提到的4种情况，逐条进行检查。</p>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. 容器如何找到service（）方法</h3>
+      <p>当在浏览器中输入 http://localhost:8080/firstweb/sayHi 这个地址后，容器是如何找到 HelloServlet.class这个文件并执行的呢？</p>
+      <p>首先容器会根据firstweb这个应用名找到位于webapps下面对应的文件夹，然后根据地址中的“/sayHi”到web.xml文件中寻找与之匹配的&lt;url-pattern&gt;节点，找到匹配的节点后会找到与该节点紧邻的&lt;servlet-name&gt;节点，获取名称并在此寻找与该名称相等的&lt;servlet-name&gt;节点，找到相等的节点后，搜寻该节点下面紧邻的&lt;servlet-class&gt;节点，于是获取到了与该地址相对应的类名，借助于ClassLoader加载该类文件，创建对象并调用service（）方法，客户端即看到了与该地址匹配的运行结果。</p>
+      <a name="Key01_04_03">
+      </a>
+      <h3>1.4.3. 405错误产生原因及解决方法</h3>
+      <p>405这个错误的产生原因是容器找不到service方法来处理请求。以下情况容器都将视为没有找到service（）方法</p>
+      <ol class="list">
+        <li>service方法名写错，字母顺序不对或大小写错误
+</li>
+        <li>service方法参数类型与标准不一致，或参数顺序与标准不一致。一定是先HttpServletRequest，然后是HttpServletResponse类型
+</li>
+        <li>service方法异常、返回值类型与标准不一致，一定是抛出ServletException、IOException。返回值类型是void。
+</li>
+      </ol>
+      <p>解决405错误的方法即检查service方法是否存在，签名（方法名、参数、返回值、异常类型）是否与覆盖的父类中的方法一致。</p>
+      <a name="Key01_04_04">
+      </a>
+      <h3>1.4.4. 500错误产生原因及解决方法</h3>
+      <p>500的错误原因是请求的Servlet在执行service方法的过程中出现了错误，程序不能继续运行了。以下情况容器都将视为500的一种情况，而返回给客户端这个错误说明。</p>
+      <ol class="list">
+        <li>Servlet没有继承HttpServlet或实现Servlet接口
+</li>
+        <li>web.xml文件中的&lt;servlet-class&gt;写错，与真正的包名类名不符
+</li>
+        <li>service方法中的代码运行时抛出异常
+</li>
+      </ol>
+      <p>解决500的方法为依据上面三种情况依次进行检测，逐条排除。</p>
+      <a name="Key01_05">
+      </a>
+      <h2>1.5. HTTP协议</h2>
+      <a name="Key01_05_01">
+      </a>
+      <h3>1.5.1. 什么是HTTP协议</h3>
+      <p>HTTP协议是HyperText Transfer Protocol的缩写，即超文本传输协议。是由w3c（万维网联盟）制定的一种应用层协议，用来定义浏览器与web服务器之间如何通信以及通信的数据格式。</p>
+      <p>因为BS架构中的通信模块就是以HTTP这个协议作为标准协议的，所以对该协议有所了解可以更好的编写程序。</p>
+      <a name="Key01_05_02">
+      </a>
+      <h3>1.5.2. HTTP协议是如何通信的</h3>
+      <p>HTTP协议的通信过程可以分为以下四个步骤：</p>
+      <ol class="list">
+        <li>浏览器根据IP地址和端口号与服务器建立连接
+</li>
+        <li>向Web服务器发送请求数据包
+</li>
+        <li>Web服务器接收请求数据包后，发送相应的响应数据包
+</li>
+        <li>浏览器接收响应数据后关闭连接
+</li>
+      </ol>
+      <p>在这个过程中，一次请求对应一次连接，当浏览器再次发请求给服务器时，Web服务器并不知道这就是上次发请求的客户端，这也是HTTP协议的一个特点-无状态协议。这种需要时建立连接，使用结束后立即断开连接的方式使得Web服务器可以利用有限的连接为尽可能多的客户提供服务。也正是具备了这样的特点，才使得BS结构能够承载企业级应用的大量访问。</p>
+      <a name="Key01_05_03">
+      </a>
+      <h3>1.5.3. HTTP协议中的数据格式</h3>
+      <p>在HTTP协议控制的数据走向中，既包括客户端发送给服务器端的请求数据也包括服务器端返回给客户端的响应信息，而具有一定规范的数据格式是保证通信标准的第一要素。借助于一些浏览器的插件或者浏览器本身内嵌的功能模块，可以实现对请求数据、响应数据的抓取，熟练掌握这些数据的主要部分，可以有利于理解BS模型中的一些处理问题的方式。通常情况下的请求数据包及响应数据包结构如图 – 14所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image014.png">
+        <p>图- 14</p>
+      </div>
+      <a name="Key01_05_04">
+      </a>
+      <h3>1.5.4. 请求数据包组成</h3>
+      <p>请求数据包包含三个部分：</p>
+      <ol class="list">
+        <li>请求行，包括请求方式，请求资源路径，以及协议版本
+</li>
+        <li>消息头是由若干的键值对组成，主要用于传递给Web服务器一些信息。如，浏览器版本、接受资源的类型等
+</li>
+        <li>在消息头的下面会跟着一个空白行，这样就可以区分出消息头与实体内容这两个部分。而在请求数据包中，大部分情况实体内容为空，只有当请求方式为POST时，实体内容才有要提交的表单数据
+</li>
+      </ol>
+      <p>请求数据包常见结构如图 – 15 所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image015.png">
+        <p>图- 15</p>
+        <p>
+        </p>
+      </div>
+      <a name="Key01_05_05">
+      </a>
+      <h3>1.5.5. 响应数据包组成</h3>
+      <p>响应数据包也包含三个部分：</p>
+      <ol class="list">
+        <li>状态行，包括协议类型、版本、状态码、状态描述
+</li>
+        <li>消息头（若干），也是多组键值对组成的信息说明。如返回的Content-Type消息头可以告诉浏览器返回的结果数据类型和字符集
+</li>
+        <li>实体内容，位于消息头下面的一个空白行之后。空白行意在通知浏览器消息头的结束以及结果内容的开始，浏览器就从这里开始数据的逐行解析。
+</li>
+      </ol>
+      <p>响应数据包常见结构如图 – 16 所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image016.png">
+        <p>图- 16</p>
+      </div>
+      <a name="Key01_06">
+      </a>
+      <h2>1.6. Servlet如何处理HTTP协议</h2>
+      <a name="Key01_06_01">
+      </a>
+      <h3>1.6.1. 如何控制通信数据</h3>
+      <p>HTTP协议在Web容器这端主要表现为通信数据的到达以及响应数据的返回。于是Web容器将这两部分数据解释为两个对象，一个是与请求数据对应的HttpServletRequest对象，一个是与响应数据对应的HttpServletResponse对象。对于Servlet来讲，主要的业务逻辑过程就是从请求对象中获取数据，经过加工后将结果附着在响应对象中发送回客户端。</p>
+      <a name="Key01_06_02">
+      </a>
+      <h3>1.6.2. HttpServletRequest对象</h3>
+      <p>借助于HttpServletRequest对象可以实现很多操作，如读取请求行、消息头信息，取得路径信息等。使用如下代码可以实现相关功能。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">package</span> web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Enumeration<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">RequestServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">protected</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>req<span class="sh_symbol">,</span> <span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>resp<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Enumeration</span><span class="sh_normal"> </span>e <span class="sh_symbol">=</span> req<span class="sh_symbol">.</span><span class="sh_function">getHeaderNames</span> <span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">while</span> <span class="sh_symbol">(</span>e<span class="sh_symbol">.</span><span class="sh_function">hasMoreElements</span> <span class="sh_symbol">())</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>headerName <span class="sh_symbol">=</span> e<span class="sh_symbol">.</span><span class="sh_function">nextElement</span> <span class="sh_symbol">().</span><span class="sh_function">toString</span> <span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span> <span class="sh_symbol">(</span>headerName<span class="sh_symbol">+</span><span class="sh_string">":"</span><span class="sh_symbol">+</span>req<span class="sh_symbol">.</span><span class="sh_function">getHeader</span> <span class="sh_symbol">(</span>headerName<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span> <span class="sh_symbol">(</span>req<span class="sh_symbol">.</span><span class="sh_function">getMethod</span> <span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span> <span class="sh_symbol">(</span>req<span class="sh_symbol">.</span><span class="sh_function">getProtocol</span> <span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span> <span class="sh_symbol">(</span>req<span class="sh_symbol">.</span><span class="sh_function">getRequestURI</span> <span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span> <span class="sh_symbol">(</span>req<span class="sh_symbol">.</span><span class="sh_function">getRequestURL</span> <span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span> <span class="sh_symbol">(</span>req<span class="sh_symbol">.</span><span class="sh_function">getServletPath</span> <span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Enumeration;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class RequestServlet extends HttpServlet {
+	
+	protected void service(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		Enumeration e = req.getHeaderNames ();
+		while (e.hasMoreElements ()){
+			String headerName = e.nextElement ().toString ();
+			System.out.println (headerName+":"+req.getHeader (headerName));
+		}
+		System.out.println (req.getMethod ());
+		System.out.println (req.getProtocol ());
+		System.out.println (req.getRequestURI ());
+		System.out.println (req.getRequestURL ());
+		System.out.println (req.getServletPath ());
+	}
+}
+</pre></div></div>
+      <a name="Key01_06_03">
+      </a>
+      <h3>1.6.3. HttpServletResponse对象</h3>
+      <p>HttpServletResponse对象最主要的作用即设置给浏览器的响应内容及浏览器的解码方式，此外设置cookie及重定向也都是响应对象的功能。这些功能对应的代码实现如下所示。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">package</span> web<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>ServletException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServlet<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletRequest<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.</span>HttpServletResponse<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">ResponseServlet</span> <span class="sh_keyword">extends</span> HttpServlet <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">protected</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>req<span class="sh_symbol">,</span> <span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>resp<span class="sh_symbol">)</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">throws</span> ServletException<span class="sh_symbol">,</span> IOException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resp<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=gbk"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resp<span class="sh_symbol">.</span><span class="sh_function">setStatus</span><span class="sh_symbol">(</span><span class="sh_number">404</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">package web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class ResponseServlet extends HttpServlet {
+	
+	 protected void service(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		resp.setContentType("text/html;charset=gbk");
+			resp.setStatus(404);	
+	}
+	
+}
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

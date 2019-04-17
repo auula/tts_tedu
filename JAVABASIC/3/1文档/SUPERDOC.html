@@ -1,0 +1,421 @@
+
+<!-- saved from url=(0099)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="7572671573"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#Key01">运算符和表达式-2</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#Key02">分支结构</a>
+        </li>
+      </ol>
+      <h1>1. 运算符和表达式-2</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 赋值运算</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 使用“=”进行赋值运算</h3>
+      <p>“=”称为赋值运算符，用于对变量赋值。关于赋值运算符，除了将右边的表达式计算出来赋给左边以外还具备如下特点：赋值表达式本身也有值，其本身之值即为所赋之值。示例代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> num <span class="sh_symbol">=</span> <span class="sh_number">18</span><span class="sh_symbol">,</span> index<span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>index <span class="sh_symbol">=</span> num <span class="sh_symbol">%</span> <span class="sh_number">5</span><span class="sh_symbol">);</span>  <span class="sh_comment">// 结果为：3，赋值表达式本身也有值</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>index<span class="sh_symbol">);</span>  <span class="sh_comment">// 结果为：3</span></li><li><span class="sh_type">int</span> a<span class="sh_symbol">,</span> b<span class="sh_symbol">,</span> c<span class="sh_symbol">;</span></li><li>a <span class="sh_symbol">=</span> b <span class="sh_symbol">=</span> c <span class="sh_symbol">=</span> <span class="sh_number">100</span><span class="sh_symbol">;</span>  </li><li><span class="sh_comment">// c=100 整个表达式的值为100， 将其赋值给b，同样b=（c=100）整个表达式的值也为100，然后有将这个值赋给了a，所以a 的值也是100。</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int num = 18, index;
+System.out.println(index = num % 5);  // 结果为：3，赋值表达式本身也有值
+System.out.println(index);  // 结果为：3
+int a, b, c;
+a = b = c = 100;  
+// c=100 整个表达式的值为100， 将其赋值给b，同样b=（c=100）整个表达式的值也为100，然后有将这个值赋给了a，所以a 的值也是100。
+</pre></div></div>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 使用扩展赋值表达式</h3>
+      <p>在赋值运算符”= ”前加上其它运算符，即为扩展赋值运算符，其效率高于赋值运算符，推荐使用，扩展赋值运算符如下图 - 5所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图- 5</p>
+      </div>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 字符连接运算</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 使用“+”进行字符串连接</h3>
+      <p>“+”除了可以进行算术运算以外，还可以实现字符串的连接，同时可以实现字符串与其他数据类型的“相连”。</p>
+      <p>当 + 号作用于两个数字类型变量时，是在进行算术运算。</p>
+      <p>当 + 号两边的变量有一个是字符串类型，即””括起来的时候，则其进行的是字符串的连接，连接后的结果为字符串类型。示例代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> a <span class="sh_symbol">=</span> <span class="sh_number">100</span><span class="sh_symbol">;</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>msg <span class="sh_symbol">=</span> <span class="sh_string">"a="</span> <span class="sh_symbol">+</span> a<span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>msg<span class="sh_symbol">);</span>    <span class="sh_comment">//a=100，字符串拼接</span></li><li>msg <span class="sh_symbol">=</span> <span class="sh_string">""</span> <span class="sh_symbol">+</span> <span class="sh_number">100</span> <span class="sh_symbol">+</span> <span class="sh_number">200</span><span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>msg<span class="sh_symbol">);</span>   <span class="sh_comment">//结果为： 100200，””+100，为字符串100再拼上200为100200</span></li><li>msg <span class="sh_symbol">=</span> <span class="sh_number">100</span> <span class="sh_symbol">+</span> <span class="sh_number">200</span> <span class="sh_symbol">+</span> <span class="sh_string">""</span><span class="sh_symbol">;</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>msg<span class="sh_symbol">);</span>   <span class="sh_comment">//结果为：300，100+200为算术运算结果为300，再加上””为300</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int a = 100;
+String msg = "a=" + a;
+System.out.println(msg);    //a=100，字符串拼接
+msg = "" + 100 + 200;
+System.out.println(msg);   //结果为： 100200，””+100，为字符串100再拼上200为100200
+msg = 100 + 200 + "";
+System.out.println(msg);   //结果为：300，100+200为算术运算结果为300，再加上””为300
+</pre></div></div>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. 条件（三目）运算</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 使用条件（三目）运算符</h3>
+      <p>条件运算符又称“三目”运算符，其结构为：boolean表达式 ? 表达式1：表达式2。</p>
+      <p>条件运算符的规则如下：</p>
+      <ol class="list">
+        <li>先计算boolean表达式；
+</li>
+        <li>如果boolean表达式的值为true，整个表达式的值为表达式1的值；
+</li>
+        <li>如果boolean表达式的值为false，整个表达式的值为表达式2的值。
+</li>
+      </ol>
+      <p>示例代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> a <span class="sh_symbol">=</span> <span class="sh_number">100</span><span class="sh_symbol">,</span> b <span class="sh_symbol">=</span> <span class="sh_number">200</span><span class="sh_symbol">;</span></li><li><span class="sh_type">int</span> flag <span class="sh_symbol">=</span> a <span class="sh_symbol">&gt;</span> b <span class="sh_symbol">?</span> <span class="sh_number">1</span> <span class="sh_symbol">:</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">;</span>   <span class="sh_comment">//因为a&gt;b为false，所以整个表达式的值为-1，将其赋给flag，即:flag的值为-1。</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int a = 100, b = 200;
+int flag = a &gt; b ? 1 : -1;   //因为a&gt;b为false，所以整个表达式的值为-1，将其赋给flag，即:flag的值为-1。
+</pre></div></div>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 条件（三目）运算符的嵌套</h3>
+      <p>条件运算符可以嵌套使用，所谓嵌套是指在条件（三目）表达式：“boolean表达式 ? 表达式1：表达式2”中的表达式1或表达式2也是条件（三目）表达式，相当于多重判断，示例代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> a <span class="sh_symbol">=</span> <span class="sh_symbol">-</span><span class="sh_number">3</span><span class="sh_symbol">;</span></li><li><span class="sh_usertype">String</span><span class="sh_normal"> </span>r <span class="sh_symbol">=</span> a <span class="sh_symbol">&gt;</span> <span class="sh_number">0</span> <span class="sh_symbol">?</span> <span class="sh_string">"正数"</span> <span class="sh_symbol">:</span> <span class="sh_symbol">(</span>a <span class="sh_symbol">==</span> <span class="sh_number">0</span> <span class="sh_symbol">?</span> <span class="sh_string">"0"</span><span class="sh_symbol">:</span><span class="sh_string">"负数"</span><span class="sh_symbol">);</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>r<span class="sh_symbol">);</span> <span class="sh_comment">//结果为负数，因为 a 的值小于 0，即boolean 表达式的值为 false ，则取问号后第二个表达式的值作为表达式的结果。而问号后的第二个表达式也是一个三目运算符所构成的表达式。因为 a==0 表达式的值为 false，则取“负数”为表达式的结果。</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int a = -3;
+String r = a &gt; 0 ? "正数" : (a == 0 ? "0":"负数");
+System.out.println(r); //结果为负数，因为 a 的值小于 0，即boolean 表达式的值为 false ，则取问号后第二个表达式的值作为表达式的结果。而问号后的第二个表达式也是一个三目运算符所构成的表达式。因为 a==0 表达式的值为 false，则取“负数”为表达式的结果。
+</pre></div></div>
+      <a name="Key02">
+      </a>
+      <h1>2. 分支结构</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 什么是分支结构</h2>
+      <p>首先，看一个需求，假设需要编写一个收银柜台收款程序，要求根据商品单价、购买数量以及收款金额，计算并输出应收金额和找零。</p>
+      <p>通过分析可以想到，这个程序，需要定义三个输入，即：单价、数量、金额。定义两个输出，即：应收金额、找零。因为金额有可能为小数类型，所以变量的数据结构定义为double类型。</p>
+      <p>此程序可以以如下方式解决，用户由控制台输入：商品单价、购买数量、收款金额；而后计算商品的总价及找零，并输出。示例代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">void</span> <span class="sh_function">main</span><span class="sh_symbol">(</span>String<span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//定义输入</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">Scanner</span><span class="sh_normal"> </span>console <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Scanner</span><span class="sh_symbol">(</span>System<span class="sh_symbol">.</span>in<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"请输入单价（￥）:"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">double</span> unitPrice <span class="sh_symbol">=</span> console<span class="sh_symbol">.</span><span class="sh_function">nextDouble</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"请输入数量:"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">double</span> amount <span class="sh_symbol">=</span> console<span class="sh_symbol">.</span><span class="sh_function">nextDouble</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"请输入金额（￥）:"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">double</span> money <span class="sh_symbol">=</span> console<span class="sh_symbol">.</span><span class="sh_function">nextDouble</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;console<span class="sh_symbol">.</span><span class="sh_function">close</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//计算商品总价</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">double</span> totalPrice <span class="sh_symbol">=</span> unitPrice <span class="sh_symbol">*</span> amount<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//计算找零</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">double</span> change <span class="sh_symbol">=</span> money <span class="sh_symbol">-</span> totalPrice<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//输出</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"应收金额为:"</span> <span class="sh_symbol">+</span> totalPrice <span class="sh_symbol">+</span><span class="sh_string">"，找零为:"</span> <span class="sh_symbol">+</span> change<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public static void main(String[] args) {
+		//定义输入
+		Scanner console = new Scanner(System.in);
+		System.out.println("请输入单价（￥）:");
+		double unitPrice = console.nextDouble();
+		System.out.println("请输入数量:");
+		double amount = console.nextDouble();
+		System.out.println("请输入金额（￥）:");
+		double money = console.nextDouble();
+		console.close();
+		
+		//计算商品总价
+		double totalPrice = unitPrice * amount;
+		//计算找零
+		double change = money - totalPrice;
+		
+		//输出
+		System.out.println("应收金额为:" + totalPrice +"，找零为:" + change);
+	}
+</pre></div></div>
+      <p>如上代码，输入数据后，可以正确输出应收金额及找零，假设现在需求增加，当商品总价满500时享受8折优惠， 如何解决？这种情况，在软件应用中，需要使用分支结构来实现。</p>
+      <p>任何复杂的程序逻辑结构都可以通过“顺序”，“分支”，“循环”这三种基本的程序结构实现。如图 – 1所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图- 1</p>
+      </div>
+      <p>刚刚的案例即为顺序结构，第一步A执行完执行第二步B，第二步执行完执行第三步，一步一步顺序执行。分支结构即为根据一个条件做判断，如果条件满足则执行A，否则执行B。还有一种即为后面要介绍的循环结构。原则上，任何复杂的程序， 都可以通过这三种结构来解决。</p>
+      <p>当程序在运行过程中， 需要根据不同的条件而运行不同的语句时，即可以使用分支结构，Java中有专门的语法结构来实现分支：</p>
+      <ol class="list">
+        <li>当条件满足时运行某些语句；当条件不满足时则不运行这些语句——if结构。
+</li>
+        <li>当条件满足时运行某些语句； 当条件不满足时运行另外一些语句——if-else结构
+</li>
+      </ol>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. if语句</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. if语句的执行逻辑</h3>
+      <p>首先看下面if语句的语法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>语句<span class="sh_number">0</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">if</span>（逻辑表达式）<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    语句<span class="sh_number">1</span>；</li><li>&nbsp;&nbsp;&nbsp;&nbsp;    语句<span class="sh_number">2</span>；</li><li><span class="sh_cbracket">}</span></li><li>语句<span class="sh_number">3</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">语句0;
+if（逻辑表达式）{
+	    语句1；
+	    语句2；
+}
+语句3；
+</pre></div></div>
+      <p>如上语句的执行步骤如下所示：</p>
+      <p>步骤一：执行语句0；</p>
+      <p>步骤二： 判断逻辑表达式的值，此表达式的值结果为boolean类型，即true或者false。此处可以是关系表达式也可以是逻辑表达式。</p>
+      <ol class="list">
+        <li>若值为true，则执行if语句块中的语句；
+</li>
+        <li>若值为false，则跳过if语句块；
+</li>
+      </ol>
+      <p>步骤三：执行语句3语句。</p>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. if语句流程图</h3>
+      <p>if语句的执行逻辑如下图 - 2所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图- 2</p>
+      </div>
+      <p>通过图示得出结论：当条件满足时，执行语句块，然后执行if语句下面的语句；否则跳过语句块，直接执行if语句下面的语句。</p>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. if语句用于处理分支逻辑</h3>
+      <p>if语句是java中用于处理分支结构的语句，下面，通过if语句来实现刚刚的打折功能逻辑，再回顾一下新添的需求：如果商品总价大于等于500，则打8折。如下图– 3 红色部分即为if的判断逻辑：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图- 3</p>
+      </div>
+      <p>可以看到，计算商品总价之后，进行了总价大于等于500的业务判断，若判断结果为true，则计算折扣后的应收金额，再计算找零后输出。若判断结果为false，则直接计算找零后输出。如下即为实现代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>……</li><li>    <span class="sh_type">double</span> totalPrice <span class="sh_symbol">=</span> ……；</li><li>    <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>totalPrice <span class="sh_symbol">&gt;=</span> <span class="sh_number">500</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;totalPrice <span class="sh_symbol">=</span> totalPrice <span class="sh_symbol">*</span> <span class="sh_number">0.8</span><span class="sh_symbol">;</span></li><li>    <span class="sh_cbracket">}</span></li><li>    ……</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">……
+    double totalPrice = ……；
+    if (totalPrice &gt;= 500) {
+ 		totalPrice = totalPrice * 0.8;
+    }
+    ……
+</pre></div></div>
+      <p>通过如上代码可以看出： 当total&gt;=500为true时， 总额乘以0.8， 即打8折。当total&gt;=500为false时，不执行if语句块的内容。</p>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. if语句块不要省略“｛｝”</h3>
+      <p>if语句块在执行过程中，有一个问题是需要注意的，先看下面的两段代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>代码一：</li><li><span class="sh_type">int</span> num <span class="sh_symbol">=</span> <span class="sh_number">5</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span>num<span class="sh_symbol">&gt;</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>num<span class="sh_symbol">);</span></li><li>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“ 大于<span class="sh_number">2</span> ”<span class="sh_symbol">);</span></li><li>代码二：</li><li><span class="sh_type">int</span> num <span class="sh_symbol">=</span> <span class="sh_number">5</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span>num<span class="sh_symbol">&gt;</span><span class="sh_number">2</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>    &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>num<span class="sh_symbol">);</span></li><li>    &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“ 大于<span class="sh_number">2</span> ”<span class="sh_symbol">);</span><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">代码一：
+int num = 5;
+if(num&gt;2)
+   		System.out.print(num);
+   		System.out.println(“ 大于2 ”);
+代码二：
+int num = 5;
+if(num&gt;2){
+    	System.out.print(num);
+    	System.out.println(“ 大于2 ”);}
+</pre></div></div>
+      <p>分析如上两个代码段，得出的结论是：两段代码输出结果一样，即 “5 大于 2”。再看如下两段代码，输出结果还一样吗？</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>代码一：</li><li><span class="sh_type">int</span> num <span class="sh_symbol">=</span> <span class="sh_number">5</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span>num<span class="sh_symbol">&lt;</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>num<span class="sh_symbol">);</span></li><li>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“小于<span class="sh_number">2</span>”<span class="sh_symbol">);</span></li><li>代码二：</li><li><span class="sh_type">int</span> num <span class="sh_symbol">=</span> <span class="sh_number">5</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span>num<span class="sh_symbol">&lt;</span><span class="sh_number">2</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>        System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>num<span class="sh_symbol">);</span></li><li>        System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“小于<span class="sh_number">2</span>”<span class="sh_symbol">);</span><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">代码一：
+int num = 5;
+if(num&lt;2)
+   		System.out.println(num);
+   		System.out.println(“小于2”);
+代码二：
+int num = 5;
+if(num&lt;2){
+        System.out.print(num);
+        System.out.println(“小于2”);}
+</pre></div></div>
+      <p>分析如上两个代码段，可以得出，代码段一的输出结果是“大于2”，代码段二没有任何输出。分析输出结果可以看出，代码段二的结果为正确结果，而代码段一输出的“小于2”是不应该存在的，出现这个问题的原因在于，在if语句之后没有添加“{}”，而java语法规定，当if语句块中只包含一条语句时，可以省略“{}”，但是if语句块也只能作用于它下面的一条语句。</p>
+      <p>看如上代码段一的if判断，只作用于第一个输出语句，因为num&lt;2结果为false，所以第一个输出语句并未执行，而第二个输出语句“小于2”不属于if作用范围，所以无论条件满足与否，都会执行。故而，输出了“小于2”的结果。</p>
+      <p>所以，考虑到代码的可读性、扩展性，建议即便if语句块中只有一条语句，也不要省略“{}”。</p>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. if-else语句</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. if-else语句的执行逻辑</h3>
+      <p>分析上面的案例，当计算出最终（打折前、打折后）的应收金额后，直接计算找零，这</p>
+      <p>个时候就出现了一个问题，如果收款的金额小于应收的金额，那么输出的找零就会为负数结果，这显然用户体验不好，下面对它做一下改进，要求考虑程序的异常情况，增加需求如下：</p>
+      <ol class="list">
+        <li>若收款金额大于等于应收金额，则计算找零后输出；
+</li>
+        <li>若收款金额小于应收金额，则输出错误提示信息，如何处理？
+</li>
+      </ol>
+      <p>这种情况，单单使用if语句显然无法解决了，因为if语句用于解决的是，当某条件满足时执行某段业务处理的逻辑，而现在的逻辑时，当条件满足时执行某段业务逻辑，当条件不满足时需要执行另一段业务逻辑。看如下图 – 4所示的红色部分：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图- 4</p>
+      </div>
+      <p>若想实现这样的判断逻辑，可以考虑if-else语句。看一下下面的语法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>语句<span class="sh_number">0</span>；</li><li><span class="sh_keyword">if</span>（逻辑表达式）<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    语句块<span class="sh_number">1</span>；</li><li><span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>        语句块<span class="sh_number">2</span>；</li><li><span class="sh_cbracket">}</span></li><li>语句<span class="sh_number">3</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">语句0；
+if（逻辑表达式）{
+	    语句块1；
+} else {
+        语句块2；
+}
+语句3；
+</pre></div></div>
+      <p>如上语句的执行步骤如下所示：</p>
+      <p>步骤一：执行语句0；</p>
+      <p>步骤二：判断if逻辑表达式的值：</p>
+      <ol class="list">
+        <li>若值为true，则执行语句块1；
+</li>
+        <li>若值为false，则执行语句块2；
+</li>
+      </ol>
+      <p>步骤三：执行语句3语句。</p>
+      <a name="Key02_03_02">
+      </a>
+      <h3>2.3.2. if-else语句流程图</h3>
+      <p>if-else语句的执行逻辑如下图 - 5所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image006.png">
+        <p>图- 5</p>
+      </div>
+      <p>通过图-5可以看到：当条件满足时，执行语句块1，然后执行if-else语句下面的语句；否则执行语句块2，再执行if-else语句下面的语句。</p>
+      <a name="Key02_03_03">
+      </a>
+      <h3>2.3.3. if-else语句用于处理分支逻辑</h3>
+      <p>通过下面的代码，可以解决新增加的异常情况处理问题：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>……</li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span> money <span class="sh_symbol">&gt;=</span> totalPrice <span class="sh_symbol">)</span> <span class="sh_cbracket">{</span>    &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_type">double</span> change <span class="sh_symbol">=</span> money – totalPrice<span class="sh_symbol">;</span></li><li>     &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"应收金额为:"</span> <span class="sh_symbol">+</span> totalPrice <span class="sh_symbol">+</span><span class="sh_string">"，找零为:"</span> <span class="sh_symbol">+</span> change<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span>    &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“Error<span class="sh_symbol">!</span> 收款金额小于应收金额”<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">……
+if( money &gt;= totalPrice ) {    	double change = money – totalPrice;
+     	System.out.println("应收金额为:" + totalPrice +"，找零为:" + change);
+} else {    	System.out.println(“Error! 收款金额小于应收金额”);
+}
+</pre></div></div>
+      <p>说明：money为收款金额，totalPrice为应收金额；当收款金额大于等于应收金额时，则计算找零并输出，否则，提示错误信息。</p>
+      <a name="Key02_04">
+      </a>
+      <h2>2.4. else  if语句</h2>
+      <a name="Key02_04_01">
+      </a>
+      <h3>2.4.1. if-else语句的嵌套</h3>
+      <p>在日常生活中，很多情况并非进行一次逻辑判断就可以获取最终的结果， 如图– 6所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image007.png">
+        <p>图 - 6</p>
+      </div>
+      <p>可以看出，实现制作沙拉的过程进行了两次判断，首先判断是否有黄瓜，若有则直接制作黄瓜沙拉后结束，若没有黄瓜则判断是否有胡萝卜，若有则制作胡萝卜沙拉结束，没有则不能上菜结束。这种情况，单单使用if-else还无法实现，因为if-else只是判断了一次就结束了，而当前的情况需要判断两次。</p>
+      <p>在java程序中，当程序的分支数大于2时，可以用if-else嵌套的方式解决，即：else语句块中又包含if语句（或if-else语句），下面看一个实际的需求：</p>
+      <p>根据学员的成绩来输出等级：</p>
+      <ol class="list">
+        <li>A（成绩大于等于90分）；
+</li>
+        <li>B（成绩小于90分且大于等于80分）;
+</li>
+        <li>C（成绩小于80分且大于等于60分）;
+</li>
+        <li>D（成绩小于60）。
+</li>
+      </ol>
+      <p>此程序即为多路判断，如图– 7所示流程图：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image008.png">
+        <p>图- 7</p>
+      </div>
+      <p>首先判断分数是否大于等于90，若为真则输出A终止，为假则再判断分数是否大于等于80，若为真输出B终止，为假则再判断分数是否大于等于60，若为真输出C终止，为假则输出D。分析可以看出，该程序经过了3次判断。需要在else中嵌套判断。代码如下所示：</p>
+      <a name="Key02_04_02">
+      </a>
+      <h3>2.4.2. else if语句执行逻辑</h3>
+      <p>如下图 – 8所示，在else中再次进行if-else的判断：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image009.png">
+        <p>图- 8</p>
+      </div>
+      <p>从上图中看出，当判断层数比较多时，代码清晰度不够好，在实际开发中常常使用如下图- 9的方式来实现，事实上，else if结束就是if-else嵌套的简便写法：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image010.png">
+        <p>图 – 9</p>
+      </div>
+      <p>实现该程序代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>… … <span class="sh_symbol">...</span></li><li><span class="sh_keyword">if</span><span class="sh_symbol">(</span>score<span class="sh_symbol">&gt;=</span><span class="sh_number">90</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>    &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"A"</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_keyword">if</span> <span class="sh_symbol">(</span>score<span class="sh_symbol">&gt;=</span><span class="sh_number">80</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>    &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"B"</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_keyword">if</span><span class="sh_symbol">(</span>score<span class="sh_symbol">&gt;=</span><span class="sh_number">60</span><span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>    &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"C"</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span> <span class="sh_keyword">else</span> <span class="sh_cbracket">{</span></li><li>    &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"D"</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">… … ...
+if(score&gt;=90) {
+    	System.out.println("A");
+} else if (score&gt;=80) {
+    	System.out.println("B");
+} else if(score&gt;=60) {
+    	System.out.println("C");
+} else {
+    	System.out.println("D");
+}
+</pre></div></div>
+      <p>通过上面的代码可以看出，使用else if方式，程序逻辑更清晰，可读性更好。</p>
+      <a name="Key02_05">
+      </a>
+      <h2>2.5. switch-case语句</h2>
+      <a name="Key02_05_01">
+      </a>
+      <h3>2.5.1. switch-case语句执行逻辑</h3>
+      <p>switch-case是一种特殊的分支结构，与else if类似，但其应用面不如else if，只能用于特殊的情况之下， switch-case可以根据一个整数值的不同取值，从不同的程序入口开始执行。语法如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>     <span class="sh_keyword">switch</span><span class="sh_symbol">(</span>整型表达式<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>         <span class="sh_keyword">case</span> 整型常量值<span class="sh_number">1</span><span class="sh_symbol">:</span>     <span class="sh_comment">//入口1</span></li><li>             语句<span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>             语句<span class="sh_number">2</span><span class="sh_symbol">;</span></li><li>         <span class="sh_keyword">case</span> 整型常量值<span class="sh_number">2</span><span class="sh_symbol">:</span>     <span class="sh_comment">//入口2</span></li><li>             语句<span class="sh_number">3</span><span class="sh_symbol">;</span></li><li>             ……</li><li>         <span class="sh_keyword">default</span><span class="sh_symbol">:</span>               <span class="sh_comment">//默认入口</span></li><li>             语句n<span class="sh_symbol">;</span></li><li>     <span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">     switch(整型表达式) {
+         case 整型常量值1:     //入口1
+             语句1;
+             语句2;
+         case 整型常量值2:     //入口2
+             语句3;
+             ……
+         default:               //默认入口
+             语句n;
+     }
+</pre></div></div>
+      <p>switch-case流程图见图 – 10所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image011.png">
+        <p>图- 10</p>
+      </div>
+      <p>分析上图，可以看出其执行逻辑如下：</p>
+      <p>计算整型表达式的值：</p>
+      <ol class="list">
+        <li>若值等于整型常量值1，则从语句1开始执行，而后语句2、3，一直执行到语句n。
+</li>
+        <li>若值等于整型常量值2，则从语句3开始执行，一直执行到语句n。
+</li>
+        <li>若没有找到匹配的值，则只执行语句n。
+</li>
+      </ol>
+      <p>通过分析可以看出，switch是以case后的整型常量值作为入口的，若值相等，即开始执行其后面的语句。</p>
+      <p>使用switch时需要注意两个问题，第一，case后面的常量值必须不同，第二，switch后面的整型表达式的值必须是整型或字符型。</p>
+      <a name="Key02_05_02">
+      </a>
+      <h3>2.5.2. switch-case和break联合使用</h3>
+      <p>前面的代码中判断整型表达式的值，若其值等于某个整型常量值，则会以此作为入口，依次执行其后面所有的语句。但是在实际应用中，通常case1、case2、…、caseN对应完全不同的操作，即： 若表达式的值等于case1，则只执行case1后的语句，不会再执行case2、caseN等后面的语句。这种情况下可以和break语句配合使用，执行完相应语句后即退出switch块，不继续执行下面的语句。语法如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">switch</span><span class="sh_symbol">(</span>整型表达式<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>         <span class="sh_keyword">case</span> 整型常量值<span class="sh_number">1</span><span class="sh_symbol">:</span>     <span class="sh_comment">//入口1</span></li><li>             语句<span class="sh_number">1</span><span class="sh_symbol">;</span></li><li>             语句<span class="sh_number">2</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">break</span> <span class="sh_symbol">;</span></li><li>         <span class="sh_keyword">case</span> 整型常量值<span class="sh_number">2</span><span class="sh_symbol">:</span>     <span class="sh_comment">//入口2</span></li><li>             语句<span class="sh_number">3</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">break</span> <span class="sh_symbol">;</span></li><li>             ……</li><li>         <span class="sh_keyword">default</span><span class="sh_symbol">:</span>               <span class="sh_comment">//默认入口</span></li><li>             语句n<span class="sh_symbol">;</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">switch(整型表达式) {
+         case 整型常量值1:     //入口1
+             语句1;
+             语句2;
+			 break ;
+         case 整型常量值2:     //入口2
+             语句3;
+			 break ;
+             ……
+         default:               //默认入口
+             语句n;
+}
+</pre></div></div>
+      <p>如上程序中的break语句的作用在于跳出switch结构，其执行逻辑如下：</p>
+      <ol class="list">
+        <li>计算整型表达式的值：
+</li>
+        <li>如果值等于整型常量值1，则执行语句1、语句2，跳出switch结构结束；
+</li>
+        <li>若值等于整型常量值2，则执行语句3，跳出switch结构结束；
+</li>
+        <li>如果没有找到匹配的值，则执行语句n，结束。default后可以不写break。
+</li>
+      </ol>
+      <a name="Key02_05_03">
+      </a>
+      <h3>2.5.3. switch-case语句用于分支</h3>
+      <p>在实际应用中，switch-case语句常常与break配合使用，参见下面的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY03/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_type">int</span> num <span class="sh_symbol">=</span> <span class="sh_number">2</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">switch</span><span class="sh_symbol">(</span>num<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>    &nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">case</span> <span class="sh_number">1</span><span class="sh_symbol">:</span> </li><li>         &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“呼叫教学部”<span class="sh_symbol">);</span></li><li>         &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">break</span><span class="sh_symbol">;</span></li><li>     &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">case</span> <span class="sh_number">2</span><span class="sh_symbol">:</span></li><li>         &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“呼叫人事部”<span class="sh_symbol">);</span></li><li>         &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">break</span><span class="sh_symbol">;</span></li><li>     &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">default</span><span class="sh_symbol">:</span></li><li>          &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>“人工服务”<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">int num = 2;
+switch(num) {
+    	 case 1: 
+         	System.out.println(“呼叫教学部”);
+         	break;
+     	case 2:
+         	System.out.println(“呼叫人事部”);
+         	break;
+     	default:
+          	System.out.println(“人工服务”);
+}
+</pre></div></div>
+      <p>上面代码的输出结果为“呼叫人事部“，因为匹配case 2输出后，即break跳出switch语句了。</p>
+      <a name="Key02_05_04">
+      </a>
+      <h3>2.5.4. switch-case的优势</h3>
+      <p>switch-case结构在实际应用中较广泛， 常常和break语句结合使用实现分支的功能。</p>
+      <p>在很多情况下,switch-case可以代替else if结构，而switch-case实现分支功能的效率要高于else if结构，并且结构更清晰，所以推荐使用。从JDK 7.0开始，switch-case可以支持字符串表达式，将更加方便程序的操作。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

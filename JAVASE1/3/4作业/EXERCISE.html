@@ -1,0 +1,111 @@
+
+<!-- saved from url=(0096)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/EXERCISE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>EXERCISE</title> 
+   
+  <script type="text/javascript" src="./EXERCISE_files/jquery.min.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/jquery.snippet.js">
+    </script> 
+  <script type="text/javascript" src="./EXERCISE_files/main.js">
+    </script> 
+  <link type="text/css" href="./EXERCISE_files/index.css" rel="Stylesheet"> 
+  <link type="text/css" href="./EXERCISE_files/jquery.snippet.css" rel="Stylesheet"> 
+ </head><style type="text/css" id="16719897330"></style> 
+ <body> 
+  <div class="source_style_exercise"> 
+   <div> 
+    <h3>1 商品促销日期计算程序</h3> 
+    <p>用户输入商品生产日期和保质期，通过程序计算促销日期。计算规则为：到保质期前14天所在周的周三为促销日。控制台交互情况如图-1所示。</p> 
+    <div class="image"> 
+     <img src="./EXERCISE_files/image001.png"> 
+     <p>图- 1</p> 
+    </div> 
+   </div> 
+   <div> 
+    <h3>2 下面代码输出结果是？</h3> 
+    <p>Cell类的代码如下所示：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> Cell<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;int col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span>int row<span class="sh_symbol">,</span> int col<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>row <span class="sh_symbol">=</span> row<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">this</span><span class="sh_symbol">.</span>col <span class="sh_symbol">=</span> col<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">drop</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;row<span class="sh_symbol">++;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;@Override</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_predef_func">String</span> <span class="sh_function">toString</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_string">"("</span> <span class="sh_symbol">+</span> row <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> col <span class="sh_symbol">+</span> <span class="sh_string">")"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class Cell{
+	int row;
+	int col;
+	public Cell(int row, int col) {
+		this.row = row;
+		this.col = col;
+	}
+	public void drop() {
+		row++;
+	}
+	@Override
+	public String toString() {
+		return "(" + row + "," + col + ")";
+	}
+}
+</pre></div></div> 
+    <p>运行testRef方法，程序的输出结果是：（）。</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testRef</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collection<span class="sh_symbol">&lt;</span>Cell<span class="sh_symbol">&gt;</span> cells <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span>Cell<span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell c0 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">5</span><span class="sh_symbol">,</span> <span class="sh_number">6</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cell c1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Cell</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span> <span class="sh_number">9</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>c0<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cells<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span>c1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c0 <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> c1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cells<span class="sh_symbol">);</span>  </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c0<span class="sh_symbol">.</span><span class="sh_function">drop</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c1<span class="sh_symbol">.</span><span class="sh_function">drop</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>c0 <span class="sh_symbol">+</span> <span class="sh_string">","</span> <span class="sh_symbol">+</span> c1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>cells<span class="sh_symbol">);</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public void testRef() {
+		Collection&lt;Cell&gt; cells = new ArrayList&lt;Cell&gt;();
+		Cell c0 = new Cell(5, 6);
+		Cell c1 = new Cell(7, 9);
+		cells.add(c0);
+		cells.add(c1);
+		System.out.println(c0 + "," + c1);
+		System.out.println(cells);  
+		c0.drop();
+		c1.drop();
+		System.out.println(c0 + "," + c1);
+		System.out.println(cells); 
+	}
+</pre></div></div> 
+    <p>A．(5,6),(7,9)</p> 
+    <p>[(5,6), (7,9)]</p> 
+    <p>(6,6),(8,9)</p> 
+    <p>[(6,6), (8,9)]</p> 
+    <p>B．(5,6),(7,9)</p> 
+    <p>[(5,6), (7,9)]</p> 
+    <p>(5,6),(7,9)</p> 
+    <p>[(5,6), (7,9)]</p> 
+    <p>C．(5,6),(7,9)</p> 
+    <p>[(5,6), (7,9)]</p> 
+    <p>(6,6),(8,9)</p> 
+    <p>[(5,6), (7,9)]</p> 
+    <p>D．(6,6),(8,9)</p> 
+    <p>[(6,6), (8,9)]</p> 
+    <p>(6,6),(8,9)</p> 
+    <p>[(6,6), (8,9)]</p> 
+   </div> 
+   <div> 
+    <h3>3 简述contains方法和equals方法的关系</h3> 
+   </div> 
+   <div> 
+    <h3>4 下面代码输出的结果是？</h3> 
+    <p>请看如下代码：</p> 
+    <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/EXERCISE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/EXERCISE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/JAVASE01/DAY03/EXERCISE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> void <span class="sh_function">testSizeAndClearAndIsEmpty</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collection<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;</span> c <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> ArrayList<span class="sh_symbol">&lt;</span><span class="sh_predef_func">String</span><span class="sh_symbol">&gt;();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"isEmpty:"</span><span class="sh_symbol">+</span>c<span class="sh_symbol">.</span><span class="sh_function">isEmpty</span><span class="sh_symbol">());</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"terry"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"allen"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"jerry"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c<span class="sh_symbol">.</span><span class="sh_function">add</span><span class="sh_symbol">(</span><span class="sh_string">"smith"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"isEmpty:"</span> <span class="sh_symbol">+</span> c<span class="sh_symbol">.</span><span class="sh_function">isEmpty</span><span class="sh_symbol">()</span> <span class="sh_symbol">+</span> <span class="sh_string">",size: "</span> <span class="sh_symbol">+</span> c<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c<span class="sh_symbol">.</span><span class="sh_function">clear</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"isEmpty:"</span> <span class="sh_symbol">+</span> c<span class="sh_symbol">.</span><span class="sh_function">isEmpty</span><span class="sh_symbol">()</span> <span class="sh_symbol">+</span> <span class="sh_string">", size: "</span> <span class="sh_symbol">+</span> c<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">());</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	public void testSizeAndClearAndIsEmpty() {
+		Collection&lt;String&gt; c = new ArrayList&lt;String&gt;();
+		System.out.println("isEmpty:"+c.isEmpty()); 
+		c.add("terry");
+		c.add("allen");
+		c.add("jerry");
+		c.add("smith");
+		System.out.println("isEmpty:" + c.isEmpty() + ",size: " + c.size());
+		c.clear();
+		System.out.println("isEmpty:" + c.isEmpty() + ", size: " + c.size());
+	}
+</pre></div></div> 
+    <p>运行testSizeAndClearAndIsEmpty方法，程序的输出结果是：（）。</p> 
+    <p>A．isEmpty:false</p> 
+    <p>isEmpty:true,size: 4</p> 
+    <p>isEmpty:false, size: 0</p> 
+    <p>B．isEmpty:true</p> 
+    <p>isEmpty:false,size: 4</p> 
+    <p>isEmpty:true, size: 4</p> 
+    <p>C．isEmpty:false</p> 
+    <p>isEmpty:true,size: 4</p> 
+    <p>isEmpty:false, size: 4</p> 
+    <p>D．isEmpty:true</p> 
+    <p>isEmpty:false,size: 4</p> 
+    <p>isEmpty:true, size: 0</p> 
+   </div> 
+  </div>  
+  <button class="showAnswer" type="button" onclick="javascript:window.location.href=&quot;index_answer.html&quot;">查看答案</button>
+ 
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

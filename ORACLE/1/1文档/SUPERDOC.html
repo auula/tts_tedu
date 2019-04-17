@@ -1,0 +1,500 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="17414691463"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#Key01">数据库原理</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#Key02">SQL（DDL、DML）</a>
+        </li>
+      </ol>
+      <h1>1. 数据库原理</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 数据库简介</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 文件存储</h3>
+      <p>对数据的存储需求一直存在。保存数据的方式，经历了手工管理、文件管理等阶段，直至数据库管理阶段。</p>
+      <p>文件存储方式保存数据的弊端：</p>
+      <ul class="list">
+        <li>缺乏对数据的整体管理,数据不便修改； 
+</li>
+        <li>不利于数据分析和共享; 
+</li>
+        <li>数据量急剧增长,大量数据不可能长期保存在文件中。 
+</li>
+      </ul>
+      <p>数据库应运而生，是人们存放数据、访问数据、操作数据的存储仓库。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. DB和DBMS</h3>
+      <p>数据库（Database,简称DB）是按照数据结构来组织、存储和管理数据的仓库。</p>
+      <p>数据库管理系统(Database Management System,简称DBMS)：管理数据库的软件。</p>
+      <p>数据库建立了数据之间的联系，使用结构化的方式组织和处理数据，能够统一、集中及独立的管理数据，使数据的存取独立于使用数据的程序，实现了数据共享。</p>
+      <p>数据库的典型特征包括：数据的结构化，数据间的共享，减少数据的冗余度，以及数据的独立性。</p>
+      <p>数据库成为数据的知识仓库，并对这些数据的存储、访问、安全、数据一致性、并发操作及备份恢复负责。</p><p>图-1 DB和DBMS</p><p></p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 关系数据库简介</h3>
+      <p>关系是一个数学概念，描述两个元素间的关联或对应关系。所以关系型数据库，即是使用关系模型把数据组织到数据表(Table)中。现实世界可以用数据来描述。</p>
+      <p>主流数据库产品：</p>
+      <ul class="list">
+        <li>Oracle（Oracle）
+</li>
+        <li>DB2（IBM）
+</li>
+        <li>SQL Server（MS）
+</li>
+        <li>MySQL（Oracle）
+</li>
+      </ul>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 表的概念</h3>
+      <p>在关系数据库中，数据被存放于二维数据表(Table)中。</p>
+      <p>一个关系数据库由多个数据表组成，数据表是关系数据库的基本存储结构，由行和列组成，行（Row）也就是横排数据，也经常被称作记录(Record)，列（Column）就是纵列数据，也被称作字段(Field)。表和表之间是存在关联关系的。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 主流关系型数据库</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. Oracle数据库概述</h3>
+      <p>Oracle是当今著名的Oracle(甲骨文)公司的数据库产品，它是世界上第一个商品化的关系型数据库管理系统，也是第一个推出和数据库结合的第四代语言开发工具的数据库产品。</p>
+      <p>Oracle采用标准的SQL结构化查询语言，支持多种数据类型，提供面向对象的数据支持，具有第四代语言开发工具，支持UNIX、WINDOWS、OS/2等多种平台。Oracle公司的软件产品丰富，包括Oracle服务器产品，Oracle开发工具和Oracle应用软件。其中最著名的就是Oracle数据库，目前最新的版本是Oracle 12c。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. DB2数据库概述</h3>
+      <p>DB2是IBM的关系型数据库管理系统，DB2有很多不同的版本，可以运行在从掌上产品到大型机不同的终端机器上。DB2 Universal Database Personal Edition和DB2 Universal Database Workgroup Edition分别是为OS/2和Windows系统的单用户和多用户提供的数据库管理系统。</p>
+      <p>DB2在高端数据库的主要竞争对手是Oracle。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. Sybase数据库</h3>
+      <p>Sybase是美国Sybase公司研制的一种关系型数据库系统，是较早采用C/S技术的数据库厂商，是一种典型的UNIX或Windows NT平台上客户机/服务器环境下的大型数据库系统。 Sybase通常与Sybase SQL Anywhere用于客户机/服务器环境，前者作为服务器数据库，后者为客户机数据库，采用该公司研制的PowerBuilder为开发工具，在国内大中型系统中具有广泛的应用。</p>
+      <p>SYBASE主要有三种版本，一是UNIX操作系统下运行的版本，二是Novell Netware环境下运行的版本，三是Windows NT环境下运行的版本。对UNIX操作系统目前广泛应用的为SYBASE 10 及SYABSE 11 for SCO UNIX。</p>
+      <p>2010年Sybase被SAP收购。</p>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. SQL Server数据库概述</h3>
+      <p>Microsoft SQL Server是运行在Windows NT服务器上，支持C/S结构的数据库管理系统。它采用标准SQL语言，微软公司对它进行了部分扩充而成为事务SQL（Transact-SQL）。</p>
+      <p>SQL Server最早是微软为了要和IBM竞争时，与Sybase合作所产生的，其最早的发展者是Sybase，和Sybase数据库完全兼容。在与Sybase终止合作关系后，微软自主开发出SQL Server 6.0版，往后的SQL Server即均由微软自行研发。最新的版本是SQL Server 2012，上一版本是2008。</p>
+      <p>Microsoft SQL Server几个初始版本适用于中小企业的数据库管理，但是后来它的应用范围有所扩展，已经触及到大型、跨国企业的数据库管理。</p>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. MySQL数据库概述</h3>
+      <p>MySQL是一个开放源码的小型关系型数据库管理系统，开发者为瑞典MySQL AB公司。目前MySQL被广泛地应用在Internet上的中小型网站中。</p>
+      <p>与其它的大型数据库例如Oracle、IBM DB2等相比，MySQL自有它的不足之处，如规模小、功能有限等，但对于一般个人使用者和中小型企业来说，MySQL提供的功能已经绰绰有余，而且由于MySQL是开放源码软件，因此可以大大降低总体拥有成本，许多中小型网站为了降低网站总体拥有成本而选择了MySQL作为网站数据库。</p>
+      <p>2008年1月16日，Sun正式收购MySQL。2009年4月20日，SUN被Oracle公司收购。目前的最新版本是MySQL5.6.</p>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. SQL概述</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. 结构化查询语言</h3>
+      <p>SQL(Structured Query Language) 是结构化查询语言的缩写。</p>
+      <p>SQL是在关系数据库上执行数据操作、检索及维护所使用的标准语言,可以用来查询数据，操纵数据，定义数据，控制数据，所有数据库都使用相同或者相似的语言。</p>
+      <p>SQL可分为:</p>
+      <ul class="list">
+        <li>数据定义语言（DDL） : Data Definition Language
+</li>
+        <li>数据操纵语言（DML） : Data Manipulation Language
+</li>
+        <li>事务控制语言（TCL）：Transaction Control Language)
+</li>
+        <li>数据查询语言（DQL）：Data Query Language
+</li>
+        <li>数据控制语言（DCL） : Data Control Language
+</li>
+      </ul>
+      <p>执行SQL语句时，用户只需要知道其逻辑含义，而不需要知道SQL语句的具体执行步骤。</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. 数据定义语言（DDL）</h3>
+      <p>用于建立、修改、删除数据库对象，包括创建语句(CREATE)、修改语句(ALTER)、删除语句(DROP)，比如使用CREATE TABLE创建表，使用ALTER TABLE修改表，使用DROPTABLE删除表等动作。这类语言不需要事务的参与，自动提交。</p>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. 数据操作语言（DML）</h3>
+      <p>用于改变数据库数据，包括INSERT、UPDATE、DELETE三条语句。其中，INSERT语句用于将数据插入到数据库中，UPDATE语句用于更新数据库中已存在的数据，DELETE用于删除数据库中已存在的数据。DML语言和事务是相关的，执行完DML操作后必须经过事务控制语句提交后才真正的将改变应用到数据库中。</p>
+      <a name="Key01_03_04">
+      </a>
+      <h3>1.3.4. 事务控制语言（TCL）</h3>
+      <p>用来维护数据一致性的语句，包括提交(COMMIT)、回滚(ROLLBACK)、保存点(SAVEPOINT)三条语句，其中COMMIT用来确认已经进行的数据库改变， ROLLBACK语句用来取消已经进行的数据库改变，当执行DML操作后(也就是上面说的增加、修改、删除等动作)，可以使用COMMIT语句来确认这种改变，或者使用ROLLBACK取消这种改变。SAVEPOINT语句用来设置保存点，使当前的事务可以回退到指定的保存点，便于取消部分改变。</p>
+      <a name="Key01_03_05">
+      </a>
+      <h3>1.3.5. 数据查询语言（DQL）</h3>
+      <p>用来查询所需要的数据。使用最广泛，语法灵活复杂。</p>
+      <a name="Key01_03_06">
+      </a>
+      <h3>1.3.6. 数据控制语言（DCL）</h3>
+      <p>用于执行权限的授予和收回操作、创建用户等，包括授予(GRANT)语句，收回(REVOKE)语句，CREATE USER语句，其中GRANT用于给用户或角色授予权限， REVOKE用于收回用户或角色已有的权限。DCL语句也不需要事务的参与，是自动提交的。</p>
+      <a name="Key01_04">
+      </a>
+      <h2>1.4. Oracle数据库安装和访问</h2>
+      <a name="Key01_04_01">
+      </a>
+      <h3>1.4.1. Oracle数据库安装（Windows）</h3>
+      <p>打开Oracle首页http://www.oracle.com/，通过Downloads进入Oracle数据库的下载页面。</p>
+      <p>安装过程（以本地安装为例）：</p>
+      <p>步骤1：解压，双击setup.exe，启动安装向导；</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图-2  Oracle数据库的安装页面</p>
+      </div>
+      <p>在此步骤的设置如下：</p>
+      <ul class="list">
+        <li>选择基本安装，指定要安装的Oracle数据库的基位置和主目录位置；
+</li>
+        <li>安装类型为企业版；
+</li>
+        <li>创建启动数据库（在安装数据库软件同时创建数据库，也可以在安装完毕后单独创建，此处选择默认值同时创建）；
+</li>
+        <li>指定全局数据库名称为orcl，以及口令，需要记住自己的密码，这里设置为oracle。
+</li>
+      </ul>
+      <p>然后点击“下一步”按钮，</p>
+      <p>步骤2：进入检查安装环境的步骤，用来检查软硬件环境是否符合Oracle11g的安装要求，如图-3。如果满足安装要求，点击“下一步”按钮。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图-3  Oracle数据库的安装环境检查</p>
+      </div>
+      <p>步骤3：检查通过后，进入安装概要页面，如图-4。在这步可以检查之前的设置，包括安装类型和要安装的组件，如果有问题，点击“上一步”按钮回去修改，如果确认没问题，点击“安装”按钮，进入安装阶段。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图-4  Oracle数据库的安装概要</p>
+      </div>
+      <p>步骤4：提示正在安装。根据机器的软硬件配置不同，这个步骤可能耗费不同的时间。图略。</p>
+      <p>步骤5：进入配置助手步骤，这个过程不需要用户干涉。图略。</p>
+      <p>步骤6：创建数据库，图略。</p>
+      <p>步骤7：数据库创建完成后，提示配置助手界面，显示数据库的初始信息。图略。</p>
+      <p>在此步骤中可以点击“口令管理”按钮进行数据库初始用户的口令管理，这个步骤此时可以忽略，待安装完成后再进行口令管理。完成后，点击“确定”按钮离开口令管理界面。</p>
+      <p>步骤8：弹出安装成功窗口，图略。</p>
+      <p>步骤9：在安装成功界面上点击“下一步”按钮，提示安装结束。如图-5。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图-5  Oracle数据库安装结束</p>
+      </div>
+      <a name="Key01_04_02">
+      </a>
+      <h3>1.4.2. Oracle数据库安装（Linux）</h3>
+      <p>在Oracle官网下载所需的软件包，检查软硬件环境是否符合要求，规划空间和目录结构，安装数据库并创建配置。</p>
+      <p>安装过程略。</p>
+      <a name="Key01_04_03">
+      </a>
+      <h3>1.4.3. 远程登录数据库服务器</h3>
+      <p>Oracle数据库作为市场以及技术上领先的数据库产品，提供了丰富和简单易用的数据库开发和管理工具。有两种主要工具，一是命令行工具，Oracle自带的SQL*PLUS，二是Oracle提供的图形界面工具：SQL Developer。</p>
+      <p>这些工具可能和数据库在同一台服务器上，也可能安装在另一台机器中。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图-6  数据库和客户端</p>
+      </div>
+      <a name="Key01_04_04">
+      </a>
+      <h3>1.4.4. 使用SQL*PLUS</h3>
+      <p>SQL*Plus是Oracle数据库提供的和数据库进行交互的工具，是被系统管理员和开发人员广泛使用的开发和管理工具，功能强大，使用简单，可以运行在任何Oracle运行的平台上，默认和数据库一起安装。SQL*Plus是一个基于传统的C/S结构的SQL开发工具，客户端和服务器端可以在同一台主机或不同主机上。</p>
+      <p>在图-6中，我们主要使用最上面那种访问方式。</p>
+      <p>首先，远程登录到数据库所在的机器上，输入远程机器操作系统的帐号和密码：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image006.png">
+        <p>图-7  远程登录数据库服务器</p>
+      </div>
+      <p>然后在%提示符下，输入SQLPlus命令，并输入数据库的帐号和密码：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image007.png">
+        <p>图-8  运行sqlplus，登录数据库</p>
+      </div>
+      <p>如果出现SQL提示符，则表示登录成功：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image008.png">
+        <p>图-9登录数据库成功</p>
+      </div>
+      <p>退出时，在SQL&gt;后输入exit即可：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image009.png">
+        <p>图-10退出SQL*Plus</p>
+      </div>
+      <p>再输入exit，即退出远程服务器。</p>
+      <a name="Key01_04_05">
+      </a>
+      <h3>1.4.5. 使用Oracle SQL Developer</h3>
+      <p>Oracle SQL Developer是Oracle官方出品的免费图形化开发工具，相对SQL*Plus来说，图形化的界面便于操作，不必记忆大量的命令，输出结果美观。它的基本功能包括结果的格式化输出，编辑器自动提示，代码美化，显示SQL的执行计划，监控会话，编写以及调试存储过程等。官方和免费两个特征让这个工具极具吸引力。</p>
+      <p>SQL Developer工具的主界面，如图-11所示。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image010.png">
+        <p>图-11SQL Developer打开后的界面</p>
+      </div>
+      <p>第一次进入SQL Developer，需要设置连接参数。首先在窗口左边的Connection上按右键，开启一个新的连接，输入远程数据库的参数，界面如图-12。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image011.png">
+        <p>图-12在SQL Developer中设置连接用户信息</p>
+      </div>
+      <p>成功建立了连接之后，在连接上按右键点击Connect，将打开对应用户方案中的数据库对象。如图-13。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image012.png">
+        <p>图-13在SQL Developer中打开用户scott</p>
+      </div>
+      <p>在这个界面中，即可操作SQL语句了。</p>
+      <a name="Key02">
+      </a>
+      <h1>2. SQL（DDL、DML）</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. Oracle数据类型</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. NUMBER</h3>
+      <p>NUMBER表示数字类型，经常被定义成NUMBER（P，S）形式，其中：</p>
+      <ul class="list">
+        <li>P表示数字的总位数
+</li>
+        <li>S表示小数点后面的位数
+</li>
+      </ul>
+      <p>例如在表Emp中的Sal列的定义如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Sal</span><span class="sh_normal">  </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Sal  NUMBER(6,2)
+</pre></div></div>
+      <p>表示Sal列中的数据，整数位最大为4位，小数位最大位数是2位，也就是最大取值：9999.99。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. CHAR</h3>
+      <p>CHAR表示固定长度的字符类型，经常被定义成CHAR（N）形式, N表示占用的字节数，N的最大取值是2000。</p>
+      <p>例如在表Emp中的Ename列的定义如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">Ename</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    Ename CHAR(20)；
+</pre></div></div>
+      <p>表示Ename列中最多可存储20个字节的字符串，并且占用的空间是固定的20个字节。</p>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. VARCHAR2</h3>
+      <p>VARCHAR2表示变长的字符类型，定义格式是VARCHAR2（N）, N表示最多可占用的字节数，最大长度是4000字节。</p>
+      <p>例如在表Emp中的JOB列的定义如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">JOB</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">)</span>；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    JOB VARCHAR2(100)；
+</pre></div></div>
+      <p>表示JOB列中最多可存储长度为100个字节的字符串。根据其中保存的数据长度，占用的空间是变化的，最大占用空间为100个字节。</p>
+      <a name="Key02_01_04">
+      </a>
+      <h3>2.1.4. DATE</h3>
+      <p>DATE用于定义日期时间的数据，长度是7个字节，默认格式是：DD-MON-RR, 例如：“11-APR-71”。如果是中文环境，是“11-4月-71”这种形式。</p>
+      <p>例如在表Emp中的Hiredate列的定义如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    Hiredate DATE；</li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    Hiredate DATE；
+</pre></div></div>
+      <p>表示Hiredate列中存放的是日期数据。</p>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. 创建表</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. CREATE语句</h3>
+      <p>创建表的语法是：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">CREATE</span><span class="sh_normal"> </span>TABLE <span class="sh_symbol">[</span>schema<span class="sh_symbol">.]</span><span class="sh_function">table_name</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">column_name</span><span class="sh_normal"> </span>datatype<span class="sh_symbol">[</span><span class="sh_usertype">DEFAULT</span><span class="sh_normal"> </span>expr<span class="sh_symbol">][,</span>…<span class="sh_symbol">]</span></li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE [schema.]table_name(
+	column_name datatype[DEFAULT expr][,…]
+);
+</pre></div></div>
+      <p>创建职员表的例子：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>创建表emp </li><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">emp</span><span class="sh_symbol">(</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">id</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">gender</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">),</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">birth</span><span class="sh_normal"> </span>DATE<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">salary</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">job</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">deptid</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span> </li><li><span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--创建表emp 
+CREATE TABLE emp( 
+	id NUMBER(10), 
+	name VARCHAR2(20), 
+	gender CHAR(1), 
+	birth DATE,
+	salary NUMBER(6,2),
+	job VARCHAR2(30),
+	deptid NUMBER(2) 
+); 
+</pre></div></div>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. DESC语句</h3>
+      <p>DESC是查看表的数据结构，语法是：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">DESC</span><span class="sh_normal"> </span>table_name<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">DESC table_name;
+</pre></div></div>
+      <p>查看emp表的结构，将会得到的结果如图-14所示：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image013.png">
+        <p>图-14查看数据表的结构</p>
+      </div>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. DEFAULT</h3>
+      <p>可以通过DEFAULT子句给列指定默认值，例如，在emp表中给gender列赋默认值‘M’,如果插入数据时没有指定性别的员工，则默认是男性。</p>
+      <p>创建表emp1：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">emp1</span><span class="sh_symbol">(</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">id</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">gender</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">)</span> DEFAULT ‘M’<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">birth</span><span class="sh_normal"> </span>DATE<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">salary</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">job</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">deptid</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span></li><li><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE emp1(
+	id NUMBER(10),
+	name VARCHAR2(20),
+	gender CHAR(1) DEFAULT ‘M’,
+	birth DATE,
+	salary NUMBER(6,2),
+	job VARCHAR2(30),
+	deptid NUMBER(2)
+);
+</pre></div></div>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. NOT NULL</h3>
+      <p>默认情况下，任何列都允许有空值。非空(Not Null)是一种约束条件，用于确保字段值不为空，当某个字段被设置了非空约束条件，这个字段中必须存在有效值，也就是说，当执行插入数据的操作时，必须提供这个列的数据，当执行更新操作时，不能给这个列的值设置为NULL。</p>
+      <p>创建表emp2，设置name字段为非空，也即是表emp2中的每条记录，name列都必须有值。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>CREATE <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_function">emp2</span><span class="sh_symbol">(</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">id</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">name</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">)</span> <span class="sh_usertype">NOT</span><span class="sh_normal"> </span>NULL<span class="sh_symbol">,</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">gender</span><span class="sh_normal"> </span><span class="sh_function">CHAR</span><span class="sh_symbol">(</span><span class="sh_number">1</span><span class="sh_symbol">),</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">birth</span><span class="sh_normal"> </span>DATE<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">salary</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">6</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">job</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">deptid</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span> </li><li><span class="sh_symbol">);</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">CREATE TABLE emp2( 
+	id NUMBER(10), 
+	name VARCHAR2(20) NOT NULL, 
+	gender CHAR(1), 
+	birth DATE,
+	salary NUMBER(6,2),
+	job VARCHAR2(30),
+	deptid NUMBER(2) 
+); 
+</pre></div></div>
+      <a name="Key02_03">
+      </a>
+      <h2>2.3. 修改表</h2>
+      <a name="Key02_03_01">
+      </a>
+      <h3>2.3.1. 修改表名</h3>
+      <p>在建表后如果希望修改表名，可以使用RENAME语句实现，语法如下，将改变表名old_name为new_name：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">RENAME</span><span class="sh_normal"> </span>old_name <span class="sh_usertype">TO</span><span class="sh_normal"> </span>new_name<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">RENAME old_name TO new_name;
+</pre></div></div>
+      <p>举例说明，如果要将表名emp修改为employee，使用如下语法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>RENAME emp <span class="sh_usertype">TO</span><span class="sh_normal"> </span>employee<span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">RENAME emp TO employee;
+</pre></div></div>
+      <a name="Key02_03_02">
+      </a>
+      <h3>2.3.2. 增加列</h3>
+      <p>在建表之后，要给表增加列可以使用ALTER TABLE的ADD子句实现。语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    ALTER <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span>table_name ADD</li><li>     <span class="sh_symbol">(</span><span class="sh_usertype">column</span><span class="sh_normal"> </span>datatype <span class="sh_symbol">[</span><span class="sh_usertype">DEFAULT</span><span class="sh_normal"> </span>expr<span class="sh_symbol">]</span> <span class="sh_symbol">[,</span> <span class="sh_usertype">column</span><span class="sh_normal"> </span>datatype…<span class="sh_symbol">])</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    ALTER TABLE table_name ADD
+     (column datatype [DEFAULT expr] [, column datatype…])
+</pre></div></div>
+      <p>注意一点，列只能增加在最后，不能插入到现有的列中。下例给表employee增加一列hiredate，并设置默认值为当前日期。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>ALTER TABLE <span class="sh_usertype">employee</span><span class="sh_normal"> </span><span class="sh_function">ADD</span> <span class="sh_symbol">(</span>hiredate DATE <span class="sh_usertype">DEFAULT</span><span class="sh_normal"> </span>sysdate<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">ALTER TABLE employee ADD (hiredate DATE DEFAULT sysdate);
+</pre></div></div>
+      <a name="Key02_03_03">
+      </a>
+      <h3>2.3.3. 删除列</h3>
+      <p>在建表之后，使用ALTER TABLE的DROP子句删除不需要的列。语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;ALTER <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span><span class="sh_usertype">table_name</span><span class="sh_normal"> </span><span class="sh_function">DROP</span> <span class="sh_symbol">(</span>column<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	ALTER TABLE table_name DROP (column);
+</pre></div></div>
+      <p>删除字段需要从每行中删掉该字段占据的长度和数据，并释放在数据块中占据的空间，如果表记录比较大，删除字段可能需要比较长的时间。</p>
+      <p>下例删除表employee的列hiredate：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>ALTER TABLE <span class="sh_usertype">employee</span><span class="sh_normal"> </span><span class="sh_function">DROP</span> <span class="sh_symbol">(</span>hiredate<span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">ALTER TABLE employee DROP (hiredate);
+</pre></div></div>
+      <a name="Key02_03_04">
+      </a>
+      <h3>2.3.4. 修改列</h3>
+      <p>建表之后，可以改变表中列的数据类型、长度和默认值，注意这种修改仅对以后插入的数据有效，另外如果表中已经有数据的情况下，把长度由大改小，有可能不成功，比如原来的类型是VARCHAR2(100),其中已经存放了100个字节长度的数据，如果要改为VARCHAR2（80），则不会修改成功。</p>
+      <p>语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    ALTER <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span>table_name MODIFY</li><li>    <span class="sh_symbol">(</span><span class="sh_usertype">column</span><span class="sh_normal"> </span>datatype <span class="sh_symbol">[</span><span class="sh_usertype">DEFAULT</span><span class="sh_normal"> </span>expr<span class="sh_symbol">]</span> <span class="sh_symbol">[,</span> <span class="sh_usertype">column</span><span class="sh_normal"> </span>datatype…<span class="sh_symbol">])</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    ALTER TABLE table_name MODIFY
+    (column datatype [DEFAULT expr] [, column datatype…])
+</pre></div></div>
+      <p>下例修改表employee的列job，并增加默认值的设置:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>ALTER TABLE employee</li><li><span class="sh_function">MODIFY</span><span class="sh_symbol">(</span><span class="sh_usertype">job</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">40</span><span class="sh_symbol">)</span> DEFAULT <span class="sh_string">'CLERK'</span> <span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">ALTER TABLE employee
+MODIFY(job VARCHAR2(40) DEFAULT 'CLERK' );
+</pre></div></div>
+      <a name="Key02_04">
+      </a>
+      <h2>2.4. DML语句</h2>
+      <p>在做后续练习之前，先熟悉本部分使用的样例表emp和dept的结构和数据：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>DROP <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span>dept<span class="sh_symbol">;</span></li><li>CREATE TABLE dept</li><li>       <span class="sh_symbol">(</span><span class="sh_usertype">deptno</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span> <span class="sh_usertype">CONSTRAINT</span><span class="sh_normal"> </span>PK_DEPT <span class="sh_usertype">PRIMARY</span><span class="sh_normal"> </span>KEY<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">dname</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">14</span><span class="sh_symbol">)</span> <span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">loc</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">13</span><span class="sh_symbol">)</span> <span class="sh_symbol">)</span> <span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li>DROP <span class="sh_usertype">TABLE</span><span class="sh_normal"> </span>emp<span class="sh_symbol">;</span></li><li>CREATE TABLE emp</li><li>       <span class="sh_symbol">(</span><span class="sh_usertype">empno</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">)</span> <span class="sh_usertype">CONSTRAINT</span><span class="sh_normal"> </span>PK_EMP <span class="sh_usertype">PRIMARY</span><span class="sh_normal"> </span>KEY<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">ename</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">job</span><span class="sh_normal"> </span><span class="sh_function">VARCHAR2</span><span class="sh_symbol">(</span><span class="sh_number">15</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">mgr</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">4</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">hiredate</span><span class="sh_normal"> </span>DATE<span class="sh_symbol">,</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">sal</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">comm</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">7</span><span class="sh_symbol">,</span><span class="sh_number">2</span><span class="sh_symbol">),</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">deptno</span><span class="sh_normal"> </span><span class="sh_function">NUMBER</span><span class="sh_symbol">(</span><span class="sh_number">2</span><span class="sh_symbol">)</span> <span class="sh_usertype">CONSTRAINT</span><span class="sh_normal"> </span>FK_DEPTNO <span class="sh_usertype">REFERENCES</span><span class="sh_normal"> </span>DEPT<span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li>INSERT INTO dept VALUES</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">(</span><span class="sh_number">10</span><span class="sh_symbol">,</span><span class="sh_string">'ACCOUNTING'</span><span class="sh_symbol">,</span><span class="sh_string">'NEW YORK'</span><span class="sh_symbol">);</span></li><li>INSERT INTO dept VALUES </li><li>   <span class="sh_symbol">(</span><span class="sh_number">20</span><span class="sh_symbol">,</span><span class="sh_string">'RESEARCH'</span><span class="sh_symbol">,</span><span class="sh_string">'DALLAS'</span><span class="sh_symbol">);</span></li><li>INSERT INTO dept VALUES</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">(</span><span class="sh_number">30</span><span class="sh_symbol">,</span><span class="sh_string">'SALES'</span><span class="sh_symbol">,</span><span class="sh_string">'CHICAGO'</span><span class="sh_symbol">);</span></li><li>INSERT INTO dept VALUES</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">(</span><span class="sh_number">40</span><span class="sh_symbol">,</span><span class="sh_string">'OPERATIONS'</span><span class="sh_symbol">,</span><span class="sh_string">'BOSTON'</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li> SELECT <span class="sh_symbol">*</span> <span class="sh_usertype">FROM</span><span class="sh_normal"> </span>dept<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span style="display:none;">&nbsp;</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7369</span><span class="sh_symbol">,</span><span class="sh_string">'SMITH'</span><span class="sh_symbol">,</span><span class="sh_string">'CLERK'</span><span class="sh_symbol">,</span><span class="sh_number">7902</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'17-12-1980'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">800</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7499</span><span class="sh_symbol">,</span><span class="sh_string">'ALLEN'</span><span class="sh_symbol">,</span><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'20-2-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1600</span><span class="sh_symbol">,</span><span class="sh_number">300</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7521</span><span class="sh_symbol">,</span><span class="sh_string">'WARD'</span><span class="sh_symbol">,</span><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'22-2-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1250</span><span class="sh_symbol">,</span><span class="sh_number">500</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7566</span><span class="sh_symbol">,</span><span class="sh_string">'JONES'</span><span class="sh_symbol">,</span><span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span><span class="sh_number">7839</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'2-4-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">2975</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7654</span><span class="sh_symbol">,</span><span class="sh_string">'MARTIN'</span><span class="sh_symbol">,</span><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'28-9-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1250</span><span class="sh_symbol">,</span><span class="sh_number">1400</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_string">'BLAKE'</span><span class="sh_symbol">,</span><span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span><span class="sh_number">7839</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'1-5-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">2850</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7782</span><span class="sh_symbol">,</span><span class="sh_string">'CLARK'</span><span class="sh_symbol">,</span><span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span><span class="sh_number">7839</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'9-6-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">2450</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">10</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7788</span><span class="sh_symbol">,</span><span class="sh_string">'SCOTT'</span><span class="sh_symbol">,</span><span class="sh_string">'ANALYST'</span><span class="sh_symbol">,</span><span class="sh_number">7566</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'19-4-87'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">3000</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7839</span><span class="sh_symbol">,</span><span class="sh_string">'KING'</span><span class="sh_symbol">,</span><span class="sh_string">'PRESIDENT'</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'17-11-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">5000</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">10</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7844</span><span class="sh_symbol">,</span><span class="sh_string">'TURNER'</span><span class="sh_symbol">,</span><span class="sh_string">'SALESMAN'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'8-9-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1500</span><span class="sh_symbol">,</span><span class="sh_number">0</span><span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7876</span><span class="sh_symbol">,</span><span class="sh_string">'ADAMS'</span><span class="sh_symbol">,</span><span class="sh_string">'CLERK'</span><span class="sh_symbol">,</span><span class="sh_number">7788</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'23-5-87'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1100</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7900</span><span class="sh_symbol">,</span><span class="sh_string">'JAMES'</span><span class="sh_symbol">,</span><span class="sh_string">'CLERK'</span><span class="sh_symbol">,</span><span class="sh_number">7698</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'3-12-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">950</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">30</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7902</span><span class="sh_symbol">,</span><span class="sh_string">'FORD'</span><span class="sh_symbol">,</span><span class="sh_string">'ANALYST'</span><span class="sh_symbol">,</span><span class="sh_number">7566</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'3-12-1981'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">3000</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">20</span><span class="sh_symbol">);</span></li><li>INSERT INTO <span class="sh_usertype">emp</span><span class="sh_normal"> </span><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">7934</span><span class="sh_symbol">,</span><span class="sh_string">'MILLER'</span><span class="sh_symbol">,</span><span class="sh_string">'CLERK'</span><span class="sh_symbol">,</span><span class="sh_number">7782</span><span class="sh_symbol">,</span><span class="sh_function">to_date</span><span class="sh_symbol">(</span><span class="sh_string">'23-1-1982'</span><span class="sh_symbol">,</span><span class="sh_string">'dd-mm-yyyy'</span><span class="sh_symbol">),</span><span class="sh_number">1300</span><span class="sh_symbol">,</span>NULL<span class="sh_symbol">,</span><span class="sh_number">10</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">DROP TABLE dept;
+CREATE TABLE dept
+       (deptno NUMBER(2) CONSTRAINT PK_DEPT PRIMARY KEY,
+	dname VARCHAR2(14) ,
+	loc VARCHAR2(13) ) ;
+
+DROP TABLE emp;
+CREATE TABLE emp
+       (empno NUMBER(4) CONSTRAINT PK_EMP PRIMARY KEY,
+	ename VARCHAR2(10),
+	job VARCHAR2(15),
+	mgr NUMBER(4),
+	hiredate DATE,
+	sal NUMBER(7,2),
+	comm NUMBER(7,2),
+	deptno NUMBER(2) CONSTRAINT FK_DEPTNO REFERENCES DEPT);
+
+INSERT INTO dept VALUES
+	(10,'ACCOUNTING','NEW YORK');
+INSERT INTO dept VALUES 
+   (20,'RESEARCH','DALLAS');
+INSERT INTO dept VALUES
+	(30,'SALES','CHICAGO');
+INSERT INTO dept VALUES
+	(40,'OPERATIONS','BOSTON');
+
+ SELECT * FROM dept;
+
+
+INSERT INTO emp VALUES(7369,'SMITH','CLERK',7902,to_date('17-12-1980','dd-mm-yyyy'),800,NULL,20);
+INSERT INTO emp VALUES(7499,'ALLEN','SALESMAN',7698,to_date('20-2-1981','dd-mm-yyyy'),1600,300,30);
+INSERT INTO emp VALUES(7521,'WARD','SALESMAN',7698,to_date('22-2-1981','dd-mm-yyyy'),1250,500,30);
+INSERT INTO emp VALUES(7566,'JONES','MANAGER',7839,to_date('2-4-1981','dd-mm-yyyy'),2975,NULL,20);
+INSERT INTO emp VALUES(7654,'MARTIN','SALESMAN',7698,to_date('28-9-1981','dd-mm-yyyy'),1250,1400,30);
+INSERT INTO emp VALUES(7698,'BLAKE','MANAGER',7839,to_date('1-5-1981','dd-mm-yyyy'),2850,NULL,30);
+INSERT INTO emp VALUES(7782,'CLARK','MANAGER',7839,to_date('9-6-1981','dd-mm-yyyy'),2450,NULL,10);
+INSERT INTO emp VALUES(7788,'SCOTT','ANALYST',7566,to_date('19-4-87','dd-mm-yyyy'),3000,NULL,20);
+INSERT INTO emp VALUES(7839,'KING','PRESIDENT',NULL,to_date('17-11-1981','dd-mm-yyyy'),5000,NULL,10);
+INSERT INTO emp VALUES(7844,'TURNER','SALESMAN',7698,to_date('8-9-1981','dd-mm-yyyy'),1500,0,30);
+INSERT INTO emp VALUES(7876,'ADAMS','CLERK',7788,to_date('23-5-87','dd-mm-yyyy'),1100,NULL,20);
+INSERT INTO emp VALUES(7900,'JAMES','CLERK',7698,to_date('3-12-1981','dd-mm-yyyy'),950,NULL,30);
+INSERT INTO emp VALUES(7902,'FORD','ANALYST',7566,to_date('3-12-1981','dd-mm-yyyy'),3000,NULL,20);
+INSERT INTO emp VALUES(7934,'MILLER','CLERK',7782,to_date('23-1-1982','dd-mm-yyyy'),1300,NULL,10);
+</pre></div></div>
+      <a name="Key02_04_01">
+      </a>
+      <h3>2.4.1. INSERT语句</h3>
+      <p>INSERT语句用来给数据表增加记录，每次增加一条记录。语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span>table_name<span class="sh_symbol">[(</span>column<span class="sh_symbol">[,</span> column…<span class="sh_symbol">])]</span> </li><li>    <span class="sh_function">VALUES</span><span class="sh_symbol">(</span>value<span class="sh_symbol">[,</span> value…<span class="sh_symbol">]);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    INSERT INTO table_name[(column[, column…])] 
+    VALUES(value[, value…]);
+</pre></div></div>
+      <p>需要注意的一点，所有的DML操作，都需要再执行事务提交语句commit，才算真正确认了此操作。</p>
+      <p>向employee表插入一条记录的例子如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span><span class="sh_function">employee</span><span class="sh_symbol">(</span>id<span class="sh_symbol">,</span> name<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> salary<span class="sh_symbol">)</span> </li><li><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1001</span><span class="sh_symbol">,</span> <span class="sh_string">'rose'</span><span class="sh_symbol">,</span> <span class="sh_string">'PROGRAMMER'</span><span class="sh_symbol">,</span> <span class="sh_number">5500</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">INSERT INTO employee(id, name, job, salary) 
+VALUES(1001, 'rose', 'PROGRAMMER', 5500);
+</pre></div></div>
+      <p>Oracle中的日期数据比较特殊，如果插入的列有日期字段，需要考虑日期的格式。Oracle的默认的日期格式‘DD-MON-RR，你或者按照默认格式插入数据，或者自定义日期格式，用TO_DATE函数转换为日期类型的数据。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">--</span>使用默认日期格式插入记录</li><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span><span class="sh_function">employee</span><span class="sh_symbol">(</span>id<span class="sh_symbol">,</span> name<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span>birth<span class="sh_symbol">)</span> </li><li><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1002</span><span class="sh_symbol">,</span> <span class="sh_string">'martha'</span><span class="sh_symbol">,</span> <span class="sh_string">'ANALYST'</span><span class="sh_symbol">,</span> <span class="sh_string">'01-9月-89'</span><span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">--</span>使用自定义日期格式插入记录</li><li>INSERT <span class="sh_usertype">INTO</span><span class="sh_normal"> </span><span class="sh_function">employee</span><span class="sh_symbol">(</span>id<span class="sh_symbol">,</span> name<span class="sh_symbol">,</span> job<span class="sh_symbol">,</span> birth<span class="sh_symbol">)</span> </li><li><span class="sh_function">VALUES</span><span class="sh_symbol">(</span><span class="sh_number">1003</span><span class="sh_symbol">,</span> <span class="sh_string">'donna'</span><span class="sh_symbol">,</span> <span class="sh_string">'MANAGER'</span><span class="sh_symbol">,</span> </li><li><span class="sh_function">TO_DATE</span><span class="sh_symbol">(</span><span class="sh_string">'1978-09-01'</span><span class="sh_symbol">,</span> <span class="sh_string">'YYYY-MM-DD'</span><span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">--使用默认日期格式插入记录
+INSERT INTO employee(id, name, job,birth) 
+VALUES(1002, 'martha', 'ANALYST', '01-9月-89');
+
+--使用自定义日期格式插入记录
+INSERT INTO employee(id, name, job, birth) 
+VALUES(1003, 'donna', 'MANAGER', 
+TO_DATE('1978-09-01', 'YYYY-MM-DD'));
+</pre></div></div>
+      <a name="Key02_04_02">
+      </a>
+      <h3>2.4.2. UPDATE语句</h3>
+      <p>UPDATE语句用来更新表中的记录，语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">UPDATE</span><span class="sh_normal"> </span>table_name </li><li>    <span class="sh_usertype">SET</span><span class="sh_normal"> </span>column <span class="sh_symbol">=</span> value <span class="sh_symbol">[,</span> column <span class="sh_symbol">=</span> value<span class="sh_symbol">]</span>…</li><li>    <span class="sh_symbol">[</span><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>condition<span class="sh_symbol">];</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    UPDATE table_name 
+    SET column = value [, column = value]…
+    [WHERE condition];
+</pre></div></div>
+      <p>其中WHERE子句是可选的，但是如果没有WHERE子句，则全表的数据都会被更新，务必小心。</p>
+      <p>下例更改职员ROSE的薪水为8500:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>UPDATE employee <span class="sh_usertype">SET</span><span class="sh_normal"> </span>salary <span class="sh_symbol">=</span> <span class="sh_number">8500</span> <span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>name <span class="sh_symbol">=</span> <span class="sh_string">'ROSE'</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">UPDATE employee SET salary = 8500 WHERE name = 'ROSE';
+</pre></div></div>
+      <a name="Key02_04_03">
+      </a>
+      <h3>2.4.3. DELETE语句</h3>
+      <p>DELETE语句用来删除表中的记录，语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    DELETE <span class="sh_symbol">[</span>FROM<span class="sh_symbol">]</span> table_name <span class="sh_symbol">[</span><span class="sh_usertype">WHERE</span><span class="sh_normal"> </span>condition<span class="sh_symbol">];</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    DELETE [FROM] table_name [WHERE condition];
+</pre></div></div>
+      <p>和UPDATE语句一样，WHERE子句是可选的，但是如果没有WHERE子句，则全表的数据都会被删除，务必确认后再予以删除。</p>
+      <p>下例将删除职位是空的员工记录:</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/ORACLE/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li> DELETE FROM employee WHERE job <span class="sh_usertype">is</span><span class="sh_normal"> </span><span class="sh_keyword">null</span><span class="sh_symbol">;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;"> DELETE FROM employee WHERE job is null;
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

@@ -1,0 +1,514 @@
+
+<!-- saved from url=(0095)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="7731082666"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA Fundamental DAY05</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#case1">九九乘法表</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#case2">求数组元素的最大值</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#case3">求数组元素的最大值放在最后一位</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#case4">冒泡排序算法实现</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 九九乘法表</h2>
+      <h3>1.1 问题</h3>
+      <p>在界面打印九九乘法表，效果如图－1所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图－1</p>
+      </div>
+      <h3>1.2 方案</h3>
+      <p>此案例需要使用嵌套循环来实现。</p>
+      <p>分析图－1可以看出，九九乘法表一共需要输出九行数据，如图－2所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图－2</p>
+      </div>
+      <p>由图－2 可以看出，需要使用一个 for 循环来控制输出的行数。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">//i变量用于控制行数</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> <span class="sh_number">10</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">//i变量用于控制行数
+for (int i = 1; i &lt; 10; i++){
+}
+</pre></div></div>
+      <p>分析图－2中的每行，可以看出，每行中的乘法表达式的个数正好和行数相同。每个乘法表达式中，第一个乘数从 1 开始，乘到最大值（当前行数），而另一个乘数正好是行数，如图－3所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图－3</p>
+      </div>
+      <p>因此，在输出每行中的内容时，还需要使用一个 for 循环来控制每行中输出的表达式的个数。如果当前行为第 9 行，则循环的代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">//假设当前行为第 9 行</span></li><li>int i <span class="sh_symbol">=</span> <span class="sh_number">9</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int j <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> j <span class="sh_symbol">&lt;=</span> i<span class="sh_symbol">;</span> j<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span> j <span class="sh_symbol">+</span> <span class="sh_string">"*"</span> <span class="sh_symbol">+</span> i <span class="sh_symbol">+</span> <span class="sh_string">"="</span> <span class="sh_symbol">+</span> j<span class="sh_symbol">*</span>i <span class="sh_symbol">+</span> <span class="sh_string">"</span><span class="sh_specialchar">\t</span><span class="sh_string">"</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">//假设当前行为第 9 行
+int i = 9;
+for (int j = 1; j &lt;= i; j++) {
+System.out.print( j + "*" + i + "=" + j*i + "\t");
+}
+</pre></div></div>
+      <p>因为行数并不固定，而是从第一行到第九行，因此，需要将两个循环嵌套起来，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_comment">//i变量用于控制行数</span></li><li><span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> <span class="sh_number">10</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//j变量用于控制每行中参与计算的最大数值：与行数相等</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int j <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> j <span class="sh_symbol">&lt;=</span> i<span class="sh_symbol">;</span> j<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span> j <span class="sh_symbol">+</span> <span class="sh_string">"*"</span> <span class="sh_symbol">+</span> i <span class="sh_symbol">+</span> <span class="sh_string">"="</span> <span class="sh_symbol">+</span> j<span class="sh_symbol">*</span>i <span class="sh_symbol">+</span> <span class="sh_string">"</span><span class="sh_specialchar">\t</span><span class="sh_string">"</span><span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//每行输出完毕后，需要换行</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">//i变量用于控制行数
+for (int i = 1; i &lt; 10; i++) {
+		//j变量用于控制每行中参与计算的最大数值：与行数相等
+		for (int j = 1; j &lt;= i; j++) {
+System.out.print( j + "*" + i + "=" + j*i + "\t");
+}
+		//每行输出完毕后，需要换行
+		System.out.println();
+}
+</pre></div></div>
+      <h3>1.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：定义类及 main方法</p>
+      <p>首先定义一个名为 MultiplicationTable的类，并在类中添加Java应用程序的主方法main，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MultiplicationTable<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class MultiplicationTable{
+	public static void main(String[] args) {
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：构建循环</p>
+      <p>在main方法中，构建两层嵌套的 for 循环：外层循环用于控制行，内层循环用于控制某行上的乘法表达式。需要注意的是，每行输出完毕后，需要换行。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MultiplicationTable <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">        <span class="sh_comment">//i变量用于控制行数</span></li><li class="bold_code">        <span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> <span class="sh_number">10</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">            <span class="sh_comment">//j变量用于控制每行中参与计算的最大数值：与行数相等</span></li><li class="bold_code">            <span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int j <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> j <span class="sh_symbol">&lt;=</span> i<span class="sh_symbol">;</span> j<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">                </li><li class="bold_code">            <span class="sh_cbracket">}</span></li><li class="bold_code">            <span class="sh_comment">//每行输出完毕后，需要换行</span></li><li class="bold_code">            System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">();</span></li><li class="bold_code">        <span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class MultiplicationTable {
+	public static void main(String[] args) {
+#cold_bold        //i变量用于控制行数
+#cold_bold        for (int i = 1; i &lt; 10; i++) {
+#cold_bold            //j变量用于控制每行中参与计算的最大数值：与行数相等
+#cold_bold            for (int j = 1; j &lt;= i; j++) {
+#cold_bold                
+#cold_bold            }
+#cold_bold            //每行输出完毕后，需要换行
+#cold_bold            System.out.println();
+#cold_bold        }
+	}	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p class="number">步骤三：输出乘法表</p>
+      <p>考虑到输出界面的美观性，使用“\t”进行排版对齐代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MultiplicationTable <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_comment">//i变量用于控制行数</span></li><li>        <span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> <span class="sh_number">10</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>            <span class="sh_comment">//j变量用于控制每行中参与计算的最大数值：与行数相等</span></li><li>            <span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int j <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> j <span class="sh_symbol">&lt;=</span> i<span class="sh_symbol">;</span> j<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">                <span class="sh_comment">//设置输出的格式，控制排版对齐</span></li><li class="bold_code">                System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span> j <span class="sh_symbol">+</span> <span class="sh_string">"*"</span> <span class="sh_symbol">+</span> i <span class="sh_symbol">+</span> <span class="sh_string">"="</span> <span class="sh_symbol">+</span> j<span class="sh_symbol">*</span>i <span class="sh_symbol">+</span> <span class="sh_string">"</span><span class="sh_specialchar">\t</span><span class="sh_string">"</span><span class="sh_symbol">);</span></li><li>            <span class="sh_cbracket">}</span></li><li>            <span class="sh_comment">//每行输出完毕后，需要换行</span></li><li>            System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">();</span></li><li>        <span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class MultiplicationTable {
+	public static void main(String[] args) {
+        //i变量用于控制行数
+        for (int i = 1; i &lt; 10; i++) {
+            //j变量用于控制每行中参与计算的最大数值：与行数相等
+            for (int j = 1; j &lt;= i; j++) {
+#cold_bold                //设置输出的格式，控制排版对齐
+#cold_bold                System.out.print( j + "*" + i + "=" + j*i + "\t");
+            }
+            //每行输出完毕后，需要换行
+            System.out.println();
+        }
+	}	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <p>上述代码中的“\t”是水平制表符，其作用为从行首开始，每8字节算一个制表位，“\t”会在当前内容结束后第一个空的制表位处连接上下文。</p>
+      <h3>1.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MultiplicationTable <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>        <span class="sh_comment">//i变量用于控制行数</span></li><li>        <span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> <span class="sh_number">10</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>            <span class="sh_comment">//j变量用于控制每行中参与计算的最大数值：与行数相等</span></li><li>            <span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int j <span class="sh_symbol">=</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> j <span class="sh_symbol">&lt;=</span> i<span class="sh_symbol">;</span> j<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>                <span class="sh_comment">//设置输出的格式，使用"\t"控制排版对齐</span></li><li>            &nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span> j <span class="sh_symbol">+</span> <span class="sh_string">"*"</span> <span class="sh_symbol">+</span> i <span class="sh_symbol">+</span> <span class="sh_string">"="</span> <span class="sh_symbol">+</span> j<span class="sh_symbol">*</span>i <span class="sh_symbol">+</span> <span class="sh_string">"</span><span class="sh_specialchar">\t</span><span class="sh_string">"</span><span class="sh_symbol">);</span></li><li>            <span class="sh_cbracket">}</span></li><li>            <span class="sh_comment">//每行输出完毕后，需要换行</span></li><li>            System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">();</span></li><li>        <span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class MultiplicationTable {
+	public static void main(String[] args) {
+        //i变量用于控制行数
+        for (int i = 1; i &lt; 10; i++) {
+            //j变量用于控制每行中参与计算的最大数值：与行数相等
+            for (int j = 1; j &lt;= i; j++) {
+                //设置输出的格式，使用"\t"控制排版对齐
+            	System.out.print( j + "*" + i + "=" + j*i + "\t");
+            }
+            //每行输出完毕后，需要换行
+            System.out.println();
+        }
+	}	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 求数组元素的最大值</h2>
+      <h3>2.1 问题</h3>
+      <p>创建程序，实现查询数组中最大值的功能，需求为：创建一个长度为 10 的数组，数组内放置 10 个 0 到 99 之间（包含0，包含99）的随机整数作为数组内容，要求查询出数组中的最大值，并打印显示在界面上，界面效果如图－4 所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图－4</p>
+      </div>
+      <h3>2.2 方案</h3>
+      <p>首先，此案例中，首先需要创建一个长度为 10 的整型数组，然后使用 for 循环来产生 10 个 0 到 99 之间的随机整数，并放入数组；然后查询数组中的最大值，并打印显示结果。</p>
+      <h3>2.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：定义类及 main方法</p>
+      <p>首先定义一个名为 MaxOfArray的类，并在类中添加Java应用程序的主方法main，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MaxOfArray<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class MaxOfArray{
+	public static void main(String[] args) {
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：创建数组</p>
+      <p>在 main 方法中创建一个长度为 10 的数组，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MaxOfArray <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建一个 10 个长度的数组</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class MaxOfArray {
+	public static void main(String[] args) {
+#cold_bold		//创建一个 10 个长度的数组
+#cold_bold		int[] arr = new int[10];		
+	}	
+}
+</pre></div></div>
+      <p class="number">步骤三：数组的赋值</p>
+      <p>使用 for 语句构建一个 10 次的循环，在每次循环中，随机产生一个 0到99之间的整数，并存入数组。</p>
+      <p>此案例中，使用 Random 类的 nextInt()方法产生随机数。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li class="bold_code">import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MaxOfArray <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建一个 10 个长度的数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//随机生成 10 个0－99之间的数值，放入数组</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random ran <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> ran<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">#cold_boldimport java.util.Random;
+
+public class MaxOfArray {
+	public static void main(String[] args) {
+		//创建一个 10 个长度的数组
+		int[] arr = new int[10];
+		
+#cold_bold		//随机生成 10 个0－99之间的数值，放入数组
+#cold_bold		Random ran = new Random();
+#cold_bold		for(int i=0;i&lt;arr.length;i++){
+#cold_bold			arr[i] = ran.nextInt(100);			
+#cold_bold		}
+	}	
+}
+</pre></div></div>
+      <p>注意：此步骤中，需要导入java.util包下的Random类。</p>
+      <p class="number">步骤四：打印数组内容</p>
+      <p>数组赋值后，为方便用户查看数组中的数据内容，需要将数组中的数据打印在界面上。因此，需要使用 Arrays 类的 toString方法来得到数组的内容。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li class="bold_code">import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MaxOfArray <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建一个 10 个长度的数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//随机生成 10 个0－99之间的数值，放入数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random ran <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> ran<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打印数组中的数据</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"数组中的数据为："</span> <span class="sh_symbol">+</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.util.Random;
+#cold_boldimport java.util.Arrays;
+
+public class MaxOfArray {
+	public static void main(String[] args) {
+		//创建一个 10 个长度的数组
+		int[] arr = new int[10];
+		
+		//随机生成 10 个0－99之间的数值，放入数组
+		Random ran = new Random();
+		for(int i=0;i&lt;arr.length;i++){
+			arr[i] = ran.nextInt(100);			
+		}
+#cold_bold		//打印数组中的数据
+#cold_bold		System.out.println("数组中的数据为：" + Arrays.toString(arr));
+	}	
+}
+</pre></div></div>
+      <p>注意：此步骤中，需要导入java.util包下的Arrays类。</p>
+      <p class="number">步骤五：查询最大值</p>
+      <p>为找到数组中的最大值，依然需要使用循环来遍历数组。先定义一个变量 max 用于表示最大值，并赋初始值为数组中的第一个元素；然后依次把数组中的元素与变量 max 进行数值比较，如果数组中的某元素的数值大于 max，则将该元素的数值存入变量 max。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MaxOfArray <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建一个 10 个长度的数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//随机生成 10 个0－99之间的数值，放入数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random ran <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> ran<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打印数组中的数据</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"数组中的数据为："</span> <span class="sh_symbol">+</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//查询最大值</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int max <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">];</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">1</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>max <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">[</span>i<span class="sh_symbol">])</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>i<span class="sh_symbol">];</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"最大值是："</span> <span class="sh_symbol">+</span> max<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.util.Random;
+import java.util.Arrays;
+
+public class MaxOfArray {
+	public static void main(String[] args) {
+		//创建一个 10 个长度的数组
+		int[] arr = new int[10];
+		
+		//随机生成 10 个0－99之间的数值，放入数组
+		Random ran = new Random();
+		for(int i=0;i&lt;arr.length;i++){
+			arr[i] = ran.nextInt(100);			
+		}
+		//打印数组中的数据
+		System.out.println("数组中的数据为：" + Arrays.toString(arr));
+		
+#cold_bold		//查询最大值
+#cold_bold		int max = arr[0];
+#cold_bold		for(int i=1; i&lt;arr.length; i++) {
+#cold_bold			if(max &lt; arr[i]) {
+#cold_bold				max = arr[i];
+#cold_bold			}
+#cold_bold		}
+#cold_bold		System.out.println("最大值是：" + max);
+	}	
+}
+</pre></div></div>
+      <h3>2.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MaxOfArray <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建一个 10 个长度的数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//随机生成 10 个0－99之间的数值，放入数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random ran <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> ran<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打印数组中的数据</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"数组中的数据为："</span> <span class="sh_symbol">+</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//查询最大值</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int max <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">1</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>max <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">[</span>i<span class="sh_symbol">])</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>i<span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"最大值是："</span> <span class="sh_symbol">+</span> max<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.util.Random;
+import java.util.Arrays;
+
+public class MaxOfArray {
+	public static void main(String[] args) {
+		//创建一个 10 个长度的数组
+		int[] arr = new int[10];
+		
+		//随机生成 10 个0－99之间的数值，放入数组
+		Random ran = new Random();
+		for(int i=0;i&lt;arr.length;i++){
+			arr[i] = ran.nextInt(100);			
+		}
+		//打印数组中的数据
+		System.out.println("数组中的数据为：" + Arrays.toString(arr));
+		
+		//查询最大值
+		int max = arr[0];
+		for(int i=1; i&lt;arr.length; i++) {
+			if(max &lt; arr[i]) {
+				max = arr[i];
+			}
+		}
+		System.out.println("最大值是：" + max);
+	}	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 求数组元素的最大值放在最后一位</h2>
+      <h3>3.1 问题</h3>
+      <p>修改上一个案例中的程序，为程序添加功能：将数组的长度扩容为 11，然后将查询到的数组最大值作为数组的最后一个元素，并打印扩容后的数组的内容。界面效果如图－5所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+        <p>图－5</p>
+      </div>
+      <h3>3.2 方案</h3>
+      <p>实现此案例，只需要在上一个案例的基础上添加功能即可。</p>
+      <p>可以使用 Arrays 类的 copyOf() 方法实现数组的拷贝以及扩容，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li> arr <span class="sh_symbol">=</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">copyOf</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">,</span> arr<span class="sh_symbol">.</span>length <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">);</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;"> arr = Arrays.copyOf(arr, arr.length + 1);
+</pre></div></div>
+      <p>如果原数组 arr 的长度为 10，那么，上述代码将产生一个长度为 11 的新数组 arr，且新数组中的前 10 个数值和原数组 arr 中的10个数值相同。</p>
+      <p>然后，将查询到的最大值放入新数组的最后一个位置上，并打印新数组的内容即可。</p>
+      <h3>3.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：创建新数组</p>
+      <p>在上个案例中的 main 方法中继续添加代码，创建新数组，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MaxOfArray <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建一个 10 个长度的数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//随机生成 10 个0－99之间的数值，放入数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random ran <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> ran<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打印数组中的数据</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"数组中的数据为："</span> <span class="sh_symbol">+</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//查询最大值</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int max <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">1</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>max <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">[</span>i<span class="sh_symbol">])</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>i<span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"最大值是："</span> <span class="sh_symbol">+</span> max<span class="sh_symbol">);</span></li><li><span style="display:none;">&nbsp;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建新数组</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr <span class="sh_symbol">=</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">copyOf</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">,</span> arr<span class="sh_symbol">.</span>length <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.util.Random;
+import java.util.Arrays;
+
+public class MaxOfArray {
+	public static void main(String[] args) {
+		//创建一个 10 个长度的数组
+		int[] arr = new int[10];
+		
+		//随机生成 10 个0－99之间的数值，放入数组
+		Random ran = new Random();
+		for(int i=0;i&lt;arr.length;i++){
+			arr[i] = ran.nextInt(100);			
+		}
+		//打印数组中的数据
+		System.out.println("数组中的数据为：" + Arrays.toString(arr));
+		
+		//查询最大值
+		int max = arr[0];
+		for(int i=1; i&lt;arr.length; i++) {
+			if(max &lt; arr[i]) {
+				max = arr[i];
+			}
+		}
+		System.out.println("最大值是：" + max);
+
+#cold_bold		//创建新数组
+#cold_bold		arr = Arrays.copyOf(arr, arr.length + 1);
+	}	
+}
+</pre></div></div>
+      <p class="number">步骤二：存储最大值并打印数组内容</p>
+      <p>将查询到的数组最大值放入新数组的最后一个位置，并打印数组内容显示。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MaxOfArray <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建一个 10 个长度的数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//随机生成 10 个0－99之间的数值，放入数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random ran <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> ran<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打印数组中的数据</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"数组中的数据为："</span> <span class="sh_symbol">+</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//查询最大值</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int max <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">1</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>max <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">[</span>i<span class="sh_symbol">])</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>i<span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"最大值是："</span> <span class="sh_symbol">+</span> max<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建新数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr <span class="sh_symbol">=</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">copyOf</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">,</span> arr<span class="sh_symbol">.</span>length <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//最大值放入最后一个位置，并打印新数组内容</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>arr<span class="sh_symbol">.</span>length<span class="sh_number">-1</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> max<span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"新数组中的数据为："</span> <span class="sh_symbol">+</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.util.Random;
+import java.util.Arrays;
+
+public class MaxOfArray {
+	public static void main(String[] args) {
+		//创建一个 10 个长度的数组
+		int[] arr = new int[10];
+		
+		//随机生成 10 个0－99之间的数值，放入数组
+		Random ran = new Random();
+		for(int i=0;i&lt;arr.length;i++){
+			arr[i] = ran.nextInt(100);			
+		}
+		//打印数组中的数据
+		System.out.println("数组中的数据为：" + Arrays.toString(arr));
+		
+		//查询最大值
+		int max = arr[0];
+		for(int i=1; i&lt;arr.length; i++) {
+			if(max &lt; arr[i]) {
+				max = arr[i];
+			}
+		}
+		System.out.println("最大值是：" + max);
+		
+		//创建新数组
+		arr = Arrays.copyOf(arr, arr.length + 1);
+#cold_bold		//最大值放入最后一个位置，并打印新数组内容
+#cold_bold		arr[arr.length-1] = max;
+#cold_bold		System.out.println("新数组中的数据为：" + Arrays.toString(arr));
+	}	
+}
+</pre></div></div>
+      <h3>3.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> MaxOfArray <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建一个 10 个长度的数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//随机生成 10 个0－99之间的数值，放入数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Random ran <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> ran<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//打印数组中的数据</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"数组中的数据为："</span> <span class="sh_symbol">+</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//查询最大值</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int max <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span><span class="sh_number">0</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">1</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;</span>arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>max <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">[</span>i<span class="sh_symbol">])</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>i<span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"最大值是："</span> <span class="sh_symbol">+</span> max<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建新数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr <span class="sh_symbol">=</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">copyOf</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">,</span> arr<span class="sh_symbol">.</span>length <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//最大值放入最后一个位置，并打印新数组内容</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>arr<span class="sh_symbol">.</span>length<span class="sh_number">-1</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> max<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"新数组中的数据为："</span> <span class="sh_symbol">+</span> Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.util.Random;
+import java.util.Arrays;
+
+public class MaxOfArray {
+	public static void main(String[] args) {
+		//创建一个 10 个长度的数组
+		int[] arr = new int[10];
+		
+		//随机生成 10 个0－99之间的数值，放入数组
+		Random ran = new Random();
+		for(int i=0;i&lt;arr.length;i++){
+			arr[i] = ran.nextInt(100);			
+		}
+		//打印数组中的数据
+		System.out.println("数组中的数据为：" + Arrays.toString(arr));
+		
+		//查询最大值
+		int max = arr[0];
+		for(int i=1; i&lt;arr.length; i++) {
+			if(max &lt; arr[i]) {
+				max = arr[i];
+			}
+		}
+		System.out.println("最大值是：" + max);
+		
+		//创建新数组
+		arr = Arrays.copyOf(arr, arr.length + 1);
+		//最大值放入最后一个位置，并打印新数组内容
+		arr[arr.length-1] = max;
+		System.out.println("新数组中的数据为：" + Arrays.toString(arr));
+	}	
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 冒泡排序算法实现</h2>
+      <h3>4.1 问题</h3>
+      <p>冒泡排序（Bubble Sort），是一种较简单的排序算法。在冒泡排序算法中，需要重复的走访要排序的数列，一次比较两个元素，如果它们的大小顺序错误就把它们交换过来。走访数列的工作是重复地进行直到没有再需要交换的元素，也就是说该数列已经排序完成。由于在排序过程中总是小数往前放，大数往后放，相当于气泡往上升，所以称作冒泡排序。</p>
+      <p>本案例要求使用冒泡排序算法实现对数组的排序。有一个长度为 10 的整型数组，使用冒泡排序算法将数组按照升序排列，并输出排序的过程以及结果。程序交互情况如图-6所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image006.png">
+        <p>图－6</p>
+      </div>
+      <h3>4.2 方案</h3>
+      <p>为了理解冒泡排序算法，我们先假设有一个长度为 7 的数组，数组内容如图－7所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image007.png">
+        <p>图－7</p>
+      </div>
+      <p>图－7中的数组元素为无序状态，为实现升序排列，可以先进行第一轮比较，过程大致如下：</p>
+      <p>1. 先比较第一对相邻的元素（第一个位置的 89和第二个位置的 50）：如果第一个比第二个大，就交换两个数值；</p>
+      <p>2. 继续比较第二对相邻的元素（第二个位置和第三个位置）：如果第二个位置上的数值大于第三个位置上的数值，则交换；</p>
+      <p>3. 继续下去，重复上述的比较工作，直到结尾的最后一对；此时，一轮比较交换完成后，最后的元素则是数列中最大的数。</p>
+      <p>第一轮比较的过程如图－8所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image008.png">
+        <p>图－8</p>
+      </div>
+      <p>由图－8可以看出，第一轮比较后，已经将数组中的最大值通过位置交换，移动到数组的最后位置上。但是，其余的元素依然为无序状态，因此，依然进行第二轮比较：针对除最后一个元素外的其他元素重复以上步骤，以找到剩余元素中的最大数，且放置到倒数第二的位置上。第二轮比较的过程如图－9所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image009.png">
+        <p>图－9</p>
+      </div>
+      <p>由图－9可以看出，第一个位置上的 50 比第二个位置上的 84 小，因此不发生交换；而其他位置将依次发生交换，从而将 84 交换到倒数第二的位置上。</p>
+      <p>然后，继续进行其他轮比较，持续进行，每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较，则排序完成。整个排序的过程如图－10所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image010.png">
+        <p>图－10</p>
+      </div>
+      <p>由图－10可以看出，实现冒泡排序算法时，需要使用嵌套的两个循环来实现：外层循环用于控制排序的轮次，里层循环用于控制每轮排序中的两两交换。</p>
+      <h3>4.3 步骤</h3>
+      <p>实现此案例需要按照如下步骤进行。</p>
+      <p class="number">步骤一：定义类及 main方法</p>
+      <p>首先定义一个名为 BubbleSort的类，并在类中添加Java应用程序的主方法main，代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> BubbleSort<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class BubbleSort{
+	public static void main(String[] args) {
+	}
+}
+</pre></div></div>
+      <p class="number">步骤二：创建数组</p>
+      <p>在 main 方法中创建一个长度为 10 的数组，并使用 for 语句构建一个 10 次的循环，在每次循环中，随机产生一个 0到99之间的整数，并存入数组，然后，打印数组的内容显示在界面上。</p>
+      <p>此案例中，使用 Random 类的 nextInt()方法产生随机数。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li class="bold_code">import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li class="bold_code">import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> BubbleSort <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建数组</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li class="bold_code">Random ran <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> ran<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">#cold_boldimport java.util.Random;
+#cold_boldimport java.util.Arrays;
+
+public class BubbleSort {
+	public static void main(String[] args) {
+#cold_bold		//创建数组
+#cold_bold		int[] arr = new int[10];
+#cold_boldRandom ran = new Random();
+#cold_bold		for (int i = 0; i &lt; arr.length; i++) {
+#cold_bold			arr[i] = ran.nextInt(100);
+#cold_bold		}
+#cold_bold		System.out.println(Arrays.toString(arr));
+	}
+}
+</pre></div></div>
+      <p>注意：此步骤中，需要导入java.util包下的Random类和Arrays类。</p>
+      <p class="number">步骤三：排序</p>
+      <p>使用冒泡排序算法对数组进行排序：每一轮比较中，两两相比，找到最大的数值移动到最后，直到都比较过一遍。为便于查看排序的过程，将每轮比较后的数组内容输出显示，并将最后的结果输出到控制台。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> BubbleSort <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li>Random ran <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> ran<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 冒泡排序</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"----------冒泡排序 开始----------"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">.</span>length <span class="sh_symbol">-</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int j <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> j <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">.</span>length <span class="sh_symbol">-</span> i <span class="sh_symbol">-</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> j<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>arr<span class="sh_symbol">[</span>j<span class="sh_symbol">]</span> <span class="sh_symbol">&gt;</span> arr<span class="sh_symbol">[</span>j <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">])</span> <span class="sh_cbracket">{</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int t <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>j<span class="sh_symbol">];</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>j<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>j <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">];</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>j <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> t<span class="sh_symbol">;</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"----------冒泡排序 结束----------"</span><span class="sh_symbol">);</span></li><li class="bold_code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.util.Random;
+import java.util.Arrays;
+
+public class BubbleSort {
+	public static void main(String[] args) {
+		//创建数组
+		int[] arr = new int[10];
+Random ran = new Random();
+		for (int i = 0; i &lt; arr.length; i++) {
+			arr[i] = ran.nextInt(100);
+		}
+		System.out.println(Arrays.toString(arr));
+#cold_bold		// 冒泡排序
+#cold_bold		System.out.println("----------冒泡排序 开始----------");
+#cold_bold		for (int i = 0; i &lt; arr.length - 1; i++) {
+#cold_bold			for (int j = 0; j &lt; arr.length - i - 1; j++) {
+#cold_bold				if (arr[j] &gt; arr[j + 1]) {
+#cold_bold					int t = arr[j];
+#cold_bold					arr[j] = arr[j + 1];
+#cold_bold					arr[j + 1] = t;
+#cold_bold				}
+#cold_bold			}
+#cold_bold			System.out.println(Arrays.toString(arr));
+#cold_bold		}
+#cold_bold		System.out.println("----------冒泡排序 结束----------");
+#cold_bold		System.out.println(Arrays.toString(arr));
+	}
+}
+</pre></div></div>
+      <h3>4.4 完整代码</h3>
+      <p>本案例的完整代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap" style="display: none;"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#">pop-up</a></pre></div><pre class="hide sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Random<span class="sh_symbol">;</span></li><li>import java<span class="sh_symbol">.</span>util<span class="sh_symbol">.</span>Arrays<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span> BubbleSort <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_keyword">static</span> void <span class="sh_function">main</span><span class="sh_symbol">(</span><span class="sh_predef_func">String</span><span class="sh_symbol">[]</span> args<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//创建数组</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int<span class="sh_symbol">[]</span> arr <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> int<span class="sh_symbol">[</span><span class="sh_number">10</span><span class="sh_symbol">];</span></li><li>     Random ran <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Random</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>i<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> ran<span class="sh_symbol">.</span><span class="sh_function">nextInt</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 冒泡排序</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"----------冒泡排序 开始----------"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">.</span>length <span class="sh_symbol">-</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int j <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> j <span class="sh_symbol">&lt;</span> arr<span class="sh_symbol">.</span>length <span class="sh_symbol">-</span> i <span class="sh_symbol">-</span> <span class="sh_number">1</span><span class="sh_symbol">;</span> j<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span> <span class="sh_symbol">(</span>arr<span class="sh_symbol">[</span>j<span class="sh_symbol">]</span> <span class="sh_symbol">&gt;</span> arr<span class="sh_symbol">[</span>j <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">])</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int t <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>j<span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>j<span class="sh_symbol">]</span> <span class="sh_symbol">=</span> arr<span class="sh_symbol">[</span>j <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">];</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr<span class="sh_symbol">[</span>j <span class="sh_symbol">+</span> <span class="sh_number">1</span><span class="sh_symbol">]</span> <span class="sh_symbol">=</span> t<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"----------冒泡排序 结束----------"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>Arrays<span class="sh_symbol">.</span><span class="sh_function">toString</span><span class="sh_symbol">(</span>arr<span class="sh_symbol">));</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.util.Random;
+import java.util.Arrays;
+
+public class BubbleSort {
+	public static void main(String[] args) {
+		//创建数组
+		int[] arr = new int[10];
+     Random ran = new Random();
+		for (int i = 0; i &lt; arr.length; i++) {
+			arr[i] = ran.nextInt(100);
+		}
+		System.out.println(Arrays.toString(arr));
+		// 冒泡排序
+		System.out.println("----------冒泡排序 开始----------");
+		for (int i = 0; i &lt; arr.length - 1; i++) {
+			for (int j = 0; j &lt; arr.length - i - 1; j++) {
+				if (arr[j] &gt; arr[j + 1]) {
+					int t = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = t;
+				}
+			}
+			System.out.println(Arrays.toString(arr));
+		}
+		System.out.println("----------冒泡排序 结束----------");
+		System.out.println(Arrays.toString(arr));
+	}
+}
+</pre><div class="sh_sourceCode snippet-hide"><pre><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-revealed snippet-toggle sh_url">隐藏</a></pre></div></div><div class="snippet-reveal sh_acid snippet-wrap"><pre class="sh_sourceCode"><a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/FUNDAMENTAL/DAY05/CASE/01/index.html#" class="snippet-toggle sh_url">代码</a></pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

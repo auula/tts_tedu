@@ -1,0 +1,169 @@
+﻿div.source_style_exercise
+{
+    font-family:"微软雅黑", Times New Roman;
+    font-size:14px;   
+    min-width:400px;
+    padding:10px 20px;
+     color:#000;
+}
+div.source_style_exercise div.wordSection
+{
+    width:95%;
+    padding:5px;
+    margin:5px;
+}
+/* 三级标题 */
+div.source_style_exercise h3
+{
+    clear:both;
+    font-size:18px;
+	font-weight:bold;
+	margin:20px 0px 20px 0px;
+	text-indent:0px;
+}
+/* 相关知识点 */
+div.source_style_exercise h4
+{
+    font-size:16px;
+	font-weight:bold;
+	margin:10px 0px 5px 3px;
+	text-indent:21.0pt;
+    color:purple;
+}
+/* 正文段落 */
+div.source_style_exercise p
+{
+    margin:3px;
+    padding:2px;
+    padding-left:30px;
+	text-indent:21.0pt;	
+	font-size:14px;	
+	line-height:25px;
+}
+/* 参考答案标题 */
+div.source_style_exercise p.answerTitle
+{
+    clear:both;
+    font-weight:bold;
+    padding:10px 0px;
+    font-size:16px;
+}
+/* 图片、图题 */
+div.source_style_exercise div.image
+{
+    text-align:center;
+    padding:5px 0px 5px 0px;
+}
+div.source_style_exercise div.image img
+{
+    max-width:900px;
+}
+div.source_style_exercise div.image>p
+{
+    text-align:center;
+    margin:5px;
+    padding:3px;
+    font-size:12px;
+}
+
+/* 表格图片、表题 */
+div.source_style_exercise div.table
+{
+    text-align:center;
+    padding:5px 0px 5px 0px;
+}
+div.source_style_exercise div.table img
+{
+    max-width:900px;
+}
+div.source_style_exercise div.table>p
+{
+    text-align:center;
+    margin:5px;
+    padding:3px;
+    font-size:12px;
+}
+
+/* 代码 */
+div.source_style_exercise p.code,div.source_style_exercise pre
+{    
+    font-size:14px;
+    margin-left:60px;
+}
+div.source_style_exercise .code_level1
+{
+    text-indent:21.0pt;
+}
+div.source_style_exercise .code_level2
+{
+    text-indent:42.0pt;
+}
+div.source_style_exercise .code_level3
+{
+    text-indent:63.0pt;
+}
+div.source_style_exercise .code_level4
+{
+    text-indent:84.0pt;
+}
+
+/* 无序列表 */
+div.source_style_exercise ul.list,div.source_style_exercise ol.list
+{
+    margin-left:30px;
+}
+div.source_style_exercise ol.list
+{
+    padding-left:45px;
+}
+div.source_style_exercise ul.list li
+{
+    padding-left:10px;
+}
+div.source_style_exercise ol.list li
+{
+    padding-left:5px;
+}
+
+/* 强调文本 */
+div.source_style_exercise p.emphasiz
+{
+    font-weight:bold;
+    font-style:italic;
+}
+
+/* 带编号的正文文本 */
+div.source_style_exercise p.number
+{
+    font-weight:bold;
+    margin-top:8px;
+    margin-bottom:8px
+}
+
+/* 知识点的目录 */
+div.source_style_exercise ul.index
+{
+    margin:0px 0px 20px 40px;
+    font-size:12px;
+}
+div.source_style_exercise ul.index li
+{
+    margin-right:30px;
+    padding:0px;
+    margin:3px 50px 10px 0px;
+    list-style-image:url("ph.gif");
+    list-style-type:none;
+}
+div.source_style_exercise ul.index li a,div.source_style_exercise ul.index li a:visited
+{
+    color:blue;
+    text-decoration:underline;
+}
+div.source_style_exercise ul.index li a:hover
+{
+    color:purple;
+}
+
+
+div.source_style_exercise .highlighter { border: 2px solid #ddd; padding:5px; background: #eee;}
+div.source_style_exercise .command_help {display:none;}

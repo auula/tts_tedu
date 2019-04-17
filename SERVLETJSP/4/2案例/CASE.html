@@ -1,0 +1,366 @@
+
+<!-- saved from url=(0094)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>CASE</title>
+    
+    <script type="text/javascript" src="./CASE_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./CASE_files/main.js">
+    </script>
+    <link type="text/css" href="./CASE_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./CASE_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="26911649067"></style>
+  <body>
+    <div class="source_style_case">
+      <a name="page_top_case" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#page_top_case">Top</a>
+      <h1>JAVA SERVLETJSP DAY04</h1>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#case1">JSP基本元素练习</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#case2">JSP指令练习</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#case3">员工管理——使用JSP实现员工信息列表1</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#case4">员工管理——使用JSP实现员工信息列表2</a>
+        </li>
+      </ol>
+      <a name="case1">
+      </a>
+      <h2>1 JSP基本元素练习</h2>
+      <h3>1.1 问题</h3>
+      <p>在JSP页面中输出20行“Hello JSP”。</p>
+      <h3>1.2 方案</h3>
+      <p>使用表达式、小脚本、注释配合HTML标记的方式实现动态页面的生成。</p>
+      <h3>1.3 步骤</h3>
+      <p class="number">步骤一：新建hello.jsp页面</p>
+      <p>新建web Project，在webRoot下右键，新建File，名称为hello.jsp。点击Finish。如图-1所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image001.png">
+        <p>图 - 1</p>
+      </div>
+      <p class="number">步骤二：添加页面代码</p>
+      <p>在hello.jsp页面内编写如下代码，实现循环输出10行Hello JSP。再使用表达式输出10行Hello JSP。并且为两种输出添加注释。如图-2所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image002.png">
+        <p>图 - 2</p>
+      </div>
+      <p class="number">步骤三：部署，访问应用</p>
+      <p>部署应用，在地址栏中输入地址“http://localhost:8080/部署应用名/hello.jsp”查看页面效果以及页面源码，会发现第二种注释中的java代码会执行也会出现在源代码中，但第一种注释既不会运行也不会出现在结果的源代码中。</p>
+      <h3>1.4 完整代码</h3>
+      <p>hello.jsp文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@ page pageEncoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span> <span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>body style<span class="sh_symbol">=</span><span class="sh_string">"font-size:24px"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%--</span> 使用out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span><span class="sh_string">"Hello JSP"</span><span class="sh_symbol">);</span>方式输出 <span class="sh_symbol">--%&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span><span class="sh_number">10</span><span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"Hello JSP&lt;br&gt;"</span><span class="sh_symbol">);</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">%&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>hr<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 使用<span class="sh_symbol">&lt;%=</span><span class="sh_string">"Hello JSP"</span><span class="sh_symbol">%&gt;</span>方式输出<span class="sh_symbol">--&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span><span class="sh_symbol">(</span>int i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span>i<span class="sh_symbol">&lt;</span><span class="sh_number">10</span><span class="sh_symbol">;</span>i<span class="sh_symbol">++)</span><span class="sh_cbracket">{</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">%&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%=</span><span class="sh_string">"No."</span><span class="sh_symbol">+(</span>i<span class="sh_number">+1</span><span class="sh_symbol">)+</span><span class="sh_string">"Hello JSP"</span> <span class="sh_symbol">%&gt;&lt;</span>br<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_symbol">%&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@ page pageEncoding="UTF-8" %&gt;
+&lt;html&gt;
+	&lt;head&gt;&lt;/head&gt;
+	&lt;body style="font-size:24px"&gt;
+		&lt;%-- 使用out.print("Hello JSP");方式输出 --%&gt;
+		&lt;%
+			for(int i=0;i&lt;10;i++){
+				out.println("Hello JSP&lt;br&gt;");			
+			}
+		%&gt;
+		&lt;hr&gt;
+		&lt;!-- 使用&lt;%="Hello JSP"%&gt;方式输出--&gt;
+		&lt;%
+			for(int i=0;i&lt;10;i++){		
+		%&gt;
+				&lt;%="No."+(i+1)+"Hello JSP" %&gt;&lt;br&gt;
+		&lt;%
+			}
+	    %&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <a name="case2">
+      </a>
+      <h2>2 JSP指令练习</h2>
+      <h3>2.1 问题</h3>
+      <p>在页面中输出当前系统时间，并且该时间能够嵌入到其他页面中。</p>
+      <h3>2.2 方案</h3>
+      <p>使用page指令的import导包，contentType控制编码，pageEncoding控制显示中文，使用include指令实现页面内包含其他页面的效果。</p>
+      <h3>2.3 步骤</h3>
+      <p class="number">步骤一：新建date.jsp页面</p>
+      <p>在WebRoot节点上右键(New(File,文件名称为date.jsp。在页面内添加page指令及小脚本，如图-3所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image003.png">
+        <p>图 - 3</p>
+      </div>
+      <p class="number">步骤二：新建includeDemo.jsp页面</p>
+      <p>webRoot节点上右键，创建New File为 includeDemo.jsp页面，用于包含其他页面。使用include指令添加，file属性说明文件的位置。如图-4：</p>
+      <div class="image">
+        <img src="./CASE_files/image004.png">
+        <p>图 - 4</p>
+      </div>
+      <p class="number">步骤三：部署应用，查看结果</p>
+      <p>部署后输入地址访问页面，查看结果如图-5：</p>
+      <div class="image">
+        <img src="./CASE_files/image005.png">
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image006.png">
+        <p>图 - 5</p>
+      </div>
+      <p class="number">步骤四：小技巧，创建自定义的JSP模板</p>
+      <p>在随便哪一个JSP页面上，右键，选择Preferences，选择JSP Template，点击New，为模板命名并填写模板内容，步骤如图-6：</p>
+      <div class="image">
+        <img src="./CASE_files/image007.png">
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image008.png">
+        <p>图 - 6</p>
+      </div>
+      <p class="number">步骤五：使用自定义的模板创建JSP页面</p>
+      <p>在webRoot节点上右键选择New(JSP，填写文件名称后，点击Next，如图-7：</p>
+      <div class="image">
+        <img src="./CASE_files/image009.png">
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image010.png">
+        <p>图 - 7</p>
+      </div>
+      <h3>2.4 完整代码</h3>
+      <p>date.jsp文件代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@page import<span class="sh_symbol">=</span><span class="sh_string">"java.util.*,java.text.SimpleDateFormat"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;pageEncoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;contentType<span class="sh_symbol">=</span><span class="sh_string">"text/html;charset=UTF-8"</span><span class="sh_symbol">%&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;</span>div style<span class="sh_symbol">=</span><span class="sh_string">"font-size:20px;border:1px solid red;</span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width:350px;padding:20px"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_predef_func">Date</span> date <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_predef_func">Date</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SimpleDateFormat sdf <span class="sh_symbol">=</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">new</span> <span class="sh_function">SimpleDateFormat</span><span class="sh_symbol">(</span><span class="sh_string">"yyyy-MM-dd HH:mm:ss"</span><span class="sh_symbol">);</span>    &nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">%&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;当前系统时间：<span class="sh_symbol">&lt;%=</span>sdf<span class="sh_symbol">.</span><span class="sh_function">format</span><span class="sh_symbol">(</span>date<span class="sh_symbol">)%&gt;</span></li><li><span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@page import="java.util.*,java.text.SimpleDateFormat" 
+	pageEncoding="UTF-8" 
+	contentType="text/html;charset=UTF-8"%&gt;
+
+&lt;div style="font-size:20px;border:1px solid red;
+			width:350px;padding:20px"&gt;
+	&lt;%
+		Date date = new Date();
+		SimpleDateFormat sdf = 
+		new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");    	
+	%&gt;
+	当前系统时间：&lt;%=sdf.format(date)%&gt;
+&lt;/div&gt;
+</pre></div></div>
+      <p>includeDemo.jsp文件代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@ page    pageEncoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>Insert title here<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%</span>@include file<span class="sh_symbol">=</span><span class="sh_string">"date.jsp"</span> <span class="sh_symbol">%&gt;&lt;</span>br<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;时间来自于date<span class="sh_symbol">.</span>jsp页面！</li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@ page    pageEncoding="UTF-8"%&gt;
+&lt;html&gt;
+	&lt;head&gt;	
+		&lt;title&gt;Insert title here&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+	&lt;%@include file="date.jsp" %&gt;&lt;br&gt;
+	时间来自于date.jsp页面！
+	&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <a name="case3">
+      </a>
+      <h2>3 员工管理——使用JSP实现员工信息列表1</h2>
+      <h3>3.1 问题</h3>
+      <p>在页面中显示员工信息列表，并且能够实现奇偶行背景交错变换的效果。</p>
+      <h3>3.2 方案</h3>
+      <p>在JSP页面中，通过创建EmployeeDAO的实例来获取所有雇员信息，再使用循环语句以表格的形式输出雇员信息。交错行变色为不同的背景样式决定的，所以在输出行标记时根据行坐标输出不同的样式即可。</p>
+      <h3>3.3 步骤</h3>
+      <p class="number">步骤一：新建listEmp1.jsp页面</p>
+      <div class="image">
+        <img src="./CASE_files/image011.png">
+        <p>图 - 8</p>
+      </div>
+      <p class="number">步骤二：添加循环输出表格</p>
+      <div class="image">
+        <img src="./CASE_files/image012.png">
+        <p>图 - 9</p>
+      </div>
+      <p class="number">步骤三：部署查看结果</p>
+      <p>运行结果如图-10所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image013.png">
+        <p>图 - 10</p>
+      </div>
+      <p class="number">步骤四：添加两个CSS类样式</p>
+      <div class="image">
+        <img src="./CASE_files/image014.png">
+        <p>图 - 11</p>
+      </div>
+      <p class="number">步骤五：为表格添加类样式</p>
+      <div class="image">
+        <img src="./CASE_files/image015.png">
+        <p>图 - 12</p>
+      </div>
+      <h3>3.4 完整代码</h3>
+      <p>dao包中的DBUtil.java、EmployeeDAO.java和entity包中的Employee.java文件源码参考第三天代码。</p>
+      <p>listEmp1.jsp文件代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@ page contentType<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span> </li><li>         pageEncoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;%</span>@ page import<span class="sh_symbol">=</span><span class="sh_string">"dao.*,entity.*,java.util.*"</span><span class="sh_symbol">%&gt;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>style type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">.</span>row1 <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span> #E4E4F1</li><li><span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_symbol">.</span>row2 <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;background<span class="sh_symbol">-</span>color<span class="sh_symbol">:</span> #FBD10A</li><li><span class="sh_cbracket">}</span></li><li><span class="sh_symbol">&lt;/</span>style<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;</span>body style<span class="sh_symbol">=</span><span class="sh_string">"font-size:24px"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>table border<span class="sh_symbol">=</span><span class="sh_string">"1"</span> cellpadding<span class="sh_symbol">=</span><span class="sh_string">"0"</span> cellspacing<span class="sh_symbol">=</span><span class="sh_string">"0"</span> width<span class="sh_symbol">=</span><span class="sh_string">"500px"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>caption<span class="sh_symbol">&gt;</span>员工信息<span class="sh_symbol">&lt;/</span>caption<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>编号<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>姓名<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>薪水<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>年龄<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EmployeeDAO dao <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">EmployeeDAO</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>Employee<span class="sh_symbol">&gt;</span> emps <span class="sh_symbol">=</span> dao<span class="sh_symbol">.</span><span class="sh_function">findAll</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> emps<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">();</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Employee emp <span class="sh_symbol">=</span> emps<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>i<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">%&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>tr <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"row&lt;%=i % 2 + 1%&gt;"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;&lt;%=</span>emp<span class="sh_symbol">.</span><span class="sh_function">getId</span><span class="sh_symbol">()%&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;&lt;%=</span>emp<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">()%&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;&lt;%=</span>emp<span class="sh_symbol">.</span><span class="sh_function">getSalary</span><span class="sh_symbol">()%&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;&lt;%=</span>emp<span class="sh_symbol">.</span><span class="sh_function">getAge</span><span class="sh_symbol">()%&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">%&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>table<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@ page contentType="text/html; charset=UTF-8" 
+         pageEncoding="UTF-8"%&gt;
+&lt;%@ page import="dao.*,entity.*,java.util.*"%&gt;
+
+&lt;html&gt;
+&lt;head&gt;
+&lt;style type="text/css"&gt;
+.row1 {
+	background-color: #E4E4F1
+}
+
+.row2 {
+	background-color: #FBD10A
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body style="font-size:24px"&gt;
+	&lt;table border="1" cellpadding="0" cellspacing="0" width="500px"&gt;
+		&lt;caption&gt;员工信息&lt;/caption&gt;
+		&lt;tr&gt;
+			&lt;td&gt;编号&lt;/td&gt;
+			&lt;td&gt;姓名&lt;/td&gt;
+			&lt;td&gt;薪水&lt;/td&gt;
+			&lt;td&gt;年龄&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;%
+			EmployeeDAO dao = new EmployeeDAO();
+			List&lt;Employee&gt; emps = dao.findAll();
+			for (int i = 0; i &lt; emps.size(); i++) {
+				Employee emp = emps.get(i);
+		%&gt;
+		&lt;tr class="row&lt;%=i % 2 + 1%&gt;"&gt;
+			&lt;td&gt;&lt;%=emp.getId()%&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;%=emp.getName()%&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;%=emp.getSalary()%&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;%=emp.getAge()%&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+		&lt;%
+			}
+		%&gt;
+	&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div></div>
+      <a name="case4">
+      </a>
+      <h2>4 员工管理——使用JSP实现员工信息列表2</h2>
+      <h3>4.1 问题</h3>
+      <p>使用美工提供的静态页面实现员工管理的信息列表展示，如图-13：</p>
+      <div class="image">
+        <img src="./CASE_files/image016.png">
+        <p>图 - 13</p>
+      </div>
+      <h3>4.2 方案</h3>
+      <p>将静态页面代码复制到jsp页面中，添加page指令，修改表格的输出，使用循环控制集合的展示，修改行标题，修改行的背景样式。</p>
+      <h3>4.3 步骤</h3>
+      <p class="number">步骤一：新建listEmp2.jsp页面</p>
+      <p>依据自定义模板，新建listEmp2.jsp页面。</p>
+      <p class="number">步骤二：复制静态页面代码到jsp页面中</p>
+      <p>打开准备好的静态页面，选择emplist.html页面，将页面的全部代码拷贝到listEmp2.jsp页面中，并且css和img两个文件夹也要拷贝到工程的WebRoot文件夹下。</p>
+      <div class="image">
+        <img src="./CASE_files/image017.png">
+      </div>
+      <div class="image">
+        <img src="./CASE_files/image018.png">
+        <p>图 - 14</p>
+      </div>
+      <p class="number">步骤三：修改page指令，添加java代码</p>
+      <p>修改page指令，添加import及content-Type属性，保证导入dao和实体的包，以及正确设定浏览器对内容的解码方式。</p>
+      <div class="image">
+        <img src="./CASE_files/image019.png">
+        <p>图- 15</p>
+      </div>
+      <p class="number">步骤四：修改行的背景样式</p>
+      <div class="image">
+        <img src="./CASE_files/image020.png">
+        <p>图 - 16</p>
+      </div>
+      <p class="number">步骤五：部署，访问应用</p>
+      <p>运行结果如图-17所示：</p>
+      <div class="image">
+        <img src="./CASE_files/image021.png">
+        <p>图 - 17</p>
+      </div>
+      <h3>4.4 完整代码</h3>
+      <p>listEmp2.jsp文件代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/CASE/01/index.html#">pop-up</a></pre></div><pre class="code sh_javascript snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@ page contentType<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span> </li><li>         pageEncoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;%</span>@ page import<span class="sh_symbol">=</span><span class="sh_string">"dao.*,entity.*,java.util.*"</span><span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;</span>html<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>head<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>title<span class="sh_symbol">&gt;</span>员工信息<span class="sh_symbol">&lt;/</span>title<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>meta http<span class="sh_symbol">-</span>equiv<span class="sh_symbol">=</span><span class="sh_string">"Content-Type"</span> content<span class="sh_symbol">=</span><span class="sh_string">"text/html; charset=UTF-8"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>link rel<span class="sh_symbol">=</span><span class="sh_string">"stylesheet"</span> type<span class="sh_symbol">=</span><span class="sh_string">"text/css"</span> href<span class="sh_symbol">=</span><span class="sh_string">"css/style.css"</span> <span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>head<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>body<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"wrap"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"top_content"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"header"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"rightheader"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_number">2009</span><span class="sh_symbol">/</span><span class="sh_number">11</span><span class="sh_symbol">/</span><span class="sh_number">20</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span><span class="sh_normal">br </span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"topheader"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>h1 id<span class="sh_symbol">=</span><span class="sh_string">"title"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>a href<span class="sh_symbol">=</span><span class="sh_string">"#"</span><span class="sh_symbol">&gt;</span>main<span class="sh_symbol">&lt;/</span>a<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"navigation"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"content"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>p id<span class="sh_symbol">=</span><span class="sh_string">"whereami"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>h1<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;员工信息列表</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>h1<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>table <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"table"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>tr <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"table_header"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编号</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薪水</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;年龄</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EmployeeDAO dao <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">EmployeeDAO</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List<span class="sh_symbol">&lt;</span>Employee<span class="sh_symbol">&gt;</span> emps <span class="sh_symbol">=</span> dao<span class="sh_symbol">.</span><span class="sh_function">findAll</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">for</span> <span class="sh_symbol">(</span>int i <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span> i <span class="sh_symbol">&lt;</span> emps<span class="sh_symbol">.</span><span class="sh_function">size</span><span class="sh_symbol">();</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Employee emp <span class="sh_symbol">=</span> emps<span class="sh_symbol">.</span><span class="sh_function">get</span><span class="sh_symbol">(</span>i<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">%&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>tr <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"row&lt;%=i % 2 + 1%&gt;"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;&lt;%=</span>emp<span class="sh_symbol">.</span><span class="sh_function">getId</span><span class="sh_symbol">()%&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;&lt;%=</span>emp<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">()%&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;&lt;%=</span>emp<span class="sh_symbol">.</span><span class="sh_function">getSalary</span><span class="sh_symbol">()%&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;&lt;%=</span>emp<span class="sh_symbol">.</span><span class="sh_function">getAge</span><span class="sh_symbol">()%&gt;&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>a href<span class="sh_symbol">=</span><span class="sh_string">"emplist.html#"</span><span class="sh_symbol">&gt;</span>删除<span class="sh_symbol">&lt;</span><span class="sh_regexp">/a&gt;&amp;nbsp;&lt;a href="#"&gt;更新&lt;/</span>a<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;%</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">%&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>table<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>p<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>input type<span class="sh_symbol">=</span><span class="sh_string">"button"</span> <span class="sh_keyword">class</span><span class="sh_symbol">=</span><span class="sh_string">"button"</span> value<span class="sh_symbol">=</span><span class="sh_string">"Add Employee"</span> onclick<span class="sh_symbol">=</span><span class="sh_string">"location='#'"</span><span class="sh_symbol">/&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>p<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"footer"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>div id<span class="sh_symbol">=</span><span class="sh_string">"footer_bg"</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ABC@<span class="sh_number">126</span><span class="sh_symbol">.</span>com</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>div<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>body<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>html<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@ page contentType="text/html; charset=UTF-8" 
+         pageEncoding="UTF-8"%&gt;
+&lt;%@ page import="dao.*,entity.*,java.util.*"%&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;员工信息&lt;/title&gt;
+		&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+		&lt;link rel="stylesheet" type="text/css" href="css/style.css" /&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;div id="wrap"&gt;
+			&lt;div id="top_content"&gt;
+				&lt;div id="header"&gt;
+					&lt;div id="rightheader"&gt;
+						&lt;p&gt;
+							2009/11/20
+							&lt;br /&gt;
+						&lt;/p&gt;
+					&lt;/div&gt;
+					&lt;div id="topheader"&gt;
+						&lt;h1 id="title"&gt;
+							&lt;a href="#"&gt;main&lt;/a&gt;
+						&lt;/h1&gt;
+					&lt;/div&gt;
+					&lt;div id="navigation"&gt;
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div id="content"&gt;
+					&lt;p id="whereami"&gt;
+					&lt;/p&gt;
+					&lt;h1&gt;
+						员工信息列表
+					&lt;/h1&gt;
+					&lt;table class="table"&gt;
+						&lt;tr class="table_header"&gt;
+							&lt;td&gt;
+								编号
+							&lt;/td&gt;
+							&lt;td&gt;
+								姓名
+							&lt;/td&gt;
+							&lt;td&gt;
+								薪水
+							&lt;/td&gt;
+							&lt;td&gt;
+								年龄
+							&lt;/td&gt;
+							&lt;td&gt;
+								操作
+							&lt;/td&gt;
+						&lt;/tr&gt;
+						&lt;%
+							EmployeeDAO dao = new EmployeeDAO();
+							List&lt;Employee&gt; emps = dao.findAll();
+							for (int i = 0; i &lt; emps.size(); i++) {
+								Employee emp = emps.get(i);
+						%&gt;
+						&lt;tr class="row&lt;%=i % 2 + 1%&gt;"&gt;
+							&lt;td&gt;&lt;%=emp.getId()%&gt;&lt;/td&gt;
+							&lt;td&gt;&lt;%=emp.getName()%&gt;&lt;/td&gt;
+							&lt;td&gt;&lt;%=emp.getSalary()%&gt;&lt;/td&gt;
+							&lt;td&gt;&lt;%=emp.getAge()%&gt;&lt;/td&gt;
+							&lt;td&gt;
+								&lt;a href="emplist.html#"&gt;删除&lt;/a&gt;&amp;nbsp;&lt;a href="#"&gt;更新&lt;/a&gt;
+							&lt;/td&gt;
+						&lt;/tr&gt;
+						&lt;%
+							}
+						%&gt;
+						
+					&lt;/table&gt;
+					&lt;p&gt;
+						&lt;input type="button" class="button" value="Add Employee" onclick="location='#'"/&gt;
+					&lt;/p&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+			&lt;div id="footer"&gt;
+				&lt;div id="footer_bg"&gt;
+				ABC@126.com
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+
+</pre></div></div>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

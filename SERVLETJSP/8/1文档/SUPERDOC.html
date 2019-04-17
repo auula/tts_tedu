@@ -1,0 +1,310 @@
+
+<!-- saved from url=(0098)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="6007827448"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#Key01">过滤器</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#Key02">监听器</a>
+        </li>
+      </ol>
+      <h1>1. 过滤器</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 过滤器</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 什么是过滤器</h3>
+      <p>过滤器是Servlet2.3规范之中一种特殊的Web组件，可以作为Servlet的辅助性插件存在。例如，对信息的筛选是很多Servlet里面的一个必须的前提，但是相同的功能在每个Servlet中都编写不仅仅不利于以后修改过滤逻辑，也不利于功能的重用，这时可以将这一部分非决定性的功能放在一个过滤器中，通过配置由容器控制所有请求在到达真正的处理逻辑Servlet之前先通过过滤器的检查。如果过滤逻辑需要修改，那么只需要修改这一个组件即可。所以这种可随时添加、修改，作为Servlet补充功能的Web组件是非常必要的。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 如何编写过滤器</h3>
+      <p>编写过滤器遵循下列步骤：</p>
+      <ol class="list">
+        <li>编写一个实现了Filter接口的类
+</li>
+        <li>实现Filter接口的三个方法，过滤逻辑在doFilter方法中实现
+</li>
+        <li>在Web程序中注册过滤器
+</li>
+        <li>把过滤器和Web应用一起打包部署
+</li>
+      </ol>
+      <p class="number">步骤一、实现Filter接口</p>
+      <p>Filter是过滤器API中最核心的接口，定义一个Java类实现该接口以提供过滤逻辑。代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>Filter<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>FilterChain<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>FilterConfig<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">CommentFilter</span> <span class="sh_keyword">implements</span> Filter<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//… …</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+
+public class CommentFilter implements Filter{
+	//… …
+}
+</pre></div></div>
+      <p class="number">步骤二、实现doFilter方法</p>
+      <p>Filter接口中共定义了三个方法，分别是init，doFilter，destroy方法。init方法在创建Filter时会被调用，且只调用一次，一般在该方法中做一些数据的准备工作，可以通过传入的FilterConfig参数获取在web.xml文件中配置提供给过滤器的初始参数。destroy方法只有在销毁过滤器对象时被调用一次，用于释放一些资源的操作。doFilter方法内编写过滤器的具体处理逻辑，会被多次执行。该方法共有三个参数，请求和响应用于获取数据以及追加数据，FilterChain是过滤器链，负责多过滤器的传递。</p>
+      <p>实现代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>IOException<span class="sh_symbol">;</span></li><li><span class="sh_preproc">import</span> java<span class="sh_symbol">.</span>io<span class="sh_symbol">.</span>PrintWriter<span class="sh_symbol">;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.*;</span></li><li><span class="sh_preproc">import</span> javax<span class="sh_symbol">.</span>servlet<span class="sh_symbol">.</span>http<span class="sh_symbol">.*;</span></li><li><span style="display:none;">&nbsp;</span></li><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">CommentFilter</span> <span class="sh_keyword">implements</span> Filter<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_usertype">FilterConfig</span><span class="sh_normal"> </span>config<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">destroy</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"CommentFilter1's destroy..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/*</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 容器会调用doFilter方法来处理请求(</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; * 相当于servlet的service方法)。</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 容器会将request对象(arg0)和response对象</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * (arg1)作为参数传给doFilter方法。</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * 如果调用了FilterChain(arg2)的doFilter(request,response)方法，</span></li><li><span class="sh_comment">* 则容器会调用后续的过滤器或者servlet，否则请求处理完毕。</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">doFilter</span><span class="sh_symbol">(</span><span class="sh_usertype">ServletRequest</span><span class="sh_normal"> </span>arg0<span class="sh_symbol">,</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_usertype">ServletResponse</span><span class="sh_normal"> </span>arg1<span class="sh_symbol">,</span> <span class="sh_usertype">FilterChain</span><span class="sh_normal"> </span>arg2<span class="sh_symbol">)</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_keyword">throws</span> IOException<span class="sh_symbol">,</span> ServletException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">HttpServletRequest</span><span class="sh_normal"> </span>request <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>HttpServletRequest<span class="sh_symbol">)</span>arg0<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">HttpServletResponse</span><span class="sh_normal"> </span>response <span class="sh_symbol">=(</span>HttpServletResponse<span class="sh_symbol">)</span>arg1<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;request<span class="sh_symbol">.</span><span class="sh_function">setCharacterEncoding</span><span class="sh_symbol">(</span><span class="sh_string">"utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;response<span class="sh_symbol">.</span><span class="sh_function">setContentType</span><span class="sh_symbol">(</span><span class="sh_string">"text/html;charset=utf-8"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">PrintWriter</span><span class="sh_normal"> </span>out <span class="sh_symbol">=</span> response<span class="sh_symbol">.</span><span class="sh_function">getWriter</span><span class="sh_symbol">();</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>content <span class="sh_symbol">=</span> request<span class="sh_symbol">.</span><span class="sh_function">getParameter</span><span class="sh_symbol">(</span><span class="sh_string">"content"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>illegalStr <span class="sh_symbol">=</span> config<span class="sh_symbol">.</span><span class="sh_function">getInitParameter</span><span class="sh_symbol">(</span><span class="sh_string">"illegalStr"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">if</span><span class="sh_symbol">(</span>content<span class="sh_symbol">.</span><span class="sh_function">indexOf</span><span class="sh_symbol">(</span>illegalStr<span class="sh_symbol">)</span> <span class="sh_symbol">!=</span> <span class="sh_symbol">-</span><span class="sh_number">1</span><span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//有敏感字</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"&lt;h1&gt;评论内容包含了敏感字&lt;/h1&gt;"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span><span class="sh_keyword">else</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//没有敏感字</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">// 执行FilterChain的doFilter会调用后续的过滤器或者servlet。</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arg2<span class="sh_symbol">.</span><span class="sh_function">doFilter</span><span class="sh_symbol">(</span>arg0<span class="sh_symbol">,</span> arg1<span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"Filter1's doFilter end."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">/*</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * FilterConfig对象可以用来访问过滤器的初始化参数。</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * init方法只会执行一次。</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">init</span><span class="sh_symbol">(</span><span class="sh_usertype">FilterConfig</span><span class="sh_normal"> </span>arg0<span class="sh_symbol">)</span> <span class="sh_keyword">throws</span> ServletException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"CommentFilter1's init..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config <span class="sh_symbol">=</span> arg0<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class CommentFilter implements Filter{
+		private FilterConfig config;
+	
+		public void destroy() {
+			System.out.println("CommentFilter1's destroy...");
+		}
+
+		/*
+		 * 容器会调用doFilter方法来处理请求(
+	 	 * 相当于servlet的service方法)。
+		 * 容器会将request对象(arg0)和response对象
+		 * (arg1)作为参数传给doFilter方法。
+		 * 如果调用了FilterChain(arg2)的doFilter(request,response)方法，
+* 则容器会调用后续的过滤器或者servlet，否则请求处理完毕。
+	 	 */
+		public void doFilter(ServletRequest arg0, 
+							  ServletResponse arg1, FilterChain arg2) 
+							  throws IOException, ServletException {
+				HttpServletRequest request = (HttpServletRequest)arg0;
+				HttpServletResponse response =(HttpServletResponse)arg1;
+				request.setCharacterEncoding("utf-8");
+				response.setContentType("text/html;charset=utf-8");
+				PrintWriter out = response.getWriter();
+				String content = request.getParameter("content");
+				String illegalStr = config.getInitParameter("illegalStr");
+				if(content.indexOf(illegalStr) != -1){
+					//有敏感字
+					out.println("&lt;h1&gt;评论内容包含了敏感字&lt;/h1&gt;");
+				}else{
+					//没有敏感字
+					// 执行FilterChain的doFilter会调用后续的过滤器或者servlet。
+					arg2.doFilter(arg0, arg1);
+				}
+				System.out.println("Filter1's doFilter end.");
+		}
+	
+		/*
+		 * FilterConfig对象可以用来访问过滤器的初始化参数。
+		 * init方法只会执行一次。
+		 */
+		public void init(FilterConfig arg0) throws ServletException {
+			System.out.println("CommentFilter1's init...");
+			config = arg0;
+		}
+}
+</pre></div></div>
+      <p class="number">步骤三、注册过滤器</p>
+      <p>在web.xml文件中注册过滤器，代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span><span class="sh_usertype">app</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"2.4"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee </span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span><span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;!--</span> 过滤器 <span class="sh_symbol">--&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>filter1<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>CommentFilter<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 初始化参数，由FilterConfig对象读取<span class="sh_symbol">--&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>init<span class="sh_symbol">-</span>param<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>param<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>illegalStr<span class="sh_symbol">&lt;/</span>param<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>param<span class="sh_symbol">-</span>value<span class="sh_symbol">&gt;</span>胡萝卜<span class="sh_symbol">&lt;/</span>param<span class="sh_symbol">-</span>value<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>init<span class="sh_symbol">-</span>param<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">&gt;</span> </li><li>  <span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>filter1<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;/</span>comment<span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"&gt;
+  &lt;!-- 过滤器 --&gt;
+  &lt;filter&gt;
+  	&lt;filter-name&gt;filter1&lt;/filter-name&gt;
+  	&lt;filter-class&gt;web.CommentFilter&lt;/filter-class&gt;
+  	&lt;!-- 初始化参数，由FilterConfig对象读取--&gt;
+  	&lt;init-param&gt;
+  		&lt;param-name&gt;illegalStr&lt;/param-name&gt;
+  		&lt;param-value&gt;胡萝卜&lt;/param-value&gt;
+  	&lt;/init-param&gt;
+  &lt;/filter&gt; 
+  &lt;filter-mapping&gt;
+  	&lt;filter-name&gt;filter1&lt;/filter-name&gt;
+  	&lt;url-pattern&gt;/comment&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;
+&lt;/web-app&gt;
+</pre></div></div>
+      <p class="number">步骤四、部署过滤器</p>
+      <p>将编译后的过滤器和其他Web组件类合在一起，连同web.xml文件放进应用程序结构中即可。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 过滤器的执行流程</h3>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图 – 1</p>
+      </div>
+      <p>如图-1所示为过滤器的执行流程。客户端发来请求后，不会直接将请求送达Servlet，而是先走过滤器1的doFilter方法中的code1，当遇到chain.doFilter（）方法时，控制权交到service（）方法，执行业务逻辑，但执行结束后并不会立即将响应返回给客户端，而是回到过滤器1的doFilter（）方法中code2部分，如果该部分有代码就会执行，执行结束后才会将response对象返回给客户端。</p>
+      <p>从流程中可以看到，过滤器不仅仅对Servlet的执行前起到过滤作用，对于执行后同样有过滤效果。所以，过滤器是对request和response的检查。</p>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 过滤器的优先级</h3>
+      <p>在一个Web应用中，可以有多个过滤器，它们的优先级由位于web.xml文件中的声明顺序决定，具体是按照&lt;filter-mapping&gt;的顺序来决定的。如下代码所示，filter1和filter2都已经注册，执行顺序是filter2 ( filter1 。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span><span class="sh_usertype">app</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"2.4"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee </span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span><span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;!--</span> 过滤器 <span class="sh_symbol">--&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>filter1<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;&lt;/</span>filter<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>filter2<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;&lt;/</span>filter<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>filter2<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;/</span>comment2<span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span> </li><li>  <span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>filter1<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;/</span>comment1<span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span> </li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"&gt;
+  &lt;!-- 过滤器 --&gt;
+  &lt;filter&gt;
+  	&lt;filter-name&gt;filter1&lt;/filter-name&gt;
+  	&lt;filter-class&gt;&lt;/filter-class&gt;
+  &lt;/filter&gt;
+  &lt;filter&gt;
+  	&lt;filter-name&gt;filter2&lt;/filter-name&gt;
+  	&lt;filter-class&gt;&lt;/filter-class&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+  	&lt;filter-name&gt;filter2&lt;/filter-name&gt;
+  	&lt;url-pattern&gt;/comment2&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt; 
+  &lt;filter-mapping&gt;
+  	&lt;filter-name&gt;filter1&lt;/filter-name&gt;
+  	&lt;url-pattern&gt;/comment1&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt; 
+&lt;/web-app&gt;
+</pre></div></div>
+      <a name="Key01_01_05">
+      </a>
+      <h3>1.1.5. 多个过滤器的执行流程</h3>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图 – 2</p>
+      </div>
+      <p>如图-2所示，为多个过滤器的执行流程，过滤器1的doFilter的code1 ( 过滤器2的doFilter的code1 ( service（）方法 ( 过滤器2的doFilter的code2 ( 过滤器1的doFilter的code2 ( 返回给客户端</p>
+      <p>在这个动作的传递过程中一定要写 chain.doFilter（）</p>
+      <a name="Key01_01_06">
+      </a>
+      <h3>1.1.6. 过滤器的初始化参数</h3>
+      <p>容器启动之后，会创建过滤器实例。通过init方法来完成过滤器的初始化。初始化时可以添加一些配置，提升动态性。而这些参数通过在web.xml文件中的&lt;init-param&gt;以name-value对的形式存在。</p>
+      <p>读取这些name-value对需要使用FilterConfig对象，从web.xml文件到FilterConfig对象的过程由容器完成，并通过参数传入到init方法之中，只需要设定一些成员对象保存数值就可以在doFilter方法中使用。</p>
+      <a name="Key01_01_07">
+      </a>
+      <h3>1.1.7. 初始化参数的配置</h3>
+      <p>在web.xml文件中添加过滤器初始化参数的配置代码如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span><span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;</span>web<span class="sh_symbol">-</span><span class="sh_usertype">app</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"2.4"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xmlns<span class="sh_symbol">:</span>xsi<span class="sh_symbol">=</span><span class="sh_string">"http://www.w3.org/2001/XMLSchema-instance"</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;xsi<span class="sh_symbol">:</span>schemaLocation<span class="sh_symbol">=</span><span class="sh_string">"http://java.sun.com/xml/ns/j2ee </span></li><li><span class="sh_string">&nbsp;&nbsp;&nbsp;&nbsp;http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"</span><span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;!--</span> 过滤器 <span class="sh_symbol">--&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>filter1<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>CommentFilter1<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;!--</span> 初始化参数 <span class="sh_symbol">--&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>init<span class="sh_symbol">-</span>param<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>param<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>illegalStr<span class="sh_symbol">&lt;/</span>param<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>param<span class="sh_symbol">-</span>value<span class="sh_symbol">&gt;</span>胡萝卜<span class="sh_symbol">&lt;/</span>param<span class="sh_symbol">-</span>value<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>init<span class="sh_symbol">-</span>param<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>filter1<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>  &nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;/</span>comment<span class="sh_symbol">&lt;/</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span></li><li>  <span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span>  </li><li><span class="sh_symbol">&lt;/</span>web<span class="sh_symbol">-</span>app<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"&gt;
+  &lt;!-- 过滤器 --&gt;
+  &lt;filter&gt;
+  	&lt;filter-name&gt;filter1&lt;/filter-name&gt;
+  	&lt;filter-class&gt;web.CommentFilter1&lt;/filter-class&gt;
+  	&lt;!-- 初始化参数 --&gt;
+  	&lt;init-param&gt;
+  		&lt;param-name&gt;illegalStr&lt;/param-name&gt;
+  		&lt;param-value&gt;胡萝卜&lt;/param-value&gt;
+  	&lt;/init-param&gt;
+  &lt;/filter&gt;
+  &lt;filter-mapping&gt;
+  	&lt;filter-name&gt;filter1&lt;/filter-name&gt;
+  	&lt;url-pattern&gt;/comment&lt;/url-pattern&gt;
+  &lt;/filter-mapping&gt;  
+&lt;/web-app&gt;
+</pre></div></div>
+      <a name="Key01_01_08">
+      </a>
+      <h3>1.1.8. 读取初始化参数</h3>
+      <p>读取初始化参数使用如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">CommentFilter</span> <span class="sh_keyword">implements</span> Filter<span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">private</span> <span class="sh_usertype">FilterConfig</span><span class="sh_normal"> </span>config<span class="sh_symbol">;</span>&nbsp;&nbsp;&nbsp;&nbsp;</li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">init</span><span class="sh_symbol">(</span><span class="sh_usertype">FilterConfig</span><span class="sh_normal"> </span>arg0<span class="sh_symbol">)</span> <span class="sh_keyword">throws</span> ServletException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;config <span class="sh_symbol">=</span> arg0<span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">doFilter</span><span class="sh_symbol">(</span><span class="sh_usertype">ServletRequest</span><span class="sh_normal"> </span>arg0<span class="sh_symbol">,</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_usertype">ServletResponse</span><span class="sh_normal"> </span>arg1<span class="sh_symbol">,</span> <span class="sh_usertype">FilterChain</span><span class="sh_normal"> </span>arg2<span class="sh_symbol">)</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_keyword">throws</span> IOException<span class="sh_symbol">,</span> ServletException <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_usertype">String</span><span class="sh_normal"> </span>illegalStr <span class="sh_symbol">=</span> config<span class="sh_symbol">.</span><span class="sh_function">getInitParameter</span><span class="sh_symbol">(</span><span class="sh_string">"illegalStr"</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <span class="sh_comment">// … …</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">destroy</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span class="sh_comment">// … …</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class CommentFilter implements Filter{
+		private FilterConfig config;	
+		public void init(FilterConfig arg0) throws ServletException {
+			config = arg0;
+		}
+		public void doFilter(ServletRequest arg0, 
+							  ServletResponse arg1, FilterChain arg2) 
+							  throws IOException, ServletException {
+				String illegalStr = config.getInitParameter("illegalStr");
+			    // … …
+		}
+public void destroy() {
+			   // … …
+		 }
+}
+</pre></div></div>
+      <a name="Key01_01_09">
+      </a>
+      <h3>1.1.9. 过滤器的特点</h3>
+      <p>方便增加或减少某个功能模块，需要添加过滤就多部署一个class修改一下web.xml文件，需要减少某个功能只要删除web.xml中对应的声明即可。</p>
+      <p>方便修改处理逻辑。当把一些功能独立到某个模块时，如果逻辑变了，只修改这一个文件并更新就可以实现功能的改变，而不用修改每一个使用这个插件的组件。</p>
+      <a name="Key02">
+      </a>
+      <h1>2. 监听器</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. 监听器</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. 什么是监听器</h3>
+      <p>servlet规范当中定义的一种特殊的组件，用来监听servlet容器产生的事件并进行响应的处理。</p>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. 生命周期相关的事件</h3>
+      <p>容器创建或者销毁request，session，ServletContext（上下文/环境）时产生的事件（统计在线人数)。</p>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. 绑定数据相关的事件</h3>
+      <p>调用了以上三个对象（request，response，ServletContext）的setAttribute，removeAttribute方法时产生的事件。</p>
+      <a name="Key02_01_04">
+      </a>
+      <h3>2.1.4. 如何编写监听器</h3>
+      <p>step1，写一个java类，实现相应的监听器接口（共有8个接口）。要依据监听的事件类型来选择相应的监听器接口，比如要监听session对象的创建和销毁，要实现HttpSessionListener。</p>
+      <p>step2,在监听器接口方法中，实现相应的监听处理逻辑。比如，session对象被删除了，将人数减1。</p>
+      <p>step3，注册（在web.xml文件中配置即可）。</p>
+      <a name="Key02_01_05">
+      </a>
+      <h3>2.1.5. 编写Java类</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">CountListener</span> <span class="sh_keyword">implements</span> HttpSessionListener<span class="sh_cbracket">{</span></li><li>&nbsp;</li><li><span class="sh_keyword">private</span> <span class="sh_type">int</span> count <span class="sh_symbol">=</span> <span class="sh_number">0</span><span class="sh_symbol">;</span></li><li>&nbsp;</li><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">sessionCreated</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpSessionEvent</span><span class="sh_normal"> </span>arg0<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"sessionCreated…"</span><span class="sh_symbol">);</span></li><li>count <span class="sh_symbol">++;</span></li><li><span class="sh_cbracket">}</span></li><li>&nbsp;</li><li><span class="sh_keyword">public</span> <span class="sh_function">sessionDestroyed</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpSessionEvent</span><span class="sh_normal"> </span>arg0<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"session destroyed…"</span><span class="sh_symbol">);</span></li><li>count<span class="sh_symbol">--;</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class CountListener implements HttpSessionListener{
+&nbsp;
+private int count = 0;
+&nbsp;
+public void sessionCreated(HttpSessionEvent arg0){
+System.out.println("sessionCreated…");
+count ++;
+}
+&nbsp;
+public sessionDestroyed(HttpSessionEvent arg0){
+System.out.println("session destroyed…");
+count--;
+}
+}
+</pre></div></div>
+      <a name="Key02_01_06">
+      </a>
+      <h3>2.1.6. 实现处理逻辑</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">sessionCreated</span><span class="sh_symbol">(</span><span class="sh_usertype">HttpSessionEvent</span><span class="sh_normal"> </span>arg0<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span><span class="sh_string">"sessionCreated…"</span><span class="sh_symbol">);</span></li><li><span class="sh_usertype">HttpSession</span><span class="sh_normal"> </span>session <span class="sh_symbol">=</span> args<span class="sh_symbol">.</span><span class="sh_function">getSession</span><span class="sh_symbol">();</span></li><li><span class="sh_usertype">ServletContext</span><span class="sh_normal"> </span>ctx <span class="sh_symbol">=</span> session<span class="sh_symbol">.</span><span class="sh_function">getServletContext</span><span class="sh_symbol">();</span></li><li>ctx<span class="sh_symbol">.</span><span class="sh_function">setAttribute</span><span class="sh_symbol">(</span><span class="sh_string">"count"</span><span class="sh_symbol">,</span>count<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public void sessionCreated(HttpSessionEvent arg0){
+System.out.print("sessionCreated…");
+HttpSession session = args.getSession();
+ServletContext ctx = session.getServletContext();
+ctx.setAttribute("count",count);
+}
+</pre></div></div>
+      <a name="Key02_01_07">
+      </a>
+      <h3>2.1.7. 注册监听器</h3>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY08/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>listener<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>listener<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span>web<span class="sh_symbol">.</span>CountListener<span class="sh_symbol">&lt;/</span>listener<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;/</span>listener<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;listener&gt;
+	&lt;listener-class&gt;web.CountListener&lt;/listener-class&gt;
+&lt;/listener&gt;
+</pre></div></div>
+      <a name="Key02_01_08">
+      </a>
+      <h3>2.1.8. 监听器的应用场景</h3>
+      <p>系统框架级别的代码经常需要检测容器中数据或对象的变化,以一个不受人为控制因素的触发为执行时机,所以对于需要根据数据变化来做出自动反馈的功能都可以使用到监听器.</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

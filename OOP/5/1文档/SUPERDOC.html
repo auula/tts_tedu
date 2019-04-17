@@ -1,0 +1,161 @@
+
+<!-- saved from url=(0091)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="10186553456"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#Key01">抽象类、接口和内部类（上）</a>
+        </li>
+      </ol>
+      <h1>1. 抽象类、接口和内部类（上）</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 使用抽象类</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 抽象方法和抽象类</h3>
+      <p>由abstract修饰的方法为抽象方法，抽象方法即只有方法的定义，没有方法体实现，用一个分号结尾。即方法五要素中，抽象方法缺少了一个要素（即：方法体）。也可以将抽象方法理解为不完整的方法。</p>
+      <p>若将抽象方法包含在类中，则该类也应该为抽象的，可以理解为，该类也不完整。抽象类由abstract关键字声明。</p>
+      <p>抽象类是不能实例化对象的，而一个类不能实例化是没有意义的，所以，需要定义类来继承抽象类，而如果一个类继承了抽象类，则其必须重写其抽象方法（变不完整为完整），除非该类也声明为抽象类。看下面的代码，定义了抽象方法和抽象类：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style=""><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">abstract</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Shape</span> <span class="sh_cbracket">{</span></li><li>     <span class="sh_keyword">private</span> <span class="sh_type">double</span> c<span class="sh_symbol">;</span></li><li>     <span class="sh_keyword">public</span> <span class="sh_function">Shape</span><span class="sh_symbol">(</span><span class="sh_type">double</span> c<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>         <span class="sh_keyword">this</span><span class="sh_symbol">.</span>c <span class="sh_symbol">=</span> c<span class="sh_symbol">;</span></li><li>     <span class="sh_cbracket">}</span></li><li>     <span class="sh_keyword">public</span> <span class="sh_keyword">abstract</span> <span class="sh_type">double</span> <span class="sh_function">area</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">abstract class Shape {
+     private double c;
+     public Shape(double c) {
+         this.c = c;
+     }
+     public abstract double area();
+} 
+</pre></div></div>
+      <p>通过上面的代码可以看到，area()方法没有方法体（连大括号也不存在），由abstract修饰，此为抽象方法。而Shape方法也由abstract修饰，即为抽象类。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 抽象类不可以实例化</h3>
+      <p>抽象类不可以实例化，若Shape是抽象类的话，下面的代码是错误的：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>    <span class="sh_usertype">Shape</span><span class="sh_normal"> </span>s1 <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">Shape</span><span class="sh_symbol">();</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">    Shape s1 = new Shape();
+</pre></div></div>
+      <p>即使一个类中没有抽象方法，也可以将其定义为抽象类，同样，该类不可以实例化。</p>
+      <p>需要注意一点：abstract和final关键字不可以同时用于修饰一个类，因为final关键字使得类不可继承，而abstract修饰的类如果不可以继承将没有任何意义。两者放在一起，会起冲突。</p>
+      <a name="Key01_01_03">
+      </a>
+      <h3>1.1.3. 继承抽象类</h3>
+      <p>一个类继承抽象类后，必须实现其抽象方法，不同的子类可以有不同的实现。看下面的代码，Square类与Circle类都继承自Shape类，并分别实现了重写的area()方法，只是其具体实现的代码不同：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Square</span> <span class="sh_keyword">extends</span> Shape <span class="sh_cbracket">{</span></li><li>     <span class="sh_keyword">private</span> <span class="sh_type">double</span> c<span class="sh_symbol">;</span></li><li>     <span class="sh_keyword">public</span> <span class="sh_function">Square</span><span class="sh_symbol">(</span><span class="sh_type">double</span> c<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>         <span class="sh_keyword">super</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span></li><li>     <span class="sh_cbracket">}</span></li><li>     <span class="sh_keyword">public</span> <span class="sh_type">double</span> <span class="sh_function">area</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">return</span> <span class="sh_number">0.0625</span><span class="sh_symbol">*</span>c<span class="sh_symbol">*</span>c<span class="sh_symbol">;</span></li><li>     <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">Circle</span> <span class="sh_keyword">extends</span> Shape<span class="sh_cbracket">{</span></li><li>     <span class="sh_keyword">private</span> <span class="sh_type">double</span> c<span class="sh_symbol">;</span></li><li>     <span class="sh_keyword">public</span> <span class="sh_function">Circle</span><span class="sh_symbol">(</span><span class="sh_type">double</span> c<span class="sh_symbol">)</span> <span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">super</span><span class="sh_symbol">(</span>c<span class="sh_symbol">);</span>     </li><li>     <span class="sh_cbracket">}</span> </li><li>     <span class="sh_keyword">public</span> <span class="sh_type">double</span> <span class="sh_function">area</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>          <span class="sh_keyword">return</span> <span class="sh_number">0.0796</span><span class="sh_symbol">*</span>c<span class="sh_symbol">*</span>c<span class="sh_symbol">;</span></li><li>     <span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class Square extends Shape {
+     private double c;
+     public Square(double c) {
+         super(c);
+     }
+     public double area() {
+          return 0.0625*c*c;
+     }
+}
+class Circle extends Shape{
+     private double c;
+     public Circle(double c) {
+          super(c);     
+     } 
+     public double area() {
+          return 0.0796*c*c;
+     }
+} 
+
+</pre></div></div>
+      <a name="Key01_01_04">
+      </a>
+      <h3>1.1.4. 抽象类的意义</h3>
+      <p>定义抽象类的意义在于：</p>
+      <ul class="list">
+        <li>为其子类提供一个公共的类型（父类引用指向子类对象）；
+</li>
+        <li>封装子类中的重复内容（成员变量和方法）;
+</li>
+        <li>定义有抽象方法，子类虽然有不同的实现，但该方法的定义是一致的。(子类需要实现此抽象方法)。
+</li>
+      </ul>
+      <p>看如下的代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>Shape<span class="sh_symbol">[]</span> sArr <span class="sh_symbol">=</span> <span class="sh_cbracket">{</span><span class="sh_keyword">new</span> <span class="sh_function">Circle</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">),</span>  <span class="sh_keyword">new</span> <span class="sh_function">Square</span><span class="sh_symbol">(</span><span class="sh_number">100</span><span class="sh_symbol">),</span> </li><li>&nbsp;&nbsp;&nbsp;&nbsp;             <span class="sh_keyword">new</span> <span class="sh_function">Circle</span><span class="sh_symbol">(</span><span class="sh_number">200</span><span class="sh_symbol">),</span> <span class="sh_keyword">new</span> <span class="sh_function">Square</span><span class="sh_symbol">(</span><span class="sh_number">150</span><span class="sh_symbol">)</span> <span class="sh_cbracket">}</span><span class="sh_symbol">;</span></li><li><span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_type">int</span> i<span class="sh_symbol">=</span><span class="sh_number">0</span><span class="sh_symbol">;</span> i<span class="sh_symbol">&lt;</span>sArr<span class="sh_symbol">.</span>length<span class="sh_symbol">;</span> i<span class="sh_symbol">++)</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_usertype">Shape</span><span class="sh_normal"> </span>shape <span class="sh_symbol">=</span> sArr<span class="sh_symbol">[</span>i<span class="sh_symbol">];</span></li><li>    System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span>shape<span class="sh_symbol">.</span><span class="sh_function">area</span><span class="sh_symbol">());</span></li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Shape[] sArr = {new Circle(100),  new Square(100), 
+	             new Circle(200), new Square(150) };
+for(int i=0; i&lt;sArr.length; i++) {
+    Shape shape = sArr[i];
+    System.out.println(shape.area());
+} 
+</pre></div></div>
+      <p>通过上面的代码可以看出，以Shape类型的引用访问其子类，所有子类都会有area方法，只是其具体的实现各不一样。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 使用接口</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 定义一个接口</h3>
+      <p>接口可以看成是特殊的抽象类。即只包含抽象方法和常量的抽象类。可以通过interface关键字来定义接口。看如下代码：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">interface</span><span class="sh_normal"> </span><span class="sh_classname">Runner</span> <span class="sh_cbracket">{</span> </li><li>    <span class="sh_keyword">public</span> <span class="sh_keyword">static</span> <span class="sh_type">int</span> DEFAULT_SPEED <span class="sh_symbol">=</span> <span class="sh_number">100</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">run</span><span class="sh_symbol">();</span> </li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">interface Runner { 
+    public static int DEFAULT_SPEED = 100
+    public void run(); 
+} 
+</pre></div></div>
+      <p>注意，run()方法，此处可以省略public abstract。因其默认就是public abstract的。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. 实现接口</h3>
+      <p>与继承不同，一个类可以实现多个接口，实现的接口直接用逗号分隔。当然，该类需要实现这些接口中定义的所有方法；</p>
+      <p>一个类可以通过implements关键字”实现”接口。一个类实现了某个接口后必须实现该接口中定义的所有方法。看下面的代码，类实现了接口并实现了方法：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">AmericanCurl</span> <span class="sh_keyword">implements</span> Runner <span class="sh_symbol">,</span> … <span class="sh_cbracket">{</span> </li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">run</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>        System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"run..."</span><span class="sh_symbol">);</span></li><li>    <span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">class AmericanCurl implements Runner , … { 
+    public void run() {
+        System.out.println("run...");
+    } 
+} 
+
+</pre></div></div>
+      <p>另外需要说明的一点，接口可以作为一种类型声明变量，一个接口类型的变量可以引用实现了该接口的类的对象；通过该变量可以调用该接口中定义的方法（具体的实现类提供了方法的实现）。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_usertype">Runner</span><span class="sh_normal"> </span>runner <span class="sh_symbol">=</span> <span class="sh_keyword">new</span> <span class="sh_function">AmericanCurl</span><span class="sh_symbol">();</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">Runner runner = new AmericanCurl(); 
+</pre></div></div>
+      <p>此句代码为，一个接口类型变量，引用了子类的对象。调用时，调用的是子类对象的具体的实现。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. 接口的继承</h3>
+      <p>接口间可以存在继承关系，一个接口可以通过extends关键字继承另外一个接口。子接口继承了父接口中定义的所有方法。代码如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/OOP/DAY05/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">interface</span><span class="sh_normal"> </span><span class="sh_classname">Runner</span> <span class="sh_cbracket">{</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">run</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">interface</span><span class="sh_normal"> </span><span class="sh_classname">Hunter</span>  <span class="sh_keyword">extends</span> Runner <span class="sh_cbracket">{</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">hunt</span><span class="sh_symbol">();</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">AmericanCurl</span> <span class="sh_keyword">implements</span> Hunter <span class="sh_cbracket">{</span></li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">run</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span>… … …<span class="sh_cbracket">}</span> </li><li>    <span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">hunt</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span>… … …<span class="sh_cbracket">}</span> </li><li><span class="sh_cbracket">}</span> </li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">interface Runner {
+    public void run();
+}
+interface Hunter  extends Runner {
+    public void hunt();
+}
+class AmericanCurl implements Hunter {
+    public void run() {… … …} 
+    public void hunt() {… … …} 
+} 
+</pre></div></div>
+      <p>说明：AmericanCurl实现了Hunter，必须实现Hunter接口中的hunt方法以及其父接口Runner中的run方法。</p>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. 接口和抽象类的区别</h3>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图 -1</p>
+      </div>
+      <p>从图1中可以看出，达内职员类为抽象类，企业技术顾问、技术图书作者为两个接口。达内讲师类继承了抽象类达内职员，并实现了企业技术顾问和技术图书作者两个接口。而达内项目经理只继承了抽象类达内职员。通过分析，可以总结出如下几点抽象类和接口的区别：</p>
+      <ul class="list">
+        <li>一个类只能继承一个抽象类，但可以实现多个接口。
+</li>
+        <li>抽象类中可以包含抽象方法和非抽象方法，而接口中的所有方法均为抽象的。
+</li>
+        <li>子类继承抽象类必须实现抽象类中所有抽象方法，否则子类也必须是抽象类。而子类实现接口则必须实现接口中的所有抽象方法。
+</li>
+      </ul>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

@@ -1,0 +1,505 @@
+
+<!-- saved from url=(0095)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="37809268009"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#Key01">Struts2简介</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#Key02">使用Struts2</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#Key03">参数传递</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#Key04">资费列表</a>
+        </li>
+      </ol>
+      <h1>1. Struts2简介</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. 什么是Struts2</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. Struts2的概念</h3>
+      <p>Struts2是轻量级的MVC框架，它主要解决了请求分发的问题，重心在于控制层和表现层。</p>
+      <p>轻量级，指的是Struts2具有较低的侵入性，就是它对我们业务代码的依赖程度很低，简单来说，在使用Struts2框架时，我们的业务代码中基本上不需要import它的包。</p>
+      <p>Struts2实现了MVC，满足了MVC设计思想。在我们使用Struts2做开发的时候，就相当于使用了MVC，这是Struts2自动帮助我们实现的，是默认的、隐含的，我们不需要再写特别的代码来实现MVC了。</p>
+      <p>作为一个框架，Struts2提供了一系列的API，我们可以使用它们来简化代码的编写，从而提升开发效率。这些API复用程度很高，对业务代码的依赖性也很小，甚至很多是Struts2自动调用的，因此在很大程度上，我们的开发变得可以复用。</p>
+      <p>Struts2解决请求分发的问题，我们会在后面为什么使用Struts2中讲解。</p>
+      <p>重心在控制层和表现层，是纵观整个Struts2理论课程来看的，从中我们会体会到这一点，随着大家对Struts2的逐步了解，届时我们再回顾这一点。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 什么是MVC</h3>
+      <p>MVC是代码的分层思想，是软件设计领域经典的设计模式。它根据代码功能的不同，将一个软件的代码分为3部分，即模型、视图、控制器，这3部分代码的含义和功能如下。</p>
+      <p>1、M-Model 模型</p>
+      <p>模型（Model）的职责是负责业务逻辑。包含两层：业务数据和业务处理逻辑。比如实体类、DAO、Service都属于模型层。</p>
+      <p>2、V-View 视图</p>
+      <p>视图（View）的职责是负责显示界面和用户交互（收集用户信息）。属于视图的组件是不包含业务逻辑和控制逻辑的JSP。</p>
+      <p>3、C-Controller 控制器</p>
+      <p>控制器是模型层M和视图层V之间的桥梁，用于控制流程。比如：在Servlet项目中的单一控制器ActionServlet。</p>
+      <p>使用MVC，可以将代码按功能划分，从而为代码解耦，便于团队开发以及代码维护。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. 为什么用Struts2</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. Struts2与Servlet对比</h3>
+      <p>在学习框架之前，我们使用了Servlet开发WEB项目，并使用Servlet充当控制器来实现MVC。那么对比着Servlet这种方式，我们来分析一下Struts2具有的优缺点。</p>
+      <p>1、优点</p>
+      <ul class="list">
+        <li>业务代码解耦，适合团队开发。Struts2将请求分发给不同的处理类，从而降低了业务代码耦合度。 
+</li>
+        <li>提升开发效率。Struts2提供了一系列API，可以大大提升项目的开发效率。如：使用拦截器自动给请求参数转型。 
+</li>
+      </ul>
+      <p>2、缺点</p>
+      <ul class="list">
+        <li>执行效率偏低。Struts2需要使用反射、解析XML等技术手段，会降低执行效率。 
+</li>
+        <li>结构复杂，有学习成本。我们需要花一定成本学习Struts2的API及使用步骤。 
+</li>
+      </ul>
+      <p>凡事有利必有弊，框架也没有完美的，那么结合上述Struts2与Servlet对比的结论，我们在开发项目时会做出如下选择：如果对程序执行的效率要求的比较高的话，我们优先选择Servlet，反之如果对程序执行的效率要求一般的话，我们可以使用Struts2来提升开发效率并降低维护成本。</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. Struts2自身的优势</h3>
+      <p>框架是一个项目的基础，因此必须在各方面都表现优良。我们在选择框架时，可以按照4个指标来衡量其优劣，即健壮性、易用性、扩展性、侵入性，这4个指标需要保持均衡，任何一个指标不合格，都可能对项目产生灾难性的影响。</p>
+      <p>Struts2作为时下最流行的框架，在这4个指标上，具有如下的表现：</p>
+      <p>1、健壮性（4★）</p>
+      <p>Struts2是一个成熟稳定的框架，目前最稳定的版本是2.1.8。</p>
+      <p>2、易用性（4★）</p>
+      <p>Struts2易学好用，几天即可上手。</p>
+      <p>3、扩展性（5★）</p>
+      <p>Struts2运用AOP的思想，使用拦截器来扩展业务控制器Action。</p>
+      <p>4、侵入性（4★）</p>
+      <p>Struts2对业务代码依赖性很低，基本不需要import它的包。</p>
+      <a name="Key01_03">
+      </a>
+      <h2>1.3. Struts2发展史</h2>
+      <a name="Key01_03_01">
+      </a>
+      <h3>1.3.1. Struts1</h3>
+      <p>Struts1是Apache软件基金会（ASF）赞助的一个开源项目。它通过采用JavaServlet/JSP技术，实现了基于Java EEWeb应用的MVC设计模式的应用框架，是MVC经典设计模式中的一个经典产品。由于Struts1结构简单小巧，十分易用，它的市场占有率一度超过20%。</p>
+      <p>但是，由于Struts1框架本身与JSP/Servlet耦合非常紧密，这制约了它的发展，以至于被后来的框架陆续赶超。 可以看出，Apache这样的顶尖组织推出的顶尖产品，也会由于侵入性的原因发展受限，直接印证了侵入性对于软件发展的影响之大。</p>
+      <a name="Key01_03_02">
+      </a>
+      <h3>1.3.2. WebWork</h3>
+      <p>WebWork是由OpenSymphony组织开发的，是建立在称为XWork的Command模式框架之上的强大的MVC框架。 由于WebWork晚于Struts1，技术上更为先进。</p>
+      <p>但是，由于组织知名度、人们的习惯等原因，WebWork市场反响远不及Struts1。</p>
+      <a name="Key01_03_03">
+      </a>
+      <h3>1.3.3. Struts2</h3>
+      <p>Struts2是Struts的下一代产品，是在Struts1和WebWork的技术基础上进行了合并的全新MVC框架。 它吸收了WebWork的先进技术，延续了Struts1的市场影响力，最终发展成为最流行的框架。</p>
+      <p>对于Struts2与Struts1的关系，我们要有本质上的认知，这一点也常被当做面试题来询问，即Struts2与Struts1差别巨大，不能理解为Struts1的升级版。 Struts2以Xwork为核心，可以理解为WebWork的升级版。</p>
+      <a name="Key02">
+      </a>
+      <h1>2. 使用Struts2</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. Struts2与MVC</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. Servlet如何实现MVC</h3>
+      <p>我们使用Servlet充当控制器来实现MVC，这种开发模式称之为JSP Model 2，这种模式下，Servlet负责处理请求，具体代码执行过程如下图：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图-1</p>
+      </div>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. Spring如何实现MVC</h3>
+      <p>复习Spring实现MVC的方式，如下图</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图-2</p>
+      </div>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. Struts2如何实现MVC</h3>
+      <p>Struts2实现MVC的方式基本上与Spring一致，主要是实现方式上有一些差异，Struts2采用filter+Action来充当控制器（Controller）。其中filter是前端控制器，负责处理请求的分发，它会根据配置文件struts.xml中预置的内容，把每一类请求分发给特定的Action类，而每一个Action类负责处理一类请求。这样不同的请求，通过filter分发给了不同的Action类来处理，从而将请求的处理自然的拆开，大大降低了控制器（Controller）处理请求代码的耦合度，提升了代码的可维护性。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image003.png">
+        <p>图-3</p>
+      </div>
+      <a name="Key02_02">
+      </a>
+      <h2>2.2. Struts2的使用步骤</h2>
+      <a name="Key02_02_01">
+      </a>
+      <h3>2.2.1. 大致步骤</h3>
+      <p>针对Struts2实现MVC的图示，我们来分析一下Struts2开发所涉及的组件及大致步骤，参考图-4，具体步骤请见后面的详细步骤说明。</p>
+      <p>1、Struts2框架下，请求需要提交给filter，而这个filter需要在web.xml中进行配置。对于filter这个组件不需要我们自己实现，Struts2已经提供了一个默认的filter供我们使用，该filter名为org.apache.struts2.dispatcher.ng.filter. StrutsPrepareAndExecuteFilter。</p>
+      <p>2、filter的目的是将请求分发给业务控制器Action，而找到每类请求对应的Action需要提前预置在struts.xml中，即我们需要在struts.xml中预置请求与Action的关系。</p>
+      <p>3、filter依赖struts.xml找到Action类之后，会自动实例化Action，并调用Action的业务方法，因此我们需要针对每类请求创建Action，并在业务方法中实现当前业务的逻辑代码。</p>
+      <p>4、Action在实现业务逻辑时，往往需要调用访问数据库、调用业务组件等，因此我们需要提前实现DAO、业务组件等组件。</p>
+      <p>5、Action处理完业务逻辑之后，filter需要再将请求转发给JSP，由JSP负责显示处理的结果。因此，我们需要在struts.xml中配置每类Action转发的JSP，并创建JSP实现显示代码。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image004.png">
+        <p>图-4</p>
+      </div>
+      <a name="Key02_02_02">
+      </a>
+      <h3>2.2.2. 1、创建WEB项目</h3>
+      <p>MyEclipse中，点击File ( New ( WebProject。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image005.png">
+        <p>图-5</p>
+      </div>
+      <p>在弹出框中输入项目名。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image006.png">
+        <p>图-6</p>
+      </div>
+      <a name="Key02_02_03">
+      </a>
+      <h3>2.2.3. 2、导入Struts2核心包</h3>
+      <p>导入Struts2最小范围核心包（5个），将这些包复制到新建项目的/WEB-INF/lib目录下。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image007.png">
+        <p>图-7</p>
+      </div>
+      <a name="Key02_02_04">
+      </a>
+      <h3>2.2.4. 3、配置前端控制器</h3>
+      <p>Struts2使用filter来充当前端控制器，因此在web.xml中配置一个filter即可。 Struts2预置了该filter的实现类，来自于Struts2的jar包，名为 org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter。</p>
+      <p>引入Struts2框架后，希望所有的请求都由它的filter来处理，因此使用“/*”来指定该filter处理所有的请求。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>Struts2<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span><span class="sh_keyword">class</span><span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>mapping<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span>Struts2<span class="sh_symbol">&lt;/</span>filter<span class="sh_symbol">-</span>name<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_symbol">&lt;</span>url<span class="sh_symbol">-</span>pattern<span class="sh_symbol">&gt;</span><span class="sh_comment">/*&lt;/url-pattern&gt;</span></li><li><span class="sh_comment">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/filter-mapping&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">	&lt;filter&gt;
+		&lt;filter-name&gt;Struts2&lt;/filter-name&gt;
+		&lt;filter-class&gt;
+		&lt;/filter-class&gt;
+	&lt;/filter&gt;
+	&lt;filter-mapping&gt;
+		&lt;filter-name&gt;Struts2&lt;/filter-name&gt;
+		&lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+	&lt;/filter-mapping&gt;
+</pre></div></div>
+      <a name="Key02_02_05">
+      </a>
+      <h3>2.2.5. 4、创建struts.xml</h3>
+      <p>在src下，创建名为struts.xml的配置文件。</p>
+      <ul class="list">
+        <li>Struts2配置文件默认要放在src下。 
+</li>
+        <li>Struts2配置文件默认名称为struts.xml。 
+</li>
+      </ul>
+      <div class="image">
+        <img src="./SUPERDOC_files/image008.png">
+        <p>图-8</p>
+      </div>
+      <p>struts.xml的格式</p>
+      <ul class="list">
+        <li>可以参考DTD文件，位于核心包根路径下。 
+</li>
+        <li>可以参考默认配置文件struts-default.xml， 也位于核心包根路径下。 
+</li>
+      </ul>
+      <p>配置struts.xml的版本信息及DTD引用。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;?</span><span class="sh_usertype">xml</span><span class="sh_normal"> </span>version<span class="sh_symbol">=</span><span class="sh_string">"1.0"</span> encoding<span class="sh_symbol">=</span><span class="sh_string">"UTF-8"</span> <span class="sh_symbol">?&gt;</span></li><li><span class="sh_symbol">&lt;!</span>DOCTYPE struts PUBLIC</li><li>    <span class="sh_string">"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"</span></li><li>    <span class="sh_string">"http://struts.apache.org/dtds/struts-2.1.7.dtd"</span><span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd"&gt;
+</pre></div></div>
+      <a name="Key02_02_06">
+      </a>
+      <h3>2.2.6. 5、编写业务控制器Action</h3>
+      <p>创建业务控制器组件，通常命名为XxxAction，该组件是一个满足JavaBean规范的类。</p>
+      <p>在Action中定义业务方法，要满足下列条件</p>
+      <ul class="list">
+        <li>方法是public的 
+</li>
+        <li>返回值为String类型 
+</li>
+        <li>参数列表为空 
+</li>
+      </ul>
+      <p>编写业务方法</p>
+      <ul class="list">
+        <li>方法内编写业务逻辑代码 
+</li>
+        <li>返回的字符串与struts.xml(action(result的name属性匹配，即根据此返回值可以找到对应的result。 
+</li>
+      </ul>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/STRUTS2/DAY01/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">HiloAction</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_usertype">String</span><span class="sh_normal"> </span><span class="sh_function">execute</span><span class="sh_symbol">()</span> <span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System<span class="sh_symbol">.</span>out<span class="sh_symbol">.</span><span class="sh_function">println</span><span class="sh_symbol">(</span><span class="sh_string">"调用业务方法..."</span><span class="sh_symbol">);</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">return</span> <span class="sh_string">"success"</span><span class="sh_symbol">;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class HiloAction {
+	public String execute() {
+		System.out.println("调用业务方法...");
+		return "success";
+	}
+}
+</pre></div></div>
+      <a name="Key02_02_07">
+      </a>
+      <h3>2.2.7. 6、编写JSP页面</h3>
+      <p>创建JSP页面 ，在页面上写显示部分的代码。</p>
+      <a name="Key02_02_08">
+      </a>
+      <h3>2.2.8. 7、配置struts.xml</h3>
+      <p>在struts.xml中配置请求与Action的关系，并在action下，通过result设置转发的页面。</p>
+      <a name="Key03">
+      </a>
+      <h1>3. 参数传递</h1>
+      <a name="Key03_01">
+      </a>
+      <h2>3.1. 为什么要传递参数</h2>
+      <a name="Key03_01_01">
+      </a>
+      <h3>3.1.1. 为什么要传递参数</h3>
+      <p>在项目开发中，我们经常要将页面表单中的数据发送给服务端，服务端处理完业务逻辑后，也需要将一些数据发送给页面，因此我们需要在服务端与页面之间传输数据，即传递参数，如</p>
+      <ul class="list">
+        <li>登录时要将表单中的用户名、密码提交给服务端 
+</li>
+        <li>服务端验证完之后，要将信息返回给客户端  
+</li>
+      </ul>
+      <p>由于采用了MVC的设计模式，因此页面要与服务端的控制器来互传参数。使用Servlet开发时页面要与Servlet互传参数，使用Struts2开发时页面要与业务控制器Action来互传参数。</p>
+      <a name="Key03_02">
+      </a>
+      <h2>3.2. 页面向Action传参</h2>
+      <a name="Key03_02_01">
+      </a>
+      <h3>3.2.1. 基本属性注入</h3>
+      <p>我们可以直接将表单中的数据项传递给Action，而Action只需要提供基本属性来接收参数即可，这种传参的方式称为基本属性注入。</p>
+      <p>原理如下图：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image009.png">
+        <p>图-9</p>
+      </div>
+      <p>Struts2提供了API，可以自动从请求参数中读取出表单数据，然后将这些数据注入给Action，此种方式需要做如下代码开发：</p>
+      <p>1、在Action中定义基本属性，并提供set方法。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image010.png">
+        <p>图-10</p>
+      </div>
+      <p>2、表单中文本框指定表达式“属性名”。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image011.png">
+        <p>图-11</p>
+      </div>
+      <a name="Key03_02_02">
+      </a>
+      <h3>3.2.2. 域模型注入</h3>
+      <p>如果表单上的数据项很多，我们可以将表单中的数据项封装成实体对象后传递给Action，而Action需要提供实体对象属性来接收参数，这种传参的方式称为域模型注入。</p>
+      <p>原理如下图：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image012.png">
+        <p>图-12</p>
+      </div>
+      <p>Struts2提供了API，可以从请求参数中读取出数据项，然后自动实例化实体对象，并将表单数据注入到实体对象中，然后再将实体对象注入给Action，此种方式需要做如下代码开发：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image013.png">
+        <p>图-13</p>
+      </div>
+      <div class="image">
+        <img src="./SUPERDOC_files/image014.png">
+        <p>图-14</p>
+      </div>
+      <p>3、在表单中文本框指定表达式“对象名.属性名”</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image015.png">
+        <p>图-15</p>
+      </div>
+      <a name="Key03_03">
+      </a>
+      <h2>3.3. 页面从Action取值</h2>
+      <a name="Key03_03_01">
+      </a>
+      <h3>3.3.1. 使用EL表达式显示Action值</h3>
+      <p>在JSP页面上，我们可以采用EL表达式来取出并显示Action中的数据。根据Action中属性注入形式的不同，EL表达式取值也有所区别：</p>
+      <p>1、取基本属性值</p>
+      <p>${ 属性名 }</p>
+      <p>2、取域模型对象值</p>
+      <p>${ 对象名.属性名 }</p>
+      <p>3、取驱动模型对象值</p>
+      <p>${ 属性名 }</p>
+      <p class="emphasiz">结论 ：</p>
+      <p class="emphasiz">取值时EL表达式的写法，与注入时表达式的写法一致。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image016.png">
+        <p>图-16</p>
+      </div>
+      <a name="Key03_03_02">
+      </a>
+      <h3>3.3.2. 使用OGNL表达式显示Action值</h3>
+      <p>Struts2虽然支持EL表达式，但实际上OGNL表达式才是其默认使用的表达式。</p>
+      <p>OGNL表达式功能更强大，后面会讲述其原理及使用。</p>
+      <a name="Key04">
+      </a>
+      <h1>4. 资费列表</h1>
+      <a name="Key04_01">
+      </a>
+      <h2>4.1. 需求讲解</h2>
+      <a name="Key04_01_01">
+      </a>
+      <h3>4.1.1. 需求描述</h3>
+      <p>资费管理模块，维护的是电信业务中资费的标准，类似于办理手机号时选择的套餐。 而查询功能，是使用列表的方式将维护好的资费数据进行展现。</p>
+      <p>对于NetCTOSS项目的详细需求，我们会在后面的项目课中讲解。</p>
+      <a name="Key04_01_02">
+      </a>
+      <h3>4.1.2. 查询功能要求</h3>
+      <p>按列表形式展现数据，只显示一部分列，注意以下几点：</p>
+      <ul class="list">
+        <li>状态字段数据库中存的是char(1)，即0(开通)，1(暂停)，页面上需要显示出中文含义。 
+</li>
+        <li>具有分页功能，该功能暂不考虑，后面补充。 
+</li>
+      </ul>
+      <a name="Key04_02">
+      </a>
+      <h2>4.2. 开发思路</h2>
+      <a name="Key04_02_01">
+      </a>
+      <h3>4.2.1. 查询功能需要几种请求</h3>
+      <p>在实际项目开发时，开发思路要比编写代码更重要，面试时对于项目层面企业往往看重的也是这方面。只有具备的清晰的项目分析及开发思路，在企业中我们才能将需求转化为代码，为企业创造价值。</p>
+      <p>拿到一份需求，我们分析如何来进行开发，首先是从分析请求的种类开始，然后针对每一类请求，分别加以实现。对于当前的查询需求，我们来分析一下它的请求种类，首先来分析一下查询功能以哪几种方式触发：</p>
+      <ul class="list">
+        <li>在浏览器地址栏输入URL可以查询资费。 
+</li>
+        <li>点击页码也可以查询资费。 
+</li>
+      </ul>
+      <p>上述2种方式都是针对资费的查询，只是条件有所变化，因此可以当做一种请求来处理。即我们只需要创建一个Action来处理查询请求即可，只是这个Action需要同时能处理这2种触发请求的方式，具体说来只是输入的参数不同而已。</p>
+      <a name="Key04_02_02">
+      </a>
+      <h3>4.2.2. 查询功能请求的过程</h3>
+      <p>针对这类查询的请求，在Struts2框架下，我们应该按照如下的步骤来实现其功能：</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image017.png">
+        <p>图-17</p>
+      </div>
+      <p>在这个过程中，需要涉及的代码和组件如下：</p>
+      <ul class="list">
+        <li>filter：Struts2中的filter只需要加以配置即可。
+</li>
+        <li>struts.xml：我们需要在配置文件中配置当前请求与Action的关系，以及请求跳转的页面。
+</li>
+        <li>Action：我们需要在Action中实现具体的查询业务逻辑，并最终将查询到的结果输出给页面。
+</li>
+        <li>DAO：我们将数据库访问代码单独封装于DAO中，便于复用。
+</li>
+        <li>Entity：最终查询结果，我们使用实体类来进行封装。
+</li>
+        <li>DBUtil：对于数据库连接的获取与关闭是比较频繁的，我们可以将这些代码封装于工具类中，便于复用。
+</li>
+        <li>JSP：最终的查询结果，我们要在页面上以列表的形式显示。
+</li>
+      </ul>
+      <p>上面涉及的代码中，DBUtil可以复用，Entity和Action比较简单。而struts.xml、DAO、JSP是我们需要频繁编写的内容，需要重点处理。</p>
+      <a name="Key04_03">
+      </a>
+      <h2>4.3. 开发步骤</h2>
+      <p>针对上面提及的要编写的代码，根据他们彼此依赖的关系，我们推荐按照下面的步骤进行开发。</p>
+      <a name="Key04_03_01">
+      </a>
+      <h3>4.3.1. 1、Entity</h3>
+      <p>根据资费表COST，创建与其对应的实体类Cost。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image018.png">
+        <p>图-18</p>
+      </div>
+      <p>注意以下几点：</p>
+      <ul class="list">
+        <li>尽量使用封装类型，因为封装类型可以为null，而基本类型不可以，即封装类型的数据是包含基本类型的。比如使用int则无法表示数据未输入的情况，而使用其封装类型Integer就可以用null来表示这种情况。
+</li>
+        <li>日期类型用java.sql.Date，Struts2在注入参数时，会自动的对表单上的数据项进行转型，对于表单上输入的日期字符串，它可以自动将其转型为java.sql.Date类型。
+</li>
+        <li>实体类型要提供默认构造器，Struts2采用域模型注入时，会按照默认构造器来实例化实体类。
+</li>
+        <li>每个属性都有默认的get、set方法，除非有特殊的情况。
+</li>
+      </ul>
+      <a name="Key04_03_02">
+      </a>
+      <h3>4.3.2. 2、DAO</h3>
+      <p>编写数据库访问组件DAO，步骤如下：</p>
+      <p>1、创建资费模块DAO接口ICostDAO.java</p>
+      <p>2、声明查询资费方法</p>
+      <ol class="list">
+        <li>创建自定义异常DAOException 
+</li>
+        <li>List&lt;Cost&gt; findAll() throws DAOException;
+</li>
+      </ol>
+      <p>3、创建DAO实现类CostDAOImpl，实现接口ICostDAO</p>
+      <ol class="list">
+        <li>定义SQL
+</li>
+        <li>调用DBUtil获取连接 
+</li>
+        <li>执行SQL查询 
+</li>
+        <li>处理结果集，封装成Cost对象，并加入集合 
+</li>
+        <li>关闭连接 
+</li>
+        <li>返回集合 
+</li>
+      </ol>
+      <p>4、在main方法中测试该方法。</p>
+      <p class="emphasiz">注：</p>
+      <p class="emphasiz">在实际项目中，往往基本的业务逻辑不变，而实现业务的手段会不断革新。比如当前我们使用JDBC来实现数据库的访问，可能将来引入框架来实现。届时实现的方式与当前完全不同，所以我们不希望直接在原有代码基础上修改，而是会重新写相关实现代码。因此我们可以将业务抽象出来，体现在接口中，而每一种实现手段就是一个接口的实现类。在其他调用DAO的地方只需要调用接口即可，其实例可以通过工厂来维护，这样一旦实现手段发生变化，那无非是修改工厂实例的创建，而业务代码中对DAO的引用处由于使用的是接口，因此无需改变。</p>
+      <p class="emphasiz">方法通常抛出自定义异常。我们开发的基本要求是，捕获到异常之后需要做正确的处理，而不是直接抛出置之不理，即我们需要对自己捕获到的异常负责。那么在团队开发时，同事之间可能互相调用别人的组件，调用自己人的组件时如果发现是团队自定义的异常，则说明同事已经处理过了，那么这样你可以不必再次处理，直接抛出即可，否则就要求你处理这个异常。因此我们定义自定义异常，目的是让同事可以识别出这个异常是被我们处理过的异常，他是不必处理的，从而简化了同事的代码。</p>
+      <a name="Key04_03_03">
+      </a>
+      <h3>4.3.3. 3、Action</h3>
+      <p>1、创建处理查询请求的Action，即FindCostAction</p>
+      <p>2、定义输入属性</p>
+      <ul class="list">
+        <li>Action需要JSP传入的参数，称为输入属性。 
+</li>
+        <li>当前案例中不需要输入属性。 
+</li>
+      </ul>
+      <p>3、定义输出属性</p>
+      <ul class="list">
+        <li>Action需要传出给JSP的参数，称为输出属性。 
+</li>
+        <li>当前案例中输出属性为List&lt;Cost&gt; costs。
+</li>
+      </ul>
+      <p>4、根据输入算输出</p>
+      <ul class="list">
+        <li>Action是业务控制器，其本质就是根据输入算输出。 
+</li>
+        <li>当前案例中，只需要调用DAO查询出资费数据，并且赋值给输出属性即可。 
+</li>
+      </ul>
+      <a name="Key04_03_04">
+      </a>
+      <h3>4.3.4. 4、struts.xml</h3>
+      <p>1、在struts.xml中，配置一个新的package，专门用于封装资费模块中的Action</p>
+      <ul class="list">
+        <li>该包以模块命名，即name=“cost”。
+</li>
+        <li>命名空间以模块命名，即namespace=“/cost”。
+</li>
+      </ul>
+      <p>2、在当前package下，注册查询的Action。</p>
+      <a name="Key04_03_05">
+      </a>
+      <h3>4.3.5. 5、JSP</h3>
+      <p>1、创建资费查询页面，如find_cost.jsp。</p>
+      <p>2、将资费查询静态HTML代码复制到该JSP中。</p>
+      <p>3、将table中的行删除，保留标题行（第一行）和内容首行（第二行）。</p>
+      <p>4、使用JSTL循环标签，循环输出内容首行（第二行）。</p>
+      <p>5、在内容首行中，使用EL表达式输出各列的值 。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>

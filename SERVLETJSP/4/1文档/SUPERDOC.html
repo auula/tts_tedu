@@ -1,0 +1,232 @@
+
+<!-- saved from url=(0098)http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SUPERDOC</title>
+    
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/jquery.snippet.js">
+    </script>
+    <script type="text/javascript" src="./SUPERDOC_files/main.js">
+    </script>
+    <link type="text/css" href="./SUPERDOC_files/index.css" rel="Stylesheet">
+    <link type="text/css" href="./SUPERDOC_files/jquery.snippet.css" rel="Stylesheet">
+  </head><style type="text/css" id="26896376161"></style>
+  <body>
+    <div class="source_style_superdoc">
+      <a name="page_top_superdoc" id="top_anchor">
+      </a><a id="link_top" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#page_top_superdoc">Top</a>
+      <a name="Key01">
+      </a>
+      <ol class="index">
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#Key01">JSP基本语法</a>
+        </li>
+        <li>
+          <a href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#Key02">JSP运行原理</a>
+        </li>
+      </ol>
+      <h1>1. JSP基本语法</h1>
+      <a name="Key01_01">
+      </a>
+      <h2>1.1. JSP的由来</h2>
+      <a name="Key01_01_01">
+      </a>
+      <h3>1.1.1. 为什么有JSP规范</h3>
+      <p>Servlet技术产生以后，在使用过程中存在一个很大的问题，即为了表现页面的效果而需要输出大量的HTML标签，这些标签在Servlet中表现为一个个的字符串常量。这种输出页面的方式不仅仅增加了开发时对页面的控制难度，也不利于后期的维护。为了能够将Servlet中用于表现的功能分离出来，提高视图的开发效率，推出了JSP这种技术，主要用于将Servlet中负责显示的语句抽取出来。</p>
+      <a name="Key01_01_02">
+      </a>
+      <h3>1.1.2. 什么是JSP</h3>
+      <p>JSP（Java Server Page）是Sun公司制定的一种服务器端动态页面技术的组件规范，以“.jsp”为后缀的文件中既包含HTML静态标记用于表现页面，也包含特殊的代码，用于生成动态内容。</p>
+      <p>JSP作为简化Servlet开发的一种技术，实质上最终依然要转变为Servlet才可能运行，只不过这个转变过程由Servlet容器来完成。所以遵循JSP的编写规范才能使得JSP转变为需要的Servlet。</p>
+      <a name="Key01_02">
+      </a>
+      <h2>1.2. JSP编写规范</h2>
+      <a name="Key01_02_01">
+      </a>
+      <h3>1.2.1. 如何编写JSP</h3>
+      <p>步骤一、创建一个以“jsp”为后缀的文件</p>
+      <p>步骤二、在文件中添加用于控制页面显示的HTML代码、样式及JavaScript脚本。</p>
+      <p>步骤三、在需要动态生成的部分添加Java代码的编程逻辑</p>
+      <a name="Key01_02_02">
+      </a>
+      <h3>1.2.2. JSP页面中的HTML代码</h3>
+      <p>JSP页面中的HTML代码与静态的HTML页面代码没有区别，可以有基本标记，可以有用于控制样式的CSS，可以有控制页面的JS脚本。这些原本在Servlet中表现为字符串常量的内容最终依然会在JSP转换成Servlet时由系统使用out.write方法自动输出。</p>
+      <a name="Key01_02_03">
+      </a>
+      <h3>1.2.3. JSP页面中的注释</h3>
+      <p>在JSP页面中可以添加如下两种类型的注释</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;!--</span>  注释内容  <span class="sh_symbol">--&gt;</span></li><li><span class="sh_symbol">&lt;%--</span>  注释内容  <span class="sh_symbol">--&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;!--  注释内容  --&gt;
+&lt;%--  注释内容  --&gt;
+</pre></div></div>
+      <p>第一种注释也叫HTML注释，可以出现在JSP页面之中，注释内容中可以包含了一些Java代码，但这些代码会被执行</p>
+      <p>第二行注释是JSP注释，不允许注释的内容出现Java代码，写了Java代码也会被忽略，不会执行。</p>
+      <a name="Key01_02_04">
+      </a>
+      <h3>1.2.4. JSP页面中的Java代码</h3>
+      <p>JSP页面之中可以嵌入一些Java代码，以此动态生成页面中的一些内容。而JSP规范恰恰是针对这些嵌入的Java代码的一些约束，各种不同类型的代码的作用以及在转变为Servlet一部分时的规则都是不一样的。JSP页面中可以包含如下三种类型的Java代码：</p>
+      <ul class="list">
+        <li>JSP表达式（方便输出）
+</li>
+        <li>JSP小脚本（完成相对较长的逻辑运算）
+</li>
+        <li>JSP声明（添加属性或方法）
+</li>
+      </ul>
+      <p>这些Java代码可以在页面的任何位置进行编写，当他们被执行时就可以控制页面上产生可变化的内容了。</p>
+      <a name="Key01_02_05">
+      </a>
+      <h3>1.2.5. JSP表达式</h3>
+      <p>使用表达式可以方便的在JSP页面中输出运算的结果，代码形式如下所示：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%=</span><span class="sh_number">3+5</span><span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;%=</span><span class="sh_function">add</span><span class="sh_symbol">()%&gt;</span></li><li><span class="sh_symbol">&lt;%=</span>xx<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">()%&gt;</span></li><li><span class="sh_symbol">&lt;%=</span>xx<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">()+</span>“abc”<span class="sh_symbol">%&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%=3+5%&gt;
+&lt;%=add()%&gt;
+&lt;%=xx.getName()%&gt;
+&lt;%=xx.getName()+“abc”%&gt;
+</pre></div></div>
+      <p class="emphasiz">注意：表达式结束不需要写分号。</p>
+      <p>这种形式的Java代码在转译成Servlet时，会成为service（）方法中使用out.print语句的输出。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span><span class="sh_number">3+5</span><span class="sh_symbol">);</span></li><li>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span><span class="sh_function">add</span><span class="sh_symbol">());</span></li><li>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>xx<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">());</span></li><li>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>xx<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">()+</span>“abc”<span class="sh_symbol">));</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">out.print(3+5);
+out.print(add());
+out.print(xx.getName());
+out.print(xx.getName()+“abc”));
+</pre></div></div>
+      <a name="Key01_02_06">
+      </a>
+      <h3>1.2.6. JSP小脚本</h3>
+      <p>JSP小脚本可以编写Java代码段，从而实现相对较长的一段运算逻辑。这些Java代码最终都会成为Servlet中Service方法的一部分。由于HTML与Java可以进行混合使用，所以需要注意括号的匹配。</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;</span>table<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;%</span></li><li><span class="sh_usertype">List&lt;User&gt;</span><span class="sh_normal">  </span>allUser <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>List<span class="sh_symbol">&lt;</span>User<span class="sh_symbol">&gt;)</span>request<span class="sh_symbol">.</span><span class="sh_function">getAttribute</span><span class="sh_symbol">(</span>“users“<span class="sh_symbol">);</span></li><li><span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_usertype">User</span><span class="sh_normal"> </span>u <span class="sh_symbol">:</span> allUser<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li><span class="sh_symbol">%&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span> <span class="sh_symbol">&lt;%=</span>u<span class="sh_symbol">.</span><span class="sh_function">getId</span><span class="sh_symbol">()%&gt;</span>    <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span> <span class="sh_symbol">&lt;%=</span>u<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">()%&gt;</span>  <span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <span class="sh_symbol">&lt;/</span>tr<span class="sh_symbol">&gt;</span></li><li><span class="sh_symbol">&lt;%</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_cbracket">}</span></li><li><span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;/</span>table<span class="sh_symbol">&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;table&gt;
+&lt;%
+List&lt;User&gt;  allUser = (List&lt;User&gt;)request.getAttribute(“users“);
+for(User u : allUser){
+%&gt;
+		  &lt;tr&gt;
+			  &lt;td&gt; &lt;%=u.getId()%&gt;    &lt;/td&gt;
+			  &lt;td&gt; &lt;%=u.getName()%&gt;  &lt;/td&gt;
+		  &lt;/tr&gt;
+&lt;%
+	}
+%&gt;
+&lt;/table&gt;
+</pre></div></div>
+      <p>以上代码使用小脚本控制生成一个表格。&lt;tr&gt;行标记作为要循环输出的一部分出现在了循环体内。需要注意循环体结束时的大括号的匹配。这些代码最终都会成为service方法的一部分，转换结果如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">service</span><span class="sh_symbol">(</span>…<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>out<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>“<span class="sh_symbol">&lt;</span>table<span class="sh_symbol">&gt;</span>”<span class="sh_symbol">);</span></li><li><span class="sh_usertype">List&lt;User&gt;</span><span class="sh_normal">  </span>allUser <span class="sh_symbol">=</span> <span class="sh_symbol">(</span>List<span class="sh_symbol">&lt;</span>User<span class="sh_symbol">&gt;)</span>request<span class="sh_symbol">.</span><span class="sh_function">getAttribute</span><span class="sh_symbol">(</span>“users“<span class="sh_symbol">);</span></li><li><span class="sh_keyword">for</span><span class="sh_symbol">(</span><span class="sh_usertype">User</span><span class="sh_normal"> </span>u <span class="sh_symbol">:</span> allUser<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>out<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>“<span class="sh_symbol">&lt;</span>tr<span class="sh_symbol">&gt;</span> <span class="sh_symbol">&lt;</span>td<span class="sh_symbol">&gt;</span>”<span class="sh_symbol">);</span></li><li>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>u<span class="sh_symbol">.</span><span class="sh_function">getId</span><span class="sh_symbol">());</span></li><li>out<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>“<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;&lt;</span>td<span class="sh_symbol">&gt;</span>”<span class="sh_symbol">);</span></li><li>out<span class="sh_symbol">.</span><span class="sh_function">print</span><span class="sh_symbol">(</span>u<span class="sh_symbol">.</span><span class="sh_function">getName</span><span class="sh_symbol">());</span></li><li>out<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>“<span class="sh_symbol">&lt;/</span>td<span class="sh_symbol">&gt;&lt;/</span>tr<span class="sh_symbol">&gt;</span>”<span class="sh_symbol">);</span></li><li>     <span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out<span class="sh_symbol">.</span><span class="sh_function">write</span><span class="sh_symbol">(</span>“<span class="sh_symbol">&lt;/</span>table<span class="sh_symbol">&gt;</span>”<span class="sh_symbol">);</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public void service(…){
+out.write(“&lt;table&gt;”);
+List&lt;User&gt;  allUser = (List&lt;User&gt;)request.getAttribute(“users“);
+for(User u : allUser){
+out.write(“&lt;tr&gt; &lt;td&gt;”);
+out.print(u.getId());
+out.write(“&lt;/td&gt;&lt;td&gt;”);
+out.print(u.getName());
+out.write(“&lt;/td&gt;&lt;/tr&gt;”);
+     }
+		out.write(“&lt;/table&gt;”);
+}
+</pre></div></div>
+      <a name="Key01_02_07">
+      </a>
+      <h3>1.2.7. JSP声明</h3>
+      <p>JSP声明可以为对应的Servlet添加属性和方法。这种形式的代码使用的很少。语法规则如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%!</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//属性或方法的声明</span></li><li><span class="sh_symbol">%&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%!
+	//属性或方法的声明
+%&gt;
+</pre></div></div>
+      <p>如编写下列代码</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%!</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">fun</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="sh_comment">//…  方法体</span></li><li><span class="sh_cbracket">}</span></li><li><span class="sh_symbol">%&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%!
+	public void fun(){
+		//…  方法体
+}
+%&gt;
+</pre></div></div>
+      <p>转换为Servlet之后的结果如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_keyword">public</span> <span class="sh_keyword">class</span><span class="sh_normal"> </span><span class="sh_classname">XXX_JSP</span> <span class="sh_keyword">extends</span> JSPBase<span class="sh_cbracket">{</span></li><li><span class="sh_keyword">public</span> <span class="sh_type">void</span> <span class="sh_function">fun</span><span class="sh_symbol">()</span><span class="sh_cbracket">{</span></li><li>   <span class="sh_comment">// … 方法体</span></li><li><span style="display:none;">&nbsp;</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_cbracket">}</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <span class="sh_keyword">public</span> <span class="sh_type">void</span>  <span class="sh_function">service</span><span class="sh_symbol">(</span>… …<span class="sh_symbol">)</span><span class="sh_cbracket">{</span></li><li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   </li><li><span class="sh_cbracket">}</span></li><li><span class="sh_cbracket">}</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">public class XXX_JSP extends JSPBase{
+public void fun(){
+   // … 方法体
+ 
+	 }
+	 	 public void  service(… …){
+		   
+}
+}
+</pre></div></div>
+      <a name="Key01_02_08">
+      </a>
+      <h3>1.2.8. JSP页面中的指令</h3>
+      <p>指令在JSP页面中通常起到转译成Servlet时的格式控制的作用。基本语法为：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@ 指令名  属性<span class="sh_symbol">=</span>值 <span class="sh_symbol">%&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@ 指令名  属性=值 %&gt;
+</pre></div></div>
+      <p>常用指令包含以下三种</p>
+      <ul class="list">
+        <li>page指令
+</li>
+        <li>include指令
+</li>
+        <li>taglib指令
+</li>
+      </ul>
+      <p>这些指令都有自己的属性来实现不同的控制功能。taglib指令会在讲解JSP标签时详细介绍。</p>
+      <a name="Key01_02_09">
+      </a>
+      <h3>1.2.9. page指令</h3>
+      <p>page指令可以实现在JSP页面中导入要用到的Java包，也可以对页面的一些属性进行设置。</p>
+      <p class="number">导包</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%--</span> 导包 <span class="sh_symbol">--%&gt;</span></li><li><span class="sh_symbol">&lt;%</span>@ <span class="sh_usertype">page</span><span class="sh_normal"> </span><span class="sh_preproc">import</span><span class="sh_symbol">=</span>“java<span class="sh_symbol">.</span>util<span class="sh_symbol">.*</span>“<span class="sh_symbol">%&gt;</span></li><li><span class="sh_symbol">&lt;%</span>@ <span class="sh_usertype">page</span><span class="sh_normal"> </span><span class="sh_preproc">import</span><span class="sh_symbol">=</span>“java<span class="sh_symbol">.</span>util<span class="sh_symbol">.*,</span>java<span class="sh_symbol">.</span>sql<span class="sh_symbol">.*</span>“<span class="sh_symbol">%&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%-- 导包 --%&gt;
+&lt;%@ page import=“java.util.*“%&gt;
+&lt;%@ page import=“java.util.*,java.sql.*“%&gt;
+</pre></div></div>
+      <p>使用page指令导包时，需要用到import属性。如果需要导入多个包，可以分成多条page指令来编写，也可以在一条page指令中，使用“，“逗号作为分隔来实现。注意，page指令要放在页面的最上面编写</p>
+      <p class="number">设置response.setContentType（）方法的参数值</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%--</span> 设置response<span class="sh_symbol">.</span>setConentType方法的参数值 <span class="sh_symbol">--%&gt;</span></li><li><span class="sh_symbol">&lt;%</span>@ <span class="sh_usertype">page</span><span class="sh_normal"> </span>contentType<span class="sh_symbol">=</span>“text<span class="sh_symbol">/</span>html<span class="sh_symbol">;</span>charset<span class="sh_symbol">=</span>utf<span class="sh_number">-8</span>“<span class="sh_symbol">%&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%-- 设置response.setConentType方法的参数值 --%&gt;
+&lt;%@ page contentType=“text/html;charset=utf-8“%&gt;
+</pre></div></div>
+      <p>使用page指令可以设置输出内容的编码方式，这样就可以设置浏览器使用正确的解码方式来显示页面。</p>
+      <p class="number">设置容器读取该文件时的解码方法</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%--</span> 设置容器读取该文件时的解码方式 <span class="sh_symbol">--%&gt;</span></li><li><span class="sh_symbol">&lt;%</span>@ <span class="sh_usertype">page</span><span class="sh_normal"> </span>pageEncoding<span class="sh_symbol">=</span>“UTF<span class="sh_number">-8</span>“<span class="sh_symbol">%&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%-- 设置容器读取该文件时的解码方式 --%&gt;
+&lt;%@ page pageEncoding=“UTF-8“%&gt;
+</pre></div></div>
+      <p>为了保证页面中编写的中文能够保存，以及容器在加载文件时能正确的解码文件中的中文，需要通过page指令的pageEncoding属性来完成。这段代码可以保证页面在加载到内存时正确的解码中文。</p>
+      <a name="Key01_02_10">
+      </a>
+      <h3>1.2.10. include指令</h3>
+      <p>include指令主要用于将其他页面包含在另一个页面之中。同一个应用中的很多页面都会有相同的导航头、版权声明，在每一个页面中重复编写是没有必要的，而且如果导航头发生变化时不利于所有页面的更新。如果将这样共用的部分单独做到一个文件中，只需要在不同的页面中添加引用，就可以实现页面内容的重用。</p>
+      <p>include指令的语法如下：</p>
+      <div class="snippet-container" style="undefined;"><div class="sh_acid snippet-wrap"><div class="snippet-menu sh_sourceCode" style="display:none;"><pre style="display: none;"><a class="snippet-copy sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#" style="display: none;">copy</a><a class="snippet-text sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">text</a><a class="snippet-window sh_url" href="http://pdf7.tarena.com.cn/tts8_source/ttsPage/JAVA/JSD_V05/SERVLETJSP/DAY04/SUPERDOC/01/index.html#">pop-up</a></pre></div><pre class="code sh_java snippet-formatted sh_sourceCode"><ol class="snippet-num"><li><span class="sh_symbol">&lt;%</span>@ <span class="sh_usertype">include</span><span class="sh_normal"> </span>file<span class="sh_symbol">=</span>“header<span class="sh_symbol">.</span>html” <span class="sh_symbol">%&gt;</span></li></ol></pre><pre class="snippet-textonly sh_sourceCode" style="display:none;">&lt;%@ include file=“header.html” %&gt;
+</pre></div></div>
+      <a name="Key01_02_11">
+      </a>
+      <h3>1.2.11. JSP页面中的隐含对象</h3>
+      <p>由于JSP页面最终要转化为一个Servlet，而作为即将转变为Servlet的一个前期版本，会有很多系统提供给页面能够直接使用的对象，这些对象的创建由系统完成，对象名也有系统命名，根据页面中要实现的功能直接使用即可。具体的隐含对象信息见 表-1。</p>
+      <p>在Servlet中需要自己创建获取的对象在JSP页面中使用表-1中的对象名即可，原有的方法通过对象来调用。</p>
+      <div class="table">
+        <p>表 – 1   JSP页面总的隐含对象</p>
+        <img src="./SUPERDOC_files/table001.png">
+      </div>
+      <a name="Key02">
+      </a>
+      <h1>2. JSP运行原理</h1>
+      <a name="Key02_01">
+      </a>
+      <h2>2.1. JSP的运行原理</h2>
+      <a name="Key02_01_01">
+      </a>
+      <h3>2.1.1. JSP是如何运行的</h3>
+      <p>JSP页面的运行流程遵循如 图 -1 所以的过程。整个过程在Servlet容器的控制下将请求的JSP资源转变为Servlet之后，同样会经历Servlet的例化、初始化、就绪、销毁四部分的生命周期。从图中可以看到，之所以第一次请求一个JSP页面会比之后的请求响应慢一些，就是要经过转译成Servlet，编译成class这样一个过程。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image001.png">
+        <p>图 - 1</p>
+      </div>
+      <a name="Key02_01_02">
+      </a>
+      <h3>2.1.2. JSP如何转换为Java</h3>
+      <p>JSP页面最终是要转译为一个Servlet，所以JSP页面中的HTML代码及Java代码、指令等内容都会按照固定的方式变为Servlet中的一部分。</p>
+      <div class="image">
+        <img src="./SUPERDOC_files/image002.png">
+        <p>图 – 2</p>
+      </div>
+      <p>如 图- 2 所示，用于导包的page指令最终成为import语句，page指令中的contentType属性转变为了_JSPService()方法中的response.setContentType()方法，HTML标记都会有out.write方法输出，&lt;%%&gt;的小脚本原封不动成为了_JSPService()方法内的一部分。当HTMl标记与小脚本混合在一起时，转变过程遵循从上至下的顺序逐行转变。</p>
+      <a name="Key02_01_03">
+      </a>
+      <h3>2.1.3. 如何将静态页面转换为动态页面</h3>
+      <p>在将一个静态HTML页面转变为动态的JSP页面时，首先需要分析页面的整体结构，找到页面中不变的公共部分，如导航、页脚等信息。将静态页面的脚本拷贝到JSP页面之后，一定要添加page指令pageEncoding属性，保证页面中的中文能够被正确编码。添加page指令的import属性导入页面中需要的Java包。将页面中与目标页面不一致的地方进行修改，如修改表头与实际字段一致。最后将页面中需要动态生成的内容删除，使用小脚本的Java代码来实现运算逻辑。</p>
+    </div>
+  
+<div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div></div></body></html>
